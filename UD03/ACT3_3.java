@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 /**
- * ACT3.3
+ * ACT3.3: Mostrar la qualificació d'un estudiant
  *
  * @author Tomeu Vives
  */

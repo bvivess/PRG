@@ -1,5 +1,5 @@
 /**
- * ACT3.8
+ * ACT3.8: Calcular la suma dels 100 primers nombres parells
  *
  * @author Tomeu Vives
  */

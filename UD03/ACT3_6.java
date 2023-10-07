@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 /**
- * ACT3.6
+ * ACT3.6: Mostrar la taula de multiplicar de un numero
  *
  * @author Tomeu Vives
  */

@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 /**
- * ACT3.2
+ * ACT3.2: Verificar si un numero és parell o imparell
  *
  * @author Tomeu Vives
  */

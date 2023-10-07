@@ -1,6 +1,6 @@
 import java.util.Scanner;
 /**
- * ACT3.1
+ * ACT3.1: Comparar 2 números llegits de teclat
  *
  * @author Tomeu Vives
  */
