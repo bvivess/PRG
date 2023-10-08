@@ -1,12 +1,12 @@
 import java.util.Scanner;
 
 /**
- * ACT3.4: Mostrar la qualificació d'un estudiant
+ * ACT3.3: Mostrar la qualificació d'un estudiant
  *
  * @author Tomeu Vives
  */
 
-public class ACT3_04{
+public class ACT3_03{
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		int calificacion;
