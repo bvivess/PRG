@@ -4,7 +4,7 @@
  * @author Tomeu Vives
  */
 
-public class ACT3_8{
+public class ACT3_08{
 	public static void main(String[] args) {
 		int resultado = 0;
 		

@@ -6,7 +6,7 @@ import java.util.Scanner;
  * @author Tomeu Vives
  */
 
-public class ACT3_9{
+public class ACT3_09{
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		int contarLA = 0;
