@@ -6,7 +6,7 @@ import java.util.Scanner;
  * @author Tomeu Vives
  */
 
-public class ACT3_04{
+public class ACT3_1_04{
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		Float calificacion;

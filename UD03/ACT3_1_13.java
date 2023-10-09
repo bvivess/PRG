@@ -6,7 +6,7 @@ import java.util.Scanner;
  * @author Tomeu Vives
  */
 
-public class ACT3_13{
+public class ACT3_1_13{
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		int fibN=0, fibN1=1, fibN2=0, numero;

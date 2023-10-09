@@ -6,7 +6,7 @@ import java.util.Scanner;
  * @author Tomeu Vives
  */
 
-public class ACT3_02{
+public class ACT3_1_02{
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		int num;

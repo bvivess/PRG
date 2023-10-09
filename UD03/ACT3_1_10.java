@@ -6,7 +6,7 @@ import java.util.Scanner;
  * @author Tomeu Vives
  */
 
-public class ACT3_10{
+public class ACT3_1_10{
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		int base, exponente, resultado = 1;
