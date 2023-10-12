@@ -29,11 +29,11 @@ public class ACT3_3_03 {
 		} else {
 			System.out.println("Els arrays són diferents");
         }
-		
-        System.out.println("'array1==array2' compara les referències de cada array, no els contingut, per això sempre seran diferents.");
-        //Comparam la longitud
+		System.out.println("'array1==array2' compara les referències de cada array, no els contingut, per això sempre seran diferents.");
+        
+		// Comparam la longitud
         if (array1.length == array2.length) {
-            //Comparam els arrays posició a posició
+            // Comparam el contingut posició a posició
             for (int i = 0; i < array1.length; i++) {
                 if (array1[i] != array2[i]) {
                     iguals = false;
