@@ -47,7 +47,6 @@ public class ACT3_3_03 {
             System.out.println("Els continguts són iguals");
         } else {
             System.out.println("Els continguts són diferents");
-
         }
     }
 }
