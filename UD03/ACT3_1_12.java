@@ -16,7 +16,7 @@ public class ACT3_1_12{
 		System.out.print("Introduzca el máximo: ");
 		numMax = scanner.nextInt();
 		//
-		for (int numero=numMin; numero<=numMax; numero++) {
+		for (int numero=Math.max(2, numMin); numero<=numMax; numero++) {
 			boolean esPrimo = true;
 			for (int i=2; i<=numero-1; i++) {
 				if (numero%i==0) {

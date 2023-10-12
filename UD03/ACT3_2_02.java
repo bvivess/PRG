@@ -10,7 +10,7 @@ public class ACT3_2_02 {
     public static void main(String[] args) throws IOException {
         int num = Integer.parseInt(args[0]);
         boolean primer = true;
-        for (int i = 2; i <= num; i++) {
+        for (int i = 2; i <= num-1; i++) {
             if (num % i == 0) {
                 primer = false;
                 break;
