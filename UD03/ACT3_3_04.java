@@ -1,3 +1,9 @@
+/**
+ * Crear un array de 4x4
+ *
+ * @author Tomeu Vives
+ */
+
 public class ACT3_3_04 {
     public static void main(String[] args) {
 		final int LONGITUD = 4;
