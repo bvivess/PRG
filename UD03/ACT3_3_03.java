@@ -1,8 +1,3 @@
-package arrays;
-
-//import exercicisResolts2015.*;
-//import exercicisResolts.*;
-
 /**
  * 3. Escriviu una classe que generi dos arrays de sencers de la mateixa
  * longitud i els inicialitzi. 1. Comparau-los amb una igualtat v1==v2.
