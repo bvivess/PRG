@@ -4,7 +4,7 @@ package arrays;
 //import exercicisResolts.*;
 
 /**
- * 3. Escriviu una classe que generi dos vectors de sencers de la mateixa
+ * 3. Escriviu una classe que generi dos arrays de sencers de la mateixa
  * longitud i els inicialitzi. 1. Comparau-los amb una igualtat v1==v2.
  * Funciona? Escriviu l'explicació per pantalla utilitzant un println. 2.
  * Comparau-los correctament. Utilitzau una variable booleana per a guardar el
@@ -17,28 +17,32 @@ public class ACT3_3_03 {
     public static void main(String[] args) {
 
         boolean iguals = true;
-        int[] vector1 = new int[10];
-        int[] vector2 = new int[vector1.length];
-        for (int index = 0; index < vector1.length; index++) {
-            vector1[index] = index + 1;
-            vector2[index] = index + 1;
+        int[] array1 = new int[10];
+        int[] array2 = new int[array1.length];
+        for (int i = 0; i < array1.length; i++) {
+            array1[i] = i;
+            array2[i] = i;
         }
 
-        if (vector1 == vector2) {
-            System.out.println("Són iguals");
+        if (array1 == array2) {
+            System.out.println("Els arrays són iguals");
+		} else {
+			System.out.println("Els arrays són diferents");
         }
-        System.out.println("Amb vector1==vector2 comparam les referencies on estan guardats els vectors, i mai seran la mateixa.");
+		
+        System.out.println("'array1==array2' compara les referències de cada array, no els contingut, per això sempre seran diferents.");
         //Comparam la longitud
-        if (vector1.length == vector2.length) {
-            //Comparam els vectors posició a posició
-            for (int index = 0; index < vector1.length; index++) {
-                if (vector1[index] != vector2[index]) {
+        if (array1.length == array2.length) {
+            //Comparam els arrays posició a posició
+            for (int i = 0; i < array1.length; i++) {
+                if (array1[i] != array2[i]) {
                     iguals = false;
                 }
             }
         } else {
             iguals = false;
         }
+		
         if (iguals) {
             System.out.println("Els continguts són iguals");
         } else {
@@ -47,3 +51,4 @@ public class ACT3_3_03 {
         }
     }
 }
+
