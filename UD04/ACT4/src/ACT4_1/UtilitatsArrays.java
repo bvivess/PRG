@@ -76,7 +76,7 @@ public class UtilitatsArrays {
         System.out.println();
     }
 
-    // ACT 4_2
+    // ACT 4_1_2
     /**
      * Suma els sencers d'un array
      * @param array 
@@ -91,7 +91,7 @@ public class UtilitatsArrays {
         return suma;
     }
 
-    // ACT 4_2
+    // ACT4_1_2
     /**
      * Suma els sencers d'un array
      * @param array 
@@ -109,7 +109,7 @@ public class UtilitatsArrays {
     }
 
     
-    //ACT4_4
+    // ACT4_1_4
     /**
      * Genera un array de sencers de la longitud demanada
      * @param longitud La longitud de l'array
@@ -125,7 +125,7 @@ public class UtilitatsArrays {
         return array;
     }
      
-    //ACT4_5
+    //ACT4_1_5
     /**
      * Compara dos arrrays de sencers de qualsevol longitud
      *
@@ -147,66 +147,4 @@ public class UtilitatsArrays {
         }
         return sonIguals;
     }
-    
-    //ACT4_6
-    /**
-     * Ordena l'array. Si no té tres posicions no fa res.
-     *
-     * @param array
-     */
-    public static void ordenaArray(int[] array) {
-        int aux;
-        if (array.length == 3) {
-            if (array[0] > array[1]) {
-                aux = array[1];
-                array[1] = array[0];
-                array[0] = aux;
-            }
-            if (array[0] > array[2]) {
-                aux = array[2];
-                array[2] = array[0];
-                array[0] = aux;
-            }
-            if (array[1] > array[2]) {
-                aux = array[2];
-                array[2] = array[1];
-                array[1] = aux;
-            }
-        }
-    }
-    
-    // ACT4_7
-    /** Comprova que l'array sigui de tres posicions i torna el resultat.
-    * Si és de tres posicioins ordena l'array.
-    *
-    * ATENCIÓ, EN AQUEST CAS CAL CANVIAR LA SIGNATURA AMB EL MÈTODE ANTERIOR
-    * 
-    * @param array
-    * @return boolean
-    */
-    public static boolean ordenaArray2(int[] array){
-        boolean resultat=true;
-        int aux;
-        if(array.length==3){
-            if(array[0]>array[1]){
-                aux=array[1];
-                array[1]=array[0];
-                array[0]=aux;
-            }
-            if(array[0]>array[2]){
-                aux=array[2];
-                array[2]=array[0];
-                array[0]=aux;
-            }
-            if(array[1]>array[2]){
-                aux=array[2];
-                array[2]=array[1];
-                array[1]=aux;
-            }
-        }else{
-            resultat=false;
-        }
-        return resultat;
-    }
-
 }
