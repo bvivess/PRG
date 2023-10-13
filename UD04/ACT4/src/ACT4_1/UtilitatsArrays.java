@@ -1,4 +1,4 @@
-package ACT4;
+package ACT4_1;
 
 import java.util.Scanner;
 
@@ -84,13 +84,32 @@ public class UtilitatsArrays {
      */
     public static int sumaArray(int[] array) {
         int suma = 0;
+        
         for (int i = 0; i < array.length; i++) {
             suma += array[i];
         }
         return suma;
     }
 
-    //ACT4_3
+    // ACT 4_2
+    /**
+     * Suma els sencers d'un array
+     * @param array 
+     * @return int.
+     */
+    public static float mitjanaArray(int[] array) {
+        int suma = 0;
+        int total = 0;
+        
+        for (int i = 0; i < array.length; i++) {
+            suma += array[i];
+            total++;
+        }
+        return (float) (suma/total);
+    }
+
+    
+    //ACT4_4
     /**
      * Genera un array de sencers de la longitud demanada
      * @param longitud La longitud de l'array
@@ -106,7 +125,7 @@ public class UtilitatsArrays {
         return array;
     }
      
-    //ACT4_4
+    //ACT4_5
     /**
      * Compara dos arrrays de sencers de qualsevol longitud
      *
@@ -129,7 +148,7 @@ public class UtilitatsArrays {
         return sonIguals;
     }
     
-    //ACT4_5
+    //ACT4_6
     /**
      * Ordena l'array. Si no té tres posicions no fa res.
      *
@@ -156,7 +175,7 @@ public class UtilitatsArrays {
         }
     }
     
-    // ACT4_6
+    // ACT4_7
     /** Comprova que l'array sigui de tres posicions i torna el resultat.
     * Si és de tres posicioins ordena l'array.
     *

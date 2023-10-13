@@ -1,4 +1,4 @@
-package ACT4;
+package ACT4_1;
 
 /**
  * Crea una classe amb un mètode que rebi la longitud d'un array de sencers i torni un array de la longitud demanada
@@ -6,7 +6,7 @@ package ACT4;
  * Al main genera tres arrays de longituds diferents i mostra'ls per pantalla. Utilitza el mètode de l'ACT4_1.
  */
 
-public class ACT4_3 {
+public class ACT4_1_4 {
     /**
      * Genera un array de sencers de la longitud demanada
      * @param longitud La longitud de l'array

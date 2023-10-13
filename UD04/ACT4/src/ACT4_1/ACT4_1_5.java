@@ -1,4 +1,4 @@
-package ACT4;
+package ACT4_1;
 
 /**
  * Escriviu una classe que generi dos vectors de sencers i els inicialitzi. Escriviu un mètode que pugui rebre dos
@@ -6,7 +6,7 @@ package ACT4;
  * Si no tenen la mateixa longitud evidentment no són iguals.
  */
 
-public class ACT4_4 {
+public class ACT4_1_5 {
     public static void main(String[] args) {
         // int[]a={1,2,3,4};
         // int[]b={1,2,3};

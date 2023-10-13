@@ -1,4 +1,4 @@
-package ACT4;
+package ACT4_3;
 
 import java.util.Scanner;
 
@@ -53,7 +53,8 @@ public class UtilitatsConsola {
         return real;
     }   
     
-       /**
+    // ACT4_3_2
+    /**
      * Mostra el menu per pantalla i demana a l'usuari l'opció a executar fins
      * que l'usuari en pitja una de correcta.
      *
@@ -65,12 +66,13 @@ public class UtilitatsConsola {
     public static int gestionarMenu(String titol, String[] opcions, String pregunta) {
         System.out.println(titol);
         int sencer;
+        
         for (int i = 0; i < opcions.length; i++) {
             System.out.println((i + 1) + ". " + opcions[i]);
         }
         do {
             sencer = llegirSencer(pregunta);
-        } while (sencer < 1 || sencer > opcions.length);
+        } while (sencer != 0);
         return sencer;
     }
     
