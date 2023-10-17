@@ -8,23 +8,27 @@ public class ACT3_3_04 {
 		final int LONGITUD = 4;
         int[][] array = new int[LONGITUD][LONGITUD];
         int n = 1;
+		int suma = 0;
 
         for (int i = 0; i < LONGITUD; i++) {
             for (int j = 0; j < LONGITUD; j++) {
                 array[i][j] = n;
-                n++;
+				n++;
             }
         }
 
         // Imprimir el contingut de l'array
-		System.out.println("[ ");
-        for (int i = 0; i < LONGITUD; i++) {
+		System.out.println("[");
+        for (int[] fila : array) {
 			System.out.print("[ ");
-            for (int j = 0; j < LONGITUD; j++) {
-                System.out.print(array[i][j] + " ");
+            for (int a: fila) {
+                System.out.print(a + " ");
+				suma = suma + a;
             }
             System.out.println("]"); // Saltar a la siguiente fila
         }
 		System.out.print("]");
+		System.out.println();
+		System.out.println("La suma és: " + suma);
     }
 }
