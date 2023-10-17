@@ -6,24 +6,24 @@ public class ACT3_3_04 {
  */
     public static void main(String[] args) {
 		final int LONGITUD = 4;
-        int[][] array = new int[LONGITUD][LONGITUD];
+        int[][] matriu = new int[LONGITUD][LONGITUD];
         int n = 1;
 		int suma = 0;
 
-        for (int i = 0; i < LONGITUD; i++) {
-            for (int j = 0; j < LONGITUD; j++) {
-                array[i][j] = n;
+        for (int i = 0; i < matriu.length; i++) {
+            for (int j = 0; j < matriu[i].length; j++) {
+                matriu[i][j] = n;
 				n++;
             }
         }
 
         // Imprimir el contingut de l'array
-	System.out.println("[");
-        for (int[] fila : array) {
+		System.out.println("[");
+        for (int[] array : matriu) {
 	    System.out.print("[ ");
-            for (int f: fila) {
-                System.out.print(f + " ");
-		suma = suma + f;
+            for (int a: array) {
+                System.out.print(a + " ");
+				suma = suma + a;
             }
             System.out.println("]"); // Saltar a la siguiente fila
         }
