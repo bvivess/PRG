@@ -18,17 +18,17 @@ public class ACT3_3_04 {
         }
 
         // Imprimir el contingut de l'array
-		System.out.println("[");
+	System.out.println("[");
         for (int[] fila : array) {
-			System.out.print("[ ");
-            for (int a: fila) {
-                System.out.print(a + " ");
-				suma = suma + a;
+	    System.out.print("[ ");
+            for (int f: fila) {
+                System.out.print(f + " ");
+		suma = suma + f;
             }
             System.out.println("]"); // Saltar a la siguiente fila
         }
-		System.out.print("]");
-		System.out.println();
-		System.out.println("La suma és: " + suma);
+	System.out.print("]");
+	System.out.println();
+	System.out.println("La suma és: " + suma);
     }
 }
