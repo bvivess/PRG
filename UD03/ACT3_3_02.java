@@ -1,5 +1,3 @@
-package arrays;
-
 /**2. Escriu una classe que crei un array de 10 sencers, els inicialitzi 
  * aleatòriament de 100 a 200 i els mostri per pantalla.
  * 

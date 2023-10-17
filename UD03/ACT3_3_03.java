@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * 3. Escriviu una classe que generi dos arrays de sencers de la mateixa
  * longitud i els inicialitzi. 1. Comparau-los amb una igualtat v1==v2.
@@ -43,6 +45,13 @@ public class ACT3_3_03 {
         } else {
             System.out.println("Els continguts són diferents");
         }
+		
+		if (Arrays.equals(array1,array2))
+			{
+			System.out.println("Els continguts són iguals, ara amb Arrays.equals");
+		} else {
+			System.out.println("Els continguts són diferents, ara amb Arrays.equals");
+		}
     }
 }
 
