@@ -12,18 +12,19 @@ public class ACT3_3_01 {
 
     public static void main(String[] args) throws IOException {
         //Una forma de fer-ho
-        int[] vector1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        // int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         //Una altra forma de fer-ho
-        int[] vector = new int[10];
-        for (int index = 0; index < vector.length; index++) {
-            vector[index] = index + 1;
+        int[] array = new int[10];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = i + 1;
         }
 
         //Mostrar-los per pantalla
-        for (int index = 0; index < vector.length; index++) {
-            System.out.print(vector[index] + "\t");
+		System.out.print("[ ");
+        for (int a : array) {
+            System.out.print(a + " ");
         }
-        System.out.println();
+        System.out.println("]");
 
     }
 }

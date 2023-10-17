@@ -17,11 +17,14 @@ public class ACT3_3_04 {
         }
 
         // Imprimir el contingut de l'array
+		System.out.println("[ ");
         for (int i = 0; i < LONGITUD; i++) {
+			System.out.print("[ ");
             for (int j = 0; j < LONGITUD; j++) {
-                System.out.print(array[i][j] + "\t");
+                System.out.print(array[i][j] + " ");
             }
-            System.out.println(); // Saltar a la siguiente fila
+            System.out.println("]"); // Saltar a la siguiente fila
         }
+		System.out.print("]");
     }
 }
