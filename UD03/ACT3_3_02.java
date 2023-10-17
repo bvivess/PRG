@@ -11,9 +11,12 @@ public class ACT3_3_02 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+		final int MAX = 200;
+		final int MIN = 100;
         int[] vector = new int[10];
+		
         for (int index = 0; index < vector.length; index++) {
-            vector[index] = 100 + (int)(Math.random() * 101) ;
+            vector[index] = MIN + (int) (Math.random() * ((MAX - MIN) + 1)) ;
         }
 
         //Mostrar-los per pantalla
