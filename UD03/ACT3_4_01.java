@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class ACT3_3_05 {
+public class ACT3_4_01 {
 /**
  *
  * @author Tomeu Vives
