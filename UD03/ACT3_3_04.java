@@ -20,15 +20,15 @@ public class ACT3_3_04 {
         // Imprimir el contingut de l'array
 		System.out.println("[");
         for (int[] array : matriu) {
-	    System.out.print("[ ");
+			System.out.print("[ ");
             for (int a: array) {
                 System.out.print(a + " ");
 				suma = suma + a;
             }
-            System.out.println("]"); // Saltar a la siguiente fila
+            System.out.println("]"); 
         }
-	System.out.print("]");
-	System.out.println();
-	System.out.println("La suma és: " + suma);
+		System.out.print("]");
+		System.out.println();
+		System.out.println("La suma és: " + suma);
     }
 }
