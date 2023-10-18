@@ -10,8 +10,8 @@ public class ACT3_4_01 {
         int n;
 		int[] array;
 		int suma = 0;
-        int max = 0;
-        int min = 0;
+        int max;
+        int min;
 		double mitjana;
 
         System.out.print("Introduexi el núm elements: ");
@@ -26,6 +26,8 @@ public class ACT3_4_01 {
 
         // Mostra l'array y calcula el min, max i mitjana
 
+        max = array[0];
+        min = array[0];
         for (int valor : array) {
             suma += valor;
             if (valor > max) {
