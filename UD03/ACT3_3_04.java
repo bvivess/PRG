@@ -17,7 +17,7 @@ public class ACT3_3_04 {
             }
         }
 
-        // Imprimir el contingut de l'array
+        // Imprimir el contingut de la matriu
 		System.out.println("[");
         for (int[] array : matriu) {
 			System.out.print("[ ");
