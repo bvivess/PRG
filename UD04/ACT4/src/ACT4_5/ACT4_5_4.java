@@ -1,9 +1,9 @@
-package ACT4_4;
+package ACT4_5;
 
 import ACT4_1.UtilitatsArrays;
 
 
-public class ACT4_4_4 {
+public class ACT4_5_4 {
     public static void main(String[] args) {
         int[] array = UtilitatsArrays.generaArray(3,1,100);
 

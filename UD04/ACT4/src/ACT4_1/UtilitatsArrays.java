@@ -73,7 +73,6 @@ public class UtilitatsArrays {
             separador = ", ";
         }
         System.out.println(']');
-        System.out.println();
     }
 
     // ACT 4_1_2

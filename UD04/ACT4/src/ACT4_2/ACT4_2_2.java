@@ -11,7 +11,7 @@ public class ACT4_2_2 {
      */
     public static void main(String[] args) {
         final int MIDA=5;
-        int[][] matriu = UtilitatsMatrius.generaMatriu(MIDA, 10, 100);;
+        int[][] matriu = UtilitatsMatrius.generaMatriu(MIDA, 10, 100);
 
         System.out.println();
         UtilitatsMatrius.mostrarMatriu(matriu);

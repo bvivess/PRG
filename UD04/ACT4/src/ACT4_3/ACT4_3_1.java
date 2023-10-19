@@ -1,6 +1,7 @@
 package ACT4_3;
 
 import ACT4_1.UtilitatsArrays;
+import ACT4_3.UtilitatsConsola;
         
 
 public class ACT4_3_1 {

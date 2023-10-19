@@ -35,7 +35,7 @@ public class UtilitatsConsola {
 
         System.out.print(prompt);
         cadena = scanner.next();
-        scanner.close();
+        //scanner.close();
         return cadena;
     }
 

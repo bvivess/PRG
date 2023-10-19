@@ -1,8 +1,8 @@
-package ACT4_4;
+package ACT4_5;
 
 import ACT4_3.UtilitatsConsola;
 
-public class ACT4_4_3 {
+public class ACT4_5_3 {
     public static void main(String[] args) {
         int base = UtilitatsConsola.llegirSencer("Introdueixi la base de Fibonacci: ");
 
