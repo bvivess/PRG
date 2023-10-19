@@ -17,7 +17,7 @@ public class ACT3_4_03 {
 		// Llegir no alumnes
 		for (int i=0; i<alumnes.length; i++) {
 			System.out.print("Nom alumne [" + (i+1) + "]: ");
-			alumnes[i] = scanner.next();
+			alumnes[i] = scanner.nextLine();
         }
 		
 		// Emplenar aleatòriament les notes de cada alumne
