@@ -26,7 +26,7 @@ public class ACT4_4_1 {
         for (int i=0; i<alumnes.length; i++){
             System.out.print(alumnes[i] + ": ");
             UtilitatsArrays.mostraArray(notes[i]);
-            System.out.println(UtilitatsArrays.mitjanaArray(notes[i]));
+            System.out.println("Mitjana: " + UtilitatsArrays.mitjanaArray(notes[i]));
             System.out.println("----------");
         }
     }

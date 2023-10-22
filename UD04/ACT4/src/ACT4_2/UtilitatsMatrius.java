@@ -36,7 +36,7 @@ public class UtilitatsMatrius {
             System.out.print(separador + '[');
             separador = "";
             for (int j = 0; j < matriu[i].length; j++) {
-                System.out.print(separador + matriu[i][j]);
+                System.out.print(separador + (matriu[i][j]==0? " ":matriu[i][j]));
                 separador = ", ";
             }
             System.out.println(']');

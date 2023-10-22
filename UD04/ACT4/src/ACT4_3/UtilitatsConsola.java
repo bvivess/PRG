@@ -17,7 +17,7 @@ public class UtilitatsConsola {
         
         System.out.print(prompt);
         sencer = scanner.nextInt();
-        scanner.close();
+        //scanner.close();
         return sencer;
     }
 
@@ -38,6 +38,28 @@ public class UtilitatsConsola {
         //scanner.close();
         return cadena;
     }
+    
+    /**
+     * Llegeix una cadena del scanner.
+     *
+     * @param prompt El missatge que mostra al'usuari indicant quina dada ha
+     *               d'escriure.
+     * @return La cadena escrita per l'usuari
+     */
+    public static char llegirCar(String prompt) {
+        char car;
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print(prompt);
+            if (scanner.hasNext()) {
+                car = scanner.next().charAt(0);
+            } else {
+                // Manejo de error o valor predeterminado en caso de que no haya entrada.
+                car = 'X'; // Por ejemplo, devolver un espacio en blanco.
+            }
+
+        } 
+        return car;
+    }
 
     /**
      * Llegeix un real del scanner. 
@@ -52,10 +74,10 @@ public class UtilitatsConsola {
 
         System.out.print(prompt);
         real = scanner.nextDouble();
-        scanner.close();
+        //scanner.close();
         return real;
     }   
-    
+
     // ACT4_3_2
     /**
      * Mostra el menu per pantalla i demana a l'usuari l'opció a executar fins
