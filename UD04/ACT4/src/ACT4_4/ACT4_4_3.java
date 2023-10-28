@@ -6,21 +6,14 @@ import ACT4_3.UtilitatsConsola;
 
 
  /**
-  * Crea una classe que inicialitzi una matriu quadrada, pe 5x5:
-  *      Mostra-la per pantalla, cada fila a una línia.
+  * Crea una classe que inicialitzi una matriu quadrada,
+  * A continuació gestiona el joc del cuc.
   */
 public class ACT4_4_3 {
-     /**
-     *
-     * @param posicio
-     * @param car
-     * @param mida
-     * @return args Els arguments passats per la línia de comandes
-     */
     /*
         FULLA --> fulla
         BUIT --> res
-        des de 1 fins a (FULLA-1) --> cuc
+        des de 1 fins a (FULLA-1) --> part del cuc
     */   
     static int FULLA = 99;
     static int BUIT = 0;
@@ -33,8 +26,8 @@ public class ACT4_4_3 {
         boolean ok = true;
         
         do {
-            fulla  = UtilitatsArrays.generaArray(2,0, mida-1);
-            if (tauler[fulla[0]][fulla[1]] == 0) {
+            fulla  = UtilitatsArrays.generaArray(2,0, mida-1); // genera posició de la fulla
+            if (tauler[fulla[0]][fulla[1]] == 0) { // situa la fulla al tauler si la posició està buida
                 tauler[fulla[0]][fulla[1]] = FULLA;
                 ok = false;
             }
@@ -56,7 +49,7 @@ public class ACT4_4_3 {
                 posicio[0] = (posicio[0] == mida-1 ? 0 : posicio[0]+1); 
         }
         
-        if ((tauler[posicio[0]][posicio[1]]) == FULLA) {        // cuc menja fulla
+        if ((tauler[posicio[0]][posicio[1]]) == FULLA) {  // cuc menja fulla
             longitudCuc++;
             tauler[posicio[0]][posicio[1]] = longitudCuc;
             
