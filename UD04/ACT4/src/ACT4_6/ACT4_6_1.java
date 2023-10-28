@@ -1,8 +1,8 @@
-package ACT4_5;
+package ACT4_6;
 
 import ACT4_3.UtilitatsConsola;
 
-public class ACT4_5_1 {
+public class ACT4_6_1 {
     public static void main(String[] args) {
         int base = UtilitatsConsola.llegirSencer("Introdueixi la base: ");
         int exponent = UtilitatsConsola.llegirSencer("Introdueixi l'exponent: ");

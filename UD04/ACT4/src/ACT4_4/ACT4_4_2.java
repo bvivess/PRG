@@ -17,18 +17,22 @@ public class ACT4_4_2 {
      * @return args Els arguments passats per la línia de comandes
      */
     
-    public static int[] cambiarPosicio(int[] posicio, int car, int mida) {
+    public static void cambiarPosicio(int[][] tauler, int[] posicio, int car, int puntuacio, int nmoviments) {
+        int mida = tauler.length;
+        tauler[posicio[0]][posicio[1]] = 0;
         switch (car) {
             case 4 -> // ESQ
                 posicio[1] = (posicio[1]==0 ? mida-1 : posicio[1]-1); 
             case 6  -> // DRETA
                 posicio[1] = (posicio[1]==mida-1 ? 0 : posicio[1]+1); 
             case 8  -> // ALT
-                posicio[0] = (posicio[0]==0 ? mida-51 : posicio[0]-1); 
+                posicio[0] = (posicio[0]==0 ? mida-1 : posicio[0]-1); 
             case 2 -> //BAIX
                 posicio[0] = (posicio[0]==mida-1 ? 0 : posicio[0]+1); 
         }
-        return posicio;
+        puntuacio = puntuacio + ((tauler[posicio[0]][posicio[1]] == 1)? 1: 0);
+        nmoviments++;
+        tauler[posicio[0]][posicio[1]] = 9;
     }
     
     public static void main(String[] args) {
@@ -44,11 +48,9 @@ public class ACT4_4_2 {
         do {
             UtilitatsMatrius.mostrarMatriu(tauler);
             car=UtilitatsConsola.llegirSencer("Puntuació: " + (float) puntuacio/nmoviments +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
-            tauler[posicio[0]][posicio[1]] = 0;
-            posicio = cambiarPosicio(posicio, car, MIDA);
-            puntuacio = puntuacio + ((tauler[posicio[0]][posicio[1]] == 1)? 1:0);
-            tauler[posicio[0]][posicio[1]] = 9;
-            nmoviments++;
+            
+            cambiarPosicio(tauler, posicio, car, puntuacio, nmoviments);
+
         } while (car!=0);
     }
 }
