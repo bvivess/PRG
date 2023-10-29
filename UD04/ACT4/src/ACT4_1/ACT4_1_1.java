@@ -7,8 +7,10 @@ package ACT4_1;
  */
 
 public class ACT4_1_1 {
+    
     public static void main(String[] args) {
         int[] array = {10, 11, 12, 13, 14};
+        
         UtilitatsArrays.mostraArray(array);
     }
 }

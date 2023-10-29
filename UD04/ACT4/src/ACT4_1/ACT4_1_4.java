@@ -7,11 +7,6 @@ package ACT4_1;
  */
 
 public class ACT4_1_4 {
-    /**
-     * Genera un array de sencers de la longitud demanada
-     * @param longitud La longitud de l'array
-     * @return L'array emplanat de forma aleatòria.
-     */
 
     public static void main(String[] args) {
         UtilitatsArrays.mostraArray(UtilitatsArrays.generaArray(10, 1, 20));
