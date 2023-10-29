@@ -67,7 +67,6 @@ public class UtilitatsArrays {
     public static void mostraArray(String[] array) {
         String separador = "";
         System.out.print('[');
-
         for (String a : array) {
             System.out.print(separador + a);
             separador = ", ";
@@ -118,6 +117,7 @@ public class UtilitatsArrays {
      */
     public static int[] generaArray(int longitud, int minim, int maxim) {
         int[] array = new int[longitud];
+        
         for (int i = 0; i < array.length; i++) {
             array[i] = minim + (int) (Math.random() * (maxim - minim + 1));
         }

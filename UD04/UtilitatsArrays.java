@@ -1,6 +1,5 @@
 package ACT4;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -67,8 +66,9 @@ public class UtilitatsArrays {
      * @return L'opció vàlida elegida per l'usuari.
      */
     public static int gestionarMenu(String titol, String[] opcions, String pregunta) {
-        System.out.println(titol);
         int sencer;
+		
+        System.out.println(titol);
         for (int i = 0; i < opcions.length; i++) {
             System.out.println((i + 1) + ". " + opcions[i]);
         }
@@ -86,7 +86,7 @@ public class UtilitatsArrays {
     public static void mostraArray(int[] valors) {
         String separador = "";
         System.out.print('[');
-
+		
         for (int i = 0; i < valors.length; i++) {
             System.out.print(separador + valors[i]);
             separador = ", ";
