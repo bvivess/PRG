@@ -1,4 +1,4 @@
-package ACT4_4;
+package ACT4_5;
 
 import ACT4_1.UtilitatsArrays;
 import ACT4_2.UtilitatsMatrius;
@@ -9,7 +9,7 @@ import ACT4_3.UtilitatsConsola;
   * Crea una classe que inicialitzi una matriu quadrada,
   * A continuació gestiona el joc del cuc.
   */
-public class ACT4_4_3 {
+public class ACT4_5_3 {
     /*
         FULLA --> fulla
         BUIT --> res
@@ -78,7 +78,7 @@ public class ACT4_4_3 {
         tauler = UtilitatsMatrius.generaMatriu(MIDA, 0, 0);
         posicio = UtilitatsArrays.generaArray(2,0, MIDA-1); // primera posició cuc
         tauler[posicio[0]][posicio[1]] = longitudCuc;   // situar el cuc al tauler
-        posicionarFulla(tauler);                           // situar la primera fulla
+        posicionarFulla(tauler);                        // situar la primera fulla
         
         do {
             UtilitatsJocs.mostrarTauler(tauler, longitudCuc);

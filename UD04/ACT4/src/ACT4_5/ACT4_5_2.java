@@ -1,4 +1,4 @@
-package ACT4_4;
+package ACT4_5;
 
 import ACT4_1.UtilitatsArrays;
 import ACT4_2.UtilitatsMatrius;
@@ -8,7 +8,7 @@ import ACT4_3.UtilitatsConsola;
   * Crea una classe que inicialitzi una matriu quadrada, pe 5x5:
   *      Mostra-la per pantalla, cada fila a una línia.
   */
-public class ACT4_4_2 {
+public class ACT4_5_2 {
      /**
      *
      * @param posicio
