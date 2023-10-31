@@ -2,7 +2,7 @@ package ACT4_2;
 
 /**
  *
- * @ Tomeu Vives
+ * @author Tomeu Vives
  */
 public class UtilitatsMatrius {
     // ACT4_7

@@ -1,6 +1,5 @@
 package ACT4_1;
 
-import java.util.Scanner;
 
 /**
  * @author joan
@@ -134,6 +133,7 @@ public class UtilitatsArrays {
      */
     public static boolean comparaArrays(int[] array1, int[] array2) {
         boolean sonIguals = true;
+        
         if (array1.length == array2.length) {
             for (int i = 0; i < array1.length; i++) {
                 if (array1[i] != array2[i]) {
