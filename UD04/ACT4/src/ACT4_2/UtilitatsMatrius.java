@@ -49,17 +49,13 @@ public class UtilitatsMatrius {
      * Mostra per consola la diagonal principal de la matriu
      * @param matriu
      */
-    public static void mostrarDiagonalPrincipal(int[][] matriu) {
-        String separador = "";
-        System.out.print('[');
+    public static int[] generaDiagonalPrincipal(int[][] matriu) {
+        int[] sortida = new int[matriu.length];
         
         for (int i = 0; i < matriu.length; i++) {
-            System.out.print(separador + matriu[i][i]);
-            separador = ", ";
+            sortida[i] = matriu[i][i];
         }
-        
-        System.out.println(']');
-        System.out.println();
+        return sortida;
     }
  
     // ACT4_7
@@ -67,17 +63,13 @@ public class UtilitatsMatrius {
      * Mostra per consola la diagonal secundaria de la matriu
      * @param matriu
      */
-    public static void mostrarDiagonalSecundaria(int[][] matriu) {
-        String separador = "";
-        System.out.print('[');
+    public static int[] generaDiagonalSecundaria(int[][] matriu) {
+        int[] sortida = new int[matriu.length];
         
         for (int i = 0, j=matriu.length-1; i < matriu.length; i++, j--) {
-            System.out.print( separador + matriu[i][j]);
-            separador = ", ";
+            sortida[i] = matriu[i][j];
         }
-        
-        System.out.println(']');
-        System.out.println();
+        return sortida;
     }
 
 }
