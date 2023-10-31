@@ -4,6 +4,6 @@ package ACT4;
  *
  * @ Tomeu Vives
  */
-public class UtilitatsArrayList {
+public class UtilitatsClasses {
 
 }
