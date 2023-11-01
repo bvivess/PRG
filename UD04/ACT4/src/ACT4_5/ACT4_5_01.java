@@ -18,8 +18,8 @@ public class ACT4_5_01 {
     
     public static void main(String[] args) {
         final int NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
-        tauler = new int[NTAULER][NTAULER];
-        cuc = new int[2];
+        tauler = new int[NTAULER][NTAULER];  // matriu NFULLESxNFULLES
+        cuc = new int[2];                    // array[2]--> (x,y)
 
         emplenaTauler(tauler,cuc);
         
@@ -34,9 +34,11 @@ public class ACT4_5_01 {
     
     public static void emplenaTauler(int[][] tauler, int[] cuc) {
         final int minim = 0, maxim = tauler.length-1;
+        
         // Genera posició cuc
         cuc[0]=(minim + (int) (Math.random() * (maxim - minim + 1)));
         cuc[1]=(minim + (int) (Math.random() * (maxim - minim + 1)));
+        
         // Situa cuc en el tauler
         tauler[cuc[0]][cuc[1]] = SIMBOL_CUC;
     }

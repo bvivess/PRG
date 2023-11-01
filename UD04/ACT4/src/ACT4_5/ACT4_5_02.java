@@ -20,15 +20,11 @@ public class ACT4_5_02 {
      public static void main(String[] args) {
         final int NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
         final int NFULLES=UtilitatsConsola.llegirSencer("Nombre de fulles: ");
-        // 
-        tauler = new int[NTAULER][NTAULER];
-        cuc = new int[2];
-        //
-        fulles = new int[NFULLES][2];
+        tauler = new int[NTAULER][NTAULER];  // matriu NFULLESxNFULLES
+        cuc = new int[2];                    // array[2]--> (x,y)
+        fulles = new int[NFULLES][2];        // array[NFULLES][2] --> (x,y) de cada fulla
 
-       
         emplenaTauler(tauler, cuc, fulles);
-        UtilitatsArrays.mostraArray(cuc);
         
         do {
             UtilitatsMatrius.mostrarMatriu(tauler);
@@ -41,16 +37,18 @@ public class ACT4_5_02 {
      
     public static void emplenaTauler(int[][] tauler, int[] cuc, int[][] fulles) {
         final int minim = 0, maxim = tauler.length-1;
+        
         // Genera posició cuc
         cuc[0]=(minim + (int) (Math.random() * (maxim - minim + 1)));
         cuc[1]=(minim + (int) (Math.random() * (maxim - minim + 1)));
-        // Situa cuc en el tauler
-        tauler[cuc[0]][cuc[1]] = SIMBOL_CUC;
+       
         // Genera posició fulles
         for (int i=0; i<fulles.length; i++) {
             fulles[i] = UtilitatsArrays.generaArray(2,0, tauler.length-1); //
         }
-        // Situa fulles en el tauler
+        
+        // Situa cuc i fulles en el tauler
+        tauler[cuc[0]][cuc[1]] = SIMBOL_CUC;
         for (int i=0; i<fulles.length; i++) {
             tauler[ fulles[i][0]] [fulles[i][1] ] = SIMBOL_FULLA;
         }
