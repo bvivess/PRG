@@ -44,7 +44,7 @@ public class ACT4_5_02 {
        
         // Genera posició fulles
         for (int i=0; i<fulles.length; i++) {
-            fulles[i] = UtilitatsArrays.generaArray(2,0, tauler.length-1); //
+            fulles[i] = UtilitatsArrays.generaArray(2,0, tauler.length-1);
         }
         
         // Situa cuc i fulles en el tauler
