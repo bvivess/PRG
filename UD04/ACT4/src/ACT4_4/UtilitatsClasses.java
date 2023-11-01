@@ -6,8 +6,21 @@ import java.util.ArrayList;
  *
  * @author winadmin
  */
-public class UtilitatsArrayList {
-    
+public class UtilitatsClasses {
+        
+    public static void mostrarArrayList(ArrayList<Integer> array) {
+        System.out.print("[ ");
+        for (Integer a : array) {
+            System.out.print(a + " ");
+        }
+        System.out.println("]");
+    }
+
+    /**
+     * Crear un ArraList 
+     *      s'avalua cada element de l'array en l'ArrayList
+     * @return ArrayList 
+     */    
     public static ArrayList<Integer> mostrarDiferents(int[] array) {
         ArrayList<Integer> resultat = new ArrayList<>();
         
@@ -18,14 +31,14 @@ public class UtilitatsArrayList {
         return resultat;
     }
     
+    /**
+    * Crear un ArraList 
+    *      s'avalua cada element de l'array en l'ArrayList
+    *      si l'ArrayList es manté ordenat es poden estalviar 
+    *      moltes lectures
+    * @return ArrayList ordenat
+    */
     public static ArrayList<Integer> mostrarDiferentsMillorat(int[] array) {
-        /**
-         * Crear un ArraList 
-         *      s'avalua cada element de l'array en l'ArrayList
-         *      si l'ArrayList es manté ordenat es poden estalviar 
-         *      moltes lectures
-         * @return ArrayList ordenat
-         */
         ArrayList<Integer> resultat = new ArrayList<>();
         
         resultat.add(array[0]);
@@ -48,11 +61,4 @@ public class UtilitatsArrayList {
         return resultat;
     }
     
-    public static void mostrarArrayList(ArrayList<Integer> array) {
-        System.out.print("[ ");
-        for (Integer a : array) {
-            System.out.print(a + " ");
-        }
-        System.out.println("]");
-    }
 }

@@ -4,7 +4,7 @@ import ACT4_1.UtilitatsArrays;
 import ACT4_3.UtilitatsConsola;
         
 
-public class ACT4_3_1 {
+public class ACT4_3_01 {
     public static void main(String[] args) {
         int numNotes = UtilitatsConsola.llegirSencer("Quantitat de notes de l'alumne: ");
         int[] notes = new int[numNotes];

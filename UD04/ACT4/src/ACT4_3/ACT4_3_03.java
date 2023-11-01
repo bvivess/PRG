@@ -1,6 +1,6 @@
 package ACT4_3;
 
-public class ACT4_3_2 {
+public class ACT4_3_03 {
     public static void main(String[] args) {
         String[] opcions = {"Primera opcio", "Segona opcio", "Tercera opcio" };
         int opcio;

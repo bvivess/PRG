@@ -9,7 +9,7 @@ import ACT4_3.UtilitatsConsola;
   * Crea una classe que inicialitzi una matriu quadrada,
   * A continuació gestiona el joc del cuc.
   */
-public class ACT4_5_3 {
+public class ACT4_5_03 {
     /*
         FULLA --> fulla
         BUIT --> res

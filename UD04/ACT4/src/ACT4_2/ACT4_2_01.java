@@ -4,7 +4,7 @@ package ACT4_2;
   * Crea una classe que inicialitzi una matriu quadrada, pe 10x10:
   *     Inicialitza-la de forma que cada casella tengui un valor aleatori.
   */
-public class ACT4_2_1 {
+public class ACT4_2_01 {
 
     public static void main(String[] args) {
         final int MIDA=10;

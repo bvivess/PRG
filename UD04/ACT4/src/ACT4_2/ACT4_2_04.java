@@ -4,10 +4,9 @@ import ACT4_1.UtilitatsArrays;
 
 /**
  * Crea una classe que inicialitzi una matriu quadrada, pe 10x10:
- *      Mostra la diagonal principal: [0,0] [1,1], [2,2]...
+ *      Mostra la diagonal secundària [10,0][9,1][8,2]...
  */
-
-public class ACT4_2_3 {
+public class ACT4_2_04 {
 
     public static void main(String[] args) {
         final int MIDA=10;
@@ -17,7 +16,7 @@ public class ACT4_2_3 {
         System.out.println();
         UtilitatsMatrius.mostrarMatriu(matriu);
         System.out.println();
-        diagonal = UtilitatsMatrius.generaDiagonalPrincipal(matriu);
+        diagonal = UtilitatsMatrius.generaDiagonalSecundaria(matriu);
         UtilitatsArrays.mostraArray(diagonal);
     }
 }

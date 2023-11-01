@@ -13,7 +13,7 @@ public class ACT4_4_02 {
         ArrayList<Integer> resultat = new ArrayList<>();
         
         UtilitatsArrays.mostraArray(array);
-        resultat = UtilitatsArrayList.mostrarDiferents(array);
-        UtilitatsArrayList.mostrarArrayList(resultat);
+        resultat = UtilitatsClasses.mostrarDiferents(array);
+        UtilitatsClasses.mostrarArrayList(resultat);
     }
 }
