@@ -9,9 +9,9 @@ import ACT4_3.UtilitatsConsola;
   *      Mostra-la per pantalla, cada fila a una línia.
   */
 public class ACT4_5_02 {
-    static int SIMBOL_BUIT = 0;
-    static int SIMBOL_FULLA = 1;
-    static int SIMBOL_CUC = 9;
+    static final int SIMBOL_BUIT = 0;
+    static final int SIMBOL_FULLA = 9;
+    static final int SIMBOL_CUC = 1;
     static int[][] tauler;
     static int[] cuc;
     static int[][] fulles;
@@ -20,8 +20,8 @@ public class ACT4_5_02 {
      public static void main(String[] args) {
         final int NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
         final int NFULLES=UtilitatsConsola.llegirSencer("Nombre de fulles: ");
-        tauler = new int[NTAULER][NTAULER];  // matriu NFULLESxNFULLES
-        cuc = new int[2];                    // array[2]--> (x,y)
+        tauler = new int[NTAULER][NTAULER];  // matriu matriu NTAULERxNTAULER
+        cuc = new int[2];                    // array[2]--> (x,y) del cuc
         fulles = new int[NFULLES][2];        // array[NFULLES][2] --> (x,y) de cada fulla
 
         emplenaTauler(tauler, cuc, fulles);

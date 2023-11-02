@@ -10,16 +10,16 @@ import ACT4_3.UtilitatsConsola;
   */
 public class ACT4_5_01 {
     static int SIMBOL_BUIT = 0;
-    static int SIMBOL_FULLA = 1;
-    static int SIMBOL_CUC = 9;
+    static int SIMBOL_FULLA = 9;
+    static int SIMBOL_CUC = 1;
     static int[][] tauler;
     static int[] cuc; // x,y del cuc
     static int accio; // (x,y) de les fulles
     
     public static void main(String[] args) {
         final int NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
-        tauler = new int[NTAULER][NTAULER];  // matriu NFULLESxNFULLES
-        cuc = new int[2];                    // array[2]--> (x,y)
+        tauler = new int[NTAULER][NTAULER];  // matriu NTAULERxNTAULER
+        cuc = new int[2];                    // array[2]--> (x,y) del cuc
 
         emplenaTauler(tauler,cuc);
         
