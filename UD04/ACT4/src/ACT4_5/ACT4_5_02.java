@@ -5,9 +5,13 @@ import ACT4_2.UtilitatsMatrius;
 import ACT4_3.UtilitatsConsola;
 
  /**
-  * Crea una classe que inicialitzi una matriu quadrada, pe 5x5:
-  *      Mostra-la per pantalla, cada fila a una línia.
+  * Crea una classe que inicialitzi una matriu quadrada,
+  * A continuació gestiona el joc del cuc.
+  *     SIMBOL_FULLA --> fulla
+  *     SIMBOL_BUIT  --> res
+  *
   */
+
 public class ACT4_5_02 {
     static final int SIMBOL_BUIT = 0;
     static final int SIMBOL_FULLA = 9;

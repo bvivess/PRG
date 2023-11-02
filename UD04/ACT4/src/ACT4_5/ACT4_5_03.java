@@ -4,26 +4,26 @@ import ACT4_1.UtilitatsArrays;
 import ACT4_2.UtilitatsMatrius;
 import ACT4_3.UtilitatsConsola;
 
-
  /**
   * Crea una classe que inicialitzi una matriu quadrada,
   * A continuació gestiona el joc del cuc.
+  *     SIMBOL_FULLA --> fulla
+  *     SIMBOL_BUIT  --> res
+  *     des de 1 fins a (FULLA-1) --> part del cuc
   */
-public class ACT4_5_03 {
-    /*
-        FULLA --> fulla
-        BUIT --> res
-        des de 1 fins a (FULLA-1) --> part del cuc
-    */   
-    static int SIMBOL_FULLA = 99;
-    static int SIMBOL_BUIT = 0;
+
+public class ACT4_5_03 {  
+    static final int SIMBOL_BUIT = 0;
+    static final int SIMBOL_FULLA = 99;
+    
     static int[][] tauler;
     static int[] cuc;
+    static int[][] fulles;
+    static int accio;
 
     public static void main(String[] args) {
         final int MIDA = UtilitatsConsola.llegirSencer("Mida del tauler: ");
         int longitudCuc = 1;
-        int accio;
         
         tauler = UtilitatsMatrius.generaMatriu(MIDA, 0, 0);
         cuc = UtilitatsArrays.generaArray(2,0, MIDA-1); // primera posició cuc
