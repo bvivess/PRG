@@ -21,7 +21,7 @@ public class ACT4_5_02 {
     static int[][] fulles;
     static int accio;
     
-     public static void main(String[] args) {
+    public static void main(String[] args) {
         final int NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
         final int NFULLES=UtilitatsConsola.llegirSencer("Nombre de fulles: ");
         tauler = new int[NTAULER][NTAULER];  // matriu matriu NTAULERxNTAULER
@@ -40,11 +40,11 @@ public class ACT4_5_02 {
     }
      
     public static void emplenaTauler(int[][] tauler, int[] cuc, int[][] fulles) {
-        final int minim = 0, maxim = tauler.length-1;
+        final int MINIM = 0, MAXIM = tauler.length-1;
         
         // Genera posició cuc
-        cuc[0]=(minim + (int) (Math.random() * (maxim - minim + 1)));
-        cuc[1]=(minim + (int) (Math.random() * (maxim - minim + 1)));
+        cuc[0]=(MINIM + (int) (Math.random() * (MAXIM - MINIM + 1)));
+        cuc[1]=(MINIM + (int) (Math.random() * (MAXIM - MINIM + 1)));
        
         // Genera posició fulles
         for (int i=0; i<fulles.length; i++) {

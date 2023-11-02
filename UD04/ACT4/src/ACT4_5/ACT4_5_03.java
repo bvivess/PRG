@@ -15,29 +15,49 @@ import ACT4_3.UtilitatsConsola;
 public class ACT4_5_03 {  
     static final int SIMBOL_BUIT = 0;
     static final int SIMBOL_FULLA = 99;
-    
+    static int SIMBOL_CUC = 1;
     static int[][] tauler;
     static int[] cuc;
     static int[][] fulles;
     static int accio;
 
     public static void main(String[] args) {
-        final int MIDA = UtilitatsConsola.llegirSencer("Mida del tauler: ");
-        int longitudCuc = 1;
-        
-        tauler = UtilitatsMatrius.generaMatriu(MIDA, 0, 0);
-        cuc = UtilitatsArrays.generaArray(2,0, MIDA-1); // primera posició cuc
-        tauler[cuc[0]][cuc[1]] = longitudCuc;   // situar el cuc al tauler
-        posicionarFulla(tauler);                        // situar la primera fulla
+        final int NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
+        final int NFULLES=UtilitatsConsola.llegirSencer("Nombre de fulles: ");
+        //int longitudCuc = 1;
+        tauler = new int[NTAULER][NTAULER];  // matriu matriu NTAULERxNTAULER
+        cuc = new int[2];                    // array[2]--> (x,y) del cuc
+        fulles = new int[NFULLES][2];        // array[NFULLES][2] --> (x,y) de cada fulla
+        emplenaTauler(tauler, cuc, fulles);
         
         do {
-            UtilitatsJocs.mostrarTauler(tauler, longitudCuc);
-            accio = UtilitatsConsola.llegirSencer("Puntuació: " + (float) longitudCuc +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
+            mostrarTauler(tauler, SIMBOL_CUC);
+            accio = UtilitatsConsola.llegirSencer("Puntuació: " + (float) SIMBOL_CUC +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
             if ((accio == 2) | (accio == 4)| (accio == 6)| (accio == 8)) {
-                longitudCuc = cambiarPosicio(tauler, cuc, accio, longitudCuc);
-                accio = (longitudCuc == SIMBOL_BUIT-1 ? 0 : accio); // fi de la partida ?
+                cambiarPosicio(tauler, cuc, accio);
+                accio = (SIMBOL_CUC == SIMBOL_BUIT-1 ? 0 : accio); // fi de la partida ?
             }
         } while (accio != 0);
+    }
+    
+    public static void emplenaTauler(int[][] tauler, int[] cuc, int[][] fulles) {
+        final int MINIM = 0, MAXIM = tauler.length-1;
+        
+        // Genera posició cuc
+        cuc[0]=(MINIM + (int) (Math.random() * (MAXIM - MINIM + 1)));
+        cuc[1]=(MINIM + (int) (Math.random() * (MAXIM - MINIM + 1)));
+       
+        // Genera posició fulles
+        for (int i=0; i<fulles.length; i++) {
+            fulles[i] = UtilitatsArrays.generaArray(2,0, tauler.length-1);
+        }
+        
+        // Situa cuc i fulles en el tauler
+        tauler[cuc[0]][cuc[1]] = SIMBOL_CUC;
+        SIMBOL_CUC = SIMBOL_CUC + 1;
+        for (int i=0; i<fulles.length; i++) {
+            tauler[ fulles[i][0]] [fulles[i][1] ] = SIMBOL_FULLA;
+        }
     }
     
     public static void posicionarFulla(int[][] tauler) {
@@ -55,7 +75,7 @@ public class ACT4_5_03 {
         
     }
     
-    public static int cambiarPosicio(int[][] tauler, int[] posicio, int accio, int longitudCuc) {
+    public static void cambiarPosicio(int[][] tauler, int[] posicio, int accio) {
         int mida = tauler.length;
  
         switch (accio) {
@@ -68,10 +88,10 @@ public class ACT4_5_03 {
             case 2 -> //BAIX
                 posicio[0] = (posicio[0] == mida-1 ? 0 : posicio[0]+1); 
         }
-        
+        // re-escriure el cuc
         if ((tauler[posicio[0]][posicio[1]]) == SIMBOL_FULLA) {  // cuc menja fulla
-            longitudCuc++;
-            tauler[posicio[0]][posicio[1]] = longitudCuc;
+            SIMBOL_CUC++;
+            tauler[posicio[0]][posicio[1]] = SIMBOL_CUC;
             
             posicionarFulla(tauler); // nova fulla
         } else if ((tauler[posicio[0]][posicio[1]]) == SIMBOL_BUIT) {  // cuc es mou
@@ -82,12 +102,34 @@ public class ACT4_5_03 {
                     }
                 }
             }
-            tauler[posicio[0]][posicio[1]] = longitudCuc;
+            tauler[posicio[0]][posicio[1]] = SIMBOL_CUC;
         } else {                                                // cuc es tropitja
-            longitudCuc = SIMBOL_BUIT-1;                        // fi de la partida !!!
+            SIMBOL_CUC = SIMBOL_BUIT-1;                        // fi de la partida !!!
         }
         
-        return longitudCuc;
+        //return longitudCuc;
+    }
+ 
+    public static void mostrarTauler(int[][] matriu, int posicio) {
+        String car;
+        for (int i = 0; i < matriu.length; i++) {
+            System.out.print('|');
+            for (int j = 0; j < matriu[i].length; j++) {
+                if (matriu[i][j] == 0) {
+                    car = "   ";
+                } else if (matriu[i][j] == 1) {
+                    car = " . ";
+                } else if (matriu[i][j]==99) {
+                    car = " * ";
+                } else if (matriu[i][j]==posicio) {
+                    car = " O ";
+                } else {
+                    car = " - ";
+                }
+                System.out.print(car);
+            }
+            System.out.println("|");
+        }
     }
     
 }
