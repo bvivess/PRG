@@ -1,8 +1,9 @@
 package ACT4_5;
 
 import ACT4_1.UtilitatsArrays;
-import ACT4_2.UtilitatsMatrius;
 import ACT4_3.UtilitatsConsola;
+//import ACT4_2.UtilitatsMatrius;
+
 
  /**
   * Crea una classe que inicialitzi una matriu quadrada,
@@ -54,7 +55,6 @@ public class ACT4_5_03 {
         
         // Situa cuc i fulles en el tauler
         tauler[cuc[0]][cuc[1]] = SIMBOL_CUC;
-        SIMBOL_CUC = SIMBOL_CUC + 1;
         for (int i=0; i<fulles.length; i++) {
             tauler[ fulles[i][0]] [fulles[i][1] ] = SIMBOL_FULLA;
         }
