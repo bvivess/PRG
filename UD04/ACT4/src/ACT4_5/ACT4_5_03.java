@@ -24,14 +24,14 @@ public class ACT4_5_03 {
     public static void main(String[] args) {
         final int NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
         final int NFULLES=UtilitatsConsola.llegirSencer("Nombre de fulles: ");
-        //int longitudCuc = 1;
         tauler = new int[NTAULER][NTAULER];  // matriu matriu NTAULERxNTAULER
         cuc = new int[2];                    // array[2]--> (x,y) del cuc
         fulles = new int[NFULLES][2];        // array[NFULLES][2] --> (x,y) de cada fulla
+        
         emplenaTauler(tauler, cuc, fulles);
         
         do {
-            mostrarTauler(tauler, SIMBOL_CUC);
+            mostrarTauler(tauler);
             accio = UtilitatsConsola.llegirSencer("Puntuació: " + (float) SIMBOL_CUC +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
             if ((accio == 2) | (accio == 4)| (accio == 6)| (accio == 8)) {
                 cambiarPosicio(tauler, cuc, accio);
@@ -110,7 +110,7 @@ public class ACT4_5_03 {
         //return longitudCuc;
     }
  
-    public static void mostrarTauler(int[][] matriu, int posicio) {
+    public static void mostrarTauler(int[][] matriu) {
         String car;
         for (int i = 0; i < matriu.length; i++) {
             System.out.print('|');
@@ -119,9 +119,9 @@ public class ACT4_5_03 {
                     car = "   ";
                 } else if (matriu[i][j] == 1) {
                     car = " . ";
-                } else if (matriu[i][j]==99) {
+                } else if (matriu[i][j]==SIMBOL_FULLA) {
                     car = " * ";
-                } else if (matriu[i][j]==posicio) {
+                } else if (matriu[i][j]==SIMBOL_CUC) {
                     car = " O ";
                 } else {
                     car = " - ";
