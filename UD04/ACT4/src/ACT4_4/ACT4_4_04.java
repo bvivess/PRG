@@ -1,5 +1,6 @@
 package ACT4_4;
 import java.util.ArrayList;
+import ACT4_1.UtilitatsArrays;
 import ACT4_3.UtilitatsConsola;
 
 /**
@@ -11,31 +12,57 @@ public class ACT4_4_04 {
     static ArrayList<ArrayList<Integer>> notes = new ArrayList<>();
     
     public static void main(String[] args) {
-
-        
         llegirAlumnes(alumnes);
-
         
+        for (int i=0;i<alumnes.size();i++) {
+            llegirNotes(i, notes);
+        }
+        
+        MostrarNotes(alumnes, notes);
     }
     
     public static void llegirAlumnes(ArrayList<String> alumnes) {
         String text;
-        int i = 0;
         
         do {
             text = UtilitatsConsola.llegirCadena("Nom alumne ('sortir' per acabar): ");
-            alumnes.add(text);
-            llegirNotes(i, notes);
-            i++;
-            System.out.println(text.compareTo("sortir"));
-        } while ( text.compareTo("sortir") != 0);
+            if (text.equalsIgnoreCase("sortir"))
+                break;
+            else
+                alumnes.add(text);
+        } while (true);
     }
     
-    public static void llegirNotes(int i, ArrayList<Integer> notes) {
+    public static void llegirNotes(int i, ArrayList<ArrayList<Integer>> notes) {
+        ArrayList<Integer> notesAlumne = new ArrayList<Integer>();
         int nota;
         
+        // Notes de l'alumne
         do {
             nota = UtilitatsConsola.llegirSencer("Intruexi notes per a " + alumnes.get(i) + ": ");
-        } while(nota!= -1);
+            if (nota == -1)
+                break;
+            else
+                notesAlumne.add(nota);
+        } while (true);
+        // Afegir la fila
+        notes.add(notesAlumne);
+    }
+    
+    public static void MostrarNotes( ArrayList<String> alumnes, ArrayList<ArrayList<Integer>> notes) {
+        ArrayList<Integer> notesAlumne;
+        
+        for (int i=0; i<alumnes.size(); i++) {
+            System.out.print(alumnes.get(i) + ": ");
+            notesAlumne = notes.get(i);
+            for (Integer n : notesAlumne) {
+                System.out.print(n + " ");
+            }
+            int[] intArray = new int[notesAlumne.size()];
+                for (int j=0;j<notesAlumne.size();j++) {
+                    intArray[j] = notesAlumne.get(j);
+                }
+            System.out.println("Mitjana: " + UtilitatsArrays.mitjanaArray(intArray));
+        }
     }
 }
