@@ -39,7 +39,7 @@ public class ACT4_4_04 {
         
         // Notes de l'alumne
         do {
-            nota = UtilitatsConsola.llegirSencer("Intruexi notes per a " + alumnes.get(i) + ": ");
+            nota = UtilitatsConsola.llegirSencer("Introduexi notes per a " + alumnes.get(i) + ": ");
             if (nota == -1)
                 break;
             else
@@ -63,6 +63,7 @@ public class ACT4_4_04 {
                     intArray[j] = notesAlumne.get(j);
                 }
             System.out.println("Mitjana: " + UtilitatsArrays.mitjanaArray(intArray));
+            System.out.println("----------");
         }
     }
 }
