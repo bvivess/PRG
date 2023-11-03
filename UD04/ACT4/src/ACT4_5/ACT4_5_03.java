@@ -35,7 +35,7 @@ public class ACT4_5_03 {
             mostrarTauler(tauler);
             accio = UtilitatsConsola.llegirSencer("Puntuació: " + (float) SIMBOL_CUC +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
             if ((accio == 2) | (accio == 4)| (accio == 6)| (accio == 8)) {
-                cambiarPosicio(tauler, cuc, accio);
+                cambiaPosicio(tauler, cuc, accio);
                 accio = (SIMBOL_CUC == SIMBOL_BUIT-1 ? 0 : accio); // fi de la partida ?
             }
         } while (accio != 0);
@@ -43,39 +43,42 @@ public class ACT4_5_03 {
     
     public static void emplenaTauler(int[][] tauler, int[] cuc, int[][] fulles) {
         final int MINIM = 0, MAXIM = tauler.length-1;
-        
+       
         // Genera posició cuc
         cuc[0]=(MINIM + (int) (Math.random() * (MAXIM - MINIM + 1)));
         cuc[1]=(MINIM + (int) (Math.random() * (MAXIM - MINIM + 1)));
-       
+         // Situa cuc i fulles en el tauler
+        tauler[cuc[0]][cuc[1]] = SIMBOL_CUC;
+        
         // Genera posició fulles
         for (int i=0; i<fulles.length; i++) {
-            fulles[i] = UtilitatsArrays.generaArray(2,0, tauler.length-1);
-        }
-        
-        // Situa cuc i fulles en el tauler
-        tauler[cuc[0]][cuc[1]] = SIMBOL_CUC;
-        for (int i=0; i<fulles.length; i++) {
-            tauler[ fulles[i][0]] [fulles[i][1] ] = SIMBOL_FULLA;
+            boolean okfulla = true;
+            do { // cerca una posisió buida per la fulla en el tauler
+                fulles[i] = UtilitatsArrays.generaArray(2,0, tauler.length-1);
+                if (tauler[ fulles[i][0]] [fulles[i][1] ] == 0) { // situa la fulla al tauler si la posició està buida
+                    tauler[ fulles[i][0]] [fulles[i][1] ] = SIMBOL_FULLA;
+                    okfulla = false;
+              }
+            } while (okfulla);
         }
     }
     
-    public static void posicionarFulla(int[][] tauler) {
+    public static void afegeixFulla(int[][] tauler) {
         int mida = tauler.length;
         int[] fulla;
-        boolean ok = true;
+        boolean okfulla = true;
         
         do {
             fulla  = UtilitatsArrays.generaArray(2,0, mida-1); // genera posició de la fulla
             if (tauler[fulla[0]][fulla[1]] == 0) { // situa la fulla al tauler si la posició està buida
                 tauler[fulla[0]][fulla[1]] = SIMBOL_FULLA;
-                ok = false;
+                okfulla = false;
             }
-        } while (ok);
+        } while (okfulla);
         
     }
     
-    public static void cambiarPosicio(int[][] tauler, int[] posicio, int accio) {
+    public static void cambiaPosicio(int[][] tauler, int[] posicio, int accio) {
         int mida = tauler.length;
  
         switch (accio) {
@@ -93,7 +96,7 @@ public class ACT4_5_03 {
             SIMBOL_CUC++;
             tauler[posicio[0]][posicio[1]] = SIMBOL_CUC;
             
-            posicionarFulla(tauler); // nova fulla
+            afegeixFulla(tauler); // nova fulla
         } else if ((tauler[posicio[0]][posicio[1]]) == SIMBOL_BUIT) {  // cuc es mou
             for (int i=0; i<mida; i++) {
                 for (int j=0; j<mida; j++) {
@@ -104,7 +107,7 @@ public class ACT4_5_03 {
             }
             tauler[posicio[0]][posicio[1]] = SIMBOL_CUC;
         } else {                                                // cuc es tropitja
-            SIMBOL_CUC = SIMBOL_BUIT-1;                        // fi de la partida !!!
+            SIMBOL_CUC = SIMBOL_BUIT-1;                         // fi de la partida !!!
         }
         
         //return longitudCuc;

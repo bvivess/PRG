@@ -35,7 +35,7 @@ public class ACT4_5_02 {
             UtilitatsMatrius.mostrarMatriu(tauler);
             accio=UtilitatsConsola.llegirSencer("ACCIONS: 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
             
-            cambiarPosicio(tauler, cuc, accio);
+            cambiaPosicio(tauler, cuc, accio);
 
         } while (accio!=0);
     }
@@ -59,7 +59,7 @@ public class ACT4_5_02 {
         }
     }
     
-    public static void cambiarPosicio(int[][] tauler, int[] cuc, int accio) {
+    public static void cambiaPosicio(int[][] tauler, int[] cuc, int accio) {
         final int MIDA = tauler.length;
         
         tauler[cuc[0]][cuc[1]] = SIMBOL_BUIT;
