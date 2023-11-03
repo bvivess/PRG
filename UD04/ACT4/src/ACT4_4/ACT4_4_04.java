@@ -14,10 +14,6 @@ public class ACT4_4_04 {
     public static void main(String[] args) {
         llegirAlumnes(alumnes);
         
-        for (int i=0;i<alumnes.size();i++) {
-            llegirNotes(i, notes);
-        }
-        
         MostrarNotes(alumnes, notes);
     }
     
@@ -30,16 +26,19 @@ public class ACT4_4_04 {
                 break;
             else
                 alumnes.add(text);
+                //for (int i=0; i<alumnes.size(); i++) {
+                    llegirNotes(notes);
+                //}
         } while (true);
     }
     
-    public static void llegirNotes(int i, ArrayList<ArrayList<Integer>> notes) {
+    public static void llegirNotes(ArrayList<ArrayList<Integer>> notes) {
         ArrayList<Integer> notesAlumne = new ArrayList<Integer>();
         int nota;
         
         // Notes de l'alumne
         do {
-            nota = UtilitatsConsola.llegirSencer("Introduexi notes per a " + alumnes.get(i) + ": ");
+            nota = UtilitatsConsola.llegirSencer("Introduexi notes ('-1' per acabar): ");
             if (nota == -1)
                 break;
             else
@@ -58,11 +57,13 @@ public class ACT4_4_04 {
             for (Integer n : notesAlumne) {
                 System.out.print(n + " ");
             }
-            int[] intArray = new int[notesAlumne.size()];
-                for (int j=0;j<notesAlumne.size();j++) {
-                    intArray[j] = notesAlumne.get(j);
-                }
-            System.out.println("Mitjana: " + UtilitatsArrays.mitjanaArray(intArray));
+            int[] notesArray = new int[notesAlumne.size()];
+            float mitjana;
+            for (int j=0;j<notesAlumne.size();j++) {
+                notesArray[j] = notesAlumne.get(j);
+            }
+            mitjana = UtilitatsArrays.mitjanaArray(notesArray);
+            System.out.println("Mitjana: " + mitjana);
             System.out.println("----------");
         }
     }

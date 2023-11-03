@@ -102,7 +102,7 @@ public class UtilitatsArrays {
             suma += array[i];
             total++;
         }
-        return (float) (suma/total);
+        return ((float) suma/(float) total);
     }
 
     
