@@ -14,7 +14,7 @@ public class ACT4_5_01 {
     static int SIMBOL_CUC = 1;
     static int[][] tauler;
     static int[] cuc; // x,y del cuc
-    static int accio; // (x,y) de les fulles
+    static int accio;  
     
     public static void main(String[] args) {
         final int NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");

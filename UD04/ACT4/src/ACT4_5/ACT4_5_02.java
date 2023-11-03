@@ -14,22 +14,21 @@ import ACT4_2.UtilitatsMatrius;
   */
 
 public class ACT4_5_02 {
+    static int NTAULER;
+    static int NFULLES;
     static final int SIMBOL_BUIT = 0;
     static final int SIMBOL_FULLA = 9;
     static final int SIMBOL_CUC = 1;
     static int[][] tauler;
     static int[] cuc;
-    static int[][] fulles;
     static int accio;
     
     public static void main(String[] args) {
-        final int NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
-        final int NFULLES=UtilitatsConsola.llegirSencer("Nombre de fulles: ");
+        NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
+        NFULLES=UtilitatsConsola.llegirSencer("Nombre de fulles: ");
         tauler = new int[NTAULER][NTAULER];  // matriu matriu NTAULERxNTAULER
         cuc = new int[2];                    // array[2]--> (x,y) del cuc
-        fulles = new int[NFULLES][2];        // array[NFULLES][2] --> (x,y) de cada fulla
-
-        emplenaTauler(tauler, cuc, fulles);
+        emplenaTauler(tauler, cuc);
         
         do {
             UtilitatsMatrius.mostrarMatriu(tauler);
@@ -40,8 +39,9 @@ public class ACT4_5_02 {
         } while (accio!=0);
     }
      
-    public static void emplenaTauler(int[][] tauler, int[] cuc, int[][] fulles) {
+    public static void emplenaTauler(int[][] tauler, int[] cuc) {
         final int MINIM = 0, MAXIM = tauler.length-1;
+        int[] fulla;
         
         // Genera posició cuc
         cuc[0]=(MINIM + (int) (Math.random() * (MAXIM - MINIM + 1)));
@@ -49,13 +49,12 @@ public class ACT4_5_02 {
          // Situa el cuc en el tauler
         tauler[cuc[0]][cuc[1]] = SIMBOL_CUC;
         
-        // Genera posicions fulles
-        for (int i=0; i<fulles.length; i++) {
-            fulles[i] = UtilitatsArrays.generaArray(2,0, tauler.length-1);
-        }
-        // Situa les fulles en el tauler
-        for (int i=0; i<fulles.length; i++) {
-            tauler[ fulles[i][0]] [fulles[i][1] ] = SIMBOL_FULLA;
+        // Genera posició de cada fulla i situa en el tauler
+        for (int i=0; i<NFULLES; i++) {
+            // Genera posicions fulles
+            fulla = UtilitatsArrays.generaArray(2,0, tauler.length-1);
+            // Situa les fulles en el tauler
+            tauler[fulla[0]] [fulla[1] ] = SIMBOL_FULLA;
         }
     }
     

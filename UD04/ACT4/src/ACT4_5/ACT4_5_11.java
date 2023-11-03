@@ -19,7 +19,6 @@ public class ACT4_5_11 {
     static int BUIT = 0;
     static int[][] tauler;
     static ArrayList<Integer[]> cuc;
-    static int[][] fulles;
     static int accio;
     
     public static void main(String[] args) {
@@ -27,7 +26,6 @@ public class ACT4_5_11 {
         final int NFULLES=UtilitatsConsola.llegirSencer("Nombre de fulles: ");
         tauler = new int[NTAULER][NTAULER];  // matriu matriu NTAULERxNTAULER
         //cuc = new int[2];                    // array[2]--> (x,y) del cuc
-        fulles = new int[NFULLES][2];        // array[NFULLES][2] --> (x,y) de cada fulla
         
         cuc = UtilitatsJocs.posicioInicial(tauler);  // situa el cuc en una coor. inicial
 

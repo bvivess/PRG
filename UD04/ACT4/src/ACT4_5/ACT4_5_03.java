@@ -13,23 +13,22 @@ import ACT4_3.UtilitatsConsola;
   *     des de 1 fins a (FULLA-1) --> part del cuc
   */
 
-public class ACT4_5_03 {  
+public class ACT4_5_03 { 
+    static int NTAULER;
+    static int NFULLES;
     static final int SIMBOL_BUIT = 0;
     static final int SIMBOL_FULLA = 99;
     static int SIMBOL_CUC = 1;
     static int[][] tauler;
     static int[] cuc;
-    static int[][] fulles;
     static int accio;
 
     public static void main(String[] args) {
-        final int NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
-        final int NFULLES=UtilitatsConsola.llegirSencer("Nombre de fulles: ");
+        NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
+        NFULLES=UtilitatsConsola.llegirSencer("Nombre de fulles: ");
         tauler = new int[NTAULER][NTAULER];  // matriu matriu NTAULERxNTAULER
         cuc = new int[2];                    // array[2]--> (x,y) del cuc
-        fulles = new int[NFULLES][2];        // array[NFULLES][2] --> (x,y) de cada fulla
-        
-        emplenaTauler(tauler, cuc, fulles);
+        emplenaTauler(tauler, cuc);
         
         do {
             mostrarTauler(tauler);
@@ -41,8 +40,9 @@ public class ACT4_5_03 {
         } while (accio != 0);
     }
     
-    public static void emplenaTauler(int[][] tauler, int[] cuc, int[][] fulles) {
+    public static void emplenaTauler(int[][] tauler, int[] cuc) {
         final int MINIM = 0, MAXIM = tauler.length-1;
+        int[] fulla;
        
         // Genera posició cuc
         cuc[0]=(MINIM + (int) (Math.random() * (MAXIM - MINIM + 1)));
@@ -51,12 +51,12 @@ public class ACT4_5_03 {
         tauler[cuc[0]][cuc[1]] = SIMBOL_CUC;
         
         // Genera posició de cada fulla i situa en el tauler
-        for (int i=0; i<fulles.length; i++) {
+        for (int i=0; i<NFULLES; i++) {
             boolean okfulla = true;
             do { // cerca una posisió buida per la fulla en el tauler
-                fulles[i] = UtilitatsArrays.generaArray(2,0, tauler.length-1);
-                if (tauler[ fulles[i][0]] [fulles[i][1] ] == 0) { // situa la fulla al tauler si la posició està buida
-                    tauler[ fulles[i][0]] [fulles[i][1] ] = SIMBOL_FULLA;
+                fulla = UtilitatsArrays.generaArray(2,0, tauler.length-1);
+                if (tauler[ fulla[0]] [fulla[1] ] == 0) { // situa la fulla al tauler si la posició està buida
+                    tauler[ fulla[0]] [fulla[1] ] = SIMBOL_FULLA;
                     okfulla = false;
               }
             } while (okfulla);

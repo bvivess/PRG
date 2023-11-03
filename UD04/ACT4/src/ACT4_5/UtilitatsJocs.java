@@ -12,7 +12,6 @@ public class UtilitatsJocs {
         final int minim = 0, maxim = tauler.length-1;
         ArrayList<Integer[]> objecte = new ArrayList<Integer[]>();
 
-        
         Integer[] pos = {(minim + (int) (Math.random() * (maxim - minim + 1))),
                          (minim + (int) (Math.random() * (maxim - minim + 1)))
                         };
