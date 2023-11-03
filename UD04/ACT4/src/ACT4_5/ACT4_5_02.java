@@ -46,14 +46,14 @@ public class ACT4_5_02 {
         // Genera posició cuc
         cuc[0]=(MINIM + (int) (Math.random() * (MAXIM - MINIM + 1)));
         cuc[1]=(MINIM + (int) (Math.random() * (MAXIM - MINIM + 1)));
-       
-        // Genera posició fulles
+         // Situa el cuc en el tauler
+        tauler[cuc[0]][cuc[1]] = SIMBOL_CUC;
+        
+        // Genera posicions fulles
         for (int i=0; i<fulles.length; i++) {
             fulles[i] = UtilitatsArrays.generaArray(2,0, tauler.length-1);
         }
-        
-        // Situa cuc i fulles en el tauler
-        tauler[cuc[0]][cuc[1]] = SIMBOL_CUC;
+        // Situa les fulles en el tauler
         for (int i=0; i<fulles.length; i++) {
             tauler[ fulles[i][0]] [fulles[i][1] ] = SIMBOL_FULLA;
         }
