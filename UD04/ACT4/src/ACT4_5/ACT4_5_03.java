@@ -47,10 +47,10 @@ public class ACT4_5_03 {
         // Genera posició cuc
         cuc[0]=(MINIM + (int) (Math.random() * (MAXIM - MINIM + 1)));
         cuc[1]=(MINIM + (int) (Math.random() * (MAXIM - MINIM + 1)));
-         // Situa cuc i fulles en el tauler
+        // Situa cuc en el tauler
         tauler[cuc[0]][cuc[1]] = SIMBOL_CUC;
         
-        // Genera posició fulles
+        // Genera posició de cada fulla i situa en el tauler
         for (int i=0; i<fulles.length; i++) {
             boolean okfulla = true;
             do { // cerca una posisió buida per la fulla en el tauler
