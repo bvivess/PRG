@@ -57,6 +57,7 @@ public class ACT4_4_04 {
             for (Integer n : notesAlumne) {
                 System.out.print(n + " ");
             }
+            // ArrayList<Integer> --> int[] per emprar 'UtilitatsArrays.mitjanaArray'
             int[] notesArray = new int[notesAlumne.size()];
             float mitjana;
             for (int j=0;j<notesAlumne.size();j++) {
