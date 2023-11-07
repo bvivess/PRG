@@ -33,7 +33,8 @@ public class UtilitatsMatrius {
         String separador = "  ";
         System.out.println('[');
         for (int i = 0; i < matriu.length; i++) {
-            System.out.print(separador);UtilitatsArrays.mostraArray(matriu[i]); 
+            System.out.print(separador);
+            UtilitatsArrays.mostraArray(matriu[i]); 
             separador = ", ";
         }
         System.out.println(']');
