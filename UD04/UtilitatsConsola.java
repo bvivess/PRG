@@ -17,7 +17,7 @@ public class UtilitatsConsola {
         
         System.out.print(prompt);
         sencer = scanner.nextInt();
-		scanner.close();
+		//scanner.close();
         return sencer;
     }
 
@@ -35,7 +35,7 @@ public class UtilitatsConsola {
 
         System.out.print(prompt);
         cadena = scanner.nextLine();
-		scanner.close();
+		//scanner.close();
         return cadena;
     }
 
@@ -52,7 +52,7 @@ public class UtilitatsConsola {
 
         System.out.print(prompt);
         real = scanner.nextDouble();
-		scanner.close();
+		//scanner.close();
         return real;
     }   
     
