@@ -1,5 +1,7 @@
 package ACT4_2;
 
+import ACT4_1.UtilitatsArrays;
+
 /**
  *
  * @author Tomeu Vives
@@ -17,9 +19,7 @@ public class UtilitatsMatrius {
         int[][] matriu = new int[longitud][longitud];
         
         for (int i = 0; i < matriu.length; i++) {
-            for (int j = 0; j < matriu[i].length; j++) {
-                matriu[i][j] = minim + (int) (Math.random() * (maxim - minim + 1));
-            }
+            matriu[i] = UtilitatsArrays.generaArray(longitud, minim, maxim);
         }
         return matriu;
     }
@@ -30,16 +30,11 @@ public class UtilitatsMatrius {
      * @param matriu
      */
     public static void mostrarMatriu(int[][] matriu) {
-        String separador = " ";
-        System.out.print('[');
+        String separador = "  ";
+        System.out.println('[');
         for (int i = 0; i < matriu.length; i++) {
-            System.out.print(separador + '[');
-            separador = "";
-            for (int j = 0; j < matriu[i].length; j++) {
-                System.out.print(separador + (matriu[i][j]==0? " ":matriu[i][j]));
-                separador = ", ";
-            }
-            System.out.println(']');
+            System.out.print(separador);UtilitatsArrays.mostraArray(matriu[i]); 
+            separador = ", ";
         }
         System.out.println(']');
     }

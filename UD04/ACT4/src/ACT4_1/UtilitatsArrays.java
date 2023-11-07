@@ -20,7 +20,7 @@ public class UtilitatsArrays {
             separador = ", ";
         }
         System.out.println(']');
-        System.out.println();
+
     }
 
     /**
@@ -95,13 +95,9 @@ public class UtilitatsArrays {
      * @return int.
      */
     public static float mitjanaArray(int[] array) {
-        int suma = 0;
-        int total = 0;
-        
-        for (int i = 0; i < array.length; i++) {
-            suma += array[i];
-            total++;
-        }
+        int suma = sumaArray(array);
+        int total = array.length;
+
         return ((float) suma/(float) total);
     }
 
