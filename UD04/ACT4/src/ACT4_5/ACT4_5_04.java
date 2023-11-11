@@ -89,36 +89,36 @@ public class ACT4_5_04 {
     
     public static void cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, int accio) {
         int mida = tauler.length;
-        int[] posCuc = new int[] { cuc.get(cuc.size()-1)[0],
-                                   cuc.get(cuc.size()-1)[1] };
-        int[] posCucAnt = new int[] { cuc.get(0)[0],
+        int[] posCucCap = new int[] { cuc.get(cuc.size()-1)[0],
+                                      cuc.get(cuc.size()-1)[1] };
+        int[] posCucCua = new int[] { cuc.get(0)[0],
                                       cuc.get(0)[1]
                                     };
-        tauler[posCuc[0]][posCuc[1]] = SIMBOL_CUC;
+        tauler[posCucCap[0]][posCucCap[1]] = SIMBOL_CUC;
              
         switch (accio) {
             case 4 -> // ESQ
-                posCuc[1] = (posCuc[1] == 0 ? mida-1 : posCuc[1]-1); 
+                posCucCap[1] = (posCucCap[1] == 0 ? mida-1 : posCucCap[1]-1); 
             case 6  -> // DRETA
-                posCuc[1] = (posCuc[1] == mida-1 ? 0 : posCuc[1]+1); 
+                posCucCap[1] = (posCucCap[1] == mida-1 ? 0 : posCucCap[1]+1); 
             case 8  -> // ALT
-                posCuc[0] = (posCuc[0] == 0 ? mida-1 : posCuc[0]-1); 
+                posCucCap[0] = (posCucCap[0] == 0 ? mida-1 : posCucCap[0]-1); 
             case 2 -> //BAIX
-                posCuc[0] = (posCuc[0] == mida-1 ? 0 : posCuc[0]+1); 
+                posCucCap[0] = (posCucCap[0] == mida-1 ? 0 : posCucCap[0]+1); 
         }
         
         // re-escriure el cuc
-        if ((tauler[posCuc[0]][posCuc[1]]) == SIMBOL_FULLA) {  // cuc menja fulla
-            cuc.add(posCuc); // afegim posCuc a cuc
+        if ((tauler[posCucCap[0]][posCucCap[1]]) == SIMBOL_FULLA) {  // cuc menja fulla
+            cuc.add(posCucCap); // afegim posCuc a cuc
             //SIMBOL_CUC++;
-            tauler[posCuc[0]][posCuc[1]] = SIMBOL_CAPCUC;
+            tauler[posCucCap[0]][posCucCap[1]] = SIMBOL_CAPCUC;
             
             afegeixFulla(tauler); // nova fulla
-        } else if ((tauler[posCuc[0]][posCuc[1]]) == SIMBOL_BUIT) {  // cuc es mou
+        } else if ((tauler[posCucCap[0]][posCucCap[1]]) == SIMBOL_BUIT) {  // cuc es mou
             cuc.remove(0);
-            cuc.add(posCuc);
-            tauler[posCuc[0]][posCuc[1]] = SIMBOL_CAPCUC;
-            tauler[posCucAnt[0]][posCucAnt[1]] = SIMBOL_BUIT;
+            cuc.add(posCucCap);
+            tauler[posCucCap[0]][posCucCap[1]] = SIMBOL_CAPCUC;
+            tauler[posCucCua[0]][posCucCua[1]] = SIMBOL_BUIT;
         } else {                                                // cuc es tropitja
             SIMBOL_CUC = SIMBOL_BUIT-1;                         // fi de la partida !!!
         }
