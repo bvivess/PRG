@@ -115,9 +115,9 @@ public class ACT4_5_04 {
             
             afegeixFulla(tauler); // nova fulla
         } else if ((tauler[posCucCap[0]][posCucCap[1]]) == SIMBOL_BUIT) {  // cuc es mou
-            cuc.remove(0);
             cuc.add(posCucCap);
             tauler[posCucCap[0]][posCucCap[1]] = SIMBOL_CAPCUC;
+            cuc.remove(0);
             tauler[posCucCua[0]][posCucCua[1]] = SIMBOL_BUIT;
         } else {                                                // cuc es tropitja
             SIMBOL_CUC = SIMBOL_BUIT-1;                         // fi de la partida !!!
