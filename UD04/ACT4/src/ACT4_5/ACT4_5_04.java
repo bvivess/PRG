@@ -110,7 +110,6 @@ public class ACT4_5_04 {
         // re-escriure el cuc
         if ((tauler[posCucCap[0]][posCucCap[1]]) == SIMBOL_FULLA) {  // cuc menja fulla
             cuc.add(posCucCap); // afegim posCuc a cuc
-            //SIMBOL_CUC++;
             tauler[posCucCap[0]][posCucCap[1]] = SIMBOL_CAPCUC;
             
             afegeixFulla(tauler); // nova fulla
