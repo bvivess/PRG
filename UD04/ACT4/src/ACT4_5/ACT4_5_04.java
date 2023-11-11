@@ -23,14 +23,12 @@ public class ACT4_5_04 {
     static int SIMBOL_CAPCUC = 2;
     static int[][] tauler;
     static ArrayList<int[]> cuc = new ArrayList<>();
-    //static int[] cuc;
     static int accio;
 
     public static void main(String[] args) {
         NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
         NFULLES=UtilitatsConsola.llegirSencer("Nombre de fulles: ");
         tauler = new int[NTAULER][NTAULER];  // matriu matriu NTAULERxNTAULER
-        //cuc = new int[2];                    // array[2]--> (x,y) del cuc
         emplenaTauler(tauler, cuc);
         
         do {
