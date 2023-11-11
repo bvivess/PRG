@@ -36,15 +36,13 @@ public class ACT4_5_04 {
             accio = UtilitatsConsola.llegirSencer("Puntuació: " + cuc.size() +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
             if ((accio == 2) | (accio == 4)| (accio == 6)| (accio == 8)) {
                 cambiaPosicio(tauler, cuc, accio);
-                if (SIMBOL_CUC == SIMBOL_BUIT-1) {
-                    System.out.println("You lose");
-                    accio = 0;
-                } else if (cuc.size() == (NTAULER*NTAULER) - NFULLES) {
-                    System.out.println("YOU WIN !!!");
-                    accio = 0;
-                }
-                
-                //accio = (SIMBOL_CUC == SIMBOL_BUIT-1 ? 0 : accio); // fi de la partida ?
+            }
+            if (SIMBOL_CUC == SIMBOL_BUIT-1) {
+                System.out.println("You lose");
+                accio = 0;
+            } else if (cuc.size() == (NTAULER*NTAULER) - NFULLES) {
+                System.out.println("YOU WIN !!!");
+                accio = 0;
             }
         } while (accio != 0);
     }
