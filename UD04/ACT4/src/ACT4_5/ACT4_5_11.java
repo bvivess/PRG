@@ -1,6 +1,7 @@
 package ACT4_5;
 
 import ACT4_1.UtilitatsArrays;
+import static ACT4_2.UtilitatsMatrius.mostrarMatriu;
 import ACT4_3.UtilitatsConsola;
 import java.util.ArrayList;
 //import ACT4_2.UtilitatsMatrius;
@@ -21,24 +22,31 @@ public class ACT4_5_11 {
     static final int SIMBOL_MINA = 9;
     static final int SIMBOL_DESACTIVAT = -1;
     static int[][] tauler;
+    static int[][] taulerVisible;
     static ArrayList<int[]> mines = new ArrayList<>();
 
     public static void main(String[] args) {
         NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
         NMINES=UtilitatsConsola.llegirSencer("Nombre de mines: ");
         tauler = new int[NTAULER][NTAULER];  // matriu matriu NTAULERxNTAULER
+        taulerVisible = new int[NTAULER][NTAULER];
         int[] posXY = new int[2];
 
         emplenaTauler(tauler, mines);
         
         do {
-            mostrarTauler(tauler);
-            posXY[0] = UtilitatsConsola.llegirSencer("Posició X: ");
-            posXY[1] = UtilitatsConsola.llegirSencer("Posició Y: ");
-            System.out.println(posXY[0]+"-"+posXY[1]);
-            desactivarPosicio(tauler, posXY);
+            mostrarMatriu(tauler);
+            mostrarTauler(tauler, taulerVisible);
             
-        } while (posXY[1] != 0);
+            posXY[1] = UtilitatsConsola.llegirSencer("Posició X: ");
+            posXY[0] = UtilitatsConsola.llegirSencer("Posició Y: ");
+            
+            if (desactivarPosicio(tauler, taulerVisible, posXY)==-1) {
+                System.out.println("You lose !!!");
+                break;
+            }
+            
+        } while (posXY[1] >= 0);
     }
     
     public static void emplenaTauler(int[][] tauler, ArrayList<int[]> cuc) {
@@ -78,38 +86,52 @@ public class ACT4_5_11 {
             }
         }
     }
-    public static void desactivarPosicio(int[][] tauler, int[] posXY) {
+    public static short desactivarPosicio(int[][] tauler, int[][] taulerVisible, int[] posXY) {
         int[] posXXYY= new int[2];
+        short esMina = 0, dummy;
         
-        if (tauler[posXY[0]][posXY[1]]==0) {
-            tauler[posXY[0]][posXY[1]] = -1;
-            //
+        taulerVisible[posXY[0]][posXY[1]] = 1;
+        
+        if (tauler[posXY[0]][posXY[1]]==SIMBOL_BUIT) {
+            tauler[posXY[0]][posXY[1]] = SIMBOL_DESACTIVAT;
+            esMina = 0;
+            // Propaga la desactivació als adjacents
             for (int i=Math.max(0, posXY[0]-1); i <= Math.min(tauler.length-1, posXY[0]+1); i++) {
                 for (int j=Math.max(0, posXY[1]-1); j <= Math.min(tauler.length-1, posXY[1]+1); j++) {
+                    taulerVisible[i][j] = 1;
                     if (tauler[i][j] == 0) {
                         posXXYY[0] = i; posXXYY[1]=j;
-                        desactivarPosicio(tauler, posXXYY);
+                        dummy = desactivarPosicio(tauler, taulerVisible, posXXYY);
                     }
                 }
             }
-        }
+        } else if (tauler[posXY[0]][posXY[1]]==SIMBOL_MINA)
+            esMina = -1;
+        return esMina;
     }
-    public static void mostrarTauler(int[][] matriu) {
-        String car="";
-        for (int i = 0; i < matriu.length; i++) {
-            System.out.print('|');
-            for (int j = 0; j < matriu[i].length; j++) {
-                if (matriu[i][j] == SIMBOL_BUIT) {
-                    car = " _ ";
-                } else if (matriu[i][j]==SIMBOL_MINA) {
-                    car = " * ";
-                } else if (matriu[i][j]==-1) {
-                    car = "   ";
-                } else 
-                    car = " " + String.valueOf(matriu[i][j]) + " ";
-                System.out.print(car);
+    public static void mostrarTauler(int[][] tauler, int[][] taulerVisible) {
+        String car;
+        for (int i = -1; i < tauler.length; i++) {
+            if (i <0)
+                System.out.print("-"+i);
+            else {
+            System.out.print(i + "|");
+            for (int j = 0; j < tauler[i].length; j++) {
+                if (taulerVisible[i][j]==1) {
+                    if (tauler[i][j] == SIMBOL_BUIT) {
+                        car = " _ ";
+                    } else if (tauler[i][j]==SIMBOL_MINA) {
+                        car = " * ";
+                    } else if (tauler[i][j]==-1) {
+                        car = "   ";
+                    } else 
+                        car = " " + String.valueOf(tauler[i][j]) + " ";
+                    System.out.print(car);
+                } else
+                    System.out.print(" x ");
             }
             System.out.println("|");
+            }
         }
     }
     
