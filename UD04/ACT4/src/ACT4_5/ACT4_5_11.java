@@ -22,20 +22,21 @@ public class ACT4_5_11 {
     static final int SIMBOL_MINA = 9;
     static final int SIMBOL_DESACTIVAT = -1;
     static int[][] tauler;
-    static int[][] taulerVisible;
+    static boolean[][] taulerVisible;
     static ArrayList<int[]> mines = new ArrayList<>();
 
     public static void main(String[] args) {
         NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
         NMINES=UtilitatsConsola.llegirSencer("Nombre de mines: ");
         tauler = new int[NTAULER][NTAULER];  // matriu matriu NTAULERxNTAULER
-        taulerVisible = new int[NTAULER][NTAULER];
+        taulerVisible = new boolean[NTAULER][NTAULER];
         int[] posXY = new int[2];
 
         emplenaTauler(tauler, mines);
         
         do {
             mostrarMatriu(tauler);
+            
             mostrarTauler(tauler, taulerVisible);
             
             posXY[1] = UtilitatsConsola.llegirSencer("Posició X: ");
@@ -86,11 +87,11 @@ public class ACT4_5_11 {
             }
         }
     }
-    public static short desactivarPosicio(int[][] tauler, int[][] taulerVisible, int[] posXY) {
+    public static short desactivarPosicio(int[][] tauler, boolean[][] taulerVisible, int[] posXY) {
         int[] posXXYY= new int[2];
         short esMina = 0, dummy;
         
-        taulerVisible[posXY[0]][posXY[1]] = 1;
+        taulerVisible[posXY[0]][posXY[1]] = true;
         
         if (tauler[posXY[0]][posXY[1]]==SIMBOL_BUIT) {
             tauler[posXY[0]][posXY[1]] = SIMBOL_DESACTIVAT;
@@ -98,7 +99,7 @@ public class ACT4_5_11 {
             // Propaga la desactivació als adjacents
             for (int i=Math.max(0, posXY[0]-1); i <= Math.min(tauler.length-1, posXY[0]+1); i++) {
                 for (int j=Math.max(0, posXY[1]-1); j <= Math.min(tauler.length-1, posXY[1]+1); j++) {
-                    taulerVisible[i][j] = 1;
+                    taulerVisible[i][j] = true;
                     if (tauler[i][j] == 0) {
                         posXXYY[0] = i; posXXYY[1]=j;
                         dummy = desactivarPosicio(tauler, taulerVisible, posXXYY);
@@ -107,22 +108,28 @@ public class ACT4_5_11 {
             }
         } else if (tauler[posXY[0]][posXY[1]]==SIMBOL_MINA)
             esMina = -1;
+        
         return esMina;
     }
-    public static void mostrarTauler(int[][] tauler, int[][] taulerVisible) {
+    public static void mostrarTauler(int[][] tauler, boolean[][] taulerVisible) {
         String car;
-        for (int i = -1; i < tauler.length; i++) {
-            if (i <0)
-                System.out.print("-"+i);
-            else {
-            System.out.print(i + "|");
+        int numSIMBOL_BUIT = 0;
+        
+        System.out.print("   ");
+        for (int i = 0; i < tauler.length; i++) {
+            System.out.print(" "+i+" "); 
+        }
+        System.out.println("");
+        for (int i = 0; i < tauler.length; i++) {
+            System.out.print(i+" |");
             for (int j = 0; j < tauler[i].length; j++) {
-                if (taulerVisible[i][j]==1) {
+                numSIMBOL_BUIT = numSIMBOL_BUIT + (tauler[i][j] == SIMBOL_BUIT ? 1: 0);
+                if (taulerVisible[i][j]) {
                     if (tauler[i][j] == SIMBOL_BUIT) {
                         car = " _ ";
                     } else if (tauler[i][j]==SIMBOL_MINA) {
                         car = " * ";
-                    } else if (tauler[i][j]==-1) {
+                    } else if (tauler[i][j]==SIMBOL_DESACTIVAT) {
                         car = "   ";
                     } else 
                         car = " " + String.valueOf(tauler[i][j]) + " ";
@@ -131,8 +138,9 @@ public class ACT4_5_11 {
                     System.out.print(" x ");
             }
             System.out.println("|");
-            }
         }
+        if (numSIMBOL_BUIT==0)
+            System.out.println("You win !!!");
     }
     
 }

@@ -24,11 +24,10 @@ public class ACT4_4_04 {
             text = UtilitatsConsola.llegirCadena("Nom alumne ('sortir' per acabar): ");
             if (text.equalsIgnoreCase("sortir"))
                 break;
-            else
+            else {
                 alumnes.add(text);
-                //for (int i=0; i<alumnes.size(); i++) {
-                    llegirNotes(notes);
-                //}
+                llegirNotes(notes);
+            }
         } while (true);
     }
     
