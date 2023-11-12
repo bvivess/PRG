@@ -8,9 +8,21 @@ import java.util.ArrayList;
  */
 public class UtilitatsClasses {
         
-    public static void mostrarArrayList(ArrayList<Integer> array) {
+    /**
+     *
+     * @param array
+     */
+    public static void mostrarArrayListInt(ArrayList<Integer> array) {
         System.out.print("[ ");
         for (Integer a : array) {
+            System.out.print(a + " ");
+        }
+        System.out.println("]");
+    }
+    
+        public static void mostrarArrayListStr(ArrayList<String> array) {
+        System.out.print("[ ");
+        for (String a : array) {
             System.out.print(a + " ");
         }
         System.out.println("]");

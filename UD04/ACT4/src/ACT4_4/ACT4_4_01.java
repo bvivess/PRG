@@ -12,10 +12,6 @@ public class ACT4_4_01 {
             array.add(a);			
         }
 
-        System.out.print("[ ");
-        for (String a : array) {
-            System.out.print(a + " ");
-        }
-        System.out.print("]");
+        UtilitatsClasses.mostrarArrayListStr(array);
     }
 }

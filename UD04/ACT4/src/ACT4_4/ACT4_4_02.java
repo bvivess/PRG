@@ -14,6 +14,6 @@ public class ACT4_4_02 {
         
         UtilitatsArrays.mostraArray(array);
         resultat = UtilitatsClasses.mostrarDiferents(array);
-        UtilitatsClasses.mostrarArrayList(resultat);
+        UtilitatsClasses.mostrarArrayListInt(resultat);
     }
 }
