@@ -1,6 +1,6 @@
 package ACT4_5;
 
-//import ACT4_1.UtilitatsArrays;
+import ACT4_1.UtilitatsArrays;
 import ACT4_2.UtilitatsMatrius;
 import ACT4_3.UtilitatsConsola;
 
@@ -17,8 +17,8 @@ public class ACT4_5_01 {
     
     public static void main(String[] args) {
         final int NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
-        tauler = new int[NTAULER][NTAULER];  // matriu NTAULERxNTAULER
-        cuc = new int[2];                    // array[2]--> (x,y) del cuc
+        tauler = UtilitatsMatrius.generaMatriu(NTAULER, 0, 0);  // matriu NTAULERxNTAULER
+        cuc = UtilitatsArrays.generaArray(2,0, tauler.length-1);   // array[2]--> (x,y) del cuc
 
         emplenaTauler(tauler,cuc);
         
@@ -33,11 +33,6 @@ public class ACT4_5_01 {
     
     public static void emplenaTauler(int[][] tauler, int[] cuc) {
         final int minim = 0, maxim = tauler.length-1;
-        
-        // Genera posició cuc
-        //cuc = UtilitatsArrays.generaArray(2,0, tauler.length-1);
-        cuc[0]=(minim + (int) (Math.random() * (maxim - minim + 1)));
-        cuc[1]=(minim + (int) (Math.random() * (maxim - minim + 1)));
         
         // Situa cuc en el tauler
         tauler[cuc[0]][cuc[1]] = SIMBOL_CUC;
