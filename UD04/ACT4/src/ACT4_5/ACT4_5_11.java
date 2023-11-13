@@ -19,7 +19,7 @@ public class ACT4_5_11 {
     public static void main(String[] args) {
         NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
         NMINES=UtilitatsConsola.llegirSencer("Nombre de mines: ");
-        tauler = new int[NTAULER][NTAULER];  // matriu matriu NTAULERxNTAULER
+        tauler = new int[NTAULER][NTAULER];  // matriu NTAULERxNTAULER
         taulerVisible = new boolean[NTAULER][NTAULER];
         int[] posXY = new int[2];
 
@@ -30,8 +30,8 @@ public class ACT4_5_11 {
             
             mostrarTauler(tauler, taulerVisible);
             
-            posXY[1] = UtilitatsConsola.llegirSencer("Posició X: ");
-            posXY[0] = UtilitatsConsola.llegirSencer("Posició Y: ");
+            posXY[0] = UtilitatsConsola.llegirSencer("Posició X (fila): ");
+            posXY[1] = UtilitatsConsola.llegirSencer("Posició Y (columna): ");
             
             if (desactivarPosicio(tauler, taulerVisible, posXY)==-1) {
                 System.out.println("You lose !!!");
