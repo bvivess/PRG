@@ -49,7 +49,7 @@ public class UtilitatsRecOrdCerca {
     
     // ACT4_4_4
     /** Comprova que l'array sigui de tres posicions i torna el resultat.
-    * Si Ã©s de tres posicioins ordena l'array.
+    * Si té 3 posicioins ordena l'array.
     * 
     * @param array amb 3 elements
     * @return boolean
@@ -105,7 +105,7 @@ public class UtilitatsRecOrdCerca {
     }
     
     // ACT4_4_5
-    /** Cercar un nÃºmero en un array
+    /** Cercar un númmero en un array
     * 
     * @param array on cal cercar
     * @param num a cercar
