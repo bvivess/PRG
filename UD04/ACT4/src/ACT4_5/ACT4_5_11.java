@@ -7,14 +7,6 @@ import java.util.ArrayList;
 //import ACT4_2.UtilitatsMatrius;
 
 
- /**
-  * Crea una classe que inicialitzi una matriu quadrada,
-  * A continuació gestiona el joc del cuc.
-  *     SIMBOL_FULLA --> fulla
-  *     SIMBOL_BUIT  --> res
-  *     des de 1 fins a (FULLA-1) --> part del cuc
-  */
-
 public class ACT4_5_11 { 
     static int NTAULER;
     static int NMINES;
