@@ -33,12 +33,12 @@ public class ACT4_5_11 {
             posXY[0] = UtilitatsConsola.llegirSencer("Posició X (fila): ");
             posXY[1] = UtilitatsConsola.llegirSencer("Posició Y (columna): ");
             
-            if (desactivarPosicio(tauler, taulerVisible, posXY)==-1) {
+            if (desactivarPosicio(tauler, taulerVisible, posXY) == -1) {
                 System.out.println("You lose !!!");
                 break;
             }
             
-        } while (posXY[1] >= 0);
+        } while (posXY[1] >= 0); // per exemple
     }
     
     public static void emplenaTauler(int[][] tauler, ArrayList<int[]> cuc) {
