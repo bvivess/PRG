@@ -42,7 +42,6 @@ public class ACT4_5_11 {
     }
     
     public static void emplenaTauler(int[][] tauler, ArrayList<int[]> cuc) {
-        final int MINIM = 0, MAXIM = tauler.length-1;
         int[] posMina;
         
         // Genera posició de cada fulla i situa en el tauler
@@ -62,7 +61,7 @@ public class ACT4_5_11 {
     }
     
     public static void puntuarMines(int[][] tauler, ArrayList<int[]> mines) {
-        int[] posMina = new int[2];
+        int[] posMina;
         
         for (int m=0; m<mines.size();m++) {
             posMina = new int[] { mines.get(m)[0],
