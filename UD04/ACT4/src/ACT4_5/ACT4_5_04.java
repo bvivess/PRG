@@ -20,7 +20,7 @@ public class ACT4_5_04 {
     static final int SIMBOL_BUIT = 0;
     static final int SIMBOL_FULLA = 99;
     static int SIMBOL_CUC = 1;
-    static int SIMBOL_CAPCUC = 2;
+    static final int SIMBOL_CAPCUC = 2;
     static int[][] tauler;
     static ArrayList<int[]> cuc = new ArrayList<>();
     static int accio;
@@ -33,7 +33,7 @@ public class ACT4_5_04 {
         
         do {
             mostrarTauler(tauler);
-            accio = UtilitatsConsola.llegirSencer("PuntuaciÃ³: " + cuc.size() +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
+            accio = UtilitatsConsola.llegirSencer("Puntuació: " + cuc.size() +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
             if ((accio == 2) | (accio == 4)| (accio == 6)| (accio == 8)) {
                 cambiaPosicio(tauler, cuc, accio);
             }
@@ -52,7 +52,7 @@ public class ACT4_5_04 {
         int[] fulla;
         int[] posCuc = UtilitatsArrays.generaArray(2,0, tauler.length-1); 
 
-        // Genera posiciÃ³ Inicial cuc
+        // Genera posició Inicial cuc
         cuc.add(posCuc);
         
         // Situa cuc en el tauler
@@ -89,10 +89,9 @@ public class ACT4_5_04 {
     public static void cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, int accio) {
         int mida = tauler.length;
         int[] posCucCap = new int[] { cuc.get(cuc.size()-1)[0],
-                                      cuc.get(cuc.size()-1)[1] };
+                                      cuc.get(cuc.size()-1)[1] }; // (x,y) del cap
         int[] posCucCua = new int[] { cuc.get(0)[0],
-                                      cuc.get(0)[1]
-                                    };
+                                      cuc.get(0)[1] };  // (x,y) de la cua
         tauler[posCucCap[0]][posCucCap[1]] = SIMBOL_CUC;
              
         switch (accio) {
@@ -113,12 +112,12 @@ public class ACT4_5_04 {
             
             afegeixFulla(tauler); // nova fulla
         } else if ((tauler[posCucCap[0]][posCucCap[1]]) == SIMBOL_BUIT) {  // cuc es mou
-            cuc.add(posCucCap);
+            cuc.add(posCucCap); // afegim posCuc a cuc
             tauler[posCucCap[0]][posCucCap[1]] = SIMBOL_CAPCUC;
-            cuc.remove(0);
+            cuc.remove(0);  // eliminam cua a cuc
             tauler[posCucCua[0]][posCucCua[1]] = SIMBOL_BUIT;
         } else {                                                // cuc es tropitja
-            SIMBOL_CUC = SIMBOL_BUIT-1;                         // fi de la partida !!!
+            SIMBOL_CUC = SIMBOL_BUIT-1;                         // tornam -1 --> fi de la partida !!!
         }
     }
  

@@ -20,7 +20,7 @@ public class ACT4_5_01 {
         tauler = UtilitatsMatrius.generaMatriu(NTAULER, 0, 0);  // matriu NTAULERxNTAULER
         cuc = UtilitatsArrays.generaArray(2,0, tauler.length-1);     // (x,y) del cuc
 
-        emplenaTauler(tauler,cuc);
+        emplenaTauler(tauler, cuc);
         
         do {
             UtilitatsMatrius.mostrarMatriu(tauler);

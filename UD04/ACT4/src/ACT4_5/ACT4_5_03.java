@@ -19,7 +19,7 @@ public class ACT4_5_03 {
     static int NFULLES;
     static final int SIMBOL_BUIT = 0;
     static final int SIMBOL_FULLA = 99;
-    static int SIMBOL_CUC = 1;
+    static int SIMBOL_CUC = 1;  // Va creixent a mida que el cuc creix
     static int[][] tauler;
     static int[] cuc;
     static int accio;
@@ -34,7 +34,7 @@ public class ACT4_5_03 {
         
         do {
             mostrarTauler(tauler);
-            accio = UtilitatsConsola.llegirSencer("PuntuaciÃ³: " + (float) SIMBOL_CUC +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
+            accio = UtilitatsConsola.llegirSencer("Puntuació: " + (float) SIMBOL_CUC +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
             if ((accio == 2) | (accio == 4)| (accio == 6)| (accio == 8)) {
                 cambiaPosicio(tauler, cuc, accio);
                 accio = (SIMBOL_CUC == SIMBOL_BUIT-1 ? 0 : accio); // fi de la partida ?
@@ -105,7 +105,7 @@ public class ACT4_5_03 {
             }
             tauler[posicio[0]][posicio[1]] = SIMBOL_CUC;
         } else {                                                // cuc es tropitja
-            SIMBOL_CUC = SIMBOL_BUIT-1;                         // fi de la partida !!!
+            SIMBOL_CUC = SIMBOL_BUIT-1;                         // tornam -1 --> fi de la partida !!!
         }
         
         //return longitudCuc;
