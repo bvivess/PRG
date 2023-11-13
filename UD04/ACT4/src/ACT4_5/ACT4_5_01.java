@@ -1,6 +1,5 @@
 package ACT4_5;
 
-import ACT4_1.UtilitatsArrays;
 import ACT4_2.UtilitatsMatrius;
 import ACT4_3.UtilitatsConsola;
 
@@ -10,7 +9,6 @@ import ACT4_3.UtilitatsConsola;
   */
 public class ACT4_5_01 {
     static int SIMBOL_BUIT = 0;
-    static int SIMBOL_FULLA = 9;
     static int SIMBOL_CUC = 1;
     static int[][] tauler;
     static int[] cuc; // x,y del cuc
@@ -35,7 +33,7 @@ public class ACT4_5_01 {
     public static void emplenaTauler(int[][] tauler, int[] cuc) {
         final int minim = 0, maxim = tauler.length-1;
         
-        // Genera posiciÃ³ cuc
+        // Genera posició cuc
         cuc[0]=(minim + (int) (Math.random() * (maxim - minim + 1)));
         cuc[1]=(minim + (int) (Math.random() * (maxim - minim + 1)));
         
