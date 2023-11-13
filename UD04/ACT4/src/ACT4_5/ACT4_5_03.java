@@ -3,7 +3,6 @@ package ACT4_5;
 import ACT4_1.UtilitatsArrays;
 import ACT4_2.UtilitatsMatrius;
 import ACT4_3.UtilitatsConsola;
-//import ACT4_2.UtilitatsMatrius;
 
 
  /**
@@ -18,8 +17,8 @@ public class ACT4_5_03 {
     static int NTAULER;
     static int NFULLES;
     static final int SIMBOL_BUIT = 0;
-    static final int SIMBOL_FULLA = 99;
-    static int SIMBOL_CUC = 1;  // Va creixent a mida que el cuc creix
+    static final int SIMBOL_FULLA = 99;  // cal modificar a 99 perquè el cuc pugui créixer
+    static int SIMBOL_CUC = 1;  // 1,2,3 ... va creixent a mida que el cuc creix
     static int[][] tauler;
     static int[] cuc;
     static int accio;

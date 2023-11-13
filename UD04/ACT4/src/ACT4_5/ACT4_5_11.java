@@ -4,7 +4,6 @@ import ACT4_1.UtilitatsArrays;
 import static ACT4_2.UtilitatsMatrius.mostrarMatriu;
 import ACT4_3.UtilitatsConsola;
 import java.util.ArrayList;
-//import ACT4_2.UtilitatsMatrius;
 
 
 public class ACT4_5_11 { 
@@ -85,7 +84,7 @@ public class ACT4_5_11 {
         
         taulerVisible[posXY[0]][posXY[1]] = true;
         
-        if (tauler[posXY[0]][posXY[1]]==SIMBOL_BUIT) {
+        if (tauler[posXY[0]][posXY[1]] == SIMBOL_BUIT) {
             tauler[posXY[0]][posXY[1]] = SIMBOL_DESACTIVAT;
             esMina = 0;
             // Propaga la desactivació als adjacents
