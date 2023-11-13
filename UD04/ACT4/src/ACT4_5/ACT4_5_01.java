@@ -18,7 +18,7 @@ public class ACT4_5_01 {
     public static void main(String[] args) {
         final int NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
         tauler = UtilitatsMatrius.generaMatriu(NTAULER, 0, 0);  // matriu NTAULERxNTAULER
-        cuc = UtilitatsArrays.generaArray(2,0, tauler.length-1);   // array[2]--> (x,y) del cuc
+        cuc = UtilitatsArrays.generaArray(2,0, tauler.length-1);     // (x,y) del cuc
 
         emplenaTauler(tauler,cuc);
         
@@ -32,8 +32,6 @@ public class ACT4_5_01 {
     }
     
     public static void emplenaTauler(int[][] tauler, int[] cuc) {
-        final int minim = 0, maxim = tauler.length-1;
-        
         // Situa cuc en el tauler
         tauler[cuc[0]][cuc[1]] = SIMBOL_CUC;
     }

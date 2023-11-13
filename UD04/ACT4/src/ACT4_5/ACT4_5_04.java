@@ -50,9 +50,8 @@ public class ACT4_5_04 {
     public static void emplenaTauler(int[][] tauler, ArrayList<int[]> cuc) {
         final int MINIM = 0, MAXIM = tauler.length-1;
         int[] fulla;
-        int[] posCuc = new int[] {(MINIM + (int) (Math.random() * (MAXIM - MINIM + 1))),
-                                  (MINIM + (int) (Math.random() * (MAXIM - MINIM + 1)))
-                                 };
+        int[] posCuc = UtilitatsArrays.generaArray(2,0, tauler.length-1); 
+
         // Genera posició Inicial cuc
         cuc.add(posCuc);
         
