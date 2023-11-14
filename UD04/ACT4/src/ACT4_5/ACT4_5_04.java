@@ -128,14 +128,12 @@ public class ACT4_5_04 {
             for (int j = 0; j < matriu[i].length; j++) {
                 if (matriu[i][j] == 0) {
                     car = "   ";
-                } else if (matriu[i][j] == 1) {
+                } else if (matriu[i][j] == SIMBOL_CUC) {
                     car = " . ";
                 } else if (matriu[i][j]==SIMBOL_FULLA) {
                     car = " * ";
                 } else if (matriu[i][j]==SIMBOL_CAPCUC) {
                     car = " O ";
-                } else if (matriu[i][j]==SIMBOL_CAPCUC) {
-                    car = " - ";
                 }
                 System.out.print(car);
             }
