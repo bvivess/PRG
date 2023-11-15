@@ -58,16 +58,9 @@ public class ACT4_5_04 {
         // Situa cuc en el tauler
         tauler[posCuc[0]][posCuc[1]] = SIMBOL_CAPCUC;
         
-        // Genera posició de cada fulla i situa en el tauler
+        // Genera posici� de cada fulla i situa en el tauler
         for (int i=0; i<NFULLES; i++) {
-            boolean okfulla = true;
-            do { // cerca una posisió buida per la fulla en el tauler
-                fulla = UtilitatsArrays.generaArray(2,0, tauler.length-1);
-                if (tauler[ fulla[0]] [fulla[1] ] == 0) { // situa la fulla al tauler si la posició està buida
-                    tauler[ fulla[0]] [fulla[1] ] = SIMBOL_FULLA;
-                    okfulla = false;
-              }
-            } while (okfulla);
+            afegeixFulla(tauler);
         }
     }
     

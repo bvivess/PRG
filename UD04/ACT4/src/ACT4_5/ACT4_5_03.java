@@ -49,14 +49,7 @@ public class ACT4_5_03 {
         
         // Genera posició de cada fulla i situa en el tauler
         for (int i=0; i<NFULLES; i++) {
-            boolean okfulla = true;
-            do { // cerca una posisiÃ³ buida per la fulla en el tauler
-                fulla = UtilitatsArrays.generaArray(2,0, tauler.length-1);
-                if (tauler[ fulla[0]] [fulla[1] ] == 0) { // situa la fulla al tauler si la posiciÃ³ estÃ  buida
-                    tauler[ fulla[0]] [fulla[1] ] = SIMBOL_FULLA;
-                    okfulla = false;
-              }
-            } while (okfulla);
+            afegeixFulla(tauler);
         }
     }
     
@@ -66,8 +59,8 @@ public class ACT4_5_03 {
         boolean okfulla = true;
         
         do {
-            fulla  = UtilitatsArrays.generaArray(2,0, mida-1); // genera posiciÃ³ de la fulla
-            if (tauler[fulla[0]][fulla[1]] == 0) { // situa la fulla al tauler si la posiciÃ³ estÃ  buida
+            fulla  = UtilitatsArrays.generaArray(2,0, mida-1); // genera posició de la fulla
+            if (tauler[fulla[0]][fulla[1]] == 0) { // situa la fulla al tauler si la posició està  buida
                 tauler[fulla[0]][fulla[1]] = SIMBOL_FULLA;
                 okfulla = false;
             }
