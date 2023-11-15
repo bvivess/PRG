@@ -26,7 +26,7 @@ public class ACT4_5_11 {
         emplenaTauler(tauler, mines);
         
         do {
-            mostrarMatriu(tauler);
+           // mostrarMatriu(tauler);
             
             mostrarTauler(tauler, taulerVisible);
             
