@@ -14,7 +14,7 @@ public class ACT4_5_11 {
     static final int SIMBOL_DESACTIVAT = -1;
     static int[][] tauler;
     static boolean[][] taulerVisible;
-    static ArrayList<int[]> mines = new ArrayList<>();
+    static ArrayList<int[]> mines = new ArrayList<>(); // (x,y) de cada mina
 
     public static void main(String[] args) {
         NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
@@ -26,8 +26,6 @@ public class ACT4_5_11 {
         emplenaTauler(tauler, mines);
         
         do {
-           // mostrarMatriu(tauler);
-            
             mostrarTauler(tauler, taulerVisible);
             
             posXY[0] = UtilitatsConsola.llegirSencer("Posició X (fila): ");
@@ -38,10 +36,10 @@ public class ACT4_5_11 {
                 break;
             }
             
-        } while (posXY[1] >= 0); // per exemple
+        } while (posXY[1] >= -1); // per exemple
     }
     
-    public static void emplenaTauler(int[][] tauler, ArrayList<int[]> cuc) {
+    public static void emplenaTauler(int[][] tauler, ArrayList<int[]> mines) {
         int[] posMina;
         
         // Genera posició de cada fulla i situa en el tauler
@@ -77,6 +75,7 @@ public class ACT4_5_11 {
             }
         }
     }
+    
     public static short desactivarPosicio(int[][] tauler, boolean[][] taulerVisible, int[] posXY) {
         int[] posXXYY= new int[2];
         short esMina = 0, dummy;
@@ -90,7 +89,7 @@ public class ACT4_5_11 {
             for (int i=Math.max(0, posXY[0]-1); i <= Math.min(tauler.length-1, posXY[0]+1); i++) {
                 for (int j=Math.max(0, posXY[1]-1); j <= Math.min(tauler.length-1, posXY[1]+1); j++) {
                     taulerVisible[i][j] = true;
-                    if (tauler[i][j] == 0) {
+                    if (tauler[i][j] == SIMBOL_BUIT) {
                         posXXYY[0] = i; posXXYY[1]=j;
                         dummy = desactivarPosicio(tauler, taulerVisible, posXXYY);
                     }
@@ -101,6 +100,7 @@ public class ACT4_5_11 {
         
         return esMina;
     }
+    
     public static void mostrarTauler(int[][] tauler, boolean[][] taulerVisible) {
         String car;
         int numSIMBOL_BUIT = 0;
@@ -131,6 +131,11 @@ public class ACT4_5_11 {
         }
         if (numSIMBOL_BUIT==0)
             System.out.println("You win !!!");
+            for (int i=0; i<taulerVisible.length;i++)
+                for (int j=0; j<taulerVisible.length;j++)
+                    taulerVisible[i][j] = true;
+            
+                    
     }
     
 }
