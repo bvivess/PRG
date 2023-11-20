@@ -36,6 +36,7 @@ public class Cicle {
     
     public String mostraCicle() {
         String text;
+        
         text = "Cicle " + "ID=" + idCicle + ", nom=" + nom + ", numAlumnes=" + numAlumnes + "; Mòduls: {";
         for (Modul m: moduls) {
             text = text + m.getIdModul() + "-" + m.getNom() + " ";
@@ -57,6 +58,7 @@ public class Cicle {
  
     public boolean eliminarModul(String nom) {
         int i = cercarModul(nom);
+        
         if (i >= 0) {
             moduls.remove(i);
             return true;
