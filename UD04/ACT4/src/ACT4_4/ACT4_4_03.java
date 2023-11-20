@@ -9,7 +9,7 @@ import ACT4_1.UtilitatsArrays;
 public class ACT4_4_03 {
 
     public static void main(String[] args) {
-        int[] array = UtilitatsArrays.generaArray(100, 0, 100);
+        int[] array = UtilitatsArrays.generaArray(25, 0, 3);
         ArrayList<Integer> resultat = new ArrayList<>();
         
         UtilitatsArrays.mostraArray(array);

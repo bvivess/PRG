@@ -36,9 +36,9 @@ public class UtilitatsClasses {
     public static ArrayList<Integer> mostrarDiferents(int[] array) {
         ArrayList<Integer> resultat = new ArrayList<>();
         
-        for (Integer a: array) {
-            if (! resultat.contains(a)) 
-                resultat.add(a);		
+        for (Integer num: array) {
+            if (! resultat.contains(num)) // si 'num' no es troba en 'resultat', s'afegeix
+                resultat.add(num);		
         }
         return resultat;
     }
@@ -53,23 +53,23 @@ public class UtilitatsClasses {
     public static ArrayList<Integer> mostrarDiferentsMillorat(int[] array) {
         ArrayList<Integer> resultat = new ArrayList<>();
         
-        resultat.add(array[0]);
-        for (int a : array) {
-            int i = 0;
+        for (int num : array) {
+            int i = 0; // index on cal insertar en 'resultat'
             boolean trobat = false;
             
-            for (Integer r : resultat) {
-                if( r == a) { // trobat, no cal insertar
+            for (Integer r : resultat) { // es cerca 'num' dins 'resultat'
+                if( r == num) { // trobat, no cal insertar
                     trobat = true;
                     break;
-                } else if (r > a) // no trobat, ni es trobarÃ  si l'ArrayList es mantÃ© ordenat, cal insertar
+                } else if (r > num) // no trobat, ni es trobarà  si l'ArrayList es manté ordenat, cal insertar
                     break;
-                else // seguir cercant
+                else // seguir cercant dins 'resultat'
                     i++;
             }
-            if (!trobat) // afegir 'a' en la posiciÃ³ 'i' per mantenir l'ArrayList ordenat
-                resultat.add(i,a);
+            if (!trobat) // afegir 'num' en la posició 'i' per mantenir l'ArrayList ordenat
+                resultat.add(i,num);
         }
+        
         return resultat;
     }
     
