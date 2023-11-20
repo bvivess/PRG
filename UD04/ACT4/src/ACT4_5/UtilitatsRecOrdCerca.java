@@ -123,7 +123,7 @@ public class UtilitatsRecOrdCerca {
         for (int i=1; i<n-1; i++) {
             for (int j=0; j<n-1; j++) {
                 if (array[j] > array[j+1]) {
-                    // Realiza un intercambio si el elemento actual es mayor que el siguiente.
+                    // Realitza l'intercanvi entre les posicions [j] i [j+1]
                     aux = array[j];
                     array[j] = array[j+1];
                     array[j+1] = aux;
@@ -142,22 +142,50 @@ public class UtilitatsRecOrdCerca {
     * @return boolean
     */
     public static int cercaArray(int[] array, int num) {
-        int izq = 0;
-        int der = array.length - 1;
+        int esq = 0;
+        int dre = array.length - 1;
 
-        while (izq <= der) {
-            int medio = izq + (der - izq) / 2;
+        while (esq <= dre) {
+            int mig = esq + (dre - esq) / 2;
 
-            if (array[medio] == num) {
-                return medio; // 'num' trobat en la meitat de l'array
-            } else if (array[medio] < num) {
-                izq = medio + 1;
+            if (array[mig] == num) {
+                return mig; // 'num' trobat en la meitat de l'array
+            } else if (array[mig] < num) {
+                esq = mig + 1;
             } else {
-                der = medio - 1;
+                dre = mig - 1;
             }
         }
 
         return -1; // si el 'num' no es troba, es retorna -1
+    }
+    
+    // ACT4_5_9
+    /** Cercar un númmero en un array ordenat de manera recursiva
+    * 
+    * @param array on cal cercar
+    * @param num a cercar
+    * @return boolean
+    */
+    public static int cercaArrayRecursiu(int[] array, int num, int esq, int dre) {
+        // Caso base1: numero no s'ha trobat
+        if (esq > dre) {
+            return -1;
+        }
+
+        // Calcular el índice medio
+        int mig = (esq + dre) / 2;
+
+        // Caso base2: numero s'ha trobat
+        if (array[mig] == num) {
+            return mig;
+        } else if (array[mig] < num) {
+            // seguir cercant en la part dreta de l'array
+            return cercaArrayRecursiu(array, num, mig + 1, dre);
+        } else {
+            // seguir cercant en la part esquerra de l'array
+            return cercaArrayRecursiu(array, num, esq, mig - 1);
+        }
     }
 }
 
