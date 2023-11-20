@@ -1,9 +1,9 @@
 package ACT4_5;
 
 public class UtilitatsRecOrdCerca {
-    // ACT4_4_1
+    // ACT4_5_1
     /**
-     * Calcula la potencia d'un nombre.
+     * Calcula la potència d'un nombre.
      *
      * @param base
      * @param exponent
@@ -17,7 +17,7 @@ public class UtilitatsRecOrdCerca {
         }
     } 
     
-    // ACT4_4_2
+    // ACT4_5_2
     /**
      * Calcula el factorial d'un nombre.
      *
@@ -32,13 +32,12 @@ public class UtilitatsRecOrdCerca {
         }
     }   
     
-    
-    // ACT4_4_3
+    // ACT4_5_3
     /**
-     * Calcula el fibonacci d'un nombre.
+     * Calcula la suma de númoeros sencers a partir d'un donat.
      *
-     * @param base de cÃ lciul de la sÃ¨rie
-     * @return el fibonacci d'un numero
+     * @param n de càlcul de la sèrie
+     * @return la suma a partir d'un donat
      */
     public static int sumaNaturals(int n) {
         if (n == 0) {
@@ -48,6 +47,13 @@ public class UtilitatsRecOrdCerca {
         }
     }
 
+    // ACT4_5_4
+    /**
+     * Calcula el mínim comú divisor entre 2 números
+     *
+     * @param a,b 
+     * @return el MCD d'a i b
+     */
     public static int calculaMCD(int a, int b) {
         if (b == 0) {
             return a;
@@ -103,7 +109,7 @@ public class UtilitatsRecOrdCerca {
         return resultat;
     }
     
-    // ACT4_4_7
+    // ACT4_5_7
     /** Ordena un array segons l'algoritme de la bimbolla (versiÃ³ 1)
     * https://es.wikipedia.org/wiki/Ordenamiento_de_burbuja
     * 
@@ -128,8 +134,8 @@ public class UtilitatsRecOrdCerca {
         return array;
     }
     
-    // ACT4_4_8
-    /** Cercar un númmero en un array
+    // ACT4_5_8
+    /** Cercar un númmero en un array ordenat
     * 
     * @param array on cal cercar
     * @param num a cercar
