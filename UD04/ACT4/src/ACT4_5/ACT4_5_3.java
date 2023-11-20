@@ -4,10 +4,9 @@ import ACT4_3.UtilitatsConsola;
 
 public class ACT4_5_3 {
     public static void main(String[] args) {
-        int base = UtilitatsConsola.llegirSencer("Introdueixi la base de Fibonacci: ");
+        int base = UtilitatsConsola.llegirSencer("Introdueixi un número sencer: ");
 
-        for (int i = 0; i < base; i++) {
-            System.out.print(UtilitatsRecOrdCerca.calcularFibonacci(i) + " ");
-        }
+        System.out.print(UtilitatsRecOrdCerca.sumarNaturals(base));
+
     }
 }

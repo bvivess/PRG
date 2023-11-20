@@ -1,17 +1,13 @@
 package ACT4_5;
 
-import ACT4_1.UtilitatsArrays;
-
+import ACT4_3.UtilitatsConsola;
 
 public class ACT4_5_4 {
     public static void main(String[] args) {
-        int[] array = UtilitatsArrays.generaArray(3,1,100);
+        int base = UtilitatsConsola.llegirSencer("Introdueixi un número sencer: ");
 
-        UtilitatsArrays.mostraArray(array);
-        if (UtilitatsRecOrdCerca.ordenarArray3(array)) {
-            UtilitatsArrays.mostraArray(array);
-        } else {
-            System.out.println("L'array no es pot ordenar");
+        for (int i = 0; i < base; i++) {
+            System.out.print(UtilitatsRecOrdCerca.sumarNaturals(i) + " ");
         }
     }
 }

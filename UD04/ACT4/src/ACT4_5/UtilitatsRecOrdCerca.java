@@ -32,6 +32,30 @@ public class UtilitatsRecOrdCerca {
         }
     }   
     
+    
+    // ACT4_4_3
+    /**
+     * Calcula el fibonacci d'un nombre.
+     *
+     * @param base de càlciul de la sèrie
+     * @return el fibonacci d'un numero
+     */
+    public static int sumarNaturals(int n) {
+        if (n == 0) {
+            return 0;
+        } else {
+            return n + sumarNaturals(n - 1);
+        }
+    }
+
+    public static int calcularMCD(int a, int b) {
+        if (b == 0) {
+            return a;
+        } else {
+            return calcularMCD(b, a % b);
+        }
+    }
+    
     // ACT4_4_3
     /**
      * Calcula el fibonacci d'un nombre.
