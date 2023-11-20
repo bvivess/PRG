@@ -1,4 +1,4 @@
-package ACT4_5;
+package ACT4_6;
 
 import ACT4_1.UtilitatsArrays;
 import ACT4_3.UtilitatsConsola;
@@ -13,7 +13,7 @@ import ACT4_2.UtilitatsMatrius;
   *
   */
 
-public class ACT4_5_02 {
+public class ACT4_6_02 {
     static int NTAULER;
     static int NFULLES;
     static final int SIMBOL_BUIT = 0;

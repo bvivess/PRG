@@ -1,4 +1,4 @@
-package ACT4_5;
+package ACT4_6;
 
 import ACT4_1.UtilitatsArrays;
 import ACT4_2.UtilitatsMatrius;
@@ -13,7 +13,7 @@ import ACT4_3.UtilitatsConsola;
   *     des de 1 fins a (FULLA-1) --> part del cuc
   */
 
-public class ACT4_5_03 { 
+public class ACT4_6_03 { 
     static int NTAULER;
     static int NFULLES;
     static final int SIMBOL_BUIT = 0;

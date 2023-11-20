@@ -1,4 +1,4 @@
-package ACT4_5;
+package ACT4_6;
 
 import ACT4_1.UtilitatsArrays;
 import static ACT4_2.UtilitatsMatrius.mostrarMatriu;
@@ -6,7 +6,7 @@ import ACT4_3.UtilitatsConsola;
 import java.util.ArrayList;
 
 
-public class ACT4_5_11 { 
+public class ACT4_6_11 { 
     static int NTAULER;
     static int NMINES;
     static final int SIMBOL_BUIT = 0;
