@@ -66,16 +66,6 @@ public class Cicle {
         return false;
     }
     
-    /*
-    public Modul tornarModul(String nom) {
-        int posicio = cercarModul(nom);
-        if (posicio >= 0) {
-            return moduls[posicio];
-        }
-        return null;
-    }
-    */
-    
     // *****************************
     // Getters i Setters
     public int getIdCicle() {
