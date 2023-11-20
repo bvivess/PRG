@@ -1,4 +1,4 @@
-package ACT6_1;
+package ACT6_2;
 
 import java.util.ArrayList;
 
