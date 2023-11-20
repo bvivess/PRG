@@ -1,4 +1,4 @@
-//import java.util.Scanner;
+import java.util.Scanner;
 
 public class Sudoku {
     private static int[][] board = new int[9][9];
