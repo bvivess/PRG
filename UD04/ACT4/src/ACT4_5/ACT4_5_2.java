@@ -6,6 +6,6 @@ public class ACT4_5_2 {
     public static void main(String[] args) {
         int base = UtilitatsConsola.llegirSencer("Introdueixi la base factorial: ");
 
-        System.out.println(UtilitatsRecOrdCerca.calcularFactorial(base));
+        System.out.println(UtilitatsRecOrdCerca.calculaFactorial(base));
     }
 }

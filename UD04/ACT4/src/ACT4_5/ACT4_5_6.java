@@ -8,7 +8,7 @@ public class ACT4_5_6 {
         int[] array = UtilitatsArrays.generaArray(3,1,100);
 
         UtilitatsArrays.mostraArray(array);
-        if (UtilitatsRecOrdCerca.ordenarArray3(array)) {
+        if (UtilitatsRecOrdCerca.ordenaArray3(array)) {
             UtilitatsArrays.mostraArray(array);
         } else {
             System.out.println("L'array no es pot ordenar");

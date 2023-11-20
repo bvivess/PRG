@@ -7,7 +7,7 @@ public class ACT4_5_5 {
         int base = UtilitatsConsola.llegirSencer("Introdueixi la base de Fibonacci: ");
 
         for (int i = 0; i < base; i++) {
-            System.out.print(UtilitatsRecOrdCerca.calcularFibonacci(i) + " ");
+            System.out.print(UtilitatsRecOrdCerca.calculaFibonacci(i) + " ");
         }
     }
 }

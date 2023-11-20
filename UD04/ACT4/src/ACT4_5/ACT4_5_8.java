@@ -6,17 +6,17 @@ import ACT4_3.UtilitatsConsola;
 
 public class ACT4_5_8 {
     public static void main(String[] args) {
-        int[] array = UtilitatsRecOrdCerca.ordenarArrayBimbolla(UtilitatsArrays.generaArray(10,1,100));
+        int[] array = UtilitatsRecOrdCerca.ordenaArrayBimbolla(UtilitatsArrays.generaArray(10,1,100));
         int num, posicio;
         
         UtilitatsArrays.mostraArray(array);
-        num = UtilitatsConsola.llegirSencer("Introdueixi un nÃºmnero a cercar: ");
-        posicio = UtilitatsRecOrdCerca.cercarArray( array, num);
+        num = UtilitatsConsola.llegirSencer("Introdueixi un númnero a cercar: ");
+        posicio = UtilitatsRecOrdCerca.cercaArray( array, num);
         
         if (posicio != -1 ) {
-            System.out.println("S'ha trobat el nÃºmero en la posiciÃ³ " + posicio);
+            System.out.println("S'ha trobat el número en la posició " + posicio);
         } else {
-            System.out.println("No s'ha trobat el nÃºmero " + num);    
+            System.out.println("No s'ha trobat el número " + num);    
         }
     }
 }

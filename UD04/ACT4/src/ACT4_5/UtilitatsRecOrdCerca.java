@@ -9,11 +9,11 @@ public class UtilitatsRecOrdCerca {
      * @param exponent
      * @return la base elevat a l'exponent
      */
-    public static double calcularPotencia(int base, int exponent) {
+    public static double calculaPotencia(int base, int exponent) {
         if (exponent == 1) {
             return base;
         } else {
-            return (base * calcularPotencia(base, exponent - 1));
+            return (base * calculaPotencia(base, exponent - 1));
         }
     } 
     
@@ -24,11 +24,11 @@ public class UtilitatsRecOrdCerca {
      * @param base factorial
      * @return el factorial d'un nombre
      */
-    public static double calcularFactorial(int base) {
+    public static double calculaFactorial(int base) {
         if (base == 1) {
             return base;
         } else {
-            return (base * calcularFactorial(base-1));
+            return (base * calculaFactorial(base-1));
         }
     }   
     
@@ -40,45 +40,45 @@ public class UtilitatsRecOrdCerca {
      * @param base de càlciul de la sèrie
      * @return el fibonacci d'un numero
      */
-    public static int sumarNaturals(int n) {
+    public static int sumaNaturals(int n) {
         if (n == 0) {
             return 0;
         } else {
-            return n + sumarNaturals(n - 1);
+            return n + sumaNaturals(n - 1);
         }
     }
 
-    public static int calcularMCD(int a, int b) {
+    public static int calculaMCD(int a, int b) {
         if (b == 0) {
             return a;
         } else {
-            return calcularMCD(b, a % b);
+            return calculaMCD(b, a % b);
         }
     }
     
-    // ACT4_4_3
+    // ACT4_5_5
     /**
      * Calcula el fibonacci d'un nombre.
      *
      * @param base de càlciul de la sèrie
      * @return el fibonacci d'un numero
      */
-    public static int calcularFibonacci(int base) {
+    public static int calculaFibonacci(int base) {
         if (base <= 1) {
             return base;
         } else {
-            return calcularFibonacci(base - 1) + calcularFibonacci(base - 2);
+            return calculaFibonacci(base - 1) + calculaFibonacci(base - 2);
         }
     }  
     
-    // ACT4_4_4
+    // ACT4_5_6
     /** Comprova que l'array sigui de tres posicions i torna el resultat.
     * Si t� 3 posicioins ordena l'array.
     * 
     * @param array amb 3 elements
     * @return boolean
     */
-    public static boolean ordenarArray3(int[] array){
+    public static boolean ordenaArray3(int[] array){
         boolean resultat=true;
         int aux;
         if(array.length==3){
@@ -103,14 +103,14 @@ public class UtilitatsRecOrdCerca {
         return resultat;
     }
     
-    // ACT4_4_5
+    // ACT4_4_7
     /** Ordena un array segons l'algoritme de la bimbolla (versió 1)
     * https://es.wikipedia.org/wiki/Ordenamiento_de_burbuja
     * 
     * @param array que cal ordenar
     * @return array ordenat
     */
-    public static int[] ordenarArrayBimbolla(int[] array){
+    public static int[] ordenaArrayBimbolla(int[] array){
         int n = array.length;
         int aux;
         
@@ -128,14 +128,14 @@ public class UtilitatsRecOrdCerca {
         return array;
     }
     
-    // ACT4_4_5
+    // ACT4_4_8
     /** Cercar un n�mmero en un array
     * 
     * @param array on cal cercar
     * @param num a cercar
     * @return boolean
     */
-    public static int cercarArray(int[] array, int num) {
+    public static int cercaArray(int[] array, int num) {
         int izq = 0;
         int der = array.length - 1;
 

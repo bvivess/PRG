@@ -8,7 +8,7 @@ public class ACT4_5_7 {
         int[] array = UtilitatsArrays.generaArray(10,1,100), arrayOrdenat;
         
         UtilitatsArrays.mostraArray(array);
-        arrayOrdenat = UtilitatsRecOrdCerca.ordenarArrayBimbolla(array);
+        arrayOrdenat = UtilitatsRecOrdCerca.ordenaArrayBimbolla(array);
         UtilitatsArrays.mostraArray(arrayOrdenat);
     }
 }
