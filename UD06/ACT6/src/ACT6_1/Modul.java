@@ -9,12 +9,8 @@ public class Modul {
     private String nom;
     private int horesSetmanals;
     //
-    private static int comptadorModuls;
+    private static int comptadorModuls=1;
 
-    static {
-        comptadorModuls = 1;
-    }
-    
     // Constructors
     public Modul(String nom, int horesSetmanals) throws Exception {
         if (nom == null || nom.length() == 0){
