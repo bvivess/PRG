@@ -2,12 +2,15 @@ package ACT4_5;
 
 import ACT4_1.UtilitatsArrays;
 import ACT4_3.UtilitatsConsola;
+import java.util.Arrays;
 
 
 public class ACT4_5_9 {
     public static void main(String[] args) {
-        int[] array = UtilitatsRecOrdCerca.ordenaArrayBimbolla(UtilitatsArrays.generaArray(10,1,100));
+        int[] array = UtilitatsArrays.generaArray(10,1,100);
         int num, posicio;
+        
+        Arrays.sort(array);        
         
         UtilitatsArrays.mostraArray(array);
         num = UtilitatsConsola.llegirSencer("Introdueixi un númnero a cercar: ");
