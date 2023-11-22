@@ -44,7 +44,22 @@ public class UtilitatsClasses {
     }
     
     /**
-    * Crear un ArraList 
+     * Transforma un int[] a un ArrayList<Integer>
+     * @param array --> int[]
+     * @return ArrayList<Integer>
+     */
+    public static ArrayList<Integer> arrayToArrayListInt(int[] array) {
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        
+        for (int a : array) {
+            arrayList.add(a);
+        }
+        
+        return arrayList;
+    }
+    
+    /**
+    * Crear un ArrayList 
     *      s'avalua cada element de l'array en l'ArrayList
     *      si l'ArrayList es manté ordenat es poden estalviar 
     *      moltes lectures
