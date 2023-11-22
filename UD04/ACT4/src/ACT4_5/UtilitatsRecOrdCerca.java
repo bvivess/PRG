@@ -71,9 +71,14 @@ public class UtilitatsRecOrdCerca {
      */
     public static int calculaFibonacci(int base) {
         System.out.print(" >" + base);
-        if (base <= 1) {
+        if (base == 0) {
+            System.out.print(" ***" + (base));
             return base;
-        } else {
+        } else if (base == 1) {
+            System.out.print(" ***" + (base));
+            return base;
+        }
+        else {
             System.out.print(" **" + (base-1) + " **" + (base-2));
             return calculaFibonacci(base - 1) + calculaFibonacci(base - 2);
         }
