@@ -66,7 +66,7 @@ public class UtilitatsRecOrdCerca {
     /**
      * Calcula el fibonacci d'un nombre.
      *
-     * @param base de càlciul de la sèrie
+     * @param base de c�lcul de la serie
      * @return el fibonacci d'un numero
      */
     public static int calculaFibonacci(int base) {
@@ -195,5 +195,3 @@ public class UtilitatsRecOrdCerca {
         }
     }
 }
-
-
