@@ -7,6 +7,7 @@ import java.util.Arrays;
 
 public class ACT4_5_9 {
     public static void main(String[] args) {
+        // array aleatori ordenat
         int[] array = UtilitatsArrays.generaArray(10,1,100);
         int num, posicio;
         
