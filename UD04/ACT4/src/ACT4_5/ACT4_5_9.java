@@ -4,6 +4,12 @@ import ACT4_1.UtilitatsArrays;
 import ACT4_3.UtilitatsConsola;
 import java.util.Arrays;
 
+/**
+ * Crea un mètode anomenat 'CercarArrayRecursiu' dins la classe 'UtilitatsRecOrdCerca'.
+ * Ara aplicant un mètode recursiu.
+ * 
+ * @author T.Vives
+ */
 
 public class ACT4_5_9 {
     public static void main(String[] args) {

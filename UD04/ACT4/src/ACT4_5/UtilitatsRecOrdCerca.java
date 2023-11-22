@@ -39,11 +39,11 @@ public class UtilitatsRecOrdCerca {
      * @param n de càlcul de la sèrie
      * @return la suma a partir d'un donat
      */
-    public static int sumaNaturals(int n) {
+    public static int sumaSuma(int n) {
         if (n == 0) {
             return 0;
         } else {
-            return n + sumaNaturals(n - 1);
+            return n + sumaSuma(n - 1);
         }
     }
 
@@ -70,9 +70,11 @@ public class UtilitatsRecOrdCerca {
      * @return el fibonacci d'un numero
      */
     public static int calculaFibonacci(int base) {
+        System.out.print(" >" + base);
         if (base <= 1) {
             return base;
         } else {
+            System.out.print(" **" + (base-1) + " **" + (base-2));
             return calculaFibonacci(base - 1) + calculaFibonacci(base - 2);
         }
     }  
