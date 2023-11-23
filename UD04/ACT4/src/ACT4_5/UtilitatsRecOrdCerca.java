@@ -10,9 +10,12 @@ public class UtilitatsRecOrdCerca {
      * @return la base elevat a l'exponent
      */
     public static double calculaPotencia(int base, int exponent) {
+        System.out.print(" >" + base + "^" + exponent);
         if (exponent == 1) {
+            System.out.print(" ***" + (base));
             return base;
         } else {
+            System.out.print(" *2x" + (base) + "^" + (exponent-1));
             return (base * calculaPotencia(base, exponent - 1));
         }
     } 
@@ -79,7 +82,7 @@ public class UtilitatsRecOrdCerca {
             return base;
         }
         else {
-            System.out.print(" **" + (base-1) + " **" + (base-2));
+            System.out.print(" *" + (base-1) + " *" + (base-2));
             return calculaFibonacci(base - 1) + calculaFibonacci(base - 2);
         }
     }  

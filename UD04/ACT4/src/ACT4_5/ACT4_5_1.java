@@ -14,7 +14,9 @@ public class ACT4_5_1 {
     public static void main(String[] args) {
         int base = UtilitatsConsola.llegirSencer("Introdueixi la base: ");
         int exponent = UtilitatsConsola.llegirSencer("Introdueixi l'exponent: ");
-
-        System.out.println(UtilitatsRecOrdCerca.calculaPotencia(base, exponent));
+        
+        System.out.print("--> " + base + "^" + exponent);
+        System.out.print(" (R) " + UtilitatsRecOrdCerca.calculaPotencia(base, exponent));
+        System.out.println("");
     }
 }
