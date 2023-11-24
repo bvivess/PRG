@@ -28,9 +28,10 @@ public class ACT5_1_3 {
         }
     }
 
-    private static void llegirArxiu(String nombreArchivo) throws IOException {
-        try (BufferedReader br = new BufferedReader(new FileReader(nombreArchivo))) {
+    private static void llegirArxiu(String arxiu) throws IOException {
+        try (BufferedReader br = new BufferedReader(new FileReader(arxiu))) {
             String linea;
+            
             while ((linea = br.readLine()) != null) {
                 System.out.println(linea);
             }
@@ -39,6 +40,7 @@ public class ACT5_1_3 {
 
     private static boolean okArxiu(String pathArxiu) {
         Path path = Paths.get(pathArxiu);
+        
         return Files.exists(path) && Files.isRegularFile(path);
     }
 }
