@@ -5,6 +5,7 @@ package ACT5_1;
  * @author T.Vives
  */
 public class ACT5_1_1 {
+    
     public static void main(String[] args) {
         int a=UtilitatsConsola.llegirSencer("Introdueixi el divident: ");
         int b=UtilitatsConsola.llegirSencer("Introdueixi el divisor: ");
