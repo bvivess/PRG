@@ -20,7 +20,7 @@ public class ACT5_1_3 {
             if (okArxiu(pathArxiu)) {
                 llegirArxiu(pathArxiu);
             } else {
-                throw new IOException( "Error al obrir l'axiu" );
+                throw new IOException( "Error a l'obrir l'axiu" );
             }
         } catch (IOException e) {
             System.out.println("L'arxiu " + pathArxiu + " no existe.");
