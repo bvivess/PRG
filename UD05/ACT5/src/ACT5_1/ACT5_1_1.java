@@ -1,5 +1,7 @@
 package ACT5_1;
 
+import java.util.Scanner;
+
 /**
  *
  * @author T.Vives
@@ -7,15 +9,22 @@ package ACT5_1;
 public class ACT5_1_1 {
     
     public static void main(String[] args) {
-        int a=UtilitatsConsola.llegirSencer("Introdueixi el divident: ");
-        int b=UtilitatsConsola.llegirSencer("Introdueixi el divisor: ");
+        Scanner scanner = new Scanner(System.in);
+        int a, b;
         
         try {
+            System.out.print("Introdueixi el divident:");
+            a = scanner.nextInt();
+            System.out.print("Introdueixi el divisor:");
+            b = scanner.nextInt();
+            
             int c = a / b;
             System.out.println("La divisió és: " + c);
         } catch (Exception e) {
             // System.out.println(e.getMessage());
             System.out.println("No és possible realitzar la divisió per 0");
+        } finally {
+            scanner.close();
         }
     }
 }

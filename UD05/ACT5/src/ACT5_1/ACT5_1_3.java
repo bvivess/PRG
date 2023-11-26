@@ -7,7 +7,7 @@ import java.util.InputMismatchException;
  *
  * @author T,Vives
  */
-public class ACT5_1_3B {
+public class ACT5_1_3 {
 
     public static void main(String[] args) {
         // Utilitza try-with-resources per obrir el Scanner per a lectura de teclat
