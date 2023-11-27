@@ -8,14 +8,35 @@ public class Institut {
 
     public static void main (String[] args) {
         try {
-            Cicle cicle = new Cicle("Desenvolupament Aplicacions Web", 25);
-            Modul modul1 = new Modul("Programació", 1, 7);
-            Modul modul2 = new Modul("Gestió de Base de Dades",cicle.getIdCicle(), 8);
-            Modul modul3 = new Modul("Llenguatge de Marques",cicle.getIdCicle(), 4);
-            Modul modul4 = new Modul("Sistemes d'Informació", cicle.getIdCicle(), 8);
-            Modul modul5 = new Modul("Entorns de Desenvolupament", cicle.getIdCicle(), 4);
+            // Cicle
+            Cicle cicle = new Cicle();
+            cicle.idCicle = 1; cicle.nom = "Desenvolupament Aplicacions Web"; cicle.numAlumnes = 25;
             
-            System.out.println(cicle.mostraCicle() );
+            // Mòduls
+            Modul modul1 = new Modul();
+            modul1.idModul = 1; modul1.nom = "Programació"; modul1.idCicle=1; modul1.horesSetmanals=7;
+            Modul modul2 = new Modul();
+            modul2.idModul = 2; modul2.nom = "Gestió de Base de Dades"; modul2.idCicle=1; modul2.horesSetmanals=8;
+            Modul modul3 = new Modul();
+            modul3.idModul = 3; modul3.nom = "Llenguatge de Marques"; modul3.idCicle=1; modul3.horesSetmanals=4;
+            Modul modul4 = new Modul();
+            modul4.idModul = 4; modul4.nom = "Sistemes d'Informació"; modul4.idCicle=1; modul4.horesSetmanals=7;
+            Modul modul5 = new Modul();
+            modul5.idModul = 5; modul4.nom = "Entorns de Desenvolupament"; modul5.idCicle=1; modul5.horesSetmanals=3;
+            // Falta afegir els mòduls d'ASIX i SMX
+            // ...
+            
+            // Mostrar
+            System.out.println(cicle.mostraCicle());
+            System.out.println(modul1.mostraModul(cicle.idCicle));
+            System.out.println(modul2.mostraModul(cicle.idCicle));
+            System.out.println(modul3.mostraModul(cicle.idCicle));
+            System.out.println(modul4.mostraModul(cicle.idCicle));
+            System.out.println(modul2.mostraModul(cicle.idCicle));
+            // Falta afegir els mòduls d'ASIX i SMX
+            // ...           
+
+            
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

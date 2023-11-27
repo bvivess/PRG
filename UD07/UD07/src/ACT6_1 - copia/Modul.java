@@ -1,41 +1,36 @@
-package ACT6_2;
+package ACT6_1;
 
 /**
  *
  * @author T.Vives
  */
 public class Modul {
-    public int idModul;
-    public String nom;
-    public int horesSetmanals;
+    private  int idModul;
+    private String nom;
+    private int idCicle;
+    private int horesSetmanals;
     //
-    public static int comptadorModuls=0;
+    private static int comptadorModuls=1;
 
-    // Constructors
-    // Bloc estàtic per incrementar el comptador
-    static {
-        comptadorModuls++;
-    }
-    public Modul() {}
-    
-    public Modul(String nom, int horesSetmanals) throws Exception {
-        if (nom == null || nom.length() == 0){
-            throw new Exception("El nom no pot ser nul");
-        }
-        
-        this.idModul=getComptadorModuls();
+    // Constructor
+    public Modul(String nom, int idCicle, int horesSetmanals) {    
+        this.idModul = getComptadorModuls();
         this.nom = nom;
+        this.idCicle = idCicle;
         this.horesSetmanals = horesSetmanals;
-        
     }
-    
-    // Getters i Setters
+
+    // Getters
     public int getIdModul() {
         return idModul;
     }
 
     public String getNom() {
         return nom;
+    }
+
+    public int getIdCicle() {
+        return idCicle;
     }
 
     public int getHoresSetmanals() {
@@ -46,6 +41,7 @@ public class Modul {
         return comptadorModuls++;
     }
 
+    // Setters
     public void setIdModul(int idModul) {
         this.idModul = idModul;
     }
@@ -54,8 +50,12 @@ public class Modul {
         this.nom = nom;
     }
 
+    public void setIdCicle(int idCicle) {
+        this.idCicle = idCicle;
+    }
+
     public void setHoresSetmanals(int horesSetmanals) {
         this.horesSetmanals = horesSetmanals;
     }
-
+    
 }
