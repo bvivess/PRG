@@ -4,7 +4,7 @@ import ACT4_3.UtilitatsConsola;
 
 /**
  * Crea un mètode anomenat 'calculaMCD'  dins la classe 'UtilitatsRecOrdCerca'.
- * Ha de rebre 2 números i l'ha de calcular el mínim comú divisor entre aquests.
+ * Ha de rebre 2 números i l'ha de calcular el màxim comú divisor (MCD) entre aquests.
  * 
  * @author T.Vives
  */
@@ -14,6 +14,6 @@ public class ACT4_5_4 {
         int a = UtilitatsConsola.llegirSencer("Introdueixi un número sencer: ");
         int b = UtilitatsConsola.llegirSencer("Introdueixi un número sencer: ");
 
-        System.out.print(UtilitatsRecOrdCerca.calculaMCD(a,b) + " ");
+        System.out.println("El MCD és: " + UtilitatsRecOrdCerca.calculaMCD(a,b) + " ");
     }
 }

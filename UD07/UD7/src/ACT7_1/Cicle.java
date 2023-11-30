@@ -1,4 +1,4 @@
-package ACT6_2;
+package ACT7_1;
 
 import java.util.ArrayList;
 
@@ -31,7 +31,7 @@ public class Cicle {
 
     // Mòduls
     public void afegeixModul(Modul nouModul) {
-        moduls.add(nouModul);
+        this.moduls.add(nouModul);
     }
     
     public String mostraCicle() {
@@ -85,7 +85,7 @@ public class Cicle {
     }
 
     public static int getComptadorCicles() {
-        return comptadorCicles++;
+        return Cicle.comptadorCicles++;
     }
 
     public void setIdCicle(int idCicle) {

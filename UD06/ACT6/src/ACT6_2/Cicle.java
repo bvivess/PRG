@@ -12,14 +12,9 @@ public class Cicle {
     public int numAlumnes;
     public ArrayList<Modul> moduls;
     //
-    public static int comptadorCicles = 0;
+    public static int comptadorCicles=1;
 
-    // Mòduls
-    // Bloc estàtic per incrementar el comptador
-    static {
-        comptadorCicles++;
-    }
-    
+    // Mòduls    
     public void afegeixModul(Modul modul) {
         moduls.add(modul);
     }
@@ -28,26 +23,25 @@ public class Cicle {
         String text;
         
         text = "Cicle " + "ID=" + idCicle + ", nom=" + nom + ", numAlumnes=" + numAlumnes + "; Mòduls: {";
-        for (Modul m: moduls) {
-            text = text + m.getIdModul() + "-" + m.getNom() + " ";
+        for (Modul modul: moduls) {
+            text = text + modul.idModul + "-" + modul.nom + " ";
         }
         text = text +"}";
         
         return text;
     }   
     
-    // *****************************
-    private int cercarModul(String nom) {
+    private int cercaModul(String nom) {
         for (int i=0; i<moduls.size(); i++) {
-            if (moduls.get(i).getNom().equalsIgnoreCase(nom)) {
+            if (moduls.get(i).nom.equalsIgnoreCase(nom)) {
                 return i;
             }
         }
         return -1;
     }
  
-    public boolean eliminarModul(String nom) {
-        int i = cercarModul(nom);
+    public boolean eliminaModul(String nom) {
+        int i = cercaModul(nom);
         
         if (i >= 0) {
             moduls.remove(i);

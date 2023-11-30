@@ -1,4 +1,4 @@
-package ACT6_1;
+package ACT7_1;
 
 /**
  *
@@ -7,30 +7,29 @@ package ACT6_1;
 public class Modul {
     private  int idModul;
     private String nom;
-    private int idCicle;
     private int horesSetmanals;
     //
     private static int comptadorModuls=1;
 
-    // Constructor
-    public Modul(String nom, int idCicle, int horesSetmanals) {    
-        this.idModul = getComptadorModuls();
+    // Constructors
+    public Modul(String nom, int horesSetmanals) throws Exception {
+        if (nom == null || nom.length() == 0){
+            throw new Exception("El nom no pot ser nul");
+        }
+        
+        this.idModul=getComptadorModuls();
         this.nom = nom;
-        this.idCicle = idCicle;
         this.horesSetmanals = horesSetmanals;
+        
     }
-
-    // Getters
+    
+    // Getters i Setters
     public int getIdModul() {
         return idModul;
     }
 
     public String getNom() {
         return nom;
-    }
-
-    public int getIdCicle() {
-        return idCicle;
     }
 
     public int getHoresSetmanals() {
@@ -41,7 +40,6 @@ public class Modul {
         return comptadorModuls++;
     }
 
-    // Setters
     public void setIdModul(int idModul) {
         this.idModul = idModul;
     }
@@ -50,12 +48,8 @@ public class Modul {
         this.nom = nom;
     }
 
-    public void setIdCicle(int idCicle) {
-        this.idCicle = idCicle;
-    }
-
     public void setHoresSetmanals(int horesSetmanals) {
         this.horesSetmanals = horesSetmanals;
     }
-    
+
 }

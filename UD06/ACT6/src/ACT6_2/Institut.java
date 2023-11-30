@@ -10,7 +10,7 @@ public class Institut {
 
     public static void main (String[] args) {
         try {
-            // Mòduls
+            // Mòduls DAW
             Modul modul1 = new Modul();
             modul1.idModul = Modul.comptadorModuls++; modul1.nom = "Programació"; modul1.horesSetmanals=7;
             Modul modul2 = new Modul();
@@ -21,24 +21,27 @@ public class Institut {
             modul4.idModul = Modul.comptadorModuls++; modul4.nom = "Sistemes d'Informació"; modul4.horesSetmanals=7;
             Modul modul5 = new Modul();
             modul5.idModul = Modul.comptadorModuls++; modul5.nom = "Entorns de Desenvolupament"; modul5.horesSetmanals=3;
-            // Falta afegir els mòduls d'ASIX i SMX
+            // Mòduls d'ASIX
+            // ...
+            // Mòduls d'SMX
             // ...
             
             // Cicle DAW
             Cicle cicle1 = new Cicle();
             cicle1.idCicle = Cicle.comptadorCicles++; cicle1.nom = "Desenvolupament Aplicacions Web"; cicle1.numAlumnes = 25; cicle1.moduls = new ArrayList<Modul>();
-                
+            
             cicle1.afegeixModul(modul1);
             cicle1.afegeixModul(modul2);
             cicle1.afegeixModul(modul3);
             cicle1.afegeixModul(modul4);
             cicle1.afegeixModul(modul5);
             
+            // Cicle ASIX
             Cicle cicle2 = new Cicle();
             cicle2.idCicle = Cicle.comptadorCicles++; cicle2.nom = "Administració de sistemes en xarxa"; cicle2.numAlumnes = 25; cicle2.moduls = new ArrayList<Modul>();
             // ...
             
-            // Falta afegir el cicle d'SMX
+            // Cicle SMX
             // ...
 
             // Mostrar

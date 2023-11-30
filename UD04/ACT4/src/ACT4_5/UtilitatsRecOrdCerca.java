@@ -52,7 +52,8 @@ public class UtilitatsRecOrdCerca {
 
     // ACT4_5_4
     /**
-     * Calcula el mínim comú divisor entre 2 números
+     * Calcula el màxim comú divisor entre 2 números: 
+     * https://www.youtube.com/watch?v=Aa7gIGtGARs
      *
      * @param a,b 
      * @return el MCD d'a i b

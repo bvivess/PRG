@@ -12,7 +12,7 @@ public class Institut {
             Cicle cicle = new Cicle();
             cicle.idCicle = 1; cicle.nom = "Desenvolupament Aplicacions Web"; cicle.numAlumnes = 25;
             
-            // Mòduls
+            // Mòduls DAW
             Modul modul1 = new Modul();
             modul1.idModul = 1; modul1.nom = "Programació"; modul1.idCicle=1; modul1.horesSetmanals=7;
             Modul modul2 = new Modul();
@@ -23,7 +23,9 @@ public class Institut {
             modul4.idModul = 4; modul4.nom = "Sistemes d'Informació"; modul4.idCicle=1; modul4.horesSetmanals=7;
             Modul modul5 = new Modul();
             modul5.idModul = 5; modul4.nom = "Entorns de Desenvolupament"; modul5.idCicle=1; modul5.horesSetmanals=3;
-            // Falta afegir els mòduls d'ASIX i SMX
+            // Mòduls d'ASIX
+            // ...
+            // Mòduls d'SMX
             // ...
             
             // Mostrar
