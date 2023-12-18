@@ -1,4 +1,4 @@
-package ACT6_1;
+package ACT6_1A;
 
 /**
  *
@@ -30,13 +30,13 @@ public class Institut {
             
             // Mostrar
             System.out.println(cicle.mostraCicle());
-            System.out.println(modul1.mostraModul(cicle.idCicle));
-            System.out.println(modul2.mostraModul(cicle.idCicle));
-            System.out.println(modul3.mostraModul(cicle.idCicle));
-            System.out.println(modul4.mostraModul(cicle.idCicle));
-            System.out.println(modul2.mostraModul(cicle.idCicle));
+            System.out.println("\t"+modul1.mostraModul(cicle.idCicle));
+            System.out.println("\t"+modul2.mostraModul(cicle.idCicle));
+            System.out.println("\t"+modul3.mostraModul(cicle.idCicle));
+            System.out.println("\t"+modul4.mostraModul(cicle.idCicle));
+            System.out.println("\t"+modul2.mostraModul(cicle.idCicle));
             // Falta afegir els mòduls d'ASIX i SMX
-            // ...           
+            // ...
 
             
         } catch (Exception e) {

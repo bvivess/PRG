@@ -1,4 +1,4 @@
-package ACT6_2;
+package ACT6_1B;
 
 import java.util.ArrayList;
 
@@ -15,14 +15,12 @@ public class Cicle {
     public static int comptadorCicles=1;
 
     // Mòduls    
-    public void afegeixModul(Modul modul) {
-        moduls.add(modul);
-    }
-    
     public String mostraCicle() {
         String text;
         
-        text = "Cicle " + "ID=" + idCicle + ", nom=" + nom + ", numAlumnes=" + numAlumnes + "; Mòduls: {";
+        text = "Cicle: " + "ID=" + idCicle + ", nom=" + nom + ", numAlumnes=" + numAlumnes + 
+               "; \n\t" +
+               "Mòduls: {";
         for (Modul modul: moduls) {
             text = text + modul.idModul + "-" + modul.nom + " ";
         }
@@ -39,7 +37,11 @@ public class Cicle {
         }
         return -1;
     }
- 
+    
+    public void afegeixModul(Modul modul) {
+        moduls.add(modul);
+    }
+    
     public boolean eliminaModul(String nom) {
         int i = cercaModul(nom);
         

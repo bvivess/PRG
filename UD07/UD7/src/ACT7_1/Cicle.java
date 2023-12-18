@@ -37,7 +37,9 @@ public class Cicle {
     public String mostraCicle() {
         String text;
         
-        text = "Cicle " + "ID=" + idCicle + ", nom=" + nom + ", numAlumnes=" + numAlumnes + "; Mòduls: {";
+        text = "Cicle " + "ID=" + idCicle + ", nom=" + nom + ", numAlumnes=" + numAlumnes + 
+                "; \n\t" +
+                "Mòduls: {";
         for (Modul m: moduls) {
             text = text + m.getIdModul() + "-" + m.getNom() + " ";
         }
