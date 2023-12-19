@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class ACT5_1_4B {
+public class ACT5_1_5B {
 
     public static void main(String[] args) {
         // S'utilitza un recurs que implementa la interfície AutoCloseable (per exemple, BufferedReader)

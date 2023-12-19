@@ -10,17 +10,31 @@ import java.util.InputMismatchException;
 public class ACT5_1_3 {
 
     public static void main(String[] args) {
-        // Utilitza try-with-resources per obrir el Scanner per a lectura de teclat
-        try (Scanner scanner = new Scanner(System.in)) {
-            int numero;
+        Scanner scanner = new Scanner(System.in);
+        int[] array = {0,1,2,3,4,5,6,7,8,9};
+        int posicio;
+        
+        try {
+            System.out.print("Introdueixi la posició de l'array a llegir (0-" + (array.length-1) + "): ");
+            posicio = scanner.nextInt();
             
-            System.out.print("Introdueixi un número sencer: ");
-            numero = scanner.nextInt();
-            System.out.println("Ha introduit: " + numero);
-        } catch (InputMismatchException e) {
+            mostraArray(array, posicio);
+     
+        } catch (Exception e) {
             // Captura i maneja l'excepció si l'usuari no introdueix un enter
-            System.err.println("Error: ha d'introduir número sencer.");
+            System.err.println("Error general en el 'main'");
+        } finally {
+            System.err.println("Finally en el 'main'");
         }
     }
+
+    public static void mostraArray(int[] array, int posicio) {
+        try {
+            System.out.println(array[posicio]);
+        } catch (Exception e) {
+            System.out.println("Excepción capturada en el mètode 'mostraArray: " + e.getMessage());
+        }
+    }
+
 }
 

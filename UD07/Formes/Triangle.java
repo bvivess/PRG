@@ -20,4 +20,5 @@ public class Triangle extends Forma {
     public double calcularPerimetre() {
         return (base * 3);
     }
+	
 }

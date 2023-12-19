@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class ACT5_1_4A {
+public class ACT5_1_5A {
     public static void main(String[] args) {
         BufferedReader br = null;
 
