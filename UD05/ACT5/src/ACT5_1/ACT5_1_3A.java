@@ -7,7 +7,7 @@ import java.util.InputMismatchException;
  *
  * @author T,Vives
  */
-public class ACT5_1_3 {
+public class ACT5_1_3A {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
