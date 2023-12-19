@@ -5,6 +5,10 @@ package ACT6_0B;
  * @author T.Vives
  */
 public class Main {
+    
+    /*
+    https://www.matematicasonline.es/primeroeso/ejercicios/areas.pdf
+    */
 
    public static void main(String[] args) {
         Rectangle r = new Rectangle();
