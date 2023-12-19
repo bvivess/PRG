@@ -11,6 +11,7 @@ public class Persona {
     public String llinatge1;
     public String llinatge2;
     public int edat;
+    
     // Mètodes
     public void mostraPersona() {
             System.out.println("Nom: " + nom + " " + llinatge1 + " " + llinatge2 + "Edat: " + edat);

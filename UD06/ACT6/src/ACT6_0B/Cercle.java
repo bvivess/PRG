@@ -6,11 +6,13 @@ package ACT6_0B;
  */
 public class Cercle {
     // Atributs
-    double radi;
+    public double radi;
+    
     // Mètodes
     public double calcularArea() {
         return Math.PI * Math.pow(radi,2);
     }
+    
     public double calcularPerimetre() {
         return 2 * (Math.PI + radi);
     }
