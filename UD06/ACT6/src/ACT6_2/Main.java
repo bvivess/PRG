@@ -24,7 +24,7 @@ public class Main {
 
             // Realizar transacciones
             client1.realitzaTransaccio(500.0);
-            client1.realitzaTransaccio((-200.0));
+            client1.realitzaTransaccio(-200.0);
 
             // Mostrar saldo final
             System.out.println("Client " + client1.nom + " " + client1.llinatge1 + " amb SALDO " + 
