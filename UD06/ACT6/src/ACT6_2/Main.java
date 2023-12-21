@@ -15,14 +15,14 @@ public class Main {
             compte1.dc = "31";
             compte1.numeroCompte = "1234567890";
 
-            // // Declarar i instanciar un client
+            // Declarar i instanciar un client
             Client client1 = new Client();
             client1.nom = "Joan";
             client1.llinatge1 = "Soler";
             client1.llinatge2 = "Matemales";
             client1.compte = compte1;
 
-            // Realizar transacciones
+            // Realitzar transaccions
             client1.realitzaTransaccio(500.0);
             client1.realitzaTransaccio(-200.0);
 
