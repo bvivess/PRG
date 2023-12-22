@@ -28,5 +28,10 @@ public class Client {
                     compte2.reintegrar(Math.abs(quantitat));  // valor en positiu de 'quantitat'
         }
     }
+    
+    public void mostraSaldo() {
+        for (Compte compte:comptes) 
+            System.out.println(compte.banc + compte.banc + "-" + compte.oficina + "-" + compte.dc + "-" + compte.numCompte + ": " + compte.saldo);
+    }
 }
 

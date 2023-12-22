@@ -42,7 +42,8 @@ public class Main {
             client1.realitzaTransaccio(compte2,-500.0);
 
             // Mostrar saldo final
-            System.out.println("Client " + client1.nom + " " + client1.llinatge1 + " amb SALDO " );
+            System.out.println("Client " + client1.nom + " " + client1.llinatge1 + " " + client1.llinatge2 + " amb SALDO:" );
+            client1.mostraSaldo();
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
