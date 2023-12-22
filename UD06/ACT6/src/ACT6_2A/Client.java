@@ -1,4 +1,4 @@
-package ACT6_2;
+package ACT6_2A;
 
 /**
  *

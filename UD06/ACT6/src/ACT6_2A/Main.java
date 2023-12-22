@@ -1,4 +1,4 @@
-package ACT6_2;
+package ACT6_2A;
 
 /**
  *
@@ -13,7 +13,7 @@ public class Main {
             compte1.banc = "0149";
             compte1.oficina = "0001";
             compte1.dc = "31";
-            compte1.numeroCompte = "1234567890";
+            compte1.numCompte = "1234567890";
 
             // Declarar i instanciar un client
             Client client1 = new Client();
