@@ -33,7 +33,6 @@ public class Main {
             client1.nom = "Joan";
             client1.llinatge1 = "Soler";
             client1.llinatge2 = "Matemales";
-            client1.comptes = new ArrayList<Compte>();
             client1.comptes = comptes;  // atenció a aquesta asignació per referència !!
 
             // Realitzar transaccions
