@@ -14,20 +14,19 @@ public class Client {
     public ArrayList<Compte> comptes;
 
     // Mètodes
-    public void realitzaTransaccio(String banc, String oficina, String dc, String numCompte, double quantitat) {
-        String compteComplet1 = banc+oficina+dc+numCompte;
+    public void realitzaTransaccio(Compte compte1, double quantitat) {
+        String compteComplet1 = compte1.banc + compte1.oficina + compte1.dc + compte1.numCompte;
         String compteComplet2 = "";
         // ha de modificar el saldo del compte del client
         
-        for (Compte compte:comptes) {
-            compteComplet2 = compte.banc+compte.oficina+compte.dc+compte.numCompte;
+        for (Compte compte2:comptes) {
+            compteComplet2 = compte2.banc+compte2.oficina+compte2.dc+compte2.numCompte;
             if (compteComplet1.equalsIgnoreCase(compteComplet2))
                 if (quantitat > 0)
-                    compte.ingresar(quantitat);
+                    compte2.ingresar(quantitat);
                 else if (quantitat < 0) 
-                    compte.reintegrar(Math.abs(quantitat));  // valor en positiu de 'quantitat'
+                    compte2.reintegrar(Math.abs(quantitat));  // valor en positiu de 'quantitat'
         }
-
     }
 }
 

@@ -12,13 +12,21 @@ public class Main {
     public static void main(String[] args) {
         try {
             // Declarar i instanciar un compte bancari
-            Compte compte = new Compte();
-            compte.banc = "0001";
-            compte.oficina = "0001";
-            compte.dc = "01";
-            compte.numCompte = "0000000002";
             ArrayList<Compte> comptes = new ArrayList<>();
-            comptes.add(compte);
+            Compte compte1 = new Compte();
+            compte1.banc = "0001";
+            compte1.oficina = "0001";
+            compte1.dc = "01";
+            compte1.numCompte = "0000000001";
+            comptes.add(compte1);
+            
+            // Declarar i instanciar un compte bancari
+            Compte compte2 = new Compte();
+            compte2.banc = "0001";
+            compte2.oficina = "0001";
+            compte2.dc = "01";
+            compte2.numCompte = "0000000002";
+            comptes.add(compte2);
 
             // Declarar i instanciar un client
             Client client1 = new Client();
@@ -29,8 +37,10 @@ public class Main {
             client1.comptes = comptes;  // atenció a aquesta asignació per referència !!
 
             // Realitzar transaccions
-            client1.realitzaTransaccio(compte.banc, compte.oficina, compte.dc, compte.numCompte,500.0);
-            client1.realitzaTransaccio(compte.banc, compte.oficina, compte.dc, compte.numCompte,-200.0);
+            client1.realitzaTransaccio(compte1,500.0);
+            client1.realitzaTransaccio(compte1,-200.0);
+            client1.realitzaTransaccio(compte2,1000.0);
+            client1.realitzaTransaccio(compte2,-500.0);
 
             // Mostrar saldo final
             System.out.println("Client " + client1.nom + " " + client1.llinatge1 + " amb SALDO " );
@@ -38,6 +48,5 @@ public class Main {
             System.err.println(e.getMessage());
         }
     }
-    
 }
 
