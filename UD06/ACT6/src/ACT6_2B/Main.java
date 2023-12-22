@@ -1,6 +1,5 @@
 package ACT6_2B;
 
-import ACT6_2A.*;
 import java.util.ArrayList;
 
 /**
