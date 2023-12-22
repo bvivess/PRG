@@ -4,6 +4,6 @@ package ACT6_0B;
  *
  * @author T.Vives
  */
-public class Triangle {
+public class Pentagon {
     
 }

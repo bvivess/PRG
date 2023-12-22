@@ -4,18 +4,17 @@ package ACT6_0B;
  *
  * @author T.Vives
  */
-public class Rombe {
+public class Quadrat {
     // Atributs
-    public double base;
-    public double apotema;
+    public double costat;
     
     // Mètodes
     public double calcularArea() {
-        return (5 * calcularPerimetre() * apotema)  / 2;
+        return Math.PI * Math.pow(costat,2);
     }
     
     public double calcularPerimetre() {
-        return 5 * base;
+        return 4 * costat;
     }
     
 }
