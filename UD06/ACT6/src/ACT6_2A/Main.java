@@ -10,10 +10,10 @@ public class Main {
         try {
             // Declarar i instanciar un compte bancari
             Compte compte1 = new Compte();
-            compte1.banc = "0149";
+            compte1.banc = "0001";
             compte1.oficina = "0001";
-            compte1.dc = "31";
-            compte1.numCompte = "1234567890";
+            compte1.dc = "01";
+            compte1.numCompte = "0000000001";
 
             // Declarar i instanciar un client
             Client client1 = new Client();
