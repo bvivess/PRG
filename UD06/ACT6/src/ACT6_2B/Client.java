@@ -15,9 +15,9 @@ public class Client {
 
     // Mètodes
     public void realitzaTransaccio(Compte compte1, double quantitat) {
+        // ha de modificar el saldo del compte del client
         String compteComplet1 = compte1.banc + compte1.oficina + compte1.dc + compte1.numCompte;
         String compteComplet2 = "";
-        // ha de modificar el saldo del compte del client
         
         for (Compte compte2:comptes) {
             compteComplet2 = compte2.banc+compte2.oficina+compte2.dc+compte2.numCompte;
@@ -30,6 +30,7 @@ public class Client {
     }
     
     public void mostraSaldo() {
+        // ha de mostrar cada un dels comptes del client amb els seus saldos
         for (Compte compte:comptes) 
             System.out.println(compte.banc + compte.banc + "-" + compte.oficina + "-" + compte.dc + "-" + compte.numCompte + ": " + compte.saldo);
     }
