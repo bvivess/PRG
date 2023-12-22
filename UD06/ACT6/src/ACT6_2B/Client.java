@@ -23,9 +23,9 @@ public class Client {
             compteComplet2 = compte2.banc+compte2.oficina+compte2.dc+compte2.numCompte;
             if (compteComplet1.equalsIgnoreCase(compteComplet2))
                 if (quantitat > 0)
-                    compte2.ingresar(quantitat);
+                    compte2.ingresa(quantitat);
                 else if (quantitat < 0) 
-                    compte2.reintegrar(Math.abs(quantitat));  // valor en positiu de 'quantitat'
+                    compte2.reintegra(Math.abs(quantitat));  // valor en positiu de 'quantitat'
         }
     }
     
