@@ -3,6 +3,13 @@ package ACT8_0C;
 /**
  *
  * @author T.Vives
+ * 
+ * Exemple de Herència Jeràrquica
+ *     Vehicle
+ *     ^    ^
+ *     |    |
+ * Cotxe    Moto
+ * 
  */
 // Clase principal
 public class Main {

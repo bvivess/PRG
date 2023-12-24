@@ -3,6 +3,13 @@ package ACT8_0A;
 /**
  *
  * @author T:Vives
+ * 
+ * Exemple de Herència Simple
+ *     Persona
+ *        ^ 
+ *        |
+ *    Estudiant
+ * 
  */
 public class Main {
     public static void main(String[] args) {

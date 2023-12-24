@@ -3,6 +3,16 @@ package ACT8_0B;
 /**
  *
  * @author T.Vives
+ * 
+ * Exemple de Herència Multinivell:
+ *     Animal
+ *        ^ 
+ *        |
+ *     Mamifer
+ *        ^ 
+ *        |
+ *       Ca
+ * 
  */
 // Clase principal
 public class Main {
