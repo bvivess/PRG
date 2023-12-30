@@ -1,5 +1,20 @@
 package com.example;
 
+/**
+ *
+ * @author Oracle
+ * 
+ * Exemple de Herència Multinivell:
+ *            Employee
+ *        ^      ^      ^
+ *        |      |      |
+ *     Manager   Admin  Engineer
+ *        ^ 
+ *        |
+ *      Director
+ * 
+ */
+
 import com.example.domain.Employee;
 import com.example.domain.Engineer;
 import com.example.domain.Manager;
