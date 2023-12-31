@@ -4,7 +4,7 @@ package ACT9_0A;
  *
  * @author winadmin
  */
-public class Android extends Telefono  implements Validar{
+public class Android extends Telefono implements Validar{
     private String patronTeclado;
  
     public Android(String marca, Persona persona) {
@@ -22,10 +22,15 @@ public class Android extends Telefono  implements Validar{
  
     @Override
     public boolean validar(Persona persona) {
-        if (persona.getPatronTeclado()!=null) 
-            return persona.getPatronTeclado().equals(patronTeclado);
-        else
+        if (super.getOnOff())
+            if (persona.getPatronTeclado() != null) 
+                return persona.getPatronTeclado().equals(patronTeclado);
+            else
+                return false;
+        else {
+            System.out.println("Telèfon Android no encès");
             return false;
+        }
     }
 
 }

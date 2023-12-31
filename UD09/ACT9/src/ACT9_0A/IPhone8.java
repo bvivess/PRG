@@ -5,7 +5,7 @@ package ACT9_0A;
  * @author winadmin
  */
 
-public class IPhone8 extends  Telefono implements Validar {
+public class IPhone8 extends Telefono implements Validar {
      private int codigoPin;
      private String patronHuella;
 
@@ -31,15 +31,20 @@ public class IPhone8 extends  Telefono implements Validar {
  
     @Override
     public boolean validar(Persona persona) {
-        if (persona.getHuella()!= null) {
-            return persona.getHuella().equals(patronHuella);
+        if (super.getOnOff()) {
+            if (persona.getHuella()!= null) {
+                return persona.getHuella().equals(patronHuella);
+            }
+
+            if (persona.getCodigoPin()!= null) {
+                return persona.getCodigoPin().equals(codigoPin);
+            }
+            
+            return false;
+        } else {
+            System.out.println("Telèfon IPhone8 no encès");
+            return false; 
         }
-         
-        if (persona.getCodigoPin()!= null) {
-            return persona.getCodigoPin().equals(codigoPin);
-        }
-        
-        return false;    
     }
      
 }

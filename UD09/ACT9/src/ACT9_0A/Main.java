@@ -6,7 +6,6 @@ package ACT9_0A;
  */
 public class Main {
     public static void main(String[] args) {
-        
         // Persona1
         Persona p1 = new Persona();
         p1.setNombre("Juan");
@@ -17,6 +16,7 @@ public class Main {
         p2.setNombre("Gemma");
         p2.setHuella("huella2");
         
+        // Persona3
         Persona p3 = new Persona();
         p3.setNombre("Pedro");
         p3.setPatronTeclado("patron1");
@@ -24,23 +24,28 @@ public class Main {
         // IPhone8
         IPhone8 iphone8 = new IPhone8("Apple",p1);
         iphone8.setPatronHuella("huella1");
+        iphone8.setOnOff(true);
         
         // IPhone10
         IPhone10 iphone10 = new IPhone10("Apple",p2);
         iphone10.setPatronHuella("huella2");
+        iphone10.setOnOff(true);
         
         // Android
         Android android1 = new Android("Samsung", p3);
         android1.setPatronTeclado("patron1");
+        android1.setOnOff(true);
         
         // Validacions
         System.out.println("IPhone8: ");
         System.out.print("\t" + p1.getNombre() + " " + iphone8.validar(p1) + " ");
         System.out.print("\t" + p2.getNombre() + " " + iphone8.validar(p2) + " ");
+        System.out.print("\t" + p3.getNombre() + " " + iphone8.validar(p3) + " ");
         System.out.println();
         System.out.println("IPhone10: ");
         System.out.print("\t" + p1.getNombre() + " " + iphone10.validar(p1) + " ");
         System.out.print("\t" + p2.getNombre() + " " + iphone10.validar(p2) + " ");
+        System.out.print("\t" + p3.getNombre() + " " + iphone8.validar(p3) + " ");
         System.out.println();
         System.out.println("Android: ");
         System.out.print("\t" + p1.getNombre() + " " + android1.validar(p1) + " ");

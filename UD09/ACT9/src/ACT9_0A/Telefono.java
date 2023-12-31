@@ -7,6 +7,7 @@ package ACT9_0A;
 public abstract class Telefono implements Activar{
     private String marca;
     private Persona persona;
+    private boolean onOff;
     
     public Telefono(String marca, Persona persona) {
         super();
@@ -25,16 +26,25 @@ public abstract class Telefono implements Activar{
     public void setPersona(Persona persona) {
         this.persona = persona;
     }
+    public boolean getOnOff() {
+        return onOff;
+    }
+    
+    public void setOnOff(boolean onOff) {
+        this.onOff = onOff;
+    }
     
     @Override
     public void on() {
         System.out.println("telefono encendido");
-         
+        if (onOff)
+            onOff = false;
     }
+    
     @Override
     public void off() {
-     
         System.out.println("telefono apagado");
-         
+        if (onOff)
+            onOff = false;
     }
 }
