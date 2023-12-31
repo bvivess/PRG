@@ -22,8 +22,5 @@ class Cercle extends Figura {
         return Math.PI * Math.pow(radi, 2);
     }
     
-    @Override
-    public String toString() {
-        return super.toString() + " " + ", El costat del cercle és: " + radi;
-    }
+
 }
