@@ -7,17 +7,18 @@ package ACT9_0A;
 public class Persona {
  
     private String nombre;
-    private int codigo;
-    private String patron;
+    // Diferentes sistemas de validación
+    private String codigoPin;
+    private String patronTeclado;
     private String patronRostro;
-    private String huella;
+    private String patronHuella;
  
     public String getHuella() {
-        return huella;
+        return patronHuella;
     }
  
-    public void setHuella(String huella) {
-        this.huella = huella;
+    public void setHuella(String patronHuella) {
+        this.patronHuella = patronHuella;
     }
  
     public String getPatronRostro() {
@@ -28,20 +29,20 @@ public class Persona {
         this.patronRostro = patronRostro;
     }
  
-    public String getPatron() {
-        return patron;
+    public String getPatronTeclado() {
+        return patronTeclado;
     }
  
-    public void setPatron(String patron) {
-        this.patron = patron;
+    public void setPatronTeclado(String patronTeclado) {
+        this.patronTeclado = patronTeclado;
     }
  
-    public int getCodigo() {
-        return codigo;
+    public String getCodigoPin() {
+        return codigoPin;
     }
  
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setCodigoPin(String codigoPin) {
+        this.codigoPin = codigoPin;
     }
  
     public String getNombre() {

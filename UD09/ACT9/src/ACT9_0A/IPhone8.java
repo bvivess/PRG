@@ -6,37 +6,37 @@ package ACT9_0A;
  */
 
 public class IPhone8 extends  Telefono implements Validar {
-     private int codigo;
-     private String huella;
+     private int codigoPin;
+     private String patronHuella;
 
     public IPhone8(String marca, Persona persona) {
         super(marca, persona);
         // TODO Auto-generated constructor stub
     }
-    public String getHuella() {
-        return huella;
+    public String getPatronHuella() {
+        return patronHuella;
     }
  
-    public void setHuella(String huella) {
-        this.huella = huella;
+    public void setPatronHuella(String patronHuella) {
+        this.patronHuella = patronHuella;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public int getCodigoPin() {
+        return codigoPin;
     }
  
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setCodigoPin(int codigoPin) {
+        this.codigoPin = codigoPin;
     }
  
     @Override
     public boolean validar(Persona persona) {
-        if (persona.getHuella()!=null) {
-            return persona.getHuella().equals(huella);
+        if (persona.getHuella()!= null) {
+            return persona.getHuella().equals(patronHuella);
         }
          
-        if (persona.getCodigo()!=0) {
-            return persona.getCodigo()==codigo;
+        if (persona.getCodigoPin()!= null) {
+            return persona.getCodigoPin().equals(codigoPin);
         }
         
         return false;    

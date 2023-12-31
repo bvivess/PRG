@@ -19,19 +19,19 @@ public class Main {
         
         Persona p3 = new Persona();
         p3.setNombre("Pedro");
-        p3.setPatron("patron1");
+        p3.setPatronTeclado("patron1");
         
         // IPhone8
         IPhone8 iphone8 = new IPhone8("Apple",p1);
-        iphone8.setHuella("huella1");
+        iphone8.setPatronHuella("huella1");
         
         // IPhone10
         IPhone10 iphone10 = new IPhone10("Apple",p2);
-        iphone10.setHuella("huella2");
+        iphone10.setPatronHuella("huella2");
         
         // Android
         Android android1 = new Android("Samsung", p3);
-        android1.setPatron("patron1");
+        android1.setPatronTeclado("patron1");
         
         // Validacions
         System.out.println("IPhone8: ");
