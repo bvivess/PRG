@@ -8,7 +8,6 @@ public abstract class Telefono implements Activar{
     private String marca;
     private Persona persona;
     
-    
     public Telefono(String marca, Persona persona) {
         super();
         this.marca = marca;

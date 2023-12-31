@@ -42,6 +42,4 @@ public class IPhone8 extends  Telefono implements Validar {
         return false;    
     }
      
-     
-     
 }

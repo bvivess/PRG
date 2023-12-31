@@ -22,8 +22,10 @@ public class Android extends Telefono  implements Validar{
  
     @Override
     public boolean validar(Persona persona) {
-        // TODO Auto-generated method stub
-        return persona.getPatron().equals(patron);
+        if (persona.getPatron()!=null) 
+            return persona.getPatron().equals(patron);
+        else
+            return false;
     }
 
 }

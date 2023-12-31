@@ -22,12 +22,10 @@ public class IPhone10 extends IPhone8{
     
     @Override
     public boolean validar(Persona persona) {
-         
         if(persona.getPatronRostro()!=null) {
-             
             return persona.getPatronRostro().equals(patronRostro);
         }
-         
+        
         return super.validar(persona);
     } 
 }
