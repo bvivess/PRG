@@ -10,4 +10,9 @@ public abstract class ElectronicDevice {
     
     public abstract void turnOn();
     public abstract void turnOff();
+    
+    @Override
+    public String toString() {
+        return a;
+    }
 }
