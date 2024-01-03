@@ -11,19 +11,19 @@ package ACT8_3;
 // Clase concreta EmpleadoPorHora
 class EmpleatPerComptePropia extends Empleat {
     // Atributo adicional
-    private int horasTrabajadas;
+    private int horesTreballades;
 
     // Constructor
-    public EmpleatPerComptePropia(String nom, String llinatge1, double salarioBase, int horasTrabajadas) {
-        super(nom, llinatge1, salarioBase);
-        this.horasTrabajadas = horasTrabajadas;
+    public EmpleatPerComptePropia(String nom, String llinatge1, double souPerHores, int horesTreballades) {
+        super(nom, llinatge1, souPerHores);
+        this.horesTreballades = horesTreballades;
     }
 
     // Implementación del método abstracto
     @Override
     public double calcularSalari() {
         // El salario total para empleados por hora depende de las horas trabajadas
-        return salarioBase * horasTrabajadas;
+        return souBase * horesTreballades;
     }
 }
 

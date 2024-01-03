@@ -9,13 +9,13 @@ abstract class Empleat {
     // Atributos
     protected String nom;
     protected String llinatge1;
-    protected double salarioBase;
+    protected double souBase;
 
     // Constructor
-    public Empleat(String nom, String llinatge1, double salarioBase) {
+    public Empleat(String nom, String llinatge1, double souBase) {
         this.nom = nom;
         this.llinatge1 = llinatge1;
-        this.salarioBase = salarioBase;
+        this.souBase = souBase;  // salari mensual o per hora treballada
     }
 
     // Método abstracto para calcular salario
@@ -24,17 +24,14 @@ abstract class Empleat {
     // Método para mostrar detalles del empleado
     @Override
     public String toString() {
-        return "Nombre: " + nom + " " + llinatge1 + ", Sou Base: " + salarioBase + ", Salari " + calcularSalari();
+        return "Nombre: " + nom + " " + llinatge1 + ", Sou Base: " + souBase + ", Salari " + calcularSalari();
     }
 
     @Override
     public boolean equals(Object obj) {
         Empleat empleat = (Empleat) obj;
         
-        if ((this.nom.equals(empleat.nom)) && (this.llinatge1.equals(empleat.llinatge1)))
-            return true;
-        else
-            return false;
+        return (this.nom.equals(empleat.nom)) && (this.llinatge1.equals(empleat.llinatge1));
     }
     
     
