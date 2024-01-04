@@ -27,5 +27,19 @@ public class Estudiant extends Persona {
     public void setCurs(String curs) {
         this.curs = curs;
     }
+    @Override
+    public String toString() {
+        return "ESTUDIANT Nom: " + getNom() + " Edat: " + getEdat() + " " + curs;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        Estudiant e = (Estudiant) o;
+        
+        if (e.getNom().equals(this.getNom())) // comparació atribut a atribut ?
+            return true;
+        else 
+            return false;
+    }
     
 }

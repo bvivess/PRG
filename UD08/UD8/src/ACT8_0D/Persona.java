@@ -37,10 +37,10 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Nom: " + nom + " Edat: " + edat;
+        return "PERSONA Nom: " + nom + " Edat: " + edat;
     }
     
-    @Override
+    /*@Override
     public boolean equals(Object o) {
         Persona p = (Persona) o;
         
@@ -49,6 +49,7 @@ public class Persona {
         else 
             return false;
     }
+    */
 
 }
     
