@@ -11,7 +11,6 @@ public class Rectangle {
     
     // Mètodes
     // Constructor
-    
     public Rectangle(double amplada, double alcada) {
         this.amplada = amplada;
         this.alcada = alcada;
@@ -26,7 +25,6 @@ public class Rectangle {
     }
     
     // Getters i Setters
-
     public double getAmplada() {
         return amplada;
     }
