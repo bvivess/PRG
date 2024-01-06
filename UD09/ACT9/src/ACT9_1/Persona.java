@@ -11,14 +11,14 @@ public class Persona {
     private String patroCodiPin;
     private String patroTeclat;
     private String patroRostre;
-    private String patroHuella;
+    private String patroEmprenta;
  
-    public String getHuella() {
-        return patroHuella;
+    public String getEmprenta() {
+        return patroEmprenta;
     }
  
-    public void setHuella(String patroHuella) {
-        this.patroHuella = patroHuella;
+    public void setHuella(String patroEmprenta) {
+        this.patroEmprenta = patroEmprenta;
     }
  
     public String getPatroRostre() {

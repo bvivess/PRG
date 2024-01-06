@@ -6,7 +6,7 @@ package ACT9_1;
  */
 public interface ValidarDispositiu {
  
-    public boolean validarPersona(Persona persona);  // Validar Persona amb Dispositiu
+    public boolean validarPatrons(Persona persona);  // Validar Persona amb Dispositiu
  
 }
 

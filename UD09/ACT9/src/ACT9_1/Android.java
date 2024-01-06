@@ -5,20 +5,29 @@ package ACT9_1;
  * @author winadmin
  */
 public class Android extends Telefono implements ValidarDispositiu {
-    private int patroCodiPin;
+    private String patroCodiPin;
     private String patroTeclat;
+    private String patroEmprempta;
  
     public Android(String marca, Persona persona) {
         super(marca, persona);
         // TODO Auto-generated constructor stub
     }
 
-    public int getPatroCodiPin() {
+    public String getPatroCodiPin() {
         return patroCodiPin;
     }
 
-    public void setPatroCodiPin(int patroCodiPin) {
+    public void setPatroCodiPin(String patroCodiPin) {
         this.patroCodiPin = patroCodiPin;
+    }
+
+    public String getPatroEmprempta() {
+        return patroEmprempta;
+    }
+
+    public void setPatroEmprempta(String patroEmprempta) {
+        this.patroEmprempta = patroEmprempta;
     }
 
     public String getPatroTeclat() {
@@ -30,7 +39,7 @@ public class Android extends Telefono implements ValidarDispositiu {
     }
  
     @Override
-    public boolean validarPersona(Persona persona) {
+    public boolean validarPatrons(Persona persona) {
         if (super.getOnOff())
             if (persona.getPatroTeclat() != null) 
                 return persona.getPatroTeclat().equals(patroTeclat);

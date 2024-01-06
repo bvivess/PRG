@@ -39,25 +39,25 @@ public class Main {
         
         // Android
         Android android1 = new Android("Samsung", p3);
-        android1.setPatroCodiPin(1234);
+        android1.setPatroCodiPin("1234");
         android1.setPatroTeclat("patron1");
         android1.setOnOff(true);
         
         // Validacions
         System.out.println("IPhone8: ");
-        System.out.print("\t" + p1.getNombre() + " " + iphone8.validarPersona(p1) + " ");
-        System.out.print("\t" + p2.getNombre() + " " + iphone8.validarPersona(p2) + " ");
-        System.out.print("\t" + p3.getNombre() + " " + iphone8.validarPersona(p3) + " ");
+        System.out.print("\t" + p1.getNombre() + " " + iphone8.validarPatrons(p1) + " ");
+        System.out.print("\t" + p2.getNombre() + " " + iphone8.validarPatrons(p2) + " ");
+        System.out.print("\t" + p3.getNombre() + " " + iphone8.validarPatrons(p3) + " ");
         System.out.println();
         System.out.println("IPhone10: ");
-        System.out.print("\t" + p1.getNombre() + " " + iphone10.validarPersona(p1) + " ");
-        System.out.print("\t" + p2.getNombre() + " " + iphone10.validarPersona(p2) + " ");
-        System.out.print("\t" + p3.getNombre() + " " + iphone8.validarPersona(p3) + " ");
+        System.out.print("\t" + p1.getNombre() + " " + iphone10.validarPatrons(p1) + " ");
+        System.out.print("\t" + p2.getNombre() + " " + iphone10.validarPatrons(p2) + " ");
+        System.out.print("\t" + p3.getNombre() + " " + iphone8.validarPatrons(p3) + " ");
         System.out.println();
         System.out.println("Android: ");
-        System.out.print("\t" + p1.getNombre() + " " + android1.validarPersona(p1) + " ");
-        System.out.print("\t" + p2.getNombre() + " " + android1.validarPersona(p2) + " ");
-        System.out.print("\t" + p3.getNombre() + " " + android1.validarPersona(p3) + " ");
+        System.out.print("\t" + p1.getNombre() + " " + android1.validarPatrons(p1) + " ");
+        System.out.print("\t" + p2.getNombre() + " " + android1.validarPatrons(p2) + " ");
+        System.out.print("\t" + p3.getNombre() + " " + android1.validarPatrons(p3) + " ");
         System.out.println();
         
     }
