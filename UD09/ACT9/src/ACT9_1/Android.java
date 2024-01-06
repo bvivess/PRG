@@ -5,26 +5,35 @@ package ACT9_1;
  * @author winadmin
  */
 public class Android extends Telefono implements ValidarDispositiu {
-    private String patronTeclado;
+    private int patroCodiPin;
+    private String patroTeclat;
  
     public Android(String marca, Persona persona) {
         super(marca, persona);
         // TODO Auto-generated constructor stub
     }
 
-    public String getPatronTeclado() {
-        return patronTeclado;
+    public int getPatroCodiPin() {
+        return patroCodiPin;
+    }
+
+    public void setPatroCodiPin(int patroCodiPin) {
+        this.patroCodiPin = patroCodiPin;
+    }
+
+    public String getPatroTeclat() {
+        return patroTeclat;
     }
  
-    public void setPatronTeclado(String patronTeclado) {
-        this.patronTeclado = patronTeclado;
+    public void setPatroTeclat(String patroTeclat) {
+        this.patroTeclat = patroTeclat;
     }
  
     @Override
     public boolean validarPersona(Persona persona) {
         if (super.getOnOff())
-            if (persona.getPatronTeclado() != null) 
-                return persona.getPatronTeclado().equals(patronTeclado);
+            if (persona.getPatroTeclat() != null) 
+                return persona.getPatroTeclat().equals(patroTeclat);
             else
                 return false;
         else {

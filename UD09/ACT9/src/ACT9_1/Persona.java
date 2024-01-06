@@ -9,7 +9,7 @@ public class Persona {
     private String nombre;
     // Diferents sistemes de validació
     private String patroCodiPin;
-    private String patroTeclado;
+    private String patroTeclat;
     private String patroRostre;
     private String patroHuella;
  
@@ -29,12 +29,12 @@ public class Persona {
         this.patroRostre = patroRostre;
     }
  
-    public String getPatronTeclado() {
-        return patroTeclado;
+    public String getPatroTeclat() {
+        return patroTeclat;
     }
  
-    public void setPatronTeclado(String patroTeclado) {
-        this.patroTeclado = patroTeclado;
+    public void setPatroTeclat(String patroTeclat) {
+        this.patroTeclat = patroTeclat;
     }
  
     public String getPatroCodiPin() {

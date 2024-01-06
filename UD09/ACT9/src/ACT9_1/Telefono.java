@@ -10,7 +10,7 @@ public abstract class Telefono implements DispositiuElectronic{
     private boolean onOff;  // Encès o apagat
     
     public Telefono(String marca, Persona persona) {
-        //super(); // No cal
+        // super(); // No cal ja que la interfície no té cap atribut
         this.marca = marca;
         this.persona = persona;
     }

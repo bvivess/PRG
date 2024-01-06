@@ -19,11 +19,16 @@ public class Main {
         // Persona3
         Persona p3 = new Persona();
         p3.setNombre("Pedro");
-        p3.setPatronTeclado("patron1");
+        p3.setPatroTeclat("patron1");
         
+        // Persona4
+        Persona p4 = new Persona();
+        p4.setNombre("Maria");
+        p4.setPatroCodiPin("1234");
+                
         // IPhone8
         IPhone8 iphone8 = new IPhone8("Apple",p1);
-        iphone8.setCodiPin(1234);
+        iphone8.setPatroCodiPin("1234");
         iphone8.setPatroEmprenta("huella1");
         iphone8.setOnOff(true);
         
@@ -34,7 +39,8 @@ public class Main {
         
         // Android
         Android android1 = new Android("Samsung", p3);
-        android1.setPatronTeclado("patron1");
+        android1.setPatroCodiPin(1234);
+        android1.setPatroTeclat("patron1");
         android1.setOnOff(true);
         
         // Validacions
