@@ -4,7 +4,7 @@ package ACT9_1;
  *
  * @author winadmin
  */
-public class Android extends Telefono implements Validar {
+public class Android extends Telefono implements ValidarDispositiu {
     private String patronTeclado;
  
     public Android(String marca, Persona persona) {

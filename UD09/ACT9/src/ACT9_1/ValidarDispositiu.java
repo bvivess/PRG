@@ -4,7 +4,7 @@ package ACT9_1;
  *
  * @author winadmin
  */
-public interface Validar {
+public interface ValidarDispositiu {
  
     public boolean validar(Persona persona);
  

@@ -5,7 +5,7 @@ package ACT9_1;
  * @author winadmin
  */
 
-public class IPhone8 extends Telefono implements Validar {
+public class IPhone8 extends Telefono implements ValidarDispositiu {
      private int codigoPin;
      private String patroEmprenta;
 
