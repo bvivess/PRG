@@ -9,7 +9,6 @@ public class IPhone10 extends IPhone8{
      
     public IPhone10(String marca, Persona persona) {
         super(marca, persona);
-        // TODO Auto-generated constructor stub
     }
  
     public String getPatroRostre() {

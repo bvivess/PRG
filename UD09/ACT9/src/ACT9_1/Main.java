@@ -23,6 +23,7 @@ public class Main {
         
         // IPhone8
         IPhone8 iphone8 = new IPhone8("Apple",p1);
+        iphone8.setCodiPin(1234);
         iphone8.setPatroEmprenta("huella1");
         iphone8.setOnOff(true);
         

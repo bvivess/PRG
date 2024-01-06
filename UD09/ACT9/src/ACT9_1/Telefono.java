@@ -5,12 +5,12 @@ package ACT9_1;
  * @author winadmin
  */
 public abstract class Telefono implements DispositiuElectronic{
-    private String marca;
-    private Persona persona;
-    private boolean onOff;
+    private String marca;  // Marca del Telèfon
+    private Persona persona;  // Dades de la persona propietària
+    private boolean onOff;  // Encès o apagat
     
     public Telefono(String marca, Persona persona) {
-        super();
+        //super(); // No cal
         this.marca = marca;
         this.persona = persona;
     }

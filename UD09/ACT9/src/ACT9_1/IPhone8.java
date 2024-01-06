@@ -6,7 +6,7 @@ package ACT9_1;
  */
 
 public class IPhone8 extends Telefono implements ValidarDispositiu {
-     private int codigoPin;
+     private int codiPin;
      private String patroEmprenta;
 
     public IPhone8(String marca, Persona persona) {
@@ -21,12 +21,12 @@ public class IPhone8 extends Telefono implements ValidarDispositiu {
         this.patroEmprenta = patroEmprenta;
     }
 
-    public int getCodigoPin() {
-        return codigoPin;
+    public int getCodiPin() {
+        return codiPin;
     }
  
-    public void setCodigoPin(int codigoPin) {
-        this.codigoPin = codigoPin;
+    public void setCodiPin(int codiPin) {
+        this.codiPin = codiPin;
     }
  
     @Override
@@ -37,7 +37,7 @@ public class IPhone8 extends Telefono implements ValidarDispositiu {
             }
 
             if (persona.getPatroCodiPin()!= null) {
-                return persona.getPatroCodiPin().equals(codigoPin);
+                return persona.getPatroCodiPin().equals(codiPin);
             }
             
             return false;
