@@ -7,7 +7,7 @@ package ACT9_0E;
 interface Figura {
     double calcularArea();  // declarar, no implementar
 
-    default String _toString() {  // no es poden emprar els mètodes d''Object'
+    default String _toString() {  // mètode per defecte: no es poden emprar els mètodes d''Object'
         return "Això és una figura";
     }
 

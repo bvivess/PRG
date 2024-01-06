@@ -28,7 +28,7 @@ class Cercle implements Figura, Coloreador {
     }
     
     @Override
-    public String toString() {
+    public String toString() {  // si es poden implementar els mètodes d''Object'
         return "Color: " + color + " Radi: " + radi;
     }
 }
