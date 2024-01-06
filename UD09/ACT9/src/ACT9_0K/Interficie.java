@@ -10,4 +10,6 @@ interface Interficie {
     default void metodePerDefecte() {
         System.out.println("MÈTODE PER DEFECTE en la interfície.");
     }
+    
+    public void metodeAbstracte();
 }

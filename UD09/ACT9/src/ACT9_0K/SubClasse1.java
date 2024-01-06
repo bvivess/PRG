@@ -13,8 +13,14 @@ class SubClasse1 implements Interficie {
         this.b1 = b1 * a1;
         this.b2 = b2;
     }
+
+    @Override
+    public void metodeAbstracte() {
+        System.out.println("MÈTODE ABSTRACTE en SubClasse1." + a1);
+    }
     
-    // La SubClasse1 hereda automàticament el metodePerDefecte() de la interfície
+    
+    // La SubClasse1 hereda automàticament el 'metodePerDefecte()' de la interfície
 
     public int getB1() {
         return b1;

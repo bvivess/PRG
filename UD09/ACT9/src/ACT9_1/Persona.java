@@ -6,26 +6,42 @@ package ACT9_1;
  */
 public class Persona {
  
-    private String nombre;
+    private String nom;
     // Diferents sistemes de validació
     private String patroCodiPin;
     private String patroTeclat;
+    private String patroEmprempta;
     private String patroRostre;
-    private String patroEmprenta;
- 
-    public String getEmprenta() {
-        return patroEmprenta;
+    
+    Persona(String nom) {
+        this.nom = nom;
+    }
+    
+    Persona(String nom, String patroCodiPin, String patroTeclat, String patriEmprempta, String patroRostre) {
+        this.nom = nom;
+        setPatrons(patroCodiPin, patroTeclat, patriEmprempta, patroRostre);
+    }
+    
+    public void setPatrons(String patroCodiPin, String patroTeclat, String patriEmprempta, String patroRostre) {
+        setPatroCodiPin(patroCodiPin);
+        setPatroTeclat(patroTeclat);
+        setPatroEmprempta(patroEmprempta);
+        setPatroRostre(patroRostre);
+    }
+    
+    public String getEmprempta() {
+        return patroEmprempta;
     }
  
-    public void setHuella(String patroEmprenta) {
-        this.patroEmprenta = patroEmprenta;
+    public void setPatroEmprempta(String patroEmprempta) {
+        this.patroEmprempta = patroEmprempta;
     }
  
     public String getPatroRostre() {
         return patroRostre;
     }
  
-    public void setPatroRostro(String patroRostre) {
+    public void setPatroRostre(String patroRostre) {
         this.patroRostre = patroRostre;
     }
  
@@ -45,11 +61,11 @@ public class Persona {
         this.patroCodiPin = patroCodiPin;
     }
  
-    public String getNombre() {
-        return nombre;
+    public String getNom() {
+        return nom;
     }
  
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 }

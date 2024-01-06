@@ -11,5 +11,10 @@ class SubClasse2 implements Interficie {
     public void metodePerDefecte() {
         System.out.println("MÈTODE PER DEFECTE en SubClasse2." + a1);
     }
+    
+    @Override
+    public void metodeAbstracte() {
+        
+    }
 }
 

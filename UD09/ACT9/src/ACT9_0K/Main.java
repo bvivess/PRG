@@ -9,9 +9,11 @@ public class Main {
         SubClasse1 subclasse1 = new SubClasse1(1, "aaa");
  
         
-        subclasse1.metodePerDefecte(); // Cridada a mètodePerDefecte Interficie
+        subclasse1.metodePerDefecte(); // Cridada a 'mètodePerDefecte()' d''Interficie'
+        subclasse1.metodeAbstracte();
         System.out.println(subclasse1.getB1());
-        SubClasse2 instancia2 = new SubClasse2();
-        instancia2.metodePerDefecte(); // Cridada a mètodePerDefecte SubClasse2
+        SubClasse2 subclasse2 = new SubClasse2();
+        subclasse2.metodePerDefecte(); // Cridada a 'mètodePerDefecte()' de 'SubClasse2'
+        subclasse2.metodeAbstracte();
     }
 }

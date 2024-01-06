@@ -11,11 +11,18 @@ public class IPhone10 extends IPhone8{
         super(marca, persona);
     }
  
-    public String getPatroRostre() {
+    @Override
+    public void setPatrons(String patroCodiPin, String patroTeclat, String patroEmprempta, String patroRostre) {
+        super.setPatroCodiPin(patroCodiPin);
+        super.setPatroEmprempta(patroEmprempta);
+        setPatroRostre(patroRostre);
+    }
+    
+    private String getPatroRostre() {
         return patroRostre;
     }
  
-    public void setPatroRostre(String patroRostre) {
+    private void setPatroRostre(String patroRostre) {
         this.patroRostre = patroRostre;
     }
     

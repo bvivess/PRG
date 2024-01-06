@@ -4,7 +4,7 @@ package ACT9_1;
  *
  * @author winadmin
  */
-public class Android extends Telefono implements ValidarDispositiu {
+public class Android extends Telefon implements ValidarDispositiu {
     private String patroCodiPin;
     private String patroTeclat;
     private String patroEmprempta;
@@ -14,27 +14,34 @@ public class Android extends Telefono implements ValidarDispositiu {
         // TODO Auto-generated constructor stub
     }
 
-    public String getPatroCodiPin() {
+    @Override
+    public void setPatrons(String patroCodiPin, String patroTeclat, String patriEmprempta, String patroRostre) {
+        setPatroCodiPin(patroCodiPin);
+        setPatroTeclat(patroTeclat);
+        setPatroEmprempta(patroEmprempta);
+    }
+    
+    private String getPatroCodiPin() {
         return patroCodiPin;
     }
 
-    public void setPatroCodiPin(String patroCodiPin) {
+    private void setPatroCodiPin(String patroCodiPin) {
         this.patroCodiPin = patroCodiPin;
     }
 
-    public String getPatroEmprempta() {
+    private String getPatroEmprempta() {
         return patroEmprempta;
     }
 
-    public void setPatroEmprempta(String patroEmprempta) {
+    private void setPatroEmprempta(String patroEmprempta) {
         this.patroEmprempta = patroEmprempta;
     }
 
-    public String getPatroTeclat() {
+    private String getPatroTeclat() {
         return patroTeclat;
     }
  
-    public void setPatroTeclat(String patroTeclat) {
+    private void setPatroTeclat(String patroTeclat) {
         this.patroTeclat = patroTeclat;
     }
  

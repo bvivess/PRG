@@ -5,35 +5,42 @@ package ACT9_1;
  * @author winadmin
  */
 
-public class IPhone8 extends Telefono implements ValidarDispositiu {
-     private String patroCodiPin;
-     private String patroEmprenta;
+public class IPhone8 extends Telefon implements ValidarDispositiu {
+    private String patroCodiPin;
+    private String patroEmprempta;
 
     public IPhone8(String marca, Persona persona) {
         super(marca, persona);
         // TODO Auto-generated constructor stub
     }
-    public String getPatroEmprenta() {
-        return patroEmprenta;
+    
+    @Override
+    public void setPatrons(String patroCodiPin, String patroTeclat, String patroEmprempta, String patroRostre) {
+        setPatroCodiPin(patroCodiPin);
+        setPatroEmprempta(patroEmprempta);
+    }
+    
+    protected String getPatroEmprempta() {
+        return patroEmprempta;
     }
  
-    public void setPatroEmprenta(String patroEmprenta) {
-        this.patroEmprenta = patroEmprenta;
+    protected void setPatroEmprempta(String patroEmprempta) {
+        this.patroEmprempta = patroEmprempta;
     }
 
-    public String getPatroCodiPin() {
+    protected  String getPatroCodiPin() {
         return patroCodiPin;
     }
  
-    public void setPatroCodiPin(String patroCodiPin) {
+    protected void setPatroCodiPin(String patroCodiPin) {
         this.patroCodiPin = patroCodiPin;
     }
  
     @Override
     public boolean validarPatrons(Persona persona) {
         if (super.getOnOff()) {
-            if (persona.getEmprenta()!= null) {
-                return persona.getEmprenta().equals(patroEmprenta);
+            if (persona.getEmprempta()!= null) {
+                return persona.getEmprempta().equals(patroEmprempta);
             }
 
             if (persona.getPatroCodiPin()!= null) {
