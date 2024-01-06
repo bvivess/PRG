@@ -5,8 +5,8 @@ package ACT9_0K;
  * @author gt
  */
 class SubClasse1 implements Interficie {
-    public int b1;
-    public String b2;
+    private int b1;
+    private String b2;
 
     // Constructor
     public SubClasse1(int b1, String b2) {

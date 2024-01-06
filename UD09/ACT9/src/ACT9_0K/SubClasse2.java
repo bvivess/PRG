@@ -14,7 +14,7 @@ class SubClasse2 implements Interficie {
     
     @Override
     public void metodeAbstracte() {
-        
+        System.out.println("MÈTODE ABSTRACTE en SubClasse2." + a1);
     }
 }
 
