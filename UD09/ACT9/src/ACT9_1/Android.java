@@ -21,7 +21,7 @@ public class Android extends Telefono implements ValidarDispositiu {
     }
  
     @Override
-    public boolean validar(Persona persona) {
+    public boolean validarPersona(Persona persona) {
         if (super.getOnOff())
             if (persona.getPatronTeclado() != null) 
                 return persona.getPatronTeclado().equals(patronTeclado);

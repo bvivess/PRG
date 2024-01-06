@@ -38,19 +38,19 @@ public class Main {
         
         // Validacions
         System.out.println("IPhone8: ");
-        System.out.print("\t" + p1.getNombre() + " " + iphone8.validar(p1) + " ");
-        System.out.print("\t" + p2.getNombre() + " " + iphone8.validar(p2) + " ");
-        System.out.print("\t" + p3.getNombre() + " " + iphone8.validar(p3) + " ");
+        System.out.print("\t" + p1.getNombre() + " " + iphone8.validarPersona(p1) + " ");
+        System.out.print("\t" + p2.getNombre() + " " + iphone8.validarPersona(p2) + " ");
+        System.out.print("\t" + p3.getNombre() + " " + iphone8.validarPersona(p3) + " ");
         System.out.println();
         System.out.println("IPhone10: ");
-        System.out.print("\t" + p1.getNombre() + " " + iphone10.validar(p1) + " ");
-        System.out.print("\t" + p2.getNombre() + " " + iphone10.validar(p2) + " ");
-        System.out.print("\t" + p3.getNombre() + " " + iphone8.validar(p3) + " ");
+        System.out.print("\t" + p1.getNombre() + " " + iphone10.validarPersona(p1) + " ");
+        System.out.print("\t" + p2.getNombre() + " " + iphone10.validarPersona(p2) + " ");
+        System.out.print("\t" + p3.getNombre() + " " + iphone8.validarPersona(p3) + " ");
         System.out.println();
         System.out.println("Android: ");
-        System.out.print("\t" + p1.getNombre() + " " + android1.validar(p1) + " ");
-        System.out.print("\t" + p2.getNombre() + " " + android1.validar(p2) + " ");
-        System.out.print("\t" + p3.getNombre() + " " + android1.validar(p3) + " ");
+        System.out.print("\t" + p1.getNombre() + " " + android1.validarPersona(p1) + " ");
+        System.out.print("\t" + p2.getNombre() + " " + android1.validarPersona(p2) + " ");
+        System.out.print("\t" + p3.getNombre() + " " + android1.validarPersona(p3) + " ");
         System.out.println();
         
     }

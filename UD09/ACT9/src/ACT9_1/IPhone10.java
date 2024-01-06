@@ -21,12 +21,12 @@ public class IPhone10 extends IPhone8{
     }
     
     @Override
-    public boolean validar(Persona persona) {
+    public boolean validarPersona(Persona persona) {
         if (super.getOnOff()) {
             if (persona.getPatroRostre()!=null) {
                 return persona.getPatroRostre().equals(patroRostre);
             }
-            return super.validar(persona);
+            return super.validarPersona(persona);
         } else {
             System.out.println("Telèfon IPhone 10 no encès");
             return false; 

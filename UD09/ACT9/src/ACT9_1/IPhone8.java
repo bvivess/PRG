@@ -30,7 +30,7 @@ public class IPhone8 extends Telefono implements ValidarDispositiu {
     }
  
     @Override
-    public boolean validar(Persona persona) {
+    public boolean validarPersona(Persona persona) {
         if (super.getOnOff()) {
             if (persona.getHuella()!= null) {
                 return persona.getHuella().equals(patroEmprenta);
