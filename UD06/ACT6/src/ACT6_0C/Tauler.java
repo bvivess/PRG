@@ -12,18 +12,18 @@ public class Tauler {
         inicializarTauler();
     }
 
-    private void inicializarTauler() {
-        for (int fila = 0; fila < 8; fila++) {
-            for (int columna = 0; columna < 8; columna++) {
-                caselles[fila][columna] = new Casella(fila, columna);
+    public void inicializarTauler() {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                caselles[i][j] = new Casella(i, j);
             }
         }
     }
     
-    private void mostraTauler() {
-        for (int fila = 0; fila < 8; fila++) {
-            for (int columna = 0; columna < 8; columna++) {
-                System.out.println(caselles[fila][columna]);
+    public void mostraTauler() {
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                System.out.println(caselles[i][j]);
             }
         }
     }
