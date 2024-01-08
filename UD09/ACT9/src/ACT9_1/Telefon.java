@@ -44,8 +44,8 @@ public abstract class Telefon implements DispositiuElectronic{
     @Override
     public void on() {
         System.out.println("Telèfon encès");
-        if (onOff)
-            onOff = false;
+        if (!onOff)
+            onOff = true;
     }
     
     @Override
