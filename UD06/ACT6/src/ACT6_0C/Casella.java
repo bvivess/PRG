@@ -5,12 +5,12 @@ package ACT6_0C;
  * @author winadmin
  */
 public class Casella {
-    private int i;
-    private int j;
+    private int fila;
+    private int columna;
 
-    public Casella(int i, int j) {
-        this.i = i;
-        this.j = j;
+    public Casella(int fila, int columna) {
+        this.fila = fila;
+        this.columna = columna;
     }
 
     // ...
