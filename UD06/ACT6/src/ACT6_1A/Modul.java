@@ -15,7 +15,7 @@ public class Modul {
         String text = "";
         
         if (this.idCicle == idCicle)
-            text = "Modul " + "ID=" + this.idModul + ", nom=" + this.nom + ", numAlumnes=" + this.horesSetmanals;
+            text = "Modul " + "ID=" + idModul + ", nom=" + nom + ", Hores setmanals=" + horesSetmanals;
         
         return text;
     }
