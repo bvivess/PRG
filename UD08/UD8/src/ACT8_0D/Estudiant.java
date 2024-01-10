@@ -29,7 +29,7 @@ public class Estudiant extends Persona {
     }
     @Override
     public String toString() {
-        return "ESTUDIANT Nom: " + getNom() + " Edat: " + getEdat() + " " + curs;
+        return super.toString() + " " + "ESTUDIANT Nom: " + super.getNom() + " Edat: " + getEdat() + " " + curs;
     }
     
     @Override
