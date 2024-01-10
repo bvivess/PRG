@@ -22,7 +22,7 @@ public class Institut {
             Modul modul4 = new Modul();
             modul4.idModul = 4; modul4.nom = "Sistemes d'Informació"; modul4.idCicle=1; modul4.horesSetmanals=7;
             Modul modul5 = new Modul();
-            modul5.idModul = 5; modul4.nom = "Entorns de Desenvolupament"; modul5.idCicle=1; modul5.horesSetmanals=3;
+            modul5.idModul = 5; modul5.nom = "Entorns de Desenvolupament"; modul5.idCicle=1; modul5.horesSetmanals=3;
             // Mòduls d'ASIX
             // ...
             // Mòduls d'SMX
@@ -34,7 +34,7 @@ public class Institut {
             System.out.println("\t"+modul2.mostraModul(cicle.idCicle));
             System.out.println("\t"+modul3.mostraModul(cicle.idCicle));
             System.out.println("\t"+modul4.mostraModul(cicle.idCicle));
-            System.out.println("\t"+modul2.mostraModul(cicle.idCicle));
+            System.out.println("\t"+modul5.mostraModul(cicle.idCicle));
             // Falta afegir els mòduls d'ASIX i SMX
             // ...
 
