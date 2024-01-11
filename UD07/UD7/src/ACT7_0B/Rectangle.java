@@ -1,7 +1,7 @@
 package ACT7_0B;
 
 /**
- *
+* Forma geomètrica: Rectangle
  * @author T.Vives
  */
 public class Rectangle {
@@ -9,17 +9,25 @@ public class Rectangle {
     private double amplada;
     private double alcada;
     
-    // Mètodes
     // Constructor
     public Rectangle(double amplada, double alcada) {
         this.amplada = amplada;
         this.alcada = alcada;
     }
-
+    
+    // Mètodes específics
+    /**
+     * Calcula l'àrea de la forma geomètrica
+     * @return double àrea
+    */
     public double calcularArea() {
         return amplada * alcada;
     }
     
+    /**
+     * Calcula el perímetre de la forma geomètrica
+     * @return double àrea
+    */ 
     public double calcularPerimetre() {
         return 2 * (amplada + alcada);
     }

@@ -3,7 +3,7 @@ package ACT7_1;
 import java.util.ArrayList;
 
 /**
- *
+* Representa cada un dels cicles existents en un institut
  * @author T.Vives
  */
 public class Institut {
@@ -24,11 +24,19 @@ public class Institut {
         this.cicles = new ArrayList<>(cicles);
     }
     
-    // Mòduls
+    // Mètodes específics
+    /**
+     * Afegeix un cicle en l'Arralist de Institut
+     * @param nouCicle 
+     */
     public void afegeixCicle(Cicle nouCicle) {
         this.cicles.add(nouCicle);
     }
     
+    /**
+     * Mostra els atributs de la classe
+     * @return String amb les dades concatenades
+     */
     public String mostraInstitut() {
         String text;
         

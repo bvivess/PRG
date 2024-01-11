@@ -1,7 +1,7 @@
 package ACT7_1;
 
 /**
- *
+ * Representa cada un dels moduls associats a un cicle formatiu
  * @author T.Vives
  */
 public class Modul {

@@ -3,7 +3,7 @@ package ACT7_1;
 import java.util.ArrayList;
 
 /**
- *
+ * Representa cada una de les classes d'un cicle formatiu
  * @author T.Vives
  */
 public class Cicle {

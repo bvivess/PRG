@@ -1,7 +1,7 @@
 package ACT7_0A;
 
 /**
- *
+ * Modela una persona tipus
  * @author T.Vives
  */
 
@@ -12,7 +12,6 @@ public class Persona {
     private String llinatge2;
     private int edat;
     
-    // Mètodes
     // Constructors
     public Persona(String nom, String llinatge1, String llinatge2, int edat) {
         this.nom = nom;
@@ -20,6 +19,16 @@ public class Persona {
         this.llinatge2 = llinatge2;
         this.edat = edat;
     }
+    
+    // Mètodes específics
+    /**
+     * Mostra els atributs de la classe
+     * @return String amb les dades concatenades
+    */
+    public void mostraPersona() {
+        System.out.println("Nom: " + getNom() + " " + llinatge1 + " " + llinatge2 + "Edat: " + getEdat());
+    }
+    
     // Getters i Setters
     public String getNom() {
         return nom;
@@ -53,7 +62,4 @@ public class Persona {
         this.edat = edat;
     }
 
-    public void mostraPersona() {
-        System.out.println("Nom: " + getNom() + " " + llinatge1 + " " + llinatge2 + "Edat: " + getEdat());
-    }
 }
