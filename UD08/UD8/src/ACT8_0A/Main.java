@@ -17,6 +17,7 @@ public class Main {
         Estudiant estudiant = new Estudiant("Joan", 20, "Programació");
 
         // Mostrar les dades d''estudiant'
-        estudiant.mostraEstudiant();
+        estudiant.mostraPersona();  // mètode de la superclasse
+        estudiant.mostraEstudiant();  // mètode de la subclasse
     }
 }

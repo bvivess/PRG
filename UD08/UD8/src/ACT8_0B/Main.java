@@ -18,7 +18,7 @@ package ACT8_0B;
 public class Main {
     public static void main(String[] args) {
         // Crear un objeto de la clase Gato
-        Ca ca = new Ca();
+        Ca ca = new Ca("Animal", "mamifer", "ca");
 
         // Llamar a métodos de las clases base y derivadas
         ca.menja();  // Mètode de la clase base
