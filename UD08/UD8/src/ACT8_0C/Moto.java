@@ -6,7 +6,12 @@ package ACT8_0C;
  */
 // Clase derivada 2
 class Moto extends Vehicle {
+
+    public Moto(String marca, String model) {
+        super(marca, model);
+    }
+    
     void acelera() {
-        System.out.println("La moto accelera.");
+        System.out.println("La moto " + getMarca() + " accelera.");
     }
 }

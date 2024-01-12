@@ -14,20 +14,19 @@ package ACT8_0C;
 // Clase principal
 public class Main {
     public static void main(String[] args) {
-        // Crear objetos de las clases derivadas
-        Cotxe cotxe = new Cotxe();
-        Moto moto = new Moto();
+        // Crear objectes de les classes derivades
+        Cotxe cotxe = new Cotxe("Opel", "Corsa");
+        Moto moto = new Moto("Yamaha", "SRX");
 
-        // Llamar a métodos de la clase base y clases derivadas
-        cotxe.arranca();  // Mètode de la clase base
-        cotxe.condueix();  // Mètode de la clase derivada 1
-        cotxe.frena();  // Mètode de la clase base
+        cotxe.arranca();  // Mètode de la Superclasse
+        cotxe.condueix();  // Mètode de la Subclasse
+        cotxe.frena();  // Mètode de la Subclasse
 
         System.out.println();
 
-        moto.arranca();  // Mètode de la clase base
-        moto.acelera();  // Mètode de la clase derivada 2
-        moto.frena();  // Mètode de la clase base
+        moto.arranca();  // Mètode de la clase Superclasse
+        moto.acelera();  // Mètode de la Subclasse
+        moto.frena();  // Mètode de la Subclasse
     }
 }
 

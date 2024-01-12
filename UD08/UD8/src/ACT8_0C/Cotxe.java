@@ -6,7 +6,13 @@ package ACT8_0C;
  */
 // Clase derivada 1
 class Cotxe extends Vehicle {
-    void condueix() {
-        System.out.println("El cotxe està en moviment.");
+
+    public Cotxe(String marca, String model) {
+        super(marca, model);
     }
+    
+    void condueix() {
+        System.out.println("El cotxe " + getMarca() + " està en moviment.");
+    }
+    
 }
