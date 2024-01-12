@@ -8,8 +8,8 @@ package ACT8_0B;
 public class Mamifer extends Animal {
     private String tipusMamifer;
 
-    public Mamifer(String tipusMamifer, String tipusAnimal) {
-        super(tipusAnimal);
+    public Mamifer(String tipusAnimal, String tipusMamifer) {
+        super(tipusAnimal);  // COnstructor de la Superclasse
         this.tipusMamifer = tipusMamifer;
     }
     

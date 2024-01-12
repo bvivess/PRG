@@ -5,11 +5,11 @@ package ACT8_0B;
  * @author winadmin
  */
 public class Ca extends Mamifer {
-    private String tipusCar;
+    private String tipusCa;
 
-    public Ca(String tipusCar, String tipusMamifer, String tipusAnimal) {
-        super(tipusMamifer, tipusAnimal);
-        this.tipusCar = tipusCar;
+    public Ca(String tipusAnimal, String tipusMamifer, String tipusCa ) {
+        super(tipusMamifer, tipusAnimal);  // Constructor de la Superclasse
+        this.tipusCa = tipusCa;
     }
     
     void lladra() {

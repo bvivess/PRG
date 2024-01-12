@@ -9,7 +9,7 @@ public class Estudiant extends Persona {
     
     // Constructor
     public Estudiant(String nom, int edat, String curs) {
-        super(nom, edat);
+        super(nom, edat);  // Constructor de la Superclasse
         this.curs = curs;
     }
     
