@@ -23,14 +23,17 @@ public class Main {
             Client client1 = new Client("Joan","Soler","Matemales", comptes);
 
             // Realitzar transaccions
-            client1.realitzaTransaccio(compte1,500.0);
-            client1.realitzaTransaccio(compte1,-200.0);
-            client1.realitzaTransaccio(compte2,1000.0);
-            client1.realitzaTransaccio(compte2,-500.0);
+            try {
+                client1.realitzaTransaccio(compte1,500.0);
+                client1.realitzaTransaccio(compte1,-200.0);
+                client1.realitzaTransaccio(compte2,-1000.0);
+                client1.realitzaTransaccio(compte2,-1500.0);  // transacció no es realitzarà
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+            }
 
             // Mostrar saldo final
-
-            System.out.println(client1.toString());
+            client1.mostraClient();
             System.out.println(" amb SALDO:" );
             client1.mostraSaldo();
         } catch (Exception e) {

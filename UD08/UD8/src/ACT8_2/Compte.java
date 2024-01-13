@@ -1,4 +1,4 @@
-package ACT7_2;
+package ACT8_2;
 
 import java.util.Objects;
 
@@ -88,7 +88,22 @@ public class Compte {
         if (saldo >= 0)
             this.saldo = saldo;
         else
-            throw new IllegalArgumentException("Import negatiu no és possible: " + saldo);
+            throw new IllegalArgumentException("Import negatiu no és possible.");
     }
+
+    @Override
+    public boolean equals(Object o) {
+        Compte c = (Compte) o;
+        
+        if ((c.banc.equalsIgnoreCase(this.banc)) &&
+            (c.oficina.equalsIgnoreCase(this.oficina)) &&
+            (c.dc.equalsIgnoreCase(this.dc)) &&
+            (c.numCompte.equalsIgnoreCase(this.numCompte)))
+            return true;
+        else
+            return false;
+    }
+    
+
     
 }

@@ -1,4 +1,4 @@
-package ACT7_2;
+package ACT8_2;
 
 import java.util.ArrayList;
 
@@ -36,16 +36,6 @@ public class Client {
         }
     }
     
-    public void mostraClient() {
-        System.out.println("Client " + this.nom + " " + this.llinatge1 + " " + this.llinatge2 );
-    }
-    
-    public void mostraSaldo() {
-        // ha de mostrar cada un dels comptes del client amb els seus saldos
-        for (Compte compte:comptes) 
-            System.out.println(compte.getBanc() + "-" + compte.getOficina() + "-" + compte.getDc() + "-" + compte.getNumCompte() + ": " + compte.getSaldo());
-    }
-    
     // Getters i Setters
     public String getLlinatge1() {
         return llinatge1;
@@ -77,6 +67,17 @@ public class Client {
 
     public void setComptes(ArrayList<Compte> comptes) {
         this.comptes = comptes;
+    }
+        
+    @Override
+    public String toString() {
+        String texte;
+        texte = "Client " + this.nom + " " + this.llinatge1 + " " + this.llinatge2;
+        texte += "\namb SALDO:\n";
+        for (Compte compte:comptes) 
+            texte += "\t"+compte.getBanc() + "-" + compte.getOficina() + "-" + compte.getDc() + "-" + compte.getNumCompte() + ": " + compte.getSaldo() +"\n";
+        
+        return texte;
     }
     
 }

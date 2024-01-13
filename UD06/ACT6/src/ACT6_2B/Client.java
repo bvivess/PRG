@@ -38,7 +38,7 @@ public class Client {
     public void mostraSaldo() {
         // ha de mostrar cada un dels comptes del client amb els seus saldos
         for (Compte compte:comptes) 
-            System.out.println(compte.banc + compte.banc + "-" + compte.oficina + "-" + compte.dc + "-" + compte.numCompte + ": " + compte.saldo);
+            System.out.println(compte.banc + "-" + compte.oficina + "-" + compte.dc + "-" + compte.numCompte + ": " + compte.saldo);
     }
 }
 
