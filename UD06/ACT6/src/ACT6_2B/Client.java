@@ -15,17 +15,24 @@ public class Client {
 
     // Mètodes
     public void realitzaTransaccio(Compte compteAModificar, double quantitat) {
-        // ha de modificar el saldo del compte del client
-        for (Compte comptePossible:comptes) {  // es cerca 'compte1' per a cada compte del 'client'
+        // es cerca 'compteAModificar' per a cada 'comptePossible' del 'client'
+        for (Compte comptePossible:comptes) {
             if ((compteAModificar.banc.equalsIgnoreCase(comptePossible.banc)) &&
                 (compteAModificar.oficina.equalsIgnoreCase(comptePossible.oficina)) &&
                 (compteAModificar.dc.equalsIgnoreCase(comptePossible.dc)) && 
                 (compteAModificar.numCompte.equalsIgnoreCase(comptePossible.numCompte)))  // es compara pels 4 atributs de cada compte
-                if (quantitat > 0)
+                if (quantitat > 0) {
                     comptePossible.ingresa(quantitat);
-                else if (quantitat < 0) 
+                    break;
+                } else if (quantitat < 0) { 
                     comptePossible.reintegra(Math.abs(quantitat));  // valor en positiu de 'quantitat'
+                    break;
+                }
         }
+    }
+
+    public void mostraClient() {
+        System.out.println("Client " + this.nom + " " + this.llinatge1 + " " + this.llinatge2 );
     }
     
     public void mostraSaldo() {
