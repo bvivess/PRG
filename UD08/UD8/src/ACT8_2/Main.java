@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author T.Vives
  */
 public class Main {
-
+    
     public static void main(String[] args) {
         try {
             // Declarar i instanciar un compte bancari

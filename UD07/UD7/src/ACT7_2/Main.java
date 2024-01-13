@@ -34,7 +34,7 @@ public class Main {
 
             // Mostrar saldo final
             client1.mostraClient();
-            System.out.println(" amb SALDO:" );
+            System.out.println("amb SALDO:" );
             client1.mostraSaldo();
         } catch (Exception e) {
             System.err.println(e.getMessage());
