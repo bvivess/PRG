@@ -1,4 +1,4 @@
-package ACT6_2A;
+package ACT7_2;
 
 /**
  *
@@ -13,7 +13,7 @@ public class Compte {
 
     public void ingresa(double quantitat) {
         // ha d'incrementar la 'quantitat' al saldo del compte
-        saldo += quantitat;
+        saldo = quantitat;
         System.out.println("Ingrès de " + quantitat + " en el compte " + banc + "-" + oficina + "-" + dc + "-" + numCompte);
     }
 
@@ -23,7 +23,8 @@ public class Compte {
         if (quantitat <= saldo) {
             saldo -= quantitat;
             System.out.println("Retirada de " + quantitat + " del compte " + banc + "-" + oficina + "-" + dc + "-" + numCompte);
-        } else 
+        } else {
             System.out.println("Saldo insuficient " + saldo + " en el compte " + banc + "-" + oficina + "-" + dc + "-" + numCompte);
+        }
     }
 }

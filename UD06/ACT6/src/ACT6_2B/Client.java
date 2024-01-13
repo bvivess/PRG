@@ -14,18 +14,17 @@ public class Client {
     public ArrayList<Compte> comptes;
 
     // Mètodes
-    public void realitzaTransaccio(Compte compte1, double quantitat) {
+    public void realitzaTransaccio(Compte compteAModificar, double quantitat) {
         // ha de modificar el saldo del compte del client
-        String compteComplet1 = compte1.banc + compte1.oficina + compte1.dc + compte1.numCompte;
-        String compteComplet2 = "";
-        
-        for (Compte compte2:comptes) {
-            compteComplet2 = compte2.banc+compte2.oficina+compte2.dc+compte2.numCompte;
-            if (compteComplet1.equalsIgnoreCase(compteComplet2))
+        for (Compte comptePossible:comptes) {  // es cerca 'compte1' per a cada compte del 'client'
+            if ((compteAModificar.banc.equalsIgnoreCase(comptePossible.banc)) &&
+                (compteAModificar.oficina.equalsIgnoreCase(comptePossible.oficina)) &&
+                (compteAModificar.dc.equalsIgnoreCase(comptePossible.dc)) && 
+                (compteAModificar.numCompte.equalsIgnoreCase(comptePossible.numCompte)))  // es compara pels 4 atributs de cada compte
                 if (quantitat > 0)
-                    compte2.ingresa(quantitat);
+                    comptePossible.ingresa(quantitat);
                 else if (quantitat < 0) 
-                    compte2.reintegra(Math.abs(quantitat));  // valor en positiu de 'quantitat'
+                    comptePossible.reintegra(Math.abs(quantitat));  // valor en positiu de 'quantitat'
         }
     }
     
