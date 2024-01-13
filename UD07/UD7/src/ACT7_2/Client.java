@@ -38,7 +38,7 @@ public class Client {
                 }
         }
     }
-    
+ 
     public void mostraSaldo() {
         // ha de mostrar cada un dels comptes del client amb els seus saldos
         for (Compte compte:comptes) 
@@ -77,6 +77,10 @@ public class Client {
     public void setComptes(ArrayList<Compte> comptes) {
         this.comptes = comptes;
     }
+
+    @Override
+    public String toString() {
+        return "Client " + this.nom + " " + this.llinatge1 + " " + this.llinatge2;
+    }
     
 }
-

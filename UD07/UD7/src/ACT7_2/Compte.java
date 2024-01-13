@@ -12,6 +12,17 @@ public class Compte {
     public String numCompte; // núm compte: String 10 posicions
     public double saldo;  // no és possible un valor negatiu per aquest atribut
 
+    // Constructor
+    
+    public Compte(String banc, String oficina, String dc, String numCompte, double saldo) {
+        this.banc = banc;
+        this.oficina = oficina;
+        this.dc = dc;
+        this.numCompte = numCompte;
+        this.saldo = saldo;
+    }
+
+    // Mètodes específics
     public void ingresa(double quantitat) {
         // ha d'incrementar la 'quantitat' al saldo del compte
         saldo += quantitat;
@@ -28,4 +39,49 @@ public class Compte {
             System.out.println("Saldo insuficient " + saldo + " en el compte " + banc + "-" + oficina + "-" + dc + "-" + numCompte);
         }
     }
+    
+    // Getters i Setters
+    public String getBanc() {
+        return banc;
+    }
+
+    public void setBanc(String banc) {
+        this.banc = banc;
+    }
+
+    public String getOficina() {
+        return oficina;
+    }
+
+    public void setOficina(String oficina) {
+        this.oficina = oficina;
+    }
+
+    public String getDc() {
+        return dc;
+    }
+
+    public void setDc(String dc) {
+        this.dc = dc;
+    }
+
+    public String getNumCompte() {
+        return numCompte;
+    }
+
+    public void setNumCompte(String numCompte) {
+        this.numCompte = numCompte;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        if (saldo >= 0)
+            this.saldo = saldo;
+        else
+            throw new IllegalArgumentException("Import negatiu no és possible.");
+    }
+    
 }

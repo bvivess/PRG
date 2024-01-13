@@ -17,6 +17,7 @@ public class Main {
             compte1.oficina = "0001";
             compte1.dc = "01";
             compte1.numCompte = "0000000001";
+            compte1.saldo = 0;  // no cal (valor per defecte)
             comptes.add(compte1);
             
             // Declarar i instanciar un compte bancari
@@ -25,6 +26,7 @@ public class Main {
             compte2.oficina = "0001";
             compte2.dc = "01";
             compte2.numCompte = "0000000002";
+            compte2.saldo = 0;  // no cal (valor per defecte)
             comptes.add(compte2);
 
             // Declarar i instanciar un client
