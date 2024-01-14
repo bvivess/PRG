@@ -43,8 +43,8 @@ public class Compte {
             System.out.println("Saldo insuficient " + saldo + " en el compte " + banc + "-" + oficina + "-" + dc + "-" + numCompte);
         }
         */
-        System.out.println("Retirada de " + quantitat + " del compte " + banc + "-" + oficina + "-" + dc + "-" + numCompte);
         setSaldo(saldo-quantitat);
+        System.out.println("Retirada de " + quantitat + " del compte " + banc + "-" + oficina + "-" + dc + "-" + numCompte);
     }
     
     // Getters i Setters
@@ -88,7 +88,7 @@ public class Compte {
         if (saldo >= 0)
             this.saldo = saldo;
         else
-            throw new IllegalArgumentException("Import negatiu no és possible: " + saldo);
+            throw new IllegalArgumentException("No és possible un Import negatiu.");
     }
     
 }

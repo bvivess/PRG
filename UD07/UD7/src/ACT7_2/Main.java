@@ -26,7 +26,7 @@ public class Main {
             try {
                 client1.realitzaTransaccio(compte1,500.0);
                 client1.realitzaTransaccio(compte1,-200.0);
-                client1.realitzaTransaccio(compte2,-1000.0);
+                client1.realitzaTransaccio(compte2,1000.0);
                 client1.realitzaTransaccio(compte2,-1500.0);  // transacció no es realitzarà
             } catch (Exception e) {
                 System.err.println(e.getMessage());
