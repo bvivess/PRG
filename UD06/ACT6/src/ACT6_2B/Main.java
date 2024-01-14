@@ -31,9 +31,9 @@ public class Main {
 
             // Declarar i instanciar un client
             Client client1 = new Client();
-            client1.nom = "Joan";
             client1.llinatge1 = "Soler";
             client1.llinatge2 = "Matemales";
+            client1.nom = "Joan";
             client1.comptes = comptes;  // atenció a aquesta asignació per referència !!
 
             // Realitzar transaccions
