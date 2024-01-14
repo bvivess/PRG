@@ -88,7 +88,7 @@ public class Compte {
         if (saldo >= 0)
             this.saldo = saldo;
         else
-            throw new IllegalArgumentException("No és possible un Import negatiu.");
+            throw new IllegalArgumentException("No és possible un Import negatiu en comnpte.");
     }
     
 }
