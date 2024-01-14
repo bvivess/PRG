@@ -1,10 +1,12 @@
 package ACT8_0D;
 
-import ACT8_0A.*;
-
 /**
  *
  * @author T.Vives
+ * 
+ * @Override
+ *      toString()
+ *      equals()
  */
 public class Persona {
     private String nom;

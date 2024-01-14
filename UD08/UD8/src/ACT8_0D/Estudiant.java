@@ -1,10 +1,12 @@
 package ACT8_0D;
 
-import ACT8_0A.*;
-
 /**
  *
  * @author winadmin
+ * 
+ * @Override
+ *      toString()
+ *      equals()
  */
 public class Estudiant extends Persona {
     private String curs;

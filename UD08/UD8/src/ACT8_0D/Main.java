@@ -1,16 +1,12 @@
 package ACT8_0D;
 
-import ACT8_0A.*;
-
 /**
  *
  * @author T:Vives
  * 
- * Exemple de Herència Simple
- *     Persona
- *        ^ 
- *        |
- *    Estudiant
+ * @Override
+ *      toString()
+ *      equals()
  * 
  */
 public class Main {
