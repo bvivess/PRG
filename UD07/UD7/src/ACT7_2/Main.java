@@ -21,7 +21,7 @@ public class Main {
 
             // Declarar i instanciar un client
             Client client1 = new Client("Joan","Soler","Matemales", comptes);
-
+            
             // Realitzar transaccions
             try {
                 client1.realitzaTransaccio(compte1,500.0);
@@ -41,4 +41,3 @@ public class Main {
         }
     }
 }
-
