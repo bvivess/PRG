@@ -16,7 +16,7 @@ public class Compte {
 
     public void ingresa(double quantitat) {
         // ha d'incrementar la 'quantitat' al saldo del compte
-        saldo += quantitat;
+        saldo = saldo + quantitat;
         System.out.println("Ingrès de " + quantitat + " en el compte " + banc + "-" + oficina + "-" + dc + "-" + numCompte);
     }
 
@@ -24,7 +24,7 @@ public class Compte {
         // ha de decrementar la 'quantitat' al saldo del compte. 
         // Si la quantitat és superior al saldo cal donar un avis
         if (quantitat <= saldo) {
-            saldo -= quantitat;
+            saldo = saldo - quantitat;
             System.out.println("Retirada de " + quantitat + " del compte " + banc + "-" + oficina + "-" + dc + "-" + numCompte);
         } else {
             System.out.println("Saldo insuficient " + saldo + " en el compte " + banc + "-" + oficina + "-" + dc + "-" + numCompte);
