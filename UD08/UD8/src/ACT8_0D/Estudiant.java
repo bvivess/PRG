@@ -17,11 +17,6 @@ public class Estudiant extends Persona {
         this.curs = curs;
     }
     
-    void mostraEstudiant() {
-        mostraPersona(); 
-        System.out.println("Curs: " + curs);
-    }
-
     public String getCurs() {
         return curs;
     }

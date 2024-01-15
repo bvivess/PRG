@@ -17,9 +17,6 @@ public class Persona {
         this.nom = nom;
         this.edat = edat;
     }
-    void mostraPersona() {
-        System.out.println("Nom: " + nom + " Edat: " + edat);
-    }
 
     public String getNom() {
         return nom;
