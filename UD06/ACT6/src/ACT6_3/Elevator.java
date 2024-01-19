@@ -8,8 +8,8 @@ public class Elevator {
     
     public boolean doorOpen = false;
     public int currentFloor = 1;
-    public static int TOP_FLOOR = 5;
-    public static int BOTTOM_FLOOR = 1;
+    public static int topFloor = 5;
+    public static int bottomFloor = 1;
     
     // Mètodes específics
     // modifica 'doorOpen'=true
@@ -28,7 +28,7 @@ public class Elevator {
     public void goUp() {
         System.out.println("...Anant a d'alt");
         if (!doorOpen) {
-            if (currentFloor < TOP_FLOOR) {
+            if (currentFloor < topFloor) {
                 currentFloor++;
             } else {
                 System.err.println("No és possible pujar, ja en el pis de d'alt");
@@ -43,7 +43,7 @@ public class Elevator {
     public void goDown() {
         System.out.println("...Anant abaix");
         if (!doorOpen) {
-            if (currentFloor > BOTTOM_FLOOR) {
+            if (currentFloor > bottomFloor) {
                 currentFloor--;
             } else {
                 System.err.println("No és possible baixar, ja en el pis de baix");
