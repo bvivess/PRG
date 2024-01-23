@@ -9,6 +9,7 @@ abstract class Figura {
     String color;  // Totes les figures tenen un color
     
     abstract double calcularArea();  // declarar, no implementar
+    abstract double calcularPerimetre(); 
     
     // Constructor
     public Figura(String color) {

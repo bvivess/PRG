@@ -21,6 +21,13 @@ class Cercle extends Figura {
     double calcularArea() {
         return Math.PI * Math.pow(radi, 2);
     }
+
+    @Override
+    double calcularPerimetre() {
+        return Math.PI * 2 * radi;
+    }
+
+
     
 
 }
