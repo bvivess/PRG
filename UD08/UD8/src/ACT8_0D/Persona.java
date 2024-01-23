@@ -39,16 +39,16 @@ public class Persona {
         return "PERSONA Nom: " + nom + " Edat: " + edat;
     }
     
-    /*@Override
+    @Override
     public boolean equals(Object o) {
         Persona p = (Persona) o;
         
-        if (p.nom.equals(nom)) // comparació atribut a atribut ?
+        if ((p.nom.equals(this.nom)) &&
+            (p.edat == this.edat)) // comparació atribut a atribut ?
             return true;
         else 
             return false;
     }
-    */
 
 }
     

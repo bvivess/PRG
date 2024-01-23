@@ -33,7 +33,9 @@ public class Estudiant extends Persona {
     public boolean equals(Object o) {
         Estudiant e = (Estudiant) o;
         
-        if (e.getNom().equals(this.getNom())) // comparació atribut a atribut ?
+        if ( (e.getNom().equals(this.getNom())) &&  // super.equals(o) &&
+             (e.getEdat() == this.getEdat()) &&
+             (e.curs.equals(this.curs)) ) 
             return true;
         else 
             return false;

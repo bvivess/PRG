@@ -9,5 +9,5 @@ package ACT9_0A;
 interface Forma {
     // Mètodes abstractes
     double calcularArea();
-    // double calcularPerimetre();
+    //double calcularPerimetre();
 }
