@@ -9,22 +9,17 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        ArrayList<Triangle> triangles = new ArrayList();
         try {
             TriangleRectangle tRectangle1 = new TriangleRectangle("Verd", 3, 4, 5, new Posicio(1,1));
-            triangles.add(tRectangle1);
             TriangleEquilater tEquilater1 = new TriangleEquilater("Blau", 3, 3, 3, new Posicio(1,1));
-            triangles.add(tEquilater1);
 
-            for (Triangle t : triangles) {
-                //TriangleRectangle tt = (TriangleRectangle) t;
-                System.out.println(t.toString());
-                System.out.println("Àrea: " + t.calculaArea());
-                System.out.println("Perímetre: " + t.calculaPerimetre());
-                System.out.println("Núm. Costats: " + t.calculaNCostats());
-                //System.out.println("Altura: " + tt.calculaAltura());
-            }
-            
+            //TriangleRectangle tt = (TriangleRectangle) t;
+            System.out.println(tRectangle1.toString());
+            System.out.println("Àrea: " + tRectangle1.calculaArea());
+            System.out.println("Perímetre: " + tRectangle1.calculaPerimetre());
+            System.out.println("Núm. Costats: " + tRectangle1.calculaNCostats());
+            System.out.println("Altura: " + tRectangle1.calculaAltura());
+
             System.out.println("-------------------------");
             
             System.out.println(tEquilater1.toString());
