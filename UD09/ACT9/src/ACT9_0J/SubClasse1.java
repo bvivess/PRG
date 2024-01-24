@@ -14,15 +14,17 @@ class SubClasse1 extends ClasseAbstracta {
         this.b2 = b2;
     }
 
-    // Implementació del Mètodo abstracte de la Classe abstracta  
+    // Implementació del Mètode abstracte de la Classe abstracta  
+    @Override
+    public void metodeAbstracte() {
+        System.out.println("MÈTODE ABSTRACTE implementat en SubClasse1");
+    }
+    
+    // Implementació del Mètode concret de la Classe abstracta  
     @Override
     public void metodeConcret() {
         System.out.println("MÈTODE CONCRET implementat en SubClasse1");
     }
     
-    // Implementació del Mètodo abstracte de la Classe abstracta  
-    @Override
-    public void metodeAbstracte() {
-        System.out.println("MÈTODE ABSTRACTE implementat en SubClasse1");
-    }
+
 }
