@@ -18,8 +18,15 @@ abstract class FiguraGeometrica {
 
     @Override
     public String toString() {
-        return "El color de la figura es: " + color;
+        return "Color: " + color;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        FiguraGeometrica f = (FiguraGeometrica) o;
+        return (f.color.equals(this.color));
+    }
+    
     
 
 }

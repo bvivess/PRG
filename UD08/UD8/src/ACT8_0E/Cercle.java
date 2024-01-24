@@ -9,7 +9,7 @@ package ACT8_0E;
  * @author winadmin
  */
 class Cercle extends FiguraGeometrica {
-    double radi;
+    private double radi;
 
     // Constructor
     public Cercle(String color, double radi) {
@@ -26,4 +26,20 @@ class Cercle extends FiguraGeometrica {
     double calculaPerimetre() {
         return Math.PI * 2 * radi;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + " Radi: " + this.radi; 
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        Cercle c = (Cercle) o;
+        return (super.equals(o)) &&
+               (c.radi == this.radi); 
+    }
+
+
+    
+    
 }
