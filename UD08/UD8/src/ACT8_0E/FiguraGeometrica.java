@@ -5,14 +5,14 @@ package ACT8_0E;
  * @author winadmin
  */
 // Classe Abstracta 
-abstract class Figura {
+abstract class FiguraGeometrica {
     String color;  // Totes les figures tenen un color
     
-    abstract double calcularArea();  // declarar, no implementar
-    abstract double calcularPerimetre(); 
+    abstract double calculaArea();  // declarar, no implementar
+    abstract double calculaPerimetre(); 
     
     // Constructor
-    public Figura(String color) {
+    public FiguraGeometrica(String color) {
         this.color = color;
     }
 

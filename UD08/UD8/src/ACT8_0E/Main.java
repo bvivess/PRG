@@ -17,6 +17,6 @@ public class Main {
         // Llamar a métodos de la clase abstracta y clase derivada
         System.out.println(cercle.toString());  // Método de la clase abstracta
         //miCirculo.mostrarRadio();  // Método de la clase derivada
-        System.out.println("Área del círculo: " + cercle.calcularArea()); // Método abstracto implementado en la clase derivada
+        System.out.println("Área del círculo: " + cercle.calculaArea()); // Método abstracto implementado en la clase derivada
     }
 }

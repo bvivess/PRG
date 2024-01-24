@@ -8,7 +8,7 @@ package ACT8_0E;
  *
  * @author winadmin
  */
-class Cercle extends Figura {
+class Cercle extends FiguraGeometrica {
     double radi;
 
     // Constructor
@@ -18,16 +18,12 @@ class Cercle extends Figura {
     }
 
     @Override
-    double calcularArea() {
+    double calculaArea() {
         return Math.PI * Math.pow(radi, 2);
     }
 
     @Override
-    double calcularPerimetre() {
+    double calculaPerimetre() {
         return Math.PI * 2 * radi;
     }
-
-
-    
-
 }
