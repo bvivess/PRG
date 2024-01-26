@@ -7,9 +7,9 @@ package ACT9_0K;
 interface Interficie {
     int a1 = 0;
     
+    public void metodeAbstracte();
+    
     default void metodePerDefecte() {
         System.out.println("MÈTODE PER DEFECTE en la interfície.");
     }
-    
-    public void metodeAbstracte();
 }
