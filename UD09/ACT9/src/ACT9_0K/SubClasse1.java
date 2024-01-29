@@ -10,6 +10,7 @@ class SubClasse1 implements Interficie {
 
     // Constructor
     public SubClasse1(int b1, String b2) {
+        // super(a1);  no es possible
         this.b1 = b1 * a1;
         this.b2 = b2;
     }

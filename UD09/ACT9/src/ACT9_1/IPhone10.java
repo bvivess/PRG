@@ -17,10 +17,6 @@ public class IPhone10 extends IPhone8{
         super.setPatroEmprempta(patroEmprempta);
         setPatroRostre(patroRostre);
     }
-    
-    private String getPatroRostre() {
-        return patroRostre;
-    }
  
     private void setPatroRostre(String patroRostre) {
         this.patroRostre = patroRostre;
@@ -29,7 +25,7 @@ public class IPhone10 extends IPhone8{
     @Override
     public boolean validarPatrons(Persona persona) {
         if (super.getOnOff()) {
-            if (persona.getPatroRostre()!=null) {
+            if (persona.getPatroRostre() != null) {
                 return persona.getPatroRostre().equals(patroRostre);
             }
             return super.validarPatrons(persona);

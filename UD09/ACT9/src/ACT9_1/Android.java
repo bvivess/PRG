@@ -10,35 +10,23 @@ public class Android extends Telefon implements ValidarDispositiu {
     private String patroEmprempta;
  
     public Android(String marca, Persona persona) {
-        super(marca, persona);
+        super(marca, persona, false);
         // TODO Auto-generated constructor stub
     }
 
     @Override
-    public void setPatrons(String patroCodiPin, String patroTeclat, String patriEmprempta, String patroRostre) {
+    public void setPatrons(String patroCodiPin, String patroTeclat, String patroEmprempta, String patroRostre) {
         setPatroCodiPin(patroCodiPin);
         setPatroTeclat(patroTeclat);
         setPatroEmprempta(patroEmprempta);
     }
     
-    private String getPatroCodiPin() {
-        return patroCodiPin;
-    }
-
     private void setPatroCodiPin(String patroCodiPin) {
         this.patroCodiPin = patroCodiPin;
     }
 
-    private String getPatroEmprempta() {
-        return patroEmprempta;
-    }
-
     private void setPatroEmprempta(String patroEmprempta) {
         this.patroEmprempta = patroEmprempta;
-    }
-
-    private String getPatroTeclat() {
-        return patroTeclat;
     }
  
     private void setPatroTeclat(String patroTeclat) {

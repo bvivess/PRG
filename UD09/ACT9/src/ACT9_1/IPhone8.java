@@ -10,7 +10,7 @@ public class IPhone8 extends Telefon implements ValidarDispositiu {
     private String patroEmprempta;
 
     public IPhone8(String marca, Persona persona) {
-        super(marca, persona);
+        super(marca, persona, false);
         // TODO Auto-generated constructor stub
     }
     
@@ -20,16 +20,9 @@ public class IPhone8 extends Telefon implements ValidarDispositiu {
         setPatroEmprempta(patroEmprempta);
     }
     
-    protected String getPatroEmprempta() {
-        return patroEmprempta;
-    }
  
     protected void setPatroEmprempta(String patroEmprempta) {
         this.patroEmprempta = patroEmprempta;
-    }
-
-    protected  String getPatroCodiPin() {
-        return patroCodiPin;
     }
  
     protected void setPatroCodiPin(String patroCodiPin) {
