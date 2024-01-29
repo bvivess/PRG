@@ -26,6 +26,11 @@ class Cercle extends FiguraGeometrica {
     double calculaPerimetre() {
         return Math.PI * 2 * radi;
     }
+    
+    @Override
+    public int calculaNCostats() {
+        return 0;
+    }
 
     @Override
     public String toString() {
