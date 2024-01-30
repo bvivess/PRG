@@ -22,5 +22,12 @@ class EmpleatPerComptePropia extends Empleat {
         // El salario total para empleados por hora depende de las horas trabajadas
         return souBase * horesTreballades;
     }
+
+    @Override
+    public String toString() {
+        return "Hores Treballades= " + horesTreballades;
+    }
+    
+    
 }
 
