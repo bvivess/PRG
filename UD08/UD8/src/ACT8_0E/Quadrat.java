@@ -7,7 +7,7 @@ package ACT8_0E;
 public class Quadrat extends FiguraGeometrica {
     private double costat;
 
-    public Quadrat(double costat, String color) {
+    public Quadrat(String color, double costat) {
         super(color);
         this.costat = costat;
     }
