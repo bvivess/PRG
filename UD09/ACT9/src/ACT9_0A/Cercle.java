@@ -18,4 +18,16 @@ class Cercle implements FiguraGeometrica {
     public double calcularArea() {
         return Math.PI * Math.pow(radi, 2);
     }
+
+    @Override
+    public double calcularPerimetre() {
+        return 0;
+    }
+
+    @Override
+    public int calculaNCostats() {
+        return 0;
+    }
+    
+    
 }

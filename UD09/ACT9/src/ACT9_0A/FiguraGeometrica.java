@@ -8,7 +8,7 @@ package ACT9_0A;
 // Interfície: amb mètode declarat sense implementar
 interface FiguraGeometrica {
     // Mètodes abstractes
-    double calcularArea();
-    double calcularPerimetre();
+    double calculaArea();
+    double calculaPerimetre();
     int calculaNCostats();
 }
