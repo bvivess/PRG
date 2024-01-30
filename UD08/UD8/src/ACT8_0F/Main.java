@@ -8,36 +8,36 @@ package ACT8_0F;
 public class Main {
     public static void main(String[] args) {
         // Crear una instancia de Television
-        int[] initialConfiguration = {50, 70, 80}; // Brillo, Color, Contraste
-        Television televisio = new Television("Sony", false, "Model Trinitron", 42, 1, false, initialConfiguration);
+        int[] initialConfiguration = {50, 70, 80}; // Brillo, Color, Contrast
+        Television televisio = new Television("Sony", false, "Trinitron", 42, 1, false, initialConfiguration);
 
-        // Mostrar información inicial
-        System.out.println("Initial TV Info:");
-        System.out.println(televisio);
+        // Mostrar informació inicial
+        System.out.println("Info TV Inicial:");
+        System.out.println(televisio.toString());
 
-        // Encender el televisor
+        // TV ON
         televisio.turnOn();
 
         // Cambiar de canal
         televisio.changeChannel(5);
 
-        // Mostrar información después de cambiar de canal
-        System.out.println("\nTV Info After Changing Channel:");
+        // Mostrar informació després de cambiar de canal
+        System.out.println("Info TV situació 1:");
         System.out.println(televisio.toString());
 
         // Inicializar la pantalla con una nueva configuración
-        int[] newConfiguration = {60, 80, 90}; // Nueva configuración de brillo, color, contraste
+        int[] newConfiguration = {60, 80, 90}; // Nova configuració de Brillo, Color, Contrast
         televisio.initializeScreen(newConfiguration);
 
         // Mostrar información después de inicializar la pantalla
-        System.out.println("\nTV Info After Initializing Screen:");
-        System.out.println(televisio);
+        System.out.println("Info TV situació 2:");
+        System.out.println(televisio.toString());
 
         // Apagar el televisor
         televisio.turnOff();
 
         // Mostrar información después de apagar
-        System.out.println("\nTV Info After Turning Off:");
+        System.out.println("Info TV Final:");
         System.out.println(televisio);
     }
 }

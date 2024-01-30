@@ -10,7 +10,7 @@ public class Television extends ElectronicDevice {
     private int screenSize;
     private int currentChannel;
     private boolean screenInitialized;
-    private int configuration[]; // brightness, color, contrast 
+    private int configuration[]; // Brillo, Color, Contrast 
 
     public Television(String brand, boolean onOff, String model, int screenSize, int currentChannel, boolean screenInitialized, int[] configuration) {
         super(brand, onOff);
