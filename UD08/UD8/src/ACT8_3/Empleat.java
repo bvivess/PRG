@@ -22,7 +22,7 @@ abstract class Empleat {
      *
      * @return double
      */
-    public abstract double calcularSalari();
+    public abstract double calculaSalari();
 
     /** Mètode concret per mostrar detalls de l'empleat
      * 
@@ -30,7 +30,7 @@ abstract class Empleat {
      */
     @Override
     public String toString() {
-        return "Nombre: " + nom + " " + llinatge1 + ", Sou Base: " + souBase + ", Salari " + calcularSalari();
+        return "Nombre: " + nom + " " + llinatge1 + ", Sou Base: " + souBase + ", Salari " + calculaSalari();
     }
 
     @Override

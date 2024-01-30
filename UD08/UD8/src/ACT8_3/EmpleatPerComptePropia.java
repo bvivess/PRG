@@ -18,7 +18,7 @@ class EmpleatPerComptePropia extends Empleat {
      * @return double
      */
     @Override
-    public double calcularSalari() {
+    public double calculaSalari() {
         // El salario total para empleados por hora depende de las horas trabajadas
         return souBase * horesTreballades;
     }
