@@ -6,13 +6,19 @@ package ACT8_0F;
  */
 
 public abstract class ElectronicDevice {
-    String a;
+    protected String brand;
+    protected boolean onOff;
     
     public abstract void turnOn();
     public abstract void turnOff();
+
+    public ElectronicDevice(String brand, boolean onOff) {
+        this.brand = brand;
+        this.onOff = onOff;
+    }
     
     @Override
     public String toString() {
-        return a;
+        return "Marca: " + this.brand + " On/Off: " + this.onOff;
     }
 }
