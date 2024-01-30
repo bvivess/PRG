@@ -15,12 +15,12 @@ class Cercle implements FiguraGeometrica {
 
     // Implementació del mètode de la interficie per a calcular l'àrea del cercle
     @Override
-    public double calcularArea() {
+    public double calculaArea() {
         return Math.PI * Math.pow(radi, 2);
     }
 
     @Override
-    public double calcularPerimetre() {
+    public double calculaPerimetre() {
         return 0;
     }
 
