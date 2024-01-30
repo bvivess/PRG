@@ -9,7 +9,7 @@ abstract class Empleat {
     // Atributos
     protected String nom;
     protected String llinatge1;
-    protected double souBase;
+    protected double souBase;  // per mes (en 'EmpleatPerCompteAliena') o per hora treballada (en 'EmpleatPerComptePropia')
 
     // Constructor
     public Empleat(String nom, String llinatge1, double souBase) {
@@ -18,10 +18,16 @@ abstract class Empleat {
         this.souBase = souBase;  // salari mensual o per hora treballada
     }
 
-    // Método abstracto para calcular salario
+    /** Mètode abstracte per calcular salari 
+     *
+     * @return double
+     */
     public abstract double calcularSalari();
 
-    // Método para mostrar detalles del empleado
+    /** Mètode concret per mostrar detalls de l'empleat
+     * 
+     * @return String 
+     */
     @Override
     public String toString() {
         return "Nombre: " + nom + " " + llinatge1 + ", Sou Base: " + souBase + ", Salari " + calcularSalari();

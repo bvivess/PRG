@@ -1,16 +1,10 @@
-/*
- * Here comes the text of your license
- * Each line should be prefixed with  * 
- */
 package ACT8_3;
 
-/**
+/** Subclasse d'empleat: Compte pròpia
  *
  * @author winadmin
  */
-// Clase concreta EmpleadoPorHora
 class EmpleatPerComptePropia extends Empleat {
-    // Atributo adicional
     private int horesTreballades;
 
     // Constructor
@@ -19,7 +13,10 @@ class EmpleatPerComptePropia extends Empleat {
         this.horesTreballades = horesTreballades;
     }
 
-    // Implementación del método abstracto
+    /** Implementació del mètode abstracte
+     * 
+     * @return double
+     */
     @Override
     public double calcularSalari() {
         // El salario total para empleados por hora depende de las horas trabajadas
