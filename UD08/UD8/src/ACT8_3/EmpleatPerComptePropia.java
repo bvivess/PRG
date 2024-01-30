@@ -23,10 +23,10 @@ class EmpleatPerComptePropia extends Empleat {
         return souBase * horesTreballades;
     }
 
-    @Override
-    public String toString() {
-        return "Hores Treballades= " + horesTreballades;
-    }
+    //@Override
+    //public String toString() {
+    //    return super.toString() + " Hores Treballades= " + horesTreballades;
+    //}
     
     
 }

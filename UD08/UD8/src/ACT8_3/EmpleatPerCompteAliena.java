@@ -17,7 +17,7 @@ class EmpleatPerCompteAliena extends Empleat {
      * @return double
      */
     @Override
-    public double calcularSalari() {
+    public double calculaSalari() {
         // El salario total es igual al salario base para empleados asalariados
         return souBase;
     }
