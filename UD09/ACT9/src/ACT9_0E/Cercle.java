@@ -17,13 +17,13 @@ class Cercle implements Figura, Coloreador {
     
     // Implementació del mètode de 'Figura'
     @Override
-    public double calcularArea() {
+    public double calculaArea() {
         return Math.PI * Math.pow(radi, 2);
     }
     
     // Implementació del mètode de 'Colorear'
     @Override
-    public void aplicarColor(String color) {
+    public void aplicaColor(String color) {
         this.color = color;
     }
     

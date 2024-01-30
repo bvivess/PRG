@@ -6,7 +6,7 @@ package ACT9_0A;
  */
 
 // Interfície: amb mètode declarat sense implementar
-interface Forma {
+interface FiguraGeometrica {
     // Mètodes abstractes
     double calcularArea();
     double calcularPerimetre();

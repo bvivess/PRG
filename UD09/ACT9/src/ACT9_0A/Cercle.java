@@ -5,7 +5,7 @@ package ACT9_0A;
  *
  * @author winadmin
  */
-class Cercle implements Forma {
+class Cercle implements FiguraGeometrica {
     private double radi;
 
     // Constructor

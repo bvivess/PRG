@@ -15,12 +15,12 @@ public class Rectangle implements Coloreador, Figura {
     }
     
     @Override
-    public void aplicarColor(String color) {
+    public void aplicaColor(String color) {
         this.color = color;
     }
 
     @Override
-    public double calcularArea() {
+    public double calculaArea() {
         return amplada * alcada;
     }
     

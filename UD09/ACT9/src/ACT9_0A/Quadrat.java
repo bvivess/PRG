@@ -4,7 +4,7 @@ package ACT9_0A;
  *
  * @author winadmin
  */
-class Quadrat implements Forma {
+class Quadrat implements FiguraGeometrica {
     private double costat;
     
     // Constructor
