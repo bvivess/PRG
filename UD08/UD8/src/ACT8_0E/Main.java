@@ -13,6 +13,10 @@ public class Main {
     public static void main(String[] args) {
         // Crear un objeto de la clase Circulo
         Cercle cercle = new Cercle("Vermell",5.0);
+        Quadrat quadrat = new Quadrat("Rosa",5.0);
+        
+        cercle.hasColor("Verd");
+        quadrat.hasColor("Blanc");
 
         // Llamar a métodos de la clase abstracta y clase derivada
         System.out.println(cercle.toString());  // Método de la clase abstracta

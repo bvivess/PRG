@@ -10,12 +10,18 @@ abstract class FiguraGeometrica {
     
     abstract double calculaArea();  // declarar, no implementar
     abstract double calculaPerimetre(); 
+    abstract int calculaNCostats();
     
     // Constructor
     public FiguraGeometrica(String color) {
         this.color = color;
     }
 
+    public void hasColor(String color) {
+        this.color = color;
+    }
+    
+    
     @Override
     public String toString() {
         return "Color: " + color;
