@@ -4,7 +4,7 @@ package ACT9_1A;
  *
  * @author winadmin
  */
-public abstract class Telefon implements DispositiuElectronic{
+public abstract class Telefon implements DispositiuElectronic {
     private String marca;  // Marca del Telèfon
     private Persona persona;  // Dades de la persona propietària
     private boolean onOff;  // Encès o apagat
@@ -19,7 +19,7 @@ public abstract class Telefon implements DispositiuElectronic{
     abstract void setPatrons(String patroCodiPin, String patroTeclat, String patriEmprempta, String patroRostre);
     
     public boolean getOnOff() {
-        return onOff;
+        return this.onOff;
     }
     
     public void setOnOff(boolean onOff) {
@@ -29,14 +29,14 @@ public abstract class Telefon implements DispositiuElectronic{
     @Override
     public void on() {
         System.out.println("Telèfon encès");
-        if (!onOff)
-            onOff = true;
+        if (!this.onOff)
+            this.onOff = true;
     }
     
     @Override
     public void off() {
         System.out.println("Telèfon apagat");
-        if (onOff)
-            onOff = false;
+        if (this.onOff)
+            this.onOff = false;
     }
 }

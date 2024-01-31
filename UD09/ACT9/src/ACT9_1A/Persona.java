@@ -17,16 +17,34 @@ public class Persona {
         this.nom = nom;
     }
     
-    Persona(String nom, String patroCodiPin, String patroTeclat, String patriEmprempta, String patroRostre) {
-        this.nom = nom;
-        setPatrons(patroCodiPin, patroTeclat, patriEmprempta, patroRostre);
-    }
-    
-    public void setPatrons(String patroCodiPin, String patroTeclat, String patriEmprempta, String patroRostre) {
+    Persona(String nom, String patroCodiPin, String patroTeclat, String patroEmprempta, String patroRostre) {
+        setNom(nom);
         setPatroCodiPin(patroCodiPin);
         setPatroTeclat(patroTeclat);
         setPatroEmprempta(patroEmprempta);
         setPatroRostre(patroRostre);
+    }
+ 
+
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+ 
+    public String getPatroCodiPin() {
+        return patroCodiPin;
+    }
+ 
+    public void setPatroCodiPin(String patroCodiPin) {
+        this.patroCodiPin = patroCodiPin;
+    }
+    
+    public String getPatroTeclat() {
+        return patroTeclat;
+    }
+ 
+    public void setPatroTeclat(String patroTeclat) {
+        this.patroTeclat = patroTeclat;
     }
     
     public String getEmprempta() {
@@ -43,26 +61,6 @@ public class Persona {
  
     public void setPatroRostre(String patroRostre) {
         this.patroRostre = patroRostre;
-    }
- 
-    public String getPatroTeclat() {
-        return patroTeclat;
-    }
- 
-    public void setPatroTeclat(String patroTeclat) {
-        this.patroTeclat = patroTeclat;
-    }
- 
-    public String getPatroCodiPin() {
-        return patroCodiPin;
-    }
- 
-    public void setPatroCodiPin(String patroCodiPin) {
-        this.patroCodiPin = patroCodiPin;
-    }
- 
-    public String getNom() {
-        return nom;
     }
 
 }
