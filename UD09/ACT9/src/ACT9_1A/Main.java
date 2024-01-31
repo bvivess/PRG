@@ -7,47 +7,64 @@ package ACT9_1A;
 public class Main {
     public static void main(String[] args) {
         // Persona1
-        Persona p1 = new Persona("Joan",null, null, "Emprempta1", null);
+        Persona p1 = new Persona("Joan","1234", null, null, null);
         
         // Persona2
-        Persona p2 = new Persona("Gemma",null, null, "Emprempta2", null);
+        Persona p2 = new Persona("Gemma",null, "Teclat2", null, null);
         
         // Persona3
-        Persona p3 = new Persona("Pedro",null, "Teclat3", null, null);
+        Persona p3 = new Persona("Pere",null, null, "Emprempta3", null);
         
         // Persona4
-        Persona p4 = new Persona("Maria","1234", null, null, null);
-                
+        Persona p4 = new Persona("Maria",null, null, null, "Rostre4");
+        
+        // Android
+        Android android1 = new Android("Samsung", p3);
+        android1.setPatrons("1234", null, null, null);
+        android1.setOnOff(true);
+        
+        Android android2 = new Android("Samsung", p3);
+        android2.setPatrons(null, "Teclat2", null, null);
+        android2.setOnOff(true);
+        
         // IPhone8
         IPhone8 iphone8 = new IPhone8("Apple",p1);
-        iphone8.setPatrons("1234", null, "Emprempta1", null);
+        iphone8.setPatrons(null, null, "Emprempta3", null);
         iphone8.setOnOff(true);
         
         // IPhone10
         IPhone10 iphone10 = new IPhone10("Apple",p2);
-        iphone10.setPatrons(null, null, "Emprempta2", null);
+        iphone10.setPatrons(null, null, null, "Rostre4");
         iphone10.setOnOff(true);
         
-        // Android
-        Android android1 = new Android("Samsung", p3);
-        android1.setPatrons("1234", "Teclat1", null, null);
-        android1.setOnOff(true);
+
         
         // Validacions
+        System.out.println("Android1: ");
+        System.out.print("\t" + p1.getNom() + " " + android1.validaPatrons(p1) + " ");
+        System.out.print("\t" + p2.getNom() + " " + android1.validaPatrons(p2) + " ");
+        System.out.print("\t" + p3.getNom() + " " + android1.validaPatrons(p3) + " ");
+        System.out.print("\t" + p4.getNom() + " " + android1.validaPatrons(p4) + " ");
+        System.out.println("");
+        System.out.println("Android2: ");
+        System.out.print("\t" + p1.getNom() + " " + android2.validaPatrons(p1) + " ");
+        System.out.print("\t" + p2.getNom() + " " + android2.validaPatrons(p2) + " ");
+        System.out.print("\t" + p3.getNom() + " " + android2.validaPatrons(p3) + " ");
+        System.out.print("\t" + p4.getNom() + " " + android2.validaPatrons(p4) + " ");
+        System.out.println("");
         System.out.println("IPhone8: ");
         System.out.print("\t" + p1.getNom() + " " + iphone8.validaPatrons(p1) + " ");
         System.out.print("\t" + p2.getNom() + " " + iphone8.validaPatrons(p2) + " ");
         System.out.print("\t" + p3.getNom() + " " + iphone8.validaPatrons(p3) + " ");
-        System.out.println();
+        System.out.print("\t" + p4.getNom() + " " + iphone8.validaPatrons(p4) + " ");
+        System.out.println("");
         System.out.println("IPhone10: ");
         System.out.print("\t" + p1.getNom() + " " + iphone10.validaPatrons(p1) + " ");
         System.out.print("\t" + p2.getNom() + " " + iphone10.validaPatrons(p2) + " ");
-        System.out.print("\t" + p3.getNom() + " " + iphone8.validaPatrons(p3) + " ");
+        System.out.print("\t" + p3.getNom() + " " + iphone10.validaPatrons(p3) + " ");
+        System.out.print("\t" + p4.getNom() + " " + iphone10.validaPatrons(p4) + " ");
         System.out.println();
-        System.out.println("Android: ");
-        System.out.print("\t" + p1.getNom() + " " + android1.validaPatrons(p1) + " ");
-        System.out.print("\t" + p2.getNom() + " " + android1.validaPatrons(p2) + " ");
-        System.out.print("\t" + p3.getNom() + " " + android1.validaPatrons(p3) + " ");
+
         System.out.println();
         
     }
