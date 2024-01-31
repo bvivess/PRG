@@ -13,9 +13,9 @@ public class Main {
         //FiguraGeometrica figura = new Quadrat("Rosa",5.0);
         
         if (figura instanceof Cercle)
-                System.out.print("Àrea del cercle: "); 
+            System.out.print("Àrea del cercle: "); 
         else if (figura instanceof Quadrat)
-                System.out.print("Àrea del quadrat: "); 
+            System.out.print("Àrea del quadrat: "); 
         
         System.out.println(figura.calculaArea());
         
