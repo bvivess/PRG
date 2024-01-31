@@ -10,12 +10,18 @@ class SubClasse extends ClasseAbstracta implements Interficie {
     // Implementació del mètode de la classe abstracta
     @Override
     public void metodeAbstracteDeClasse() {
+        metodePrivat();
         System.out.println("Implementació del mètode de la classe abstracta en 'SubClasse'");
     }
 
     // Implementació del mètode de la Interfície
     @Override
     public void metodeAbstracteDeInterficie() {
+        metodePrivat();
         System.out.println("Implementació del mètode de la Interfície en 'SubClasse'");
+    }
+    
+    private void metodePrivat() {
+        System.out.println("Implementació d'un mètode privat en metodes sobreescrits de 'Subclasse'");
     }
 }

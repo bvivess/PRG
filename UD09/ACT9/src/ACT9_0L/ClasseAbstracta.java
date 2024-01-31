@@ -10,6 +10,10 @@ abstract class ClasseAbstracta {
     // Mètode abstracte que ha de ser implementat en la SubClasse
     public abstract void metodeAbstracteDeClasse();
     
+    public static void metodeEstatic() {
+        System.out.println("Implementació d'un mètode estàtic1 en 'ClasseAbstracta'");
+    }
+    
     // Mètode concreo en la classe abstracta
     public void metodeConcret() {
         metodePrivat();
