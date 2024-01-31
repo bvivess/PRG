@@ -35,12 +35,15 @@ public class Android extends Telefon implements ValidarDispositiu {
  
     @Override
     public boolean validaPatrons(Persona persona) {
-        if (super.getOnOff())
+        if (super.getOnOff()) {
+            if (persona.getPatroCodiPin() != null) 
+                return persona.getPatroCodiPin().equals(patroCodiPin);
             if (persona.getPatroTeclat() != null) 
                 return persona.getPatroTeclat().equals(patroTeclat);
-            else
-                return false;
-        else {
+            if (persona.getPatroEmprempta() != null) 
+                return persona.getPatroEmprempta().equals(patroEmprempta);
+            return false;
+        } else {
             System.out.println("Telèfon Android no encès");
             return false;
         }

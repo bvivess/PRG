@@ -25,7 +25,9 @@ public class Persona {
         setPatroRostre(patroRostre);
     }
  
-
+    public String getNom() {
+        return nom;
+    }
 
     public void setNom(String nom) {
         this.nom = nom;
@@ -47,7 +49,7 @@ public class Persona {
         this.patroTeclat = patroTeclat;
     }
     
-    public String getEmprempta() {
+    public String getPatroEmprempta() {
         return patroEmprempta;
     }
  
