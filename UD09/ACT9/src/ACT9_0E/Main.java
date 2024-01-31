@@ -11,7 +11,6 @@ public class Main {
 
         cercle.aplicaColor("Blau");
         System.out.println("Àrea del cercle: " + cercle._toString());
-        System.out.println("Àrea del cercle: " + cercle.__toString());
         System.out.println(cercle.toString() + " Àrea del cercle: " + cercle.calculaArea()); 
     }
 }
