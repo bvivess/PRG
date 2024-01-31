@@ -4,7 +4,7 @@ package ACT9_0E;
  *
  * @author winadmin
  */
-public class Rectangle implements Coloreador, Figura {
+public class Rectangle implements Coloreador, FiguraGeometrica {
     String color;
     double amplada, alcada;
     

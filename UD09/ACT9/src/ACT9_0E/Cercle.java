@@ -5,7 +5,7 @@ package ACT9_0E;
  *
  * @author winadmin
  */
-class Cercle implements Figura, Coloreador {
+class Cercle implements FiguraGeometrica, Coloreador {
     String color;
     double radi;
     

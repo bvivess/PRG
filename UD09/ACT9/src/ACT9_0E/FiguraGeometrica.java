@@ -4,7 +4,7 @@ package ACT9_0E;
  *
  * @author winadmin
  */
-interface Figura {
+interface FiguraGeometrica {
     double calculaArea();  // declarar, no implementar
 
     default String _toString() {  // mètode per defecte: no es poden emprar els mètodes d''Object'
