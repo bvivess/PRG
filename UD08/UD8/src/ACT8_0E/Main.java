@@ -8,19 +8,19 @@ package ACT8_0E;
  *
  * @author winadmin
  */
-// Clase principal
+// Classe principal
 public class Main {
     public static void main(String[] args) {
-        // Crear un objeto de la clase Circulo
+        // Crear un objete de la classe 'Cercle'
         Cercle cercle = new Cercle("Vermell",5.0);
         Quadrat quadrat = new Quadrat("Rosa",5.0);
         
         cercle.hasColor("Verd");
         quadrat.hasColor("Blanc");
 
-        // Llamar a métodos de la clase abstracta y clase derivada
-        System.out.println(cercle.toString());  // Método de la clase abstracta
+        // Execució
+        System.out.println(cercle.toString());  // Mètode de la classe abstracta
         //miCirculo.mostrarRadio();  // Método de la clase derivada
-        System.out.println("Área del círculo: " + cercle.calculaArea()); // Método abstracto implementado en la clase derivada
+        System.out.println("Àrea del cercle: " + cercle.calculaArea()); // Mètode abstracte implementat en la subclasse 
     }
 }
