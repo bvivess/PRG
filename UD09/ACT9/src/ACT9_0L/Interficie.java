@@ -7,7 +7,10 @@ package ACT9_0L;
 
 // Interfaz
 interface Interficie {
-    public abstract void metodeAbstracteDeInterficie();
+    public final String atributInterficie="Interficie";  // 'final' no és obligatòria
+    
+    
+    public abstract void metodeAbstracteDeInterficie();  // 'abstract' no és obligatòria
     
     default void metodePerDefecte() {
         metodePrivat();

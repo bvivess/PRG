@@ -7,6 +7,8 @@ package ACT9_0L;
 
 // Clase abstracta
 abstract class ClasseAbstracta {
+    public String atributAbstracte;
+    
     // Mètode abstracte que ha de ser implementat en la SubClasse
     public abstract void metodeAbstracteDeClasse();
     
