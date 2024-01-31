@@ -8,9 +8,10 @@ public class Main {
     public static void main(String[] args) {
         SubClasse instancia = new SubClasse();
         
-        instancia.metodoConcret(); // Implementació concreta en la 'classe abstracta'
-        instancia.metodeAbstracte(); // Implementación del método abstracto en 'SubClasse'
-        instancia.metodeDeInterficie(); // Implementación del método de interfaz en 'SubClasse'
+        instancia.metodeAbstracteDeClasse(); // Implementació del mètode abstracte de classe en 'SubClasse'
+        instancia.metodeAbstracteDeInterficie(); // Implementación del mètode abstracte de interfície en 'SubClasse'
+        //
+        instancia.metodeConcret(); // Implementació concreta en la 'classe abstracta'
         instancia.metodePerDefecte();  // Implementació del mètode per defecte en 'Interficie'
     }
 }

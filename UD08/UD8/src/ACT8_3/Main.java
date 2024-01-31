@@ -8,8 +8,8 @@ public class Main {
     public static void main(String[] args) {
         // Crear instàncies d'empleats
         // Empleat empleat = new Empleat("pere","Martinez",1000); // -> no es pot instanciar
-        EmpleatPerCompteAliena empleat1 = new EmpleatPerCompteAliena("Pere","March",2000);
-        EmpleatPerComptePropia empleat2 = new EmpleatPerComptePropia("Joan", "Marcus", 15, 40);
+        EmpleatAssalariat empleat1 = new EmpleatAssalariat("Pere","March",2000);
+        EmpleatAutonom empleat2 = new EmpleatAutonom("Joan", "Marcus", 15, 40);
         
         // Mostrar detalls dels empleats
         System.out.println( empleat1.toString());

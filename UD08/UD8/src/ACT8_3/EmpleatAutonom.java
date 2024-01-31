@@ -4,11 +4,11 @@ package ACT8_3;
  *
  * @author winadmin
  */
-class EmpleatPerComptePropia extends Empleat {
+class EmpleatAutonom extends Empleat {
     private int horesTreballades;
 
     // Constructor
-    public EmpleatPerComptePropia(String nom, String llinatge1, double souPerHores, int horesTreballades) {
+    public EmpleatAutonom(String nom, String llinatge1, double souPerHores, int horesTreballades) {
         super(nom, llinatge1, souPerHores);
         this.horesTreballades = horesTreballades;
     }

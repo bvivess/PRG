@@ -8,13 +8,13 @@ package ACT8_3;
 abstract class Empleat {
     // Atributos
     protected String nom;
-    protected String llinatge1;
+    protected String llinatge;
     protected double souBase;  // per mes (en 'EmpleatPerCompteAliena') o per hora treballada (en 'EmpleatPerComptePropia')
 
     // Constructor
-    public Empleat(String nom, String llinatge1, double souBase) {
+    public Empleat(String nom, String llinatge, double souBase) {
         this.nom = nom;
-        this.llinatge1 = llinatge1;
+        this.llinatge = llinatge;
         this.souBase = souBase;  // salari mensual o per hora treballada
     }
 
@@ -30,14 +30,14 @@ abstract class Empleat {
      */
     @Override
     public String toString() {
-        return "Nombre: " + nom + " " + llinatge1 + ", Sou Base: " + souBase + ", Salari " + calculaSalari();
+        return "Nombre: " + nom + " " + llinatge + ", Sou Base: " + souBase + ", Salari " + calculaSalari();
     }
 
     @Override
     public boolean equals(Object obj) {
         Empleat empleat = (Empleat) obj;
         
-        return (this.nom.equals(empleat.nom)) && (this.llinatge1.equals(empleat.llinatge1));
+        return (this.nom.equals(empleat.nom)) && (this.llinatge.equals(empleat.llinatge));
     }
     
     

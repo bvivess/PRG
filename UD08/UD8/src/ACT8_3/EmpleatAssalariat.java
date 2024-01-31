@@ -5,10 +5,10 @@ package ACT8_3;
  * @author winadmin
  */
 // 
-class EmpleatPerCompteAliena extends Empleat {
+class EmpleatAssalariat extends Empleat {
     
     // Constructor
-    public EmpleatPerCompteAliena(String nom, String llinatge1, double souBase) {
+    public EmpleatAssalariat(String nom, String llinatge1, double souBase) {
         super(nom, llinatge1, souBase);
     }
 

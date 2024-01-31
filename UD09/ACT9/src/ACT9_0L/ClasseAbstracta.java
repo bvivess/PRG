@@ -8,13 +8,17 @@ package ACT9_0L;
 // Clase abstracta
 abstract class ClasseAbstracta {
     // Mètode abstracte que ha de ser implementat en la SubClasse
-    public abstract void metodeAbstracte();
+    public abstract void metodeAbstracteDeClasse();
     
     // Mètode concreo en la classe abstracta
-    public void metodoConcret() {
+    public void metodeConcret() {
+        metodePrivat();
         System.out.println("Implementació del mètode concret en 'ClasseAbstracta'");
     }
 
+    private void metodePrivat() {
+        System.out.println("Implementació d'un mètode privat en mètode concret de 'ClasseAbstracta'");
+    }
 
 }
 
