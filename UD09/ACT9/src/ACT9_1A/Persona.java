@@ -32,7 +32,7 @@ public class Persona implements ValidadorDispositius {
 
     @Override
     public boolean validaPatrons(Persona persona) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return true;
     }
  
     public String getNom() {

@@ -12,8 +12,7 @@ public class IPhone8 extends Telefon implements ValidadorDispositius {
     // Constructors
     public IPhone8(String marca, Persona persona, String patroCodiPin, String patroEmprempta) {
         super(marca, persona, false);
-        this.patroCodiPin = patroCodiPin;
-        this.patroEmprempta = patroEmprempta;
+        setPatrons(patroCodiPin,null,patroEmprempta,null);
     }
     
     /** Constructor sense patrons, a continuació utilizar 'setPatrons'
@@ -23,7 +22,6 @@ public class IPhone8 extends Telefon implements ValidadorDispositius {
      */
     public IPhone8(String marca, Persona persona) {
         super(marca, persona, false);
-        setPatrons(patroCodiPin,null,patroEmprempta,null);
     }
     
     @Override

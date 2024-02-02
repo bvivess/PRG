@@ -16,8 +16,6 @@ public abstract class Telefon implements DispositiuElectronic {
         this.onOff = onOff;
     }
     
-    abstract void setPatrons(String patroCodiPin, String patroTeclat, String patriEmprempta, String patroRostre);
-    
     public boolean getOnOff() {
         return this.onOff;
     }
