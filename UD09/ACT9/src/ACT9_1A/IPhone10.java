@@ -7,10 +7,20 @@ package ACT9_1A;
 public class IPhone10 extends IPhone8{
      private String patroRostre;
      
+    public IPhone10(String marca, Persona persona, String patroCodiPin, String patroEmprempta, String patroRostre) {
+        super(marca, persona, patroCodiPin, patroEmprempta);
+        this.patroRostre = patroRostre;
+    }
+    
+    /** Constructor sense patrons, a continuació utilizar 'setPatrons'
+     * 
+     * @param marca
+     * @param persona 
+     */
     public IPhone10(String marca, Persona persona) {
         super(marca, persona);
     }
- 
+    
     @Override
     public void setPatrons(String patroCodiPin, String patroTeclat, String patroEmprempta, String patroRostre) {
         super.setPatroCodiPin(patroCodiPin);

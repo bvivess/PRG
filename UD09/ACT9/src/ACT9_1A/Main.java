@@ -19,25 +19,19 @@ public class Main {
         Persona p4 = new Persona("Maria",null, null, null, "Rostre4");
         
         // Android
-        Android android1 = new Android("Samsung", p3);
-        android1.setPatrons("1234", null, null, null);
+        Android android1 = new Android("Samsung", p3,"1234", null, null);
         android1.setOnOff(true);
         
-        Android android2 = new Android("Samsung", p3);
-        android2.setPatrons(null, "Teclat2", null, null);
+        Android android2 = new Android("Samsung", p3,null, "Teclat2", null);
         android2.setOnOff(true);
         
         // IPhone8
-        IPhone8 iphone8 = new IPhone8("Apple",p1);
-        iphone8.setPatrons(null, null, "Emprempta3", null);
+        IPhone8 iphone8 = new IPhone8("Apple",p1, null, "Emprempta3");
         iphone8.setOnOff(true);
         
         // IPhone10
-        IPhone10 iphone10 = new IPhone10("Apple",p2);
-        iphone10.setPatrons(null, null, null, "Rostre4");
+        IPhone10 iphone10 = new IPhone10("Apple",p2,null, null, "Rostre4");
         iphone10.setOnOff(true);
-        
-
         
         // Validacions
         System.out.println("Android1: ");

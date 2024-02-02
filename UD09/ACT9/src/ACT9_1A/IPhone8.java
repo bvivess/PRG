@@ -9,9 +9,22 @@ public class IPhone8 extends Telefon implements ValidarDispositiu {
     private String patroCodiPin;
     private String patroEmprempta;
 
+    // Constructors
+    public IPhone8(String marca, Persona persona, String patroCodiPin, String patroEmprempta) {
+        super(marca, persona, false);
+        this.patroCodiPin = patroCodiPin;
+        this.patroEmprempta = patroEmprempta;
+    }
+    
+    /** Constructor sense patrons, a continuació utilizar 'setPatrons'
+     * 
+     * @param marca
+     * @param persona 
+     */
     public IPhone8(String marca, Persona persona) {
         super(marca, persona, false);
-        // TODO Auto-generated constructor stub
+        this.patroCodiPin = patroCodiPin;
+        this.patroEmprempta = patroEmprempta;
     }
     
     @Override

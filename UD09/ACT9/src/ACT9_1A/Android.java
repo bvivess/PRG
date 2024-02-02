@@ -9,11 +9,24 @@ public class Android extends Telefon implements ValidarDispositiu {
     private String patroTeclat;
     private String patroEmprempta;
  
+    // Constructors
+    public Android(String marca, Persona persona, String patroCodiPin, String patroTeclat, String patroEmprempta) {
+        super(marca, persona, false);
+        this.patroCodiPin = patroCodiPin;
+        this.patroTeclat = patroTeclat;
+        this.patroEmprempta = patroEmprempta; 
+    }
+    
+    /** Constructor sense patrons, a continuació utilizar 'setPatrons'
+     * 
+     * @param marca
+     * @param persona 
+     */
     public Android(String marca, Persona persona) {
         super(marca, persona, false);
-        // TODO Auto-generated constructor stub
     }
 
+    
     @Override
     public void setPatrons(String patroCodiPin, String patroTeclat, String patroEmprempta, String patroRostre) {
         setPatroCodiPin(patroCodiPin);
