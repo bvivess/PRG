@@ -7,6 +7,7 @@ package ACT9_1A;
 public class IPhone10 extends IPhone8{
      private String patroRostre;
      
+    //Constructors
     public IPhone10(String marca, Persona persona, String patroCodiPin, String patroEmprempta, String patroRostre) {
         super(marca, persona, patroCodiPin, patroEmprempta);
         this.patroRostre = patroRostre;

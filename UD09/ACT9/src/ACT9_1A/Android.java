@@ -4,7 +4,7 @@ package ACT9_1A;
  *
  * @author winadmin
  */
-public class Android extends Telefon implements ValidarDispositiu {
+public class Android extends Telefon implements ValidadorDispositius {
     private String patroCodiPin;
     private String patroTeclat;
     private String patroEmprempta;
@@ -26,7 +26,6 @@ public class Android extends Telefon implements ValidarDispositiu {
         super(marca, persona, false);
     }
 
-    
     @Override
     public void setPatrons(String patroCodiPin, String patroTeclat, String patroEmprempta, String patroRostre) {
         setPatroCodiPin(patroCodiPin);
