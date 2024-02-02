@@ -29,18 +29,10 @@ public class IPhone8 extends Telefon implements ValidadorDispositius {
         setPatroCodiPin(patroCodiPin);
         setPatroEmprempta(patroEmprempta);
     }
-    
- 
-    protected void setPatroEmprempta(String patroEmprempta) {
-        this.patroEmprempta = patroEmprempta;
-    }
- 
-    protected void setPatroCodiPin(String patroCodiPin) {
-        this.patroCodiPin = patroCodiPin;
-    }
- 
+     
     @Override
-    public boolean validaPatrons(Persona persona) {
+        public boolean validaPatrons(Object o) {
+        Persona persona = (Persona) o;
         if (super.getOnOff()) {
             if (persona.getPatroCodiPin()!= null)
                 return persona.getPatroCodiPin().equals(patroCodiPin);
@@ -52,5 +44,32 @@ public class IPhone8 extends Telefon implements ValidadorDispositius {
             return false;
         }
     }
-     
+
+    @Override
+    public String getPatroCodiPin() {
+        return patroCodiPin;
+    }
+    
+    @Override
+    public String getPatroTeclat() {
+        return null;
+    }
+        
+    @Override
+    public String getPatroEmprempta() {
+        return patroEmprempta;
+    }
+    
+    @Override
+    public String getPatroRostre() {
+        return null;
+    }
+
+    public void setPatroEmprempta(String patroEmprempta) {
+        this.patroEmprempta = patroEmprempta;
+    }
+ 
+    public void setPatroCodiPin(String patroCodiPin) {
+        this.patroCodiPin = patroCodiPin;
+    } 
 }

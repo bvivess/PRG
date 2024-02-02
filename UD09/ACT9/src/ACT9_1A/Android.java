@@ -33,20 +33,9 @@ public class Android extends Telefon implements ValidadorDispositius {
         setPatroEmprempta(patroEmprempta);
     }
     
-    private void setPatroCodiPin(String patroCodiPin) {
-        this.patroCodiPin = patroCodiPin;
-    }
-
-    private void setPatroEmprempta(String patroEmprempta) {
-        this.patroEmprempta = patroEmprempta;
-    }
- 
-    private void setPatroTeclat(String patroTeclat) {
-        this.patroTeclat = patroTeclat;
-    }
- 
     @Override
-    public boolean validaPatrons(Persona persona) {
+    public boolean validaPatrons(Object o) {
+        Persona persona = (Persona) o;
         if (super.getOnOff()) {
             if (persona.getPatroCodiPin() != null) 
                 return persona.getPatroCodiPin().equals(patroCodiPin);
@@ -61,4 +50,35 @@ public class Android extends Telefon implements ValidadorDispositius {
         }
     }
 
+    @Override
+    public String getPatroCodiPin() {
+        return patroCodiPin;
+    }
+
+    @Override
+    public String getPatroTeclat() {
+        return patroTeclat;
+    }
+    
+    @Override
+    public String getPatroEmprempta() {
+        return patroEmprempta;
+    }
+    
+    @Override
+    public String getPatroRostre() {
+        return null;
+    }
+    
+    public void setPatroCodiPin(String patroCodiPin) {
+        this.patroCodiPin = patroCodiPin;
+    }
+
+    public void setPatroEmprempta(String patroEmprempta) {
+        this.patroEmprempta = patroEmprempta;
+    }
+ 
+    public void setPatroTeclat(String patroTeclat) {
+        this.patroTeclat = patroTeclat;
+    }
 }

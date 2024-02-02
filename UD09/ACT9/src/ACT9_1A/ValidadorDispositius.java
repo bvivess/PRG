@@ -7,7 +7,7 @@ package ACT9_1A;
 public interface ValidadorDispositius {
  
     abstract void setPatrons(String patroCodiPin, String patroTeclat, String patroEmprempta, String patroRostre);
-    abstract boolean validaPatrons(Persona persona);  // Validar Persona amb Dispositiu
+    abstract boolean validaPatrons(Object o);  // Validar Persona amb Dispositiu
  
 }
 

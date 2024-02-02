@@ -31,9 +31,30 @@ public class Persona implements ValidadorDispositius {
     }
 
     @Override
-    public boolean validaPatrons(Persona persona) {
-        return true;
-    }
+    public boolean validaPatrons(Object o) {
+        Telefon telefon = null;
+        if (o instanceof Android)
+            telefon = (Android) o;
+        else if (o instanceof IPhone8)
+            telefon = (IPhone8) o;
+        else if (o instanceof IPhone10)
+            telefon = (IPhone10) o;
+        
+        if (telefon.getOnOff()) {
+            if (this.getPatroCodiPin() != null) 
+                return this.getPatroCodiPin().equals(telefon.getPatroCodiPin());
+            if (this.getPatroTeclat() != null) 
+                return this.getPatroTeclat().equals(telefon.getPatroTeclat());
+            if (this.getPatroEmprempta() != null) 
+                return this.getPatroEmprempta().equals(telefon.getPatroEmprempta());
+            if (this.getPatroRostre() != null) 
+                return this.getPatroRostre().equals(telefon.getPatroRostre());
+            return false;
+        } else {
+            System.out.println("Telèfon Android no encès");
+            return false;
+        }        
+}
  
     public String getNom() {
         return nom;
