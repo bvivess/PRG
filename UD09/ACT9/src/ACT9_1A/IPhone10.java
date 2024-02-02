@@ -9,8 +9,8 @@ public class IPhone10 extends IPhone8{
      
     //Constructors
     public IPhone10(String marca, Persona persona, String patroCodiPin, String patroEmprempta, String patroRostre) {
-        super(marca, persona, patroCodiPin, patroEmprempta);
-        this.patroRostre = patroRostre;
+        super(marca, persona);
+        setPatrons(patroCodiPin,null,patroEmprempta,patroRostre);
     }
     
     /** Constructor sense patrons, a continuació utilizar 'setPatrons'

@@ -4,7 +4,7 @@ package ACT9_1A;
  *
  * @author winadmin
  */
-public class Persona {
+public class Persona implements ValidadorDispositius {
  
     private String nom;
     // Diferents sistemes de validació
@@ -19,10 +19,20 @@ public class Persona {
     
     Persona(String nom, String patroCodiPin, String patroTeclat, String patroEmprempta, String patroRostre) {
         setNom(nom);
+        setPatrons(patroCodiPin,patroTeclat,patroEmprempta,patroRostre);
+    }
+
+    @Override
+    public void setPatrons(String patroCodiPin, String patroTeclat, String patroEmprempta, String patroRostre) {
         setPatroCodiPin(patroCodiPin);
         setPatroTeclat(patroTeclat);
         setPatroEmprempta(patroEmprempta);
         setPatroRostre(patroRostre);
+    }
+
+    @Override
+    public boolean validaPatrons(Persona persona) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
  
     public String getNom() {

@@ -23,8 +23,7 @@ public class IPhone8 extends Telefon implements ValidadorDispositius {
      */
     public IPhone8(String marca, Persona persona) {
         super(marca, persona, false);
-        this.patroCodiPin = patroCodiPin;
-        this.patroEmprempta = patroEmprempta;
+        setPatrons(patroCodiPin,null,patroEmprempta,null);
     }
     
     @Override
