@@ -45,11 +45,6 @@ public class IPhone10 extends IPhone8{
         }
             
     } 
-
-    @Override
-    public String getPatroRostre() {
-        return patroRostre;
-    }
  
     private void setPatroRostre(String patroRostre) {
         this.patroRostre = patroRostre;

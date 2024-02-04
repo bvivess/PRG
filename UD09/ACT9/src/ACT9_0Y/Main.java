@@ -1,5 +1,7 @@
 package ACT9_0Y;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author winadmin
@@ -9,15 +11,17 @@ package ACT9_0Y;
 public class Main {
     public static void main(String[] args) {
         // Crear un objeto de la clase Circulo
-        FiguraGeometrica figura = new Cercle("Vermell",5.0);
-        //FiguraGeometrica figura = new Quadrat("Rosa",5.0);
+        ArrayList<FiguraGeometrica> figures = new ArrayList<FiguraGeometrica>();
+        FiguraGeometrica figuraGeometrica = new Cercle("Vermell",5.0);
+        figures.add(figuraGeometrica);
+        figuraGeometrica = new Quadrat("Groc",5.0);
+        figures.add(figuraGeometrica);
+        figuraGeometrica = new Rectangle("Blau",5.0, 2.0);
+        figures.add(figuraGeometrica);
         
-        if (figura instanceof Cercle)
-            System.out.print("Àrea del cercle: "); 
-        else if (figura instanceof Quadrat)
-            System.out.print("Àrea del quadrat: "); 
-        
-        System.out.println(figura.calculaArea());
+        for (FiguraGeometrica f : figures) {
+            System.out.println(f.toString() + " " + f.calculaArea());
+        }
         
     }
 }

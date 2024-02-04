@@ -45,26 +45,6 @@ public class IPhone8 extends Telefon implements ValidadorDispositius {
         }
     }
 
-    @Override
-    public String getPatroCodiPin() {
-        return patroCodiPin;
-    }
-    
-    @Override
-    public String getPatroTeclat() {
-        return null;
-    }
-        
-    @Override
-    public String getPatroEmprempta() {
-        return patroEmprempta;
-    }
-    
-    @Override
-    public String getPatroRostre() {
-        return null;
-    }
-
     public void setPatroEmprempta(String patroEmprempta) {
         this.patroEmprempta = patroEmprempta;
     }
