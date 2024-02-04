@@ -10,7 +10,7 @@ public class Main {
         Cercle cercle = new Cercle("Vermell",5.0);
 
         cercle.aplicaColor("Blau");
-        System.out.println("Àrea del cercle: " + cercle._toString());
+        System.out.println("Àrea del cercle: " + cercle.toString());
         System.out.println(cercle.toString() + " Àrea del cercle: " + cercle.calculaArea()); 
     }
 }

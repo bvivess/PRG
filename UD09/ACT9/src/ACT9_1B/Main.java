@@ -1,4 +1,7 @@
-package ACT9_1A;
+package ACT9_1B;
+
+import ACT9_1A.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -6,64 +9,69 @@ package ACT9_1A;
  */
 public class Main {
     public static void main(String[] args) {
+        ArrayList<Persona> persones = new ArrayList<Persona>();
+        ArrayList<Telefon> telefons = new ArrayList<Telefon>();
+        
         // Persona1
-        Persona persona1 = new Persona("Joan","1234", null, null, null);
+        Persona persona = new Persona("Joan","1234", null, null, null);
+        persones.add(persona);
         
         // Persona2
-        Persona persona2 = new Persona("Gemma",null, "Teclat2", null, null);
+        persona = new Persona("Gemma",null, "Teclat2", null, null);
+        persones.add(persona);
         
         // Persona3
-        Persona persona3 = new Persona("Pere",null, null, "Emprempta3", null);
+        persona = new Persona("Pere",null, null, "Emprempta3", null);
+        persones.add(persona);
         
         // Persona4
-        Persona persona4 = new Persona("Maria",null, null, null, "Rostre4");
+        persona = new Persona("Maria",null, null, null, "Rostre4");
+        persones.add(persona);
         
         // Android
-        Android android1 = new Android("Samsung", persona1,"1234", null, null);
-        android1.setOnOff(true);
+        Telefon telefon = new Android("Samsung", persones.get(0),"1234", null, null);
+        telefons.add(telefon);
         
-        Android android2 = new Android("Samsung", persona2,null, "Teclat2", null);
-        android2.setOnOff(true);
+        telefon = new Android("Xiaomi", persones.get(1),null, "Teclat2", null);
+        telefons.add(telefon);
         
         // IPhone8
-        IPhone8 iphone8 = new IPhone8("Apple",persona3, null, "Emprempta3");
-        iphone8.setOnOff(true);
+        telefon = new IPhone8("Apple",persones.get(2), null, "Emprempta3");
+        telefons.add(telefon);
         
         // IPhone10
-        IPhone10 iphone10 = new IPhone10("Apple",persona4,null, null, "Rostre4");
-        iphone10.setOnOff(true);
+        telefon = new IPhone10("Apple",persones.get(3),null, null, "Rostre4");
+        telefons.add(telefon);
         
-        // Validacions
-        System.out.println("Android1: ");
-        System.out.print("\t" + persona1.getNom() + " " + android1.validaPatrons(persona1) + " ");
-        System.out.print("\t" + persona2.getNom() + " " + android1.validaPatrons(persona2) + " ");
-        System.out.print("\t" + persona3.getNom() + " " + android1.validaPatrons(persona3) + " ");
-        System.out.print("\t" + persona4.getNom() + " " + android1.validaPatrons(persona4) + " ");
-        System.out.println("");
-        System.out.println("Android2: ");
-        System.out.print("\t" + persona1.getNom() + " " + android2.validaPatrons(persona1) + " ");
-        System.out.print("\t" + persona2.getNom() + " " + android2.validaPatrons(persona2) + " ");
-        System.out.print("\t" + persona3.getNom() + " " + android2.validaPatrons(persona3) + " ");
-        System.out.print("\t" + persona4.getNom() + " " + android2.validaPatrons(persona4) + " ");
-        System.out.println("");
-        System.out.println("IPhone8: ");
-        System.out.print("\t" + persona1.getNom() + " " + iphone8.validaPatrons(persona1) + " ");
-        System.out.print("\t" + persona2.getNom() + " " + iphone8.validaPatrons(persona2) + " ");
-        System.out.print("\t" + persona3.getNom() + " " + iphone8.validaPatrons(persona3) + " ");
-        System.out.print("\t" + persona4.getNom() + " " + iphone8.validaPatrons(persona4) + " ");
-        System.out.println("");
-        System.out.println("IPhone10: ");
-        System.out.print("\t" + persona1.getNom() + " " + iphone10.validaPatrons(persona1) + " ");
-        System.out.print("\t" + persona2.getNom() + " " + iphone10.validaPatrons(persona2) + " ");
-        System.out.print("\t" + persona3.getNom() + " " + iphone10.validaPatrons(persona3) + " ");
-        System.out.print("\t" + persona4.getNom() + " " + iphone10.validaPatrons(persona4) + " ");
-        System.out.println();
+        System.out.print("\n");
+        for (Telefon t : telefons) {
+            t.setOnOff(true);
+            System.out.println("Encenent " + t.toString() + "...");
+        }
 
-        System.out.println();
-        android1.setOnOff(false);
-        android2.setOnOff(false);
-        iphone8.setOnOff(false);
-        iphone10.setOnOff(false);
+        // Validacions Telefon a Persona
+        System.out.print("\n");
+        for (Persona p : persones) {
+            for (Telefon t : telefons) {
+                System.out.print("\t" + p.getNom() + ": " + t.validaPatrons(p) + " ");
+            }
+            System.out.print("\n");
+        }
+
+        // Validacions Persona a Telefon
+        System.out.print("\n");
+        for (Telefon t : telefons) {
+            for (Persona p : persones) {
+                System.out.print("\t" + t.toString() + " " +  p.validaPatrons(t));
+            }
+            System.out.print("\n");
+        }
+        
+        System.out.print("\n");
+        for (Telefon t : telefons) {
+            t.setOnOff(false);
+            System.out.println("Apagant " + t.toString() + "...");
+        }
         
     }
 }

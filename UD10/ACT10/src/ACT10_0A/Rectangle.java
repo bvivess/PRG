@@ -1,31 +1,22 @@
-package ACT9_0E;
+package ACT10_0A;
 
 /**
  *
  * @author winadmin
  */
-public class Rectangle implements Coloreador, FiguraGeometrica {
-    String color;
+public class Rectangle implements FiguraGeometrica {
     double amplada, alcada;
     
-    Rectangle(String color, double amplada, double alcada) {
-        this.color = color;
+    public Rectangle(double amplada, double alcada) {
         this.amplada = amplada;
         this.alcada = alcada;
     }
     
-    @Override
-    public void aplicaColor(String color) {
-        this.color = color;
+    public Rectangle() {
+        
     }
-
     @Override
     public double calculaArea() {
         return amplada * alcada;
-    }
-    
-    @Override
-    public String toString() {  // si es poden implementar els mètodes d''Object'
-        return "Color: " + color + " Amplada: " + amplada + " Alçada: " + alcada;
     }
 }

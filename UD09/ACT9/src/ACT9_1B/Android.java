@@ -1,10 +1,10 @@
-package ACT9_1A;
+package ACT9_1B;
 
 /**
  *
  * @author winadmin
  */
-public class Android extends Telefon implements ValidadorDispositius {
+public class Android extends Telefon {
     private String patroCodiPin;
     private String patroTeclat;
     private String patroEmprempta;

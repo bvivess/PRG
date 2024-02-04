@@ -10,4 +10,3 @@ public interface ValidadorDispositius {
     abstract boolean validaPatrons(Object o);  // Validar Persona amb Dispositiu
  
 }
-

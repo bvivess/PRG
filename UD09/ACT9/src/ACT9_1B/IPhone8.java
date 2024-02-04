@@ -1,11 +1,13 @@
-package ACT9_1A;
+package ACT9_1B;
+
+import ACT9_1A.*;
 
 /**
  *
  * @author winadmin
  */
 
-public class IPhone8 extends Telefon implements ValidadorDispositius {
+public class IPhone8 extends Telefon {
     private String patroCodiPin;
     private String patroEmprempta;
 

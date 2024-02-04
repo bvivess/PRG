@@ -1,18 +1,20 @@
-package ACT9_0E;
+package ACT10_0A;
 
 
 /**
  *
  * @author winadmin
  */
-class Cercle implements FiguraGeometrica, Coloreador {
-    String color;
+class Cercle implements FiguraGeometrica {
     double radi;
     
     // Constructor
-    public Cercle(String color, double radi) {
-        this.color = color;
+    public Cercle(double radi) {
         this.radi = radi;
+    }
+    
+    public Cercle() {
+        
     }
     
     // Implementació del mètode de 'Figura'
@@ -20,15 +22,8 @@ class Cercle implements FiguraGeometrica, Coloreador {
     public double calculaArea() {
         return Math.PI * Math.pow(radi, 2);
     }
-    
-    // Implementació del mètode de 'Colorear'
-    @Override
-    public void aplicaColor(String color) {
-        this.color = color;
-    }
-    
-    @Override
-    public String toString() {  // si es poden implementar els mètodes d''Object'
-        return "Color: " + color + " Radi: " + radi;
+
+    public void setRadi(double radi) {
+        this.radi = radi;
     }
 }
