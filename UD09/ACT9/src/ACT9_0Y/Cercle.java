@@ -1,5 +1,7 @@
 package ACT9_0Y;
 
+import ACT9_0X.*;
+
 /**
  *
  * @author winadmin
