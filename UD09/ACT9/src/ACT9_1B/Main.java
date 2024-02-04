@@ -43,6 +43,7 @@ public class Main {
         telefon = new IPhone10("Apple",persones.get(3),null, null, "Rostre4");
         telefons.add(telefon);
         
+        // Encenent dispositius
         System.out.print("\n");
         for (Telefon t : telefons) {
             t.setOnOff(true);
@@ -67,6 +68,7 @@ public class Main {
             System.out.print("\n");
         }
         
+        // Apagant dispositius
         System.out.print("\n");
         for (Telefon t : telefons) {
             t.setOnOff(false);

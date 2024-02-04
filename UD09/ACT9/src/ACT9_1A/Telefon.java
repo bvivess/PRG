@@ -42,4 +42,9 @@ public abstract class Telefon implements DispositiuElectronic {
         if (this.onOff)
             this.onOff = false;
     }
+    
+    @Override
+    public String toString() {
+        return this.marca;
+    }
 }
