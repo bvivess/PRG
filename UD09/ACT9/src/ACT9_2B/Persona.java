@@ -1,6 +1,4 @@
-package ACT9_1B;
-
-import ACT9_1A.*;
+package ACT9_2B;
 
 /**
  *

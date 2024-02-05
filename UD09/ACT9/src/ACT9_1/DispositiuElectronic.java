@@ -1,4 +1,4 @@
-package ACT9_1A;
+package ACT9_1;
 
 /**
  *

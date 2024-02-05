@@ -1,6 +1,4 @@
-package ACT9_1B;
-
-import ACT9_1A.*;
+package ACT9_1;
 
 /**
  *
@@ -12,4 +10,3 @@ public interface ValidadorDispositius {
     abstract boolean validaPatrons(Object o);  // Validar Persona amb Dispositiu
  
 }
-

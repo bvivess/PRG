@@ -1,13 +1,11 @@
-package ACT9_1B;
-
-import ACT9_1A.*;
+package ACT9_1;
 
 /**
  *
  * @author winadmin
  */
 
-public class IPhone8 extends Telefon {
+public class IPhone8 extends Telefon implements ValidadorDispositius {
     private String patroCodiPin;
     private String patroEmprempta;
 
@@ -45,26 +43,6 @@ public class IPhone8 extends Telefon {
             System.out.println("Telèfon IPhone8 no encès");
             return false;
         }
-    }
-
-    @Override
-    public String getPatroCodiPin() {
-        return patroCodiPin;
-    }
-    
-    @Override
-    public String getPatroTeclat() {
-        return null;
-    }
-        
-    @Override
-    public String getPatroEmprempta() {
-        return patroEmprempta;
-    }
-    
-    @Override
-    public String getPatroRostre() {
-        return null;
     }
 
     public void setPatroEmprempta(String patroEmprempta) {

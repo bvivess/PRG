@@ -1,10 +1,10 @@
-package ACT9_1B;
+package ACT9_2A;
 
 /**
  *
  * @author winadmin
  */
-public class Android extends Telefon {
+public class Android extends Telefon implements ValidadorDispositius {
     private String patroCodiPin;
     private String patroTeclat;
     private String patroEmprempta;
@@ -50,26 +50,6 @@ public class Android extends Telefon {
         }
     }
 
-    @Override
-    public String getPatroCodiPin() {
-        return patroCodiPin;
-    }
-
-    @Override
-    public String getPatroTeclat() {
-        return patroTeclat;
-    }
-    
-    @Override
-    public String getPatroEmprempta() {
-        return patroEmprempta;
-    }
-    
-    @Override
-    public String getPatroRostre() {
-        return null;
-    }
-    
     public void setPatroCodiPin(String patroCodiPin) {
         this.patroCodiPin = patroCodiPin;
     }

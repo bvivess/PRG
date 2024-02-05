@@ -1,6 +1,5 @@
-package ACT9_1B;
+package ACT9_2B;
 
-import ACT9_1A.*;
 import java.util.ArrayList;
 
 /**
