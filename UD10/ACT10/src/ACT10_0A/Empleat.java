@@ -6,7 +6,7 @@ public class Empleat {
     
     private static Empleat empleat;  // per assegurar que sols hi ha un empleat
     
-    // Constructor 'private'
+    // Constructor en 'private'
     private Empleat(String nom, String llinatge) {  // epr assegurar que no es crida des de fora
         this.nom = nom;
         this.llinatge = llinatge;
