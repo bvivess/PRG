@@ -7,13 +7,10 @@ package ACT10_0A;
 public class Main {
 
     public static void main(String[] args) {
-        FiguraGeometricaFactory fg = new FiguraGeometricaFactory();
-        FiguraGeometrica cercle = fg.CreateFiguraGeometrica("Cercle");
+        Empleat empleat = Empleat.getEmpleat("Maria", "Nadal");
+        empleat = Empleat.getEmpleat("Josep", "Torres");
         
-        FiguraGeometrica rectangle = fg.CreateFiguraGeometrica("Rectangle");
-        
-        cercle.calculaArea();
-        rectangle.calculaArea();
+        System.out.println(empleat.toString());
     }
     
 }

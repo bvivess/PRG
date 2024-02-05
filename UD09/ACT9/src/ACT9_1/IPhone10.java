@@ -46,7 +46,7 @@ public class IPhone10 extends IPhone8{
             
     } 
  
-    private void setPatroRostre(String patroRostre) {
+    public void setPatroRostre(String patroRostre) {
         this.patroRostre = patroRostre;
     }    
 }

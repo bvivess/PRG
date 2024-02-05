@@ -4,7 +4,7 @@ package ACT9_2A;
  *
  * @author winadmin
  */
-public class Android extends Telefon implements ValidadorDispositius {
+public class Android extends Telefon {
     private String patroCodiPin;
     private String patroTeclat;
     private String patroEmprempta;

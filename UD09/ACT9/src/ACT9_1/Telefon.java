@@ -18,14 +18,6 @@ public abstract class Telefon implements DispositiuElectronic {
         this.onOff = onOff;
     }
     
-    public boolean getOnOff() {
-        return this.onOff;
-    }
-    
-    public void setOnOff(boolean onOff) {
-        this.onOff = onOff;
-    }
-    
     @Override
     public void on() {
         System.out.println("Telèfon encès");
@@ -38,6 +30,14 @@ public abstract class Telefon implements DispositiuElectronic {
         System.out.println("Telèfon apagat");
         if (this.onOff)
             this.onOff = false;
+    }
+    
+    public boolean getOnOff() {
+        return this.onOff;
+    }
+    
+    public void setOnOff(boolean onOff) {
+        this.onOff = onOff;
     }
     
     @Override
