@@ -6,9 +6,7 @@ package ACT9_2B;
  */
 
 public class IPhone8 extends Telefon {
-    private String patroCodiPin;
-    private String patroEmprempta;
-
+    
     // Constructors
     public IPhone8(String marca, Persona persona, String patroCodiPin, String patroEmprempta) {
         super(marca, persona, false);
@@ -35,41 +33,13 @@ public class IPhone8 extends Telefon {
         Persona persona = (Persona) o;
         if (super.getOnOff()) {
             if (persona.getPatroCodiPin()!= null)
-                return persona.getPatroCodiPin().equals(patroCodiPin);
+                return persona.getPatroCodiPin().equals(getPatroCodiPin());
             if (persona.getPatroEmprempta()!= null)
-                return persona.getPatroEmprempta().equals(patroEmprempta);
+                return persona.getPatroEmprempta().equals(getPatroEmprempta());
             return false;
         } else {
             System.out.println("Telèfon IPhone8 no encès");
             return false;
         }
     }
-
-    @Override
-    public String getPatroCodiPin() {
-        return patroCodiPin;
-    }
-    
-    @Override
-    public String getPatroTeclat() {
-        return null;
-    }
-        
-    @Override
-    public String getPatroEmprempta() {
-        return patroEmprempta;
-    }
-    
-    @Override
-    public String getPatroRostre() {
-        return null;
-    }
-
-    public void setPatroEmprempta(String patroEmprempta) {
-        this.patroEmprempta = patroEmprempta;
-    }
- 
-    public void setPatroCodiPin(String patroCodiPin) {
-        this.patroCodiPin = patroCodiPin;
-    } 
 }

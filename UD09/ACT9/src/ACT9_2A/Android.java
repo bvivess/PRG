@@ -12,9 +12,9 @@ public class Android extends Telefon {
     // Constructors
     public Android(String marca, Persona persona, String patroCodiPin, String patroTeclat, String patroEmprempta) {
         super(marca, persona, false);
-        this.patroCodiPin = patroCodiPin;
-        this.patroTeclat = patroTeclat;
-        this.patroEmprempta = patroEmprempta; 
+        setPatroCodiPin(patroCodiPin);
+        setPatroTeclat(patroTeclat);
+        setPatroEmprempta(patroEmprempta);
     }
     
     /** Constructor sense patrons, a continuació utilizar 'setPatrons'
@@ -38,11 +38,11 @@ public class Android extends Telefon {
         Persona persona = (Persona) o;
         if (super.getOnOff()) {
             if (persona.getPatroCodiPin() != null) 
-                return persona.getPatroCodiPin().equals(patroCodiPin);
+                return persona.getPatroCodiPin().equals(this.patroCodiPin);
             if (persona.getPatroTeclat() != null) 
-                return persona.getPatroTeclat().equals(patroTeclat);
+                return persona.getPatroTeclat().equals(this.patroTeclat);
             if (persona.getPatroEmprempta() != null) 
-                return persona.getPatroEmprempta().equals(patroEmprempta);
+                return persona.getPatroEmprempta().equals(this.patroEmprempta);
             return false;
         } else {
             System.out.println("Telèfon Android no encès");

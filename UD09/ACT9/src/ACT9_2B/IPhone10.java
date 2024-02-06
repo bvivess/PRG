@@ -5,7 +5,6 @@ package ACT9_2B;
  * @author winadmin
  */
 public class IPhone10 extends IPhone8{
-     private String patroRostre;
      
     //Constructors
     public IPhone10(String marca, Persona persona, String patroCodiPin, String patroEmprempta, String patroRostre) {
@@ -37,21 +36,12 @@ public class IPhone10 extends IPhone8{
                 return true;
             else
                 if (persona.getPatroRostre() != null)
-                    return persona.getPatroRostre().equals(patroRostre);
+                    return persona.getPatroRostre().equals(this.getPatroRostre());
             return false;
         } else {
             System.out.println("Telèfon IPhone 10 no encès");
             return false; 
         }
             
-    } 
-
-    @Override
-    public String getPatroRostre() {
-        return patroRostre;
-    }
- 
-    private void setPatroRostre(String patroRostre) {
-        this.patroRostre = patroRostre;
     }    
 }

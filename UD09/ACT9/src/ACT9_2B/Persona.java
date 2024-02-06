@@ -4,14 +4,9 @@ package ACT9_2B;
  *
  * @author winadmin
  */
-public class Persona implements ValidadorDispositius {
+public class Persona extends ValidadorDispositius {
  
     private String nom;
-    // Diferents sistemes de validació
-    private String patroCodiPin;
-    private String patroTeclat;
-    private String patroEmprempta;
-    private String patroRostre;
     
     Persona(String nom) {
         this.nom = nom;
@@ -53,9 +48,9 @@ public class Persona implements ValidadorDispositius {
         } else {
             System.out.println("Telèfon Android no encès");
             return false;
-        }        
-}
- 
+        }     
+    }
+
     public String getNom() {
         return nom;
     }
@@ -63,37 +58,4 @@ public class Persona implements ValidadorDispositius {
     public void setNom(String nom) {
         this.nom = nom;
     }
- 
-    public String getPatroCodiPin() {
-        return patroCodiPin;
-    }
- 
-    public void setPatroCodiPin(String patroCodiPin) {
-        this.patroCodiPin = patroCodiPin;
-    }
-    
-    public String getPatroTeclat() {
-        return patroTeclat;
-    }
- 
-    public void setPatroTeclat(String patroTeclat) {
-        this.patroTeclat = patroTeclat;
-    }
-    
-    public String getPatroEmprempta() {
-        return patroEmprempta;
-    }
- 
-    public void setPatroEmprempta(String patroEmprempta) {
-        this.patroEmprempta = patroEmprempta;
-    }
- 
-    public String getPatroRostre() {
-        return patroRostre;
-    }
- 
-    public void setPatroRostre(String patroRostre) {
-        this.patroRostre = patroRostre;
-    }
-
 }
