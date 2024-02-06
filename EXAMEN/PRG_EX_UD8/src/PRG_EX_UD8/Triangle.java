@@ -38,8 +38,7 @@ public class Triangle extends FiguraGeometrica {
     @Override
     public boolean equals(Object o) {
         Triangle t = (Triangle) o; 
-        if ( (t.color.equals(this.color)) &&  // super.equals(o))
-             (t.posicio.equals(this.posicio)) &&
+        if ( (super.equals(o)) &&
              (t.costat1 == this.costat1) &&
              (t.costat2 == this.costat2) &&
              (t.costat3 == this.costat3) ) {

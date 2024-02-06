@@ -5,8 +5,8 @@ package PRG_EX_UD8;
  * @author winadmin
  */
 public class FiguraGeometrica {
-    protected String color;
-    protected Posicio posicio;
+    private String color;
+    private Posicio posicio;
 
     public FiguraGeometrica(String color, Posicio posicio) {
         this.color = color;
