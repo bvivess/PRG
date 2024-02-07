@@ -40,15 +40,19 @@ public abstract class Telefon implements ValidadorDispositius, DispositiuElectro
         this.onOff = onOff;
     }
     
-    @Override
-    public void setPatrons(String patroCodiPin, String patroTeclat, String patroEmprempta, String patroRostre) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    /**
+     En una 'classe abstracta* no cal implementar ni declarar els mètodes
+     * que ens obliga la Interfície que implementa
+     */
+    // @Override
+    // public void setPatrons(String patroCodiPin, String patroTeclat, String patroEmprempta, String patroRostre);
 
-    @Override
-    public boolean validaPatrons(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    /**
+     En una 'classe abstracta* no cal implementar ni declarar els mètodes
+     * que ens obliga la Interfície que implementa
+     */
+    // @Override
+    // public boolean validaPatrons(Object o);
     
     @Override
     public String toString() {
