@@ -20,13 +20,7 @@ public class Main {
 
     // Realitza operacions en l'empleat
     private static double calculaSalari(Empleat e) {
-        // EmpleatAutonom ea = (EmpleatAutonom) e;
-        
-        // if (e instanceof EmpleatAssalariat)
-        //     sou = e.calculaSalari();
-        // else if (e instanceof EmpleatAutonom)
-        //     sou = e.getSouBase() * ea.getHoresTreballades();
-        
+
         return e.calculaSalari();
     }
 }
