@@ -1,4 +1,4 @@
-package ACT8_3;
+package ACT9_0Z;
 
 /** Subclasse d'empleat: Compte pròpia
  *
@@ -13,21 +13,14 @@ class EmpleatAutonom extends Empleat {
         this.horesTreballades = horesTreballades;
     }
 
-    /** Implementació del mètode abstracte
-     * 
-     * @return double
-     */
+    public int getHoresTreballades() {
+        return horesTreballades;
+    }
+    
     @Override
     public double calculaSalari() {
         // El salario total para empleados por hora depende de las horas trabajadas
-        return super.souBase * this.horesTreballades;
+        return super.getSouBase() * this.getHoresTreballades();
     }
-
-    //@Override
-    //public String toString() {
-    //    return super.toString() + " Hores Treballades= " + horesTreballades;
-    //}
-    
-    
 }
 

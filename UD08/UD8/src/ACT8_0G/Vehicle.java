@@ -9,18 +9,16 @@ abstract class Vehicle {
     int nrodes = 4;
     
     // Constructor
-
     public Vehicle(int nrodes) {
         this.nrodes = nrodes;
     }
-    
+ 
+    // Métode abstracte que ha de ser implementat en les 'subclasses'
+    public abstract void mostraDetalles();
     
     // Mètode concret que proporciona informació general del 'Vehícle' 
-    public void mostrarInformacionGeneral() {
+    public void mostraInformacionGeneral() {
         System.out.println("Això és un vehícle amb " + nrodes + " rodes.");
     }
-
-    // Método abstracto que debe ser implementado por las clases concretas
-    public abstract void mostrarDetalles();
 }
 

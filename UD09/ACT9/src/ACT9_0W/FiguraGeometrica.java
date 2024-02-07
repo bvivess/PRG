@@ -1,6 +1,4 @@
-package ACT9_0Y;
-
-import ACT9_0X.*;
+package ACT9_0W;
 
 /**
  *
@@ -26,7 +24,7 @@ abstract class FiguraGeometrica {
     
     @Override
     public String toString() {
-        return "Classe: " + this.getClass().getName()  + " Color: " + color;
+        return "Color: " + color;
     }
 
     @Override

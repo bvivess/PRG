@@ -1,17 +1,17 @@
-package ACT9_0Z;
+package ACT9_0Y;
 
 /**
  *
  * @author winadmin
  */
-// Clase para representar un documento de texto
-class DocumentTexte implements Document {
+// Clase para representar un documento de hoja de cálculo
+public class DocumentFullCalcul implements Document {
     private StringBuilder contingut=new StringBuilder();
 
-    public DocumentTexte(String contingut) {
+    public DocumentFullCalcul(String contingut) {
         this.contingut.append(contingut);
     }
-    
+
     public void afegeixDocument(String texte) {
         this.contingut.append(texte);
     }

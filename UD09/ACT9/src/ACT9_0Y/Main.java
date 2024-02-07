@@ -1,26 +1,31 @@
 package ACT9_0Y;
 
-import java.util.ArrayList;
-
-/**
- *
+/** Classe principal per demostrar el polimorfisme
+ * 
  * @author winadmin
  */
-
-// Clase principal
 public class Main {
     public static void main(String[] args) {
-        ArrayList<FiguraGeometrica> figures = new ArrayList<FiguraGeometrica>();
-        FiguraGeometrica figuraGeometrica = new Cercle("Vermell", 5.0);
-        figures.add(figuraGeometrica);
-        figuraGeometrica = new Quadrat("Groc", 5.0);
-        figures.add(figuraGeometrica);
-        figuraGeometrica = new Rectangle("Verd", 5.0, 2.0);
-        figures.add(figuraGeometrica);
-        
-        for (FiguraGeometrica f : figures) {
-            System.out.println(f.toString() + " Àrea: " + f.calculaArea());
-        }
-        
+        // Crea instàncies de diferents tipus de documents
+        Document documentTexte = new DocumentTexte("Texte inicial");
+        Document documentFullCalcul = new DocumentFullCalcul("Texte inicial");
+
+        // Realitza operacions en cada document
+        realizaOperacions(documentTexte);
+        System.out.println(documentTexte.toString());
+        System.out.println("------------------------");
+        realizaOperacions(documentFullCalcul);
+        System.out.println(documentFullCalcul.toString());
+    }
+
+    // Realitza operacions en el document genèric
+    private static void realizaOperacions(Document document) {
+        document.obreDocument();
+        if (document instanceof DocumentTexte)
+            document.afegeixDocument(" texte");
+        else if (document instanceof DocumentFullCalcul)
+            document.afegeixDocument(" full Càlcul");
+        document.guardaDocument();
+        document.tancaDocument();
     }
 }

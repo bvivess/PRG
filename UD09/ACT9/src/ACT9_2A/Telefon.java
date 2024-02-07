@@ -41,16 +41,12 @@ public abstract class Telefon implements ValidadorDispositius, DispositiuElectro
     }
     
     /**
-     En una 'classe abstracta* no cal implementar ni declarar els mètodes
-     * que ens obliga la Interfície que implementa
-     */
+     * En una 'classe abstracta* no cal implementar ni declarar els mètodes
+     * que ens obliga la 'Interfície' que implementa
+    */
     // @Override
     // public void setPatrons(String patroCodiPin, String patroTeclat, String patroEmprempta, String patroRostre);
 
-    /**
-     En una 'classe abstracta* no cal implementar ni declarar els mètodes
-     * que ens obliga la Interfície que implementa
-     */
     // @Override
     // public boolean validaPatrons(Object o);
     

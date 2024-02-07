@@ -1,7 +1,5 @@
 package ACT8_2;
 
-import java.util.Objects;
-
 /**
  *
  * @author T.Vives
@@ -103,7 +101,4 @@ public class Compte {
         else
             return false;
     }
-    
-
-    
 }

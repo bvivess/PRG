@@ -1,4 +1,4 @@
-package ACT8_3;
+package ACT9_0Z;
 
 /** Subclasse d'empleat: Asalariat: té un salari fixe
  * 
@@ -11,14 +11,10 @@ class EmpleatAssalariat extends Empleat {
     public EmpleatAssalariat(String nom, String llinatge1, double souBase) {
         super(nom, llinatge1, souBase);
     }
-
-    /** Implementació del mètode abstracte
-     * 
-     * @return double
-     */
+    
     @Override
     public double calculaSalari() {
         // El salario total es igual al salario base para empleados asalariados
-        return super.souBase;
+        return super.getSouBase();
     }
 }

@@ -15,7 +15,7 @@ class Cotxe extends Vehicle {
     }
 
     // Implementación del método abstracto para mostrar detalles específicos del automóvil
-    public void mostrarDetalles() {
+    public void mostraDetalles() {
         System.out.println("Això és un cotxe model " + model + ".");
     }
 }
