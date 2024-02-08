@@ -7,7 +7,7 @@ package ACT9_3;
 public class Main {
     public static void main(String[] args) {
         // Creació de vehícles
-        Automobil auto1 = new Automobil("Toyota", "Camry", 25000.0, 4, 500.0);
+        Automobil auto1 = new Automobil("Renault", "Megane", 25000.0, 4, 500.0);
         Automobil auto2 = new Automobil("Honda", "Civic", 22000.0, 4, 450.0);
 
         Motocicleta moto1 = new Motocicleta("Vespa", "Primavera", 2000.0, 125, "Scotter");
