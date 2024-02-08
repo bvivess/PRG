@@ -6,14 +6,14 @@ package ACT9_3;
  */
 public class Main {
     public static void main(String[] args) {
-        // Creación de vehículos
+        // Creació de vehícles
         Automobil auto1 = new Automobil("Toyota", "Camry", 25000.0, 4, 500.0);
         Automobil auto2 = new Automobil("Honda", "Civic", 22000.0, 4, 450.0);
 
-        Motocicleta moto1 = new Motocicleta("Harley-Davidson", "Sportster", 12000.0, 1200, "Deportiva");
+        Motocicleta moto1 = new Motocicleta("Vespa", "Primavera", 2000.0, 125, "Scotter");
         Motocicleta moto2 = new Motocicleta("Honda", "CBR", 15000.0, 600, "Deportiva");
 
-        // Creación de concesionarios
+        // Creació de concessionaris
         ConcessionariAutos concessionariAutos = new ConcessionariAutos();
         concessionariAutos.agregarAutomovil(auto1);
         concessionariAutos.agregarAutomovil(auto2);
@@ -22,12 +22,10 @@ public class Main {
         concessionariMotos.agregarMotocicleta(moto1);
         concessionariMotos.agregarMotocicleta(moto2);
 
-        // Cálculo de ingresos en cada concesionario
-        double ingresosAutos = concessionariAutos.calculaIngressos();
-        double ingresosMotos = concessionariMotos.calculaIngressos();
-
         // Mostrar resultados
-        System.out.println("Ingresos del Concesionario de Autos: $" + ingresosAutos);
-        System.out.println("Ingresos del Concesionario de Motos: $" + ingresosMotos);
+        System.out.println(concessionariAutos);
+        System.out.println(concessionariMotos);
+        System.out.println("Ingressos del Concesionari de Autos: " + concessionariAutos.calculaIngressos());
+        System.out.println("Ingressos del Concesionari de Motos: " + concessionariMotos.calculaIngressos());
     }
 }

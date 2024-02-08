@@ -21,4 +21,14 @@ public class ConcessionariMotos implements Concessionari {
         }
         return ingresos;
     }
+    
+    @Override
+    public String toString() {
+        String text="";
+        
+        for (Motocicleta m : motos )
+            text += "\n\t" + m.toString();
+
+        return "ConcessionariAutos {" + text + "\n" + "}";
+    }
 }

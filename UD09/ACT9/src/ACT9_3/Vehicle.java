@@ -23,5 +23,11 @@ public abstract class Vehicle {
         return preu;
     }
 
+    @Override
+    public String toString() {
+        return "Vehicle{" + "marca: " + marca + ", model: " + model + ", preu: " + preu + '}';
+    }
+
+    
 
 }
