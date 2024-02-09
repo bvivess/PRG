@@ -9,10 +9,6 @@ import java.util.ArrayList;
 public class ConcessionariMotos implements Concessionari {
     private ArrayList<Motocicleta> motos = new ArrayList<>();
 
-    public void agregarMotocicleta(Motocicleta moto) {
-        motos.add(moto);
-    }
-
     @Override
     public double calculaIngressos() {
         double ingresos = 0;
@@ -30,5 +26,9 @@ public class ConcessionariMotos implements Concessionari {
             text += "\n\t" + m.toString() + " Imposts: " + m.calculaImpost();;
 
         return "ConcessionariAutos {" + text + "\n" + "}";
+    }
+    
+    public void setMotocicleta(Motocicleta moto) {
+        motos.add(moto);
     }
 }

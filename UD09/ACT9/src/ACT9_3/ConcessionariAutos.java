@@ -8,16 +8,16 @@ import java.util.ArrayList;
  */
 public class ConcessionariAutos implements Concessionari {
     private ArrayList<Automobil> autos = new ArrayList<>();
-
-    public void agregarAutomovil(Automobil auto) {
-        autos.add(auto);
-    }
+    private ArrayList<Camio> camions = new ArrayList<>();
 
     @Override
     public double calculaIngressos() {
         double ingresos = 0;
-        for (Automobil auto : autos) {
-            ingresos += auto.getPreu() + auto.calculaImpost();
+        for (Automobil a : autos) {
+            ingresos += a.getPreu() + a.calculaImpost();
+        }
+        for (Camio c : camions) {
+            ingresos += c.getPreu() + c.calculaImpost();
         }
         return ingresos;
     }
@@ -28,7 +28,17 @@ public class ConcessionariAutos implements Concessionari {
         
         for (Automobil a : autos )
             text += "\n\t" + a.toString() + " Imposts: " + a.calculaImpost();
-
+        for (Camio c : camions )
+            text += "\n\t" + c.toString() + " Imposts: " + c.calculaImpost();
+        
         return "ConcessionariAutos {" + text + "\n" + "}";
+    }
+    
+    public void setAutomovil(Automobil auto) {
+        autos.add(auto);
+    }
+    
+    public void setCamio(Camio camio) {
+        camions.add(camio);
     }
 }
