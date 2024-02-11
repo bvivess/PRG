@@ -5,64 +5,31 @@ package PROVA;
  * @author winadmin
  */
 public class Persona {
- 
-    private String nom;
-    // Diferents sistemes de validació
-    private String patroCodiPin;
-    private String patroTeclat;
-    private String patroEmprempta;
-    private String patroRostre;
-    
-    Persona(String nom) {
-        this.nom = nom;
+    private String nombre;
+    private int edad;
+
+    // Constructor, getters, setters, etc.
+
+    public Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
     }
     
-    Persona(String nom, String patroCodiPin, String patroTeclat, String patroEmprempta, String patroRostre) {
-        setNom(nom);
-        setPatroCodiPin(patroCodiPin);
-        setPatroTeclat(patroTeclat);
-        setPatroEmprempta(patroEmprempta);
-        setPatroRostre(patroRostre);
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Persona persona = (Persona) o;
+
+        return edad == persona.edad && nombre.equals(persona.nombre);
     }
 
-    public String getNom() {
-        return nom;
+    @Override
+    public int hashCode() {
+        int result = nombre.hashCode();
+        result = 31 * result + edad;
+        return result;
     }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
- 
-    public String getPatroCodiPin() {
-        return patroCodiPin;
-    }
- 
-    public void setPatroCodiPin(String patroCodiPin) {
-        this.patroCodiPin = patroCodiPin;
-    }
-    
-    public String getPatroTeclat() {
-        return patroTeclat;
-    }
- 
-    public void setPatroTeclat(String patroTeclat) {
-        this.patroTeclat = patroTeclat;
-    }
-    
-    public String getPatroEmprempta() {
-        return patroEmprempta;
-    }
- 
-    public void setPatroEmprempta(String patroEmprempta) {
-        this.patroEmprempta = patroEmprempta;
-    }
- 
-    public String getPatroRostre() {
-        return patroRostre;
-    }
- 
-    public void setPatroRostre(String patroRostre) {
-        this.patroRostre = patroRostre;
-    }
-
 }
