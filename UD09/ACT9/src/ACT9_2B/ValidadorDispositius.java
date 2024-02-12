@@ -8,12 +8,14 @@ public abstract class ValidadorDispositius {
     // Diferents sistemes de validació
     private String[] patrons = {null,null,null,null};  // patroCodiPin, patroTeclat, patroEmprempta, patroRostre
 
+    // Constructor
     public ValidadorDispositius(String[] patrons) {
         this.patrons = patrons;
     }
- 
+    // Mètode abstracte
     abstract boolean validaPatrons(Object o);  // Validar Persona amb Dispositiu
 
+    // Métode concret
     void setPatrons(String[] patrons) {
         setPatroCodiPin(patrons[0]);
         setPatroTeclat(patrons[1]);
