@@ -46,7 +46,7 @@ public class Persona extends ValidadorDispositius {
                 return this.getPatroRostre().equals(telefon.getPatroRostre());
             return false;
         } else {
-            System.out.println("Telèfon Android no encès");
+            System.out.println("Telèfon no encès");
             return false;
         }     
     }

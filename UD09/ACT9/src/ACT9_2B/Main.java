@@ -61,6 +61,7 @@ public class Main {
     
     private static void validaDispositius(ArrayList<Telefon> telefons, ArrayList<Persona> persones) {
         // Validacions Persona a Telefon
+        System.out.print("\n");
         for (Persona p : persones) {
             for (Telefon t : telefons) {
                 System.out.print("\t" + p.getNom() + " " + t.validaPatrons(p) + " ");

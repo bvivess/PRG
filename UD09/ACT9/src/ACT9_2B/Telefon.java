@@ -10,7 +10,6 @@ public abstract class Telefon extends ValidadorDispositius implements Dispositiu
     private boolean onOff;  // Encès o apagat
         
     public Telefon(String marca, Persona persona, boolean onOff) {
-        // super(); // No cal ja que la interfície no té cap atribut
         this.marca = marca;
         this.persona = persona;
         this.onOff = onOff;
@@ -43,13 +42,4 @@ public abstract class Telefon extends ValidadorDispositius implements Dispositiu
         return this.marca;
     }
 
-    @Override
-    public void setPatrons(String patroCodiPin, String patroTeclat, String patroEmprempta, String patroRostre) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public boolean validaPatrons(Object o) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

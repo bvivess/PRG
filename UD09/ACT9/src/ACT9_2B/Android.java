@@ -5,8 +5,7 @@ package ACT9_2B;
  * @author winadmin
  */
 public class Android extends Telefon {
-    private String[] patrons = {null,null,null,null};  // patroCodiPin, patroTeclat, patroEmprempta, patroRostre
- 
+    
     // Constructors
     public Android(String marca, Persona persona, String patroCodiPin, String patroTeclat, String patroEmprempta) {
         super(marca, persona, false);
@@ -47,37 +46,4 @@ public class Android extends Telefon {
             return false;
         }
     }
-
-    @Override
-    public String getPatroCodiPin() {
-        return patrons[0];  // patroCodiPin, patroTeclat, patroEmprempta, patroRostre
-    }
-
-    @Override
-    public String getPatroTeclat() {
-        return patrons[1];  // patroCodiPin, patroTeclat, patroEmprempta, patroRostre
-    }
-    
-    @Override
-    public String getPatroEmprempta() {
-        return patrons[2];  // patroCodiPin, patroTeclat, patroEmprempta, patroRostre
-    }
-    
-    @Override
-    public String getPatroRostre() {
-        return null;
-    }
-    
-    public void setPatroCodiPin(String patroCodiPin) {
-        patrons[0] = patroCodiPin;  // patroCodiPin, patroTeclat, patroEmprempta, patroRostre
-    }
-
-    public void setPatroTeclat(String patroTeclat) {
-        patrons[1] = patroTeclat;  // patroCodiPin, patroTeclat, patroEmprempta, patroRostre
-    }
-    public void setPatroEmprempta(String patroEmprempta) {
-        patrons[2] = patroEmprempta;  // patroCodiPin, patroTeclat, patroEmprempta, patroRostre
-    }
- 
-
 }

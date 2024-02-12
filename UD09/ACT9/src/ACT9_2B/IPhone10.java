@@ -41,7 +41,6 @@ public class IPhone10 extends IPhone8{
         } else {
             System.out.println("Telèfon IPhone 10 no encès");
             return false; 
-        }
-            
+        }   
     }    
 }
