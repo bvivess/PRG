@@ -14,7 +14,8 @@ public class Main {
         persones.add(new Persona("Maria", 25));
         persones.add(new Persona("Joana", 30));
         persones.add(new Persona("Maria", 25));  // No duplicats
-        System.out.println(persones.size()); // ? 2
+        for (Persona p : persones)
+            System.out.println(p.toString()); // ? 2
     }
 }
 

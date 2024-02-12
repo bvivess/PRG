@@ -5,6 +5,6 @@ package ACT11_0H;
  * @author winadmin
  */
 
-enum Direccion {
+enum Direccio {
     NORTE, SUR, ESTE, OESTE
 }
