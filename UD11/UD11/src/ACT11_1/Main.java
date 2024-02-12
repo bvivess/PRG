@@ -40,7 +40,6 @@ public class Main {
         moduls.put(4, modul4);
         moduls.put(5, modul5);
         
-        Modul modul = moduls.get(1);
         // Del mòdul amb clau=1, Nom del mòdul i a continuació Nom de la tercera persona matriculada
         System.out.println(moduls.get(1).nom + ": " + moduls.get(1).matricula.get(2).nom );
         
