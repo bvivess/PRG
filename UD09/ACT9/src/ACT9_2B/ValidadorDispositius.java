@@ -7,9 +7,19 @@ package ACT9_2B;
 public abstract class ValidadorDispositius {
     // Diferents sistemes de validació
     private String[] patrons = {null,null,null,null};  // patroCodiPin, patroTeclat, patroEmprempta, patroRostre
+
+    public ValidadorDispositius(String[] patrons) {
+        this.patrons = patrons;
+    }
  
-    abstract void setPatrons(String patroCodiPin, String patroTeclat, String patroEmprempta, String patroRostre);
     abstract boolean validaPatrons(Object o);  // Validar Persona amb Dispositiu
+
+    void setPatrons(String[] patrons) {
+        setPatroCodiPin(patrons[0]);
+        setPatroTeclat(patrons[1]);
+        setPatroEmprempta(patrons[2]);
+        setPatroRostre(patrons[3]);
+    }
     
     public String getPatroCodiPin() {
         return patrons[0];  // patroCodiPin, patroTeclat, patroEmprempta, patroRostre
