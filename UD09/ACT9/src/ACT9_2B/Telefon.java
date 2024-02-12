@@ -16,6 +16,7 @@ public abstract class Telefon extends ValidadorDispositius implements Dispositiu
         this.onOff = onOff;
     }
     
+    @Override
     public boolean validaPatrons(Object o) {
         Persona persona = (Persona) o;
         
@@ -35,6 +36,20 @@ public abstract class Telefon extends ValidadorDispositius implements Dispositiu
         }
     }
     
+    @Override
+    public void on() {
+        System.out.println("Telèfon encès");
+        if (!this.getOnOff())
+            this.setOnOff(true);
+    }
+    
+    @Override
+    public void off() {
+        System.out.println("Telèfon apagat");
+        if (this.getOnOff())
+            this.setOnOff(false);
+    }
+    
     public boolean getOnOff() {
         return this.onOff;
     }
@@ -49,20 +64,6 @@ public abstract class Telefon extends ValidadorDispositius implements Dispositiu
     
     public void setOnOff(boolean onOff) {
         this.onOff = onOff;
-    }
-    
-    @Override
-    public void on() {
-        System.out.println("Telèfon encès");
-        if (!this.onOff)
-            this.onOff = true;
-    }
-    
-    @Override
-    public void off() {
-        System.out.println("Telèfon apagat");
-        if (this.onOff)
-            this.onOff = false;
     }
     
     @Override

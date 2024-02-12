@@ -6,7 +6,8 @@ package ACT9_2B;
  */
 public class Persona extends ValidadorDispositius {
     private String nom;
-
+    
+    // Constructor
     public Persona(String nom, String[] patrons) {
         super(patrons);
         this.nom = nom;
