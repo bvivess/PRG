@@ -41,14 +41,14 @@ public class Main {
         moduls.put(5, modul5);
         
         Modul modul = moduls.get(1);
-        // Del mòdul 1, Nom de la tercera persona matriculada
-        System.out.println(moduls.get(1).matricula.get(2).nom );
+        // Del mòdul amb clau=1, Nom del mòdul i a continuació Nom de la tercera persona matriculada
+        System.out.println(moduls.get(1).nom + ": " + moduls.get(1).matricula.get(2).nom );
         
-        // Del mòdul 3, número de persones matriculades
-        System.out.println(moduls.get(2).matricula.size());
+        // Del mòdul amb clau=2, Nom del mòdul i a continuació Total de persones matriculades
+        System.out.println(moduls.get(2).nom + ": " + moduls.get(2).matricula.size());
         
-        // Del mòdul 4, Nom del mòdul i a continuació: Llista nom de les persones matriculades
-        System.out.println(moduls.get(3).nom);
+        // Del mòdul amb clau=3, Nom del mòdul i a continuació: Llista totes les persones matriculades
+        System.out.println(moduls.get(3).nom + ":");
         for (Persona p : moduls.get(3).matricula) {
             System.out.print("\t" + p.nom);
         }
