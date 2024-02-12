@@ -1,15 +1,17 @@
-package ACT11_1;
+package ACT11_3;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
  * @author winadmin
  */
-class IPhone10 extends IPhone8 {
 
-    public IPhone10(String marca, Persona persona, HashMap<TipusPatro,String> patrons) {
-        super(marca, persona,patrons);
+class IPhone8 extends Telefon {
+
+    public IPhone8(String marca, Persona persona, HashMap<TipusPatro,String> patrons) {
+        super(patrons,marca, persona, false);
     }
 
     @Override
