@@ -2,7 +2,8 @@ package ACT11_3;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -11,8 +12,8 @@ import java.util.HashSet;
 public class Main {
 
     public static void main(String[] args) {
-        ArrayList<Persona> persones = new ArrayList<>();
-        ArrayList<Telefon> telefons = new ArrayList<>();
+        List<Persona> persones = new ArrayList<>();
+        List<Telefon> telefons = new ArrayList<>();
 
         carregaPersones(persones);
         carregaTelefons(telefons, persones);
@@ -23,12 +24,12 @@ public class Main {
         apagaDispositius(telefons);
     }
 
-    private static void carregaPersones(ArrayList<Persona> persones) {
+    private static void carregaPersones(List<Persona> persones) {
         // Patrons
-        HashMap<TipusPatro, String> patrons1 = new HashMap<>(); patrons1.put(TipusPatro.CODIPIN, "CodiPin1");
-        HashMap<TipusPatro, String> patrons2 = new HashMap<>(); patrons2.put(TipusPatro.TECLAT, "Teclat2");
-        HashMap<TipusPatro, String> patrons3 = new HashMap<>(); patrons3.put(TipusPatro.EMPREMTA, "Emprempta3");
-        HashMap<TipusPatro, String> patrons4 = new HashMap<>(); patrons4.put(TipusPatro.ROSTRE, "Rostre1");
+        Map<TipusPatro, String> patrons1 = new HashMap<>(); patrons1.put(TipusPatro.CODIPIN, "CodiPin1");
+        Map<TipusPatro, String> patrons2 = new HashMap<>(); patrons2.put(TipusPatro.TECLAT, "Teclat2");
+        Map<TipusPatro, String> patrons3 = new HashMap<>(); patrons3.put(TipusPatro.EMPREMTA, "Emprempta3");
+        Map<TipusPatro, String> patrons4 = new HashMap<>(); patrons4.put(TipusPatro.ROSTRE, "Rostre1");
         // Persones
         persones.add(new Persona("Joan", patrons1));
         persones.add(new Persona("Gemma", patrons2));
@@ -36,20 +37,20 @@ public class Main {
         persones.add(new Persona("Maria", patrons4));
     }
 
-    private static void carregaTelefons(ArrayList<Telefon> telefons, ArrayList<Persona> persones) {
+    private static void carregaTelefons(List<Telefon> telefons, List<Persona> persones) {
         // Patrons
-        HashMap<TipusPatro, String> patrons1 = new HashMap<>(); patrons1.put(TipusPatro.CODIPIN, "CodiPin1");
-        HashMap<TipusPatro, String> patrons2 = new HashMap<>(); patrons2.put(TipusPatro.TECLAT, "Teclat2");
-        HashMap<TipusPatro, String> patrons3 = new HashMap<>(); patrons3.put(TipusPatro.EMPREMTA, "Emprempta3");
-        HashMap<TipusPatro, String> patrons4 = new HashMap<>(); patrons4.put(TipusPatro.ROSTRE, "Rostre1");
+        Map<TipusPatro, String> patrons1 = new HashMap<>(); patrons1.put(TipusPatro.CODIPIN, "CodiPin1");
+        Map<TipusPatro, String> patrons2 = new HashMap<>(); patrons2.put(TipusPatro.TECLAT, "Teclat2");
+        Map<TipusPatro, String> patrons3 = new HashMap<>(); patrons3.put(TipusPatro.EMPREMTA, "Emprempta3");
+        Map<TipusPatro, String> patrons4 = new HashMap<>(); patrons4.put(TipusPatro.ROSTRE, "Rostre1");
         // Telefons
-        telefons.add(new Android("Samsung", persones.get(0),patrons1));
-        telefons.add(new Android("Xiaomi", persones.get(1),patrons2));
-        telefons.add(new IPhone8("Apple", persones.get(2),patrons3));
-        telefons.add(new IPhone10("Apple", persones.get(3),patrons4));
+        telefons.add(new Android(patrons1,"Samsung", persones.get(0)));
+        telefons.add(new Android(patrons2, "Xiaomi", persones.get(1)));
+        telefons.add(new IPhone8(patrons3, "Apple", persones.get(2)));
+        telefons.add(new IPhone10(patrons4, "Apple", persones.get(3)));
     }
 
-    private static void validaDispositius(ArrayList<Telefon> telefons, ArrayList<Persona> persones) {
+    private static void validaDispositius(List<Telefon> telefons, List<Persona> persones) {
         System.out.print("\n");
         for (Persona p : persones) {
             for (Telefon t : telefons) {
@@ -59,7 +60,7 @@ public class Main {
         }
     }
     
-    private static void validaPersones(ArrayList<Telefon> telefons, ArrayList<Persona> persones) {
+    private static void validaPersones(List<Telefon> telefons, List<Persona> persones) {
         System.out.print("\n");
         for (Telefon t : telefons) {
             for (Persona p : persones) {
@@ -69,14 +70,14 @@ public class Main {
         }
     }
 
-    private static void encenDispositius(ArrayList<Telefon> telefons) {
+    private static void encenDispositius(List<Telefon> telefons) {
         for (Telefon t : telefons) {
             System.out.println("Encenent " + t.toString() + "...");
             t.on();
         }
     }
 
-    private static void apagaDispositius(ArrayList<Telefon> telefons) {
+    private static void apagaDispositius(List<Telefon> telefons) {
         for (Telefon t : telefons) {
             System.out.println("Apagant " + t.toString() + "...");
             t.off();

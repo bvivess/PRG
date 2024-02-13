@@ -1,6 +1,5 @@
 package ACT11_3;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -13,24 +12,22 @@ public abstract class Telefon extends ValidadorDispositius implements Dispositiu
     private boolean onOff;  // Encès o apagat
 
 
-    public Telefon(HashMap<TipusPatro, String> patrons, String marca, Persona persona, boolean onOff) {
+    public Telefon(Map<TipusPatro, String> patrons, String marca, Persona persona, boolean onOff) {
         super(patrons);
         this.marca = marca;
         this.persona = persona;
         this.onOff = onOff;
     }
 
-    public abstract void setPatrons();
-
     public boolean validaPatrons(Object o) {
         Persona persona = (Persona) o;
         if (this.getOnOff()) {
-            for (Map.Entry<TipusPatro, String> eTelefon : this.patrons.entrySet()) {
-                TipusPatro patroClauTelefon = eTelefon.getKey();
-                String patroValorTelefon = eTelefon.getValue();
-                for (Map.Entry<TipusPatro, String> ePersona : persona.getPatrons().entrySet()) {
-                    TipusPatro patroClauPersona = ePersona.getKey();
-                    String patroValorPersona = ePersona.getValue();
+            for (Map.Entry<TipusPatro, String> entryTelefon : this.patrons.entrySet()) {
+                TipusPatro patroClauTelefon = entryTelefon.getKey();
+                String patroValorTelefon = entryTelefon.getValue();
+                for (Map.Entry<TipusPatro, String> entryPersona : persona.getPatrons().entrySet()) {
+                    TipusPatro patroClauPersona = entryPersona.getKey();
+                    String patroValorPersona = entryPersona.getValue();
                     if (patroClauTelefon == patroClauPersona)
                         return patroClauTelefon.equals(patroClauPersona);
                 }
@@ -60,10 +57,6 @@ public abstract class Telefon extends ValidadorDispositius implements Dispositiu
 
     public void setOnOff(boolean onOff) {
         this.onOff = onOff;
-    }
-
-    public HashMap<TipusPatro, String> getPatrons() {
-        return patrons;
     }
 
     @Override

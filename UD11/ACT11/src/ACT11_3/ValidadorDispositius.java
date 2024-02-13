@@ -1,19 +1,32 @@
 package ACT11_3;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
  * @author winadmin
  */
 public abstract class ValidadorDispositius {
-    HashMap<TipusPatro, String> patrons = new HashMap<>();
+    Map<TipusPatro, String> patrons = new HashMap<>();
 
-    public ValidadorDispositius(HashMap<TipusPatro, String> patrons) {
+    public ValidadorDispositius(Map<TipusPatro, String> patrons) {
         this.patrons = patrons;
     }
-
-    abstract void setPatrons();
+    
+    // Mètode abstracte
     abstract boolean validaPatrons(Object o);
+    
+    // Mètode concret
+    public void setPatrons() {
+        // getPatrons().put(TipusPatro.CODIPIN, null);
+        // getPatrons().put(TipusPatro.TECLAT, null);
+        // getPatrons().put(TipusPatro.EMPREMTA, null);
+        // getPatrons().put(TipusPatro.ROSTRE, null);
+    }
+    
+    public Map<TipusPatro, String> getPatrons() {
+        return patrons;
+    }
 }
 

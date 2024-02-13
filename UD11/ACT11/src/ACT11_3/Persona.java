@@ -10,7 +10,7 @@ import java.util.Map;
 public class Persona extends ValidadorDispositius {
     private String nom;
 
-    Persona(String nom, HashMap<TipusPatro, String> patrons) {
+    Persona(String nom, Map<TipusPatro, String> patrons) {
         super(patrons);
         setNom(nom);
     }
@@ -23,7 +23,7 @@ public class Persona extends ValidadorDispositius {
         this.nom = nom;
     }
 
-    public HashMap<TipusPatro, String> getPatrons() {
+    public Map<TipusPatro, String> getPatrons() {
         return patrons;
     }
 
@@ -36,12 +36,12 @@ public class Persona extends ValidadorDispositius {
     public boolean validaPatrons(Object o) {
         Telefon telefon = (Telefon) o;
         if (telefon.getOnOff()) {
-            for (Map.Entry<TipusPatro, String> ePersona : this.patrons.entrySet()) {
-                TipusPatro patroClauPersona = ePersona.getKey();
-                String patroValorPersona = ePersona.getValue();
-                for (Map.Entry<TipusPatro, String> eTelefon : telefon.getPatrons().entrySet()) {
-                    TipusPatro patroClauTelefon = eTelefon.getKey();
-                    String patroValorTelefon = eTelefon.getValue();
+            for (Map.Entry<TipusPatro, String> entryPersona : this.patrons.entrySet()) {
+                TipusPatro patroClauPersona = entryPersona.getKey();
+                String patroValorPersona = entryPersona.getValue();
+                for (Map.Entry<TipusPatro, String> entryTelefon : telefon.getPatrons().entrySet()) {
+                    TipusPatro patroClauTelefon = entryTelefon.getKey();
+                    String patroValorTelefon = entryTelefon.getValue();
                     if (patroClauTelefon == patroClauPersona)
                         return patroClauTelefon.equals(patroClauPersona);
                 }
