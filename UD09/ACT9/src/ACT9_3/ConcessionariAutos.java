@@ -12,16 +12,36 @@ public class ConcessionariAutos implements Concessionari {
 
     @Override
     public double calculaIngressos() {
-        double ingresos = 0;
-        for (Automobil a : autos) {
-            ingresos += a.getPreu() + a.calculaImpost();
-        }
-        for (Camio c : camions) {
-            ingresos += c.getPreu() + c.calculaImpost();
-        }
-        return ingresos;
+        double ingressos = 0;
+        ingressos += calculaIngressosAutos() + calculaIngressosCamions();
+        return ingressos;
     }
+    
+    private double calculaIngressosAutos() {
+        double ingressos = 0;
+        for (Automobil a : this.autos) {
+            ingressos += a.getPreu() + a.calculaImpost();
+        }
+        return ingressos;
+    }
+    
+    private double calculaIngressosCamions() {
+        double ingressos = 0;
 
+        for (Camio c : this.camions) {
+            ingressos += c.getPreu() + c.calculaImpost();
+        }
+        return ingressos;
+    }
+    
+    public void setAutomovil(Automobil auto) {
+        autos.add(auto);
+    }
+    
+    public void setCamio(Camio camio) {
+        camions.add(camio);
+    }
+    
     @Override
     public String toString() {
         String text="";
@@ -33,12 +53,5 @@ public class ConcessionariAutos implements Concessionari {
         
         return "ConcessionariAutos {" + text + "\n" + "}";
     }
-    
-    public void setAutomovil(Automobil auto) {
-        autos.add(auto);
-    }
-    
-    public void setCamio(Camio camio) {
-        camions.add(camio);
-    }
+
 }

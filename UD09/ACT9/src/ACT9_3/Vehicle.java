@@ -9,11 +9,13 @@ public abstract class Vehicle {
     private String marca;
     private String model;
     private double preu;
+    private String tipus;
 
-    public Vehicle(String marca, String model, double preu) {
+    public Vehicle(String marca, String model, double preu, String Tipus) {
         this.marca = marca;
         this.model = model;
         this.preu = preu;
+        this.tipus = tipus;
     }
     
     public abstract double calculaImpost();
@@ -25,7 +27,7 @@ public abstract class Vehicle {
 
     @Override
     public String toString() {
-        return "Vehicle {" + "marca: " + marca + ", model: " + model + ", preu: " + preu + '}';
+        return "Vehicle {" + "marca: " + this.marca + ", model: " + this.model + ", tipus: " + this.tipus + ", preu: " + this.preu + '}';
     }
 
     

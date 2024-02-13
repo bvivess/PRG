@@ -7,12 +7,10 @@ package ACT9_3;
 // Clase para Motocicletas
 public class Motocicleta extends Vehicle {
     private int cilindrada;
-    private String tipus;
 
-    public Motocicleta(String marca, String modelo, double preu, int cilindrada, String tipus) {
-        super(marca, modelo, preu);
+    public Motocicleta(String marca, String modelo, double preu, String tipus, int cilindrada) {
+        super(marca, modelo, preu, tipus);
         this.cilindrada = cilindrada;
-        this.tipus = tipus;
     }
 
     @Override

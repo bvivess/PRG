@@ -18,6 +18,10 @@ public class ConcessionariMotos implements Concessionari {
         return ingresos;
     }
     
+    public void setMotocicleta(Motocicleta moto) {
+        motos.add(moto);
+    }
+    
     @Override
     public String toString() {
         String text="";
@@ -28,7 +32,4 @@ public class ConcessionariMotos implements Concessionari {
         return "ConcessionariAutos {" + text + "\n" + "}";
     }
     
-    public void setMotocicleta(Motocicleta moto) {
-        motos.add(moto);
-    }
 }
