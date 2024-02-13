@@ -6,25 +6,16 @@ package ACT9_3;
  */
 public class Main {
     public static void main(String[] args) {
-        // Creació de vehícles
-        Automobil auto1 = new Automobil("Renault", "Megane", 25000.0, "Turisme", 4, 500.0);
-        Automobil auto2 = new Automobil("Honda", "Civic", 22000.0, "Turisme", 4, 450.0);
-        Camio camio1 = new Camio("Pegasus", "Brabus",15000,"Trucker", 5000.0);
-        Camio camio2 = new Camio("Ebro", "Santana",10000, "Truck", 500.0);
-
-        Motocicleta moto1 = new Motocicleta("Vespa", "Primavera", 2000.0, "Scotter", 125);
-        Motocicleta moto2 = new Motocicleta("Honda", "CBR", 15000.0, "Deportiva", 600);
-
-        // Creació de concessionaris
+        // Creació de concessionaris i els vehicles
         ConcessionariAutos concessionariAutos = new ConcessionariAutos();
-        concessionariAutos.setAutomobil(auto1);
-        concessionariAutos.setAutomobil(auto2);
-        concessionariAutos.setCamio(camio1);
-        concessionariAutos.setCamio(camio2);
+        concessionariAutos.setAutomobil(new Automobil("Renault", "Megane", 25000.0, "Turisme", 4, 500.0));
+        concessionariAutos.setAutomobil(new Automobil("Honda", "Civic", 22000.0, "Turisme", 4, 450.0));
+        concessionariAutos.setCamio(new Camio("Pegasus", "Brabus",15000,"Trucker", 5000.0));
+        concessionariAutos.setCamio(new Camio("Ebro", "Santana",10000, "Truck", 500.0));
 
         ConcessionariMotos concessionariMotos = new ConcessionariMotos();
-        concessionariMotos.setMotocicleta(moto1);
-        concessionariMotos.setMotocicleta(moto2);
+        concessionariMotos.setMotocicleta(new Motocicleta("Vespa", "Primavera", 2000.0, "Scotter", 125));
+        concessionariMotos.setMotocicleta(new Motocicleta("Honda", "CBR", 15000.0, "Deportiva", 600));
 
         // Mostrar resultats
         System.out.println(concessionariAutos.toString());
