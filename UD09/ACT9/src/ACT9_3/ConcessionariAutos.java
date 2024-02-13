@@ -34,7 +34,7 @@ public class ConcessionariAutos implements Concessionari {
         return ingressos;
     }
     
-    public void setAutomovil(Automobil auto) {
+    public void setAutomobil(Automobil auto) {
         autos.add(auto);
     }
     

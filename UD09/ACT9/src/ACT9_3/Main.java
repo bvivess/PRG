@@ -12,13 +12,13 @@ public class Main {
         Camio camio1 = new Camio("Pegasus", "Brabus",15000,"Trucker", 5000.0);
         Camio camio2 = new Camio("Ebro", "Santana",10000, "Truck", 500.0);
 
-        Motocicleta moto1 = new Motocicleta("Vespa", "Primavera", 2000.0, 125, "Scotter");
-        Motocicleta moto2 = new Motocicleta("Honda", "CBR", 15000.0, 600, "Deportiva");
+        Motocicleta moto1 = new Motocicleta("Vespa", "Primavera", 2000.0, "Scotter", 125);
+        Motocicleta moto2 = new Motocicleta("Honda", "CBR", 15000.0, "Deportiva", 600);
 
         // Creació de concessionaris
         ConcessionariAutos concessionariAutos = new ConcessionariAutos();
-        concessionariAutos.setAutomovil(auto1);
-        concessionariAutos.setAutomovil(auto2);
+        concessionariAutos.setAutomobil(auto1);
+        concessionariAutos.setAutomobil(auto2);
         concessionariAutos.setCamio(camio1);
         concessionariAutos.setCamio(camio2);
 
@@ -26,7 +26,7 @@ public class Main {
         concessionariMotos.setMotocicleta(moto1);
         concessionariMotos.setMotocicleta(moto2);
 
-        // Mostrar resultados
+        // Mostrar resultats
         System.out.println(concessionariAutos.toString());
         System.out.println(concessionariMotos.toString());
         System.out.println("Ingressos del Concesionari de Autos: " + concessionariAutos.calculaIngressos());
