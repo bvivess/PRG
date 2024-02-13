@@ -6,7 +6,7 @@ package ACT9_2B;
  */
 public abstract class ValidadorDispositius {
     // Diferents sistemes de validació
-    private String[] patrons = {null,null,null,null};  // patroCodiPin, patroTeclat, patroEmprempta, patroRostre
+    private String[] patrons = {null, null, null, null};  // patroCodiPin, patroTeclat, patroEmprempta, patroRostre
 
     // Constructor
     public ValidadorDispositius(String[] patrons) {

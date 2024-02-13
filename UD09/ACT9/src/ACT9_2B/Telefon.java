@@ -9,8 +9,15 @@ public abstract class Telefon extends ValidadorDispositius implements Dispositiu
     private Persona persona;  // Dades de la persona propietària
     private boolean onOff;  // Encès o apagat
         
-    public Telefon(String marca, Persona persona, boolean onOff, String[] patrons) {
+    public Telefon(String[] patrons, String marca, Persona persona, boolean onOff) {
         super(patrons);
+        this.marca = marca;
+        this.persona = persona;
+        this.onOff = onOff;
+    }
+
+    public Telefon(String marca, Persona persona, boolean onOff) {
+        super(new String[] {null, null, null, null});
         this.marca = marca;
         this.persona = persona;
         this.onOff = onOff;

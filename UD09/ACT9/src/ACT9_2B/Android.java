@@ -7,7 +7,11 @@ package ACT9_2B;
 public class Android extends Telefon {
     
     // Constructor
-    public Android(String marca, Persona persona, String[] patrons) {
-        super(marca, persona, false, patrons);
+    public Android(String[] patrons, String marca, Persona persona) {
+        super(patrons, marca, persona, false);
+    }
+    
+    public Android(String marca, Persona persona) {
+        super(marca, persona, false);
     }
 }
