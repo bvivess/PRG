@@ -1,4 +1,6 @@
-package ACT9_3;
+package ACT9_3B;
+
+import ACT9_3A.*;
 
 /**
  *
@@ -27,7 +29,7 @@ public abstract class Vehicle {
 
     @Override
     public String toString() {
-        return "Vehicle {" + "marca: " + this.marca + ", model: " + this.model + ", tipus: " + this.tipus + ", preu: " + this.preu + '}';
+        return this.getClass().getName() + " {" + "marca: " + this.marca + ", model: " + this.model + ", tipus: " + this.tipus + ", preu: " + this.preu + '}';
     }
 
     

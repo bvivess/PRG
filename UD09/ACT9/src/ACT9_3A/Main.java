@@ -1,4 +1,4 @@
-package ACT9_3;
+package ACT9_3A;
 
 /**
  *
@@ -23,8 +23,6 @@ public class Main {
     private static void creaConcessionariAutos(ConcessionariAutos concessionariAutos) {
         concessionariAutos.setAutomobil(new Automobil("Renault", "Megane", 25000.0, "Turisme", 4, 500.0));
         concessionariAutos.setAutomobil(new Automobil("Honda", "Civic", 22000.0, "Turisme", 4, 450.0));
-        concessionariAutos.setCamio(new Camio("Pegasus", "Brabus",15000,"Trucker", 5000.0));
-        concessionariAutos.setCamio(new Camio("Ebro", "Santana",10000, "Truck", 500.0));
     }
     
     private static void creaConcessionariMotos(ConcessionariMotos concessionariMotos) {
