@@ -27,6 +27,8 @@ public class Main {
         concessionariAutos.setVehicle(new Automobil("Honda", "Civic", 22000.0, "Turisme", 4, 450.0));
         concessionariAutos.setVehicle(new Camio("Pegasus", "Brabus",15000,"Trucker", 5000.0));
         concessionariAutos.setVehicle(new Camio("Ebro", "Santana",10000, "Truck", 500.0));
+        concessionariAutos.setVehicle(new Motocicleta("Labretta", "Model D", 3300.0, "Scotter", 125));
+        
     }
     
     private static void creaConcessionariMotos(ConcessionariMotos concessionariMotos) {
