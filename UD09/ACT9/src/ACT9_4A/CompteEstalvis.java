@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author winadmin
  */
 public class CompteEstalvis extends ProducteBancari {
-    double comisMantCompte;
+    private double comisMantCompte;
     ArrayList<Tarjeta> tarjetes;
 
     public CompteEstalvis(String codiProducte, String nom, double importContractat, double interesPeriode, double comisMantCompte, ArrayList<Tarjeta> tarjetes) {

@@ -5,8 +5,8 @@ package ACT9_4A;
  * @author winadmin
  */
 public class Hipoteca extends ProducteBancari{
-    double comisApertura;
-    int nombrePeriodes;
+    private double comisApertura;
+    private int nombrePeriodes;
 
     public Hipoteca(String codiProducte, String nom, double importContractat, double interesPeriode, double comisApertura, int nombrePeriodes) {
         super(codiProducte, nom, importContractat, interesPeriode);

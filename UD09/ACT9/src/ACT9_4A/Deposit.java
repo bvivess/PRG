@@ -5,7 +5,7 @@ package ACT9_4A;
  * @author winadmin
  */
 public class Deposit extends ProducteBancari {
-    int nombrePeriodes;
+    private int nombrePeriodes;
 
     public Deposit(String codiProducte, String nom, double importContractat, double interesPeriode, int nombrePeriodes) {
         super(codiProducte, nom, importContractat, interesPeriode);

@@ -7,9 +7,9 @@ import java.util.ArrayList;
  * @author winadmin
  */
 public class Persona {
-    String nom;
-    int edat;
-    ArrayList<ProducteBancari> productesBancaris;
+    private String nom;
+    private int edat;
+    private ArrayList<ProducteBancari> productesBancaris;
     
     public Persona(String nom, int edat, ArrayList<ProducteBancari> productesBancaris) {
         this.nom = nom;
