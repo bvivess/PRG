@@ -11,8 +11,13 @@ public class CompteEstalvis extends ProducteBancari {
     ArrayList<Tarjeta> tarjetes;
 
     @Override
-    double calculRemuneracio() {
-        return 0;
+    double calculaRemuneracio() {
+        double remuneracio = -(this.comisMantCompte);
+        for (Tarjeta t : this.tarjetes) {
+            remuneracio -= t.comisUs;
+        }
+        
+        return remuneracio;
     }
     
 }

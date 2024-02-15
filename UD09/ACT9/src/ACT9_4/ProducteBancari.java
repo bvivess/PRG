@@ -11,7 +11,7 @@ public abstract class ProducteBancari extends Banc {
     protected double interesPeriode;
     protected boolean interesosAFavor;
     
-    abstract double calculRemuneracio();
+    abstract double calculaRemuneracio();
 
     public String getCodiProducte() {
         return codiProducte;

@@ -9,7 +9,7 @@ public class Hipoteca extends ProducteBancari{
     int nombrePeriodes;
 
     @Override
-    double calculRemuneracio() {
+    double calculaRemuneracio() {
         return - (super.importContractat * this.nombrePeriodes) - this.comisApertura;
     }
 

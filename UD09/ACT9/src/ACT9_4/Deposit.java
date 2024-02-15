@@ -8,8 +8,8 @@ public class Deposit extends ProducteBancari {
     int nombrePeriodes;
 
     @Override
-    double calculRemuneracio() {
-        return +(super.importContractat * this.nombrePeriodes);
+    double calculaRemuneracio() {
+        return + (super.importContractat * this.nombrePeriodes);
     }
 
     public int getNombrePeriodes() {
