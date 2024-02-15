@@ -12,9 +12,9 @@ public class Persona {
     ArrayList<ProducteBancari> productesBancaris;
     
     public Persona(String nom, int edat, ArrayList<ProducteBancari> productesBancaris) {
-        this.nom = nom;
-        this.edat = edat;
-        this.productesBancaris = productesBancaris;
+        setNom(nom);
+        setEdat(edat);
+        setProductesBancaris(productesBancaris);
     }
     
     double calculaRemuneracioTotal() {
@@ -34,6 +34,18 @@ public class Persona {
             text += "\n\t" + p.toString() + " Remuneració: " + p.calculaRemuneracio();
         
         return text;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setEdat(int edat) {
+        this.edat = edat;
+    }
+
+    public void setProductesBancaris(ArrayList<ProducteBancari> productesBancaris) {
+        this.productesBancaris = productesBancaris;
     }
 
 }

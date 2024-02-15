@@ -10,8 +10,31 @@ public abstract class Tarjeta {
     private double importMaximCaixer;
     private double importMaximCompra;
 
+    public Tarjeta(String codiTarjeta, double comisUs, double importMaximCaixer, double importMaximCompra) {
+        setCodiTarjeta(codiTarjeta);
+        setComisUs(comisUs);
+        setImportMaximCaixer(importMaximCaixer);
+        setImportMaximCompra(importMaximCompra);
+    }
+    
     public double getComisUs() {
         return comisUs;
+    }
+
+    public void setCodiTarjeta(String codiTarjeta) {
+        this.codiTarjeta = codiTarjeta;
+    }
+
+    public void setComisUs(double comisUs) {
+        this.comisUs = comisUs;
+    }
+
+    public void setImportMaximCaixer(double importMaximCaixer) {
+        this.importMaximCaixer = importMaximCaixer;
+    }
+
+    public void setImportMaximCompra(double importMaximCompra) {
+        this.importMaximCompra = importMaximCompra;
     }
     
 }

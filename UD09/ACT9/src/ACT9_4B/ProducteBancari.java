@@ -12,9 +12,9 @@ public abstract class ProducteBancari {
 
     public ProducteBancari(String codiProducte, String nom, double importContractat, double interesPeriode) {
         this.codiProducte = codiProducte;
-        this.nom = nom;
-        this.importContractat = importContractat;
-        this.interesPeriode = interesPeriode;
+        setNom(nom);
+        setImportContractat(importContractat);
+        setInteresPeriode(interesPeriode);
     }
     
     abstract double calculaRemuneracio();
@@ -38,6 +38,22 @@ public abstract class ProducteBancari {
 
     public double getInteresPeriode() {
         return interesPeriode;
+    }
+
+    public void setCodiProducte(String codiProducte) {
+        this.codiProducte = codiProducte;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setImportContractat(double importContractat) {
+        this.importContractat = importContractat;
+    }
+
+    public void setInteresPeriode(double interesPeriode) {
+        this.interesPeriode = interesPeriode;
     }
     
 }
