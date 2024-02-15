@@ -5,8 +5,8 @@ package ACT9_4B;
  * @author Administrador
  */
 public class FonsInversio extends ProducteBancari {
-    double comisApertura;
-    int nombrePeriodes;
+    private double comisApertura;
+    private int nombrePeriodes;
 
     public FonsInversio(String codiProducte, String nom, double importContractat, double interesPeriode, double comisApertura, int nombrePeriodes) {
         super(codiProducte, nom, importContractat, interesPeriode);
@@ -16,8 +16,15 @@ public class FonsInversio extends ProducteBancari {
 
     @Override
     double calculaRemuneracio() {
-        return + (super.importContractat * super.interesPeriode * this.nombrePeriodes) - this.comisApertura;
+        return + (super.getImportContractat() * super.getInteresPeriode() * this.getNombrePeriodes()) - this.getComisApertura();
     }
-    
+
+    public double getComisApertura() {
+        return comisApertura;
+    }
+
+    public int getNombrePeriodes() {
+        return nombrePeriodes;
+    }
     
 }

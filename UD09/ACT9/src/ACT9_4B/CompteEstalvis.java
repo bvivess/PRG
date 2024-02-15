@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author winadmin
  */
 public class CompteEstalvis extends ProducteBancari {
-    double comisMantCompte;
+    private double comisMantCompte;
     ArrayList<Tarjeta> tarjetes;
 
     public CompteEstalvis(String codiProducte, String nom, double importContractat, double interesPeriode, double comisMantCompte, ArrayList<Tarjeta> tarjetes) {
@@ -20,7 +20,7 @@ public class CompteEstalvis extends ProducteBancari {
     double calculaRemuneracio() {
         double remuneracio = -(this.comisMantCompte);
         for (Tarjeta t : this.tarjetes) {
-            remuneracio -= t.comisUs;
+            remuneracio -= t.getComisUs();
         }
         
         return remuneracio;

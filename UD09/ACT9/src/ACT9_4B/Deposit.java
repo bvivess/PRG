@@ -5,16 +5,16 @@ package ACT9_4B;
  * @author winadmin
  */
 public class Deposit extends ProducteBancari {
-    int nombrePeriodes;
+    private int nombrePeriodes;
 
     public Deposit(String codiProducte, String nom, double importContractat, double interesPeriode, int nombrePeriodes) {
         super(codiProducte, nom, importContractat, interesPeriode);
-        this.nombrePeriodes = nombrePeriodes;
+        setNombrePeriodes(nombrePeriodes);
     }
 
     @Override
     double calculaRemuneracio() {
-        return + (super.importContractat * super.interesPeriode * this.nombrePeriodes);
+        return + (super.getImportContractat() * super.getInteresPeriode() * this.getNombrePeriodes());
     }
 
     public int getNombrePeriodes() {
