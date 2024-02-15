@@ -7,5 +7,4 @@ package ACT9_4A;
 public class Debit extends Tarjeta {
     private double importCompraMinim;
     
-    
 }
