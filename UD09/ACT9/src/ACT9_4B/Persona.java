@@ -31,7 +31,7 @@ public class Persona {
         String text;
         text = "Persona nom=" + nom + ", edat=" + edat;
         for (ProducteBancari p : productesBancaris)
-            text += "\n\t" + p.toString() + " Remuneració: " + p.calculaRemuneracio();;
+            text += "\n\t" + p.toString() + " Remuneració: " + p.calculaRemuneracio();
         
         return text;
     }
