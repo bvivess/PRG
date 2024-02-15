@@ -12,7 +12,9 @@ public class Main {
         Deposit deposit = new Deposit("0001-0001-0002", "Deposit1", 100, 2.5, 10);
         productesBancaris.add(deposit);
         Hipoteca hipoteca = new Hipoteca("0001-0001-0003", "Hipoteca1", 100, 5, 1, 10);
-        productesBancaris.add(hipoteca);        
+        productesBancaris.add(hipoteca);
+        FonsInversio fonsInversio = new FonsInversio("0001-0001-0004", "FonsInversio1", 100, 5, 1, 10);
+        productesBancaris.add(fonsInversio);
         
         Persona persona = new Persona("Joana Moragues", 27, productesBancaris );
         
