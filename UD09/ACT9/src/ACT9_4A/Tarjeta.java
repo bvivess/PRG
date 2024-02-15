@@ -9,5 +9,12 @@ public abstract class Tarjeta {
     protected double comisUs;
     protected double importMaximCaixer;
     protected double importMaximCompra;
+
+    public Tarjeta(String codiTarjeta, double comisUs, double importMaximCaixer, double importMaximCompra) {
+        this.codiTarjeta = codiTarjeta;
+        this.comisUs = comisUs;
+        this.importMaximCaixer = importMaximCaixer;
+        this.importMaximCompra = importMaximCompra;
+    }
     
 }
