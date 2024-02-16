@@ -7,17 +7,33 @@ package ACT9_3A;
 // Clase Libro
 class Llibre extends PublicacioBase {
     private String autor;
-    private double precio;
+    private double preu;
 
-    public Llibre(String titulo, int anioPublicacion, String autor, double precio) {
+    public Llibre(String titulo, int anioPublicacion, String autor, double preu) {
         super(titulo, anioPublicacion);
-        this.autor = autor;
-        this.precio = precio;
+        setAutor(autor);
+        setPreu(preu);
     }
 
     @Override
     public double calculaPrecio() {
-        return precio * 1.21;
+        return getPreu() * 1.21;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public double getPreu() {
+        return preu;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public void setPreu(double preu) {
+        this.preu = preu;
     }
     
     @Override

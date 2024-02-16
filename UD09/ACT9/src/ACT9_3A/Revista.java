@@ -11,13 +11,21 @@ class Revista extends PublicacioBase {
 
     public Revista(String titol, int anioPublicacio, int numeroEdicio, double preu) {
         super(titol, anioPublicacio);
-        this.numeroEdicio = numeroEdicio;
-        this.preu = preu;
+        setNumeroEdicio(numeroEdicio);
+        setPreu(preu);
     }
 
     @Override
     public double calculaPrecio() {
         return preu * 1.10;
+    }
+
+    public void setNumeroEdicio(int numeroEdicio) {
+        this.numeroEdicio = numeroEdicio;
+    }
+
+    public void setPreu(double preu) {
+        this.preu = preu;
     }
 
     @Override
