@@ -1,33 +1,22 @@
 package ACT9_3A;
 
-/**
- *
- * @author winadmin
- */
+// Clase principal Main
 public class Main {
     public static void main(String[] args) {
-        // Creació de concessionaris i vehicles
-        ConcessionariAutos concessionariAutos = new ConcessionariAutos();
-        creaConcessionariAutos(concessionariAutos);
+        Llibre libro = new Llibre("Java Programming", 2020, "John Smith", 35.0);
+        Revista revista = new Revista("Tech Magazine", 2021, 25, 10.0);
 
-        ConcessionariMotos concessionariMotos = new ConcessionariMotos();
-        creaConcessionariMotos(concessionariMotos);
+        // Array de Publicaciones
+        Publicacio[] publicaciones = {libro, revista};
 
-        // Mostrar resultats
-        System.out.println(concessionariAutos.toString());
-        System.out.println(concessionariMotos.toString());
-        System.out.println("Ingressos del Concesionari de Autos: " + concessionariAutos.calculaIngressos());
-        System.out.println("Ingressos del Concesionari de Motos: " + concessionariMotos.calculaIngressos());
+        // Polimorfismo
+        for (Publicacio publicacion : publicaciones) {
+            publicacion.mostrarInformacion();
+            System.out.println("Precio: $" + publicacion.calcularPrecio());
+            System.out.println("--------------");
+        }
     }
-    
-    private static void creaConcessionariAutos(ConcessionariAutos concessionariAutos) {
-        concessionariAutos.setAutomobil(new Automobil("Renault", "Megane", 25000.0, "Turisme", 4, 500.0));
-        concessionariAutos.setAutomobil(new Automobil("Honda", "Civic", 22000.0, "Turisme", 4, 450.0));
-    }
-    
-    private static void creaConcessionariMotos(ConcessionariMotos concessionariMotos) {
-        concessionariMotos.setMotocicleta(new Motocicleta("Vespa", "Primavera", 2000.0, "Scotter", 125));
-        concessionariMotos.setMotocicleta(new Motocicleta("Honda", "CBR", 15000.0, "Deportiva", 600));
-    }
-
 }
+
+
+
