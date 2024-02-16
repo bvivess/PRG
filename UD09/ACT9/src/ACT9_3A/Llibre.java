@@ -20,10 +20,6 @@ class Llibre extends PublicacioBase {
         return getPreu() * 1.21;
     }
 
-    public String getAutor() {
-        return autor;
-    }
-
     public double getPreu() {
         return preu;
     }
@@ -38,6 +34,6 @@ class Llibre extends PublicacioBase {
     
     @Override
     public String toString() {
-        return "Libro: " + getTitol() + ", Autor: " + autor + ", Any: " + getAnyPublicacio();
+        return super.toString() + " Libre: " + getTitol() + ", Autor: " + autor + ", Any: " + getAnyPublicacio();
     }
 }

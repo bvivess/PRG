@@ -1,5 +1,7 @@
 package ACT9_3A;
 
+import java.util.Objects;
+
 /**
  *
  * @author winadmin
@@ -29,4 +31,11 @@ abstract class PublicacioBase implements Publicacio {
     public int getAnyPublicacio() {
         return anyPublicacio;
     }
+
+    @Override
+    public String toString() {
+        return "PublicacioBase {" + "titol=" + this.getTitol() + ", anyPublicacio=" + this.getAnyPublicacio() + '}';
+    }
+    
+    
 }

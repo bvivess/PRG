@@ -30,7 +30,7 @@ class Revista extends PublicacioBase {
 
     @Override
     public String toString() {
-        return "Revista: " + getTitol() + ", Número d'Edició: " + numeroEdicio + ", A?o: " + getAnyPublicacio();
+        return super.toString() + " Revista: " + getTitol() + ", Número d'Edició: " + numeroEdicio + ", A?o: " + getAnyPublicacio();
     }
     
 }
