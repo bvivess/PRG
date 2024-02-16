@@ -16,12 +16,12 @@ class Llibre extends PublicacioBase {
     }
 
     @Override
-    public void mostrarInformacion() {
-        System.out.println("Libro: " + getTitulo() + ", Autor: " + autor + ", A?o: " + getAnioPublicacion());
-    }
-
-    @Override
-    public double calcularPrecio() {
+    public double calculaPrecio() {
         return precio;
+    }
+    
+    @Override
+    public String toString() {
+        return "Libro: " + getTitol() + ", Autor: " + autor + ", A?o: " + getAnyPublicacio();
     }
 }

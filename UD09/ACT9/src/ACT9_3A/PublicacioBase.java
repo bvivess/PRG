@@ -6,19 +6,19 @@ package ACT9_3A;
  */
 // Clase abstracta PublicacionBase
 abstract class PublicacioBase implements Publicacio {
-    private String titulo;
-    private int anioPublicacion;
+    private String titol;
+    private int anyPublicacio;
 
-    public PublicacioBase(String titulo, int anioPublicacion) {
-        this.titulo = titulo;
-        this.anioPublicacion = anioPublicacion;
+    public PublicacioBase(String titulo, int anyPublicacio) {
+        this.titol = titulo;
+        this.anyPublicacio = anyPublicacio;
     }
 
-    public String getTitulo() {
-        return titulo;
+    public String getTitol() {
+        return titol;
     }
 
-    public int getAnioPublicacion() {
-        return anioPublicacion;
+    public int getAnyPublicacio() {
+        return anyPublicacio;
     }
 }

@@ -6,22 +6,23 @@ package ACT9_3A;
  */
 // Clase Revista
 class Revista extends PublicacioBase {
-    private int numeroEdicion;
-    private double precio;
+    private int numeroEdicio;
+    private double preu;
 
-    public Revista(String titulo, int anioPublicacion, int numeroEdicion, double precio) {
-        super(titulo, anioPublicacion);
-        this.numeroEdicion = numeroEdicion;
-        this.precio = precio;
+    public Revista(String titol, int anioPublicacio, int numeroEdicio, double preu) {
+        super(titol, anioPublicacio);
+        this.numeroEdicio = numeroEdicio;
+        this.preu = preu;
     }
 
     @Override
-    public void mostrarInformacion() {
-        System.out.println("Revista: " + getTitulo() + ", Número de Edición: " + numeroEdicion + ", A?o: " + getAnioPublicacion());
+    public double calculaPrecio() {
+        return preu;
     }
 
     @Override
-    public double calcularPrecio() {
-        return precio;
+    public String toString() {
+        return "Revista: " + getTitol() + ", Número d'Edició: " + numeroEdicio + ", Any: " + getAnyPublicacio();
     }
+    
 }

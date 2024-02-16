@@ -6,6 +6,5 @@ package ACT9_3A;
  */
 // Interfaz Publicacio
 interface Publicacio {
-    void mostrarInformacion();
-    double calcularPrecio();
+    double calculaPrecio();
 }
