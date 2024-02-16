@@ -6,7 +6,7 @@ public class Main {
         Llibre llibre = new Llibre("Java Programming", 2020, "John Smith", 35.0);
         Revista revista = new Revista("Tech Magazine", 2021, 25, 10.0);
 
-        // Array de Publicaciones
+        // Array de Publicacions
         Publicacio[] publicacions = {llibre, revista};
 
         // Polimorfismo

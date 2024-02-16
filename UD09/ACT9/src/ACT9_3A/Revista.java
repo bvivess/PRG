@@ -17,12 +17,12 @@ class Revista extends PublicacioBase {
 
     @Override
     public double calculaPrecio() {
-        return preu;
+        return preu * 1.10;
     }
 
     @Override
     public String toString() {
-        return "Revista: " + getTitol() + ", Número d'Edició: " + numeroEdicio + ", Any: " + getAnyPublicacio();
+        return "Revista: " + getTitol() + ", Número d'Edició: " + numeroEdicio + ", A?o: " + getAnyPublicacio();
     }
     
 }

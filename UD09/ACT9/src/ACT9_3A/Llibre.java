@@ -17,11 +17,11 @@ class Llibre extends PublicacioBase {
 
     @Override
     public double calculaPrecio() {
-        return precio;
+        return precio * 1.21;
     }
     
     @Override
     public String toString() {
-        return "Libro: " + getTitol() + ", Autor: " + autor + ", A?o: " + getAnyPublicacio();
+        return "Libro: " + getTitol() + ", Autor: " + autor + ", Any: " + getAnyPublicacio();
     }
 }
