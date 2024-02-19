@@ -1,4 +1,4 @@
-package ACT9_5B;
+package ACT9_5B.Productes;
 
 /**
  *
@@ -17,7 +17,7 @@ public abstract class ProducteBancari {
         setInteresPeriode(interesPeriode);
     }
     
-    abstract double calculaRemuneracio();
+    public abstract double calculaRemuneracio();
 
     @Override
     public String toString() {

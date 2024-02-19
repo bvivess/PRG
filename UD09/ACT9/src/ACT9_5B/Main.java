@@ -1,6 +1,33 @@
 package ACT9_5B;
 
+import ACT9_5B.Classes.*;
+import ACT9_5B.Tarjetes.*;
+import ACT9_5B.Productes.*;
 import java.util.ArrayList;
+
+/**
+ src
+|-- main
+    |-- java
+        |-- com
+            |-- tuempresa
+                |-- banc
+                    |-- model
+                        |-- productes
+                            |-- ProducteBancari.java
+                            |-- CompteEstalvis.java
+                            |-- Deposit.java
+                            |-- Hipoteca.java
+                            |-- FonsInversio.java
+                        |-- tarjetas
+                            |-- Tarjeta.java
+                            |-- Credit.java
+                            |-- Debit.java
+                        |-- Persona.java
+                    |-- Main.java
+
+ * @author winadmin
+ */
 
 public class Main {
 

@@ -1,5 +1,6 @@
-package ACT9_5B;
+package ACT9_5B.Productes;
 
+import ACT9_5B.Tarjetes.*;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +18,7 @@ public class CompteEstalvis extends ProducteBancari {
     }
     
     @Override
-    double calculaRemuneracio() {
+    public double calculaRemuneracio() {
         double remuneracio = -(this.comisMantCompte);
         for (Tarjeta t : this.tarjetes) {
             remuneracio -= t.getComisUs();

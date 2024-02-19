@@ -1,5 +1,6 @@
-package ACT9_5B;
+package ACT9_5B.Classes;
 
+import ACT9_5B.Productes.*;
 import java.util.ArrayList;
 
 /**
@@ -17,7 +18,7 @@ public class Persona {
         setProductesBancaris(productesBancaris);
     }
     
-    double calculaRemuneracioTotal() {
+    public double calculaRemuneracioTotal() {
         double remuneracio = 0;
         for (ProducteBancari p : productesBancaris) {
             remuneracio += p.calculaRemuneracio();

@@ -1,4 +1,4 @@
-package ACT9_5B;
+package ACT9_5B.Productes;
 
 /**
  *
@@ -13,7 +13,7 @@ public class Deposit extends ProducteBancari {
     }
 
     @Override
-    double calculaRemuneracio() {
+    public double calculaRemuneracio() {
         return + (super.getImportContractat() * super.getInteresPeriode() * this.getNombrePeriodes());
     }
 
