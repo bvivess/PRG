@@ -7,7 +7,7 @@ package EX_UD09;
 public class TriangleEquilater extends FiguraBase {
     private double costat1;
 
-    public TriangleEquilater(double costat1, String color) {
+    public TriangleEquilater(String color, double costat1) {
         super(color);
         this.costat1 = costat1;
     }

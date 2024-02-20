@@ -8,7 +8,7 @@ public class Rectangle extends FiguraBase {
     private double costat1;
     private double costat2;
 
-    public Rectangle(double costat1, double costat2, String color) {
+    public Rectangle(String color, double costat1, double costat2) {
         super(color);
         this.costat1 = costat1;
         this.costat2 = costat2;
