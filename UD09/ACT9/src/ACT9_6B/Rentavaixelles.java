@@ -10,4 +10,8 @@ public class Rentavaixelles extends Electrodomestic {
         super(classeEnergetica, nom, preu, consumEnergetic, garantiaMesos);
     }
     
+    //@Override
+    //public double calculaSuplement() {
+    //    return 0;
+    //}
 }

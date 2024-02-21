@@ -11,5 +11,9 @@ public class Rentadora extends Electrodomestic {
         super(classeEnergetica, nom, preu, consumEnergetic, garantiaMesos);
         this.capacitatCarrega = capacitatCarrega;
     }
-    
+
+    //@Override
+    //public double calculaSuplement() {
+    //    return 0;
+    //}
 }
