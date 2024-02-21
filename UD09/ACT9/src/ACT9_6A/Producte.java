@@ -47,11 +47,11 @@ public abstract class Producte {
     @Override
     public String toString() {
         return "Producte {" +
-                "nom=" + nom + 
-                ", preu=" + preu +
-                ", consumEnergetic=" + consumEnergetic +
-                ", garantiaMesos=" + garantiaMesos +
-                ", midaPantalla=" + midaPantalla +
+                "Nom: " + nom + 
+                ", Preu: " + preu +
+                ", ConsumEnergetic: " + consumEnergetic +
+                ", GarantiaMesos: " + garantiaMesos +
+                ", MidaPantalla: " + midaPantalla +
                 '}';
     }
 }
