@@ -16,6 +16,6 @@ public class Portatil extends Producte {
 
     @Override
     public String toString() {
-        return "Portatil{" + super.toString() + '}';
+        return "Portàtil {" + super.toString() + "} Descompte: " + calculaDescompte();
     }
 }

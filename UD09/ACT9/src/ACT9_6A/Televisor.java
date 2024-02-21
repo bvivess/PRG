@@ -11,11 +11,11 @@ public class Televisor extends Producte {
 
     @Override
     public double calculaDescompte() {
-        return (getGarantiaMesos() > 40) ? 0.12 * getPreu() : 0.08 * getPreu();
+        return (getMidaPantalla() > 40) ? 0.12 * getPreu() : 0.08 * getPreu();
     }
 
     @Override
     public String toString() {
-        return "Televisor {" + super.toString() + '}';
+        return "Televisor {" + super.toString() + "} Descompte: " + calculaDescompte();
     }
 }

@@ -79,4 +79,14 @@ public class Client {
 
         return descompteTotal;
     }
+
+    @Override
+    public String toString() {
+        return "Client {" + "Nom=" + this.nom + ", Cognom=" + this.cognom + " {" +
+                "\n\t," + this.telefon.toString() + 
+                "\n\t," + this.portatil.toString() +
+                "\n\t," + this.televisor.toString() + "\n} Descompte Total: " + this.calcularDescompteTotal();
+    }
+    
+    
 }

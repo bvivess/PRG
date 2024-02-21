@@ -28,41 +28,30 @@ public abstract class Producte {
         return nom;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
     public double getPreu() {
         return preu;
-    }
-
-    public void setPreu(double preu) {
-        this.preu = preu;
     }
 
     public double getConsumEnergetic() {
         return consumEnergetic;
     }
 
-    public void setConsumEnergetic(double consumEnergetic) {
-        this.consumEnergetic = consumEnergetic;
-    }
-
     public int getGarantiaMesos() {
         return garantiaMesos;
     }
 
-    public void setGarantiaMesos(int garantiaMesos) {
-        this.garantiaMesos = garantiaMesos;
+    public int getMidaPantalla() {
+        return midaPantalla;
     }
 
     @Override
     public String toString() {
-        return "ProducteElectronic {" +
-                "nom='" + nom + '\'' +
+        return "Producte {" +
+                "nom=" + nom + 
                 ", preu=" + preu +
                 ", consumEnergetic=" + consumEnergetic +
                 ", garantiaMesos=" + garantiaMesos +
+                ", midaPantalla=" + midaPantalla +
                 '}';
     }
 }

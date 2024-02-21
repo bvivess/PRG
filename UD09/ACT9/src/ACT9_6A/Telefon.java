@@ -16,6 +16,6 @@ class Telefon extends Producte {
 
     @Override
     public String toString() {
-        return "Telefon {" + super.toString() + '}';
+        return "Telèfon {" + super.toString() + "} Descompte: " + calculaDescompte();
     }
 }

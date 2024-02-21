@@ -12,13 +12,7 @@ public class Main {
 
         Client client = new Client("Maria", "Gomez", telefon, portatil, televisor);
 
-        System.out.println("Dades del client:");
-        System.out.println("Nom: " + client.getNom());
-        System.out.println("Cognom: " + client.getCognom());
-        System.out.println("Telefon: " + client.getTelefon());
-        System.out.println("Portatil: " + client.getPortatil());
-        System.out.println("Televisor: " + client.getTelevisor());
-        System.out.println("Descompte total: " + client.calcularDescompteTotal());
+        System.out.println(client.toString());
         
     }
 }
