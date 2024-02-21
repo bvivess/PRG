@@ -10,4 +10,8 @@ public class Gelera extends Electrodomestic {
         super(classeEnergetica, nom, preu, consumEnergetic, garantiaMesos);
     }
     
+    @Override
+    public String toString() {
+        return "Gelera {" + super.toString() + "} Preu: " + super.getPreu() + " " + this.calculaSuplement();
+    }
 }
