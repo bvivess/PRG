@@ -1,12 +1,14 @@
-package ACT9_6A;
+package ACT9_6B;
+
+import ACT9_6A.*;
 
 /**
  *
  * @author winadmin
  */
-public class Portatil extends Producte {
-    public Portatil(String nom, double preu, double consumEnergetic, int garantiaMesos, int midaPantalla) {
-        super(nom, preu, consumEnergetic, garantiaMesos, midaPantalla);
+public class Portatil extends Electronic {
+    public Portatil(String nom, double preu, double consumEnergetic, int garantiaMesos, int midaPantalla, String processador, int ram, int hdd) {
+        super(nom, preu, consumEnergetic, garantiaMesos, midaPantalla, processador, ram, hdd);
     }
 
     @Override

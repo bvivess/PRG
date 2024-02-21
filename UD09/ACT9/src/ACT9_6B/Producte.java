@@ -1,4 +1,6 @@
-package ACT9_6A;
+package ACT9_6B;
+
+import ACT9_6A.*;
 
 /**
  *
@@ -9,18 +11,13 @@ public abstract class Producte {
     private double preu;
     private double consumEnergetic;
     private int garantiaMesos;
-    private int midaPantalla;
 
-    public Producte(String nom, double preu, double consumEnergetic, int garantiaMesos, int midaPantalla) {
+    public Producte(String nom, double preu, double consumEnergetic, int garantiaMesos) {
         this.nom = nom;
         this.preu = preu;
         this.consumEnergetic = consumEnergetic;
         this.garantiaMesos = garantiaMesos;
-        this.midaPantalla = midaPantalla;
     }
-    
-    // Mètode abstracte que cal implementar a les subclasses
-    public abstract double calculaDescompte();
     
     // Getters i setters
     public String getNom() {
@@ -39,9 +36,7 @@ public abstract class Producte {
         return garantiaMesos;
     }
 
-    public int getMidaPantalla() {
-        return midaPantalla;
-    }
+    
 
     @Override
     public String toString() {
@@ -50,7 +45,6 @@ public abstract class Producte {
                 ", Preu: " + preu +
                 ", ConsumEnergetic: " + consumEnergetic +
                 ", GarantiaMesos: " + garantiaMesos +
-                ", MidaPantalla: " + midaPantalla +
                 '}';
     }
 }

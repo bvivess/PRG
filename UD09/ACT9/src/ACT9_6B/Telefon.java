@@ -1,12 +1,12 @@
-package ACT9_6A;
+package ACT9_6B;
 
 /**
  *
  * @author winadmin
  */
-class Telefon extends Producte {
-    public Telefon(String nom, double preu, double consumEnergetic, int garantiaMesos, int midaPantalla) {
-        super(nom, preu, consumEnergetic, garantiaMesos, midaPantalla);
+class Telefon extends Electronic {
+    public Telefon(String nom, double preu, double consumEnergetic, int garantiaMesos, int midaPantalla, String processador, int ram, int hdd) {
+        super(nom, preu, consumEnergetic, garantiaMesos, midaPantalla, processador, ram, hdd);
     }
 
     @Override
