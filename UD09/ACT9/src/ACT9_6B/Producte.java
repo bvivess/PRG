@@ -36,8 +36,6 @@ public abstract class Producte {
         return garantiaMesos;
     }
 
-    
-
     @Override
     public String toString() {
         return "Producte {" +

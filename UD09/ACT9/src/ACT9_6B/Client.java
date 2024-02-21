@@ -33,8 +33,13 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client {" + "Nom: " + this.nom + ", Cognom: " + this.cognom + " {" +
-                "\n\t," + this.productes.toString() + "\n} Descompte Total: " + this.calculaPreuTotal();
+        String text = "Client {Nom: " + this.nom + ", Cognom: " + this.cognom + " {";
+        
+        for (Producte p : productes)
+            text += "\n\t," + p.toString();
+        text += "\n} Preu Total: " + this.calculaPreuTotal();
+        
+        return text;
     }
     
     
