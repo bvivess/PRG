@@ -7,7 +7,7 @@ package EX_UD09;
 public class Quadrat extends FiguraBase  {
     private double costat1;
 
-    public Quadrat(double costat1, String color) {
+    public Quadrat(String color, double costat1) {
         super(color);
         this.costat1 = costat1;
     }
