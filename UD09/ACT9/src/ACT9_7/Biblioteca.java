@@ -13,11 +13,11 @@ public class Biblioteca {
         this.llibres = new ArrayList<>();
     }
 
-    public void afegirLlibre(Llibre llibre) {
+    public void afegeixLlibre(Llibre llibre) {
         llibres.add(llibre);
     }
 
-    public Llibre buscarLlibre(String titol) {
+    public Llibre cercaLlibre(String titol) {
         for (Llibre llibre : llibres) {
             if (llibre.getTitol().equals(titol)) {
                 return llibre;
@@ -26,10 +26,12 @@ public class Biblioteca {
         return null;
     }
 
-    public void mostrarLlibres() {
-        System.out.println("Llibres disponibles a la biblioteca:");
-        for (Llibre llibre : llibres) {
-            System.out.println(llibre);
-        }
+    @Override
+    public String toString() {
+        String text = "Llibres disponibles a la biblioteca: ";
+        for (Llibre llibre : llibres)
+            text += "\n\t" + llibre;
+        
+        return text;
     }
 }
