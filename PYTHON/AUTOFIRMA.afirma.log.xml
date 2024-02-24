@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="windows-1252" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2024-01-29T06:21:25.116888Z</date>
+  <millis>1706509285116</millis>
+  <nanos>888000</nanos>
+  <sequence>0</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.standalone.ProxyUtil</class>
+  <method>setProxySettings</method>
+  <thread>1</thread>
+  <message>No se usara proxy para las conexiones HTTP</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.158558500Z</date>
+  <millis>1706509285158</millis>
+  <nanos>558500</nanos>
+  <sequence>1</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.standalone.ProxyUtil</class>
+  <method>setProxySettings</method>
+  <thread>1</thread>
+  <message>No se usara proxy para las conexiones HTTPS</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.545554700Z</date>
+  <millis>1706509285545</millis>
+  <nanos>554700</nanos>
+  <sequence>2</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.standalone.SimpleAfirma</class>
+  <method>printSystemInfo</method>
+  <thread>1</thread>
+  <message>AutoFirma 1.8.0
+Resolucion DPI de pantalla: 96
+Sistema operativo: Windows 11
+Version del SO: 10.0
+Version de Java: 17.0.6
+Arquitectura del JRE: 64
+Java Vendor: Eclipse Adoptium
+Localizacion por defecto: es_ES
+Tamano actual en memoria: 512MB
+Tamano maximo de memoria: 8192MB
+Memoria actualmente libre: 496MB</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.546609900Z</date>
+  <millis>1706509285546</millis>
+  <nanos>609900</nanos>
+  <sequence>3</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.standalone.SimpleAfirma</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Invocacion por protocolo con URL:
+afirma://sign/?jvc=2&amp;ver=3&amp;op=sign&amp;id=V4RphQPx2zOl1L8054zy&amp;key=69153632&amp;stservlet=https%3A%2F%2Ffirma.tesoro.es%2Fafirma-signature-storage%2FStorageService&amp;format=CAdES&amp;algorithm=SHA256withRSA&amp;properties=ZmlsdGVycz1ub25leHBpcmVkOjtxdWFsaWZpZWQ6N0NFN0IzQkRBRDc1QjI4MzYwNzAzM0IzODQ0NkQwMTUKbW9kZT1pbXBsaWNpdA%3D%3D&amp;aw=true&amp;dat=Tm9tYnJlOiBCQVJUT01FVQpBcGVsbGlkbzE6IFZJVkVTCkFwZWxsaWRvMjogU0FOU08KTmlmOiA0MzA0NDM3OVYKUHJvZHVjdG86IFNVQkFTVEEgMDYvMDIvMjAyNDogTEVUUkFTIE5PIENPTVBFVElUSVZBUyBBIDYgTUVTRVMuIERFUC4gUFJFVklPOiAxMDAsMDAgJQpWYWxvcjogNTAuMDAwIApldXJvOwpQcmVjaW86IApPcGVyYWNpw7NuOiBQZXRpY2nDs24gZGUgc3VzY3JpcGNpw7NuIGRlIHZhbG9yZXMKRmVjaGE6IDI5LzAxLzIwMjQKVGV4dG9MZWdhbDogCkVuIGN1bXBsaW1pZW50byBkZSBsbyBlc3RhYmxlY2lkbyBlbiBlbCBSZWdsYW1lbnRvKFVFKSAyMDE2LzY3OSBkZWwgUGFybGFtZW50byBFdXJvcGVvIHkgZGVsIENvbnNlam8sIGRlIDI3IGRlIGFicmlsIGRlIDIwMTYsIGluZm9ybWFtb3MgcXVlIGxhIFNlY3JldGFyw61hIEdlbmVyYWwgZGVsIFRlc29ybyB5IEZpbmFuY2lhY2nDs24gSW50ZXJuYWNpb25hbCBhY3TDumEgY29tbyByZXNwb25zYWJsZSBkZSB0cmF0YW1pZW50byBlbiByZWxhY2nDs24gY29uIGxvcyBkYXRvcyBwZXJzb25hbGVzIHJlY29naWRvcyBlbiBlc3RlIGZvcm11bGFyaW8uIFF1ZSBsYSBmaW5hbGlkYWQgcG9yIGxhIHF1ZSBzZSBvYnRpZW5lbiBlc3RvcyBkYXRvcywgZGUgYWN1ZXJkbyBjb24gbG8gZXN0YWJsZWNpZG8gZW4gZWwgUmVhbCBEZWNyZXRvIDUzMS8yMDE3LCBkZSAyNiBkZSBtYXlvLCBubyBlcyBvdHJhIHF1ZSBsYSBpZGVudGlmaWNhY2nDs24gZGUgbG9zIGludGVyZXNhZG9zIGVuIGVsIGFjY2VzbyBhbCBTZXJ2aWNpbyBkZSBDb21wcmEgeSBWZW50YSBkZSBWYWxvcmVzIGRlbCBNaW5pc3RlcmlvIGRlIEVjb25vbcOtYSwgQ29tZXJjaW8geSBFbXByZXNhLiBRdWUgZW4gbmluZ8O6biBjYXNvIGVzdG9zIGRhdG9zIHBvZHLDoW4gc2VyIGNlZGlkb3MgYSBUZXJjZXJvcyBwYXJhIHVuYSBmaW5hbGlkYWQgZGlzdGludGEgcG9yIGxhIHF1ZSBmdWVyb24gc29saWNpdGFkb3MuIEVuIHRvZG8gY2FzbywgdXN0ZWQgcG9kcsOhIGVqZXJjZXIgc2llbXByZSBzdXMgZGVyZWNob3MgZGUgYWNjZXNvLCByZWN0aWZpY2FjacOzbiB5IHN1cHJlc2nDs24gZGUgZXN0b3MgZGF0b3MuIFBhcmEgdW5hIGluZm9ybWFjacOzbiBtw6FzIGRldGFsbGFkYSwgcG9yIGZhdm9yLCBhY2NlZGEgYWwgZW5sYWNlIGRlIFBvbGl0aWNhIGRlIFByaXZhY2lkYWQgaHR0cHM6Ly93d3cudGVzb3JvcHVibGljby5nb2IuZXMvZXMvcG9sw610aWNhLWRlLXByaXZhY2lkYWQ%3D</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.559527600Z</date>
+  <millis>1706509285559</millis>
+  <nanos>527600</nanos>
+  <sequence>4</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.standalone.protocol.ProtocolInvocationLauncher</class>
+  <method>launch</method>
+  <thread>1</thread>
+  <message>Se invoca a la aplicacion para realizar una operacion de firma/multifirma</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.573817600Z</date>
+  <millis>1706509285573</millis>
+  <nanos>817600</nanos>
+  <sequence>5</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.core.misc.http.DataDownloader</class>
+  <method>downloadData</method>
+  <thread>1</thread>
+  <message>El contenido a obtener es Base64</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.576814200Z</date>
+  <millis>1706509285576</millis>
+  <nanos>814200</nanos>
+  <sequence>6</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.standalone.protocol.ProtocolInvocationLauncher</class>
+  <method>launch</method>
+  <thread>1</thread>
+  <message>Se inicia la operacion de firma. Version de protocolo: 3</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.834187600Z</date>
+  <millis>1706509285834</millis>
+  <nanos>187600</nanos>
+  <sequence>7</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.keystores.AOKeyStoreManager</class>
+  <method>init</method>
+  <thread>1</thread>
+  <message>Inicializamos el almacen de tipo: DNIe y tarjetas FNMT-TIF</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.898413300Z</date>
+  <millis>1706509285898</millis>
+  <nanos>413300</nanos>
+  <sequence>8</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.keystores.KeyStoreUtilities</class>
+  <method>addPreferredKeyStoreManagers</method>
+  <thread>1</thread>
+  <message>No se ha encontrado un DNIe: java.security.ProviderException: No se ha podido inicializar el proveedor de DNIe</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.898413300Z</date>
+  <millis>1706509285898</millis>
+  <nanos>413300</nanos>
+  <sequence>9</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.keystores.AOKeyStoreManager</class>
+  <method>init</method>
+  <thread>1</thread>
+  <message>Inicializamos el almacen de tipo: Tarjeta FNMT-RCM CERES 4.30 o superior</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.898413300Z</date>
+  <millis>1706509285898</millis>
+  <nanos>413300</nanos>
+  <sequence>10</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.keystores.KeyStoreUtilities</class>
+  <method>addPreferredKeyStoreManagers</method>
+  <thread>1</thread>
+  <message>No se ha encontrado una tarjeta CERES 4.30 o superior: java.security.ProviderException: No se ha podido inicializar el proveedor de Ceres 4.30 y superior</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.906860800Z</date>
+  <millis>1706509285906</millis>
+  <nanos>860800</nanos>
+  <sequence>11</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.keystores.AOKeyStoreManager</class>
+  <method>init</method>
+  <thread>1</thread>
+  <message>Inicializamos el almacen de tipo: Tarjeta FNMT-RCM CERES</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.908375300Z</date>
+  <millis>1706509285908</millis>
+  <nanos>375300</nanos>
+  <sequence>12</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.keystores.KeyStoreUtilities</class>
+  <method>addPreferredKeyStoreManagers</method>
+  <thread>1</thread>
+  <message>No se ha encontrado una tarjeta CERES: java.security.ProviderException: No se ha podido conectar con la tarjeta CERES</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.931099100Z</date>
+  <millis>1706509285931</millis>
+  <nanos>99100</nanos>
+  <sequence>13</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.standalone.protocol.ProtocolInvocationLauncherSign</class>
+  <method>signOperation</method>
+  <thread>1</thread>
+  <message>Obtenido gestor de almacenes de claves: Gestor de almacenes de claves Windows con nombre Windows</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.931099100Z</date>
+  <millis>1706509285931</millis>
+  <nanos>99100</nanos>
+  <sequence>14</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.standalone.protocol.ProtocolInvocationLauncherSign</class>
+  <method>signOperation</method>
+  <thread>1</thread>
+  <message>Cargando dialogo de seleccion de certificados...</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.938671600Z</date>
+  <millis>1706509285938</millis>
+  <nanos>671600</nanos>
+  <sequence>15</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.keystores.CAPIKeyStoreManager</class>
+  <method>getAliases</method>
+  <thread>1</thread>
+  <message>Solicitando los alias al KeyStore (SunMSCAPI version 17)</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.938671600Z</date>
+  <millis>1706509285938</millis>
+  <nanos>671600</nanos>
+  <sequence>16</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.keystores.KeyStoreUtilities</class>
+  <method>getAliasesByFriendlyName</method>
+  <thread>1</thread>
+  <message>Se ha ocultado el certificado con numero de serie '26EECE61' (emitido por 'Adobe Intermediate CA 10-4') por no soportar operaciones de clave privada</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.938671600Z</date>
+  <millis>1706509285938</millis>
+  <nanos>671600</nanos>
+  <sequence>17</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.keystores.KeyStoreUtilities</class>
+  <method>getAliasesByFriendlyName</method>
+  <thread>1</thread>
+  <message>Se ha ocultado el certificado con numero de serie '68512A40' (emitido por 'Adobe Intermediate CA 10-3') por no soportar operaciones de clave privada</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.946951900Z</date>
+  <millis>1706509285946</millis>
+  <nanos>951900</nanos>
+  <sequence>18</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.keystores.KeyStoreUtilities</class>
+  <method>getAliasesByFriendlyName</method>
+  <thread>1</thread>
+  <message>Se ha ocultado el certificado con numero de serie '732D29E8' (emitido por 'Adobe Root CA 10-3') por no soportar operaciones de clave privada</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.946951900Z</date>
+  <millis>1706509285946</millis>
+  <nanos>951900</nanos>
+  <sequence>19</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.keystores.KeyStoreUtilities</class>
+  <method>getAliasesByFriendlyName</method>
+  <thread>1</thread>
+  <message>Se ha ocultado el certificado con numero de serie '76CA52B2' (emitido por 'Adobe Root CA 10-3') por no soportar operaciones de clave privada</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.948542800Z</date>
+  <millis>1706509285948</millis>
+  <nanos>542800</nanos>
+  <sequence>20</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.keystores.KeyStoreUtilities</class>
+  <method>getAliasesByFriendlyName</method>
+  <thread>1</thread>
+  <message>Se ha ocultado el certificado con numero de serie '5D938D306736C8061D1AC754846907' (emitido por 'AC RAIZ FNMT-RCM') por no soportar operaciones de clave privada</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.948542800Z</date>
+  <millis>1706509285948</millis>
+  <nanos>542800</nanos>
+  <sequence>21</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.keystores.KeyStoreUtilities</class>
+  <method>getAliasesByFriendlyName</method>
+  <thread>1</thread>
+  <message>Se ha ocultado el certificado con numero de serie '455F3AE15C21CDBA544F82AA4751EBDB' (emitido por 'AC RAIZ FNMT-RCM') por no soportar operaciones de clave privada</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.955036200Z</date>
+  <millis>1706509285955</millis>
+  <nanos>36200</nanos>
+  <sequence>22</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.keystores.KeyStoreUtilities</class>
+  <method>getAliasesByFriendlyName</method>
+  <thread>1</thread>
+  <message>Se ha ocultado el certificado con numero de serie '26EECE61' (emitido por 'Adobe Intermediate CA 10-4') por no soportar operaciones de clave privada</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.955036200Z</date>
+  <millis>1706509285955</millis>
+  <nanos>36200</nanos>
+  <sequence>23</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.keystores.KeyStoreUtilities</class>
+  <method>getAliasesByFriendlyName</method>
+  <thread>1</thread>
+  <message>Se ha ocultado el certificado con numero de serie '68512A40' (emitido por 'Adobe Intermediate CA 10-3') por no soportar operaciones de clave privada</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.955036200Z</date>
+  <millis>1706509285955</millis>
+  <nanos>36200</nanos>
+  <sequence>24</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.keystores.KeyStoreUtilities</class>
+  <method>getAliasesByFriendlyName</method>
+  <thread>1</thread>
+  <message>Se ha ocultado el certificado con numero de serie '732D29E8' (emitido por 'Adobe Root CA 10-3') por no soportar operaciones de clave privada</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.955036200Z</date>
+  <millis>1706509285955</millis>
+  <nanos>36200</nanos>
+  <sequence>25</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.keystores.KeyStoreUtilities</class>
+  <method>getAliasesByFriendlyName</method>
+  <thread>1</thread>
+  <message>Se ha ocultado el certificado con numero de serie '76CA52B2' (emitido por 'Adobe Root CA 10-3') por no soportar operaciones de clave privada</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.958626700Z</date>
+  <millis>1706509285958</millis>
+  <nanos>626700</nanos>
+  <sequence>26</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.keystores.KeyStoreUtilities</class>
+  <method>getAliasesByFriendlyName</method>
+  <thread>1</thread>
+  <message>Se ha ocultado el certificado con numero de serie '5D938D306736C8061D1AC754846907' (emitido por 'AC RAIZ FNMT-RCM') por no soportar operaciones de clave privada</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:25.958626700Z</date>
+  <millis>1706509285958</millis>
+  <nanos>626700</nanos>
+  <sequence>27</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>es.gob.afirma.keystores.KeyStoreUtilities</class>
+  <method>getAliasesByFriendlyName</method>
+  <thread>1</thread>
+  <message>Se ha ocultado el certificado con numero de serie '455F3AE15C21CDBA544F82AA4751EBDB' (emitido por 'AC RAIZ FNMT-RCM') por no soportar operaciones de clave privada</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:29.861116100Z</date>
+  <millis>1706509289861</millis>
+  <nanos>116100</nanos>
+  <sequence>28</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>INFO</level>
+  <class>net.sf.jmimemagic.MagicParser</class>
+  <method>initialize</method>
+  <thread>1</thread>
+  <message>No se ha podido obtener el analizador SAX de Apache Xerces, se usara el por defecto: java.lang.ClassNotFoundException: org.apache.xerces.parsers.SAXParser</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:30.098529900Z</date>
+  <millis>1706509290098</millis>
+  <nanos>529900</nanos>
+  <sequence>29</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>WARNING</level>
+  <class>es.gob.afirma.core.misc.MimeHelper</class>
+  <method>&lt;init&gt;</method>
+  <thread>1</thread>
+  <message>No se pudo detectar el formato de los datos</message>
+</record>
+<record>
+  <date>2024-01-29T06:21:30.294326Z</date>
+  <millis>1706509290294</millis>
+  <nanos>326000</nanos>
+  <sequence>30</sequence>
+  <logger>es.gob.afirma</logger>
+  <level>WARNING</level>
+  <class>es.gob.afirma.standalone.protocol.ActiveWaitingThread</class>
+  <method>run</method>
+  <thread>28</thread>
+  <message>No se ha podido esperar para el envio de la senal de espera activa para el JavaScript. No se envia la peticion: java.lang.InterruptedException: sleep interrupted</message>
+</record>

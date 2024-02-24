@@ -4,7 +4,7 @@ package ACT9_6B;
  *
  * @author winadmin
  */
-public class Rentadora extends Electrodomestic {
+public final class Rentadora extends Electrodomestic {
     int capacitatCarrega;
     
     public Rentadora(char classeEnergetica, String nom, double preu, double consumEnergetic, int garantiaMesos, int capacitatCarrega) {
