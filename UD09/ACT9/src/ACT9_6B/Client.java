@@ -25,7 +25,7 @@ public class Client {
             if (p instanceof Electronic)
                 preuTotal += p.getPreu() - ((Electronic) p).calculaDescompte();
             else if (p instanceof Electrodomestic)
-                preuTotal += p.getPreu() - ((Electrodomestic) p).calculaSuplement();
+                preuTotal += p.getPreu() + ((Electrodomestic) p).calculaSuplement();
         }
 
         return preuTotal;
