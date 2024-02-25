@@ -17,14 +17,14 @@ public class Client {
         this.productes = productes;
     }
 
-    // Mètode per calcular el descompte total
+    // Mètode per calcular preu total del 'productes' 
     public double calculaPreuTotal() {
         double preuTotal = 0.0;
         
         for (Producte p : this.productes) {
-            if (p instanceof Electronic)
+            if (p instanceof Electronic)  // Electronic: cal aplicar un descompte: 'preu' - descompte()
                 preuTotal += p.getPreu() - ((Electronic) p).calculaDescompte();
-            else if (p instanceof Electrodomestic)
+            else if (p instanceof Electrodomestic)  // // Electrodomestic: cal aplicar un suplement: 'preu + suplement()
                 preuTotal += p.getPreu() + ((Electrodomestic) p).calculaSuplement();
         }
 
