@@ -5,6 +5,11 @@ package ACT9_2B;
  * @author winadmin
  */
 public abstract class ValidadorDispositius {
+    static final int CODIPIN = 0;  // patroCodiPin, patroTeclat, patroEmprempta, patroRostre
+    static final int TECLAT = 1;
+    static final int EMPREMPTA = 2;
+    static final int ROSTRE = 3; 
+    
     // Diferents sistemes de validació
     private String[] patrons = {null, null, null, null};  // patroCodiPin, patroTeclat, patroEmprempta, patroRostre
 
@@ -17,42 +22,42 @@ public abstract class ValidadorDispositius {
 
     // Métode concret
     void setPatrons(String[] patrons) {
-        setPatroCodiPin(patrons[0]);
-        setPatroTeclat(patrons[1]);
-        setPatroEmprempta(patrons[2]);
-        setPatroRostre(patrons[3]);
+        setPatroCodiPin(patrons[CODIPIN]);
+        setPatroTeclat(patrons[TECLAT]);
+        setPatroEmprempta(patrons[EMPREMPTA]);
+        setPatroRostre(patrons[ROSTRE]);
     }
     
     public String getPatroCodiPin() {
-        return patrons[0];  // patroCodiPin, patroTeclat, patroEmprempta, patroRostre
+        return patrons[CODIPIN];
     }
 
     public String getPatroTeclat() {
-        return patrons[1];  // patroCodiPin, patroTeclat, patroEmprempta, patroRostre
+        return patrons[TECLAT];
     }
     
     public String getPatroEmprempta() {
-        return patrons[2];  // patroCodiPin, patroTeclat, patroEmprempta, patroRostre
+        return patrons[EMPREMPTA];
     }
     
     public String getPatroRostre() {
-        return patrons[3];  // patroCodiPin, patroTeclat, patroEmprempta, patroRostre
+        return patrons[ROSTRE];
     }
 
     public void setPatroCodiPin(String patroCodiPin) {
-        patrons[0] = patroCodiPin;  // patroCodiPin, patroTeclat, patroEmprempta, patroRostre
+        patrons[CODIPIN] = patroCodiPin;
     }
 
     public void setPatroTeclat(String patroTeclat) {
-        patrons[1] = patroTeclat;  // patroCodiPin, patroTeclat, patroEmprempta, patroRostre
+        patrons[TECLAT] = patroTeclat;
     }
 
     public void setPatroEmprempta(String Emprempta) {
-        patrons[2] = Emprempta;  // patroCodiPin, patroTeclat, patroEmprempta, patroRostre
+        patrons[EMPREMPTA] = Emprempta;
     }
 
     public void setPatroRostre(String patroRostre) {
-        patrons[3] = patroRostre;  // patroCodiPin, patroTeclat, patroEmprempta, patroRostre
+        patrons[ROSTRE] = patroRostre;
     }
  
 }

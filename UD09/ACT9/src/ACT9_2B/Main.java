@@ -8,8 +8,8 @@ import java.util.ArrayList;
  */
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Persona> persones = new ArrayList<Persona>();
-        ArrayList<Telefon> telefons = new ArrayList<Telefon>();
+        ArrayList<Persona> persones = new ArrayList<>();
+        ArrayList<Telefon> telefons = new ArrayList<>();
         
         // Persones
         carregaPersones(persones);
