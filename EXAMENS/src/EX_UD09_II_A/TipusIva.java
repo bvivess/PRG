@@ -13,6 +13,6 @@ public class TipusIva {
     public String toString() {
         
         return "";
-    }  // CORRECCIÓ: falta implementar aquest mètode perque pugui ser cridat des de 'Client'
+    } 
  
 }
