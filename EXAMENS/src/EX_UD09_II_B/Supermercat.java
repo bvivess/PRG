@@ -44,8 +44,8 @@ public class Supermercat implements UtilitatsSupermercat, UtilitatsArticle {
     @Override
     public String toString() {
         String text = "Supermercat: " + this.nom;
-        for (ArticlesPerQuantitat s : this.stock) {
-            text += "\n\t" + s.toString();
+        for (ArticlesPerQuantitat axq : this.stock) {
+            text += "\n\t" + axq.toString();
          }
         
         return text;
