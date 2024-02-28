@@ -23,10 +23,10 @@ public class Supermercat implements UtilitatsSupermercat, UtilitatsArticle {
 
     @Override
     public void afegeixArticle(Article p, int quantitat) {
-        ArticlesPerQuantitat s = new ArticlesPerQuantitat(p, quantitat);
-       
-        if (this.cercaArticle(p.nom) == null)
-            this.stock.add(s);
+        ArticlesPerQuantitat axq = new ArticlesPerQuantitat(p, quantitat);
+
+        this.stock.add(axq);
+
     }
            
     @Override

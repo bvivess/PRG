@@ -36,6 +36,7 @@ public class Main {
         Article article;
         article = new Article("Pa moreno", 0.80, 1.75, IVA[EXEMPT]);
         supermercat.afegeixArticle(article, 100);
+
         article = new Article("Ous", 0.02, 0.20, IVA[REDUIT]);
         supermercat.afegeixArticle(article, 100);
         article = new Article("Galletes", 1.10, 2.25, IVA[NORMAL]);
