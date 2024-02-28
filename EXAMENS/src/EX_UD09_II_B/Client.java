@@ -15,8 +15,7 @@ public class Client implements UtilitatsClient, UtilitatsArticle {
     public final void afegeixArticle(Article a, int quantitat) {
         ArticlesPerQuantitat axq = new ArticlesPerQuantitat(a, quantitat);
        
-        if (this.cercaArticle(a.nom) == null)
-            this.carrito.add(axq);
+        this.carrito.add(axq);  // no es revisa si existeix o no ...
     }
     
     @Override
