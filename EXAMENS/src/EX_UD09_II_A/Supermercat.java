@@ -11,14 +11,14 @@ public class Supermercat implements UtilitatsSupermercat, UtilitatsArticle {
         this.stock = stock;
     }
 
-    /** ? Afegeix un 'ArticlePerQuantitat' en l'atribut 'stock' */
+    /** Afegeix un 'ArticlePerQuantitat' en l'atribut 'stock' */
     @Override
     public void afegeixArticle(Article p, int quantitat) {
         // TO-DO code application logic here
 
     }
 
-    /** ? Recorre l'atribut 'stock', cercant 'text' en algun dels 'nom' dels articles ('ArticlePerQuantitat')  
+    /** Recorre l'atribut 'stock', cercant 'text' en algun dels 'nom' dels articles ('ArticlePerQuantitat')  
     *       Si es troba, torna l''Article'
     *       Si no es troba, torna 'null'
     */
@@ -29,7 +29,7 @@ public class Supermercat implements UtilitatsSupermercat, UtilitatsArticle {
         return null;
     }
 
-    /** ? semblant al mètode 'cercaArticle',  recorre l'atribut 'stock' cercant 'text' en algun dels 'nom' dels articles:
+    /** semblant al mètode 'cercaArticle',  recorre l'atribut 'stock' cercant 'text' en algun dels 'nom' dels articles:
     *       Si es troba:
     *           descompta 'quantitat' en l'atribut 'quantitat' de l''Article' trobat 
     *       Si no es troba:
