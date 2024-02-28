@@ -25,6 +25,8 @@ public class EX_2 {
   
     // TO-DO code application logic here
     //   Crea cada un dels metodes anteriors de manera que facin allo que s'indica a l'enunciat
-    
+    private static void afegeixElements(ArrayList<Integer> array, int nelements) {}
+    private static void ordenaElements(ArrayList<Integer> array) {}
+    private static void eliminaElements(ArrayList<Integer> array) {}
     
  }

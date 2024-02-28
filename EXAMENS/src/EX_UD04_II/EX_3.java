@@ -40,6 +40,8 @@ public class EX_3 {
         
     // TO-DO code application logic here
     //   Crea el metode anterior de manera que faci allò que s'indica a l'enunciat
+    private static void emplenaTauler(int[][] tauler, ArrayList<int[]> bombes, ArrayList<int[]> persones) {}
+    private static void comprovaTauler(ArrayList<int[]> bombes, ArrayList<int[]> persones) {}
     
    
     private static ArrayList<int[]> generaElements(int totalElements) {

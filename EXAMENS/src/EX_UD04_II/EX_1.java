@@ -30,7 +30,7 @@ public class EX_1 {
     
     // TO-DO code application logic here
     //   Crea el metode anterior de manera que faci allò que s'indica a l'enunciat
-    
+    private static void cambiaIndex(int accio){}
     
     private static void mostraElement(int[] array) {
         // Mostra l'element en posició 'index' de l'array
