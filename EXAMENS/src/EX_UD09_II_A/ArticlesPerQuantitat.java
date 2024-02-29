@@ -13,5 +13,5 @@ public class ArticlesPerQuantitat {
     public String toString() {
         
         return "";
-    }
+    }  // CORRECCIÓ: falta implementar aquest mètode perquè pugui ser cridat des de 'Supermercat' i 'Client'
 }

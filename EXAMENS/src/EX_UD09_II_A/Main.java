@@ -10,10 +10,11 @@ public class Main {
   
     public static void main(String[] args) {
         // Articles
-        Article article = new Article("Pa moreno", 0.80, 1.75, new TipusIva("Normal",0.21));
+        TipusIva tipusIva = new TipusIva("Normal",0.21);
+        Article article = new Article("Pa moreno", 0.80, 1.75, tipusIva);
         ArticlesPerQuantitat articlePerQuantitat = new ArticlesPerQuantitat(article, 10);
         
-        // Articles: Stock o Carrito
+        // Articles: 'stock' o 'carrito'
         ArrayList<ArticlesPerQuantitat> articles = new ArrayList<>();
         articles.add(articlePerQuantitat);
         

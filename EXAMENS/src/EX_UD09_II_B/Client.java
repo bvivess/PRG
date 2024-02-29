@@ -14,9 +14,7 @@ public class Client implements UtilitatsClient, UtilitatsArticle {
     /** Afegeix un 'ArticlePerQuantitat' en l'atribut 'carrito' */
     @Override
     public final void afegeixArticle(Article a, int quantitat) {
-        ArticlesPerQuantitat axq = new ArticlesPerQuantitat(a, quantitat);
-       
-        this.carrito.add(axq);  // no es revisa si existeix o no ...
+        this.carrito.add(new ArticlesPerQuantitat(a, quantitat));  // no es revisa si existeix o no ...
     }
 
     /** Recorre l'atribut 'carrito', cercant 'text' en algun dels 'nom' dels articles ('ArticlePerQuantitat')  

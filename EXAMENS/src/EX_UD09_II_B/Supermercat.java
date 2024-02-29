@@ -14,9 +14,7 @@ public class Supermercat implements UtilitatsSupermercat, UtilitatsArticle {
     /** Afegeix un 'ArticlePerQuantitat' en l'atribut 'stock' */
     @Override
     public void afegeixArticle(Article p, int quantitat) {
-        ArticlesPerQuantitat axq = new ArticlesPerQuantitat(p, quantitat);
-
-        this.stock.add(axq);  // no es revisa si existeix o no ...
+        this.stock.add(new ArticlesPerQuantitat(p, quantitat));  // no es revisa si existeix o no ...
 
     }
            
