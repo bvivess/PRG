@@ -46,6 +46,7 @@ public class Supermercat implements UtilitatsSupermercat, UtilitatsArticle {
         for (ArticlesPerQuantitat axq : this.stock) {
            if (axq.article.nom.equals(s)) {
                 axq.quantitat -= quantitat;
+                break;
            }
         }
     }
