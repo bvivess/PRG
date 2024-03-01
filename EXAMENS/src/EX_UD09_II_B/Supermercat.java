@@ -53,12 +53,12 @@ public class Supermercat implements UtilitatsSupermercat, UtilitatsArticle {
 
     @Override
     public String toString() {
-        String text = "Supermercat: " + this.nom;
+        String text = "Supermercat: {" + this.nom;
         for (ArticlesPerQuantitat axq : this.stock) {
             text += "\n\t" + axq.toString();
          }
         
-        return text;
+        return text + "\n\t}";
     }
 
 }

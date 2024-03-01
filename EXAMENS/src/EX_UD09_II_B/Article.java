@@ -15,6 +15,9 @@ public class Article {
 
     @Override
     public String toString() {
-        return "Nom: " + this.nom + "; Preu Compra: " + this.preuCompra + "; Preu Venda: " + this.preuVenda + " " + this.tipusIva.toString();
+        return "Nom: " + this.nom + 
+               "; Preu Compra: " + this.preuCompra + 
+               "; Preu Venda: " + this.preuVenda + 
+               " " + this.tipusIva.toString();
     }
 }

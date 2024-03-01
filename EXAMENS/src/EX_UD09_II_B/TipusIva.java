@@ -11,7 +11,8 @@ public class TipusIva {
 
     @Override
     public String toString() {
-        return "IVA: " + this.nom + " " + this.tantPerCent +"%";
+        return "IVA: " + this.nom + 
+               " " + this.tantPerCent +"%";
     }
  
 }

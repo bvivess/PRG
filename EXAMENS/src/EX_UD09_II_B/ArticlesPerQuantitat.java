@@ -11,9 +11,8 @@ public class ArticlesPerQuantitat {
     
     @Override
     public String toString() {
-        String text = "Producte: { " + this.article.toString() + "; Quantitat: " + this.quantitat + " }";
-        
-        return text;
+        return "Producte: " + this.article.toString() + 
+               "; Quantitat: " + this.quantitat;
     }
     
 }
