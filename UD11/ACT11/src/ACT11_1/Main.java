@@ -21,6 +21,7 @@ public class Main {
         persones.add(new Persona("Gemma",30));
         persones.add(new Persona("Pere",36));
         persones.add(new Persona("Maria",18));
+        
         // Mòduls
         Map<Integer, Modul> moduls = new HashMap<>();
         moduls.put(1, new Modul("Programació",7, persones));

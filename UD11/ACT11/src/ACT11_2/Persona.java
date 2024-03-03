@@ -1,4 +1,4 @@
-package ACT11_1;
+package ACT11_2;
 
 /**
  *
@@ -12,6 +12,11 @@ public class Persona {
     public Persona(String nom, int edat) {
         this.nom = nom;
         this.edat = edat;
+    }
+    
+    @Override
+    public String toString() {
+        return "Nom: " + nom + " Edat: " + edat;
     }
 
 }
