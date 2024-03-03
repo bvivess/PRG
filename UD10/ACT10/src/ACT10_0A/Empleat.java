@@ -12,6 +12,7 @@ public class Empleat {
         this.llinatge = llinatge;
     }
     
+    // Pseudo-constructor
     public static Empleat getEmpleat(String nom, String llinatge) {
         if (empleat == null)  // si no s'ha instanciat ?
             empleat = new Empleat(nom, llinatge);
