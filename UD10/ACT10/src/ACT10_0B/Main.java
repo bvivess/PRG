@@ -7,10 +7,10 @@ package ACT10_0B;
 public class Main {
 
     public static void main(String[] args) {
-        FiguraGeometricaFactory fg = new FiguraGeometricaFactory();
-        FiguraGeometrica cercle = fg.CreateFiguraGeometrica("Cercle");
+        FiguraGeometricaFactory figuraGeometrica = new FiguraGeometricaFactory();
+        FiguraGeometrica cercle = figuraGeometrica.CreateFiguraGeometrica("Cercle", 5.0);
         
-        FiguraGeometrica rectangle = fg.CreateFiguraGeometrica("Rectangle");
+        FiguraGeometrica rectangle = figuraGeometrica.CreateFiguraGeometrica("Rectangle", 5.0, 2.0);
         
         cercle.calculaArea();
         rectangle.calculaArea();
