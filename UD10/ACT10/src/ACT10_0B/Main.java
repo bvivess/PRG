@@ -12,8 +12,8 @@ public class Main {
         
         FiguraGeometrica rectangle = figuraGeometrica.CreateFiguraGeometrica("Rectangle", 5.0, 2.0);
         
-        cercle.calculaArea();
-        rectangle.calculaArea();
+        System.out.println(cercle.calculaArea());
+        System.out.println(rectangle.calculaArea());
     }
     
 }
