@@ -1,8 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package ACT12_0B;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
 
 /**
  *
@@ -10,11 +12,20 @@ package ACT12_0B;
  */
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        ObjectMapper objectMapper = new ObjectMapper();
+        File arxiuJson = new File("arxiu.json");
+
+        try {
+            List<Persona> persones = objectMapper.readValue(arxiuJson, new TypeReference<List<Persona>>() {});
+            for (Persona persona : persones) {  // Iterar sobre la lista de personas
+                System.out.println("Nom: " + persona.getNom());
+                System.out.println("Edat: " + persona.getEdat());
+                System.out.println("Aficions: " + persona.getAficions());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     
 }
