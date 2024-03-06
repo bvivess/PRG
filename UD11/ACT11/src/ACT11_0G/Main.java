@@ -5,9 +5,9 @@ public class Main {
         double num1 = 10;
         double num2 = 5;
 
-        // Executa cada operació matemàtica binària
+        // Executa cada operació matemàtica
         for (OperacioMatematica o : OperacioMatematica.values()) {
-            System.out.println(o + ": " + o.executa(num1, num2));
+            System.out.println(o.toString() + ": " + o.executa(num1, num2));
         }
     }
 }

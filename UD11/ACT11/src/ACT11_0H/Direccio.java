@@ -6,5 +6,8 @@ package ACT11_0H;
  */
 
 enum Direccio {
-    NORTE, SUR, ESTE, OESTE
+    NORTE, 
+    SUR, 
+    ESTE, 
+    OESTE
 }
