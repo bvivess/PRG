@@ -1,31 +1,29 @@
 package ACT12_0B;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
+import java.io.BufferedReader; import java.io.BufferedWriter;
+import java.io.FileReader; import java.io.FileWriter;
+import java.io.FileNotFoundException; import java.io.IOException;
 
 /**
  *
  * @author winadmin
  */
 public class Main {
-
     public static void main(String[] args) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        File arxiuJson = new File("arxiu.json");
-
-        try {
-            List<Persona> persones = objectMapper.readValue(arxiuJson, new TypeReference<List<Persona>>() {});
-            for (Persona persona : persones) {  // Iterar sobre la lista de personas
-                System.out.println("Nom: " + persona.getNom());
-                System.out.println("Edat: " + persona.getEdat());
-                System.out.println("Aficions: " + persona.getAficions());
+        String nomArxiu = "c:\\temp\\arxiu.txt";
+        String nomArxiu2 = "c:\\temp\\arxiu2.txt";
+        try ( BufferedReader bufInput = new BufferedReader(new FileReader(nomArxiu));
+              BufferedWriter bufOutput = new BufferedWriter(new FileWriter(nomArxiu2))
+            ) {
+            String line = "";
+            while ((line = bufInput.readLine()) != null) {
+                bufOutput.write(line);
+                bufOutput.newLine();
             }
+        } catch (FileNotFoundException f) {
+            System.out.println("File not found: " + f);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Exception: " + e);
         }
     }
-    
 }
