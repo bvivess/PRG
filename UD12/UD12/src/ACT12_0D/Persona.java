@@ -1,5 +1,8 @@
 package ACT12_0D;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -10,12 +13,34 @@ import java.util.Objects;
 public class Persona implements Serializable {
     protected static int idEmpresa = 1;
     protected String nom;
-    protected int edat; // Atribut calculat
+    protected transient int edat; // Atribut calculat
 
     public Persona(String nom, int edat) {
         this.nom = nom;
         this.edat = edat;
     }
+    
+    private void writeObject(ObjectOutputStream oos) throws IOException {
+        oos.defaultWriteObject();
+        // Write/save additional fields
+        oos.writeObject(new java.util.Date());
+    }
+    
+    // This method is called post-serialization
+    private void readObject(ObjectInputStream ois) throws IOException, ClassNotFoundException {
+        ois.defaultReadObject();
+        
+        // Data writed in Serialization
+        System.out.println ("Restored from date: " + (java.util.Date)ois.readObject());
+        
+        // perform other initialization
+        setEdat(10);
+    }
+
+    public void setEdat(int edat) {
+        this.edat = edat;
+    }
+    
 
     @Override
     public int hashCode() {
