@@ -21,20 +21,20 @@ public class Persona implements Serializable {
     }
     
     private void writeObject(ObjectOutputStream oos) throws IOException {
-        oos.defaultWriteObject();
-        // Write/save additional fields
+        oos.defaultWriteObject();  // assegura el procés normal
+        // Write additional fields
         oos.writeObject(new java.util.Date());
     }
     
     // This method is called post-serialization
     private void readObject(ObjectInputStream ois) throws IOException, ClassNotFoundException {
-        ois.defaultReadObject();
-        
-        // Data writed in Serialization
-        System.out.println ("Restored from date: " + (java.util.Date)ois.readObject());
+        ois.defaultReadObject();  // assegura el procés normal
         
         // perform other initialization
         setEdat(10);
+        
+        // Data writed in Serialization
+        System.out.println ("Restored from date: " + (java.util.Date)ois.readObject());
     }
 
     public void setEdat(int edat) {
