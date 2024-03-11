@@ -1,47 +1,65 @@
 package ACT11_2;
 
-import ACT11_1.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Set;
+
 
 /**
  *
- * @author winadmin
+ * @author T.Vives
  */
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // Persones
-        List<Persona> persones = new ArrayList<>();
-        persones.add(new Persona("Joan",23));
-        persones.add(new Persona("Gemma",30));
-        persones.add(new Persona("Pere",36));
-        persones.add(new Persona("Maria",18));
+        Set<Dia> agenda = new HashSet<>();
+        Queue<String> tasques = new LinkedList<>();
         
-        // Mòduls
-        Map<Integer, Modul> moduls = new HashMap<>();
-        moduls.put(1, new Modul("Programació",7, persones));
-        moduls.put(2, new Modul("Gestió de Base de Dades",8, persones));
-        moduls.put(3, new Modul("Llenguatge de Marques",4, persones));
-        moduls.put(4, new Modul("Sistemes d'Informació",7, persones));
-        moduls.put(5, new Modul("Entorns de Desenvolupament",3, persones));
+        // DIA 1/1/2004: Tasca1, Tasca2, Tasca3
+        // Afegir un dia a l'agenda
+        afegeixDia(agenda, LocalDate.of(2024, 1, 1), "Tasca1","Tasca2","Tasca3");
+             
+        // DIA 2/1/2004: Tasca1 
+        afegeixDia(agenda, LocalDate.of(2024, 1, 2), "Tasca1");
         
-        // Del mòdul amb clau=1, Nom del mòdul i a continuació Nom de la tercera persona matriculada
-        System.out.println(moduls.get(1).nom + ": " + moduls.get(1).matricula.get(2).nom );
+        // DIA 2/1/2004: Tasca2, Tasca3 
+        afegeixDia(agenda, LocalDate.of(2024, 1, 2), "Tasca2", "Tasca3");
         
-        // Del mòdul amb clau=2, Nom del mòdul i a continuació Total de persones matriculades
-        System.out.println(moduls.get(2).nom + ": " + moduls.get(2).matricula.size());
-        
-        // Del mòdul amb clau=3, Nom del mòdul i a continuació: Llista totes les persones matriculades
-        System.out.println(moduls.get(3).nom + ":");
-        for (Persona p : moduls.get(3).matricula) {
-            System.out.print("\t" + p.nom);
-        }
-        System.out.print("\n");
+        System.out.println(cercaDia(agenda, LocalDate.of(2024, 01, 02)));
     }
+    
+    public static void afegeixDia(Set<Dia> agenda, LocalDate data, String ... atasques) {
+        Queue<String> tasques = new LinkedList<>();
+        Dia dia = cercaDia(agenda, data);
+        
+        if ( dia == null) {  // afegir atasques a tasques
+            for (String a:atasques)
+                // Afegir tasques
+                tasques.offer(a);
+            Dia nouDia = new Dia(data, tasques);
+            agenda.add( nouDia );
+        } else {
+            for (String a:atasques)
+                dia.tasques.offer(a);
+        }
+    }
+    
+    public static Dia cercaDia(Set<Dia> agenda, LocalDate data) {
+        for (Dia d :agenda) {
+            if (d.data.isEqual(data))
+                return d;
+        }
+        return null;
+    }
+    
+    public static String obteTasca(Set<Dia> agenda, LocalDate data) {
+        Dia dia = cercaDia(agenda, data);
+        if (dia != null)
+            return dia.tasques.poll();
+        else
+            return null;
+    }
+    
 }
