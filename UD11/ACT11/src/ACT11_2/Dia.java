@@ -10,8 +10,8 @@ import java.util.Queue;
  * @author T.Vives
  */
 public class Dia {
-    protected LocalDate data = LocalDate.now();
-    protected Queue<String> tasques = new LinkedList<>();
+    protected LocalDate data;
+    protected Queue<String> tasques;
 
     // Constructor
     public Dia(LocalDate data, Queue<String> tasques) {
