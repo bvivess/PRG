@@ -21,6 +21,9 @@ public class Main {
         // DIA 2/1/2004: Tasca1 
         agenda.afegeixDia(LocalDate.of(2024, 1, 2), "Tasca1");
         
+        // DIA 3/1/2004: Tasca2, Tasca3 
+        agenda.afegeixDia(LocalDate.of(2024, 1, 2), "Tasca1", "Tasca2");
+        
         // DIA 2/1/2004: Tasca2, Tasca3 
         agenda.afegeixDia(LocalDate.of(2024, 1, 2), "Tasca2", "Tasca3");
         
