@@ -1,4 +1,4 @@
-package ACT11_0F;
+package ACT11_0G;
 
 public enum DiaSetmana {
     DILLUNS("DL","Laborable"), 

@@ -1,4 +1,4 @@
-package ACT11_0G;
+package ACT11_0H;
 
 // Definició de l'enum OperacioMatematica
 public enum OperacioMatematica {
