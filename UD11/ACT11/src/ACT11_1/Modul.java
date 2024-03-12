@@ -42,4 +42,15 @@ public class Modul {
         this.horesSetmanals = horesSetmanals;
     }
 
+    @Override
+    public String toString() {
+        String texte = "";
+        texte += "Modul{" + "nom=" + nom + ", horesSetmanals=" + horesSetmanals + ", matricula={";
+        for (Persona p : matricula) 
+            texte += "\n\t" + p.toString();
+        texte += '}';
+        
+        return texte;
+    }
+
 }

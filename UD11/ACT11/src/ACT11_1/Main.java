@@ -30,6 +30,12 @@ public class Main {
         moduls.put(4, new Modul("Sistemes d'Informació",7, persones));
         moduls.put(5, new Modul("Entorns de Desenvolupament",3, persones));
         
+        for (Integer k : moduls.keySet()) {
+            Modul modul = moduls.get(k);
+            System.out.println("Clau: " + k + ", Valor: " + modul.toString());
+        }
+
+        
         // Del mòdul amb clau=1, Nom del mòdul i a continuació Nom de la tercera persona matriculada
         System.out.println(moduls.get(1).nom + ": " + moduls.get(1).matricula.get(2).nom );
         

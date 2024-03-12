@@ -14,4 +14,9 @@ public class Persona {
         this.edat = edat;
     }
 
+    @Override
+    public String toString() {
+        return "Persona{" + "nom=" + nom + ", edat=" + edat + '}';
+    }
+
 }
