@@ -10,7 +10,7 @@ import java.util.Set;
 public class Main {
 
     public static void main(String[] args) {
-        Set<String> conjunt = new HashSet<>();
+        Set<String> conjunt = new HashSet<>();  // No cal implementar 'hashCode()', 'equals()' d''String'
         conjunt.add("Element1");
         conjunt.add("Element2");
         conjunt.add("Element1");  // No es permeten duplicats

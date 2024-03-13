@@ -28,7 +28,6 @@ public class Persona {
         return nom.equals(persona.nom) && edat == persona.edat;
     }
 
-    // també es pot definir el mètode genèric següent
     @Override
     public int hashCode() {
         return Objects.hash(nom, edat);

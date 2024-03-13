@@ -10,7 +10,7 @@ import java.util.Set;
 public class Main {
 
     public static void main(String[] args) {
-        Set<Persona> persones = new HashSet<>();
+        Set<Persona> persones = new HashSet<>();   // Cal implementar 'hashCode()', 'equals()' de 'Persona'
         persones.add(new Persona("Maria", 25));
         persones.add(new Persona("Joana", 30));
         persones.add(new Persona("Maria", 25));  // No duplicats

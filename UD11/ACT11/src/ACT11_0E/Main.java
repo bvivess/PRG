@@ -10,7 +10,7 @@ import java.util.Map;
 public class Main {
 
     public static void main(String[] args) {
-        Map<Integer, String> mapa = new HashMap<>();
+        Map<Integer, String> mapa = new HashMap<>();  // No cal implementar 'hashCode()', 'equals()' d''Integer'
         mapa.put(1,"Un"); // "Clau-valor": 1-"Un"
         mapa.put(2, "Dos");
         mapa.put(3, "Tres");

@@ -11,7 +11,7 @@ import java.util.Set;
 public class Main {
 
     public static void main(String[] args) {
-        Set<String> conjunt = new HashSet<>();
+        Set<String> conjunt = new HashSet<>(); 
         conjunt.add("Element1");
         conjunt.add("Element2");
         Iterator<String> iterator = conjunt.iterator();
