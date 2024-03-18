@@ -1,4 +1,4 @@
-package EX_UD09_II_B;
+package EX_UD09_IIB;
 
 public interface UtilitatsClient {
     public abstract void afegeixAlCarrito(Supermercat s, String text, int quantitat);

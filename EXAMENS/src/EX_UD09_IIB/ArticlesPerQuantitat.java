@@ -1,4 +1,4 @@
-package EX_UD09_II_A;
+package EX_UD09_IIB;
 
 public class ArticlesPerQuantitat {
     protected Article article;
@@ -11,7 +11,8 @@ public class ArticlesPerQuantitat {
     
     @Override
     public String toString() {
-        
-        return "";
-    }  // CORRECCIÓ: falta implementar aquest mètode perquè pugui ser cridat des de 'Supermercat' i 'Client'
+        return "Producte: " + this.article.toString() + 
+               "; Quantitat: " + this.quantitat;
+    }
+    
 }

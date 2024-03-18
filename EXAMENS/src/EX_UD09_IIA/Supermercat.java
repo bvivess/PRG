@@ -1,4 +1,4 @@
-package EX_UD09_II_B;
+package EX_UD09_IIA;
 
 import java.util.ArrayList;
 
@@ -14,22 +14,17 @@ public class Supermercat implements UtilitatsSupermercat, UtilitatsArticle {
     /** Afegeix un 'ArticlePerQuantitat' en l'atribut 'stock' */
     @Override
     public void afegeixArticle(Article p, int quantitat) {
-        this.stock.add(new ArticlesPerQuantitat(p, quantitat));  // no es revisa si existeix o no ...
+        // TO-DO code application logic here
 
     }
-           
+
     /** Recorre l'atribut 'stock', cercant 'text' en algun dels 'nom' dels articles ('ArticlePerQuantitat')  
     *       Si es troba, torna l''Article'
     *       Si no es troba, torna 'null'
     */
     @Override
     public Article cercaArticle(String nom) {
-        // cerca el article per 'nom', si es troba: retorna 'Article'
-        for (ArticlesPerQuantitat axq : this.stock) {
-           if (axq.article.nom.equals(nom)) {
-                return axq.article;
-           }
-        }
+        // TO-DO code application logic here
         
         return null;
     }
@@ -42,23 +37,14 @@ public class Supermercat implements UtilitatsSupermercat, UtilitatsArticle {
     */
     @Override
     public void descomptaArticle(String s, int quantitat) {
-        // cerca el article per 'nom', si es troba: descompta quantitat
-        for (ArticlesPerQuantitat axq : this.stock) {
-           if (axq.article.nom.equals(s)) {
-                axq.quantitat -= quantitat;
-                break;
-           }
-        }
+        // TO-DO code application logic here
+ 
     }
 
     @Override
     public String toString() {
-        String text = "Supermercat: {" + this.nom;
-        for (ArticlesPerQuantitat axq : this.stock) {
-            text += "\n\t" + axq.toString();
-         }
         
-        return text + "\n\t}";
+        return "";
     }
 
 }

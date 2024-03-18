@@ -1,4 +1,4 @@
-package EX_UD09_II_A;
+package EX_UD09_IIA;
 
 public class Article {
     protected String nom;

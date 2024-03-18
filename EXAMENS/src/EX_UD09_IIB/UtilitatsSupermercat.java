@@ -1,4 +1,4 @@
-package EX_UD09_II_B;
+package EX_UD09_IIB;
 
 public interface UtilitatsSupermercat {
     public abstract void descomptaArticle(String text, int quantitat);
