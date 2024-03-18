@@ -1,4 +1,4 @@
-package EX_UD09_IIIB;
+package EX_UD09_REC;
 
 // Classe abstracta per representar una habitació
 abstract class Habitacio {

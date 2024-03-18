@@ -1,4 +1,4 @@
-package EX_UD09_IIIB;
+package EX_UD09_REC;
 
 class HabitacioSimple extends Habitacio {
 
