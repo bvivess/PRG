@@ -20,12 +20,12 @@ public class Main {
         agenda.afegeixDia(LocalDate.of(2024, 1, 2), "Tasca1");
         
         // DIA 3/1/2004: Tasca2, Tasca3 
-        agenda.afegeixDia(LocalDate.of(2024, 1, 2), "Tasca1", "Tasca2");
+        agenda.afegeixDia(LocalDate.of(2024, 1, 3), "Tasca1", "Tasca2");
         
         // DIA 2/1/2004: Tasca2, Tasca3 
         agenda.afegeixDia(LocalDate.of(2024, 1, 2), "Tasca2", "Tasca3");
         
-        System.out.println(agenda.cercaDia(LocalDate.of(2024, 01, 02)));
+        System.out.println(agenda.obteTasca(LocalDate.of(2024, 01, 02)));
     }
     
 }
