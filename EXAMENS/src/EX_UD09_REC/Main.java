@@ -3,10 +3,7 @@ package EX_UD09_REC;
 import java.util.ArrayList;
 
 public class Main {
-
-    static final int HABITACIO_SIMPLE = 1;
-    static final int HABITACIO_DOBLE = 2;
-    
+   
     public static void main(String[] args) {
         // Creació de les habitacions amb disponibilitat inicial i preu
         Hotel hotel = new Hotel(new Habitacio[] { new HabitacioSimple(101, 2, false, 50.0),
