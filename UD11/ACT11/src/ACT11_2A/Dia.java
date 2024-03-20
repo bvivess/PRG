@@ -5,7 +5,6 @@ import java.util.Objects;
 import java.util.Queue;
 
 /**
- * Representa cada un dels moduls associats a un cicle formatiu
  * @author T.Vives
  */
 public class Dia {

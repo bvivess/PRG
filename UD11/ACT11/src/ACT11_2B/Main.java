@@ -1,34 +1,31 @@
 package ACT11_2B;
 
-import ACT11_2A.*;
 import java.time.LocalDate;
-import java.util.HashSet;
+import java.time.LocalTime;
 
-
-
-/**
- *
- * @author T.Vives
- */
 public class Main {
-
     public static void main(String[] args) {
-        Agenda agenda = new Agenda(new HashSet<>());
-                
-        // DIA 1/1/2004: Tasca1, Tasca2, Tasca3
-        // Afegir un dia a l'agenda
-        agenda.afegeixDia(LocalDate.of(2024, 1, 1), "Tasca1","Tasca2","Tasca3");
-             
-        // DIA 2/1/2004: Tasca1 
-        agenda.afegeixDia(LocalDate.of(2024, 1, 2), "Tasca1");
+        Agenda agenda = new Agenda();
         
-        // DIA 3/1/2004: Tasca2, Tasca3 
-        agenda.afegeixDia(LocalDate.of(2024, 1, 2), "Tasca1", "Tasca2");
+        // Càrrega de l'agenda
+        agenda.afegeixTasca(LocalDate.of(2024, 1, 01), LocalTime.of(10,00), "Tasca1");
+        agenda.afegeixTasca(LocalDate.of(2024, 1, 01), LocalTime.of(12,00), "Tasca2");
+        agenda.afegeixTasca(LocalDate.of(2024, 1, 01), LocalTime.of(18,00), "Tasca3");
+        agenda.afegeixTasca(LocalDate.of(2024, 1, 02), LocalTime.of(10,00), "Tasca1");
+        agenda.afegeixTasca(LocalDate.of(2024, 1, 03), LocalTime.of(10,00), "Tasca1");
+        agenda.afegeixTasca(LocalDate.of(2024, 1, 03), LocalTime.of(12,00), "Tasca2");
+
+        System.out.println(agenda.toString());
         
-        // DIA 2/1/2004: Tasca2, Tasca3 
-        agenda.afegeixDia(LocalDate.of(2024, 1, 2), "Tasca2", "Tasca3");
+        agenda.afegeixTasca(LocalDate.of(2024, 1, 02), LocalTime.of(12,00), "Tasca2");
+        agenda.afegeixTasca(LocalDate.of(2024, 1, 02), LocalTime.of(18,00), "Tasca3");
+        System.out.println("-------------------------");
+        System.out.println(agenda.toString());      
         
-        System.out.println(agenda.cercaDia(LocalDate.of(2024, 01, 02)));
+        // 
+        agenda.eliminaTasca(LocalDate.of(2024, 1, 01), LocalTime.of(10,00));
+        System.out.println("-------------------------");
+        System.out.println(agenda.toString());
     }
-    
 }
+
