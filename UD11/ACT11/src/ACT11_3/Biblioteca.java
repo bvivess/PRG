@@ -62,6 +62,13 @@ public class Biblioteca {
             System.out.println(llibre.toString());
         }
     }
+    
+    public void mostraTitolsDisponibles() {
+        System.out.println("Llibres disponibles:");
+        for (String titol : llibresPerTitol.keySet() ) {
+            System.out.println(titol);
+        }
+    }
 
     public void mostraLlibresPrestats() {
         System.out.println("Llibres prestats:");
