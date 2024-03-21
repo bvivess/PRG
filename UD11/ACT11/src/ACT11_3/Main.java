@@ -11,27 +11,16 @@ public class Main {
         biblioteca.afegeixLlibre("El Quijote", "Miguel de Cervantes", 1605);
         biblioteca.afegeixLlibre("Don Segundo Sombra", "Ricardo Güiraldes", 1926);
         biblioteca.afegeixLlibre("La Sombra del Viento", "Carlos Ruiz Zafón", 2001);
-
+        
         biblioteca.mostraLlibresDisponibles();
-
+        System.out.println("-----------------------------------------");
         biblioteca.prestaLlibre(new Llibre("El Quijote", "Miguel de Cervantes", 1605));
-
         biblioteca.mostraLlibresDisponibles();
+        System.out.println("-----------------------------------------");
         biblioteca.mostraLlibresPrestats();
-
         biblioteca.tornaLlibre();
-
+        System.out.println("-----------------------------------------");
         biblioteca.mostraLlibresDisponibles();
         biblioteca.mostraLlibresPrestats();
     }
 }
-
-
-import java.time.LocalDate;
-import java.util.*;
-
-
-
-
-
-
