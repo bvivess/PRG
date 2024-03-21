@@ -59,14 +59,14 @@ public class Biblioteca {
     public void mostraLlibresDisponibles() {
         System.out.println("Llibres disponibles:");
         for (Llibre llibre : llibres) {
-            System.out.println(llibre);
+            System.out.println(llibre.toString());
         }
     }
 
     public void mostraLlibresPrestats() {
         System.out.println("Llibres prestats:");
         for (Llibre llibre : llibresPrestats) {
-            System.out.println(llibre);
+            System.out.println(llibre.toString());
         }
     }    
 }
