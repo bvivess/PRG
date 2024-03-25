@@ -14,9 +14,9 @@ import java.util.Set;
  * @author winadmin
  */
 public class Biblioteca {
-    private final Set<Llibre> llibres;
-    private final Map<String, List<Llibre>> llibresPerTitol;
-    private Queue<Llibre> llibresPrestats;
+    private final Set<Llibre> llibres;  // Llibres disponibles
+    private final Map<String, List<Llibre>> llibresPerTitol;  // Títols disponibles
+    private Queue<Llibre> llibresPrestats;  // Llibres prestats
 
     public Biblioteca() {
         llibres = new HashSet<>();
@@ -24,8 +24,8 @@ public class Biblioteca {
         llibresPrestats = new LinkedList<>();
     }
 
-    public void afegeixLlibre(String titol, String autor, int anyPublicacio) {
-        Llibre nouLlibre = new Llibre(titol, autor, anyPublicacio);
+    public void afegeixLlibre(int idLlibre, String titol, String autor, int anyPublicacio) {
+        Llibre nouLlibre = new Llibre(idLlibre, titol, autor, anyPublicacio);
         llibres.add(nouLlibre);
 
         if (!llibresPerTitol.containsKey(titol)) {
@@ -60,6 +60,13 @@ public class Biblioteca {
         System.out.println("Llibres disponibles:");
         for (Llibre llibre : llibres) {
             System.out.println(llibre.toString());
+        }
+    }
+    
+    public void mostraTitolsDisponibles() {
+        System.out.println("Llibres disponibles:");
+        for (String titol : llibresPerTitol.keySet() ) {
+            System.out.println(titol);
         }
     }
 
