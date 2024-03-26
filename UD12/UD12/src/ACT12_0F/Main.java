@@ -13,11 +13,12 @@ public class Main {
         String bdades = "gbd";
         String usuario = "root";
         String passwd = "";
+        String instruccio = "SELECT employee_id, last_name, first_name FROM employees";
 
         // Establecer la conexión
         try ( Connection conexion = DriverManager.getConnection(servidor+bdades, usuario, passwd);
               Statement statement = conexion.createStatement();
-              ResultSet resultSet = statement.executeQuery("SELECT employee_id, last_name, first_name FROM employees")) {
+              ResultSet resultSet = statement.executeQuery(instruccio)) {
 
             System.out.println("Connexió amb la base de dades MySQL exitosa.");
             
@@ -32,7 +33,7 @@ public class Main {
 
             System.out.println("Conexió tancada.");
         } catch (SQLException e) {
-            System.err.println("Error al conectar a la base de datos: " + e.getMessage());
+            System.err.println("Error al conectarse a la base de dades: " + e.getMessage());
         }
     }
 }
