@@ -14,15 +14,17 @@ public class Main {
         biblioteca.afegeixLlibre(4, "La Sombra del Viento", "Carlos Ruiz Zafón", 2001);
         
         biblioteca.mostraLlibresDisponibles();
-        System.out.println("-----------------------------------------");
-        biblioteca.prestaLlibre(new Llibre(1, "El Quijote", "Miguel de Cervantes", 1605));
-        biblioteca.mostraLlibresDisponibles();
-        System.out.println("-----------------------------------------");
         biblioteca.mostraLlibresPrestats();
-        biblioteca.tornaLlibre();
         System.out.println("-----------------------------------------");
+        
+        biblioteca.prestaLlibre("El Quijote");
         biblioteca.mostraLlibresDisponibles();
-        System.out.println("-----------------------------------------");
         biblioteca.mostraLlibresPrestats();
+        System.out.println("-----------------------------------------");
+
+        biblioteca.tornaLlibre();       
+        biblioteca.mostraLlibresDisponibles();
+        biblioteca.mostraLlibresPrestats();
+
     }
 }

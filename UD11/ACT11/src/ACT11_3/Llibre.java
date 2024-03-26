@@ -19,6 +19,10 @@ public class Llibre {
         this.anyPublicacio = anyPublicacio;
     }
 
+    public int getIdLlibre() {
+        return idLlibre;
+    }
+    
     public String getTitol() {
         return titol;
     }
@@ -57,6 +61,6 @@ public class Llibre {
     
     @Override
     public String toString() {
-        return titol + " de " + autor + " (" + anyPublicacio + ")";
+        return "ID: " + idLlibre + " Títol: " + titol + " de " + autor + " (" + anyPublicacio + ")";
     }
 }
