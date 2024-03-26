@@ -23,7 +23,7 @@ public class Main {
             System.out.println("Connexió amb la base de dades MySQL exitosa.");
             
             // Processar els resultats de la Query
-            System.out.println("ID\tLlinatge i nom");
+            System.out.println("ID\tLlinatge, nom");
             while (resultSet.next()) {
                 System.out.println( resultSet.getInt("employee_id") + "\t" + 
                                     resultSet.getString("last_name") + ", " + 
