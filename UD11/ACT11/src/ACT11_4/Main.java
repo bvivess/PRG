@@ -18,12 +18,15 @@ public class Main {
         System.out.println("-----------------------------------------");
         
         biblioteca.prestaLlibre("El Quijote");
-                biblioteca.afegeixAnomalia(1, Anomalia.LLOM);
+        biblioteca.afegeixAnomalia(1, Anomalia.LLOM);
+        biblioteca.afegeixAnomalia(1, Anomalia.LLOM);
+
         biblioteca.mostraLlibresDisponibles();
         biblioteca.mostraLlibresPrestats();
         System.out.println("-----------------------------------------");
 
-        biblioteca.tornaLlibre();       
+        biblioteca.tornaLlibre(); 
+        biblioteca.eliminaAnomalia(1, Anomalia.LLOM);
         biblioteca.mostraLlibresDisponibles();
         biblioteca.mostraLlibresPrestats();
         System.out.println("-----------------------------------------");

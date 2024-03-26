@@ -80,14 +80,16 @@ public class Biblioteca {
     }
     
     public void afegeixAnomalia(int idLlibre, Anomalia anomalia) {
-        for (Llibre l : this.llibresDisponibles) {
-            if (l.getIdLlibre() == idLlibre)
+        boolean trobat = false;
+        for (Llibre l : this.llibresDisponibles)
+            if (l.getIdLlibre() == idLlibre) {
+                trobat = true;
                 afegeixAnomaliaEnLaLlista(l.getAnomalies(), anomalia);
-        }
-        for (Llibre l : this.llibresPrestats) {
-            if (l.getIdLlibre() == idLlibre)
-                afegeixAnomaliaEnLaLlista(l.getAnomalies(), anomalia);
-        }
+            }
+        if (!trobat)
+            for (Llibre l : this.llibresPrestats) 
+                if (l.getIdLlibre() == idLlibre)
+                    afegeixAnomaliaEnLaLlista(l.getAnomalies(), anomalia);
     }
 
     private void afegeixAnomaliaEnLaLlista(List<Anomalia> anomalies, Anomalia anomalia) {
@@ -103,6 +105,23 @@ public class Biblioteca {
         return false;
     }
     
+    public void eliminaAnomalia(int idLlibre, Anomalia anomalia) {
+        boolean trobat = false;
+        int i = 0;
+        for (Llibre l : this.llibresDisponibles) {
+            if (l.getIdLlibre() == idLlibre) {
+                trobat = true;
+                l.getAnomalies().remove(i);
+            }
+            i++;
+        }
+        if (!trobat)
+            i = 0;
+            for (Llibre l : this.llibresPrestats) {
+                if (l.getIdLlibre() == idLlibre)
+                    l.getAnomalies().remove(i);
+                i++;
+            }
+    }
 
-    
 }
