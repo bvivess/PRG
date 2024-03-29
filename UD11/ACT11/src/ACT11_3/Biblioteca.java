@@ -60,22 +60,22 @@ public class Biblioteca {
     
     public void mostraLlibresDisponibles() {
         System.out.println("Llibres disponibles:");
-        for (Llibre llibre : llibresDisponibles) {
-            System.out.println(llibre.toString());
+        for (Llibre l : llibresDisponibles) {
+            System.out.println(l.toString());
         }
     }
     
     public void mostraTitolsDisponibles() {
-        System.out.println("Llibres disponibles:");
-        for (String titol : titolsDisponibles.keySet() ) {
-            System.out.println(titol);
+        System.out.println("Títols Disponibles:");
+        for (String t : titolsDisponibles.keySet() ) {
+            System.out.println(t + "-" + this.titolsDisponibles.get(t).toString());
         }
     }
 
     public void mostraLlibresPrestats() {
         System.out.println("Llibres prestats:");
-        for (Llibre llibre : llibresPrestats) {
-            System.out.println(llibre.toString());
+        for (Llibre l : llibresPrestats) {
+            System.out.println(l.toString());
         }
     }    
 }

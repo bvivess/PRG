@@ -25,6 +25,9 @@ public class Main {
         biblioteca.tornaLlibre();       
         biblioteca.mostraLlibresDisponibles();
         biblioteca.mostraLlibresPrestats();
+        
+        System.out.println("-----------------------------------------");
+        biblioteca.mostraTitolsDisponibles();
 
     }
 }
