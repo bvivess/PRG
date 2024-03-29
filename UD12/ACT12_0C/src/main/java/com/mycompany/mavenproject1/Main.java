@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,26 +12,47 @@ import java.util.List;
  * @author winadmin
  */
 public class Main {
+    static String arxiuJSON = "C:\\temp\\persones.json";
+    static File fileJSON = new File(arxiuJSON);
 
     public static void main(String[] args) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        File arxiuJson = new File("C:\\temp\\personas.json");
+        List<Persona> persones = new ArrayList<>();
+        
+        persones = lecturaJSON(persones);
+        persones = modificacioJSON(persones);
+        escripturaJSON(persones);
+    }
 
+    private static List<Persona> lecturaJSON(List<Persona> persones) {
+        // Crear un ObjectMapper
+        ObjectMapper objectMapper = new ObjectMapper();
+        
         try {
-            List<Persona> persones = objectMapper.readValue(arxiuJson, new TypeReference<List<Persona>>() {});
-            for (Persona persona : persones) {  // Iterar sobre la lista de personas
-                System.out.println("Codi: " + persona.getIdPersona());
-                System.out.println("Nom: " + persona.getNom());
-                System.out.println("Llinatge: " + persona.getLlinatge());
-                System.out.println("Edat: " + persona.getEdat());
-                // Iterar la llista d'aficions
-                List<String> aficions = persona.getAficions();
-                for (String a : aficions) 
-                    System.out.println("\tAfició: " + a);
-                System.out.println("------------------------");
-            }
+            persones = objectMapper.readValue(fileJSON, new TypeReference<List<Persona>>() {});
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return persones;
+    }
+    
+   private static List<Persona> modificacioJSON(List<Persona> persones) {
+        for (Persona p : persones) {
+            p.setLlinatge(p.getLlinatge().toUpperCase());
+            p.setNom(p.getNom().toUpperCase());
+            System.out.println(p.getLlinatge());
+        }
+        return persones;
+    }
+ 
+    private static void escripturaJSON(List<Persona> persones) {
+        // Crear un ObjectMapper
+        ObjectMapper objectMapper = new ObjectMapper();
+        
+        try {
+            objectMapper.writeValue(new File(arxiuJSON), persones);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 }

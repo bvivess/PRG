@@ -15,7 +15,6 @@ public class Persona {
   
     
     // Getters y Setters
-
     public int getIdPersona() {
         return idPersona;
     }
@@ -36,6 +35,25 @@ public class Persona {
         return aficions;
     }
 
+    public void setLlinatge(String llinatge) {
+        this.llinatge = llinatge;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
     
+    @Override
+    public String toString() {
+        String texte;
+        texte = "Persona{" + "idPersona=" + idPersona + ", nom=" + nom + ", llinatge=" + llinatge + ", edat=" + edat + ", aficions={";
+        for (String a:this.aficions) 
+            texte += a + " ";
+        texte += "}";
+        return texte;
+        
+        
+    }
+
 }
 
