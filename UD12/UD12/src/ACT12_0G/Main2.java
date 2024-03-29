@@ -1,4 +1,4 @@
-package ACT12_0F;
+package ACT12_0G;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,14 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Main {
+public class Main2 {
     public static void main(String[] args) {
         // Dades de la connexió:
         String servidor = "jdbc:mysql://localhost:3306/";
         String bdades = "gbd";
         String usuari = "root";
         String passwd = "";
-        String sql = "SELECT employee_id, last_name, first_name FROM employees";
+        int departmentId = 80;
+        String sql = "SELECT employee_id, last_name, first_name FROM employees WHERE department_id=" + departmentId;
 
         // Establir la connexió
         try ( Connection connexio = DriverManager.getConnection(servidor+bdades, usuari, passwd);
@@ -37,8 +38,3 @@ public class Main {
         }
     }
 }
-
-
-    
-        
-           
