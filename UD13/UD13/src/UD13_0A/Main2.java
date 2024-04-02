@@ -27,7 +27,7 @@ public class Main2 {
         JButton botonAceptar = new JButton("Aceptar");
         JButton botonCancelar = new JButton("Cancelar");
 
-        // A?adir los componentes al panel
+        // fegir els components al panel
         panel.add(etiqueta1);
         panel.add(campo1);
         panel.add(etiqueta2);
