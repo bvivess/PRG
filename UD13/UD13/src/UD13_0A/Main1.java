@@ -19,30 +19,31 @@ public class Main1 {
         miJFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         // 2- COMPONENT DE NIVELL INTERMIG
-        // Component 'JPanel'
+        // Component 'JPanel' i propietats
         JPanel miJPanel = new JPanel();
         miJPanel.setSize(300, 200);
         miJPanel.setLayout(null);  // BorderLayout(),GridBagLayout(), BoxLayout(miJPanel,BoxLayout.X_AXIS), FlowLayout() ...
 
         // 3- ELEMENTS ATÒMICS
-        // Component 'JTextField'
-        JLabel etiqueta1 = new JLabel("Mensaje");
-        etiqueta1.setBounds(1, 1, 120, 20);
-
-        // Component 'JTextArea'
-        JButton botoAcceptar = new JButton("Aceptar");
-        botoAcceptar.setBounds(1, 21, 120, 20);
-        JButton botoCancellar = new JButton("Cancelar");
-        botoCancellar.setBounds(1, 51, 120, 20);
+        // Component 'JTextField' i propietats
+        JLabel miJLabel = new JLabel("Mensaje");
+        miJLabel.setBounds(1, 1, 120, 20);
+        // Components 'JButton' i propietats
+        JButton miJButtonbotoAcceptar = new JButton("Aceptar");
+        miJButtonbotoAcceptar.setBounds(1, 21, 120, 20);
+        JButton miJButtonCancellar = new JButton("Cancelar");
+        miJButtonCancellar.setBounds(1, 51, 120, 20);
 
         // 4- CONNEXIÓ DELS ELEMENTS ATÒMICS AL NIVELL INTERMIG
-        miJPanel.add(etiqueta1);
-        miJPanel.add(botoAcceptar);
-        miJPanel.add(botoCancellar);
+        miJPanel.add(miJLabel);
+        miJPanel.add(miJButtonbotoAcceptar);
+        miJPanel.add(miJButtonCancellar);
 
 
-        // 4- CONNEXIÓ DEL NIVELL INTERMIG AL NIVELL SUPERIOR
+        // 5- CONNEXIÓ DEL NIVELL INTERMIG AL NIVELL SUPERIOR
         miJFrame.add(miJPanel);
+        
+        // 6- ACTIVAR EL JFrame
         miJFrame.setVisible(true);
 
 
