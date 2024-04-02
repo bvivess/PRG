@@ -1,60 +1,47 @@
 package UD13_0A;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.Color;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 
 public class Main2 {
-
     public static void main(String[] args) {
-        // Crear el JFrame
-        JFrame frame = new JFrame("Formulario Simple");
-        frame.setSize(300, 200);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // FRAME
+        JFrame myFrame = new JFrame("Prova");
+        myFrame.setSize(1200, 500);
+        myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        // PANELL
+        JPanel myJPanel = new JPanel();
+        myJPanel.setLayout(new BoxLayout(myJPanel, BoxLayout.X_AXIS));
 
-        // Crear el JPanel que actuará como contenedor intermedio
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(4, 2));
-        frame.add(panel); // Agregar el panel al JFrame
+        // PANELL1
+        JPanel miJPanell1 = new JPanel();
+        miJPanell1.setSize(400, 500);
+        miJPanell1.setBackground(Color.BLUE);
+        //miJPanell1.setVisible(true);
+        
+        JButton miJButtonAcceptar = new JButton("Acceptar");
+        JButton miJButtonCancellar = new JButton("Cancel·lar");
 
-        // Crear los componentes del formulario
-        JLabel etiqueta1 = new JLabel("Campo 1:");
-        JTextField campo1 = new JTextField();
-        JLabel etiqueta2 = new JLabel("Campo 2:");
-        JTextField campo2 = new JTextField();
-        JLabel etiqueta3 = new JLabel("Campo 3:");
-        JTextField campo3 = new JTextField();
-        JButton botonAceptar = new JButton("Aceptar");
-        JButton botonCancelar = new JButton("Cancelar");
+        // PANELL2
+        JPanel miJPanel2 = new JPanel();
+        miJPanel2.setSize(400, 500);
+        miJPanel2.setBackground(Color.RED);
+        //miJPanel2.setVisible(true);
 
-        // fegir els components al panel
-        panel.add(etiqueta1);
-        panel.add(campo1);
-        panel.add(etiqueta2);
-        panel.add(campo2);
-        panel.add(etiqueta3);
-        panel.add(campo3);
-        panel.add(botonAceptar);
-        panel.add(botonCancelar);
-
-        // Agregar acción al botón "Aceptar"
-        botonAceptar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Aquí puedes agregar la lógica para procesar los datos ingresados en los campos
-                JOptionPane.showMessageDialog(null, "Datos aceptados");
-            }
-        });
-
-        // Agregar acción al botón "Cancelar"
-        botonCancelar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Aquí puedes agregar la lógica para cancelar la operación
-                frame.dispose(); // Cierra el JFrame
-            }
-        });
-
-        // Mostrar el JFrame
-        frame.setVisible(true);
+        // CONNEXIONS
+        // Elements
+        miJPanell1.add(miJButtonAcceptar);
+        miJPanell1.add(miJButtonCancellar);
+        // Panel
+        myJPanel.add(miJPanell1);
+        myJPanel.add(miJPanel2);
+        // Frame
+        myFrame.add(myJPanel);
+        myFrame.setVisible(true);
     }
 }
-
