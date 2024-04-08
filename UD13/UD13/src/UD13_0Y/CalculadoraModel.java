@@ -4,7 +4,7 @@ package UD13_0Y;
 // El modelo se encarga de gestionar los datos y su comportamiento asociado, como la validación, 
 // la lógica de cálculo, etc. No está directamente relacionado con la interfaz de usuario.
 class CalculadoraModel {
-    public int sumar(int num1, int num2) {
+    public int ObteSuma(int num1, int num2) {
         return num1 + num2;
     }
 }
