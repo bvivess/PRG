@@ -3,6 +3,7 @@ package ACT11_4;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -84,21 +85,21 @@ public class Biblioteca {
         for (Llibre l : this.llibresDisponibles)
             if (l.getIdLlibre() == idLlibre) {
                 trobat = true;
-                afegeixAnomaliaEnLaLlista(l.getAnomalies(), anomalia);
+                afegeixAnomalia(l.getAnomalies(), anomalia);
             }
         if (!trobat)
             for (Llibre l : this.llibresPrestats) 
                 if (l.getIdLlibre() == idLlibre)
-                    afegeixAnomaliaEnLaLlista(l.getAnomalies(), anomalia);
+                    afegeixAnomalia(l.getAnomalies(), anomalia);
     }
 
-    private void afegeixAnomaliaEnLaLlista(List<Anomalia> anomalies, Anomalia anomalia) {
-        boolean trobat = cercaAnomaliaEnLaLlista(anomalies, anomalia);
+    private void afegeixAnomalia(List<Anomalia> anomalies, Anomalia anomalia) {
+        boolean trobat = cercaAnomalia(anomalies, anomalia);
         if (!trobat) 
             anomalies.add(anomalia);
     }
     
-    private boolean cercaAnomaliaEnLaLlista(List<Anomalia> anomalies, Anomalia anomalia) {
+    private boolean cercaAnomalia(List<Anomalia> anomalies, Anomalia anomalia) {
         for (Anomalia a : anomalies)
             if (a == anomalia) 
                 return true;
@@ -108,20 +109,28 @@ public class Biblioteca {
     public void eliminaAnomalia(int idLlibre, Anomalia anomalia) {
         boolean trobat = false;
         int i = 0;
-        for (Llibre l : this.llibresDisponibles) {
-            if (l.getIdLlibre() == idLlibre) {
+        Iterator<Llibre> iterator;
+        Llibre element;
+        
+        iterator = this.llibresDisponibles.iterator();
+        while (iterator.hasNext()) {
+            element = iterator.next();
+            if (element.getIdLlibre() == idLlibre) {
                 trobat = true;
-                l.getAnomalies().remove(i);
+                element.getAnomalies().remove(i);
             }
             i++;
         }
-        if (!trobat)
+        if (!trobat) {
             i = 0;
-            for (Llibre l : this.llibresPrestats) {
-                if (l.getIdLlibre() == idLlibre)
-                    l.getAnomalies().remove(i);
+            iterator = this.llibresPrestats.iterator();
+            while (iterator.hasNext()) {
+               element = iterator.next();           
+                if (element.getIdLlibre() == idLlibre) 
+                    element.getAnomalies().remove(i);
                 i++;
             }
+        }
     }
-
+  
 }
