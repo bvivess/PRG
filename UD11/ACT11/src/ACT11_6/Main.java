@@ -8,6 +8,7 @@ public class Main {
         ArraySet<Tasca> tasques = new ArraySet<>();
         ArrayMax<Tasca> tasquesMax = new ArrayMax<>(5);
         
+        // Prova de 'ArraySet'
         tasques.add(new Tasca(LocalDate.now(), "Anar al metge"));
         tasques.add(new Tasca(LocalDate.now(), "Anar a classe"));  // Error: no s'admeten 2 tasques pel mateix dia
         tasques.add(new Tasca(LocalDate.now(), "Comprar menjar"));  // Error: no s'admeten 2 tasques pel mateix dia
@@ -21,12 +22,13 @@ public class Main {
         
         System.out.println("----------------------------------------");
         
+        // Prova de 'ArrayMax'
         tasquesMax.add(new Tasca(LocalDate.now(), "Anar al metge"));
         tasquesMax.add(new Tasca(LocalDate.now(), "Anar a classe"));
         tasquesMax.add(new Tasca(LocalDate.now(), "Comprar menjar"));
         tasquesMax.add(new Tasca(LocalDate.now(), "Fer els ejercicis"));
         tasquesMax.add(new Tasca(LocalDate.now(), "Sopar"));
-        tasques.add(new Tasca(LocalDate.now(), "Domir"));  // Error: no s'admeten més de 5 tasques
+        tasquesMax.add(new Tasca(LocalDate.now(), "Domir"));  // Error: no s'admeten més de 5 tasques
         
         for (Tasca t : tasquesMax) {
             System.out.println(t.toString()); 
