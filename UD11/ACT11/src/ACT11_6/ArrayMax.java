@@ -3,14 +3,14 @@ package ACT11_6;
 import java.util.ArrayList;
 
 // 'ArrayList' amb un número màxim d'elements prefixat
-public class ArrayMax<T> extends ArrayList<T> { 
-    private final int maxSize;
+public class ArrayMax<T> extends ArrayList<T> {  // 'T' representa el tipus o classe dels objectes relacionats
+    private final int maxSize;  // nombre màxim d'elements de l''ArrayMax'
 
     public ArrayMax(int maxSize) {
         this.maxSize = maxSize;
     }
 
-    // Sobreescriptura de 'add'
+    // Sobreescriptura d''add'
     @Override
     public boolean add(T e) {
         if (this.size() >= this.maxSize)
