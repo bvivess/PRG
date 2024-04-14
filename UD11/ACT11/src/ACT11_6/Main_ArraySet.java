@@ -7,7 +7,7 @@ public class Main_ArraySet {
     public static void main(String[] args) {
         // Declaració d''ArraySet'
         ArraySet<Tasca> tasques = new ArraySet<>();
-        
+       
         // Prova de 'ArraySet'
         tasques.add(new Tasca(LocalDate.now(), "Anar al metge"));
         tasques.add(new Tasca(LocalDate.now(), "Anar a classe"));  // Error: no s'admeten 2 tasques pel mateix dia
