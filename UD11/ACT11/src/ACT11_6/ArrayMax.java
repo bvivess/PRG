@@ -9,7 +9,7 @@ import java.util.ArrayList;
  *    1. E - the type of elements in this ArrayMax
  *    2. maxSize - maximum number of elements allowed
  */
-public class ArrayMax<E> extends ArrayList<E> {  // 'E' representa la classe dels elements relacionats
+public class ArrayMax<E> extends ArrayList<E> {  // 'E' representa la classe dels elements de l''ArrayMax'
     private final int maxSize;  // nombre màxim d'elements de l''ArrayMax'
 
     public ArrayMax(int maxSize) {
