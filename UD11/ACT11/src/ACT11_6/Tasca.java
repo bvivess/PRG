@@ -2,19 +2,13 @@ package ACT11_6;
 
 import java.time.LocalDate;
 
-
-
 public class Tasca {
-    private LocalDate hora;
+    private LocalDate dia;
     private String titol;
 
-    public Tasca(LocalDate hora, String titol) {
-        this.hora = hora;
+    public Tasca(LocalDate dia, String titol) {
+        this.dia = dia;
         this.titol = titol;
-    }
-
-    public LocalDate getNumero() {
-        return this.hora;
     }
 
     @Override
@@ -31,12 +25,12 @@ public class Tasca {
             return false;
         }
         Tasca other = (Tasca) obj;
-        return hora.equals(other.hora);
+        return dia.equals(other.dia);
     }
     
     @Override
     public String toString() {
-        return "Tasca = {" + this.hora + ", " + this.titol + "}";
+        return "Tasca = {" + this.dia + ", " + this.titol + "}";
     }
     
     
