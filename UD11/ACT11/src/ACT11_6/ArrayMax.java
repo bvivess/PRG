@@ -2,8 +2,14 @@ package ACT11_6;
 
 import java.util.ArrayList;
 
-// 'ArrayList' amb un número màxim d'elements prefixat
-public class ArrayMax<E> extends ArrayList<E> {  // 'E' representa el tipus o classe dels objectes relacionats
+/** ArrayMax: 'ArrayList' amb un número màxim d'elements prefixat
+ * public class ArraySet<E>(int maxSize) extends ArrayList<E> 
+ * 
+ * Tipus de paràmetre:
+ *    1. E - the type of elements in this ArrayMax
+ *    2. maxSize - maximum number of elements allowed
+ */
+public class ArrayMax<E> extends ArrayList<E> {  // 'E' representa la classe dels elements relacionats
     private final int maxSize;  // nombre màxim d'elements de l''ArrayMax'
 
     public ArrayMax(int maxSize) {

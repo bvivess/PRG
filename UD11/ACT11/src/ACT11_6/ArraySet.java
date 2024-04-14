@@ -2,13 +2,13 @@ package ACT11_6;
 
 import java.util.ArrayList;
 
-/** ArraySet: 'ArrayList amb comportament de 'Set'
+/** ArraySet: 'ArrayList' amb comportament de 'Set'
  * public class ArraySet<E> extends ArrayList<E> 
  * 
  * Tipus de paràmetre:
- *    1. E - the type of elements in this ArrayList
+ *    1. E - the type of elements in this ArraySet
  */
-public class ArraySet<E> extends ArrayList<E> {  // 'E' representa el tipus o classe dels objectes relacionats
+public class ArraySet<E> extends ArrayList<E> {  // 'E' representa la classe dels elements de l''ArraySet'
 
     // Sobreescriptura d''add'
     @Override
