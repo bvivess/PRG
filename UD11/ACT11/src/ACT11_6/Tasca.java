@@ -6,8 +6,8 @@ public class Tasca {
     private LocalDate data;
     private String descripcio;
 
-    public Tasca(LocalDate dia, String titol) {
-        this.data = dia;
+    public Tasca(LocalDate data, String titol) {
+        this.data = data;
         this.descripcio = titol;
     }
 
