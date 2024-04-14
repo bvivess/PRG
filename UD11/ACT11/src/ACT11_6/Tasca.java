@@ -24,8 +24,8 @@ public class Tasca {
         if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        Tasca other = (Tasca) obj;
-        return dia.equals(other.dia);
+        Tasca t = (Tasca) obj;
+        return dia.equals(t.dia);
     }
     
     @Override
