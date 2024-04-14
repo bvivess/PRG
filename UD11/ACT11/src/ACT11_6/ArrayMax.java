@@ -2,7 +2,7 @@ package ACT11_6;
 
 import java.util.ArrayList;
 
-// 'ArrayList' amb comportament de 'Set'
+// 'ArrayList' amb un número màxim d'elements prefixat
 public class ArrayMax<T> extends ArrayList<T> { 
     private final int maxSize;
 
