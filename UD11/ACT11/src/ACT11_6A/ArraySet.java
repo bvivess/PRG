@@ -1,4 +1,4 @@
-package ACT11_6;
+package ACT11_6A;
 
 import java.util.ArrayList;
 
@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * public class ArraySet<E> extends ArrayList<E> 
  * 
  * Tipus de paràmetre:
- *    1. E - the type of elements in this ArraySet
+ *    1. E - el tipus d'elements en aquest 'ArraySet'
  */
 public class ArraySet<E> extends ArrayList<E> {  // 'E' representa la classe dels elements de l''ArraySet'
 

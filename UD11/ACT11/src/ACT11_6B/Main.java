@@ -1,8 +1,8 @@
-package ACT11_6;
+package ACT11_6B;
 
 import java.time.LocalDate;
 
-public class Main_ArrayMax {
+public class Main {
 
     public static void main(String[] args) {
         // Declaració d''ArrayMax'

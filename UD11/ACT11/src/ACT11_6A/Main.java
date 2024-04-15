@@ -1,8 +1,8 @@
-package ACT11_6;
+package ACT11_6A;
 
 import java.time.LocalDate;
 
-public class Main_ArraySet {
+public class Main {
 
     public static void main(String[] args) {
         // Declaració d''ArraySet'

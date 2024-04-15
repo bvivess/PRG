@@ -1,4 +1,4 @@
-package ACT11_6;
+package ACT11_6B;
 
 import java.util.ArrayList;
 
@@ -6,8 +6,8 @@ import java.util.ArrayList;
  * public class ArraySet<E>(int maxSize) extends ArrayList<E> 
  * 
  * Tipus de paràmetre:
- *    1. E - the type of elements in this ArrayMax
- *    2. maxSize - maximum number of elements allowed
+ *    1. E - el tipus d'elements en aquest 'ArrayMax'
+ *    2. maxSize - nombre màxim d'elements permesos
  */
 public class ArrayMax<E> extends ArrayList<E> {  // 'E' representa la classe dels elements de l''ArrayMax'
     private final int maxSize;  // nombre màxim d'elements de l''ArrayMax'
