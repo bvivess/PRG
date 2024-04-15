@@ -15,15 +15,21 @@ public class ArrayDeque<E> extends ArrayList<E> {  // 'E' representa la classe d
     // Sobreescriptura d''add'
     @Override
     public boolean add(E e) {
-        return super.add(e);
+        this.add(0,e);
+        return true;
     }
 
-    public boolean offer(E e) {
+    @Override
+    public void add(int index, E element) {
+        super.add(0, element);
+    }
+
+    public boolean push(E e) {
         return add(e);
     }
-    
-    public E poll() {
-        E lastElement = this.remove(this.size() - 1); 
+
+    public E pop() {
+        E lastElement = this.remove(0); 
         return lastElement;
     }
     

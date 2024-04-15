@@ -15,11 +15,14 @@ public class Main {
         tasques.offer(new Tasca(LocalDate.now(), "Fer els ejercicis"));
         tasques.offer(new Tasca(LocalDate.now(), "Sopar"));
         tasques.offer(new Tasca(LocalDate.now(), "Domir"));
-        tasques.poll();
+        System.out.println(tasques.poll());
+        System.out.println("-------------------");
         
         for (Tasca t : tasques) {
             System.out.println(t.toString()); 
         }
+        System.out.println("-------------------");
+        System.out.println(tasques.poll());
     }
 }
 
