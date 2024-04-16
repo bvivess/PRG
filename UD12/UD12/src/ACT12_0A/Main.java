@@ -14,8 +14,8 @@ public class Main {
     public static void main(String[] args) {
         char[] c = new char[128]; 
         int cLen = c.length;
-        File nomArxiu = new File("c:\\temp\\arxiu.txt");
-        File nomArxiu2 = new File("c:\\temp\\arxiu2.txt");
+        File nomArxiu = new File("c:\\temp\\arxiu.txt");  // o també String
+        File nomArxiu2 = new File("c:\\temp\\arxiu2.txt");  // o també String
         // Example use of InputStream methods
         try ( FileReader lector = new FileReader(nomArxiu);
               FileWriter escriptor = new FileWriter(nomArxiu2)
