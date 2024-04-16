@@ -4,9 +4,9 @@ public enum EstatCivil {
     CASAT("Casat","Casado","Married"),
     FADRI("Fadrí","Soltero","Single");
     
-    private String descripcioCA;
-    private String descripcioES;
-    private String descripcioEN;
+    private final String descripcioCA;
+    private final String descripcioES;
+    private final String descripcioEN;
 
     private EstatCivil(String descripcioCA, String descripcioES, String descripcioEN) {
         this.descripcioCA = descripcioCA;
