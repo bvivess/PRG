@@ -29,9 +29,9 @@ public class Main {
                     escriptor.write(c);
                 count += read;
             }
-            System.out.println("Wrote: " + count + " characters.");
+            System.out.println("S'han escrit: " + count + " caràcters.");
         } catch (FileNotFoundException f) {
-            System.out.println("File " + args[0] + " not found.");
+            System.out.println("Arxiu " + nomArxiu + " no torbat.");
         } catch (IOException e) {
             System.out.println("IOException: " + e);
         }
