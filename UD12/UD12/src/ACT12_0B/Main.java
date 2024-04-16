@@ -11,8 +11,8 @@ import java.io.FileNotFoundException; import java.io.IOException;
  */
 public class Main {
     public static void main(String[] args) {
-        File nomArxiu = new File("c:\\temp\\arxiu.txt");  // o també String
-        File nomArxiu2 = new File("c:\\temp\\arxiu2.txt");  // o també String
+        File nomArxiu = new File("c:\\temp\\arxiu.txt");  // o també 'String'
+        File nomArxiu2 = new File("c:\\temp\\arxiu2.txt");  // o també 'String'
         try ( BufferedReader bufInput = new BufferedReader(new FileReader(nomArxiu));
               BufferedWriter bufOutput = new BufferedWriter(new FileWriter(nomArxiu2))
             ) {

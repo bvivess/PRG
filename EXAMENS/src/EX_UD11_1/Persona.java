@@ -1,4 +1,4 @@
-package EX_UD11_2;
+package EX_UD11_1;
 
 public class Persona {
     private String nom;
