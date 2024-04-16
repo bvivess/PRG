@@ -1,5 +1,6 @@
 package ACT12_0A;
 
+import java.io.File;
 import java.io.FileReader; import java.io.FileWriter;
 import java.io.IOException; import java.io.FileNotFoundException;
 
@@ -13,8 +14,8 @@ public class Main {
     public static void main(String[] args) {
         char[] c = new char[128]; 
         int cLen = c.length;
-        String nomArxiu = "c:\\temp\\arxiu.txt";
-        String nomArxiu2 = "c:\\temp\\arxiu2.txt";
+        File nomArxiu = new File("c:\\temp\\arxiu.txt");
+        File nomArxiu2 = new File("c:\\temp\\arxiu2.txt");
         // Example use of InputStream methods
         try ( FileReader lector = new FileReader(nomArxiu);
               FileWriter escriptor = new FileWriter(nomArxiu2)
