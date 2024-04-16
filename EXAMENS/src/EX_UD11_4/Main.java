@@ -1,12 +1,11 @@
-package EX_UD11_3;
+package EX_UD11_4;
 
 import java.time.LocalDate;
+import java.util.Iterator;
 
 public class Main {
-
     public static void main(String[] args) {
-        CircularQueue<Tasca> tasques = new CircularQueue<>(5);
-        
+        CircularQueue<Tasca> tasques = new CircularQueue<>(2);
         tasques.offer(new Tasca(LocalDate.now(), "Anar al metge"));
         tasques.offer(new Tasca(LocalDate.now(), "Anar a classe"));
         tasques.offer(new Tasca(LocalDate.now(), "Comprar menjar"));
@@ -15,10 +14,14 @@ public class Main {
         tasques.poll();
         tasques.offer(new Tasca(LocalDate.now(), "Dormir"));
         tasques.enQueue();
-
-        for (Tasca t : tasques) {
-            System.out.println(t.toString()); 
+        
+        Iterator<Tasca> iterator = tasques.iterator();
+        while (iterator.hasNext()) {
+            Tasca element = iterator.next();
+            System.out.println(element.toString());
+            //iterator.remove();
         }
+      
     }
 }
 
