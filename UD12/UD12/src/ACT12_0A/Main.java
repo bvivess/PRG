@@ -31,7 +31,7 @@ public class Main {
             }
             System.out.println("S'han escrit: " + count + " caràcters.");
         } catch (FileNotFoundException f) {
-            System.out.println("Arxiu " + nomArxiu + " no torbat.");
+            System.out.println("Arxiu " + nomArxiu + " no trobat.");
         } catch (IOException e) {
             System.out.println("IOException: " + e);
         }
