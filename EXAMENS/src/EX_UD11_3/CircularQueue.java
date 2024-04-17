@@ -9,7 +9,7 @@ public class CircularQueue<E> extends ArrayList<E> {  // 'E' representa la class
         this.maxSize = maxSize;
     }
 
-    // Mètode per afegir un E si la mida de la cua no ha arribat a 'maxSize'
+    // Mètode per afegir un E si la mida de la coa no ha arribat a 'maxSize'
     @Override
     public boolean add(E e) {
         if (this.size() < maxSize)
