@@ -17,7 +17,17 @@ public class CircularQueue<E> extends ArrayList<E> {  // 'E' representa la class
         else
             return false;
     }
-
+    
+    // Referència a 'add()'
+    public boolean offer(E e) {
+        return this.add(e);
+    }
+        
+    // Mètode per tornar i eliminar el primer element de la 'CircularQueue'
+    public E poll() {
+        return super.remove(0);
+    }
+    
     // Mètode per treure el darrer element i posar-lo al principi
     public void enQueue() {
         if (this.size() > 1) {
@@ -33,13 +43,5 @@ public class CircularQueue<E> extends ArrayList<E> {  // 'E' representa la class
             this.add(firstElement); 
         }
     }
-    
-    public boolean offer(E e) {
-        return this.add(e);
-    }
-    
-    // Mètode per tornar i eliminar el primer element de la 'CircularQueue'
-    public E poll() {
-        return super.remove(0);
-    }
+
 }
