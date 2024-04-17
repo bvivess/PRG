@@ -12,7 +12,10 @@ public class Main {
         Iterator<EstatCivil> iterator = llistaDies.iterator();
         while (iterator.hasNext()) {
             EstatCivil estatCivil = iterator.next();
-            System.out.println(estatCivil);
+            System.out.println( estatCivil + " " +
+                                estatCivil.getDescripcioCA() + " " +
+                                estatCivil.getDescripcioES() + " " +
+                                estatCivil.getDescripcioEN() );
         }
     }
 
