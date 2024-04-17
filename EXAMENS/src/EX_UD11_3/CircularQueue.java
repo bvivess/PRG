@@ -39,8 +39,9 @@ public class CircularQueue<E> extends ArrayList<E> {  // 'E' representa la class
     // Mètode per treure el primer element i posar-lo al darrer
     public void deQueue() {
         if (this.size() > 1) {
+            // this.add(this.remove(0));
             E firstElement = this.remove(0); 
-            this.add(firstElement); 
+            this.add(firstElement);  
         }
     }
 

@@ -12,7 +12,7 @@ public class Main {
         tasques.offer(new Tasca(LocalDate.now(), "Comprar menjar"));
         tasques.offer(new Tasca(LocalDate.now(), "Fer els ejercicis"));
         tasques.offer(new Tasca(LocalDate.now(), "Sopar"));
-        tasques.poll();
+        //tasques.poll();
         tasques.offer(new Tasca(LocalDate.now(), "Dormir"));
         tasques.enQueue();
 
