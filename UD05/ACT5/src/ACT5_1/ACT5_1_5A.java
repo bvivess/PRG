@@ -10,7 +10,7 @@ public class ACT5_1_5A {
 
         try {
             // Intentar obrir i llegir un arxiu
-            br = new BufferedReader(new FileReader("c:/Users/winadmin/Desktop/a.html"));
+            br = new BufferedReader(new FileReader("c:\\temp\\a.html"));
             String linea;
             while ((linea = br.readLine()) != null) {
                 System.out.println(linea);

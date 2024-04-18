@@ -8,7 +8,7 @@ public class ACT5_1_5B {
 
     public static void main(String[] args) {
         // S'utilitza un recurs que implementa la interfície AutoCloseable (per exemple, BufferedReader)
-        try (BufferedReader br = new BufferedReader(new FileReader("c:/Users/winadmin/Desktop/a.html"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("c:\\temp\\a.html"))) {
             // Aquí les operacions que poden llançar una 'excepció'
             String linea;
             while ((linea = br.readLine()) != null) {
