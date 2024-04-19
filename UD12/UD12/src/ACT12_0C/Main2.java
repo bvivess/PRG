@@ -1,4 +1,4 @@
-package ACT12_0E;
+package ACT12_0C;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

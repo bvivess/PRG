@@ -1,19 +1,24 @@
 package ACT11_0I;
 
-import java.util.EnumMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
+/**
+ *
+ * @author winadmin
+ */
 public class Main {
+
     public static void main(String[] args) {
-        EnumMap<Direccio, String> mapaDireccions = new EnumMap<>(Direccio.class);
-
-        mapaDireccions.put(Direccio.NORTE, "Anar al nord");
-        mapaDireccions.put(Direccio.SUR, "Anar al sud");
-        mapaDireccions.put(Direccio.ESTE, "Anar a l'est");
-        mapaDireccions.put(Direccio.OESTE, "Anar a l'oest");
-
-        // Iteración sobre el EnumMap
-        for (Direccio direccio : mapaDireccions.keySet()) {
-            System.out.println(direccio + ": " + mapaDireccions.get(direccio));
+        Set<String> conjunt = new HashSet<>(); 
+        conjunt.add("Element1");
+        conjunt.add("Element2");
+        Iterator<String> iterator = conjunt.iterator();
+        while (iterator.hasNext()) {
+            String element = iterator.next();
+            System.out.println("Element: " + element);
+            //iterator.remove();
         }
     }
 }

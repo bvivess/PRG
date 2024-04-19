@@ -1,4 +1,4 @@
-package ACT12_0D;
+package ACT12_0G;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
