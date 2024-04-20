@@ -7,7 +7,7 @@ import java.awt.event.*;
 public class Main extends JFrame {
     
     public Main() {
-        super("Ejemplo de FocusListener");
+        super("Exemple de 'FocusListener'");
         
         // Creamos dos campos de texto
         JTextField campoTexto1 = new JTextField(20);

@@ -10,18 +10,18 @@ import javax.swing.JPanel;
 public class Main2 {
     public static void main(String[] args) {
         // FRAME
-        JFrame myFrame = new JFrame("Prova");
-        myFrame.setSize(1200, 500);
-        myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JFrame miFrame = new JFrame("Prova");
+        miFrame.setSize(1200, 500);
+        miFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         // PANELL
-        JPanel myJPanel = new JPanel();
-        myJPanel.setLayout(new BoxLayout(myJPanel, BoxLayout.X_AXIS));
+        JPanel miJPanel = new JPanel();
+        miJPanel.setLayout(new BoxLayout(miJPanel, BoxLayout.X_AXIS));
 
         // PANELL1
-        JPanel miJPanell1 = new JPanel();
-        miJPanell1.setSize(400, 500);
-        miJPanell1.setBackground(Color.BLUE);
+        JPanel miJPanel1 = new JPanel();
+        miJPanel1.setSize(400, 500);
+        miJPanel1.setBackground(Color.BLUE);
         //miJPanell1.setVisible(true);
         
         JButton miJButtonAcceptar = new JButton("Acceptar");
@@ -35,13 +35,13 @@ public class Main2 {
 
         // CONNEXIONS
         // Elements
-        miJPanell1.add(miJButtonAcceptar);
-        miJPanell1.add(miJButtonCancellar);
+        miJPanel1.add(miJButtonAcceptar);
+        miJPanel1.add(miJButtonCancellar);
         // Panel
-        myJPanel.add(miJPanell1);
-        myJPanel.add(miJPanel2);
+        miJPanel.add(miJPanel1);
+        miJPanel.add(miJPanel2);
         // Frame
-        myFrame.add(myJPanel);
-        myFrame.setVisible(true);
+        miFrame.add(miJPanel);
+        miFrame.setVisible(true);
     }
 }

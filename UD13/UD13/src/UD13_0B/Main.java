@@ -17,29 +17,29 @@ public class Main {
         miJPanel.setLayout(new GridLayout(4, 2));
         
 
-        // Crear los componentes del formulario
+        // Components
         JLabel miJLabel1 = new JLabel("Etiqueta1:");
         JTextField miTextField1 = new JTextField();
         JLabel miJLabel2 = new JLabel("Etiqueta2:");
         JTextField miTextField2 = new JTextField();
         JLabel miJLabel3 = new JLabel("Etiqueta3:");
         JTextField miTextField3 = new JTextField();
-        JButton botonAceptar = new JButton("Acceptar");
-        JButton botonCancelar = new JButton("Cancel·lar");
+        JButton botoAcceptar = new JButton("Acceptar");
+        JButton botoCancelar = new JButton("Cancel·lar");
 
-        // Afegir els components al miJPanel
+        // Afegir els components-JPanel i JPanel-JFrame
         miJPanel.add(miJLabel1);
         miJPanel.add(miTextField1);
         miJPanel.add(miJLabel2);
         miJPanel.add(miTextField2);
         miJPanel.add(miJLabel3);
         miJPanel.add(miTextField3);
-        miJPanel.add(botonAceptar);
-        miJPanel.add(botonCancelar);
-        miJFrame.add(miJPanel); // Agregar el miJPanel al JFrame
+        miJPanel.add(botoAcceptar);
+        miJPanel.add(botoCancelar);
+        miJFrame.add(miJPanel); // Agregar el JPanel al JFrame
 
-        // Agregar acción al botón "Aceptar"
-        botonAceptar.addActionListener(new ActionListener() {
+        // Agregar acció al botó "Acceptar"
+        botoAcceptar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Aquí puedes agregar la lógica para procesar los datos ingresados en los campos
@@ -47,53 +47,54 @@ public class Main {
             }
         });
         
-        botonAceptar.addFocusListener( new FocusListener() {
+        botoAcceptar.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
                 // Este método se ejecuta cuando un campo de texto obtiene el foco
-                botonAceptar.setBackground(Color.RED); // Cambiamos el color del botón
+                botoAcceptar.setBackground(Color.RED); // Cambiamos el color del botón
             }
             
             @Override
             public void focusLost(FocusEvent e) {
                 // Este método se ejecuta cuando un campo de texto pierde el foco
-                botonAceptar.setBackground(Color.YELLOW); // Restauramos el color original del botón
+                botoAcceptar.setBackground(Color.YELLOW); // Restauramos el color original del botón
             }
         } );
         
-        botonAceptar.addMouseListener( new MouseListener() {
+        botoAcceptar.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 // Este método se ejecuta cuando se hace clic en el botón
-                botonAceptar.setBackground(Color.GREEN);
+                botoAcceptar.setBackground(Color.GREEN);
             }
             
             @Override
             public void mousePressed(MouseEvent e) {
                 // Este método se ejecuta cuando se presiona un botón del mouse
-                botonAceptar.setBackground(Color.BLACK);
+                botoAcceptar.setBackground(Color.BLACK);
             }
             
             @Override
             public void mouseReleased(MouseEvent e) {
                 // Este método se ejecuta cuando se libera un botón del mouse
-                botonAceptar.setBackground(Color.DARK_GRAY);
+                botoAcceptar.setBackground(Color.DARK_GRAY);
             }
             
             @Override
             public void mouseEntered(MouseEvent e) {
                 // Este método se ejecuta cuando el mouse entra en el área del botón
-                botonAceptar.setBackground(Color.CYAN);
+                botoAcceptar.setBackground(Color.CYAN);
             }
             
             @Override
             public void mouseExited(MouseEvent e) {
                 // Este método se ejecuta cuando el mouse sale del área del botón
+                botoAcceptar.setBackground(Color.BLACK);
             }
         } );
 
         // Agregar acción al botón "Cancelar"
-        botonCancelar.addActionListener(new ActionListener() {
+        botoCancelar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Aquí puedes agregar la lógica para cancelar la operación
