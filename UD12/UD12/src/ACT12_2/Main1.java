@@ -20,6 +20,7 @@ public class Main1 {
             String clau = "";
             String valor = "";
             while ((linea = bufferedReader.readLine()) != null) {
+                // format: xxxx = yyyy
                 clau = linea.substring(0, linea.indexOf('=')).trim();
                 valor = linea.substring(linea.indexOf('=') + 1).trim();
                 variables.put(clau, valor);

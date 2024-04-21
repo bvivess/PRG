@@ -17,7 +17,7 @@ public class Main2 {
             // Llegir el contingut línia a línia
             variables = LlegeixArxiu(bufferedReader);
             LlegeixVariables(variables);
-            if (ComprovarVariables(variables))
+            if (ComprovaVariables(variables))
                 System.out.println("OK");
             else
                 System.out.println("KO");
@@ -33,6 +33,7 @@ public class Main2 {
         String clau = "";
         String valor = "";
         while ((linea = bufferedReader.readLine()) != null) {
+            // format: xxxx = yyyy
             if (!linea.substring(0,1).equals("#")) {
                 parts = linea.split("=");
                 if (parts.length == 2) {
@@ -52,7 +53,7 @@ public class Main2 {
         }
     }
 
-    private static boolean ComprovarVariables(Map<String,String> variables) {
+    private static boolean ComprovaVariables(Map<String,String> variables) {
         String[] valorsPossibles = {"address","netmask","dns_server","interface","gateway"};
         for (String v:valorsPossibles) {
             if (variables.get(v) == null)
