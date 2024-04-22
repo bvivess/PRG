@@ -25,7 +25,7 @@ public class ACT5_1_2 {
             System.out.println("Error d'execució");
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            System.out.println("Error generalyy");
+            System.out.println("Error general");
         } finally {
             scanner.close();
         }

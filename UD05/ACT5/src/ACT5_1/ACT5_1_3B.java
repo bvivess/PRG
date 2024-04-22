@@ -1,7 +1,6 @@
 package ACT5_1;
 
 import java.util.Scanner;
-import java.util.InputMismatchException;
 
 /**
  *
