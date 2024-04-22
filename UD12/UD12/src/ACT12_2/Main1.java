@@ -21,9 +21,11 @@ public class Main1 {
             String valor = "";
             while ((linea = bufferedReader.readLine()) != null) {
                 // format: xxxx = yyyy
-                clau = linea.substring(0, linea.indexOf('=')).trim();
-                valor = linea.substring(linea.indexOf('=') + 1).trim();
-                variables.put(clau, valor);
+                if (!linea.substring(0, 1).equals("#")) {
+                    clau = linea.substring(0, linea.indexOf('=')).trim();
+                    valor = linea.substring(linea.indexOf('=') + 1).trim();
+                    variables.put(clau, valor);
+                }
             }
         } catch (IOException e) {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
