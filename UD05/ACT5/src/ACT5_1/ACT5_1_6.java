@@ -30,7 +30,7 @@ public class ACT5_1_6 {
                     if (endIndex != -1) {
                         tag = linia.substring(startIndex, endIndex+1);
                         
-                        AnalitzaTag(tags, tag);
+                        AnalitzaTags(tags, tag);
 
                         startIndex = endIndex + 1;
                     } else {
@@ -39,14 +39,10 @@ public class ACT5_1_6 {
                 }
             }
             
-            System.out.println("---------------------------------------");
+            comprovaTags(tags);
             
-            if (tags.size() != 0) {
-                for (String s:tags) 
-                    System.out.println(s);
-                
-                throw new ErrorFormatHTML("HTML amb format incorrecte");
-            }
+            System.out.println("HTML Ok");
+            
         } catch (ErrorFormatHTML e) {
             System.out.println(e.getMessage());
         } catch (IOException e) {
@@ -55,7 +51,7 @@ public class ACT5_1_6 {
         }
     }
     
-    private static void AnalitzaTag(Queue<String> tags, String tag) {
+    private static void AnalitzaTags(Queue<String> tags, String tag) {
         int indexGreaterThan=tag.indexOf('>');
         int indexSpace=(tag.indexOf(' ')==-1 ? indexGreaterThan : tag.indexOf(' '));
       
@@ -73,6 +69,15 @@ public class ACT5_1_6 {
                 //System.out.println("IN " + tag);
             }
 
+    }
+    
+    private static void comprovaTags(Queue<String> tags) throws ErrorFormatHTML {
+        if (tags.size() != 0) {
+            for (String s:tags) 
+                System.out.println(s);
+
+            throw new ErrorFormatHTML("HTML amb format incorrecte");
+        }
     }
 
 }
