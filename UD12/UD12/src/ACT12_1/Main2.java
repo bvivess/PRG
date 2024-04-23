@@ -32,8 +32,8 @@ public class Main2 {
         Map<String, String> variables = new HashMap<>();
         String linea;
         String[] parts;
-        String clau = "";
-        String valor = "";
+        String clau;
+        String valor;
         while ((linea = bufferedReader.readLine()) != null) {
             // format: xxxx = yyyy
             if (!(linea.isEmpty() || linea.startsWith("#"))) {

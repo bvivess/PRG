@@ -36,9 +36,9 @@ public class Main {
             try {
                 // format: YYYY-MM-DD hh:mi:ss [tipus:9999] xxxxxxxxxxxxxxxxxxxxxxxxxxx
                 // Descomposició de l'string
-                parts = linea.split("\\s+", 4);  // tants espais en blanc '\s+' com sigui possible
-                LocalDateTime diaHora = LocalDateTime.parse(parts[0] + " " + parts[1], 
-                                                    DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                parts = linea.split("\\s+", 4);  // separador: espais en blanc '\s+' 
+                LocalDateTime diaHora = LocalDateTime.parse( parts[0] + " " + parts[1], 
+                                                     DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss") );
 
                 // Obtener el tipo de error
                 String tipoError = parts[2].substring(1, parts[2].indexOf(":"));
