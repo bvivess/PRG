@@ -10,7 +10,7 @@ import java.util.TreeMap;
 
 public class Main {
     public static void main(String[] args) {
-        String arxiu = "C:\\temp\\ACT12_3.log";
+        String arxiu = "C:\\temp\\ACT12_3B.log";
         Map<LocalDateTime, MissatgeError> variables = new TreeMap<>();
 
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu));
@@ -19,10 +19,10 @@ public class Main {
             // Llegir el contingut línia a línia
             variables = LlegeixArxiu(bufferedReader);
             LlegeixVariables(variables);
-            if (ComprovaVariables(variables))
-                System.out.println("OK");
-            else
-                System.out.println("KO");
+            //if (ComprovaVariables(variables))
+            //    System.out.println("OK");
+            //else
+            //    System.out.println("KO");
         } catch (IOException e) {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
         }
@@ -32,23 +32,32 @@ public class Main {
         Map<LocalDateTime, MissatgeError> variables = new TreeMap<>();
         String linea;
         String[] parts;
+        int i=0;
         while ((linea = bufferedReader.readLine()) != null) {
             try {
                 // format: YYYY-MM-DD hh:mi:ss [tipus:9999] xxxxxxxxxxxxxxxxxxxxxxxxxxx
                 // Descomposició de l'string
-                parts = linea.split("\\s+", 4);  // tants espais en blanc '\s+' com sigui possible
-                LocalDateTime diaHora = LocalDateTime.parse(parts[0] + " " + parts[1], 
+                parts = linea.split("\\|", 6);  // tants espais en blanc '\s+' com sigui possible
+                System.out.println(parts[0].substring(0,10) + " " + parts[0].substring(11,19));
+                System.out.println("Linia " + ++i);
+                LocalDateTime diaHora = LocalDateTime.parse(parts[0].substring(0,10) + " " + parts[0].substring(11,19), 
                                                     DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 
                 // Obtener el tipo de error
-                String tipoError = parts[2].substring(1, parts[2].indexOf(":"));
+                String ipOrigen = parts[1];
 
                 // Obtener el código de error
-                String codigoError = parts[2].substring(parts[2].indexOf(":") + 1, parts[2].indexOf("]"));
+                String portOrigen = parts[2];
+                
+                // Obtener el tipo de error
+                String ipDesti = parts[3];
+
+                // Obtener el código de error
+                String portDesti = parts[4];
 
                 // Obtener la descripción
-                String descripcion = parts[3];
-                MissatgeError missatgeError = new MissatgeError(TipusError.valueOf(tipoError),codigoError,descripcion);
+                String descripcio = parts[5];
+                MissatgeError missatgeError = new MissatgeError(ipOrigen, portOrigen, ipDesti, portDesti, descripcio);
                 variables.put(diaHora, missatgeError);
             } catch(Exception e) {
                 System.out.println(e.getMessage());
@@ -64,13 +73,5 @@ public class Main {
         }
     }
 
-    private static boolean ComprovaVariables(Map<LocalDateTime,MissatgeError> variables) {
-        TipusError[] valorsPossibles = {TipusError.ERROR, TipusError.WARNING};
-        //for (TipusError v:valorsPossibles) {
-        //    if (variables.get(v) == null)
-        //        return false;
-        //}
-        return true;
-    }
 }
 

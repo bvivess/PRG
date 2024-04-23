@@ -5,31 +5,25 @@ package ACT12_3B;
  * @author winadmin
  */
 public class MissatgeError {
-    private TipusError tipusError;
-    private String codiError;
+    private String ipOrigen;
+    private String portOrigen;
+    private String ipDesti;
+    private String portDesti;
     private String descripcio;
 
-    public MissatgeError(TipusError tipusError, String codiError, String descripcio) {
-        this.tipusError = tipusError;
-        this.codiError = codiError;
+    public MissatgeError(String ipOrigen, String portOrigen, String ipDesti, String portDesti, String descripcio) {
+        this.ipOrigen = ipOrigen;
+        this.portOrigen = portOrigen;
+        this.ipDesti = ipDesti;
+        this.portDesti = portDesti;
         this.descripcio = descripcio;
-    }
-
-    public TipusError getTipusError() {
-        return tipusError;
-    }
-
-    public String getCodiError() {
-        return codiError;
-    }
-
-    public String getDescripcio() {
-        return descripcio;
     }
 
     @Override
     public String toString() {
-        return "MissatgeError{" + "tipusError=" + tipusError + ", codiError=" + codiError + ", descripcio=" + descripcio + '}';
+        return "MissatgeError{" + "ipOrigen=" + ipOrigen + ", portOrigen=" + portOrigen + ", ipDesti=" + ipDesti + ", portDesti=" + portDesti + ", descripcio=" + descripcio + '}';
     }
+
+
     
 }
