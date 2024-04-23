@@ -1,4 +1,4 @@
-package ACT12_2;
+package ACT12_1;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -34,7 +34,7 @@ public class Main2 {
         String valor = "";
         while ((linea = bufferedReader.readLine()) != null) {
             // format: xxxx = yyyy
-            if (!linea.substring(0,1).equals("#")) {
+            if (!(linea.isEmpty() || linea.substring(0,1).equals("#"))) {
                 parts = linea.split("=");
                 if (parts.length == 2) {
                     clau = parts[0].trim();
