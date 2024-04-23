@@ -16,7 +16,9 @@ public class Main2 {
             
             // Llegir el contingut línia a línia
             variables = LlegeixArxiu(bufferedReader);
-            LlegeixVariables(variables);
+            // Mostrar el map
+            MostraVariables(variables);
+            // Comprovar la seva correctessa
             if (ComprovaVariables(variables))
                 System.out.println("OK");
             else
@@ -34,7 +36,8 @@ public class Main2 {
         String valor = "";
         while ((linea = bufferedReader.readLine()) != null) {
             // format: xxxx = yyyy
-            if (!(linea.isEmpty() || linea.substring(0,1).equals("#"))) {
+            if (!(linea.isEmpty() || linea.startsWith("#"))) {
+            //if (!(linea.isEmpty() || linea.substring(0,1).equals("#"))) {
                 parts = linea.split("=");
                 if (parts.length == 2) {
                     clau = parts[0].trim();
@@ -46,7 +49,7 @@ public class Main2 {
         return variables;
     }
 
-    private static void LlegeixVariables(Map<String,String> variables) {
+    private static void MostraVariables(Map<String,String> variables) {
         for (String k : variables.keySet()) {
             String v = variables.get(k);
             System.out.println(k + " = " + v);
