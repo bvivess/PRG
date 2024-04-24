@@ -21,9 +21,8 @@ public class Main {
             String linia;
             int indexInici=0, indexFinal=0;
             String tag;
-            while ((linia = br.readLine()) != null) {
-                // Analitzant la 'linia'
-                while ((indexInici = linia.indexOf('<', indexInici)) != -1) {
+            while ((linia = br.readLine()) != null) {  // tractament de cada línia
+                while ((indexInici = linia.indexOf('<', indexInici)) != -1) {  // tractament de tots els tags de cada línia
                     indexFinal = linia.indexOf('>', indexInici+1);
 
                     if (indexFinal != -1) {

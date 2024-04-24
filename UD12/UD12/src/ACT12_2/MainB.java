@@ -24,19 +24,18 @@ public class MainB {
         try (BufferedReader br = new BufferedReader(new FileReader("c:\\temp\\a.html"))) {
             String linia;
             String tag="";
-            int ini=0,fin=0;
+            int indexInici=0,indexFinal=0;
             while ((linia = br.readLine()) != null) {
                 //System.out.println(linia);
-                fin=linia.length();
-                ini = linia.indexOf('<',ini);
-                while (ini!=-1) {
-                    fin = linia.indexOf('>',ini+1);
-                    //System.out.println(ini + "-" + fin);
-                    if (ini != -1)
-                        tag = linia.substring(ini,fin);
-                    ini = fin+1;
+                indexFinal=linia.length();
+                indexInici = linia.indexOf('<',indexInici);
+                while (indexInici!=-1) {  // si hi ha un 'tag', s'itera per cercar el 2n, 3r ...
+                    indexFinal = linia.indexOf('>',indexInici+1);
+                    if (indexInici != -1)  // o també 'indexFinal'
+                        tag = linia.substring(indexInici,indexFinal);
+                    indexInici = indexFinal+1;
                     System.out.println(tag);
-                    ini = linia.indexOf('<',ini);
+                    indexInici = linia.indexOf('<',indexInici);
                 }
            }
             

@@ -24,14 +24,12 @@ public class MainA {
         try (BufferedReader br = new BufferedReader(new FileReader("c:\\temp\\a.html"))) {
             String linia;
             String tag="";
-            int ini=0,fin=0;
+            int indexInici=0, indexFinal=0;
             while ((linia = br.readLine()) != null) {
-                //System.out.println(linia);
-                ini = linia.indexOf('<',ini);
-                fin = linia.indexOf('>',ini+1);
-                //System.out.println(ini + "-" + fin);
-                if (ini != -1)
-                    tag = linia.substring(ini,fin);
+                indexInici = linia.indexOf('<',indexInici);
+                indexFinal = linia.indexOf('>',indexInici+1);
+                if (indexInici != -1)  // o també 'indexFinal'
+                    tag = linia.substring(indexInici,indexFinal);
 
                 System.out.println(tag);
            }
