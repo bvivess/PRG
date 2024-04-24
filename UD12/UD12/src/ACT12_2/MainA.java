@@ -3,8 +3,6 @@ package ACT12_2;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.Queue;
 
 /**
  *
@@ -20,7 +18,6 @@ public class MainA {
     }
 
     public static void main(String[] args) {
-        Queue<String> tags = new LinkedList<>();
         try (BufferedReader br = new BufferedReader(new FileReader("c:\\temp\\a.html"))) {
             String linia;
             String tag="";
@@ -34,8 +31,7 @@ public class MainA {
                 System.out.println(tag);
            }
             
-          
-            System.out.println("HTML Ok");
+           System.out.println("HTML Ok");
             
         } catch (IOException e) {
             // Capturar y manejar la excepción si ocurre

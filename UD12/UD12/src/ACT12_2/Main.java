@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
-import java.util.Queue;
+import java.util.Deque;
 
 public class Main {
 
@@ -16,7 +16,7 @@ public class Main {
     }
     
     public static void main(String[] args) {
-        Queue<String> tags = new LinkedList<>();
+        Deque<String> tags = new LinkedList<>();
         try (BufferedReader br = new BufferedReader(new FileReader("c:\\temp\\a.html"))) {
             String linia;
             int indexInici=0, indexFinal=0;
@@ -49,7 +49,7 @@ public class Main {
         }
     }
     
-    private static void AnalitzaTags(Queue<String> tags, String tag) {
+    private static void AnalitzaTags(Deque<String> tags, String tag) {
         int indexMajor = tag.indexOf('>');
         int indexEspai = (tag.indexOf(' ')==-1 ? indexMajor : tag.indexOf(' '));
       
@@ -59,16 +59,16 @@ public class Main {
         if (! (tagtemp.startsWith("<input") | tagtemp.startsWith("<!DOCTYPE")) )
             
             if (tagtemp.startsWith("</")) {
-                tags.poll();
+                tags.pop();
                 // System.out.println("OUT " + tag);
             } else {
-                tags.offer(tag);
+                tags.push(tag);
                 //System.out.println("IN " + tag);
             }
 
     }
     
-    private static void comprovaTags(Queue<String> tags) throws ErrorFormatHTML {
+    private static void comprovaTags(Deque<String> tags) throws ErrorFormatHTML {
         if (tags.size() != 0) {
             for (String s:tags) 
                 System.out.println(s);

@@ -3,13 +3,7 @@ package ACT12_2;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.Queue;
 
-/**
- *
- * @author winadmin
- */
 public class MainB {
     
     public static class ErrorFormatHTML extends Exception { 
@@ -20,7 +14,6 @@ public class MainB {
     }
 
     public static void main(String[] args) {
-        Queue<String> tags = new LinkedList<>();
         try (BufferedReader br = new BufferedReader(new FileReader("c:\\temp\\a.html"))) {
             String linia;
             String tag="";
