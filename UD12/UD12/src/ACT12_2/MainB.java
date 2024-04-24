@@ -32,6 +32,7 @@ public class MainB {
                     tag = linia.substring(indexInici,indexFinal);
                     indexInici = indexFinal+1;
                     System.out.println(tag);
+                    
                     indexInici = linia.indexOf('<',indexInici);
                     indexFinal = linia.indexOf('>',indexInici+1);
                 }
