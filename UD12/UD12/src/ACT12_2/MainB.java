@@ -29,9 +29,7 @@ public class MainB {
                 indexInici = linia.indexOf('<',indexInici);
                 indexFinal = linia.indexOf('>',indexInici+1);
                 while (indexInici!=-1) {  // si hi ha un 'tag', s'itera per cercar el 2n, 3r ...
-                    
-                    if (indexInici != -1)  // o també 'indexFinal'
-                        tag = linia.substring(indexInici,indexFinal);
+                    tag = linia.substring(indexInici,indexFinal);
                     indexInici = indexFinal+1;
                     System.out.println(tag);
                     indexInici = linia.indexOf('<',indexInici);
