@@ -19,20 +19,19 @@ public class Main {
         Queue<String> tags = new LinkedList<>();
         try (BufferedReader br = new BufferedReader(new FileReader("c:\\temp\\a.html"))) {
             String linia;
-            int startIndex=0, endIndex=0;
+            int indexInici=0, indexFinal=0;
             String tag;
-            
             while ((linia = br.readLine()) != null) {
                 // Analitzant la 'linia'
-                while ((startIndex = linia.indexOf('<', startIndex)) != -1) {
-                    endIndex = linia.indexOf('>', startIndex+1);
+                while ((indexInici = linia.indexOf('<', indexInici)) != -1) {
+                    indexFinal = linia.indexOf('>', indexInici+1);
 
-                    if (endIndex != -1) {
-                        tag = linia.substring(startIndex, endIndex+1);
+                    if (indexFinal != -1) {
+                        tag = linia.substring(indexInici, indexFinal+1);
                         
                         AnalitzaTags(tags, tag);
 
-                        startIndex = endIndex + 1;
+                        indexInici = indexFinal + 1;
                     } else {
                         break;
                     }
@@ -52,10 +51,10 @@ public class Main {
     }
     
     private static void AnalitzaTags(Queue<String> tags, String tag) {
-        int indexGreaterThan=tag.indexOf('>');
-        int indexSpace=(tag.indexOf(' ')==-1 ? indexGreaterThan : tag.indexOf(' '));
+        int indexMajor = tag.indexOf('>');
+        int indexEspai = (tag.indexOf(' ')==-1 ? indexMajor : tag.indexOf(' '));
       
-        String tagtemp = tag.substring(0,Math.min(indexGreaterThan,indexSpace));
+        String tagtemp = tag.substring(0,Math.min(indexMajor,indexEspai));
         
         // tags no analitzables: '<!DOCTYPE>', '<input ...>'
         if (! (tagtemp.startsWith("<input") | tagtemp.startsWith("<!DOCTYPE")) )
