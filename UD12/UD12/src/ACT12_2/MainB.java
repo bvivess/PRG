@@ -21,7 +21,7 @@ public class MainB {
             while ((linia = br.readLine()) != null) {
                 indexInici = linia.indexOf('<',indexInici);
                 indexFinal = linia.indexOf('>',indexInici+1);
-                while (indexInici!=-1) {  // si hi ha un 'tag', s'itera per cercar el 2n, 3r ...
+                while (indexInici!=-1) {  // si hi ha algun 'tag', s'itera per cercar el 2n, 3r ...
                     tag = linia.substring(indexInici,indexFinal);
                     indexInici = indexFinal+1;
                     System.out.println(tag);

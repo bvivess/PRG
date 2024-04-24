@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Deque;
 
-public class Main {
+public class MainC {
 
     public static class ErrorFormatHTML extends Exception { 
         // Constructor
@@ -53,19 +53,24 @@ public class Main {
         int indexMajor = tag.indexOf('>');
         int indexEspai = (tag.indexOf(' ')==-1 ? indexMajor : tag.indexOf(' '));
       
-        String tagtemp = tag.substring(0,Math.min(indexMajor,indexEspai));
+        String tagEntrada = tag.substring(0,Math.min(indexMajor,indexEspai));
         
         // tags no analitzables: '<!DOCTYPE>', '<input ...>'
-        if (! (tagtemp.startsWith("<input") | tagtemp.startsWith("<!DOCTYPE")) )
+        if (! (tagEntrada.startsWith("<input") | tagEntrada.startsWith("<!DOCTYPE")) )
             
-            if (tagtemp.startsWith("</")) {
-                tags.pop();
-                // System.out.println("OUT " + tag);
-            } else {
-                tags.push(tag);
-                //System.out.println("IN " + tag);
-            }
+            if (tagEntrada.startsWith("</")) {
+                String tagSortida = tags.pop();
+                //System.out.println("OUT " + tagEntrada + " abans " + tagSortida);
+                
+                if (tagSortida.substring(1,tagSortida.length()).equals(tagEntrada.substring(2,tagEntrada.length())))
+                    System.out.println("Ordre OK " + tagSortida);
+                else
+                    System.out.println("Ordre KO");
 
+            } else {
+                tags.push(tagEntrada);
+                //System.out.println("IN " + tagEntrada);
+            }
     }
     
     private static void comprovaTags(Deque<String> tags) throws ErrorFormatHTML {
