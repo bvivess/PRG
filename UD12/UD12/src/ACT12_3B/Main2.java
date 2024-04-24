@@ -55,7 +55,7 @@ public class Main2 {
                 // Crear l'objecte i incloure'l al 'Map'
                 MissatgeEvent missatgeError = new MissatgeEvent(ipOrigen, portOrigen, ipDesti, portDesti, descripcio);
                 events.put(diaHora, missatgeError);
-            } catch(Exception e) {
+            } catch(Exception e) {  // Les línies que no tenen el format esmentat generen una 'Excepció'
                 System.out.println(e.getMessage());
             }
         }

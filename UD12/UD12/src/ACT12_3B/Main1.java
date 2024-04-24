@@ -64,7 +64,7 @@ public class Main1 {
                 // Obtenir Port destí
                 String portDesti = parts[4];
 
-                // Obtener la descripción
+                // Obtenir la descripción
                 String descripcio = parts[5];
                 
                 for (String s:parts)
@@ -72,7 +72,7 @@ public class Main1 {
                 
                 MissatgeEvent missatgeError = new MissatgeEvent(ipOrigen, portOrigen, ipDesti, portDesti, descripcio);
                 events.put(diaHora, missatgeError);
-            } catch(Exception e) {  // Error en cas de lectura
+            } catch(Exception e) {  // Les línies que no tenen el format esmentat generen una 'Excepció'
                 System.out.println(e.getMessage());
             }
         }
