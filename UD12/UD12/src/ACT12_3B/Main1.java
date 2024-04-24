@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class Main {
+public class Main1 {
     public static void main(String[] args) {
         String arxiu = "C:\\temp\\ACT12_3B.log";
         Map<LocalDateTime, MissatgeEvent> events = new TreeMap<>();
@@ -27,33 +27,52 @@ public class Main {
     private static Map<LocalDateTime,MissatgeEvent> LlegeixArxiu(BufferedReader bufferedReader) throws IOException {
         Map<LocalDateTime, MissatgeEvent> events = new TreeMap<>();
         String linea;
-        String[] parts;
+        int indexInici=0,indexFinal=0;
+        String[] parts = { "","","","","","","" };
+        String part;
+        int i=0;
         while ((linea = bufferedReader.readLine()) != null) {
             try {
                 // format: YYYY-MM-DD hh:mi:ss | xxxxx | xxxxx | xxxxx | xxxxx | xxxxx
                 // Descomposició de l'string
-                parts = linea.split("\\|", 6);  // el separador és '|'
+                indexInici = 0;
+                indexFinal = linea.indexOf('|',indexInici+1);
+                i=0;
+                parts[i] = linea.substring(indexInici,indexFinal);
+                while (indexFinal!=-1) {  // si hi ha algun 'tag', s'itera per cercar el 2n, 3r ...
+                    parts[i++] = linea.substring(indexInici,indexFinal);
+                    indexInici = indexFinal+1;
+                    
+                    indexFinal = linea.indexOf('|',indexFinal+1);
+                }
+                parts[i++] = linea.substring(indexInici,linea.length());
+                
+                // Obtenir data i hora
                 String data = parts[0].substring(0,10);  // en format: yyyy-MM-dd
                 String hora = parts[0].substring(11,19);  // en format: HH:mi:ss
                 LocalDateTime diaHora = LocalDateTime.parse(data + " " + hora,DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-
-                // Obtener el tipo de error
+                
+                // Obtenir IP origen
                 String ipOrigen = parts[1];
 
-                // Obtener el código de error
+                // Obtenir Port origen
                 String portOrigen = parts[2];
                 
-                // Obtener el tipo de error
+                // Obtenir IP destí
                 String ipDesti = parts[3];
 
-                // Obtener el código de error
+                // Obtenir Port destí
                 String portDesti = parts[4];
 
                 // Obtener la descripción
                 String descripcio = parts[5];
+                
+                for (String s:parts)
+                    System.out.println(s);
+                
                 MissatgeEvent missatgeError = new MissatgeEvent(ipOrigen, portOrigen, ipDesti, portDesti, descripcio);
                 events.put(diaHora, missatgeError);
-            } catch(Exception e) {
+            } catch(Exception e) {  // Error en cas de lectura
                 System.out.println(e.getMessage());
             }
         }
