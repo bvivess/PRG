@@ -28,8 +28,7 @@ public class Main1 {
         Map<LocalDateTime, MissatgeEvent> events = new TreeMap<>();
         String linea;
         int indexInici=0,indexFinal=0;
-        String[] parts = { "","","","","","","" };
-        String part;
+        String[] parts = { "","","","","","","" }; 
         int i=0;
         while ((linea = bufferedReader.readLine()) != null) {
             try {
