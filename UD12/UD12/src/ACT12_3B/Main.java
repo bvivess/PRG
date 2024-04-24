@@ -11,37 +11,31 @@ import java.util.TreeMap;
 public class Main {
     public static void main(String[] args) {
         String arxiu = "C:\\temp\\ACT12_3B.log";
-        Map<LocalDateTime, MissatgeError> variables = new TreeMap<>();
+        Map<LocalDateTime, MissatgeEvent> events = new TreeMap<>();
 
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu));
             ) {
             
             // Llegir el contingut línia a línia
-            variables = LlegeixArxiu(bufferedReader);
-            LlegeixVariables(variables);
-            //if (ComprovaVariables(variables))
-            //    System.out.println("OK");
-            //else
-            //    System.out.println("KO");
+            events = LlegeixArxiu(bufferedReader);
+            LlegeixVariables(events);
         } catch (IOException e) {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
         }
     }
     
-    private static Map<LocalDateTime,MissatgeError> LlegeixArxiu(BufferedReader bufferedReader) throws IOException {
-        Map<LocalDateTime, MissatgeError> variables = new TreeMap<>();
+    private static Map<LocalDateTime,MissatgeEvent> LlegeixArxiu(BufferedReader bufferedReader) throws IOException {
+        Map<LocalDateTime, MissatgeEvent> events = new TreeMap<>();
         String linea;
         String[] parts;
-        int i=0;
         while ((linea = bufferedReader.readLine()) != null) {
             try {
-                // format: YYYY-MM-DD hh:mi:ss [tipus:9999] xxxxxxxxxxxxxxxxxxxxxxxxxxx
+                // format: YYYY-MM-DD hh:mi:ss | xxxxx | xxxxx | xxxxx | xxxxx | xxxxx
                 // Descomposició de l'string
-                parts = linea.split("\\|", 6);  // tants espais en blanc '\s+' com sigui possible
-                System.out.println(parts[0].substring(0,10) + " " + parts[0].substring(11,19));
-                System.out.println("Linia " + ++i);
-                LocalDateTime diaHora = LocalDateTime.parse(parts[0].substring(0,10) + " " + parts[0].substring(11,19), 
-                                                    DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+                parts = linea.split("\\|", 6);  // el separador és '|'
+                String data = parts[0].substring(0,10);  // en format: yyyy-MM-dd
+                String hora = parts[0].substring(11,19);  // en format: HH:mi:ss
+                LocalDateTime diaHora = LocalDateTime.parse(data + " " + hora,DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 
                 // Obtener el tipo de error
                 String ipOrigen = parts[1];
@@ -57,18 +51,18 @@ public class Main {
 
                 // Obtener la descripción
                 String descripcio = parts[5];
-                MissatgeError missatgeError = new MissatgeError(ipOrigen, portOrigen, ipDesti, portDesti, descripcio);
-                variables.put(diaHora, missatgeError);
+                MissatgeEvent missatgeError = new MissatgeEvent(ipOrigen, portOrigen, ipDesti, portDesti, descripcio);
+                events.put(diaHora, missatgeError);
             } catch(Exception e) {
                 System.out.println(e.getMessage());
             }
         }
-        return variables;
+        return events;
     }
 
-    private static void LlegeixVariables(Map<LocalDateTime,MissatgeError> variables) {
+    private static void LlegeixVariables(Map<LocalDateTime,MissatgeEvent> variables) {
         for (LocalDateTime k : variables.keySet()) {
-            MissatgeError v = variables.get(k);
+            MissatgeEvent v = variables.get(k);
             System.out.println(k + " = " + v.toString());
         }
     }
