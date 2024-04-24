@@ -26,16 +26,16 @@ public class MainB {
             String tag="";
             int indexInici=0,indexFinal=0;
             while ((linia = br.readLine()) != null) {
-                //System.out.println(linia);
-                indexFinal=linia.length();
                 indexInici = linia.indexOf('<',indexInici);
+                indexFinal = linia.indexOf('>',indexInici+1);
                 while (indexInici!=-1) {  // si hi ha un 'tag', s'itera per cercar el 2n, 3r ...
-                    indexFinal = linia.indexOf('>',indexInici+1);
+                    
                     if (indexInici != -1)  // o també 'indexFinal'
                         tag = linia.substring(indexInici,indexFinal);
                     indexInici = indexFinal+1;
                     System.out.println(tag);
                     indexInici = linia.indexOf('<',indexInici);
+                    indexFinal = linia.indexOf('>',indexInici+1);
                 }
            }
             
