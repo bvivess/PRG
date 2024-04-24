@@ -52,19 +52,19 @@ public class Main1 {
                 LocalDateTime diaHora = LocalDateTime.parse(data + " " + hora,DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
                 
                 // Obtenir IP origen
-                String ipOrigen = parts[1];
+                String ipOrigen = parts[1].trim();
 
                 // Obtenir Port origen
-                String portOrigen = parts[2];
+                String portOrigen = parts[2].trim();
                 
                 // Obtenir IP destí
-                String ipDesti = parts[3];
+                String ipDesti = parts[3].trim();
 
                 // Obtenir Port destí
-                String portDesti = parts[4];
+                String portDesti = parts[4].trim();
 
                 // Obtenir la descripción
-                String descripcio = parts[5];
+                String descripcio = parts[5].trim();
                 
                 for (String s:parts)
                     System.out.println(s);
