@@ -15,7 +15,7 @@ import java.util.Set;
 public class Main {
 
     public static void main(String[] args) {
-        String nomArxiu = "c:\\temp\\arxiu.txt";
+        String nomArxiu = "c:\\temp\\ACT12_0G.txt";
         
         Persona p1 = new Persona("Maria", 30);
         Persona p2 = new Persona("Joana", 35);
@@ -28,7 +28,7 @@ public class Main {
         try (FileOutputStream fos = new FileOutputStream(nomArxiu);
              ObjectOutputStream out = new ObjectOutputStream(fos)
             ) {
-            out.writeObject(e);
+            out.writeObject(e);  // Serialització completa del 'HashSet'
         } catch (IOException i) {
             System.out.println("Exception writing 'Empleats': " + i);
         }

@@ -1,5 +1,6 @@
 package ACT12_4;
 
+import ACT12_5.*;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -9,7 +10,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Main {
@@ -26,7 +29,7 @@ public class Main {
                      WHERE d.department_id = e.department_id
                      AND   j.job_id = e.job_id""";
         
-        Set<Employee> employees = new HashSet<>();
+        List<Employee> employees = new ArrayList<>();
 
         // Establir la connexió
         try ( Connection connexio = DriverManager.getConnection(servidor+bdades, usuari, passwd);
@@ -65,6 +68,11 @@ public class Main {
                 System.out.println("Exception writing 'Empleats': " + i);
             }
 
+            
+            // Deserialització
+            // ...
+            // ...
+            // ...
             
             System.out.println("Connexió tancada.");
         } catch (SQLException e) {
