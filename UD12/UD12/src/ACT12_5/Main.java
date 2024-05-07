@@ -7,8 +7,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws FileNotFoundException, IOException {
@@ -23,7 +21,7 @@ public class Main {
         // Establir la connexió
         try ( Connection connexio = DriverManager.getConnection(servidor+bdades, usuari, passwd);
               Statement statement = connexio.createStatement() ) {
-            String department_id = "10";
+            String department_id = "10";  // simulant un Scanner
             
             System.out.println("Connexió amb la base de dades MySQL exitosa.");
             
