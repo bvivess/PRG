@@ -22,7 +22,7 @@ public class Main {
         // Establir la connexió
         try ( Connection connexio = DriverManager.getConnection(servidor+bdades, usuari, passwd);
               PreparedStatement stmt = connexio.prepareStatement(sql) ) {
-            int departmentId = 401;  // simulant un Scanner
+            int departmentId = 401;  // simulant la lectura de l'arxiu
             String departmentName = "prova";
             int managerId = 100;
             int locationId = 1000;
