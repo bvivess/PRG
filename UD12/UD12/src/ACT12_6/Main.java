@@ -1,4 +1,4 @@
-package ACT12_4;
+package ACT12_6;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Main1 {
+public class Main {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         // Dades de la connexió:
         String servidor = "jdbc:mysql://localhost:3306/";
@@ -16,27 +16,32 @@ public class Main1 {
         String usuari = "root";
         String passwd = "";
         String sql = """
-                     SELECT department_id, department_name FROM departments WHERE department_id = ?""";
+                     INSERT INTO departments(department_id, department_name, manager_id, location_id)
+                     VALUES (?,?,?,?)""";
       
         // Establir la connexió
         try ( Connection connexio = DriverManager.getConnection(servidor+bdades, usuari, passwd);
               PreparedStatement stmt = connexio.prepareStatement(sql) ) {
-            int departmentId = 10;  // simulant un Scanner
+            int departmentId = 401;  // simulant un Scanner
+            String departmentName = "prova";
+            int managerId = 100;
+            int locationId = 1000;
             
             System.out.println("Connexió amb la base de dades MySQL exitosa.");
             
             stmt.setInt(1, departmentId);
-            try (ResultSet resultSet = stmt.executeQuery()) {
-
-                // Processar els resultats de la Query
-                while (resultSet.next()) {
-                    System.out.println( resultSet.getInt("department_id") + " " +
-                                        resultSet.getString("department_name")
-                                      );
-                }
-            } catch (SQLException e) {
-                System.err.println("Error al executar la instrucció SQL: " + e.getMessage());
+            stmt.setString(2, departmentName);
+            stmt.setInt(3, managerId);
+            stmt.setInt(4, locationId);
+            int filasAfectades = stmt.executeUpdate();
+            
+            // Procesar el resultado de la ejecución
+            if (filasAfectades > 0) {
+                System.out.println("Inserció en la base de dades MySQL exitosa." + " " + filasAfectades);
+            } else {
+                System.out.println("Inserció en la base de dades MySQL fallida.");
             }
+
             System.out.println("Connexió tancada.");
         } catch (SQLException e) {
             System.err.println("Error al conectarse a la base de dades: " + e.getMessage());
