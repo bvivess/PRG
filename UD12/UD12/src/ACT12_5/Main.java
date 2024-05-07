@@ -1,6 +1,5 @@
-package ACT12_4;
+package ACT12_5;
 
-import ACT12_5.*;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
