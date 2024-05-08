@@ -19,8 +19,8 @@ public class Main {
             insertDepartmentsFromFile(connexio, "c:\\temp\\ACT12_5.txt");
             
             System.out.println("Connexió tancada.");
-        } catch (SQLException e) {
-            System.err.println("Error al conectarse a la base de dades: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("S'ha produït l'error general: " + e.getMessage());
         }
     }
     
@@ -47,10 +47,10 @@ public class Main {
             }
         } catch (IOException e) {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
-            throw e; // Re-lanzar la excepción para manejarla en el método llamador si es necesario
+            throw e;  // Es propaga l'excepció al mètode anterior
         }
 
-        // Establecer la conexión a la base de datos MySQL
+        // Estableix la connexió a la BD Mysql
         return DriverManager.getConnection(servidor + bdades, usuari, passwd);
     }
     
@@ -72,17 +72,17 @@ public class Main {
                     statement.setInt(3, managerId);
                     statement.setInt(4, locationId);
                     statement.executeUpdate();
-                    System.out.println("Insertar departament: " + departmentId);
+                    System.out.println("Insertant departament: " + departmentId);
+                    
                     connexio.commit();
                 } catch (SQLException e) {
                     connexio.rollback();
                     System.err.println("Error executant la instrucció SQL: " + e.getMessage());
-                    //throw e; // Re-lanzar la excepción para manejarla en el método llamador si es necesario
                 }
             }
         } catch (IOException e) {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
-            throw e; // Re-lanzar la excepción para manejarla en el método llamador si es necesario
+            throw e; // Es propaga l'excepció al mètode anterior
         }
     }
 }
