@@ -4,12 +4,6 @@ import java.io.File;
 import java.io.FileReader; import java.io.FileWriter;
 import java.io.IOException; import java.io.FileNotFoundException;
 
-/**
- *
- * @author winadmin
- */
-
-
 public class Main {
     public static void main(String[] args) {
         char[] c = new char[128]; 
