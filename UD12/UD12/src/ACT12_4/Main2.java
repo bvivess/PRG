@@ -16,7 +16,8 @@ public class Main2 {
         String usuari = "root";
         String passwd = "";
         String sql = """
-                     SELECT department_id, department_name FROM departments WHERE department_id = """;
+                     SELECT department_id, department_name FROM departments WHERE department_id = 
+                     """;
       
         // Establir la connexió
         try ( Connection connexio = DriverManager.getConnection(servidor+bdades, usuari, passwd);
@@ -25,7 +26,7 @@ public class Main2 {
             
             System.out.println("Connexió amb la base de dades MySQL exitosa.");
             
-            sql += departmentId;
+            sql += departmentId;  // concatenació de la instrucció SQL
             try (ResultSet resultSet = statement.executeQuery(sql)) {
 
                 // Processar els resultats de la Query

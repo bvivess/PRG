@@ -33,16 +33,20 @@ public class Main {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split("=");
-                String clau = parts[0].trim();
-                String valor = parts[1].trim();
-
-                switch (clau) {
-                    case "SERVER" -> servidor = valor;
-                    case "DBASE" -> bdades = valor;
-                    case "USER" -> usuari = valor;
-                    case "PASSWD" -> passwd = valor;
-                    default -> System.err.println("Clau no vàlida: " + clau);
+                try {
+                    String[] parts = line.split("=");
+                    String clau = parts[0].trim();
+                    String valor = parts[1].trim();
+                    
+                    switch (clau) {
+                        case "SERVER" -> servidor = valor;
+                        case "DBASE" -> bdades = valor;
+                        case "USER" -> usuari = valor;
+                        case "PASSWD" -> passwd = valor;
+                        default -> System.err.println("Clau no vàlida: " + clau);
+                    }
+                } catch (IndexOutOfBoundsException e) {
+                    // No fer res
                 }
             }
         } catch (IOException e) {

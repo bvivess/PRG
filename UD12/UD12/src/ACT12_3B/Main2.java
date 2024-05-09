@@ -15,7 +15,6 @@ public class Main2 {
 
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu));
             ) {
-            
             // Llegir el contingut línia a línia
             events = LlegeixArxiu(bufferedReader);
             LlegeixVariables(events);
