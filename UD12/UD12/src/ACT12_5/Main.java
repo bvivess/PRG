@@ -46,6 +46,7 @@ public class Main {
                         default -> System.err.println("Clau no vàlida: " + clau);
                     }
                 } catch (IndexOutOfBoundsException e) {
+                    // En cas de '#', l'split no fnciona
                     // No fer res
                 }
             }
