@@ -29,12 +29,12 @@ public class Main1 {
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(conexio.getInputStream()))) {
                 // Read the response line by line
                 String line;
-                StringBuilder response = new StringBuilder();
+                StringBuilder arxiu = new StringBuilder();
                 while ((line = reader.readLine()) != null) {
-                    response.append(line);
+                    arxiu.append(line);
                 }
                 // Print the response
-                System.out.println(response.toString());
+                System.out.println(arxiu.toString());
             }
 
             // Connection will be automatically closed at the end of the try-with-resources block
