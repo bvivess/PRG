@@ -1,4 +1,4 @@
-package UD13_1;
+package UD13_2;
 
 import javax.swing.*;
 
@@ -30,7 +30,7 @@ public class Main extends JFrame {
         miJPanel.add(texte2);
         miJPanel.add(miJButtonSuma);
         miJPanel.add(miJButtonResta);
-        
+               
         // 5- CONNEXIÓ DEL NIVELL INTERMIG AL NIVELL SUPERIOR
         miJFrame.add(miJPanel);
         
