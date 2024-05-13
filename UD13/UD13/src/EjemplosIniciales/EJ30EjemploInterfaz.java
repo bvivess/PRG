@@ -43,15 +43,13 @@ public class EJ30EjemploInterfaz extends JFrame {
             setContentPane(panelDeContenido);
 
             // 6) Hacer visible la ventana
-            setVisible(true);
+            //setVisible(true);
         }
 
-    /**
-    * @param args the command line arguments
-    */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                // 6) Hacer visible la ventana
                 new EJ30EjemploInterfaz().setVisible(true);
             }
         });

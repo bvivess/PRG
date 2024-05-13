@@ -13,10 +13,13 @@ import javax.swing.*;
  */
 public class EJ18MySimpleGUI extends JFrame {
     public EJ18MySimpleGUI() {
+        initComponents();
+    }
+    
+    private void initComponents() {
         setSize(400, 200);
         setTitle("Ventana de tipo JFrame");
         setVisible(true);
-
     }
     
     public static void main(String[] args) {
