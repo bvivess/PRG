@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 public class Main2 extends JFrame {
     private JTextField num1Field;
     private JTextField num2Field;
-    private JLabel resultadoLabel;
+    private JLabel resultLabel;
     private JButton sumarButton;
 
     public Main2() {
@@ -19,7 +19,7 @@ public class Main2 extends JFrame {
 
         num1Field = new JTextField();
         num2Field = new JTextField();
-        resultadoLabel = new JLabel("Resultado:");
+        resultLabel = new JLabel("Resultat:");
 
         sumarButton = new JButton("Sumar");
         sumarButton.addActionListener(new ActionListener() {
@@ -34,17 +34,17 @@ public class Main2 extends JFrame {
         add(new JLabel("Número 2:"));
         add(num2Field);
         add(sumarButton);
-        add(resultadoLabel);
+        add(resultLabel);
     }
 
     private void sumar() {
         try {
             int num1 = Integer.parseInt(num1Field.getText());
             int num2 = Integer.parseInt(num2Field.getText());
-            int resultado = num1 + num2;
-            resultadoLabel.setText("Resultado: " + resultado);
-        } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(this, "Por favor, ingrese números válidos.", "Error", JOptionPane.ERROR_MESSAGE);
+            int resultat = num1 + num2;
+            resultLabel.setText("Resultat: " + resultat);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Introdueixi nombres vàlids.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 

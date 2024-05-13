@@ -16,6 +16,17 @@ public class Main extends JFrame {
         // Creamos un botón
         JButton boton = new JButton("Limpiar campos de texto");
         
+        // Asociamos un ActionListener al botón
+        boton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Este método se ejecuta cuando se presiona el botón
+                campoTexto1.setText(""); // Limpiamos el contenido del campo de texto 1
+                campoTexto2.setText(""); // Limpiamos el contenido del campo de texto 2
+            }
+        });
+
+
         // Creamos un FocusListener para los campos de texto
         FocusListener focusListener = new FocusListener() {
             @Override
@@ -35,15 +46,6 @@ public class Main extends JFrame {
         campoTexto1.addFocusListener(focusListener);
         campoTexto2.addFocusListener(focusListener);
         
-        // Asociamos un ActionListener al botón
-        boton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Este método se ejecuta cuando se presiona el botón
-                campoTexto1.setText(""); // Limpiamos el contenido del campo de texto 1
-                campoTexto2.setText(""); // Limpiamos el contenido del campo de texto 2
-            }
-        });
         
         // Configuramos la ventana
         setLayout(new FlowLayout());

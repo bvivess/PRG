@@ -1,20 +1,23 @@
 package UD13_0Y;
 
+// Controller: aplica la lògica de l'aplicació. Coordina la vista i el model.
+
+
 class CalculadoraController {
-    private CalculadoraModel modelo;
+    private CalculadoraModel model;
     private CalculadoraView vista;
     
-    public CalculadoraController(CalculadoraModel modelo, CalculadoraView vista) {
-        this.modelo = modelo;
+    public CalculadoraController(CalculadoraModel model, CalculadoraView vista) {
+        this.model = model;
         this.vista = vista;
     }
     
     public void executaSuma() {
-        int num1 = vista.LlegeixNumero("Ingrese el primer número");
-        int num2 = vista.LlegeixNumero("Ingrese el segundo número");
+        int num1 = this.vista.LlegeixNumero("Introdueixi el primer número: ");
+        int num2 = this.vista.LlegeixNumero("Introdueixi el segon número: ");
         
-        int resultado = this.modelo.ObteSuma(num1, num2);
+        int resultat = this.model.ObteSuma(num1, num2);
         
-        this.vista.mostraResultat(resultado);
+        this.vista.mostraResultat(resultat);
     }
 }

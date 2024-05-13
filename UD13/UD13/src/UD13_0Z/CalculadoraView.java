@@ -10,7 +10,7 @@ class CalculadoraView {
     private JFrame frame;
     private JTextField num1Field;
     private JTextField num2Field;
-    private JLabel resultadoLabel;
+    private JLabel resultLabel;
     private JButton sumarButton;
 
     public CalculadoraView() {
@@ -22,7 +22,7 @@ class CalculadoraView {
 
         num1Field = new JTextField();
         num2Field = new JTextField();
-        resultadoLabel = new JLabel("Resultado:");
+        resultLabel = new JLabel("Resultat:");
 
         sumarButton = new JButton("Sumar");
 
@@ -31,7 +31,7 @@ class CalculadoraView {
         panel.add(new JLabel("Número 2:"));
         panel.add(num2Field);
         panel.add(sumarButton);
-        panel.add(resultadoLabel);
+        panel.add(resultLabel);
 
         frame.add(panel);
         frame.setVisible(true);
@@ -45,8 +45,8 @@ class CalculadoraView {
         return Integer.parseInt(num2Field.getText());
     }
 
-    public void setResultado(int resultado) {
-        resultadoLabel.setText("Resultado: " + resultado);
+    public void setResultado(int resultat) {
+        resultLabel.setText("Resultat: " + resultat);
     }
 
     public void addSumarListener(ActionListener listener) {

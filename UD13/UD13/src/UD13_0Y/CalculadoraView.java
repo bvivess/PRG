@@ -1,8 +1,8 @@
 package UD13_0Y;
 
-// Vista (View): Es la interfaz de usuario que presenta los datos al usuario final. 
-// La vista se encarga de mostrar la información al usuario de manera adecuada, 
-// también puede ser responsable de recoger la entrada del usuario.
+// View: La vista s'encarrega de mostrar la informació a l'usuari de manera adequada, 
+// també pot ser responsable de recollir l'entrada de l'usuari.
+
 import java.util.Scanner;
 
 class CalculadoraView {
