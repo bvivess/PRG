@@ -1,17 +1,17 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package EjerciciosEventos;
 
 import java.awt.event.*;
 import javax.swing.*;
 
 public class EJ043EjemploListeners extends JFrame {
+    private JPanel panel;
+    private JTextField text;
+    private JButton button;
+    
     public EJ043EjemploListeners () {
         initComponents();
     }
+    
     private void initComponents() {
         setSize(300, 100);
         
@@ -28,6 +28,7 @@ public class EJ043EjemploListeners extends JFrame {
 
         add(panel);
     }
+    
     private class MyClickListener extends MouseAdapter {
         public void mouseClicked(MouseEvent event) {
             numClicks++;
@@ -36,15 +37,9 @@ public class EJ043EjemploListeners extends JFrame {
         private int numClicks;
     }
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         EJ043EjemploListeners ej43 = new EJ043EjemploListeners();
         ej43.setVisible(true);
     }
 
-    private JPanel panel;
-    private JTextField text;
-    private JButton button;
 }
