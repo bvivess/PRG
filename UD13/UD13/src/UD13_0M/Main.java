@@ -10,41 +10,39 @@ public class Main extends JFrame {
         super("Exemple de 'FocusListener'");
         
         // Creamos dos campos de texto
-        JTextField campoTexto1 = new JTextField(20);
-        JTextField campoTexto2 = new JTextField(20);
+        JTextField texte1 = new JTextField(20);
+        JTextField texte2 = new JTextField(20);
         
         // Creamos un botón
-        JButton boton = new JButton("Limpiar campos de texto");
+        JButton boto = new JButton("Limpiar campos de texto");
         
-        // Asociamos un ActionListener al botón
-        boton.addActionListener(new ActionListener() {
+        // Associar un 'ActionListener' al 'boto'
+        boto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Este método se ejecuta cuando se presiona el botón
-                campoTexto1.setText(""); // Limpiamos el contenido del campo de texto 1
-                campoTexto2.setText(""); // Limpiamos el contenido del campo de texto 2
+                // S'executa al presionar el botó
+                texte1.setText(""); // Es neteja de 'texte1'
+                texte2.setText(""); // Es neteja de 'texte2'
             }
         });
 
 
-        // Creamos un FocusListener para los campos de texto
+        // Es crea un'focusListener'
         FocusListener focusListener = new FocusListener() {
             @Override
             public void focusGained(FocusEvent e) {
-                // Este método se ejecuta cuando un campo de texto obtiene el foco
-                boton.setBackground(Color.RED); // Cambiamos el color del botón
+                boto.setBackground(Color.RED); // Cambiamos el color del botón
             }
             
             @Override
             public void focusLost(FocusEvent e) {
-                // Este método se ejecuta cuando un campo de texto pierde el foco
-                boton.setBackground(UIManager.getColor("Button.background")); // Restauramos el color original del botón
+                boto.setBackground(UIManager.getColor("Button.background")); // Restaurar el color original del botó
             }
         };
         
-        // Asociamos el FocusListener a los campos de texto
-        campoTexto1.addFocusListener(focusListener);
-        campoTexto2.addFocusListener(focusListener);
+        // Associar un 'focusListener' a cada camp 'textx'
+        texte1.addFocusListener(focusListener);
+        texte2.addFocusListener(focusListener);
         
         
         // Configuramos la ventana
@@ -53,9 +51,9 @@ public class Main extends JFrame {
         setLocationRelativeTo(null);
         
         // A?adimos los componentes a la ventana
-        add(campoTexto1);
-        add(campoTexto2);
-        add(boton);
+        add(texte1);
+        add(texte2);
+        add(boto);
         
         pack();
     }
