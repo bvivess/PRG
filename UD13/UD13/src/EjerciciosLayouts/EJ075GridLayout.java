@@ -96,9 +96,7 @@ public class EJ075GridLayout extends JFrame {
             pack();
         }
     }
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String[] args) {
         EJ075GridLayout ej75 = new EJ075GridLayout();
     }

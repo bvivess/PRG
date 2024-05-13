@@ -103,12 +103,15 @@ public class EJ070BoxLayoutCenter extends JFrame {
         panel1.add(panel5);
         panel1.add(Box.createVerticalGlue());
 
-
-        
+       
         add(panel1);
 
         pack();
         setVisible(true);
         
+    }
+    
+    public static void main(String[] args) {
+        EJ070BoxLayoutCenter gui = new EJ070BoxLayoutCenter();
     }
 }

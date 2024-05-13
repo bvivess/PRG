@@ -107,4 +107,8 @@ public class EJ070BoxLayoutRight extends JFrame {
         setVisible(true);
         
     }
+    
+    public static void main(String[] args) {
+        EJ070BoxLayoutRight gui = new EJ070BoxLayoutRight();
+    }
 }

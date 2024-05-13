@@ -107,4 +107,8 @@ public class EJ070BoxLayoutLeft extends JFrame {
         setVisible(true);
         
     }
+    
+    public static void main(String[] args) {
+        EJ070BoxLayoutLeft gui = new EJ070BoxLayoutLeft();
+    }
 }
