@@ -80,7 +80,6 @@ public class Main {
                     statement.setInt(1, managerId);
                     
                     resultSet = statement.executeQuery();
-                    
                     if (resultSet.next()) {  // si existeix al manco 1 fila ?
                         // Comprovar integritat referencial amb 'locations'
                         sql = "SELECT '1' FROM locations WHERE location_id = ?";
@@ -88,7 +87,6 @@ public class Main {
                         statement.setInt(1, locationId);
                         
                         resultSet = statement.executeQuery();
-                        
                         if (resultSet.next()) {  // si existeix al manco 1 fila ?
                             // Insertar la fila
                             sql = "INSERT INTO departments (DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID) VALUES (?, ?, ?, ?)";
