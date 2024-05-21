@@ -108,7 +108,6 @@ public class Main {
             else if (taula.equals("locations"))
                 sql = "SELECT '1' FROM locations WHERE location_id = ?";
             
-            System.out.println(sql);
             PreparedStatement statement = connexio.prepareStatement(sql);
             statement.setInt(1, primaryKey);
 
@@ -122,6 +121,20 @@ public class Main {
     private static void SQLInsert(Connection connexio, String table, String... valors) throws SQLException  {
         String sql="";
         PreparedStatement statement;
+        
+        // Cal millorar aquest mètode accedint al diccionari:
+        //    - information_schema.tables:
+        //    SELECT TABLE_NAME 
+        //    FROM information_schema.TABLES 
+        //    WHERE TABLE_SCHEMA = &&esquema
+        //    AND   TABLE_NAME = &&tabla;
+        //
+        //    - information_schema.columns:
+        //    SELECT COLUMN_NAME, DATA_TYPE, IS_NULLABLE, COLUMN_KEY, COLUMN_DEFAULT
+        //    FROM information_schema.COLUMNS
+        //    WHERE TABLE_SCHEMA = &&esquema
+        //    AND   TABLE_NAME = &&tabla;
+
         try {
             if (table.equals("departments")) {
                 sql = "INSERT INTO departments (DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID) VALUES (?, ?, ?, ?)";
