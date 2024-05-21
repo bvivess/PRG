@@ -65,7 +65,7 @@ public class Main {
         ResultSet resultSet;
         
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
-            String line = reader.readLine(); // Descartar la primera línia
+            String line = reader.readLine(); // Es descarta la primera línia
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(";");
                 int departmentId = Integer.parseInt(parts[0]);
@@ -89,6 +89,7 @@ public class Main {
                         
                         resultSet = statement.executeQuery();
                         
+                        // Insertar la fila
                         if (resultSet.next()) {  // si existeix al manco 1 fila ?
                             sql = "INSERT INTO departments (DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID) VALUES (?, ?, ?, ?)";
                             statement = connexio.prepareStatement(sql);
