@@ -138,7 +138,7 @@ public class Main {
             }
             
         } catch (SQLException e) {
-            throw new SQLException (e.getMessage() );
+            throw e;
         } 
 
     }
