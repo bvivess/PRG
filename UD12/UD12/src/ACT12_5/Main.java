@@ -80,10 +80,10 @@ public class Main {
                         SQLInsert(connexio, "employees", parts[2], "S/D","S/D", "IT_PROG");
                     
                     // Comprovar integritat referencial amb 'locations'
-                    if (!SQLCheckPK(connexio, "locations", locationId))  // si existeix al manco 1 fila ?
+                    if (!SQLCheckPK(connexio, "locations", locationId))
                         SQLInsert(connexio, "locations", parts[3], "S/D");
                     
-                    // Insertar la fila
+                    // Insertar la fila a 'departments'
                     SQLInsert(connexio, "departments", parts[0], parts[1], parts[2], parts[3] );
                     System.out.println("Insertant departament: " + departmentId);
 
