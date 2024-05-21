@@ -63,6 +63,7 @@ public class Main {
     private static void insertDepartmentsFromFile(Connection connexio, String filename) throws SQLException, IOException {
         String sql;
         ResultSet resultSet;
+        PreparedStatement statement;
         
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line = reader.readLine(); // Es descarta la primera línia
@@ -75,31 +76,17 @@ public class Main {
 
                 try {
                     // Comprovar integritat referencial amb 'employees'
-                    sql = "SELECT '1' FROM employees WHERE employee_id = ?";
-                    PreparedStatement statement = connexio.prepareStatement(sql);
-                    statement.setInt(1, managerId);
+                    if (!SQLCheckPK(connexio, "employees", managerId))
+                        SQLInsert(connexio, "employees", parts[2], "S/D","S/D", "IT_PROG");
                     
-                    resultSet = statement.executeQuery();
-                    if (resultSet.next()) {  // si existeix al manco 1 fila ?
-                        // Comprovar integritat referencial amb 'locations'
-                        sql = "SELECT '1' FROM locations WHERE location_id = ?";
-                        statement = connexio.prepareStatement(sql);
-                        statement.setInt(1, locationId);
-                        
-                        resultSet = statement.executeQuery();
-                        if (resultSet.next()) {  // si existeix al manco 1 fila ?
-                            // Insertar la fila
-                            sql = "INSERT INTO departments (DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID) VALUES (?, ?, ?, ?)";
-                            statement = connexio.prepareStatement(sql);
-                            statement.setInt(1, departmentId);
-                            statement.setString(2, departmentName);
-                            statement.setInt(3, managerId);
-                            statement.setInt(4, locationId);
-                            
-                            statement.executeUpdate();
-                            System.out.println("Insertant departament: " + departmentId);
-                        }
-                    }
+                    // Comprovar integritat referencial amb 'locations'
+                    if (!SQLCheckPK(connexio, "locations", locationId))  // si existeix al manco 1 fila ?
+                        SQLInsert(connexio, "locations", parts[3], "S/D");
+                    
+                    // Insertar la fila
+                    SQLInsert(connexio, "departments", parts[0], parts[1], parts[2], parts[3] );
+                    System.out.println("Insertant departament: " + departmentId);
+
                     connexio.commit();
                 } catch (SQLException e) {
                     connexio.rollback();
@@ -110,5 +97,59 @@ public class Main {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
             throw e; // Es propaga l'excepció al mètode anterior
         }
+    }
+    
+    private static boolean SQLCheckPK(Connection connexio, String taula, int primaryKey) throws SQLException  {
+        String sql="";
+        try {
+            // Comprovar integritat referencial amb 'employees'
+            if (taula.equals("employees"))
+                sql = "SELECT '1' FROM employees WHERE employee_id = ?";
+            else if (taula.equals("locations"))
+                sql = "SELECT '1' FROM locations WHERE location_id = ?";
+            
+            System.out.println(sql);
+            PreparedStatement statement = connexio.prepareStatement(sql);
+            statement.setInt(1, primaryKey);
+
+            ResultSet resultSet = statement.executeQuery();
+            
+            return resultSet.next(); // si existeix al manco 1 fila ?
+        } catch (SQLException e) {
+            throw new SQLException (e.getMessage() );
+        } 
+    }
+    private static void SQLInsert(Connection connexio, String table, String... valors) throws SQLException  {
+        String sql="";
+        PreparedStatement statement;
+        try {
+            if (table.equals("departments")) {
+                sql = "INSERT INTO departments (DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID) VALUES (?, ?, ?, ?)";
+                statement = connexio.prepareStatement(sql);
+                statement.setInt(1, Integer.parseInt(valors[0]));
+                statement.setString(2, valors[1]);
+                statement.setInt(3, Integer.parseInt(valors[2]));
+                statement.setInt(4, Integer.parseInt(valors[3]));
+                statement.executeUpdate();
+            } else if (table.equals("locations")) {
+                sql = "INSERT INTO locations (LOCATION_ID, CITY) VALUES (?,?)";
+                statement = connexio.prepareStatement(sql);
+                statement.setInt(1, Integer.parseInt(valors[0]));
+                statement.setString(2, valors[1]);
+                statement.executeUpdate();
+            } else if (table.equals("employees")) {
+                sql = "INSERT INTO employees (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID) VALUES (?, ?, ?, ?)";
+                statement = connexio.prepareStatement(sql);
+                statement.setInt(1, Integer.parseInt(valors[0]));
+                statement.setString(2, valors[1]);
+                statement.setString(3, valors[2]);
+                statement.setString(4, valors[3]);
+                statement.executeUpdate();
+            }
+            
+        } catch (SQLException e) {
+            throw new SQLException (e.getMessage() );
+        } 
+
     }
 }
