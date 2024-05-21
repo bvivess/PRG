@@ -61,9 +61,7 @@ public class Main {
     }
     
     private static void insertDepartmentsFromFile(Connection connexio, String filename) throws SQLException, IOException {
-        String sql1 = "SELECT '1' FROM employees WHERE employee_id = ?";
-        String sql2 = "SELECT '1' FROM locations WHERE location_id = ?";
-        String sql3 = "INSERT INTO departments (DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID) VALUES (?, ?, ?, ?)";
+        String sql;
         ResultSet resultSet;
         
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
@@ -76,19 +74,22 @@ public class Main {
                 int locationId = Integer.parseInt(parts[3]);
 
                 try {
-                    PreparedStatement statement = connexio.prepareStatement(sql1);
+                    sql = "SELECT '1' FROM employees WHERE employee_id = ?";
+                    PreparedStatement statement = connexio.prepareStatement(sql);
                     statement.setInt(1, managerId);
                     
                     resultSet = statement.executeQuery();
                     
-                    if (resultSet.next()) {
-                        statement = connexio.prepareStatement(sql2);
+                    if (resultSet.next()) {  // si existeix al manco 1 fila ?
+                        sql = "SELECT '1' FROM locations WHERE location_id = ?";
+                        statement = connexio.prepareStatement(sql);
                         statement.setInt(1, locationId);
                         
                         resultSet = statement.executeQuery();
                         
-                        if (resultSet.next()) {
-                            statement = connexio.prepareStatement(sql3);
+                        if (resultSet.next()) {  // si existeix al manco 1 fila ?
+                            sql = "INSERT INTO departments (DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID) VALUES (?, ?, ?, ?)";
+                            statement = connexio.prepareStatement(sql);
                             statement.setInt(1, departmentId);
                             statement.setString(2, departmentName);
                             statement.setInt(3, managerId);
