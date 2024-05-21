@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -60,7 +61,10 @@ public class Main {
     }
     
     private static void insertDepartmentsFromFile(Connection connexio, String filename) throws SQLException, IOException {
-        String sql = "INSERT INTO departments (DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID) VALUES (?, ?, ?, ?)";
+        String sql1 = "SELECT '1' FROM employees WHERE employee_id = ?";
+        String sql2 = "SELECT '1' FROM locations WHERE location_id = ?";
+        String sql3 = "INSERT INTO departments (DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID) VALUES (?, ?, ?, ?)";
+        ResultSet resultSet;
         
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line = reader.readLine(); // Descartar la primera línia
@@ -71,14 +75,29 @@ public class Main {
                 int managerId = Integer.parseInt(parts[2]);
                 int locationId = Integer.parseInt(parts[3]);
 
-                try (PreparedStatement statement = connexio.prepareStatement(sql)) {
-                    statement.setInt(1, departmentId);
-                    statement.setString(2, departmentName);
-                    statement.setInt(3, managerId);
-                    statement.setInt(4, locationId);
-                    statement.executeUpdate();
-                    System.out.println("Insertant departament: " + departmentId);
+                try {
+                    PreparedStatement statement = connexio.prepareStatement(sql1);
+                    statement.setInt(1, managerId);
                     
+                    resultSet = statement.executeQuery();
+                    
+                    if (resultSet.next()) {
+                        statement = connexio.prepareStatement(sql2);
+                        statement.setInt(1, locationId);
+                        
+                        resultSet = statement.executeQuery();
+                        
+                        if (resultSet.next()) {
+                            statement = connexio.prepareStatement(sql3);
+                            statement.setInt(1, departmentId);
+                            statement.setString(2, departmentName);
+                            statement.setInt(3, managerId);
+                            statement.setInt(4, locationId);
+                            
+                            statement.executeUpdate();
+                            System.out.println("Insertant departament: " + departmentId);
+                        }
+                    }
                     connexio.commit();
                 } catch (SQLException e) {
                     connexio.rollback();
