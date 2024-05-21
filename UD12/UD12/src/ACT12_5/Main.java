@@ -74,12 +74,14 @@ public class Main {
                 int locationId = Integer.parseInt(parts[3]);
 
                 try {
+                    // Comprovar integritat referencial amb 'employees'
                     sql = "SELECT '1' FROM employees WHERE employee_id = ?";
                     PreparedStatement statement = connexio.prepareStatement(sql);
                     statement.setInt(1, managerId);
                     
                     resultSet = statement.executeQuery();
                     
+                    // Comprovar integritat referencial amb 'locations'
                     if (resultSet.next()) {  // si existeix al manco 1 fila ?
                         sql = "SELECT '1' FROM locations WHERE location_id = ?";
                         statement = connexio.prepareStatement(sql);
