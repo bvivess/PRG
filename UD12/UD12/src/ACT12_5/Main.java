@@ -69,23 +69,23 @@ public class Main {
             String line = reader.readLine(); // Es descarta la primera línia
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(";");
-                int departmentId = Integer.parseInt(parts[0]);
-                String departmentName = parts[1];
-                int managerId = Integer.parseInt(parts[2]);
-                int locationId = Integer.parseInt(parts[3]);
+                //int departmentId = Integer.parseInt(parts[0]);
+                //String departmentName = parts[1];
+                //int managerId = Integer.parseInt(parts[2]);
+                //int locationId = Integer.parseInt(parts[3]);
 
                 try {
                     // Comprovar integritat referencial amb 'employees'
-                    if (!SQLCheckPK(connexio, "employees", managerId))
+                    if (!SQLCheckPK(connexio, "employees", Integer.parseInt(parts[2])))
                         SQLInsert(connexio, "employees", parts[2], "S/D","S/D", "IT_PROG");
                     
                     // Comprovar integritat referencial amb 'locations'
-                    if (!SQLCheckPK(connexio, "locations", locationId))
+                    if (!SQLCheckPK(connexio, "locations", Integer.parseInt(parts[3])))
                         SQLInsert(connexio, "locations", parts[3], "S/D");
                     
                     // Insertar la fila a 'departments'
                     SQLInsert(connexio, "departments", parts[0], parts[1], parts[2], parts[3] );
-                    System.out.println("Insertant departament: " + departmentId);
+                    System.out.println("Insertant departament: " + parts[0]);
 
                     connexio.commit();
                 } catch (SQLException e) {
