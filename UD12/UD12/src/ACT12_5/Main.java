@@ -61,10 +61,6 @@ public class Main {
     }
     
     private static void insertDepartmentsFromFile(Connection connexio, String filename) throws SQLException, IOException {
-        String sql;
-        ResultSet resultSet;
-        PreparedStatement statement;
-        
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line = reader.readLine(); // Es descarta la primera línia
             while ((line = reader.readLine()) != null) {
@@ -99,30 +95,11 @@ public class Main {
         }
     }
     
-    private static boolean SQLCheckPK(Connection connexio, String taula, int primaryKey) throws SQLException  {
-        String sql="";
-        try {
-            // Comprovar integritat referencial amb 'employees'
-            if (taula.equals("employees"))
-                sql = "SELECT '1' FROM employees WHERE employee_id = ?";
-            else if (taula.equals("locations"))
-                sql = "SELECT '1' FROM locations WHERE location_id = ?";
-            
-            PreparedStatement statement = connexio.prepareStatement(sql);
-            statement.setInt(1, primaryKey);
-
-            ResultSet resultSet = statement.executeQuery();
-            
-            return resultSet.next(); // si existeix al manco 1 fila ?
-        } catch (SQLException e) {
-            throw new SQLException (e.getMessage() );
-        } 
-    }
     private static void SQLInsert(Connection connexio, String table, String... valors) throws SQLException  {
         String sql="";
         PreparedStatement statement;
         
-        // Cal millorar aquest mètode accedint al diccionari:
+        // Cal millorar aquest mètode accedint al diccionari MySQL:
         //    - information_schema.tables:
         //    SELECT TABLE_NAME 
         //    FROM information_schema.TABLES 
@@ -164,5 +141,26 @@ public class Main {
             throw new SQLException (e.getMessage() );
         } 
 
+    }
+    
+    private static boolean SQLCheckPK(Connection connexio, String taula, int primaryKey) throws SQLException  {
+        String sql="";
+        
+        // Cal millorar aquest mètode accedint al diccionari MySQL
+        try {
+            if (taula.equals("employees"))
+                sql = "SELECT '1' FROM employees WHERE employee_id = ?";
+            else if (taula.equals("locations"))
+                sql = "SELECT '1' FROM locations WHERE location_id = ?";
+            
+            PreparedStatement statement = connexio.prepareStatement(sql);
+            statement.setInt(1, primaryKey);
+
+            ResultSet resultSet = statement.executeQuery();
+            
+            return resultSet.next(); // si existeix al manco 1 fila ?
+        } catch (SQLException e) {
+            throw new SQLException (e.getMessage() );
+        } 
     }
 }
