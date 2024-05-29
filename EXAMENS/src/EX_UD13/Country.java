@@ -30,28 +30,5 @@ public class Country {
         return "Country{" + "countryId=" + countryId + ", countryName=" + countryName + ", regionId=" + regionId + '}';
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 43 * hash + Objects.hashCode(this.countryId);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Country other = (Country) obj;
-        return Objects.equals(this.countryId, other.countryId);
-    }
-    
-
     
 }
