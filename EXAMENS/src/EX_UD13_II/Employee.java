@@ -54,15 +54,15 @@ public class Employee implements Serializable {
     private void writeObject(ObjectOutputStream oos) throws IOException {
         oos.defaultWriteObject();  // assegura el procés normal de serialitzacio
 
-        // Emmagatzemar la data (per exemple)
+        // Afegeix un 'timestamp' en la serialització
         oos.writeObject(new java.util.Date());  // escriu un timestamp
     }
 
     private void readObject(ObjectInputStream ois) throws IOException, ClassNotFoundException {
         ois.defaultReadObject();  // assegura el procés normal de deserialització
 
-        // Altres
-        System.out.println ("Emmagatzemat en data: " + (java.util.Date)ois.readObject()); // mostra el timestamp
+        // Mostra el 'timestamp' fet en la serialització
+        System.out.println ("Emmagatzemat en data: " + (java.util.Date) ois.readObject()); // mostra el 'timestamp'
     }
 
 }
