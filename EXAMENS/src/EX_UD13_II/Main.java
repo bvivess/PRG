@@ -46,7 +46,7 @@ public class Main {
         String jobTitle="";
         
         try ( BufferedReader bufInput = new BufferedReader(new FileReader(nomArxiu))) {
-            String linia = linia = bufInput.readLine();
+            String linia = bufInput.readLine();  // llegeix la primera línia i la rebutja
             while ((linia = bufInput.readLine()) != null) {
                 if (!linia.startsWith("-"))
                     try {
@@ -129,17 +129,12 @@ public class Main {
              ObjectInputStream in = new ObjectInputStream(fis)) {
 
             Object object;
-            while (true) {
-                try {
-                    object = in.readObject();
-                    if (object instanceof Job) 
-                        newJobs.add((Job) object);
-                    if (object instanceof Employee) 
-                        newEmployees.add((Employee) object);
-
-                } catch (EOFException e) {
-                    break;
-                }
+            while ((object = in.readObject())!= null) {
+                object = in.readObject();
+                if (object instanceof Job) 
+                    newJobs.add((Job) object);
+                if (object instanceof Employee) 
+                    newEmployees.add((Employee) object);
             }
         } catch (IOException | ClassNotFoundException e) {
             throw e;  // Es propaga l'excepció al mètode anterior
