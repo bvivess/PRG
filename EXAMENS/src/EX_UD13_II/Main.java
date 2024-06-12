@@ -118,7 +118,6 @@ public class Main {
             for (Employee e : employees) {
                 out.writeObject(e);
             }
-
         } catch (IOException e) {
             throw e;  // Es propaga l'excepció al mètode anterior
         }
@@ -142,7 +141,6 @@ public class Main {
                     break;
                 }
             }
-
         } catch (IOException | ClassNotFoundException e) {
             throw e;  // Es propaga l'excepció al mètode anterior
         }
