@@ -65,7 +65,7 @@ public class Main {
  
             connexio.setAutoCommit(false);
             for (InstruccioDDL i : instruccionsDDL)
-                creaTaula(connexio, i);
+                SQLExecute(connexio, i);
             
             System.out.println("Connexió tancada.");
         } catch (SQLException | IOException e) {
@@ -95,7 +95,7 @@ public class Main {
                     try {
                         String[] parts = line.split(":",2);
                         String clau = parts[0].trim();
-                        String valor = parts[1].trim();//.replace("\"","");
+                        String valor = parts[1].trim().replace("\"","");
                         
                         if (seccio.equals("server"))
                             switch (clau) {
@@ -123,7 +123,7 @@ public class Main {
         return DriverManager.getConnection(server + bdades, usuari, passwd);
     }
     
-    private static void creaTaula(Connection connexio, InstruccioDDL instruccio) throws SQLException, IOException {
+    private static void SQLExecute(Connection connexio, InstruccioDDL instruccio) throws SQLException, IOException {
         Statement statement = connexio.createStatement();
         String sql;
         try {
