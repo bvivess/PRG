@@ -95,7 +95,7 @@ public class Main {
                     try {
                         String[] parts = line.split(":",2);
                         String clau = parts[0].trim();
-                        String valor = parts[1].trim().replace("\"","");
+                        String valor = parts[1].trim();//.replace("\"","");
                         
                         if (seccio.equals("server"))
                             switch (clau) {
