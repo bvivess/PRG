@@ -1,6 +1,5 @@
 package ACT11_6D;
 
-import ACT11_6C.*;
 import java.util.ArrayList;
 
 /** ArrayDeque: 'ArrayList' amb un número màxim d'elements prefixat

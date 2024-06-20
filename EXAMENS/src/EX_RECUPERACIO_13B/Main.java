@@ -32,7 +32,6 @@ public class Main {
         String sql="""
                     SELECT customer_id, cust_first_name, cust_last_name
                     FROM customers c
-                    WHERE customer_id BETWEEN 101 AND 105
                     ORDER BY customer_id 
                    """;
         try ( Connection connexio = connectaDB(nomArxiu);
