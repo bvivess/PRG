@@ -1,32 +1,20 @@
 package ACT7_3;
 
-/**
+/** Clase principal para probar el sistema
  *
  * @author winadmin
  */
 public class Main {
-    
-    public static void main(String args[]) {
-
-        Elevator elevator = new Elevator(false,1);
-
-        // Algunes d'aquestes operacions no són possibles segons la seqüència establerta
-        try {
-            elevator.openDoor();  // pis=1
-            elevator.closeDoor();
-            elevator.goDown();  // xxx
-            elevator.goUp();  // pis=2
-            elevator.goUp();  // pis=3
-            elevator.openDoor();
-            elevator.closeDoor();
-            elevator.goDown(); // pis=2
-            elevator.openDoor();
-            elevator.goDown();  // xxx
-            elevator.closeDoor();
-            elevator.goDown();  // pis=1
-            elevator.goDown();  // xxx
-        } catch (Exception e) {
-            System.err.println(e.getMessage());
-        }
+    public static void main(String[] args) {
+        // Crear instàncies d'empleats
+        // Empleat empleat = new Empleat("pere","Martinez",1000); // -> no es pot instanciar
+        EmpleatAssalariat empleat1 = new EmpleatAssalariat("Pere","March",2000);
+        EmpleatAutonom empleat2 = new EmpleatAutonom("Joan", "Marcus", 15, 40);
+        
+        // Mostrar detalls dels empleats
+        System.out.println( empleat1.toString());
+        System.out.println( empleat2.toString());
+        
+        System.out.println("Comparació d'empleats: " + empleat1.equals(empleat2));
     }
 }

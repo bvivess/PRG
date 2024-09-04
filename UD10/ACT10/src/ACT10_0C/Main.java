@@ -1,5 +1,8 @@
 package ACT10_0C;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author winadmin
@@ -7,11 +10,12 @@ package ACT10_0C;
 public class Main {
 
     public static void main(String[] args) {
-        FiguraGeometrica cercle = new CercleFactory().CreateFiguraGeometrica(5.0);
-        FiguraGeometrica rectangle = new RectangleFactory().CreateFiguraGeometrica(5.0,2.0);
-        
-        System.out.println(cercle.calculaArea());
-        System.out.println(rectangle.calculaArea());
+        List<String> llista = new ArrayList<>();
+        llista.add("Element1");
+        llista.add("Element2");
+        llista.add("Element1");  // No es permeten duplicats
+        for (String l : llista)
+            System.out.println(l);
     }
     
 }

@@ -3,21 +3,26 @@ package ACT7_0B;
 /**
  *
  * @author T.Vives
+ * 
+ * Exemple de Herència Multinivell:
+ *     Animal
+ *        ^ 
+ *        |
+ *     Mamifer
+ *        ^ 
+ *        |
+ *       Ca
+ * 
  */
+// Clase principal
 public class Main {
+    public static void main(String[] args) {
+        // Crear un objeto de la clase Gato
+        Ca ca = new Ca("Animal", "Mamifer", "Ca");
 
-   public static void main(String[] args) {
-        Rectangle r = new Rectangle(20.0,2.0);
-        Cercle c = new Cercle(20.0);
-        // Cercle ...
-
-        System.out.println("Rectancle " + r.getAlcada() + " " + r.getAmplada() + ":");
-        System.out.println("Àrea: " + r.calcularArea() );
-        System.out.println("Perímetre: " + r.calcularPerimetre() );
-        
-        System.out.println("Cercle " + c.getRadi() + ":");
-        System.out.println("Àrea: " + c.calcularArea() );
-        System.out.println("Perímetre: " + c.calcularPerimetre() );
+        // Llamar a métodos de las clases base y derivadas
+        ca.menja();  // Mètode de la clase base
+        ca.alimenta();  // Mètode de la clase derivada 1
+        ca.lladra();  // Método de la clase derivada 2
     }
-    
 }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author T.Vives
  */
 public class Main {
-
+    
     public static void main(String[] args) {
         try {
             // Declarar i instanciar un compte bancari
@@ -27,7 +27,7 @@ public class Main {
             // Declarar i instanciar un client
             Client client1 = new Client("Soler","Matemales", "Joan", comptes1);
             Client client2 = new Client("Vidal","Palmer", "Pere", comptes2);
-            
+
             // Realitzar transaccions
             try {
                 client1.realitzaTransaccio(compte1,500.0);
@@ -40,17 +40,11 @@ public class Main {
                 System.err.println(e.getMessage());
             }
 
-            // Mostrar saldo final
-            client1.mostraClient();
-            System.out.println("amb SALDO:" );
-            client1.mostraSaldo();
-            //
-            client2.mostraClient();
-            System.out.println("amb SALDO:" );
-            client2.mostraSaldo();
-
+            // Mostrar client i comptes
+            System.out.println(client1.toString());
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
     }
 }
+

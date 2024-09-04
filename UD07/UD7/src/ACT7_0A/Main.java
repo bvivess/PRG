@@ -2,16 +2,22 @@ package ACT7_0A;
 
 /**
  *
- * @author T.Vives
+ * @author T:Vives
+ * 
+ * Exemple de Herència Simple
+ *     Persona
+ *        ^ 
+ *        |
+ *    Estudiant
+ * 
  */
 public class Main {
+    public static void main(String[] args) {
+        // Crea un objective 'estudiant'
+        Estudiant estudiant = new Estudiant("Joan", 20, "Programació");
 
-   public static void main(String[] args) {
-        Persona p1 = new Persona("Joan","Martinez","Fernández",26);
-        // Persona p2
-
-        p1.mostraPersona();
-
+        // Mostrar les dades d''estudiant'
+        estudiant.mostraPersona();  // mètode de la superclasse
+        estudiant.mostraEstudiant();  // mètode de la subclasse
     }
-    
 }

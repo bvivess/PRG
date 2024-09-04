@@ -1,7 +1,5 @@
 package ACT7_2;
 
-import java.util.Objects;
-
 /**
  *
  * @author T.Vives
@@ -28,7 +26,7 @@ public class Compte {
     public void ingresa(double quantitat) {
         // ha d'incrementar la 'quantitat' al saldo del compte
         //saldo += quantitat;
-        setSaldo(saldo + quantitat);
+        setSaldo(saldo+quantitat);
         System.out.println("Ingrès de " + quantitat + " en el compte " + banc + "-" + oficina + "-" + dc + "-" + numCompte);
     }
 
@@ -43,8 +41,8 @@ public class Compte {
             System.out.println("Saldo insuficient " + saldo + " en el compte " + banc + "-" + oficina + "-" + dc + "-" + numCompte);
         }
         */
-        setSaldo(saldo - quantitat);
         System.out.println("Retirada de " + quantitat + " del compte " + banc + "-" + oficina + "-" + dc + "-" + numCompte);
+        setSaldo(saldo-quantitat);
     }
     
     // Getters i Setters
@@ -88,7 +86,19 @@ public class Compte {
         if (saldo >= 0)
             this.saldo = saldo;
         else
-            throw new IllegalArgumentException(this.numCompte + ": No és possible un Import negatiu en compte.");
+            throw new IllegalArgumentException("Import negatiu no és possible.");
     }
-    
+
+    @Override
+    public boolean equals(Object o) {
+        Compte c = (Compte) o;
+        
+        if ((c.banc.equalsIgnoreCase(this.banc)) &&
+            (c.oficina.equalsIgnoreCase(this.oficina)) &&
+            (c.dc.equalsIgnoreCase(this.dc)) &&
+            (c.numCompte.equalsIgnoreCase(this.numCompte)))
+            return true;
+        else
+            return false;
+    }
 }
