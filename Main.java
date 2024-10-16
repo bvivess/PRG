@@ -1,10 +1,8 @@
 public class Main {
-    public static void main(String args[]){
-        Main prova = new Main();
-        prova.prova(); 
-    }
-
-    public static void prova(){  // el mètode no cal que sigui 'static'
-        System.out.println("Això és una prova");
-    }
+	public static void main ( String [] args ){
+		int x =0;
+		double y = x - 0.1;
+		x =( int )( y );
+		System . out . println ( x );
+	}
 }

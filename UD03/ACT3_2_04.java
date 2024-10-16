@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class ACT3_2_04 {
 
     public static void main(String[] args) {
-        int num = 0;
+        int nota = 0;
         int comptador = 0;
         int suma = 0;
         double mitjana;
@@ -18,14 +18,14 @@ public class ACT3_2_04 {
 		Scanner scanner = new Scanner(System.in);
 
         do {
-            System.out.print("Entri una nota(-1 per acabar): ");
-			num = scanner.nextInt();
-            comptador++;
-            suma = suma + num;
-        } while (num != -1);
+            System.out.print("Entri una nota (-1 per acabar): ");
+			nota = scanner.nextInt();
+			if ((nota >= 0) && (nota<=10)) {
+				comptador++;
+				suma = suma + nota;
+			}
+        } while (nota != -1);
 		
-        //Hem d'eliminar el zero del compte
-        comptador --;
         mitjana = (double) suma / (double) comptador;
         System.out.println("La mitjana és = " + mitjana);
 		
