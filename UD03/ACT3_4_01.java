@@ -1,52 +1,52 @@
 import java.util.Scanner;
 
-public class ACT3_4_01 {
+public class ACT3_4_02 {
 /**
  *
  * @author Tomeu Vives
  */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int n;
-		int[] array;
-		int suma = 0;
-        int max;
-        int min;
+        int total, min, max, suma = 0;
+		int[][] matriu;
 		double mitjana;
 
         System.out.print("Introduexi el núm elements: ");
-        n = scanner.nextInt();
-        array = new int[n];
+        total = scanner.nextInt();
+        matriu = new int[total][total];
 
-        // Llegim l'array per teclat
-        for (int i = 0; i < n; i++) {
-            System.out.print("array[" + (i + 1) + "]: ");
-            array[i] = scanner.nextInt();
+        // Llegim la matriu per teclat
+        for (int i = 0; i < matriu.length; i++)
+			for (int j = 0; j < matriu[0].length; j++) {
+				System.out.print("matriu[" + i + "][" + j + "]: ");
+				matriu[i][j] = scanner.nextInt();
+			}
+
+        // Mostra la matriu y calcula el min, max i mitjana
+
+        max = matriu[0][0];
+        min = matriu[0][0];
+        for (int[] array : matriu)
+			for (int valor : array) {
+				suma += valor;
+				if (valor > max)
+					max = valor;
+
+				if (valor < min)
+					min = valor;
+			}
+
+        mitjana = (double) suma / total;
+
+        //System.out.println("[ ");
+        for (int[] array : matriu) {
+			for (int valor : array)
+				System.out.print(valor + " ");
+			System.out.println();
         }
-
-        // Mostra l'array y calcula el min, max i mitjana
-
-        max = array[0];
-        min = array[0];
-        for (int valor : array) {
-            suma += valor;
-            if (valor > max) {
-                max = valor;
-            }
-            if (valor < min) {
-                min = valor;
-            }
-        }
-
-        mitjana = (double) suma / n;
-
-        System.out.print("[ ");
-        for (int valor : array) {
-            System.out.print(valor + " ");
-        }
-		
-		System.out.println("]");
-        System.out.println("Màxim: " + max);
+		//System.out.println("]");
+        
+		System.out.println("Màxim: " + max);
         System.out.println("Mínim: " + min);
         System.out.println("Mitjana: " + mitjana);
 

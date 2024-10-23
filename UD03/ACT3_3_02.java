@@ -9,8 +9,7 @@ public class ACT3_3_02 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-		final int MAX = 200;
-		final int MIN = 100;
+		final int MIN = 100, MAX = 200;
         int[] array = new int[10];
 		
         for (int index = 0; index < array.length; index++) {
