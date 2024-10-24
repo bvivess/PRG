@@ -2,6 +2,11 @@ import java.util.Scanner;
 
 public class ACT3_4_02 {
 /**
+ * Crea una matriu d''int' 
+ * Demana a l'usuari els valors i guarda'ls a la matriu
+ * Finalment:
+ * demana a l'usuari el valor d'una FILA  i mostra els valors de tota aquesta fila
+ * demana a l'usuari el valor d'una COLUMNA  i mostra els valors de tota aquesta columna
  *
  * @author Tomeu Vives
  */
@@ -29,7 +34,7 @@ public class ACT3_4_02 {
 			System.out.println();
         }
 		
-		// Mostrar la FILA
+		// Mostrar una FILA
         System.out.print("Introduexi la FILA a mostrar: ");
         fila = scanner.nextInt();
         // Mostra la columna i la fila esmentada
@@ -38,7 +43,7 @@ public class ACT3_4_02 {
 
 		System.out.println();
 
-		// Mostrar la COLUMNA
+		// Mostrar una COLUMNA
         System.out.print("Introduexi la COLUMNA a mostrar: ");
         columna = scanner.nextInt();
 		
