@@ -32,8 +32,6 @@ public class ACT4_0_01 {
 		
 		// Mostrar resultats
 		MostraResultats(min, max, mitjana);
-
-
     }
 		
 	// Mètodes del programa:		
