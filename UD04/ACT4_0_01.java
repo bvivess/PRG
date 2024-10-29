@@ -27,10 +27,10 @@ public class ACT4_0_01 {
 		// Calcula el max
         max = CalculaMax(matriu);
 		
-		// Calcula el min, max i mitjana
+		// Calcula la mitjana
 		mitjana = CalculaMitjana(matriu);
 		
-		// Mostrar resultats
+		// Mostra resultats
 		MostraResultats(min, max, mitjana);
     }
 		

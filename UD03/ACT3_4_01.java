@@ -56,7 +56,7 @@ public class ACT3_4_01 {
         mitjana = (float) suma / total;
 
 		
-		// Mostrar resultats
+		// Mostra resultats
 		System.out.println("Els resultats són:");
 		System.out.println("\tMàxim: " + max);
         System.out.println("\tMínim: " + min);
