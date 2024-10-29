@@ -11,12 +11,12 @@ public class ACT3_4_01 {
 		int[][] matriu;
 		float mitjana;
 
-		// Demanar mida de la matriu
+		// Llegeix mida de la matriu
         System.out.print("Introduexi el núm elements de la matriu: ");
         numElements = scanner.nextInt();
         matriu = new int[numElements][numElements];
 
-        // Llegim les dades de la matriu per teclat
+        // Llegeix les dades de la matriu per teclat
         for (int i = 0; i < matriu.length; i++)
 			for (int j = 0; j < matriu[0].length; j++) {
 				System.out.print("matriu[" + i + "][" + j + "]: ");

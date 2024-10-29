@@ -10,12 +10,12 @@ public class ACT4_0_01 {
 		int[][] matriu;
 		float mitjana;
 		
-		// Demanar mida de la matriu
+		// Llegeix mida de la matriu
 		numElements = LlegeixElements("Introduexi el núm elements de la matriu: ");
 
         matriu = new int [numElements] [numElements];
 
-        // Llegim les dades de la matriu per teclat
+        // Llegeix les dades de la matriu per teclat
 		matriu = LlegeixMatriu(matriu);
 
         // Mostra la matriu 
