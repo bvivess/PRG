@@ -9,7 +9,7 @@ public class ACT3_4_01 {
         Scanner scanner = new Scanner(System.in);
         int numElements, min, max, total, suma;
 		int[][] matriu;
-		double mitjana;
+		float mitjana;
 
 		// Demanar mida de la matriu
         System.out.print("Introduexi el núm elements de la matriu: ");
@@ -46,14 +46,14 @@ public class ACT3_4_01 {
 				if (valor > max)
 					max = valor;
 				
-		// Calcula el min, max i mitjana
+		// Calcula la mitjana
 		total = 0; suma = 0;
         for (int[] array : matriu)
 			for (int valor : array) {
 				suma += valor;
 				total++;
 			}
-        mitjana = (double) suma / total;
+        mitjana = (float) suma / total;
 
 		
 		// Mostrar resultats
