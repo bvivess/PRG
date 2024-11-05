@@ -1,4 +1,4 @@
-package ACT4;
+package ACT4_3;
 
 import java.util.Scanner;
 
@@ -17,7 +17,7 @@ public class UtilitatsConsola {
         
         System.out.print(prompt);
         sencer = scanner.nextInt();
-		//scanner.close();
+        //scanner.close();
         return sencer;
     }
 
@@ -35,8 +35,30 @@ public class UtilitatsConsola {
 
         System.out.print(prompt);
         cadena = scanner.nextLine();
-		//scanner.close();
+        //scanner.close();
         return cadena;
+    }
+    
+    /**
+     * Llegeix una cadena del scanner.
+     *
+     * @param prompt El missatge que mostra al'usuari indicant quina dada ha
+     *               d'escriure.
+     * @return La cadena escrita per l'usuari
+     */
+    public static char llegirCar(String prompt) {
+        char car;
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print(prompt);
+            if (scanner.hasNext()) {
+                car = scanner.next().charAt(0);
+            } else {
+                // Manejo de error o valor predeterminado en caso de que no haya entrada.
+                car = 'X'; // Por ejemplo, devolver un espacio en blanco.
+            }
+
+        } 
+        return car;
     }
 
     /**
@@ -52,11 +74,12 @@ public class UtilitatsConsola {
 
         System.out.print(prompt);
         real = scanner.nextDouble();
-		//scanner.close();
+        //scanner.close();
         return real;
     }   
-    
-       /**
+
+    // ACT4_3_2
+    /**
      * Mostra el menu per pantalla i demana a l'usuari l'opció a executar fins
      * que l'usuari en pitja una de correcta.
      *
@@ -68,12 +91,13 @@ public class UtilitatsConsola {
     public static int gestionarMenu(String titol, String[] opcions, String pregunta) {
         System.out.println(titol);
         int sencer;
+        
         for (int i = 0; i < opcions.length; i++) {
             System.out.println((i + 1) + ". " + opcions[i]);
         }
         do {
             sencer = llegirSencer(pregunta);
-        } while (sencer < 1 || sencer > opcions.length);
+        } while (sencer != 0);
         return sencer;
     }
     
