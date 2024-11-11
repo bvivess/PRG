@@ -22,13 +22,11 @@ public class ACT4_4_04 {
         
         do {
             text = UtilitatsConsola.llegirCadena("Nom alumne ('sortir' per acabar): ");
-            if (text.equalsIgnoreCase("sortir"))
-                break;
-            else {
+            if (!text.equalsIgnoreCase("sortir")) {
                 alumnes.add(text);
                 llegirNotes(notes);
             }
-        } while (true);
+        } while (!text.equalsIgnoreCase("sortir"));
     }
     
     public static void llegirNotes(ArrayList<ArrayList<Integer>> notes) {
