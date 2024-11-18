@@ -28,7 +28,7 @@ public class ACT4_6_04 {
     public static void main(String[] args) {
         NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
         NFULLES=UtilitatsConsola.llegirSencer("Nombre de fulles: ");
-        tauler = new int[NTAULER][NTAULER];  // matriu matriu NTAULERxNTAULER
+        tauler = new int[NTAULER][NTAULER];  // matriu NTAULERxNTAULER
         emplenaTauler(tauler, cuc);
         
         do {
