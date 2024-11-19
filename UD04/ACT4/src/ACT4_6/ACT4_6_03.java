@@ -3,6 +3,7 @@ package ACT4_6;
 import ACT4_1.UtilitatsArrays;
 import ACT4_2.UtilitatsMatrius;
 import ACT4_3.UtilitatsConsola;
+import static ACT4_6.ACT4_6_04.SIMBOL_BUIT;
 
 
  /**
@@ -54,13 +55,12 @@ public class ACT4_6_03 {
     }
     
     public static void afegeixFulla(int[][] tauler) {
-        int mida = tauler.length;
-        int[] fulla;
+        int[] fulla;  // posicio nova fulla
         boolean okfulla = true;
         
         do {
-            fulla  = UtilitatsArrays.generaArray(2,0, mida-1); // genera posició de la fulla
-            if (tauler[fulla[0]][fulla[1]] == 0) { // situa la fulla al tauler si la posició està  buida
+            fulla  = UtilitatsArrays.generaArray(2,0, NTAULER-1); // genera posició de la fulla
+            if (tauler[fulla[0]][fulla[1]] == SIMBOL_BUIT) { // situa la fulla al tauler si la posició està  buida
                 tauler[fulla[0]][fulla[1]] = SIMBOL_FULLA;
                 okfulla = false;
             }
