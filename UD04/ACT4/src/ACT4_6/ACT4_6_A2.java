@@ -13,7 +13,7 @@ import ACT4_2.UtilitatsMatrius;
   *
   */
 
-public class ACT4_6_02 {
+public class ACT4_6_A2 {
     static int NTAULER;
     static int NFULLES;
     static final int SIMBOL_BUIT = 0;

@@ -8,7 +8,7 @@ import ACT4_3.UtilitatsConsola;
   * Crea una classe que inicialitzi una matriu quadrada, pe 5x5:
   *      Mostra-la per pantalla, cada fila a una línia.
   */
-public class ACT4_6_01 {
+public class ACT4_6_A1 {
     static int SIMBOL_BUIT = 0;
     static int SIMBOL_CUC = 1;
     static int[][] tauler;

@@ -6,7 +6,7 @@ import ACT4_3.UtilitatsConsola;
 import java.util.ArrayList;
 
 
-public class ACT4_6_11 { 
+public class ACT4_6_C1 { 
     static int NTAULER;
     static int NMINES;
     static final int SIMBOL_BUIT = 0;
