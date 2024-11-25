@@ -56,11 +56,15 @@ public class ACT4_6_B2 {
         for (int i = 0; i< NTAULER; i++) {
             if (tauler[i][torre[1]] != SIMBOL_TORRE)
                 tauler[i][torre[1]] = SIMBOL_MATA;
+            else
+                ...
         }
         
         for (int j = 0; j< NTAULER; j++) {
             if (tauler[torre[0]][j] != SIMBOL_TORRE)
                 tauler[torre[0]][j] = SIMBOL_MATA;
+            else
+                ...
         }
     }
     
