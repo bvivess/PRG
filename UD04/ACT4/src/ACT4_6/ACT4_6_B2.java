@@ -32,9 +32,9 @@ public class ACT4_6_B2 {
         boolean oktorre = true;
         
         do {
-            torre  = UtilitatsArrays.generaArray(2, 0, NTAULER-1); // genera posició de la fulla
+            torre  = UtilitatsArrays.generaArray(2, 0, NTAULER-1); // genera posició de la torre
 
-            if (tauler[torre[0]][torre[1]] == SIMBOL_TORRE) { // situa la fulla al tauler si la posició està  buida
+            if (tauler[torre[0]][torre[1]] == SIMBOL_TORRE) { // situa la torre en el tauler si la posició està no està ocupada per una altra torre
                 oktorre = false;
             }
         } while (!oktorre);
