@@ -23,9 +23,7 @@ public class ACT4_6_B2 {
             mataTorre(tauler, torre);
         
             UtilitatsMatrius.mostrarMatriu(tauler);
-        
-            // mostrar el tauler
-            
+                   
             i++;            
         }
     }
@@ -48,7 +46,6 @@ public class ACT4_6_B2 {
     public static void emplenaTauler(int[][] tauler, int[] torre) {
         
         tauler[torre[0]][torre[1]] = SIMBOL_TORRE;
-        UtilitatsArrays.mostraArray(torre);
         
     }
     
@@ -57,14 +54,16 @@ public class ACT4_6_B2 {
             if (tauler[i][torre[1]] != SIMBOL_TORRE)
                 tauler[i][torre[1]] = SIMBOL_MATA;
             else
-                ...
+                if (i!=torre[0])
+                    System.out.println("Torre (" + torre[0] + ","+ torre[1] + ") mata a torre (" + i + "," + torre[1] + ")");
         }
         
         for (int j = 0; j< NTAULER; j++) {
             if (tauler[torre[0]][j] != SIMBOL_TORRE)
                 tauler[torre[0]][j] = SIMBOL_MATA;
             else
-                ...
+                if (j!=torre[1])
+                    System.out.println("Torre (" + torre[0] + ","+ torre[1] + ") mata a torre (" + torre[0] + "," + j + ")");
         }
     }
     
