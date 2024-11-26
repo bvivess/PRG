@@ -10,8 +10,8 @@ public class ACT4_6_B2 {
     static int [] torre;
 
     public static void main(String[] args) {
-        NTAULER=UtilitatsConsola.llegirSencer("Intodueixi la mida del tauler: ");
-        NTORRES=UtilitatsConsola.llegirSencer("Intodueixi el nombre de torres: ");
+        NTAULER = UtilitatsConsola.llegirSencer("Intodueixi la mida del tauler: ");
+        NTORRES =  UtilitatsConsola.llegirSencer("Intodueixi el nombre de torres: ");
         tauler = new int[NTAULER][NTAULER];  // matriu NTAULERxNTAULER
         int i = 0;
 
@@ -32,7 +32,7 @@ public class ACT4_6_B2 {
         boolean oktorre = true;
         
         do {
-            torre  = UtilitatsArrays.generaArray(2, 0, NTAULER-1); // genera posició de la torre
+            torre  = UtilitatsArrays.generaArray(2, 0, NTAULER-1); // genera posició de la torre, ha de tornar-se en forma de funció ja que l'array en genera cada vegada
 
             if (tauler[torre[0]][torre[1]] == SIMBOL_TORRE) { // situa la torre en el tauler si la posició està no està ocupada per una altra torre
                 oktorre = false;
