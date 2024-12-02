@@ -61,18 +61,18 @@ public class ACT4_6_C2 {
     }
     
     public static void afegeixFulla(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
-        ArrayList<int[]> unio = new ArrayList<>();
+        ArrayList<int[]> cucIfulles = new ArrayList<>();
         int[] posNovaFulla;  // posicio nova fulla
         boolean okFulla = true;
 
-        unio.addAll(cuc);
-        unio.addAll(fulles);
+        cucIfulles.addAll(cuc);
+        cucIfulles.addAll(fulles);
         
         do {
             posNovaFulla  = UtilitatsArrays.generaArray(2,0, NTAULER-1); // genera posició de la fulla
             // Recorre 'fulles' per veure que 'posFulla' és correcta
             okFulla = true;
-            for (int[] pos : unio) {
+            for (int[] pos : cucIfulles) {
                 if (Arrays.equals(pos,posNovaFulla)) {
                     okFulla = false;
                     break;
