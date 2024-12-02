@@ -37,11 +37,15 @@ public class ACT4_6_C2 {
             mostrarTauler(tauler, cuc, fulles);
             accio = UtilitatsConsola.llegirSencer("Puntuació: " + cuc.size() +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
             if ((accio == 2) | (accio == 4)| (accio == 6)| (accio == 8))
-                cambiaPosicio(tauler, cuc, fulles, accio);
-            if (fulles.size() == 0) {
-                System.out.println("YOU WIN !!");
-                accio = 0;
-            }
+                if (cambiaPosicio(tauler, cuc, fulles, accio)) {
+                    if (fulles.size() == 0) {
+                        System.out.println("YOU WIN !!");
+                        accio = 0;
+                    }
+                } else {
+                    System.out.println("YOU LOSE !!");
+                    accio = 0;
+                }
         } while (accio != 0);
     }
     
@@ -80,8 +84,7 @@ public class ACT4_6_C2 {
         fulles.add(posNovaFulla);
     }
     
-    public static void cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles, int accio) {
-        boolean seguir = true;
+    public static boolean cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles, int accio) {
         int mida = tauler.length;
         int[] posFulla, posCuc;
         int[] posCucCap = new int[] { cuc.get(cuc.size()-1)[0],
@@ -106,26 +109,23 @@ public class ACT4_6_C2 {
             if (Arrays.equals(posFulla,posCucCap)) {
                 cuc.add(posCucCap);
                 fulles.remove(i);
-                seguir = false;
-                break;
+                return true;
             }
         }
         
         // Cuc es tropitja ?
-        if (seguir)
-            for (int i=0; i < cuc.size(); i++) {
-                posCuc = cuc.get(i);
-                if (Arrays.equals(posCuc,posCucCap)) {
-                    seguir = false;
-                    break;
-                }
+        for (int i=0; i < cuc.size(); i++) {
+            posCuc = cuc.get(i);
+            if (Arrays.equals(posCuc,posCucCap)) {
+                return false;
             }
+        }
         
         // Cuc en simbol_buit
-        if (seguir) {
-            cuc.add(posCucCap); // afegim posCuc a cuc
-            cuc.remove(0);  // eliminam cua a cuc
-        }
+        cuc.add(posCucCap); // afegim posCuc a cuc
+        cuc.remove(0);  // eliminam cua a cuc
+
+        return true;       
     }
 
     
