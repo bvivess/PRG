@@ -36,7 +36,15 @@ public class ACT4_6_C1 {
         do {
             mostrarTauler(tauler, cuc, fulles);  //
             accio = UtilitatsConsola.llegirSencer("Puntuació: " + cuc.size() +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
-            cambiaPosicio(tauler, cuc, fulles, accio);
+            if (cambiaPosicio(tauler, cuc, fulles, accio)) {
+                if (fulles.size() == 0) {
+                    System.out.println("YOU WIN !!");
+                    accio = 0;
+                }
+            } else {
+                System.out.println("YOU LOSE !!");
+                accio = 0;
+            }
             
         } while (accio != 0);
     }
@@ -113,15 +121,15 @@ public class ACT4_6_C1 {
     *               posCucCap[0] = (posCucCap[0] == mida-1 ? 0 : posCucCap[0]+1); 
     *         }
     *       - una vegada el es sap el moviment del cap, cal demanar-se:
-    *           - el cuc menja una fulla ?
-    *               posCucCap es igual a alguna de les posicions (x,y) de 'fulles' ? si ho és cal eliminar aquesta posició de 'fulles' i afegir posCapCuc al 'cuc'
-    *           - o bé, el cuc es tropitja a sí mateix ?
+    *           - el cuc es tropitja a sí mateix ?
     *               posCucCap es igual a alguna de les posicions (x,y) de 'cuc'
+    *           - o bé, el cuc menja una fulla ?
+    *               posCucCap es igual a alguna de les posicions (x,y) de 'fulles' ? si ho és cal eliminar aquesta posició de 'fulles' i afegir posCapCuc al 'cuc'
     *           - o bé, el cuc es mou:
     *               afegir posCapCuc al 'cuc' i eliminar la primera posició de 'cuc
     * 
      */
-    public static void cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles, int accio) {
+    public static boolean cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles, int accio) {  // torna 'true' si el 'cuc' es tropitja, 'false' en cas contrari
         int mida = tauler.length;
         int[] posCucCap = new int[] { cuc.get(cuc.size()-1)[0],
                                       cuc.get(cuc.size()-1)[1] }; // posició actual del cap és la darrera posició de l'arraylist
@@ -138,10 +146,12 @@ public class ACT4_6_C1 {
         }
         
         // Moure el cuc: 
-        //    Cuc menja fulla ?
         //    Cuc es tropitja ?
-        //    Cuc es mou ...
-       
+        return false;
+        //    Cuc menja fulla ?
+        //return true;
+        //    Cuc es mou ... 
+        //return true;
     }
     
         /**
