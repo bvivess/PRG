@@ -86,6 +86,9 @@ public class ACT4_6_C1 {
         }
         
         // Moure el cuc: 
+        //    Cuc menja fulla ?
+        //    Cuc es tropitja ?
+        //    Cuc es mou ...
        
     }
     
