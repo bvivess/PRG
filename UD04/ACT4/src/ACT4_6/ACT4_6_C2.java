@@ -89,8 +89,6 @@ public class ACT4_6_C2 {
         int[] posFulla, posCuc;
         int[] posCucCap = new int[] { cuc.get(cuc.size()-1)[0],
                                       cuc.get(cuc.size()-1)[1] }; // posició actual del cap és la darrera posició de l'arraylist
-        int[] posCucCua = new int[] { cuc.get(0)[0],
-                                      cuc.get(0)[1] };  // posició actual de la cua és la primera posició de l'arraylist
         
         switch (accio) {
             case 4 -> // ESQ
@@ -121,7 +119,7 @@ public class ACT4_6_C2 {
             }
         }
         
-        // Cuc en simbol_buit
+        // Cuc en SIMBOL_BUIT
         cuc.add(posCucCap); // afegim posCuc a cuc
         cuc.remove(0);  // eliminam cua a cuc
 
