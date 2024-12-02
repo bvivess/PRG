@@ -155,9 +155,7 @@ public class ACT4_6_C2 {
         netejaTauler(tauler);
         situaCuc(tauler, cuc);
         situaFulles(tauler, fulles);
-        
-        UtilitatsMatrius.mostrarMatriu(tauler);
-        
+              
         for (int i = 0; i < tauler.length; i++) {
             System.out.print('|');
             for (int j = 0; j < tauler[i].length; j++) {
