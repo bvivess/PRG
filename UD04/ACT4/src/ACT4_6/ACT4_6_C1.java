@@ -116,9 +116,9 @@ public class ACT4_6_C1 {
     *       - una vegada el es sap el moviment del cap, cal demanar-se:
     *           - el cuc menja una fulla ?
     *               posCucCap es igual a alguna de les posicions (x,y) de 'fulles' ? si ho és cal eliminar aquesta posició de 'fulles' i afegir posCapCuc al 'cuc'
-    *           - el cuc es tropitja a sí mateix ?
+    *           - o bé, el cuc es tropitja a sí mateix ?
     *               posCucCap es igual a alguna de les posicions (x,y) de 'cuc'
-    *           - sino, el cuc es mou:
+    *           - o bé, el cuc es mou:
     *               afegir posCapCuc al 'cuc' i eliminar la primera posició de 'cuc
     * 
      */
