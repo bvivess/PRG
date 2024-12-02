@@ -47,8 +47,8 @@ public class ACT4_6_C1 {
      * @param fulles 
      * 
      * Ha de rebre el 'tauler' buit i ha de crear :
-     *      - cuc
-     *      - fulles
+     *      - el 'cuc'
+     *      - les 'fulles'
      */
     public static void emplenaTauler(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
         
@@ -70,9 +70,9 @@ public class ACT4_6_C1 {
      * Ha de rebre el 'tauler' i el 'cuc' i de crear :
      *      - 1 fulla
      * 
-     * Per veure que una fulla és correcte, no ha de coincidir amb
-     *      - cada posició del 'cuc'
-     *      - cada posició de les 'fulles'
+     * Per veure que una fulla és correcte, no ha de coincidir amb:
+     *      - alguna posició del 'cuc'
+     *      - alguna posició de les 'fulles'
      * creats anteriorent
      */
     public static void afegeixFulla(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
