@@ -3,8 +3,6 @@ package ACT4_6;
 import ACT4_1.UtilitatsArrays;
 import ACT4_2.UtilitatsMatrius;
 import ACT4_3.UtilitatsConsola;
-import static ACT4_6.ACT4_6_A4.SIMBOL_BUIT;
-
 
  /**
   * Crea una classe que inicialitzi una matriu quadrada,
