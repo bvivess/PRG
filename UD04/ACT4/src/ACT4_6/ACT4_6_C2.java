@@ -119,7 +119,7 @@ public class ACT4_6_C2 {
             }
         }
         
-        // Cuc en SIMBOL_BUIT
+        // Cuc es mou
         cuc.add(posCucCap); // afegim posCuc a cuc
         cuc.remove(0);  // eliminam cua a cuc
 
