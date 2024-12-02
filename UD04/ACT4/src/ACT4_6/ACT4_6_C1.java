@@ -128,6 +128,8 @@ public class ACT4_6_C1 {
     *           - o bé, el cuc es mou:
     *               afegir posCapCuc al 'cuc' i eliminar la primera posició de 'cuc
     * 
+    * Torna 'false' si el 'cuc' es tropija a sí mateix, 'true' en cas contrari
+    * 
      */
     public static boolean cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles, int accio) {  // torna 'true' si el 'cuc' es tropitja, 'false' en cas contrari
         int mida = tauler.length;
@@ -146,12 +148,9 @@ public class ACT4_6_C1 {
         }
         
         // Moure el cuc: 
-        //    Cuc es tropitja ?
-        return false;
-        //    Cuc menja fulla ?
-        //return true;
-        //    Cuc es mou ... 
-        //return true;
+        //    'cuc' es tropitja ? --> return false;
+        //    'cuc' menja 'fulla' ? --> return true;
+        //    'cuc' es mou --> return true;
     }
     
         /**
