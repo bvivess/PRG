@@ -3,7 +3,7 @@ package ACT4_6;
 import ACT4_1.UtilitatsArrays;
 import ACT4_3.UtilitatsConsola;
 import java.util.ArrayList;
-
+import java.util.Arrays;
 
 
  /**
@@ -36,6 +36,8 @@ public class ACT4_6_C2 {
         do {
             mostrarTauler(tauler, cuc, fulles);
             accio = UtilitatsConsola.llegirSencer("Puntuació: " + cuc.size() +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
+            if ((accio == 2) | (accio == 4)| (accio == 6)| (accio == 8))
+                cambiaPosicio(tauler, cuc, fulles, accio);
         } while (accio != 0);
     }
     
@@ -61,8 +63,9 @@ public class ACT4_6_C2 {
         do {
             posNovaFulla  = UtilitatsArrays.generaArray(2,0, NTAULER-1); // genera posició de la fulla
             // Recorre 'fulles' per veure que 'posFulla' és correcta
+            okFulla = true;
             for (int[] pos : unio) {
-                if (pos.equals(posNovaFulla)) {
+                if (Arrays.equals(pos,posNovaFulla)) {
                     okFulla = false;
                     break;
                 }
@@ -73,9 +76,9 @@ public class ACT4_6_C2 {
         fulles.add(posNovaFulla);
     }
     
-    public static void cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, int accio) {
-        boolean esTropitja = false;
+    public static void cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles, int accio) {
         int mida = tauler.length;
+        int[] posFulla, posCuc;
         int[] posCucCap = new int[] { cuc.get(cuc.size()-1)[0],
                                       cuc.get(cuc.size()-1)[1] }; // posició actual del cap és la darrera posició de l'arraylist
         int[] posCucCua = new int[] { cuc.get(0)[0],
@@ -91,7 +94,30 @@ public class ACT4_6_C2 {
             case 2 -> //BAIX
                 posCucCap[0] = (posCucCap[0] == mida-1 ? 0 : posCucCap[0]+1); 
         }
-       
+        
+        // Cuc menja fulla ?
+        for (int i=0; i < fulles.size(); i++) {
+            posFulla = fulles.get(i);
+            if (Arrays.equals(posFulla,posCucCap)) {
+                
+                cuc.add(posCucCap);
+                fulles.remove(i);
+                break;
+            }
+        }
+        
+        // Cuc es tropitja ?
+        for (int i=0; i < cuc.size(); i++) {
+            posCuc = fulles.get(i);
+            if (Arrays.equals(posCuc,posCucCap)) {
+                accio = 0;
+                break;
+            }
+        }
+        
+        // Cuc en simbol_buit
+        cuc.add(posCucCap); // afegim posCuc a cuc
+        cuc.remove(0);  // eliminam cua a cuc
     }
     
     public static void situaCuc(int[][] tauler, ArrayList<int[]> cuc){
@@ -107,12 +133,21 @@ public class ACT4_6_C2 {
             tauler[pos[0]][pos[1]] = SIMBOL_FULLA;
         }
     }
+    
+    public static void netejaTauler(int[][] tauler){
+        for (int i = 0; i < tauler.length; i++) 
+            for (int j = 0; j < tauler[i].length; j++)
+                tauler[i][j] = SIMBOL_BUIT;
+    }
  
     public static void mostrarTauler(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
         String car="";
         
-        situaCuc(tauler,cuc);
+        netejaTauler(tauler);
+        situaCuc(tauler, cuc);
         situaFulles(tauler, fulles);
+        
+        UtilitatsMatrius.mostrarMatriu(tauler);
         
         for (int i = 0; i < tauler.length; i++) {
             System.out.print('|');

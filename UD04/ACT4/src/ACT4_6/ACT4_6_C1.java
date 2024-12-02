@@ -64,7 +64,7 @@ public class ACT4_6_C1 {
         } while (!okFulla);
         
         // Afegeix fulla
-        fulles.add(posNovaFulla);
+        
     }
     
     public static void cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, int accio) {
