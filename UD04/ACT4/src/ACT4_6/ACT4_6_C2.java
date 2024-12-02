@@ -135,15 +135,15 @@ public class ACT4_6_C2 {
 
     public static void situaCuc(int[][] tauler, ArrayList<int[]> cuc){
         int i=0;
-        for (int[] pos : cuc) {
-            tauler[pos[0]][pos[1]] = (i==cuc.size()-1 ? SIMBOL_CAPCUC: SIMBOL_CUC);
+        for (int[] posCuc : cuc) {
+            tauler[posCuc[0]][posCuc[1]] = (i==cuc.size()-1 ? SIMBOL_CAPCUC: SIMBOL_CUC);
             i++;
         }
     }
     
     public static void situaFulles(int[][] tauler, ArrayList<int[]> fulles){
-        for (int[] pos : fulles) {
-            tauler[pos[0]][pos[1]] = SIMBOL_FULLA;
+        for (int[] posFulla : fulles) {
+            tauler[posFulla[0]][posFulla[1]] = SIMBOL_FULLA;
         }
     }
  
