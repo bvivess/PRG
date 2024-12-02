@@ -89,6 +89,12 @@ public class ACT4_6_C1 {
        
     }
     
+    public static void netejaTauler(int[][] tauler){
+        for (int i = 0; i < tauler.length; i++) 
+            for (int j = 0; j < tauler[i].length; j++)
+                tauler[i][j] = SIMBOL_BUIT;
+    }  
+    
     public static void situaCuc(int[][] tauler, ArrayList<int[]> cuc){
         // Recorre 'cuc' i posar SIMBOL_CAPCUC o SIMBOL_CUC en el tauler
     }
@@ -100,7 +106,8 @@ public class ACT4_6_C1 {
     public static void mostrarTauler(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
         String car="";
         
-        situaCuc(tauler,cuc);
+        netejaTauler(tauler);
+        situaCuc(tauler, cuc);
         situaFulles(tauler, fulles);
         
         for (int i = 0; i < tauler.length; i++) {
