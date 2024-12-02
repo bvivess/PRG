@@ -36,7 +36,7 @@ public class ACT4_6_C1 {
         do {
             mostrarTauler(tauler, cuc, fulles);
             accio = UtilitatsConsola.llegirSencer("Puntuació: " + cuc.size() +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
-            
+            cambiaPosicio(tauler, cuc, fulles, accio);
             
         } while (accio != 0);
     }
@@ -67,7 +67,7 @@ public class ACT4_6_C1 {
         
     }
     
-    public static void cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, int accio) {
+    public static void cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles, int accio) {
         int mida = tauler.length;
         int[] posCucCap = new int[] { cuc.get(cuc.size()-1)[0],
                                       cuc.get(cuc.size()-1)[1] }; // posició actual del cap és la darrera posició de l'arraylist
