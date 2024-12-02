@@ -84,7 +84,7 @@ public class ACT4_6_C2 {
         fulles.add(posNovaFulla);
     }
     
-    public static boolean cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles, int accio) {
+    public static boolean cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles, int accio) {  // torna 'true' si el 'cuc' es tropitja, 'false' en cas contrari
         int mida = tauler.length;
         int[] posFulla, posCuc;
         int[] posCucCap = new int[] { cuc.get(cuc.size()-1)[0],
