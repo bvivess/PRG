@@ -3,7 +3,7 @@ package ACT4_6;
 import ACT4_1.UtilitatsArrays;
 import ACT4_3.UtilitatsConsola;
 import java.util.ArrayList;
-
+import java.util.Arrays;
 
 
  /**
