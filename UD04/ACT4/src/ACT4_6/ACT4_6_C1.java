@@ -96,13 +96,13 @@ public class ACT4_6_C1 {
         // Afegeix fulla
         
     }
-    
     /**
-     * @param tauler
-     * @param cuc
-     * @param fulles
-     * @param accio 
-     * 
+    * @param tauler
+    * @param cuc
+    * @param fulles
+    * @param accio 
+    * @return 'false' si el 'cuc' es tropija a sí mateix, 'true' en cas contrari
+    * 
     * Ha de rebre el 'tauler', el 'cuc', les 'fulles' i l''acció :
     * 
     * El moviment es fa de la següent manera:
@@ -128,7 +128,7 @@ public class ACT4_6_C1 {
     *           - o bé, el cuc es mou:
     *               afegir posCapCuc al 'cuc' i eliminar la primera posició de 'cuc
     * 
-    * Torna 'false' si el 'cuc' es tropija a sí mateix, 'true' en cas contrari
+    * 
     * 
      */
     public static boolean cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles, int accio) {  // torna 'true' si el 'cuc' es tropitja, 'false' en cas contrari
@@ -151,9 +151,11 @@ public class ACT4_6_C1 {
         //    'cuc' es tropitja ? --> return false;
         //    'cuc' menja 'fulla' ? --> return true;
         //    'cuc' es mou --> return true;
+        
+        return true || false;
     }
     
-        /**
+     /**
      * 
      * @param tauler
      * @param cuc
