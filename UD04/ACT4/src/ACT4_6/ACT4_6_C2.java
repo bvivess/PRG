@@ -38,6 +38,10 @@ public class ACT4_6_C2 {
             accio = UtilitatsConsola.llegirSencer("Puntuació: " + cuc.size() +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
             if ((accio == 2) | (accio == 4)| (accio == 6)| (accio == 8))
                 cambiaPosicio(tauler, cuc, fulles, accio);
+            if (fulles.size() == 0) {
+                System.out.println("YOU WIN !!");
+                accio = 0;
+            }
         } while (accio != 0);
     }
     
@@ -77,6 +81,7 @@ public class ACT4_6_C2 {
     }
     
     public static void cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles, int accio) {
+        boolean seguir = true;
         int mida = tauler.length;
         int[] posFulla, posCuc;
         int[] posCucCap = new int[] { cuc.get(cuc.size()-1)[0],
@@ -99,27 +104,37 @@ public class ACT4_6_C2 {
         for (int i=0; i < fulles.size(); i++) {
             posFulla = fulles.get(i);
             if (Arrays.equals(posFulla,posCucCap)) {
-                
                 cuc.add(posCucCap);
                 fulles.remove(i);
+                seguir = false;
                 break;
             }
         }
         
         // Cuc es tropitja ?
-        for (int i=0; i < cuc.size(); i++) {
-            posCuc = fulles.get(i);
-            if (Arrays.equals(posCuc,posCucCap)) {
-                accio = 0;
-                break;
+        if (seguir)
+            for (int i=0; i < cuc.size(); i++) {
+                posCuc = cuc.get(i);
+                if (Arrays.equals(posCuc,posCucCap)) {
+                    seguir = false;
+                    break;
+                }
             }
-        }
         
         // Cuc en simbol_buit
-        cuc.add(posCucCap); // afegim posCuc a cuc
-        cuc.remove(0);  // eliminam cua a cuc
+        if (seguir) {
+            cuc.add(posCucCap); // afegim posCuc a cuc
+            cuc.remove(0);  // eliminam cua a cuc
+        }
     }
+
     
+    public static void netejaTauler(int[][] tauler){
+        for (int i = 0; i < tauler.length; i++) 
+            for (int j = 0; j < tauler[i].length; j++)
+                tauler[i][j] = SIMBOL_BUIT;
+    }    
+
     public static void situaCuc(int[][] tauler, ArrayList<int[]> cuc){
         int i=0;
         for (int[] pos : cuc) {
@@ -132,12 +147,6 @@ public class ACT4_6_C2 {
         for (int[] pos : fulles) {
             tauler[pos[0]][pos[1]] = SIMBOL_FULLA;
         }
-    }
-    
-    public static void netejaTauler(int[][] tauler){
-        for (int i = 0; i < tauler.length; i++) 
-            for (int j = 0; j < tauler[i].length; j++)
-                tauler[i][j] = SIMBOL_BUIT;
     }
  
     public static void mostrarTauler(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
