@@ -89,7 +89,6 @@ public class ACT4_6_C1 {
         
     }
     
-    
     /**
      * @param tauler
      * @param cuc
