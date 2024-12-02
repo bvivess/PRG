@@ -18,7 +18,7 @@ public class ACT4_6_C2 {
     static int NTAULER;
     static int NFULLES;
     static final int SIMBOL_BUIT = 0;
-    static final int SIMBOL_FULLA = 99;
+    static final int SIMBOL_FULLA = 9;
     static final int SIMBOL_CUC = 1;
     static final int SIMBOL_CAPCUC = 2;
     static int[][] tauler;

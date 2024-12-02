@@ -18,7 +18,7 @@ public class ACT4_6_C1 {
     static int NTAULER;
     static int NFULLES;
     static final int SIMBOL_BUIT = 0;
-    static final int SIMBOL_FULLA = 99;
+    static final int SIMBOL_FULLA = 9;
     static final int SIMBOL_CUC = 1;
     static final int SIMBOL_CAPCUC = 2;
     static int[][] tauler;
@@ -34,7 +34,7 @@ public class ACT4_6_C1 {
         emplenaTauler(tauler, cuc, fulles);
         
         do {
-            mostrarTauler(tauler, cuc, fulles);
+            mostrarTauler(tauler, cuc, fulles);  //
             accio = UtilitatsConsola.llegirSencer("Puntuació: " + cuc.size() +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
             cambiaPosicio(tauler, cuc, fulles, accio);
             
