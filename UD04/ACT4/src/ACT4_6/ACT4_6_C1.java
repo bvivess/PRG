@@ -41,6 +41,15 @@ public class ACT4_6_C1 {
         } while (accio != 0);
     }
     
+    /**
+     * @param tauler
+     * @param cuc
+     * @param fulles 
+     * 
+     * Ha de rebre el 'tauler' buit i ha de crear :
+     *      - cuc
+     *      - fulles
+     */
     public static void emplenaTauler(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
         
         // Genera posició Inicial cuc
@@ -53,6 +62,19 @@ public class ACT4_6_C1 {
         }
     }
     
+    /**
+     * @param tauler
+     * @param cuc
+     * @param fulles 
+     * 
+     * Ha de rebre el 'tauler' i el 'cuc' i de crear :
+     *      - 1 fulla
+     * 
+     * Per veure que una fulla és correcte, no ha de coincidir amb
+     *      - cada posició del 'cuc'
+     *      - cada posició de les 'fulles'
+     * creats anteriorent
+     */
     public static void afegeixFulla(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
         int[] posNovaFulla;  // posicio nova fulla
         boolean okFulla = true;
@@ -67,6 +89,39 @@ public class ACT4_6_C1 {
         
     }
     
+    
+    /**
+     * @param tauler
+     * @param cuc
+     * @param fulles
+     * @param accio 
+     * 
+    * Ha de rebre el 'tauler', el 'cuc', les 'fulles' i l''acció :
+    * 
+    * El moviment es fa de la següent manera:
+    *       - qui es mou es el cap: 
+    *           int[] posCucCap = new int[] { cuc.get(cuc.size()-1)[0],
+    *                                         cuc.get(cuc.size()-1)[1] };
+    *       - El cap es mou segons:
+    *         switch (accio) {
+    *           case 4 -> // ESQ
+    *               posCucCap[1] = (posCucCap[1] == 0 ? mida-1 : posCucCap[1]-1); 
+    *           case 6  -> // DRETA
+    *               posCucCap[1] = (posCucCap[1] == mida-1 ? 0 : posCucCap[1]+1); 
+    *           case 8  -> // ALT
+    *            posCucCap[0] = (posCucCap[0] == 0 ? mida-1 : posCucCap[0]-1); 
+    *           case 2 -> //BAIX
+    *               posCucCap[0] = (posCucCap[0] == mida-1 ? 0 : posCucCap[0]+1); 
+    *         }
+    *       - una vegada el es sap el moviment del cap, cal demanar-se:
+    *           - el cuc menja una fulla ?
+    *               posCucCap es igual a alguna de les posicions (x,y) de 'fulles' ? si ho és cal eliminar aquesta posició de 'fulles' i afegir posCapCuc al 'cuc'
+    *           - el cuc es tropitja a sí mateix ?
+    *               posCucCap es igual a alguna de les posicions (x,y) de 'cuc'
+    *           - sino, el cuc es mou:
+    *               afegir posCapCuc al 'cuc' i eliminar la primera posició de 'cuc
+    * 
+     */
     public static void cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles, int accio) {
         int mida = tauler.length;
         int[] posCucCap = new int[] { cuc.get(cuc.size()-1)[0],
@@ -90,20 +145,15 @@ public class ACT4_6_C1 {
        
     }
     
-    public static void netejaTauler(int[][] tauler){
-        for (int i = 0; i < tauler.length; i++) 
-            for (int j = 0; j < tauler[i].length; j++)
-                tauler[i][j] = SIMBOL_BUIT;
-    }  
+        /**
+     * 
+     * @param tauler
+     * @param cuc
+     * @param fulles 
+     * 
+     * Ha de rebre 'tauler' i ha de col·locar cada simbol en aquest
+     */
     
-    public static void situaCuc(int[][] tauler, ArrayList<int[]> cuc){
-        // Recorre 'cuc' i posar SIMBOL_CAPCUC o SIMBOL_CUC en el tauler
-    }
-    
-    public static void situaFulles(int[][] tauler, ArrayList<int[]> fulles){
-        // Recorre 'fulles' i posar SIMBOL_FULLA en el tauler
-    }
- 
     public static void mostrarTauler(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
         String car="";
         
@@ -124,6 +174,41 @@ public class ACT4_6_C1 {
             }
             System.out.println("|");
         }
+    }
+    
+    /**
+    * Posa tot el 'tauler' a SIMBOL_BUIT
+    */
+    
+    public static void netejaTauler(int[][] tauler){
+        for (int i = 0; i < tauler.length; i++) 
+            for (int j = 0; j < tauler[i].length; j++)
+                tauler[i][j] = SIMBOL_BUIT;
+    }  
+    
+    /**
+     * @param tauler
+     * @param cuc 
+     * 
+     * Ha de rebre el 'tauler', ha de recorre 'cuc' i ha de modificar 'tauler' segon:
+     *      - cap -> SIMBOL_CAPCUC
+     *      - resta del cos -> SIMBOL_CUC
+     *      
+     */
+    public static void situaCuc(int[][] tauler, ArrayList<int[]> cuc){
+        // Recorre 'cuc' i posar SIMBOL_CAPCUC o SIMBOL_CUC en el tauler
+    }
+    
+    /**
+     * @param tauler
+     * @param fulles
+     * 
+     * Ha de rebre el 'tauler', ha de recorre 'fulles' i ha de modificar 'tauler' segon:
+     *      - fulla -> SIMBOL_FULLA
+     *      
+     */
+    public static void situaFulles(int[][] tauler, ArrayList<int[]> fulles){
+        // Recorre 'fulles' i posar SIMBOL_FULLA en el tauler
     }
     
 }
