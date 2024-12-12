@@ -10,7 +10,7 @@ import ACT4_3.UtilitatsConsola;
  */
 
 
-public class ACT4_5_5 {
+public class ACT4_5_05 {
     public static void main(String[] args) {
         int base = UtilitatsConsola.llegirSencer("Introdueixi la base de Fibonacci: ");
 

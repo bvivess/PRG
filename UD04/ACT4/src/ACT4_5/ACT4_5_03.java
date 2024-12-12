@@ -9,7 +9,7 @@ import ACT4_3.UtilitatsConsola;
 * @author T.Vives
  */
 
-public class ACT4_5_3 {
+public class ACT4_5_03 {
     public static void main(String[] args) {
         int base = UtilitatsConsola.llegirSencer("Introdueixi un número sencer: ");
 

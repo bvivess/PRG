@@ -11,7 +11,7 @@ import ACT4_1.UtilitatsArrays;
  * @author T.Vives
  */
 
-public class ACT4_5_7 {
+public class ACT4_5_09 {
     public static void main(String[] args) {
         int[] array = UtilitatsArrays.generaArray(10,1,100), arrayOrdenat;
         

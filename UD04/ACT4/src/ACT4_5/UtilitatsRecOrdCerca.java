@@ -91,6 +91,48 @@ public class UtilitatsRecOrdCerca {
     }  
     
     // ACT4_5_6
+    /**Imprimeix patrò, exemple:
+     * *****
+     * ****
+     * ***
+     * **
+     * *
+     * @param n 
+     */
+    public static void imprimeixPatro(int n) {
+        if (n <= 0) {  // cas base
+            System.out.print("*");
+        } else {
+            // Imprimir 'n' asterics 
+            for (int i = 0; i < n; i++) {
+                System.out.print("*");
+            }
+            System.out.println();
+
+            imprimeixPatro(n - 1);
+        }
+    }
+    
+    // ACT4_5_7
+    /** Conta les aparicions de 'lletra' en una 'cadena' de manera recursiva
+    * 
+    * @param cadena on cal cercar
+    * @param lletra cercar
+    * @return int
+    */    
+    public static int contaLletraEnCadena(String cadena, char lletra) {
+        int total;
+        
+        if (cadena.isEmpty()) // cas base
+            return 0;
+        else {
+            // Comprobar si el primer carácter coincide y sumar el resultado de la llamada recursiva
+            total = (cadena.charAt(0) == lletra) ? 1 : 0;
+            return total + contaLletraEnCadena(cadena.substring(1), lletra);
+        }
+    }
+    
+    // ACT4_5_8
     /** Comprova que l'array sigui de tres posicions i torna el resultat.
     * Si té 3 posicioins ordena l'array.
     * 
@@ -122,7 +164,7 @@ public class UtilitatsRecOrdCerca {
         return resultat;
     }
     
-    // ACT4_5_7
+    // ACT4_5_9
     /** Ordena un array segons l'algoritme de la bimbolla (versiÃ³ 1)
     * https://es.wikipedia.org/wiki/Ordenamiento_de_burbuja
     * 
@@ -147,7 +189,7 @@ public class UtilitatsRecOrdCerca {
         return array;
     }
     
-    // ACT4_5_8
+    // ACT4_5_10
     /** Cercar un númmero en un array ordenat
     * 
     * @param array on cal cercar
@@ -173,7 +215,7 @@ public class UtilitatsRecOrdCerca {
         return -1; // si el 'num' no es troba, es retorna -1
     }
     
-    // ACT4_5_9
+    // ACT4_5_11
     /** Cercar un númmero en un array ordenat de manera recursiva
     * 
     * @param array on cal cercar
@@ -200,4 +242,5 @@ public class UtilitatsRecOrdCerca {
             return cercaArrayRecursiu(array, num, esq, mig - 1);
         }
     }
+    
 }

@@ -12,7 +12,7 @@ import ACT4_1.UtilitatsArrays;
  * @author T.Vives
  */
 
-public class ACT4_5_6 {
+public class ACT4_5_08 {
     public static void main(String[] args) {
         int[] array = UtilitatsArrays.generaArray(3,1,100);
 

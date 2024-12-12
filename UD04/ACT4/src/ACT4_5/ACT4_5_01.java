@@ -10,7 +10,7 @@ import ACT4_3.UtilitatsConsola;
  * 
  * @author T.Vives
  */
-public class ACT4_5_1 {
+public class ACT4_5_01 {
     public static void main(String[] args) {
         int base = UtilitatsConsola.llegirSencer("Introdueixi la base: ");
         int exponent = UtilitatsConsola.llegirSencer("Introdueixi l'exponent: ");

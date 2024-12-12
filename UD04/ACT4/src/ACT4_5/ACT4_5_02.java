@@ -9,7 +9,7 @@ import ACT4_3.UtilitatsConsola;
  * @author T.Vives
 */
 
-public class ACT4_5_2 {
+public class ACT4_5_02 {
     public static void main(String[] args) {
         int base = UtilitatsConsola.llegirSencer("Introdueixi la base factorial: ");
 
