@@ -1,9 +1,7 @@
 package ACT4_5;
 
-
-
 public class UtilitatsRecOrdCerca {
-    // ACT4_5_1
+    // ACT4_5_01
     /**
      * Calcula la potència d'un nombre.
      *
@@ -22,7 +20,7 @@ public class UtilitatsRecOrdCerca {
         }
     } 
     
-    // ACT4_5_2
+    // ACT4_5_02
     /**
      * Calcula el factorial d'un nombre.
      *
@@ -37,7 +35,7 @@ public class UtilitatsRecOrdCerca {
         }
     }   
     
-    // ACT4_5_3
+    // ACT4_5_03
     /**
      * Calcula la suma de númoeros sencers a partir d'un donat.
      *
@@ -52,7 +50,7 @@ public class UtilitatsRecOrdCerca {
         }
     }
 
-    // ACT4_5_4
+    // ACT4_5_04
     /**
      * Calcula el màxim comú divisor entre 2 números: 
      * https://www.youtube.com/watch?v=Aa7gIGtGARs
@@ -68,7 +66,7 @@ public class UtilitatsRecOrdCerca {
         }
     }
     
-    // ACT4_5_5
+    // ACT4_5_05
     /**
      * Calcula el fibonacci d'un nombre.
      *
@@ -90,7 +88,7 @@ public class UtilitatsRecOrdCerca {
         }
     }  
     
-    // ACT4_5_6
+    // ACT4_5_06
     /**Imprimeix patrò, exemple:
      * *****
      * ****
@@ -113,7 +111,7 @@ public class UtilitatsRecOrdCerca {
         }
     }
     
-    // ACT4_5_7
+    // ACT4_5_07
     /** Conta les aparicions de 'lletra' en una 'cadena' de manera recursiva
     * 
     * @param cadena on cal cercar
@@ -132,7 +130,7 @@ public class UtilitatsRecOrdCerca {
         }
     }
     
-    // ACT4_5_8
+    // ACT4_5_08
     /** Comprova que l'array sigui de tres posicions i torna el resultat.
     * Si té 3 posicioins ordena l'array.
     * 
@@ -164,14 +162,14 @@ public class UtilitatsRecOrdCerca {
         return resultat;
     }
     
-    // ACT4_5_9
+    // ACT4_5_09
     /** Ordena un array segons l'algoritme de la bimbolla (versiÃ³ 1)
     * https://es.wikipedia.org/wiki/Ordenamiento_de_burbuja
     * 
     * @param array que cal ordenar
     * @return array ordenat
     */
-    public static int[] ordenaArrayBimbolla(int[] array){
+    public static int[] ordenaArrayBimbolla(int[] array) {
         int n = array.length;
         int aux;
         

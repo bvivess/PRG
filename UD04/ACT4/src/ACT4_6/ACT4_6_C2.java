@@ -126,7 +126,6 @@ public class ACT4_6_C2 {
         return true;       
     }
 
-    
     public static void netejaTauler(int[][] tauler){
         for (int i = 0; i < tauler.length; i++) 
             for (int j = 0; j < tauler[i].length; j++)
