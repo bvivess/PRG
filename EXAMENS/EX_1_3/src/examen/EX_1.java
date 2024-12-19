@@ -121,7 +121,6 @@ public class EX_1 {
         for (int i = globus.size() - 1; i >= 0; i--) {
             int[] pos = globus.get(i);
             if (pos[0] == pos[1] || pos[0]+pos[1] == NTAULER - 1) {
-                System.out.println(pos[0] + "-" + pos[1]);
                 globusExplotats.add(pos);
                 globus.remove(i);
             }
