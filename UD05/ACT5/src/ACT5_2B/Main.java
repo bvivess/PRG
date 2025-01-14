@@ -52,12 +52,12 @@ public class Main {
         client2.nom = "Pere";
         client2.comptes = comptes2;  // atenció a aquesta asignació per referència !!
 
-        client1.realitzaTransaccio(compte1,500.0);
-        client1.realitzaTransaccio(compte1,-200.0);
-        client1.realitzaTransaccio(compte2,1000.0);
-        client1.realitzaTransaccio(compte2,-500.0);
-        client2.realitzaTransaccio(compte3,500.0);
-        client2.realitzaTransaccio(compte3,-1500.0); // transacció no es realitzarà
+        client1.realitzaTransaccio(compte1, 500.0);
+        client1.realitzaTransaccio(compte1, -200.0);
+        client1.realitzaTransaccio(compte2, 1000.0);
+        client1.realitzaTransaccio(compte2, -500.0);
+        client2.realitzaTransaccio(compte3, 500.0);
+        client2.realitzaTransaccio(compte3, -1500.0); // transacció no es realitzarà
 
         // Mostrar saldo final
         client1.mostraClient();

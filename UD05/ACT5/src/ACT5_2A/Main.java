@@ -14,6 +14,7 @@ public class Main {
         compte1.oficina = "0001";
         compte1.dc = "01";
         compte1.numCompte = "0000000001";
+        compte1.saldo = 0;  // No cal
 
         // Declarar i instanciar un client
         Client client1 = new Client();
