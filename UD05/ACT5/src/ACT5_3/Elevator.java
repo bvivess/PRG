@@ -7,9 +7,9 @@ package ACT5_3;
 public class Elevator {
     
     public boolean doorOpen = false;
-    public int currentFloor = 0;
+    public int currentFloor = 1;
     public static int topFloor = 5;
-    public static int bottomFloor = 0;
+    public static int bottomFloor = 1;
     
     // Mètodes específics
     // modifica 'doorOpen'=true
