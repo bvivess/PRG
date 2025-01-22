@@ -12,14 +12,14 @@ public class Modul {
     private static int comptadorModuls=1;
 
     // Constructors
-    public Modul(String nom, int horesSetmanals) throws Exception {
+    public Modul(String nom, int horesSetmanals) {
         if (nom == null || nom.length() == 0){
-            throw new Exception("El nom no pot ser nul");
+            System.out.println("El nom no pot ser nul");
+        } else { 
+            this.idModul = getComptadorModuls();
+            this.nom = nom;
+            this.horesSetmanals = horesSetmanals;
         }
-        
-        this.idModul = getComptadorModuls();
-        this.nom = nom;
-        this.horesSetmanals = horesSetmanals;
         
     }
     

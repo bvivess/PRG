@@ -15,6 +15,7 @@ public class Cicle {
     private static int comptadorCicles = 1;
 
     // Constructors
+    // v1
     public Cicle(String nom, int numAlumnes) {
         this.idCicle = getComptadorCicles();
         this.nom = nom;
@@ -22,11 +23,12 @@ public class Cicle {
         this.moduls = new ArrayList<>();
     }
     
+    // v2
     public Cicle(String nom, int numAlumnes, ArrayList<Modul> moduls) {
         this.idCicle = getComptadorCicles();
         this.nom = nom;
         this.numAlumnes = numAlumnes;
-        this.moduls = new ArrayList<>(moduls);
+        this.moduls = moduls;
     }
 
     // Mòduls

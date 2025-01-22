@@ -21,7 +21,7 @@ public class Institut {
     public Institut(String idInstitut, String nom, ArrayList<Cicle> cicles) {
         this.idInstitut = idInstitut;
         this.nom = nom;
-        this.cicles = new ArrayList<>(cicles);
+        this.cicles = cicles;
     }
     
     // Mètodes específics
@@ -40,9 +40,9 @@ public class Institut {
     public String mostraInstitut() {
         String text;
         
-        text = "Institut " + "ID=" + idInstitut + ", nom=" + nom + "; Cicles: {";
+        text = "Institut " + "ID=" + idInstitut + ", nom=" + nom + ";\n Cicles: {";
         for (Cicle c: cicles) {
-            text = text + c.mostraCicle();
+            text = text + "\n" + c.mostraCicle();
         }
         text = text +"}";
         
