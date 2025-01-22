@@ -1,4 +1,4 @@
-package ACT6_1;
+package ACT6_1B;
 
 /**
  * Representa cada un dels moduls associats a un cicle formatiu
