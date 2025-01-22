@@ -17,7 +17,7 @@ public class Modul {
             throw new Exception("El nom no pot ser nul");
         }
         
-        this.idModul=getComptadorModuls();
+        this.idModul = getComptadorModuls();
         this.nom = nom;
         this.horesSetmanals = horesSetmanals;
         
@@ -25,15 +25,15 @@ public class Modul {
     
     // Getters i Setters
     public int getIdModul() {
-        return idModul;
+        return this.idModul;
     }
 
     public String getNom() {
-        return nom;
+        return this.nom;
     }
 
     public int getHoresSetmanals() {
-        return horesSetmanals;
+        return this.horesSetmanals;
     }
 
     public static int getComptadorModuls() {
