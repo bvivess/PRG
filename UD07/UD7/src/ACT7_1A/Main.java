@@ -11,12 +11,12 @@ public class Main {
         Admin admin = new Admin(304,"Bill Monroe", "108-23-6509", 75002.34);
         Director director = new Director(12,"Susan Wheeler", "099-45-2340", 120567.36, "Global Marketing", 1000000.00);
         
+        manager.raiseSalary(10000);
         
         System.out.println(engineer.printEngineer());
         System.out.println(manager.printManager());
         System.out.println(admin.printAdmin());
         System.out.println(director.printDirector());
-                
     }
     
 }
