@@ -16,10 +16,10 @@ public class Employee {
         // this.ssn = ssn;
         // this.salary = salary;
 
-        setEmpId(empId);
-        setName(name);
-        setSsn(ssn);
-        setSalary(salary);
+        this.setEmpId(empId);
+        this.setName(name);
+        this.setSsn(ssn);
+        this.setSalary(salary);
     }
     
     public void raiseSalary(double increase) {
