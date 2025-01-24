@@ -7,7 +7,6 @@ class Manager extends Employee {
     private ArrayList<Employee> staff;
 
     public Manager(int empId, String name, String ssn, double salary, String deptName) {
-        
         super(empId, name, ssn, salary);
         this.deptName = deptName;
         this.staff = new ArrayList<>();
