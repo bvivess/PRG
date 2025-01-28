@@ -1,5 +1,7 @@
 package ACT7_1A;
 
+import java.util.Objects;
+
 /**
  *
  * @author Administrador
@@ -26,10 +28,6 @@ public class Employee {
         if (increase > 0)
             // this.salary += increase;
             setSalary(this.salary + increase);
-    }
-
-    public String printEmployee() {
-        return "Employee{" + "empId=" + this.getEmpId() + ", name=" + this.getName() + ", ssn=" + this.getSsn() + ", salary=" + this.getSalary() + '}';
     }
 
     public int getEmpId() {
@@ -64,8 +62,16 @@ public class Employee {
     public void setSalary(double salary) {
         this.salary = salary;
     }
-    
 
+    @Override
+    public boolean equals(Object obj) {
+        final Employee o = (Employee) obj;
+        return Objects.equals(this.name, o.name);
+    }
+
+    public String printEmployee() {
+        return "Employee{" + "empId=" + this.getEmpId() + ", name=" + this.getName() + ", ssn=" + this.getSsn() + ", salary=" + this.getSalary() + '}';
+    }
     
 }
 

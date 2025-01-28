@@ -23,12 +23,18 @@ class Flota implements GestioVehicles, GestioConductors {
 
     @Override
     public void afegeixVehicle(Vehicle v) {
-        this.vehicles.add(v);
+        if (this.vehicles.contains(v))
+            System.out.println("Vehicle ja es troba a la llista");
+        else
+            this.vehicles.add(v);
     }
 
     @Override
     public void afegeixConductor(Conductor c) {
-        this.conductors.add(c); 
+        if (this.conductors.contains(c))
+            System.out.println("Conductor ja es troba a la llista");
+        else
+            this.conductors.add(c); 
     }
     
     @Override

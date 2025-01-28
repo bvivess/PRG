@@ -11,4 +11,9 @@ abstract class Persona {
     
     public abstract boolean assignaConductor(Vehicle v);
     public abstract boolean DesAssignaConductor(Vehicle v);
+
+    public String getNom() {
+        return nom;
+    }
+    
 }

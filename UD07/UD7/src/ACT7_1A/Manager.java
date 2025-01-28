@@ -30,9 +30,9 @@ class Manager extends Employee {
     }
     
     public String printManager() {
-        String text = "Manager {" + super.printEmployee() + ", deptName=" + this.deptName;
+        String text = "Manager {" + super.printEmployee() + ", deptName=" + this.deptName + ", Staff=";
         for (Employee e : this.staff)
-            text = text + e.printEmployee();
+            text = text + "\n\t" + e.printEmployee();
         return text + "}";
     }
     

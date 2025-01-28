@@ -1,7 +1,5 @@
 package EXTRAORD;
 
-import java.util.ArrayList;
-
 class Cotxe extends Vehicle {
     private int places;
 

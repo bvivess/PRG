@@ -3,6 +3,7 @@ package EXTRAORD;
 // Main Class
 public class Main {
     public static void main(String[] args) {
+        String text;
         Flota flota = new Flota();
 
         // Creació de vehicles
@@ -12,6 +13,7 @@ public class Main {
         Camio camio2 = new Camio("6789XYZ", 35000, 15000);
         
         // Afegir vehicles a la flota
+        flota.afegeixVehicle(cotxe1);
         flota.afegeixVehicle(cotxe1);
         flota.afegeixVehicle(cotxe2);
         flota.afegeixVehicle(camio1);
@@ -26,12 +28,27 @@ public class Main {
         flota.afegeixConductor(conductor1);
         flota.afegeixConductor(conductor2);
         flota.afegeixConductor(conductor3);
-
+        
         // Assignar vehicles a conductors
-        conductor1.assignaConductor(cotxe1);
-        conductor1.assignaConductor(cotxe2);
-        conductor2.assignaConductor(camio1);
-        conductor2.assignaConductor(camio2);
+        text = (conductor1.assignaConductor(cotxe1)) ? "Vehicle: " + cotxe1.getMatricula() + " assignat a " + conductor1.getNom()
+                                                     : "Vehicle: " + cotxe1.getMatricula() + " NO assignat a " + conductor1.getNom();
+        System.out.println(text);
+        
+        text = (conductor1.assignaConductor(cotxe2)) ? "Vehicle: " + cotxe2.getMatricula() + " assignat a " + conductor1.getNom()
+                                                     : "Vehicle: " + cotxe2.getMatricula() + " NO assignat a " + conductor1.getNom();
+        System.out.println(text);
+        
+        text = (conductor2.assignaConductor(camio1)) ? "Vehicle: " + camio1.getMatricula() + " assignat a " + conductor2.getNom()
+                                                     : "Vehicle: " + camio1.getMatricula() + " NO assignat a " + conductor2.getNom();
+        System.out.println(text);
+
+        text = (conductor2.assignaConductor(camio2)) ? "Vehicle: " + camio2.getMatricula() + " assignat a " + conductor2.getNom()
+                                                     : "Vehicle: " + camio2.getMatricula() + " NO assignat a " + conductor2.getNom();
+        System.out.println(text);
+        
+        text = (conductor3.assignaConductor(cotxe1)) ? "Vehicle: " + cotxe1.getMatricula() + " assignat a " + conductor3.getNom()
+                                                     : "Vehicle: " + cotxe1.getMatricula() + " NO assignat a " + conductor3.getNom();
+        System.out.println(text);
 
         // Gestionar vehicles i conductors
         System.out.println("\n--- Flota ---");

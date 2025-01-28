@@ -34,5 +34,9 @@ abstract class Vehicle {
     public String toString() {
         return "matricula=" + this.matricula + ", kilometratge=" + this.kilometratge + ", Manteniment=" + (this.necessitaManteniment() ? "Si" : "No") ;
     }
+
+    public String getMatricula() {
+        return matricula;
+    }
     
 }
