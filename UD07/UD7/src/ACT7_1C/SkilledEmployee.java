@@ -3,31 +3,31 @@ package ACT7_1C;
 import java.util.ArrayList;
 
 class SkilledEmployee extends Employee {
-    private ArrayList<Employee> skillList;
+    private ArrayList<String> skillList;
 
     public SkilledEmployee(String name, String jobTitle, String level) {
         super(name,jobTitle, level);
         this.skillList = new ArrayList<>();
     }
     
-    public boolean addEmployee(Employee e) {
-        if (this.skillList.contains(e))
+    public boolean addSkill(String s) {
+        if (this.skillList.contains(s))
             return false;
         else {
-            this.skillList.add(e);
+            this.skillList.add(s);
             return true;
         }
     }
     
-    public boolean removeEmployee(Employee e) {
-        return this.skillList.remove(e);
+    public boolean removeSkill(String s) {
+        return this.skillList.remove(s);
     }
     
     @Override
     public String toString() {
-        String text = "Manager {" + super.toString() + ", Employee List=";
-        for (Employee e : this.skillList)
-            text = text + "\n\t" + e.toString();
+        String text = "Manager {" + super.toString() + ", Skill List=";
+        for (String s : this.skillList)
+            text = text + "\n\t" + s;
         return text + "}";
     }
     

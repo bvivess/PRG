@@ -10,6 +10,10 @@ class Manager extends Employee {
         this.employeeList = new ArrayList<>();
     }
     
+    public ArrayList getEmployees() {
+        return this.employeeList;
+    }
+    
     public boolean addEmployee(Employee e) {
         if (this.employeeList.contains(e))
             return false;
