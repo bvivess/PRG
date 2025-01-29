@@ -10,7 +10,7 @@ public class Employee {
     private String jobTitle;
     private String level;
     //
-    private static int empIdNum=0;
+    private static int employeeIdCounter=0;
 
     public Employee(String name, String jobTitle, String level) {
         this.empId = this.calculateEmployeeId();
@@ -20,7 +20,7 @@ public class Employee {
     }
     
     public int calculateEmployeeId() {
-        return Employee.empIdNum++;
+        return Employee.employeeIdCounter++;
     }
     
     @Override

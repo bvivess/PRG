@@ -8,6 +8,8 @@ public class Main {
 
     public static void main(String[] args) {
         Manager manager = new Manager("Barbara Johnson", "Manager", "US Marketing");
+        
+        System.out.println(manager.toString());
 
     }
     
