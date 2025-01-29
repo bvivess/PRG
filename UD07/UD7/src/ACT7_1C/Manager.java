@@ -14,7 +14,7 @@ class Manager extends Employee {
         return this.employeeList;
     }
     
-    public boolean addEmployee(Employee e) {
+    public boolean addEmployee(Employee e) {  // setEmployee()
         if (this.employeeList.contains(e))
             return false;
         else {

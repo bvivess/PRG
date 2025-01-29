@@ -9,8 +9,12 @@ class SkilledEmployee extends Employee {
         super(name,jobTitle, level);
         this.skillList = new ArrayList<>();
     }
+        
+    public ArrayList getSkills() {
+        return this.skillList;
+    }
     
-    public boolean addSkill(String s) {
+    public boolean addSkill(String s) {  // setSkill()
         if (this.skillList.contains(s))
             return false;
         else {
@@ -19,7 +23,7 @@ class SkilledEmployee extends Employee {
         }
     }
     
-    public boolean removeSkill(String s) {
+    public boolean removeSkill(String s) {  
         return this.skillList.remove(s);
     }
     
