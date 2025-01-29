@@ -65,8 +65,8 @@ public class Employee {
 
     @Override
     public boolean equals(Object obj) {
-        final Employee o = (Employee) obj;
-        return Objects.equals(this.name, o.name);
+        final Employee e = (Employee) obj;
+        return this.name.equals(e.name);
     }
 
     public String printEmployee() {
