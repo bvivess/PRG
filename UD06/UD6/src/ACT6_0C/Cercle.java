@@ -1,16 +1,16 @@
-package ACT6_0B;
+package ACT6_0C;
 
 /**
-* Forma geomètrica: Quadrat
+ * Forma geomètrica: Cercle
  * @author T.Vives
  */
-public class Quadrat {
+public class Cercle {
     // Atributs
-    private double costat;
-
+    private double radi;
+    
     // Constructor
-    public Quadrat(double costat) {
-        this.costat = costat;
+    public Cercle(double radi) {
+        this.radi = radi;
     }
     
     // Mètodes específics
@@ -19,24 +19,25 @@ public class Quadrat {
      * @return double àrea
     */
     public double calcularArea() {
-        return Math.PI * Math.pow(costat,2);
+        return Math.PI * Math.pow(radi,2);
     }
- 
+    
     /**
      * Calcula el perímetre de la forma geomètrica
      * @return double àrea
-    */ 
+    */    
     public double calcularPerimetre() {
-        return 4 * costat;
+        return 2 * (Math.PI + radi);
     }
     
     // Getters i Setters
-    public double getCostat() {
-        return costat;
+    public double getRadi() {
+        return radi;
     }
 
-    public void setCostat(double costat) {
-        this.costat = costat;
+    public void setRadi(double radi) {
+        this.radi = radi;
     }
+    
     
 }

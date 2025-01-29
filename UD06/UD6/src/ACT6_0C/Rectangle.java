@@ -1,4 +1,4 @@
-package ACT6_0B;
+package ACT6_0C;
 
 /**
 * Forma geomètrica: Rectangle

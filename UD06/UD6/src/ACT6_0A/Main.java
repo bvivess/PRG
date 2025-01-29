@@ -7,8 +7,7 @@ package ACT6_0A;
 public class Main {
 
    public static void main(String[] args) {
-        Persona p1 = new Persona("Joan","Martinez","Fernández",26);
-        // Persona p2
+        Persona p1 = new Persona("Joan", "Martinez", "Fernández", 26);
 
         p1.mostraPersona();
 
