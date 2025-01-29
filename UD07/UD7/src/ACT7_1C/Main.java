@@ -12,6 +12,7 @@ public class Main {
         manager.addEmployee(tWriter);
         tWriter.addSkill("Skill1");
         tWriter.addSkill("Skill2");
+        tWriter.addSkill("Skill2");
         
         System.out.println(manager.toString());
 
