@@ -1,5 +1,7 @@
 package ACT7_1C;
 
+import java.util.Objects;
+
 /**
  *
  * @author Administrador
@@ -22,6 +24,23 @@ public class Employee {
     public int calculateEmployeeId() {
         return Employee.employeeIdCounter++;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null) {
+            return false;
+        }
+        if (getClass() != o.getClass()) {
+            return false;
+        }
+        final Employee e = (Employee) o;
+        return Objects.equals(this.name, e.name);
+    }
+    
+    
     
     @Override
     public String toString() {
