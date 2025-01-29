@@ -8,6 +8,10 @@ public class Main {
 
     public static void main(String[] args) {
         Manager manager = new Manager("Barbara Johnson", "Manager", "US Marketing");
+        TechnicalWriter tWriter = new TechnicalWriter("Bill Monroe", "Writer", "Writer");
+        manager.addEmployee(tWriter);
+        tWriter.addSkill("Skill1");
+        tWriter.addSkill("Skill2");
         
         System.out.println(manager.toString());
 

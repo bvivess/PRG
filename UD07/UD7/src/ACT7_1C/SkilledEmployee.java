@@ -31,7 +31,7 @@ class SkilledEmployee extends Employee {
     public String toString() {
         String text = "Manager {" + super.toString() + ", Skill List=";
         for (String s : this.skillList)
-            text = text + "\n\t" + s;
+            text = text + "\n\t\t" + s;
         return text + "}";
     }
     

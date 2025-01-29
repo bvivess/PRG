@@ -40,8 +40,6 @@ public class Employee {
         return Objects.equals(this.name, e.name);
     }
     
-    
-    
     @Override
     public String toString() {
         return "Employee{" + "empId=" + empId + ", name=" + name + ", jobTitle=" + jobTitle + ", level=" + level + '}';
