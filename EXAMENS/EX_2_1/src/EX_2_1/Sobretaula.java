@@ -53,6 +53,12 @@ class Sobretaula extends Dispositiu {
     }
     
     @Override
+    public boolean equals(Object obj) {
+        Sobretaula s = (Sobretaula) obj;
+        return super.equals(obj) && this.factorForma.equals(s.factorForma);
+    }
+    
+    @Override
     public String toString() {
         String text = super.toString() + ",\n\tFactor Forma: " + factorForma;
                 

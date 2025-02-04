@@ -1,7 +1,6 @@
 package EX_2_1;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 class Dispositiu {
     private String marca;
