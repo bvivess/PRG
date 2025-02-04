@@ -1,6 +1,9 @@
 package EX_2_1;
 
-import java.util.Objects;
+/**
+ * Comentari Javadoc
+ * @author Administrador
+ */
 
 class Mobil extends Dispositiu {
     private String mida;
@@ -9,6 +12,11 @@ class Mobil extends Dispositiu {
         super(marca, model, preuBase);
         setMida(mida);
     }
+    
+    /**
+     * CalculaPreu per a Mobil
+     * @return preuBase + preu segons 'mida'
+     */
     
     public float calculaPreu() {
         float preuTotal=super.calculaPreu();

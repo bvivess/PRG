@@ -2,6 +2,11 @@ package EX_2_1;
 
 import java.util.ArrayList;
 
+/**
+ * Comentari Javadoc
+ * @author Administrador
+ */
+
 class Sobretaula extends Dispositiu {
     protected String factorForma;
     protected ArrayList<Complement> complements;
@@ -31,7 +36,12 @@ class Sobretaula extends Dispositiu {
     public boolean eliminaComplement(Complement c) {
         return complements.remove(c);
     }
-    
+
+    /**
+     * CalculaPreu per a Sobretaula
+     * @return preuBase + preu segons factor 'forma' + complements
+     */
+
     public float calculaPreu() {
         float preuTotal=super.calculaPreu();
         

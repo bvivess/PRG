@@ -1,5 +1,10 @@
 package EX_2_1;
 
+/**
+ * Comentari Javadoc
+ * @author Administrador
+ */
+
 class Complement {
     private String nom;
     private float preu;

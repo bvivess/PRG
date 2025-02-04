@@ -2,6 +2,12 @@ package EX_2_1;
 
 import java.util.ArrayList;
 
+
+/**
+ * Comentari Javadoc
+ * @author Administrador
+ */
+
 class Dispositiu {
     private String marca;
     private String model;
@@ -19,14 +25,12 @@ class Dispositiu {
         caracteristiques.add(c);
     }
 
+    /**
+     * CalculaPreu per a dispositiu
+     * @return preuBase
+     */
     public float calculaPreu() {
         return this.preuBase;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        return hash;
     }
 
     @Override

@@ -1,5 +1,10 @@
 package EX_2_1;
 
+/**
+ * Comentari Javadoc
+ * @author Administrador
+ */
+
 final class Portatil extends Mobil {
     private String pes;
 
