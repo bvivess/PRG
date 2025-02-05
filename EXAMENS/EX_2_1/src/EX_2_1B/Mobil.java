@@ -1,4 +1,4 @@
-package EX_2_1;
+package EX_2_1B;
 
 /**
  * Comentari Javadoc
@@ -17,8 +17,10 @@ class Mobil extends Dispositiu {
      * CalculaPreu per a Mobil
      * @return preuBase + preu segons 'mida'
      */
+    
+    @Override
     public float calculaPreu() {
-        float preuTotal=super.calculaPreu();
+        float preuTotal=super.getPreuBase();
         
         preuTotal += (this.mida.equals("5'") ? 5 : 
                         this.mida.equals("10'") ? 10 :

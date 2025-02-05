@@ -1,14 +1,13 @@
-package EX_2_1;
+package EX_2_1B;
 
 import java.util.ArrayList;
-
 
 /**
  * Comentari Javadoc
  * @author Administrador
  */
 
-class Dispositiu {
+abstract class Dispositiu {
     private String marca;
     private String model;
     private float preuBase;
@@ -25,12 +24,14 @@ class Dispositiu {
      * CalculaPreu per a dispositiu
      * @return preuBase
      */
-    public float calculaPreu() {
-        return this.preuBase;
-    }
+    abstract public float calculaPreu();
     
     public void setCaracteristica(Caracteristica c) {
         caracteristiques.add(c);
+    }
+
+    public float getPreuBase() {
+        return preuBase;
     }
     
     @Override
