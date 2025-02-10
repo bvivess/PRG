@@ -6,19 +6,19 @@ package ACT7_0F;
  */
 
 public abstract class ElectronicDevice {
-    protected String brand;
+    protected String marca;
     protected boolean onOff;
     
     public abstract void turnOn();
     public abstract void turnOff();
 
-    public ElectronicDevice(String brand, boolean onOff) {
-        this.brand = brand;
+    public ElectronicDevice(String marca, boolean onOff) {
+        this.marca = marca;
         this.onOff = onOff;
     }
     
     @Override
     public String toString() {
-        return "Marca: " + this.brand + " On/Off: " + this.onOff;
+        return "Marca: " + this.marca + " On/Off: " + this.onOff;
     }
 }

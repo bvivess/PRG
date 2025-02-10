@@ -9,15 +9,13 @@ public class Television extends ElectronicDevice {
     private String model;
     private int screenSize;
     private int currentChannel;
-    private boolean screenInitialized;
     private int screenConfiguration[]; // configuration[0]-->Brillo, configuration[1]-->Color, configuration[2]-->Contrast 
 
-    public Television(String brand, boolean onOff, String model, int screenSize, int currentChannel, boolean screenInitialized, int[] screenConfiguration) {
-        super(brand, onOff);
+    public Television(String marca, boolean onOff, String model, int screenSize, int currentChannel, int[] screenConfiguration) {
+        super(marca, onOff);
         this.model = model;
         this.screenSize = screenSize;
         this.currentChannel = currentChannel;
-        this.screenInitialized = screenInitialized;
         this.screenConfiguration = screenConfiguration;
     }
 
@@ -41,7 +39,6 @@ public class Television extends ElectronicDevice {
     public void initializeScreen(int[] configuracion) {
         System.out.println("Initializing the screen");
         // Simulación de la configuración de la pantalla (brillo, contraste, etc.)
-        this.screenInitialized = true;
         this.screenConfiguration[0] = configuracion[0];
         this.screenConfiguration[1] = configuracion[1];
         this.screenConfiguration[2] = configuracion[2];

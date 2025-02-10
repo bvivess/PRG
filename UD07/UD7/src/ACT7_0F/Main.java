@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         // Crear una instancia de Television
         int[] initialScreenConfiguration = {50, 70, 80}; // Brillo, Color, Contrast
-        Television televisio = new Television("Sony", false, "Trinitron", 42, 1, false, initialScreenConfiguration);
+        Television televisio = new Television("Sony", false, "Trinitron", 42, 1, initialScreenConfiguration);
 
         // Mostrar informació inicial
         System.out.println("Info TV Inicial:");
