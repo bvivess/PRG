@@ -39,9 +39,9 @@ public class Television extends ElectronicDevice {
     public void initializeScreen(int[] configuracion) {
         System.out.println("Initializing the screen");
         // Simulación de la configuración de la pantalla (brillo, contraste, etc.)
-        this.screenConfiguration[0] = configuracion[0];
-        this.screenConfiguration[1] = configuracion[1];
-        this.screenConfiguration[2] = configuracion[2];
+        this.screenConfiguration[0] = configuracion[0];  // brillo
+        this.screenConfiguration[1] = configuracion[1];  // contraste
+        this.screenConfiguration[2] = configuracion[2];  // color
     }
     
     @Override
