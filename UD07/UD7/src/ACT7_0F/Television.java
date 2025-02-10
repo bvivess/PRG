@@ -10,15 +10,15 @@ public class Television extends ElectronicDevice {
     private int screenSize;
     private int currentChannel;
     private boolean screenInitialized;
-    private int configuration[]; // Brillo, Color, Contrast 
+    private int screenConfiguration[]; // configuration[0]-->Brillo, configuration[1]-->Color, configuration[2]-->Contrast 
 
-    public Television(String brand, boolean onOff, String model, int screenSize, int currentChannel, boolean screenInitialized, int[] configuration) {
+    public Television(String brand, boolean onOff, String model, int screenSize, int currentChannel, boolean screenInitialized, int[] screenConfiguration) {
         super(brand, onOff);
         this.model = model;
         this.screenSize = screenSize;
         this.currentChannel = currentChannel;
         this.screenInitialized = screenInitialized;
-        this.configuration = configuration;
+        this.screenConfiguration = screenConfiguration;
     }
 
     public void turnOn() {
@@ -42,14 +42,14 @@ public class Television extends ElectronicDevice {
         System.out.println("Initializing the screen");
         // Simulación de la configuración de la pantalla (brillo, contraste, etc.)
         this.screenInitialized = true;
-        this.configuration[0] = configuracion[0];
-        this.configuration[1] = configuracion[1];
-        this.configuration[2] = configuracion[2];
+        this.screenConfiguration[0] = configuracion[0];
+        this.screenConfiguration[1] = configuracion[1];
+        this.screenConfiguration[2] = configuracion[2];
     }
     
     @Override
     public String toString() {
         return super.toString() + " Model: " + this.model + " Canal: " + this.currentChannel + 
-                                  " Configuració: " + configuration[0] + " " + configuration[1] + " " + configuration[2];
+                                  " Configuració: " + screenConfiguration[0] + " " + screenConfiguration[1] + " " + screenConfiguration[2];
     }
 }

@@ -8,8 +8,8 @@ package ACT7_0F;
 public class Main {
     public static void main(String[] args) {
         // Crear una instancia de Television
-        int[] initialConfiguration = {50, 70, 80}; // Brillo, Color, Contrast
-        Television televisio = new Television("Sony", false, "Trinitron", 42, 1, false, initialConfiguration);
+        int[] initialScreenConfiguration = {50, 70, 80}; // Brillo, Color, Contrast
+        Television televisio = new Television("Sony", false, "Trinitron", 42, 1, false, initialScreenConfiguration);
 
         // Mostrar informació inicial
         System.out.println("Info TV Inicial:");
@@ -26,8 +26,8 @@ public class Main {
         System.out.println(televisio.toString());
 
         // Inicializar la pantalla con una nueva configuración
-        int[] newConfiguration = {60, 80, 90}; // Nova configuració de Brillo, Color, Contrast
-        televisio.initializeScreen(newConfiguration);
+        int[] newScreenConfiguration = {60, 80, 90}; // Nova configuració de Brillo, Color, Contrast
+        televisio.initializeScreen(newScreenConfiguration);
 
         // Mostrar información después de inicializar la pantalla
         System.out.println("Info TV situació 2:");

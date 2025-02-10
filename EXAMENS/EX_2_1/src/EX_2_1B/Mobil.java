@@ -5,7 +5,7 @@ package EX_2_1B;
  * @author Administrador
  */
 
-class Mobil extends Dispositiu {
+abstract class Mobil extends Dispositiu {
     private String mida;
 
     public Mobil(String marca, String model, float preuBase, String mida) {
@@ -18,7 +18,6 @@ class Mobil extends Dispositiu {
      * @return preuBase + preu segons 'mida'
      */
     
-    @Override
     public float calculaPreu() {
         float preuTotal=super.getPreuBase();
         
