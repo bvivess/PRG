@@ -1,4 +1,4 @@
-package ACT8_0XXX;
+package ACT8_0X;
 
 /**
  *
