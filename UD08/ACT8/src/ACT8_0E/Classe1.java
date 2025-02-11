@@ -20,9 +20,9 @@ class Classe1 implements Interficie {
         System.out.println("MÈTODE ABSTRACTE en Classe1: " + a1);
     }
     
-    
     // La SubClasse1 hereda automàticament el 'metodePerDefecte()' de la interfície
-
+    
+    // Getters i Setters
     public static int getA1() {
         return a1;
     }
