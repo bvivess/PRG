@@ -5,7 +5,7 @@ package ACT8_0E;
  * @author gt
  */
 interface Interficie {
-    int a1 = 0;
+    static int a1 = 0;   // o 'final'
     
     abstract public void metodeAbstracte();
     
@@ -13,5 +13,8 @@ interface Interficie {
         System.out.println("MÈTODE PER DEFECTE en la interfície.");
     }
     
-    
+    public static int getA1() {
+        return a1;
+    }
+   
 }
