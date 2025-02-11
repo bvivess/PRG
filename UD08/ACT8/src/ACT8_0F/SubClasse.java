@@ -1,4 +1,4 @@
-package ACT8_0L;
+package ACT8_0F;
 
 /**
  *
@@ -9,14 +9,14 @@ class SubClasse extends ClasseAbstracta implements Interficie {
     
     // Implementació del mètode de la classe abstracta
     @Override
-    public void metodeAbstracteDeClasse() {
+    public void metodeAbstracteClasse() {
         metodePrivat();
         System.out.println("Implementació del mètode de la classe abstracta en 'SubClasse'");
     }
 
     // Implementació del mètode de la Interfície
     @Override
-    public void metodeAbstracteDeInterficie() {
+    public void metodeAbstracteInterficie() {
         metodePrivat();
         System.out.println("Implementació del mètode de la Interfície en 'SubClasse'");
     }

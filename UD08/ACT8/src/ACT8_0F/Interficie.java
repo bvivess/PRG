@@ -1,4 +1,4 @@
-package ACT8_0L;
+package ACT8_0F;
 
 /**
  *
@@ -10,7 +10,7 @@ interface Interficie {
     public final String atributInterficie="Interficie";  // 'final' no és obligatòria
     
     
-    public abstract void metodeAbstracteDeInterficie();  // 'abstract' no és obligatòria
+    public abstract void metodeAbstracteInterficie();  // 'abstract' no és obligatòria
     
     default void metodePerDefecte() {
         metodePrivat();

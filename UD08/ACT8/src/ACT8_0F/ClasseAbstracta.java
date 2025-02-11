@@ -1,4 +1,4 @@
-package ACT8_0L;
+package ACT8_0F;
 
 /**
  *
@@ -10,7 +10,7 @@ abstract class ClasseAbstracta {
     public String atributAbstracte;
     
     // Mètode abstracte que ha de ser implementat en la SubClasse
-    public abstract void metodeAbstracteDeClasse();
+    public abstract void metodeAbstracteClasse();
     
     // Mètode concret en la classe abstracta
     public void metodeConcret() {
