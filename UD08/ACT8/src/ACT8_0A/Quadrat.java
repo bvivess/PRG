@@ -5,10 +5,12 @@ package ACT8_0A;
  * @author winadmin
  */
 class Quadrat implements FiguraGeometrica {
+    String color;
     private double costat;
     
     // Constructor
-    public Quadrat(double costat) {
+    public Quadrat(String color, double costat) {
+        this.color = color;
         this.costat = costat;
     }
   

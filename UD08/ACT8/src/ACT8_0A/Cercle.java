@@ -6,10 +6,12 @@ package ACT8_0A;
  * @author winadmin
  */
 class Cercle implements FiguraGeometrica {
+    String color;
     private double radi;
 
     // Constructor
-    public Cercle(double radi) {
+    public Cercle(String color, double radi) {
+        this.color = color;
         this.radi = radi;
     }
 

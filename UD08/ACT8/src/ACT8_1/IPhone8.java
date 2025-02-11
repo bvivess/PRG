@@ -33,6 +33,7 @@ public class IPhone8 extends Telefon implements ValidadorDispositius {
     @Override
     public boolean validaPatrons(Object o) {
         Persona persona = (Persona) o;
+        
         if (super.getOnOff()) {
             if (persona.getPatroCodiPin()!= null)
                 return persona.getPatroCodiPin().equals(patroCodiPin);
