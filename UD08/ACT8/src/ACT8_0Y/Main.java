@@ -1,31 +1,24 @@
 package ACT8_0Y;
 
-/** Classe principal per demostrar el polimorfisme
- * 
+/** Exemple de polimorfisme
+ *
  * @author winadmin
  */
 public class Main {
+
     public static void main(String[] args) {
-        // Crea instàncies de diferents tipus de documents
-        Document documentTexte = new DocumentTexte("Texte inicial");
-        Document documentFullCalcul = new DocumentFullCalcul("Texte inicial");
-
-        // Realitza operacions en cada document
-        realizaOperacions(documentTexte);
-        System.out.println(documentTexte.toString());
-        System.out.println("------------------------");
-        realizaOperacions(documentFullCalcul);
-        System.out.println(documentFullCalcul.toString());
+        Employee e1 = new Employee("Pérez");
+        Manager m1 = new Manager("Sanchez","Sistemes");
+        Employee e2 = new Manager("Vives","Informàtica");
+        Employee e3 = (Employee) e2;
+        Employee e4 = (Manager) e1;
+        // Manager m2 = new Employee("Marcus"); --> Error de compilació
+        
+        System.out.println(e1.getDetails());  // un 'Employee' que es comporta com a un 'Employee'
+        System.out.println(m1.getDetails());  // un 'Manager' que es comporta com a un 'Manager';
+        System.out.println(e2.getDetails());  // un 'Employee' que es comporta com a un 'Manager'
+        System.out.println(e3.getDetails());  // un 'Employee' que es comporta com a un 'Manager'
+        System.out.println(e4.getDetails());  // un 'Employee' que es comporta com a un 'Manager' però al que falten dades --> error d'execució
     }
-
-    // Realitza operacions en el document genèric
-    private static void realizaOperacions(Document document) {
-        document.obreDocument();
-        if (document instanceof DocumentTexte)
-            document.afegeixDocument(" texte");
-        else if (document instanceof DocumentFullCalcul)
-            document.afegeixDocument(" full Càlcul");
-        document.guardaDocument();
-        document.tancaDocument();
-    }
+    
 }
