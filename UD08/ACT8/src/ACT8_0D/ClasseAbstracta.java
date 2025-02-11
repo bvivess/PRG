@@ -18,4 +18,8 @@ abstract class ClasseAbstracta {
     public void metodeConcret() {
         System.out.println("MÈTODE CONCRET en Classe abstracta");
     }
+    
+    public static void metodeEstatic() {
+        System.out.println("MÈTODE ESTÀTIC en Classe abstracta");
+    }
 }

@@ -10,7 +10,8 @@ public class Main {
         SubClasse2 subClasse2 = new SubClasse2(1);
 
         subClasse1.metodeConcret();  // Cridada a mètodeConcret()
-        subClasse1.metodeAbstracte(); // Cridada a mètodeAbstracte()        
+        subClasse1.metodeAbstracte(); // Cridada a mètodeAbstracte()  
+        subClasse1.metodeEstatic();
         subClasse2.metodeConcret();  // Cridada a mètodeConcret()
         subClasse2.metodeAbstracte(); // Cridada a mètodeAbstracte()
     }
