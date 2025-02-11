@@ -1,11 +1,11 @@
-package ACT8_0J;
+package ACT8_0D;
 
 /**
  *
  * @author gt
  */
 abstract class ClasseAbstracta {
-    int a1;
+    protected int a1;
     
     public ClasseAbstracta(int a1) {
         this.a1 = a1;

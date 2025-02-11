@@ -1,4 +1,4 @@
-package ACT8_0K;
+package ACT8_0E;
 
 /**
  *
@@ -7,7 +7,7 @@ package ACT8_0K;
 interface Interficie {
     int a1 = 0;
     
-    public void metodeAbstracte();
+    abstract public void metodeAbstracte();
     
     default void metodePerDefecte() {
         System.out.println("MÈTODE PER DEFECTE en la interfície.");

@@ -1,12 +1,12 @@
-package ACT8_0J;
+package ACT8_0D;
 
 /**
  *
  * @author gt
  */
 class SubClasse1 extends ClasseAbstracta {
-    int b1;
-    String b2;
+    private int b1;
+    private String b2;
     
     public SubClasse1(int a1, int b1, String b2) {
         super(a1);
