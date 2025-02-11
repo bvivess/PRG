@@ -23,9 +23,9 @@ class Classe1 implements Interficie {
     // La SubClasse1 hereda automàticament el 'metodePerDefecte()' de la interfície
     
     // Getters i Setters
-    public static int getA1() {
-        return a1;
-    }
+    //public static int getA1() {
+    //    return a1;
+    //}
     
     public int getB1() {
         return b1;
