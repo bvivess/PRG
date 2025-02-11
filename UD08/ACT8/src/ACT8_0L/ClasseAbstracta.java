@@ -12,7 +12,7 @@ abstract class ClasseAbstracta {
     // Mètode abstracte que ha de ser implementat en la SubClasse
     public abstract void metodeAbstracteDeClasse();
     
-    // Mètode concreo en la classe abstracta
+    // Mètode concret en la classe abstracta
     public void metodeConcret() {
         metodePrivat();
         System.out.println("Implementació del mètode concret en 'ClasseAbstracta'");

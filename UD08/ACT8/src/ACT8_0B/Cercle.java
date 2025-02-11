@@ -1,4 +1,4 @@
-package ACT8_0E;
+package ACT8_0B;
 
 
 /**
@@ -15,10 +15,20 @@ class Cercle implements FiguraGeometrica, Coloreador {
         this.radi = radi;
     }
     
-    // Implementació del mètode de 'Figura'
+    // Implementació del mètode de 'FiguraGeometrica'
     @Override
     public double calculaArea() {
         return Math.PI * Math.pow(radi, 2);
+    }
+
+    @Override
+    public double calculaPerimetre() {
+        return Math.PI * 2 * radi;
+    }
+    
+    @Override
+    public int calculaNCostats() {
+        return 0;
     }
     
     // Implementació del mètode de 'Colorear'

@@ -24,7 +24,7 @@ public class Client {
     // Mètodes específics
     public void realitzaTransaccio(Compte compteAModificar, double quantitat) {
         // es cerca 'compteAModificar' per a cada 'comptePossible' del 'client'
-        for (Compte comptePossible:comptes) {
+        for (Compte comptePossible : comptes) {
             if (comptePossible.equals(compteAModificar))  // es compara pels 4 atributs de cada compte
                 if (quantitat > 0) {
                     comptePossible.ingresa(quantitat);
@@ -72,11 +72,14 @@ public class Client {
     @Override
     public String toString() {
         String texte;
+        double saldo=0;
         texte = "Client " + this.nom + " " + this.llinatge1 + " " + this.llinatge2;
-        texte += "\namb SALDO:\n";
-        for (Compte compte:comptes) 
-            texte += "\t"+compte.getBanc() + "-" + compte.getOficina() + "-" + compte.getDc() + "-" + compte.getNumCompte() + ": " + compte.getSaldo() +"\n";
-        
+        texte += "\namb COMPTES:\n";
+        for (Compte compte:comptes) {
+            texte += "\t"+compte.toString() +"\n";
+            saldo += compte.getSaldo();
+        }
+        texte += "\n amb SALDO TOTAL: " + saldo;
         return texte;
     }
     

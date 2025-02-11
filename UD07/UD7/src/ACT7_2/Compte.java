@@ -101,4 +101,9 @@ public class Compte {
         else
             return false;
     }
+    
+    @Override
+    public String toString() {
+        return this.getBanc() + "-" + this.getOficina() + "-" + this.getDc() + "-" + this.getNumCompte() + ": " + this.getSaldo();
+    }
 }
