@@ -9,15 +9,11 @@ package ACT8_0L;
 public class Main {
     public static void main(String[] args) {
         // Crear un objeto de la clase Circulo
-        FiguraGeometrica figura = new Cercle("Vermell",5.0);
-        //FiguraGeometrica figura = new Quadrat("Rosa",5.0);
+        FiguraGeometrica figura1 = new Cercle("Vermell",5.0);
+        FiguraGeometrica figura2 = new Quadrat("Rosa",5.0);
         
-        if (figura instanceof Cercle)
-            System.out.print("Àrea del cercle: "); 
-        else if (figura instanceof Quadrat)
-            System.out.print("Àrea del quadrat: "); 
-        
-        System.out.println(figura.calculaArea());
+        System.out.println(figura1.toString() + " ÀREA: " + figura1.calculaArea());
+        System.out.println(figura2.toString() + " ÀREA: " + figura2.calculaArea());
         
     }
 }

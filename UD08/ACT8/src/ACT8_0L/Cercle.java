@@ -30,7 +30,7 @@ class Cercle extends FiguraGeometrica {
 
     @Override
     public String toString() {
-        return super.toString() + " Radi: " + this.radi; 
+        return super.toString() + ", Radi: " + this.radi; 
     }
     
     @Override

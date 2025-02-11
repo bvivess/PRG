@@ -24,12 +24,19 @@ abstract class FiguraGeometrica {
     
     @Override
     public String toString() {
-        return "Color: " + color;
+        String text="La figura és un ";
+        if (this instanceof Cercle)
+            text += "CERCLE"; 
+        else if (this instanceof Quadrat)
+            text += "QUADRAT"; 
+        
+        return text + ", color: " + color;
     }
 
     @Override
     public boolean equals(Object o) {
         FiguraGeometrica f = (FiguraGeometrica) o;
+        
         return (f.color.equals(this.color));
     }
     
