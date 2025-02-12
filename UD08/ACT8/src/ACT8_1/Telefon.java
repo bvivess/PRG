@@ -18,14 +18,14 @@ public abstract class Telefon implements DispositiuElectronic {
     
     @Override
     public void on() {
-        System.err.println("Telèfon " + this.getMarca() + " encès");
+        System.out.println("\tTelèfon " + this.getMarca() + " encès");
         if (!this.getOnOff())
             this.setOnOff(true);
     }
     
     @Override
     public void off() {
-        System.err.println("Telèfon apagat");
+        System.out.println("\tTelèfon " + this.getMarca() + "apagat");
         if (this.getOnOff())
             this.setOnOff(false);
     }
