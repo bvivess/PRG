@@ -9,8 +9,6 @@ public abstract class Telefon implements DispositiuElectronic {
     private Persona persona;  // Dades de la persona propietària
     private boolean onOff;  // Encès o apagat
     
-
-    
     public Telefon(String marca, Persona persona, boolean onOff) {
         // super(); // No cal ja que la interfície no té cap atribut
         this.marca = marca;
@@ -20,14 +18,14 @@ public abstract class Telefon implements DispositiuElectronic {
     
     @Override
     public void on() {
-        System.out.println("Telèfon encès");
+        System.err.println("Telèfon " + this.getMarca() + " encès");
         if (!this.getOnOff())
             this.setOnOff(true);
     }
     
     @Override
     public void off() {
-        System.out.println("Telèfon apagat");
+        System.err.println("Telèfon apagat");
         if (this.getOnOff())
             this.setOnOff(false);
     }
@@ -38,6 +36,10 @@ public abstract class Telefon implements DispositiuElectronic {
     
     public void setOnOff(boolean onOff) {
         this.onOff = onOff;
+    }
+
+    public String getMarca() {
+        return marca;
     }
     
     @Override

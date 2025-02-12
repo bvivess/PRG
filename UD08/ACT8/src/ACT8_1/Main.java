@@ -25,14 +25,15 @@ public class Main {
         IPhone10 iphone10 = new IPhone10("Apple", persona4, null, null, "Rostre4");
 
         // Encenent dispositius
-        android1.setOnOff(true);
+        
         System.out.println("Encenent " + android1.toString() + "...");
-        android2.setOnOff(true);
+        android1.on();
         System.out.println("Encenent " + android2.toString() + "...");
-        iphone8.setOnOff(true);
+        android2.on();
         System.out.println("Encenent " + iphone8.toString() + "...");
-        iphone10.setOnOff(true);
+        iphone8.on();
         System.out.println("Encenent " + iphone10.toString() + "...");  
+        iphone10.on();
         
         // Validacions
         System.out.println("Android1: ");
@@ -62,14 +63,13 @@ public class Main {
 
         // Apagant dispositius
         System.out.println();
-        android1.setOnOff(false);
-        System.out.println("Apagant " + android1.toString() + "...");
-        android2.setOnOff(false);
+        System.out.println("Apagant1 " + android1.toString() + "...");
+        android1.off();
         System.out.println("Apagant " + android2.toString() + "...");
-        iphone8.setOnOff(false);
+        android2.off();
         System.out.println("Apagant " + iphone8.toString() + "...");
-        iphone10.setOnOff(false);
+        iphone8.on();
         System.out.println("Apagant " + iphone10.toString() + "...");
-        
+        iphone10.on();
     }
 }
