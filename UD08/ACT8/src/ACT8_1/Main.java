@@ -9,20 +9,20 @@ public class Main {
         // Persona1
         Persona persona1 = new Persona("Joan","1234", null, null, null);
         // Persona2
-        Persona persona2 = new Persona("Gemma",null, "Teclat2", null, null);
+        Persona persona2 = new Persona("Gemma", null, "Teclat2", null, null);
         // Persona3
-        Persona persona3 = new Persona("Pere",null, null, "Emprempta3", null);
+        Persona persona3 = new Persona("Pere", null, null, "Emprempta3", null);
         // Persona4
-        Persona persona4 = new Persona("Maria",null, null, null, "Rostre4");
+        Persona persona4 = new Persona("Maria", null, null, null, "Rostre4");
         
         // Android
         Android android1 = new Android("Samsung", persona1,"1234", null, null);
         // Android
-        Android android2 = new Android("Xiaomi", persona2,null, "Teclat2", null);
+        Android android2 = new Android("Xiaomi", persona2, null, "Teclat2", null);
         // IPhone8
-        IPhone8 iphone8 = new IPhone8("Apple",persona3, null, "Emprempta3");
+        IPhone8 iphone8 = new IPhone8("Apple", persona3, null, "Emprempta3");
         // IPhone10
-        IPhone10 iphone10 = new IPhone10("Apple",persona4,null, null, "Rostre4");
+        IPhone10 iphone10 = new IPhone10("Apple", persona4, null, null, "Rostre4");
 
         // Encenent dispositius
         android1.setOnOff(true);

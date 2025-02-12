@@ -21,15 +21,15 @@ public abstract class Telefon implements DispositiuElectronic {
     @Override
     public void on() {
         System.out.println("Telèfon encès");
-        if (!this.onOff)
-            this.onOff = true;
+        if (!this.getOnOff())
+            this.setOnOff(true);
     }
     
     @Override
     public void off() {
         System.out.println("Telèfon apagat");
-        if (this.onOff)
-            this.onOff = false;
+        if (this.getOnOff())
+            this.setOnOff(false);
     }
     
     public boolean getOnOff() {
