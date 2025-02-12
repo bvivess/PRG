@@ -25,7 +25,7 @@ public abstract class Telefon implements DispositiuElectronic {
     
     @Override
     public void off() {
-        System.out.println("\tTelèfon " + this.getMarca() + "apagat");
+        System.out.println("\tTelèfon " + this.getMarca() + " apagat");
         if (this.getOnOff())
             this.setOnOff(false);
     }
