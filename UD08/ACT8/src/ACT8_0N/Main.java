@@ -11,13 +11,13 @@ public class Main {
         Empleat empleat2 = new EmpleatAutonom("Joan", "Marcus", 15, 40);
 
         // Realitza operacions en cada empleat
-        System.out.println(empleat1.toString() + " " + calculaSalariGENERAL(empleat1));
+        System.out.println(empleat1.toString() + " " + calculaSalari(empleat1));
         System.out.println("------------------------");
-        System.out.println(empleat2.toString() + " " +  calculaSalariGENERAL(empleat2));
+        System.out.println(empleat2.toString() + " " +  calculaSalari(empleat2));
     }
 
     // Realitza operacions amb empleata
-    private static double calculaSalariGENERAL(Empleat e) {
+    private static double calculaSalari(Empleat e) {
 
         if (e instanceof EmpleatAssalariat)
             System.out.println("Empleat Assalariat");
