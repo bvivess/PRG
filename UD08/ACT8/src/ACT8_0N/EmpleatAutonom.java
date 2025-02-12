@@ -1,6 +1,6 @@
 package ACT8_0N;
 
-/** Subclasse d'empleat: Compte pròpia
+/** Subclasse d'empleat: Treballa per hores
  *
  * @author winadmin
  */
@@ -19,7 +19,7 @@ class EmpleatAutonom extends Empleat {
     
     @Override
     public double calculaSalari() {
-        // El salario total para empleados por hora depende de las horas trabajadas
+        // El salari per a empleats autònoms depen de les hores traballades
         return super.getSouBase() * this.getHoresTreballades();
     }
 }

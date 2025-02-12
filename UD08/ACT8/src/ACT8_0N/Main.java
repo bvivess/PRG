@@ -16,7 +16,7 @@ public class Main {
         System.out.println(empleat2.toString() + " " +  calculaSalariGENERAL(empleat2));
     }
 
-    // Realitza operacions en l'empleat
+    // Realitza operacions amb empleata
     private static double calculaSalariGENERAL(Empleat e) {
 
         if (e instanceof EmpleatAssalariat)

@@ -14,7 +14,7 @@ class EmpleatAssalariat extends Empleat {
     
     @Override
     public double calculaSalari() {
-        // El salario total es igual al salario base para empleados asalariados
+        // El salari és igual al salari base per a empleats asalariars
         return super.getSouBase();
     }
 }
