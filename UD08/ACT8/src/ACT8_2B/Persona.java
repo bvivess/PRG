@@ -23,14 +23,11 @@ public class Persona extends ValidadorDispositius {
         Telefon telefon = (Telefon) o;
         
         if (telefon.getOnOff()) {
-            if (this.getPatroCodiPin() != null) 
-                return this.getPatroCodiPin().equals(telefon.getPatroCodiPin());
-            if (this.getPatroTeclat() != null) 
-                return this.getPatroTeclat().equals(telefon.getPatroTeclat());
-            if (this.getPatroEmprempta() != null) 
-                return this.getPatroEmprempta().equals(telefon.getPatroEmprempta());
-            if (this.getPatroRostre() != null) 
-                return this.getPatroRostre().equals(telefon.getPatroRostre());
+            for (String patroPersona : this.getPatrons())
+                for (String patroDispositiu : telefon.getPatrons())
+                    if (patroPersona != null)
+                        return patroPersona.equals(patroDispositiu);
+            
             return false;
         } else {
             System.out.println("Telèfon no encès");
