@@ -11,11 +11,11 @@ public abstract class Telefon implements ValidadorDispositius, DispositiuElectro
     
 
     
-    public Telefon(String marca, Persona persona, boolean onOff) {
+    public Telefon(String marca, Persona persona) {
         // super(); // No cal ja que la interfície no té cap atribut
         this.marca = marca;
         this.persona = persona;
-        this.onOff = onOff;
+        this.onOff = false;
     }
     
     @Override

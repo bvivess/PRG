@@ -28,33 +28,36 @@ public class Main {
     }
     
     private static void carregaPersones(ArrayList<Persona> persones) {
-        Persona persona;
+        // Persona persona;
         
-        persona = new Persona("Joan","1234", null, null, null);
-        persones.add(persona);
+        persones.add(new Persona("Joan","1234", null, null, null));
         // Persona2
-        persona = new Persona("Gemma",null, "Teclat2", null, null);
-        persones.add(persona);
+        persones.add(new Persona("Gemma",null, "Teclat2", null, null));
         // Persona3
-        persona = new Persona("Pere",null, null, "Emprempta3", null);
-        persones.add(persona);
+        persones.add(new Persona("Pere",null, null, "Emprempta3", null));
         // Persona4
-        persona = new Persona("Maria",null, null, null, "Rostre4");
-        persones.add(persona);
+        persones.add(new Persona("Maria",null, null, null, "Rostre4"));
     }
     
     private static void carregaTelefons(ArrayList<Telefon> telefons, ArrayList<Persona> persones) {
         Telefon telefon;
-        telefon = new Android("Samsung", persones.get(0),"1234", null, null);
+        
+        // Android1
+        telefon = new Android("Samsung", persones.get(0));
+        telefon.on();
+        telefon.setPatrons("1234", null, null,null);
         telefons.add(telefon);
-        // Android
-        telefon = new Android("Xiaomi", persones.get(1),null, "Teclat2", null);
+        // Android2
+        telefon = new Android("Xiaomi", persones.get(1));
+        telefon.setPatrons(null, "Teclat2", null,null);
         telefons.add(telefon);
         // IPhone8
-        telefon = new IPhone8("Apple",persones.get(2), null, "Emprempta3");
+        telefon = new IPhone8("Apple",persones.get(2));
+        telefon.setPatrons(null, "Emprempta3",null,null);
         telefons.add(telefon);
         // IPhone10
-        telefon = new IPhone10("Apple",persones.get(3),null, null, "Rostre4");
+        telefon = new IPhone10("Apple",persones.get(3));
+        telefon.setPatrons(null, null, null, "Rostre4");
         telefons.add(telefon);
     }
     

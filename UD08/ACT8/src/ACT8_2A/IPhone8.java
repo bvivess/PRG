@@ -11,7 +11,7 @@ public class IPhone8 extends Telefon {
 
     // Constructors
     public IPhone8(String marca, Persona persona, String patroCodiPin, String patroEmprempta) {
-        super(marca, persona, false);
+        super(marca, persona);
         setPatrons(patroCodiPin,null,patroEmprempta,null);
     }
     
@@ -21,7 +21,7 @@ public class IPhone8 extends Telefon {
      * @param persona 
      */
     public IPhone8(String marca, Persona persona) {
-        super(marca, persona, false);
+        super(marca, persona);
     }
     
     @Override

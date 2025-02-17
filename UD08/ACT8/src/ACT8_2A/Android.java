@@ -10,12 +10,13 @@ public class Android extends Telefon {
     private String patroEmprempta;
  
     // Constructors
+    /*
     public Android(String marca, Persona persona, String patroCodiPin, String patroTeclat, String patroEmprempta) {
         super(marca, persona, false);
         setPatroCodiPin(patroCodiPin);
         setPatroTeclat(patroTeclat);
         setPatroEmprempta(patroEmprempta);
-    }
+    } */
     
     /** Constructor sense patrons, a continuació utilizar 'setPatrons'
      * 
@@ -23,7 +24,7 @@ public class Android extends Telefon {
      * @param persona 
      */
     public Android(String marca, Persona persona) {
-        super(marca, persona, false);
+        super(marca, persona);
     }
 
     @Override

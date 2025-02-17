@@ -13,10 +13,6 @@ public class Persona {
     private String patroEmprempta;
     private String patroRostre;
     
-    Persona(String nom) {
-        this.nom = nom;
-    }
-    
     Persona(String nom, String patroCodiPin, String patroTeclat, String patroEmprempta, String patroRostre) {
         setNom(nom);
         setPatroCodiPin(patroCodiPin);
