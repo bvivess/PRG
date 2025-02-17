@@ -16,6 +16,13 @@ public abstract class Telefon implements DispositiuElectronic {
         this.onOff = onOff;
     }
     
+    public Telefon(String marca, Persona persona) {
+        // super(); // No cal ja que la interfície no té cap atribut
+        this.marca = marca;
+        this.persona = persona;
+        this.onOff = false;
+    }
+    
     @Override
     public void on() {
         System.out.println("\tTelèfon " + this.getMarca() + " encès");

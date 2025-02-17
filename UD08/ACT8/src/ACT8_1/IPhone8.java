@@ -21,7 +21,7 @@ public class IPhone8 extends Telefon implements ValidadorDispositius {
      * @param persona 
      */
     public IPhone8(String marca, Persona persona) {
-        super(marca, persona, false);
+        super(marca, persona);
     }
     
     @Override
