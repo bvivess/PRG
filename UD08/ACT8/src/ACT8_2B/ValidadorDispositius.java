@@ -59,6 +59,10 @@ public abstract class ValidadorDispositius {
     public void setPatroRostre(String patroRostre) {
         patrons[ROSTRE] = patroRostre;
     }
+
+    public String[] getPatrons() {
+        return patrons;
+    }
  
 }
 

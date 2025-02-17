@@ -27,15 +27,12 @@ public abstract class Telefon extends ValidadorDispositius implements Dispositiu
     public boolean validaPatrons(Object o) {
         Persona persona = (Persona) o;
         
-        if (getOnOff()) {
-            if (persona.getPatroCodiPin() != null) 
-                return persona.getPatroCodiPin().equals(this.getPatroCodiPin());
-            if (persona.getPatroTeclat() != null) 
-                return persona.getPatroTeclat().equals(this.getPatroTeclat());
-            if (persona.getPatroEmprempta() != null) 
-                return persona.getPatroEmprempta().equals(this.getPatroEmprempta());
-            if (persona.getPatroRostre() != null) 
-                return persona.getPatroRostre().equals(this.getPatroRostre());
+        if (this.getOnOff()) {
+            for (String patroPersona : persona.getPatrons())
+                for (String patroDispositiu : super.getPatrons())
+                    if (patroPersona != null)
+                        return patroPersona.equals(patroDispositiu);
+
             return false;
         } else {
             System.out.println("Telèfon no encès");

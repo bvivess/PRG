@@ -72,7 +72,7 @@ public class Main {
     
     private static void encenDispositius(ArrayList<Telefon> telefons) {
         for (Telefon t : telefons) {
-            System.out.println("Apagant " + t.toString() + "...");
+            System.out.println("Encenent " + t.toString() + "...");
             t.on();
         }
     }
