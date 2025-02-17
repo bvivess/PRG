@@ -10,10 +10,11 @@ public class IPhone8 extends Telefon implements ValidadorDispositius {
     private String patroEmprempta;
 
     // Constructors
+    /*
     public IPhone8(String marca, Persona persona, String patroCodiPin, String patroEmprempta) {
-        super(marca, persona, false);
+        super(marca, persona);
         setPatrons(patroCodiPin,null,patroEmprempta,null);
-    }
+    }*/
     
     /** Constructor sense patrons, a continuació utilizar 'setPatrons'
      * 

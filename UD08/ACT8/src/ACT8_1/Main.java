@@ -16,24 +16,23 @@ public class Main {
         Persona persona4 = new Persona("Maria", null, null, null, "Rostre4");
         
         // Android
-        Android android1 = new Android("Samsung", persona1,"1234", null, null);
+        Android android1 = new Android("Samsung", persona1);
+        android1.on();
+        android1.setPatrons("1234",null,null,null);
         // Android
-        Android android2 = new Android("Xiaomi", persona2, null, "Teclat2", null);
+        Android android2 = new Android("Xiaomi", persona2);
+        android2.on();
+        android2.setPatrons( null, "Teclat2", null, null);
         // IPhone8
-        IPhone8 iphone8 = new IPhone8("Apple", persona3, null, "Emprempta3");
+        IPhone8 iphone8 = new IPhone8("Apple", persona3);
+        iphone8.on();
+        iphone8.setPatrons(null, null, "Emprempta3",null);
         // IPhone10
-        IPhone10 iphone10 = new IPhone10("Apple", persona4, null, null, "Rostre4");
+        IPhone10 iphone10 = new IPhone10("Apple", persona4);
+        iphone10.on();
+        iphone10.setPatrons(null, null, null, "Rostre4");
 
         // Encenent dispositius
-        
-        System.out.println("Encenent " + android1.toString() + "...");
-        android1.on();
-        System.out.println("Encenent " + android2.toString() + "...");
-        android2.on();
-        System.out.println("Encenent " + iphone8.toString() + "...");
-        iphone8.on();
-        System.out.println("Encenent " + iphone10.toString() + "...");  
-        iphone10.on();
         
         // Validacions
         System.out.println("Android1: ");

@@ -9,12 +9,13 @@ public abstract class Telefon implements DispositiuElectronic {
     private Persona persona;  // Dades de la persona propietària
     private boolean onOff;  // Encès o apagat
     
+    /*
     public Telefon(String marca, Persona persona, boolean onOff) {
         // super(); // No cal ja que la interfície no té cap atribut
         this.marca = marca;
         this.persona = persona;
         this.onOff = onOff;
-    }
+    }*/
     
     public Telefon(String marca, Persona persona) {
         // super(); // No cal ja que la interfície no té cap atribut
