@@ -10,10 +10,11 @@ public class IPhone8 extends Telefon {
     private String patroEmprempta;
 
     // Constructors
+    /*
     public IPhone8(String marca, Persona persona, String patroCodiPin, String patroEmprempta) {
         super(marca, persona);
         setPatrons(patroCodiPin,null,patroEmprempta,null);
-    }
+    }*/
     
     /** Constructor sense patrons, a continuació utilizar 'setPatrons'
      * 
