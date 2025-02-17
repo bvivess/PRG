@@ -18,7 +18,7 @@ public abstract class ValidadorDispositius {
         this.patrons = patrons;
     }
     // Mètode abstracte
-    abstract boolean validaPatrons(Object o);  // Validar Persona amb Dispositiu
+    abstract boolean validaPatrons(Object o);  // Validar Persona amb Dispositiu o viceversa
 
     // Métode concret
     void setPatrons(String[] patrons) {
