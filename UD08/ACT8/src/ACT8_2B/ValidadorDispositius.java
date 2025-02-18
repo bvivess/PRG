@@ -25,7 +25,7 @@ public abstract class ValidadorDispositius {
             return false;  // Si no es un ValidadorDispositius, no se puede validar
         }
 
-        ValidadorDispositius dispositiu = (ValidadorDispositius) o;
+        ValidadorDispositius validadorDispositiu = (ValidadorDispositius) o;
 
         // Si el objeto actual es un Telèfon, comprobamos que esté encendido
         if (this instanceof Telefon && !((Telefon) this).getOnOff()) {
@@ -34,13 +34,13 @@ public abstract class ValidadorDispositius {
         }
 
         // Si el objeto recibido es un Telèfon, comprobamos que esté encendido
-        if (dispositiu instanceof Telefon && !((Telefon) dispositiu).getOnOff()) {
+        if (validadorDispositiu instanceof Telefon && !((Telefon) validadorDispositiu).getOnOff()) {
             System.out.println("Telèfon no encès");
             return false;
         }
 
         for (String patroActual : this.getPatrons()) {
-            for (String patroObjecte : dispositiu.getPatrons()) {
+            for (String patroObjecte : validadorDispositiu.getPatrons()) {
                 if (patroActual != null && patroActual.equals(patroObjecte)) {
                     return true;  // Se encontró coincidencia en los patrones
                 }
