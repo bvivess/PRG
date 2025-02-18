@@ -6,5 +6,5 @@ package ACT8_3B;
  */
 // Interfaz Publicacio
 interface Publicacio {
-    double calculaPrecio();
+    abstract double calculaPrecio();
 }

@@ -7,5 +7,5 @@ import java.util.ArrayList;
  */
 public interface Concessionari {
 
-    double calculaIngressos();
+    abstract double calculaIngressos();
 }
