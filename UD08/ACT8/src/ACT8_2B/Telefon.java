@@ -23,6 +23,7 @@ public abstract class Telefon extends ValidadorDispositius implements Dispositiu
         this.onOff = onOff;
     }
     
+    /*
     @Override
     public boolean validaPatrons(Object o) {
         Persona persona = (Persona) o;
@@ -38,7 +39,7 @@ public abstract class Telefon extends ValidadorDispositius implements Dispositiu
             System.out.println("Telèfon no encès");
             return false;
         }
-    }
+    }*/
     
     @Override
     public void on() {

@@ -18,7 +18,38 @@ public abstract class ValidadorDispositius {
         this.patrons = patrons;
     }
     // Mètode abstracte
-    abstract boolean validaPatrons(Object o);  // Validar Persona amb Dispositiu o viceversa
+    /* abstract boolean validaPatrons(Object o);  // Validar Persona amb Dispositiu o viceversa */
+    
+    public boolean validaPatrons(Object o) {
+        if (!(o instanceof ValidadorDispositius)) {
+            return false;  // Si no es un ValidadorDispositius, no se puede validar
+        }
+
+        ValidadorDispositius dispositiu = (ValidadorDispositius) o;
+
+        // Si el objeto actual es un Telèfon, comprobamos que esté encendido
+        if (this instanceof Telefon && !((Telefon) this).getOnOff()) {
+            System.out.println("Telèfon no encès");
+            return false;
+        }
+
+        // Si el objeto recibido es un Telèfon, comprobamos que esté encendido
+        if (dispositiu instanceof Telefon && !((Telefon) dispositiu).getOnOff()) {
+            System.out.println("Telèfon no encès");
+            return false;
+        }
+
+        for (String patroActual : this.getPatrons()) {
+            for (String patroObjecte : dispositiu.getPatrons()) {
+                if (patroActual != null && patroActual.equals(patroObjecte)) {
+                    return true;  // Se encontró coincidencia en los patrones
+                }
+            }
+        }
+
+        return false;  // No se encontraron coincidencias
+    }
+
 
     // Métode concret
     void setPatrons(String[] patrons) {
