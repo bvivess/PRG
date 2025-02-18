@@ -18,6 +18,7 @@ public class Persona extends ValidadorDispositius {
         this.nom = nom;
     }
 
+    /*
     @Override
     public boolean validaPatrons(Object o) {
         Telefon telefon = (Telefon) o;
@@ -34,6 +35,7 @@ public class Persona extends ValidadorDispositius {
             return false;
         }     
     }
+*/
 
     public String getNom() {
         return this.nom;

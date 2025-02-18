@@ -50,7 +50,6 @@ public abstract class ValidadorDispositius {
         return false;  // No se encontraron coincidencias
     }
 
-
     // Métode concret
     void setPatrons(String[] patrons) {
         setPatroCodiPin(patrons[CODIPIN]);
