@@ -5,7 +5,7 @@ package ACT8_2B;
  * @author winadmin
  */
 public abstract class ValidadorDispositius {
-    static final int CODIPIN = 0;  // patroCodiPin, patroTeclat, patroEmprempta, patroRostre
+    static final int CODIPIN = 0;
     static final int TECLAT = 1;
     static final int EMPREMPTA = 2;
     static final int ROSTRE = 3; 
