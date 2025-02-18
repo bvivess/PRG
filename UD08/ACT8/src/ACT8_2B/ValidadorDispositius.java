@@ -28,19 +28,19 @@ public abstract class ValidadorDispositius {
         setPatroRostre(patrons[ROSTRE]);
     }
     
-    public String getPatroCodiPin() {
+    public String getPatroCodiPin() {  // si es vol reutilitzar 'getPatroCodiPin()'
         return patrons[CODIPIN];
     }
 
-    public String getPatroTeclat() {
+    public String getPatroTeclat() {  // si es vol reutilitzar 'getPatroTeclat()'
         return patrons[TECLAT];
     }
     
-    public String getPatroEmprempta() {
+    public String getPatroEmprempta() {  // si es vol reutilitzar 'getPatroEmprempta()'
         return patrons[EMPREMPTA];
     }
     
-    public String getPatroRostre() {
+    public String getPatroRostre() {  // si es vol reutilitzar 'getPatroRostre()'
         return patrons[ROSTRE];
     }
 
