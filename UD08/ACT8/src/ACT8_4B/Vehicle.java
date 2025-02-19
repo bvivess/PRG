@@ -11,13 +11,13 @@ public abstract class Vehicle {
     private double preu;
     private String tipus;
 
-    public Vehicle(String marca, String model, double preu, String Tipus) {
+    public Vehicle(String marca, String model, double preu, String tipus) {
         this.marca = marca;
         this.model = model;
         this.preu = preu;
         this.tipus = tipus;
     }
-    
+
     public abstract double calculaImpost();
 
     // Getters y setters
