@@ -15,6 +15,6 @@ public class Motocicleta extends Vehicle {
 
     @Override
     public double calculaImpost() {
-        return 0.05 * getPreu(); // Impuest del 5%
+        return 0.05 * getPreu(); // Impost del 5%
     }
 }

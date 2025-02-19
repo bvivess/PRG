@@ -16,7 +16,7 @@ public class Automobil extends Vehicle {
 
     @Override
     public double calculaImpost() {
-        return getPreu() * 0.1; // Impost del 10%
+        return super.getPreu() * 0.1; // Impost del 10%
     }
     
 }
