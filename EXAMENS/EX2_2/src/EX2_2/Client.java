@@ -19,12 +19,12 @@ public class Client extends UsuariBase implements Usuari  {
 
     @Override
     public String getROLE() {
-        return Admin.ROLE;
+        return Admin.ROLE;  // "Client";
     }
 
     @Override
-    public void setROLE(String a1) {
-        //Classe1.a1 = a1;
+    public void setROLE(String ROLE) {
+        //Classe1.ROLE = ROLE;
     }
 
 }

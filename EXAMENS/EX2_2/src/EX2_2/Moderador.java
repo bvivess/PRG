@@ -9,4 +9,14 @@ public class Moderador extends Client {
     private String metodePrivat() {
         return "Privat SubClasse3";
     }
+    
+    @Override
+    public String getROLE() {
+        return Admin.ROLE;  // "Moderador";
+    }
+
+    @Override
+    public void setROLE(String ROLE) {
+        //Classe1.ROLE = ROLE;
+    }
 }
