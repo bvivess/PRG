@@ -16,9 +16,9 @@ public class Main {
         
         for (UsuariBase u : usuaris)
             System.out.println(mostrarTipusUsuari(u));
-        
+
+        System.out.println(admin.metodePerDefecte());        
         System.out.println(client.metodePerDefecte());
-        System.out.println(admin.metodePerDefecte());
         System.out.println(moderador.metodePerDefecte());
     }
     
