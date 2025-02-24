@@ -1,5 +1,7 @@
 package ACT8_4B;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author winadmin
@@ -18,6 +20,24 @@ public class Main {
         System.out.println(concessionariMotos.toString());
         System.out.println("Ingressos del Concesionari de Autos: " + concessionariAutos.calculaIngressos());
         System.out.println("Ingressos del Concesionari de Motos: " + concessionariMotos.calculaIngressos());
+        
+        // -----------------------------------------
+        
+        ArrayList<ArrayList<Vehicle>> concesionari = new ArrayList<Vehicle>();
+        
+        ArrayList<Vehicle> motos = new ArrayList<Vehicle>();
+        motos.add(new Motocicleta("Vespa", "Primavera", 2000.0, "Scotter", 125));
+        
+        ArrayList<Vehicle> autos = new ArrayList<Vehicle>();
+        autos.add(new Automobil("Renault", "Megane", 25000.0, "Turisme", 4, 500.0));
+        
+        ArrayList<Vehicle> camions = new ArrayList<Vehicle>();
+        camions.add(new Camio("Ebro", "Santana",10000, "Truck", 500.0));
+        
+        
+        concesionari.add(motos);
+        concesionari.add(autos);
+        concesionari.add(camions);
     }
     
     private static void creaConcessionariAutos(ConcessionariAutos concessionariAutos) {
