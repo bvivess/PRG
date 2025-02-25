@@ -12,7 +12,7 @@ public class Moderador extends Client {
     
     @Override
     public String getROLE() {
-        return Usuari.ROLE;  // this.ROLE;  // "Moderador"
+        return Usuari.ROLE;  // this.ROLE;  //  super.ROLE;  // "Moderador"
     }
 
     @Override

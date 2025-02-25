@@ -21,7 +21,7 @@ public class Admin extends UsuariBase implements Usuari {
 
     @Override
     public String getROLE() {
-        return Usuari.ROLE;  // this.ROLE;  // "Admin";
+        return Usuari.ROLE;  // this.ROLE;  //  super.ROLE;  // "Admin";
     }
 
     @Override
