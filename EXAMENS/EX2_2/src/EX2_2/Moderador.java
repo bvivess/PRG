@@ -12,11 +12,11 @@ public class Moderador extends Client {
     
     @Override
     public String getROLE() {
-        return Admin.ROLE;  // "Moderador";
+        return Usuari.ROLE;  // this.ROLE;  // "Moderador"
     }
 
     @Override
     public void setROLE(String ROLE) {
-        //Classe1.ROLE = ROLE;
+        //Usuari.ROLE = ROLE;
     }
 }
