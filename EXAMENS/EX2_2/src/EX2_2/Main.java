@@ -31,11 +31,11 @@ public class Main {
         String text;
 
         if (usuari instanceof Admin) {
-            text = "Sóc un ADMIN";
+            text = "Som un ADMIN";
         } else if (usuari instanceof Moderador) {
-            text = "Sóc un MODERADOR";
+            text = "Som un MODERADOR";
         } else if (usuari instanceof Client) {
-            text = "Sóc un CLIENT";
+            text = "Som un CLIENT";
         } else {
             text = "No estic definit";
         }
