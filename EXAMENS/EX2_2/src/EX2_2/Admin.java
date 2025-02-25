@@ -3,10 +3,12 @@ package EX2_2;
 public class Admin extends UsuariBase implements Usuari {
     private String nivellAccess;
 
-    public Admin(String b1, String b2, String nivellAccess) {
-        super(b1, b2);
+    public Admin(String nom, String llinatge, String nivellAccess) {
+        super(nom, llinatge);
         this.nivellAccess = nivellAccess;
     }
+
+
 
     @Override
     public String metodePerDefecte() {
@@ -19,12 +21,12 @@ public class Admin extends UsuariBase implements Usuari {
 
     @Override
     public String getROLE() {
-        return "Admin";
+        return Usuari.ROLE;  // this.ROLE;  //  super.ROLE;  // "Admin";
     }
 
     @Override
     public void setROLE(String ROLE) {
-        //Classe1.ROLE = ROLE;
+        //Usuari.ROLE = ROLE;
     }
 
 }

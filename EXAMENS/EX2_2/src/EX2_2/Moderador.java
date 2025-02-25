@@ -2,21 +2,21 @@ package EX2_2;
 
 public class Moderador extends Client {
 
-    public Moderador(String b1, String b2, String d1) {
-        super(b1, b2, d1);
+    public Moderador(String nom, String llinatge, String adreca) {
+        super(nom, llinatge, adreca);
     }
-    
+  
     private String metodePrivat() {
         return "Privat SubClasse3";
     }
     
     @Override
     public String getROLE() {
-        return Admin.ROLE;  // "Moderador";
+        return Usuari.ROLE;  // this.ROLE;  //  super.ROLE;  // "Moderador"
     }
 
     @Override
     public void setROLE(String ROLE) {
-        //Classe1.ROLE = ROLE;
+        //Usuari.ROLE = ROLE;
     }
 }
