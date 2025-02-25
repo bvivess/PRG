@@ -14,6 +14,9 @@ public class Persona {
     }
     
     public double calculaPreuTotal() {
+        double total = 0;
+        for (Producte p : this.productes)
+            total += p.calculaPreu();
         return 0;
     }
     
