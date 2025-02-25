@@ -3,8 +3,8 @@ package EX2_2;
 public class Client extends UsuariBase implements Usuari  {
     private String adreca;
 
-    public Client(String b1, String b2, String adreca) {
-        super(b1, b2);
+    public Client(String nom, String llinatge, String adreca) {
+        super(nom, llinatge);
         this.adreca = adreca;
     }
 
