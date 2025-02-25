@@ -18,6 +18,12 @@ public abstract class Electronic extends Producte {
         this.hdd = hdd;
     }
     
+    public double calculaPreu() {
+        double total = this.getPreu() - this.calculaDescompte();
+        
+        return total;         
+    }
+    
     // Mètode abstracte que cal implementar a les subclasses
     public abstract double calculaDescompte();
 

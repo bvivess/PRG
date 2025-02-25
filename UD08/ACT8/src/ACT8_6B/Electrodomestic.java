@@ -12,6 +12,13 @@ public abstract class Electrodomestic extends Producte {
         this.classeEnergetica = classeEnergetica;
     }
     
+        
+    public double calculaPreu() {
+        double total = this.getPreu() + this.calculaSuplement();
+        
+        return total;         
+    }
+    
     // Mètode concret, no cal implementar a les subclasses
     public final double calculaSuplement() {
         return ((this.classeEnergetica == 'A') ? 0.05 * super.getPreu() : 

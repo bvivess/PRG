@@ -17,6 +17,8 @@ public abstract class Producte {
         this.garantiaMesos = garantiaMesos;
     }
     
+    public abstract double calculaPreu();
+    
     // Getters i setters
     public String getNom() {
         return nom;
