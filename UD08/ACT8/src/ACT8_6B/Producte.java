@@ -1,5 +1,7 @@
 package ACT8_6B;
 
+import java.util.Objects;
+
 /**
  *
  * @author winadmin
@@ -52,4 +54,21 @@ public abstract class Producte {
                 ", Descompte= " + this.calculaDescompte() +
                 ", Preu Total= " + this.calculaPreu();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Producte other = (Producte) obj;
+        return Objects.equals(this.nom, other.nom);
+    }
+    
+    
 }
