@@ -43,6 +43,6 @@ public abstract class Producte {
                 ", Preu: " + preu +
                 ", ConsumEnergetic: " + consumEnergetic +
                 ", GarantiaMesos: " + garantiaMesos +
-                '}';
+                "} Preu Producte= " + this.calculaPreu();
     }
 }
