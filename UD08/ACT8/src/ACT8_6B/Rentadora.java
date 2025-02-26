@@ -1,10 +1,5 @@
-
 package ACT8_6B;
 
-/**
- *
- * @author winadmin
- */
 public final class Rentadora extends Electrodomestic {
     int capacitatCarrega;
     

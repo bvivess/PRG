@@ -1,9 +1,5 @@
 package ACT8_6B;
 
-/**
- *
- * @author winadmin
- */
 public abstract class Electrodomestic extends Producte {
     private char classeEnergetica;
 

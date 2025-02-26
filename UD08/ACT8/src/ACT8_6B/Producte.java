@@ -2,10 +2,6 @@ package ACT8_6B;
 
 import java.util.Objects;
 
-/**
- *
- * @author winadmin
- */
 public abstract class Producte {
     private String nom;
     private double preuBase;

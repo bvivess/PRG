@@ -1,10 +1,6 @@
 package ACT8_6B;
 
-/**
- *
- * @author winadmin
- */
-class Telefon extends Electronic {
+public final class Telefon extends Electronic {
     public Telefon(String nom, double preu, double consumEnergetic, int garantiaMesos, int midaPantalla, String processador, int ram, int hdd) {
         super(nom, preu, consumEnergetic, garantiaMesos, midaPantalla, processador, ram, hdd);
     }

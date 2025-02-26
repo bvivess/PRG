@@ -1,9 +1,5 @@
 package ACT8_6B;
 
-/**
- *
- * @author winadmin
- */
 public final class Rentavaixelles extends Electrodomestic {
     
     public Rentavaixelles(String nom, double preu, double consumEnergetic, int garantiaMesos, char classeEnergetica) {

@@ -1,9 +1,5 @@
 package ACT8_6B;
 
-/**
- *
- * @author winadmin
- */
 public abstract class Electronic extends Producte {
     private int midaPantalla;
     private String processador;
@@ -29,5 +25,5 @@ public abstract class Electronic extends Producte {
     public int getMidaPantalla() {
         return midaPantalla;
     }
-
+    
 }
