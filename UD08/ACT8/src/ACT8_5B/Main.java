@@ -1,13 +1,17 @@
 package ACT8_5B;
 
-import ACT8_5B.Tarjetes.Tarjeta;
-import ACT8_5B.Productes.Deposit;
-import ACT8_5B.Productes.CompteEstalvis;
-import ACT8_5B.Productes.Hipoteca;
-import ACT8_5B.Productes.ProducteBancari;
-import ACT8_5B.Productes.FonsInversio;
-import ACT8_5B.Classes.Persona;
 import java.util.ArrayList;
+import ACT8_5B.Tarjetes.*;
+import ACT8_5B.Productes.*;
+
+//import ACT8_5B.Tarjetes.Tarjeta;
+//import ACT8_5B.Productes.Deposit;
+//import ACT8_5B.Productes.CompteEstalvis;
+//import ACT8_5B.Productes.Hipoteca;
+//import ACT8_5B.Productes.ProducteBancari;
+//import ACT8_5B.Productes.FonsInversio;
+//import ACT8_5B.Classes.Persona;
+
 
 /**
  src

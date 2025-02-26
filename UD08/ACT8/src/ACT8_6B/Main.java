@@ -17,7 +17,7 @@ public class Main {
         client.afegeixProducte(new Gelera("Edesa no Frost", 500.0, 150.0, 24, 'A'));
         client.afegeixProducte(new Rentavaixelles("Electrolux", 450.0, 200.0, 24, 'B'));
         client.afegeixProducte(new Rentadora("AEG", 375.0, 175.0, 24,8, 'C'));
-        client.eliminaProducte("AEG");
+        //client.eliminaProducte("AEG");
         
         System.out.println(client.toString());       
     }
