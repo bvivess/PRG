@@ -1,38 +1,34 @@
 package ACT8_5B;
 
 import java.util.ArrayList;
+
 import ACT8_5B.Tarjetes.*;
 import ACT8_5B.Productes.*;
+import ACT8_5B.Classes.*;
 
 //import ACT8_5B.Tarjetes.Tarjeta;
 //import ACT8_5B.Productes.Deposit;
+//import ACT8_5B.Classes.Persona;
 //import ACT8_5B.Productes.CompteEstalvis;
 //import ACT8_5B.Productes.Hipoteca;
 //import ACT8_5B.Productes.ProducteBancari;
 //import ACT8_5B.Productes.FonsInversio;
-//import ACT8_5B.Classes.Persona;
-
 
 /**
- src
-|-- main
-    |-- java
-        |-- com
-            |-- tuempresa
-                |-- banc
-                    |-- model
-                        |-- productes
-                            |-- ProducteBancari.java
-                            |-- CompteEstalvis.java
-                            |-- Deposit.java
-                            |-- Hipoteca.java
-                            |-- FonsInversio.java
-                        |-- tarjetas
-                            |-- Tarjeta.java
-                            |-- Credit.java
-                            |-- Debit.java
-                        |-- Persona.java
-                    |-- Main.java
+    |-- src
+        |-- Productes
+            |-- ProducteBancari.java
+            |-- CompteEstalvis.java
+            |-- Deposit.java
+            |-- Hipoteca.java
+            |-- FonsInversio.java
+        |-- Tarjetes
+            |-- Tarjeta.java
+            |-- Credit.java
+            |-- Debit.java
+        |-- Classes
+            |-- Persona.java
+    |-- Main.java
 
  * @author winadmin
  */
