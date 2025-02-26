@@ -1,9 +1,5 @@
 package ACT8_5B.Productes;
 
-/**
- *
- * @author winadmin
- */
 public abstract class ProducteBancari {
     private String codiProducte;
     private String nom;

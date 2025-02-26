@@ -1,12 +1,9 @@
 package ACT8_5B.Productes;
 
-import ACT8_5B.Tarjetes.Tarjeta;
 import java.util.ArrayList;
 
-/**
- *
- * @author winadmin
- */
+import ACT8_5B.Tarjetes.Tarjeta;
+
 public class CompteEstalvis extends ProducteBancari {
     private double comisMantCompte;
     ArrayList<Tarjeta> tarjetes;

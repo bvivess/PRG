@@ -1,9 +1,5 @@
 package ACT8_5B.Productes;
 
-/**
- *
- * @author winadmin
- */
 public class Hipoteca extends ProducteBancari{
     private double comisApertura;
     private int nombrePeriodes;

@@ -1,12 +1,9 @@
 package ACT8_5B.Classes;
 
-import ACT8_5B.Productes.ProducteBancari;
 import java.util.ArrayList;
 
-/**
- *
- * @author winadmin
- */
+import ACT8_5B.Productes.ProducteBancari;
+
 public class Persona {
     private String nom;
     private int edat;
