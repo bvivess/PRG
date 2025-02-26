@@ -38,6 +38,7 @@ public class Client {
         
         for (Producte p : this.productes)
             preuTotal += p.calculaPreu();
+        
         return preuTotal;
     }
 
@@ -47,8 +48,8 @@ public class Client {
         
         for (Producte p : productes)
             text += "\n\t " + p.toString();
-        text += "\n} Preu Total: " + this.calculaPreuTotal();
         
+        text += "\n} Preu Total: " + this.calculaPreuTotal();
         return text;
     }
     
