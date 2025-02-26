@@ -8,8 +8,8 @@ package ACT8_6B;
 public final class Rentadora extends Electrodomestic {
     int capacitatCarrega;
     
-    public Rentadora(char classeEnergetica, String nom, double preu, double consumEnergetic, int garantiaMesos, int capacitatCarrega) {
-        super(classeEnergetica, nom, preu, consumEnergetic, garantiaMesos);
+    public Rentadora(String nom, double preu, double consumEnergetic, int garantiaMesos, int capacitatCarrega, char classeEnergetica) {
+        super(nom, preu, consumEnergetic, garantiaMesos, classeEnergetica);
         this.capacitatCarrega = capacitatCarrega;
     }
 

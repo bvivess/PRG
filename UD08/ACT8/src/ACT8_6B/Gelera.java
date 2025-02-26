@@ -6,8 +6,8 @@ package ACT8_6B;
  */
 public final class Gelera extends Electrodomestic {
 
-    public Gelera(char classeEnergetica, String nom, double preu, double consumEnergetic, int garantiaMesos) {
-        super(classeEnergetica, nom, preu, consumEnergetic, garantiaMesos);
+    public Gelera(String nom, double preu, double consumEnergetic, int garantiaMesos, char classeEnergetica) {
+        super(nom, preu, consumEnergetic, garantiaMesos, classeEnergetica);
     }
     
     @Override
