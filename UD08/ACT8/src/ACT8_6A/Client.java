@@ -7,6 +7,7 @@ package ACT8_6A;
 public class Client {
     private String nom;
     private String cognom;
+    // productes
     private Telefon telefon;
     private Portatil portatil;
     private Televisor televisor;
