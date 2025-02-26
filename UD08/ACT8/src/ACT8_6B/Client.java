@@ -18,6 +18,19 @@ public class Client {
             return this.productes.add(p);
         return false;
     }
+    
+    public boolean eliminaProducte(String s) {
+        return this.productes.remove(this.cercaProducte(s));
+    }
+            
+    
+    public Producte cercaProducte(String s) {
+        for (Producte p : this.productes) {
+            if (p.getNom().equals(s))
+                return p;
+        }
+        return null;
+    }
 
     // Mètode per calcular preu total del 'productes' 
     public double calculaPreuTotal() {
