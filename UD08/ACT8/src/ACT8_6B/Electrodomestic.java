@@ -15,8 +15,6 @@ public abstract class Electrodomestic extends Producte {
     
     // Mètode concret, no cal implementar a les subclasses
     public final double calculaSuplement() {
-        return ((this.classeEnergetica == 'A') ? 0.05 * super.getPreuBase() : 
-                    (this.classeEnergetica == 'B') ? 0.10 * super.getPreuBase(): 0.15 * super.getPreuBase()
-               );
+        return super.getPreuBase() * (((this.classeEnergetica == 'A') ? 0.05 : (this.classeEnergetica == 'B') ? 0.10 : 0.15 ));
     }  
 }

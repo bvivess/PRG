@@ -7,7 +7,7 @@ public final class Portatil extends Electronic {
 
     @Override
     public double calculaDescompte() {
-        return (getConsumEnergetic() > 20) ? 0.15 * getPreuBase() : 0.10 * getPreuBase();
+        return super.getPreuBase() * ((getConsumEnergetic() > 20) ? 0.15 : 0.10);
     }
 
     @Override

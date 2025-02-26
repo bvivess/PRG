@@ -8,7 +8,7 @@ public final class Televisor extends Electronic {
 
     @Override
     public double calculaDescompte() {
-        return (getMidaPantalla() > 40) ? 0.12 * getPreuBase() : 0.08 * getPreuBase();
+        return getPreuBase() * ((getMidaPantalla() > 40) ? 0.12 : 0.08);
     }
     
     @Override

@@ -7,7 +7,7 @@ public final class Telefon extends Electronic {
 
     @Override
     public double calculaDescompte() {
-        return (getGarantiaMesos() < 6) ? 0.10 * super.getPreuBase() : 0.05 * super.getPreuBase();
+        return super.getPreuBase() * ((getGarantiaMesos() < 6) ? 0.10 : 0.05);
     }
 
     @Override
