@@ -6,26 +6,31 @@ package ACT8_6B;
  */
 public abstract class Producte {
     private String nom;
-    private double preu;
+    private double preuBase;
     private double consumEnergetic;
     private int garantiaMesos;
 
-    public Producte(String nom, double preu, double consumEnergetic, int garantiaMesos) {
+    public Producte(String nom, double preuBase, double consumEnergetic, int garantiaMesos) {
         this.nom = nom;
-        this.preu = preu;
+        this.preuBase = preuBase;
         this.consumEnergetic = consumEnergetic;
         this.garantiaMesos = garantiaMesos;
     }
     
-    public abstract double calculaPreu();
+    public abstract double calculaDescompte();
+    public abstract double calculaSuplement();
+    
+    public double calculaPreu() {
+        return this.getPreuBase() + this.calculaSuplement() - this.calculaDescompte();
+    };
     
     // Getters i setters
     public String getNom() {
         return nom;
     }
 
-    public double getPreu() {
-        return preu;
+    public double getPreuBase() {
+        return preuBase;
     }
 
     public double getConsumEnergetic() {
@@ -39,10 +44,10 @@ public abstract class Producte {
     @Override
     public String toString() {
         return "Producte {" +
-                "Nom: " + nom + 
-                ", Preu: " + preu +
-                ", ConsumEnergetic: " + consumEnergetic +
-                ", GarantiaMesos: " + garantiaMesos +
+                "Nom: " + this.nom + 
+                ", Preu: " + this.preuBase +
+                ", ConsumEnergetic: " + this.consumEnergetic +
+                ", GarantiaMesos: " + this.garantiaMesos +
                 "} Preu Producte= " + this.calculaPreu();
     }
 }

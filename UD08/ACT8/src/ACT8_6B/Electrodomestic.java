@@ -12,17 +12,15 @@ public abstract class Electrodomestic extends Producte {
         this.classeEnergetica = classeEnergetica;
     }
     
-        
-    public double calculaPreu() {
-        double total = super.getPreu() + this.calculaSuplement();
-        
-        return total;         
+    @Override
+    public double calculaDescompte() {
+        return 0;
     }
     
     // Mètode concret, no cal implementar a les subclasses
     public final double calculaSuplement() {
-        return ((this.classeEnergetica == 'A') ? 0.05 * super.getPreu() : 
-                    (this.classeEnergetica == 'B') ? 0.10 * super.getPreu(): 0.15 * super.getPreu()
+        return ((this.classeEnergetica == 'A') ? 0.05 * super.getPreuBase() : 
+                    (this.classeEnergetica == 'B') ? 0.10 * super.getPreuBase(): 0.15 * super.getPreuBase()
                );
     }  
 }

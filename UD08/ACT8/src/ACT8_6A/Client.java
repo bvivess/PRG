@@ -14,6 +14,7 @@ public class Client {
     public Client(String nom, String cognom, Telefon telefon, Portatil portatil, Televisor televisor) {
         this.nom = nom;
         this.cognom = cognom;
+        // Cistella de la compra
         this.telefon = telefon;
         this.portatil = portatil;
         this.televisor = televisor;

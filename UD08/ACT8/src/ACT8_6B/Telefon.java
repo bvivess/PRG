@@ -11,11 +11,11 @@ class Telefon extends Electronic {
 
     @Override
     public double calculaDescompte() {
-        return (getGarantiaMesos() < 6) ? 0.10 * getPreu() : 0.05 * getPreu();
+        return (getGarantiaMesos() < 6) ? 0.10 * super.getPreuBase() : 0.05 * super.getPreuBase();
     }
 
     @Override
     public String toString() {
-        return "Telèfon {" + super.toString() + "} Preu: " + super.getPreu() + " " + this.calculaDescompte();
+        return "Telèfon {" + super.toString() + "} Preu: " + super.getPreuBase() + " " + this.calculaDescompte();
     }
 }

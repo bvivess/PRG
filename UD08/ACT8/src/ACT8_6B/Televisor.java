@@ -12,11 +12,11 @@ public class Televisor extends Electronic {
 
     @Override
     public double calculaDescompte() {
-        return (getMidaPantalla() > 40) ? 0.12 * getPreu() : 0.08 * getPreu();
+        return (getMidaPantalla() > 40) ? 0.12 * getPreuBase() : 0.08 * getPreuBase();
     }
     
     @Override
     public String toString() {
-        return "Televisor {" + super.toString() + "} Preu: " + super.getPreu() + " " + this.calculaDescompte();
+        return "Televisor {" + super.toString() + "} Preu: " + super.getPreuBase() + " " + this.calculaDescompte();
     }
 }

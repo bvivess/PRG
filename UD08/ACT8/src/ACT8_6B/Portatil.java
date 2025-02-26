@@ -11,11 +11,11 @@ public class Portatil extends Electronic {
 
     @Override
     public double calculaDescompte() {
-        return (getConsumEnergetic() > 20) ? 0.15 * getPreu() : 0.10 * getPreu();
+        return (getConsumEnergetic() > 20) ? 0.15 * getPreuBase() : 0.10 * getPreuBase();
     }
 
     @Override
     public String toString() {
-        return "Portàtil {" + super.toString() + "} Preu: " + super.getPreu() + " " + this.calculaDescompte();
+        return "Portàtil {" + super.toString() + "} Preu: " + super.getPreuBase() + " " + this.calculaDescompte();
     }
 }

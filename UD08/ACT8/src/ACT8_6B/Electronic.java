@@ -17,15 +17,14 @@ public abstract class Electronic extends Producte {
         this.ram = ram;
         this.hdd = hdd;
     }
-    
-    public double calculaPreu() {
-        double total = super.getPreu() - this.calculaDescompte();
-        
-        return total;         
-    }
-    
+       
     // Mètode abstracte que cal implementar a les subclasses
-    public abstract double calculaDescompte();
+    // public abstract double calculaDescompte();
+    
+    @Override
+    public double calculaSuplement() {
+        return 0;
+    }
 
     public int getMidaPantalla() {
         return midaPantalla;
