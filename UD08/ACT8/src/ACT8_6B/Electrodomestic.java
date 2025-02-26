@@ -14,7 +14,7 @@ public abstract class Electrodomestic extends Producte {
     
         
     public double calculaPreu() {
-        double total = this.getPreu() + this.calculaSuplement();
+        double total = super.getPreu() + this.calculaSuplement();
         
         return total;         
     }

@@ -19,7 +19,7 @@ public abstract class Electronic extends Producte {
     }
     
     public double calculaPreu() {
-        double total = this.getPreu() - this.calculaDescompte();
+        double total = super.getPreu() - this.calculaDescompte();
         
         return total;         
     }
