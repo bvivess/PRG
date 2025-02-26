@@ -7,10 +7,16 @@ public class Client {
     private String cognom;
     private ArrayList<Producte> productes;
 
-    public Client(String nom, String cognom, ArrayList<Producte> productes) {
+    public Client(String nom, String cognom) {
         this.nom = nom;
         this.cognom = cognom;
         this.productes = new ArrayList<Producte>();
+    }
+    
+    public boolean afegeixProducte(Producte p) {
+        if (!(this.productes.contains(p)))
+            return this.productes.add(p);
+        return false;
     }
 
     // Mètode per calcular preu total del 'productes' 
@@ -24,10 +30,10 @@ public class Client {
 
     @Override
     public String toString() {
-        String text = "Client {Nom: " + this.nom + ", Cognom: " + this.cognom + " {";
+        String text = "Client {Nom: " + this.nom + ", Cognom: " + this.cognom + " Productes={";
         
         for (Producte p : productes)
-            text += "\n\t," + p.toString();
+            text += "\n\t " + p.toString();
         text += "\n} Preu Total: " + this.calculaPreuTotal();
         
         return text;

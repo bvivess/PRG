@@ -17,6 +17,6 @@ public class Televisor extends Electronic {
     
     @Override
     public String toString() {
-        return "Televisor {" + super.toString() + "} Preu: " + super.getPreuBase() + " " + this.calculaDescompte();
+        return "Televisor {" + super.toString() + "}";
     }
 }

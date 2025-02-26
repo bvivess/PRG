@@ -16,6 +16,6 @@ public class Portatil extends Electronic {
 
     @Override
     public String toString() {
-        return "Portàtil {" + super.toString() + "} Preu: " + super.getPreuBase() + " " + this.calculaDescompte();
+        return "Portàtil {" + super.toString() + "}";
     }
 }

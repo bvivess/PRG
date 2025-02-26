@@ -43,11 +43,13 @@ public abstract class Producte {
 
     @Override
     public String toString() {
-        return "Producte {" +
+        return "{" +
                 "Nom: " + this.nom + 
-                ", Preu: " + this.preuBase +
                 ", ConsumEnergetic: " + this.consumEnergetic +
                 ", GarantiaMesos: " + this.garantiaMesos +
-                "} Preu Producte= " + this.calculaPreu();
+                ", Preu= " + this.getPreuBase() + 
+                ", Suplement= " + this.calculaSuplement() +
+                ", Descompte= " + this.calculaDescompte() +
+                ", Preu Total= " + this.calculaPreu();
     }
 }

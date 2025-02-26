@@ -16,6 +16,6 @@ class Telefon extends Electronic {
 
     @Override
     public String toString() {
-        return "Telèfon {" + super.toString() + "} Preu: " + super.getPreuBase() + " " + this.calculaDescompte();
+        return "Telèfon {" + super.toString() + "}";
     }
 }
