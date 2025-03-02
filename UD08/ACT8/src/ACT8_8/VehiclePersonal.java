@@ -10,21 +10,13 @@ abstract class VehiclePersonal extends Vehicle {
     }
     
     @Override
-    public double calculaImpost() {
+    public double calculaImposts() {
         return (this.esElectric ? 50 : 0);
     }
     
     @Override
     public double calculaManteniment() {
-        double total = this.potencia * 0.20;
-        
-        if (this instanceof Camio)
-            total += 500;
-        else if (this instanceof Cotxe)
-            total += 100;
-        else if (this instanceof Moto)
-            total += 50;
-        return total;
+        return 75;
     }
-
+    
 }

@@ -7,6 +7,10 @@ class Camio extends VehicleMotor {
         super(matricula, marca, model, any, potencia);
     }
     
+    @Override
+    public double calculaImposts() {
+        return super.calculaImposts() + 5;
+    }
     //@Override
     //public double calculaManteniment() {
     //    return super.calculaManteniment() + 500;

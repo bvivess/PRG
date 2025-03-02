@@ -10,7 +10,7 @@ abstract class VehicleMotor extends Vehicle {
     }
     
     @Override
-    public double calculaImpost() {
+    public double calculaImposts() {
         return this.potencia * 0.02;
     }
     

@@ -19,7 +19,7 @@ abstract class Vehicle {
         this.any = any;
     }
     
-    public abstract double calculaImpost();
+    public abstract double calculaImposts();
     
     public abstract double calculaManteniment();
     

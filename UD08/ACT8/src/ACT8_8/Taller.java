@@ -26,11 +26,21 @@ class Taller {
         return null;
     }
     
+    public double calculaTotalReparacions() {
+        double total = 0.0;
+        for (Vehicle v : vehicles) {
+            if (v instanceof VehicleMotor) {
+                total += v.calculaReparacions();
+            }
+        }
+        return total;
+    }
+    
     public double calculaTotalManteniment() {
         double total = 0.0;
         for (Vehicle v : vehicles) {
             if (v instanceof VehicleMotor) {
-                total += ((VehicleMotor) v).calculaManteniment();
+                total += v.calculaManteniment();
             }
         }
         return total;
