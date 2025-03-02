@@ -56,6 +56,8 @@ class Taller {
         for (Vehicle v : vehicles) {
             resultat += "\n - " + v.toString();
         }
-        return resultat + "\nCost total manteniment: " + calculaTotalManteniment() + "EUR";
+        return resultat + 
+               "\nCost total reparacions: " + calculaTotalReparacions() + "EUR" +
+               "\nCost total manteniment: " + calculaTotalManteniment() + "EUR";
     }
 }
