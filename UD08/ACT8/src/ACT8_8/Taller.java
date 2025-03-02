@@ -45,6 +45,10 @@ class Taller {
         }
         return total;
     }
+
+    public ArrayList<Vehicle> getVehicles() {
+        return vehicles;
+    }
     
     @Override
     public String toString() {
