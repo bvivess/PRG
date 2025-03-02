@@ -1,9 +1,5 @@
 package ACT8_5B.Productes;
 
-/**
- *
- * @author winadmin
- */
 public class Deposit extends ProducteBancari {
     private int nombrePeriodes;
 
