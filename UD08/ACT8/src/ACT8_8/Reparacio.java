@@ -29,5 +29,10 @@ public class Reparacio {
         final Reparacio other = (Reparacio) obj;
         return Objects.equals(this.descripcio, other.descripcio);
     }
+
+    @Override
+    public String toString() {
+        return "Reparacio {" + "descripcio=" + this.descripcio + ", preu=" + this.preu + '}';
+    }
     
 }

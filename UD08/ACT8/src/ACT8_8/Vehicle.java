@@ -17,6 +17,7 @@ abstract class Vehicle {
         this.marca = marca;
         this.model = model;
         this.any = any;
+        this.reparacions = new ArrayList<Reparacio>();
     }
     
     public abstract double calculaImposts();
@@ -28,7 +29,7 @@ abstract class Vehicle {
             this.reparacions.add(r);
     }
     
-    private Reparacio cercaVehicle(String descripcio) {
+    private Reparacio cercaReparacio(String descripcio) {
         for (Reparacio r : reparacions) {
             if (r.getDescripcio().equals(descripcio))
                 return r;
@@ -67,6 +68,14 @@ abstract class Vehicle {
     
     @Override
     public String toString() {
-        return marca + " " + model + " (" + any + ")";
+        String text = "Matrícula= " + this.matricula + " Marca= " + this.marca + " Model= " + this.model + " (" + this.any + ")";
+        
+        for(Reparacio r : this.reparacions)
+            text += "\n\t" + r.toString();
+        
+        text += "\n\t Total Reparacions=" + this.calculaReparacions() +
+                "\n\t Total Manteniment=" + this.calculaManteniment();
+        
+        return text;
     }
 }
