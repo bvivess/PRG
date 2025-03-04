@@ -1,14 +1,15 @@
 package ACT8_8;
 
 // Classe Bicicleta que només hereta de Vehicle
-class Bicicleta extends VehiclePersonal {
+class Patinet extends VehiclePersonal {
 
-    public Bicicleta(String matricula, String marca, String model, int any, boolean esElectrica) {
+    public Patinet(String matricula, String marca, String model, int any, boolean esElectrica) {
         super(matricula, marca, model, any, esElectrica);
     }
     
     //@Override
     //public double calculaImposts() {
-    //    return super.calculaImposts() + 10;
+    //    return super.calculaImposts() + 20;
     //}
 }
+
