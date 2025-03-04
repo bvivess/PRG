@@ -73,8 +73,8 @@ abstract class Vehicle {
         for(Reparacio r : this.reparacions)
             text += "\n\t" + r.toString();
         
-        text += "\n\t Total Reparacions=" + this.calculaReparacions() +
-                "\n\t Total Manteniment=" + this.calculaManteniment();
+        text += "\n\t> Total Reparacions=" + this.calculaReparacions() +
+                "\n\t> Total Manteniment=" + this.calculaManteniment();
         
         return text;
     }
