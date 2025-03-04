@@ -26,8 +26,8 @@ public class Reparacio {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Reparacio other = (Reparacio) obj;
-        return Objects.equals(this.descripcio, other.descripcio);
+        final Reparacio r = (Reparacio) obj;
+        return this.equals(r.descripcio);
     }
 
     @Override
