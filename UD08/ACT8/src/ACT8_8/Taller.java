@@ -18,7 +18,7 @@ class Taller {
             this.vehicles.add(v);
     }
     
-    public boolean eliminaReparacio(String matricula) {
+    public boolean eliminaVehicle(String matricula) {
         return vehicles.remove(cercaVehicle(matricula));
     }
     
