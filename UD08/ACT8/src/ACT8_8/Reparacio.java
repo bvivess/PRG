@@ -1,7 +1,5 @@
 package ACT8_8;
 
-import java.util.Objects;
-
 public class Reparacio {
     String descripcio;
     double preu;

@@ -3,7 +3,6 @@ package ACT8_8;
 // Classe abstracta Vehicle
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 abstract class Vehicle {
     private String matricula;
