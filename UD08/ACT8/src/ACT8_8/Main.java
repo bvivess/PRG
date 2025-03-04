@@ -13,6 +13,8 @@ public class Main {
         taller.getVehicles().get(0).afegeixReparacio(new Reparacio("Reparacio1", 100));
         taller.getVehicles().get(0).afegeixReparacio(new Reparacio("Reparacio2", 200));
         taller.getVehicles().get(0).afegeixReparacio(new Reparacio("Reparacio3", 300));
+        taller.getVehicles().get(0).eliminaReparacio("Reparacio3");
+        taller.getVehicles().get(0).eliminaReparacio("Reparacio4");  // no existeix
         System.out.println(taller);
     }
 }
