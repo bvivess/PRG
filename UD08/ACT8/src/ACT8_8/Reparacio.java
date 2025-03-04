@@ -25,7 +25,7 @@ public class Reparacio {
             return false;
         }
         final Reparacio r = (Reparacio) obj;
-        return this.equals(r.descripcio);
+        return this.descripcio.equals(r.descripcio);
     }
 
     @Override

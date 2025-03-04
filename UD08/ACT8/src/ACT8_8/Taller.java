@@ -13,9 +13,10 @@ class Taller {
         this.vehicles = new ArrayList<>();
     }
     
-    public void afegeixVehicle(Vehicle v) {
+    public boolean afegeixVehicle(Vehicle v) {
         if (!(this.vehicles.contains(v)))
-            this.vehicles.add(v);
+            return this.vehicles.add(v);
+        return false;
     }
     
     public boolean eliminaVehicle(String matricula) {

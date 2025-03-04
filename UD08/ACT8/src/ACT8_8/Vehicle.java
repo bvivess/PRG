@@ -67,7 +67,7 @@ abstract class Vehicle {
             return false;
         }
         final Vehicle v = (Vehicle) obj;
-        return this.equals(v.matricula);
+        return this.matricula.equals(v.matricula);
     }
         
     @Override
