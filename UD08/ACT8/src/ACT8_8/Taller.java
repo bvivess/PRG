@@ -18,6 +18,10 @@ class Taller {
             this.vehicles.add(v);
     }
     
+    public boolean eliminaReparacio(String matricula) {
+        return vehicles.remove(cercaVehicle(matricula));
+    }
+    
     private Vehicle cercaVehicle(String matricula) {
         for (Vehicle v : vehicles) {
             if (v.getMatricula().equals(matricula))

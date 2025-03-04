@@ -24,9 +24,14 @@ abstract class Vehicle {
     
     public abstract double calculaManteniment();
     
-    public void afegeixReparacio(Reparacio r) {
+    public boolean afegeixReparacio(Reparacio r) {
         if (!(this.reparacions.contains(r)))
-            this.reparacions.add(r);
+            return this.reparacions.add(r);
+        return false;
+    }
+    
+    public boolean eliminaReparacio(String descripcio) {
+        return reparacions.remove(cercaReparacio(descripcio));
     }
     
     private Reparacio cercaReparacio(String descripcio) {
