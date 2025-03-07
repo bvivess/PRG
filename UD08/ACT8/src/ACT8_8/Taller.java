@@ -24,26 +24,24 @@ class Taller {
     }
     
     private Vehicle cercaVehicle(String matricula) {
-        for (Vehicle v : vehicles) {
+        for (Vehicle v : vehicles)
             if (v.getMatricula().equals(matricula))
                 return v;
-        }
         return null;
     }
     
     public double calculaTotalReparacions() {
         double total = 0.0;
-        for (Vehicle v : vehicles) {
+        for (Vehicle v : vehicles)
             total += v.calculaReparacions();
-        }
         return total;
     }
     
     public double calculaTotalManteniment() {
         double total = 0.0;
-        for (Vehicle v : vehicles) {
+        for (Vehicle v : vehicles)
             total += v.calculaManteniment();
-        }
+
         return total;
     }
 
@@ -54,9 +52,8 @@ class Taller {
     @Override
     public String toString() {
         String resultat = "Taller: " + nom + "\nVehicles:";
-        for (Vehicle v : vehicles) {
+        for (Vehicle v : vehicles)
             resultat += "\n - " + v.toString();
-        }
         return resultat + 
                "\nCost total reparacions: " + calculaTotalReparacions() + "EUR" +
                "\nCost total manteniment: " + calculaTotalManteniment() + "EUR";
