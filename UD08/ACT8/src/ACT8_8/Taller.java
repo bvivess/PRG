@@ -34,9 +34,7 @@ class Taller {
     public double calculaTotalReparacions() {
         double total = 0.0;
         for (Vehicle v : vehicles) {
-            if (v instanceof VehicleMotor) {
-                total += v.calculaReparacions();
-            }
+            total += v.calculaReparacions();
         }
         return total;
     }
@@ -44,9 +42,7 @@ class Taller {
     public double calculaTotalManteniment() {
         double total = 0.0;
         for (Vehicle v : vehicles) {
-            if (v instanceof VehicleMotor) {
-                total += v.calculaManteniment();
-            }
+            total += v.calculaManteniment();
         }
         return total;
     }
