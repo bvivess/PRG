@@ -1,5 +1,7 @@
 package EX2_3;
 
+// NO ES DEMANA A L'ENUNCIAT
+// Subclasses de Beguda
 public class Espirituosa extends Beguda {
     private float graduacio;
     

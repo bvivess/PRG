@@ -1,5 +1,6 @@
 package EX2_3;
 
+// NO ES DEMANA A L'ENUNCIAT
 // Classe abstracta Beguda
 public abstract class Beguda implements UtilBeure {
     protected String nom;

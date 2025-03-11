@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Carta {
     private ArrayList<Menu> menus;
     private ArrayList<Plat> plats;
-    private ArrayList<Beguda> begudes;
+    private ArrayList<Beguda> begudes;  // NO ES DEMANA A L'ENUNCIAT
 
     public Carta() {
         this.menus = new ArrayList<>();
@@ -54,6 +54,7 @@ public class Carta {
         return plats.removeIf(plat -> plat.getNom().equals(nom));
     }
     
+    // NO ES DEMANA A L'ENUNCIAT
     // Afegeix-Elimina Beguda
     public boolean afegeixBeguda(Beguda b) { 
         for (Beguda beguda : this.begudes)
@@ -62,6 +63,7 @@ public class Carta {
         return begudes.add(b);
     }
     
+    // NO ES DEMANA A L'ENUNCIAT
     public boolean eliminaBeguda(String nom) {
         return begudes.removeIf(beguda -> beguda.getNom().equals(nom));
     }
@@ -76,12 +78,12 @@ public class Carta {
         text += "\n\t PLATS:";
         for (Plat p : this.plats)
             text += "\n\t\t" + p.toString();
-
+        
+        // NO ES DEMANA A L'ENUNCIAT
         text += "\n\t BEGUDES:";
         for (Beguda b : this.begudes)
             text += "\n\t\t" + b.toString();
 
-        
         return text;
     }
 

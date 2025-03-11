@@ -46,6 +46,23 @@ public abstract class Plat implements UtilMenjar {
     public String getNom() {
         return nom;
     }
+    
+    // NO ES DEMANA A L'ENUNCIAT
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        
+        final Plat p = (Plat) obj;
+        return this.nom.equals(p.nom);
+    }
 
     @Override
     public String toString() {
