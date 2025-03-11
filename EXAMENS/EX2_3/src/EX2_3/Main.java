@@ -3,8 +3,7 @@ package EX2_3;
 // Classe Main
 public class Main {
     public static void main(String[] args) {
-
-        
+        // Ingredients
         Ingredient enciam = new Ingredient("Enciam", true, true);
         Ingredient tomaquet = new Ingredient("Tomàquet", true, true);
         Ingredient arros = new Ingredient("Arròs", true, true);
@@ -12,20 +11,25 @@ public class Main {
         Ingredient llet = new Ingredient("Llet", false, true);
         Ingredient sucre = new Ingredient("Sucre", true, true);
 
+        // Plats
         PrimerPlat primer = new PrimerPlat("Amanida");
+        primer.afegeixIngredient(enciam);
+        primer.afegeixIngredient(enciam);  // Error
+        primer.afegeixIngredient(tomaquet);
+
         SegonPlat segon = new SegonPlat("Paella");
+        segon.afegeixIngredient(arros);
+        segon.afegeixIngredient(marisc);
+
         Postre postre = new Postre("Gelat","dolc");
+        postre.afegeixIngredient(llet);
+        postre.afegeixIngredient(sucre);
+        
+        // Begudes
         Refresc aigua = new Refresc("Aigüa");
         Espirituosa vi = new Espirituosa("Vi Negre", 5);
 
         // Afegir ingredients a 'Plat'
-        primer.afegeixIngredient(enciam);
-        primer.afegeixIngredient(enciam);  // Error
-        primer.afegeixIngredient(tomaquet);
-        segon.afegeixIngredient(arros);
-        segon.afegeixIngredient(marisc);
-        postre.afegeixIngredient(llet);
-        postre.afegeixIngredient(sucre);
 
         // Afegir plats a 'menu'
         Menu menu = new Menu("Menu1");
@@ -35,7 +39,7 @@ public class Main {
         menu.afegeixPlat(postre);
         
         Carta carta = new Carta();
-        
+    
         // Afegir menu i plats a 'carta'
         carta.afegeixMenu(menu);
         carta.afegeixPlat(primer);
