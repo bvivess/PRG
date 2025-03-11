@@ -24,7 +24,7 @@ public class Carta {
     }
         
     public boolean eliminaMenu(String nom) {
-        return (menus.remove(cercaMenu(nom)) == null ? false:true);
+        return (menus.remove(cercaMenu(nom)) != null);
     }
     
     private int cercaMenu(String nom) {
