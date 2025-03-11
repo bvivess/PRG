@@ -16,6 +16,7 @@ public class Carta {
     
     // Afegeix-Elimina Menu 
     // Fet com l'exercici 8.8
+    // NO ES DEMANA A L'ENUNCIAT
     public boolean afegeixMenu(Menu m) {
         if (!(this.menus.contains(m)))
             return this.menus.add(m);
@@ -23,14 +24,19 @@ public class Carta {
     }
         
     public boolean eliminaMenu(String nom) {
-        return menus.remove(cercaMenu(nom));
+        return (menus.remove(cercaMenu(nom)) == null ? false:true);
     }
     
-    private Menu cercaMenu(String nom) {
-        for (Menu m : menus)
+    private int cercaMenu(String nom) {
+        int index = 0;
+        
+        for (Menu m : menus) {
             if (m.nom.equals(nom))
-                return m;
-        return null;
+                return index;
+            index++;
+        }
+        
+        return -1;
     }
     
     // Afegeix-Elimina Plat
