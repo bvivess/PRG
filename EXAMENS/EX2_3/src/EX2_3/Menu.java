@@ -14,7 +14,7 @@ public class Menu implements UtilMenjar{
 
     public boolean afegeixPlat(Plat p) {
         for (Plat plat : this.plats)
-            if ((plat.getClass().equals(p.getClass())) || plat.nom.equals(p.nom))
+            if ((plat.getClass().equals(p.getClass())) )  // || plat.equals(p))
                 return false;
         return plats.add(p);
     }
