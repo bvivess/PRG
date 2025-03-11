@@ -1,18 +1,16 @@
 package ACT9_0A;
 
-/**
- *
- * @author winadmin
- */
 public class Main {
 
     public static void main(String[] args) {
-        Empleat empleat;
-        
-        empleat = Empleat.getEmpleat("Immaculada", "Solsona");
-        empleat = Empleat.getEmpleat("EsperanÁa", "Torres");  // Aquesta inst‡ncia no s'implementar‡
-        
-        System.out.println(empleat.toString());
+        new Persona("Bernat", 23){
+            
+            @Override
+            public void saluda(){ 
+                System.out.println("Hola, s√≥c " + super.getNom() + " una persona an√≤nima");
+            }
+            
+        }.saluda();
     }
     
 }
