@@ -26,7 +26,7 @@ public class Main {
         postre.afegeixIngredient(sucre);
         
         // Begudes
-        Refresc aigua = new Refresc("Aigüa");
+        Refresc aigua = new Refresc("Aigua");
         Espirituosa vi = new Espirituosa("Vi Negre", 5);
 
         // Afegir ingredients a 'Plat'

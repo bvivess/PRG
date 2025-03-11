@@ -70,6 +70,11 @@ public class Carta {
         text += "\n\t PLATS:";
         for (Plat p : this.plats)
             text += "\n\t\t" + p.toString();
+
+        text += "\n\t BEGUDES:";
+        for (Beguda b : this.begudes)
+            text += "\n\t\t" + b.toString();
+
         
         return text;
     }

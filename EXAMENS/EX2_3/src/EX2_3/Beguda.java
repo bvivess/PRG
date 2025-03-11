@@ -32,6 +32,16 @@ public abstract class Beguda implements UtilBeure {
         final Beguda b = (Beguda) obj;
         return this.nom.equals(b.nom);
     }
+
+    @Override
+    public String toString() {
+        String text = "Beguda: " + nom;
+
+        text += " Alcoholica: " + this.esBegudaAlcoholica();
+        text += " Preu: " + this.calculaPreu();
+
+        return text;
+    }
     
     
 }
