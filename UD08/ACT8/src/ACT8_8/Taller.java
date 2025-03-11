@@ -20,14 +20,18 @@ class Taller {
     }
     
     public boolean eliminaVehicle(String matricula) {
-        return vehicles.remove(cercaVehicle(matricula));
+        return (vehicles.remove(cercaVehicle(matricula)) != null);
     }
     
-    private Vehicle cercaVehicle(String matricula) {
-        for (Vehicle v : vehicles)
+    private int cercaVehicle(String matricula) {
+        int index = 0;
+        
+        for (Vehicle v : vehicles) {
             if (v.getMatricula().equals(matricula))
-                return v;
-        return null;
+                return index;
+            index++;
+        }
+        return -1;
     }
     
     public double calculaTotalReparacions() {

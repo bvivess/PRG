@@ -40,15 +40,18 @@ abstract class Vehicle {
     }
     
     public boolean eliminaReparacio(String descripcio) {
-        return reparacions.remove(cercaReparacio(descripcio));
+        return (reparacions.remove(cercaReparacio(descripcio)) != null);
     }
     
-    private Reparacio cercaReparacio(String descripcio) {
+    private int cercaReparacio(String descripcio) {
+        int index = 0;
+        
         for (Reparacio r : reparacions) {
             if (r.getDescripcio().equals(descripcio))
-                return r;
+                return index;
+            index++;
         }
-        return null;
+        return -1;
     }
     
     public String getMatricula() {
