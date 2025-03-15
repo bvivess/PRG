@@ -1,25 +1,30 @@
 package ACT11_0F;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
 
 public class Main {
     public static void main(String[] args) {
-        // Predicate
-        Predicate<Integer> esParell = n -> n % 2 == 0;
-        System.out.println(esParell.test(4));  // true
-        
-        // Function
-        Function<String, Integer> longitud = s -> s.length();
-        System.out.println(longitud.apply("Hola")); // 4
-        
+        // CONSUMER
         Consumer<String> imprimir = s -> System.out.println("Hola, " + s);
         imprimir.accept("Anna"); // Hola, Anna
         
-        Supplier<Double> numAleatori = () -> Math.random();
-        System.out.println(numAleatori.get());  // Ex: 0.75432
+        List<String> names = new ArrayList<>();
+        names.add("Anna"); 
+        names.add("Pere"); 
+        names.add("Joan");
+        names.add("Patricia");
+        
+        
+        // Versión imperativa
+        for (String n : names) 
+            System.out.println(n);
+        
+        // Versió funcional
+        // names.forEach( name -> System.out.println(name) );  // Consumer
+        // 'forEach' admet un 'Consumer'
+        names.forEach( imprimir );  // Consumer
     }
 }
 
