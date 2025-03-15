@@ -14,6 +14,7 @@ public class Main {
         );
 
         // Collections.sort(persones, new ComparadorPersonaPerEdat());
+        // persones.sort((p1, p2) -> {return Integer.compare(p1.getEdat(), p2.getEdat());});
         persones.sort((p1, p2) -> Integer.compare(p1.getEdat(), p2.getEdat()));
 
         System.out.println(persones);  // [Joan (25), Anna (30), Marc (35)]
