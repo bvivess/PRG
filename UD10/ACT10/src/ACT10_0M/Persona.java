@@ -6,8 +6,8 @@ import java.util.Objects;
  *
  * @author winadmin
  */
-public class Persona implements Comparable<Persona> {
-    private String nom;
+public class Persona implements Comparable<Persona> {  // <Persona> evita la 'Classe Genèric',
+    private String nom;                                //           per tant evita fer un casting posterorment a 'compareTo'
     private int edat;
 
     public Persona(String nom, int edat) {
