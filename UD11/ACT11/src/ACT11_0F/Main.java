@@ -6,7 +6,7 @@ import java.util.function.Consumer;
 
 public class Main {
     public static void main(String[] args) {
-        // CONSUMER
+        // CONSUMER: Rep 'T' i no retorna cap resultat
         Consumer<String> imprimir = s -> System.out.println("Hola, " + s);
         imprimir.accept("Anna"); // Hola, Anna
         

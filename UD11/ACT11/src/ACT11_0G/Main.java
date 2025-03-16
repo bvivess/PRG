@@ -10,8 +10,8 @@ public class Main {
         Consumer<String> imprimir = s -> System.out.println("Hola, " + s);
         imprimir.accept("Anna"); // Hola, Anna
         
-        // PREDICATE
-        Predicate<String> validador = name -> name.length() > 5;  // amb 1 instrucción, no cal explicitar 'return'
+        // PREDICATE: Rep 'T', retorna 'true' o 'false'
+        Predicate<String> validador = name -> name.length() > 5;  // amb 1 instrucción, no cal explicitar el 'return'
         System.out.println(validador.test("Pere"));  // false
         
         List<String> names = List.of("Anna", "Pere", "Joan", "Patricia");
