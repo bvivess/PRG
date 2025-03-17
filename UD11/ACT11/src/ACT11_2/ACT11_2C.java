@@ -14,6 +14,7 @@ public class ACT11_2C {
             .filter(n -> n.length() > 4) // Filtrar noms amb més de 4 lletres
             .count(); // Comptar el nombre de noms
 
+        System.out.println("Llista: " + noms);
         System.out.println("Hi ha algun nom amb la lletra 'a': " + algunAmbA);
         System.out.println("Noms amb més de 4 lletres: " + nomsLlarg);
     }

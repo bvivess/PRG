@@ -13,6 +13,7 @@ public class ACT11_2D {
         boolean capMajorDe10 = numeros.stream()
             .noneMatch(n -> n > 10); // Comprovar si cap número és major que 10
 
+        System.out.println("Llista: " + numeros);
         System.out.println("Tots els numeros son positius: " + totsPositius);
         System.out.println("Cap numero es major que 10: " + capMajorDe10);
     }

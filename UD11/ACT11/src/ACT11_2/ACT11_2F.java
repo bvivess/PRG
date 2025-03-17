@@ -18,8 +18,9 @@ public class ACT11_2F {
         boolean totsMajors = edats.stream()
             .allMatch(edat -> edat >= 18); // Comprovar si tots els estudiants són majors d'edat
 
+        System.out.println("Llista: " + edats);
         System.out.println("Nombre d'estudiants majors d'edat: " + nombreMajors);
         System.out.println("Estudiants majors d'edat: " + majors);
-        System.out.println("Tots els estudiants són majors d'edat: " + totsMajors);
+        System.out.println("Tots els estudiants son majors d'edat: " + totsMajors);
     }
 }

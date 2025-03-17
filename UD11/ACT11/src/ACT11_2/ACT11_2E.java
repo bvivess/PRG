@@ -14,6 +14,7 @@ public class ACT11_2E {
             .limit(5) // Mostrar només els primers 5 preus
             .collect(Collectors.toList()); // Recollir el resultat en una llista
 
+        System.out.println("Llista: " + preus);
         System.out.println(preusAmbDescompte); // Mostrar els preus amb descompte
     }
 }

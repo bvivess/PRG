@@ -11,6 +11,7 @@ public class ACT11_2A {
             .distinct() // Eliminar duplicats
             .collect(Collectors.toList()); // Recollir el resultat en una llista
 
+        System.out.println("Llista: " + numeros);
         System.out.println(resultat); // Mostrar el resultat
     }
 }

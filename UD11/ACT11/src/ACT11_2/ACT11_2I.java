@@ -15,7 +15,8 @@ public class ACT11_2I {
             .map(n -> n * 10) // Multiplicar per 10
             .collect(Collectors.toList()); // Recollir en una llista
 
-        System.out.println("Cap número és negatiu: " + capNegatiu);
+        System.out.println("Llista: " + numeros);
+        System.out.println("Cap numero es negatiu: " + capNegatiu);
         System.out.println("Resultat multiplicat per 10: " + resultats);
     }
 }
