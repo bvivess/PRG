@@ -1,25 +1,18 @@
-package ACT10_0N;
+package ACT10_0E;
 
-import ACT10_0M.*;
-import static java.lang.CharSequence.compare;
 import java.util.Objects;
 
 /**
  *
  * @author winadmin
  */
-public class Persona implements Comparable<Persona> {
+public class Persona {
     private String nom;
     private int edat;
 
     public Persona(String nom, int edat) {
         this.nom = nom;
         this.edat = edat;
-    }
-    
-    @Override
-    public int compareTo(Persona p) {
-        return compare(this.nom, p.nom); // Ordre per Nom
     }
 
     @Override
@@ -35,19 +28,10 @@ public class Persona implements Comparable<Persona> {
         return nom.equals(persona.nom);
     }
 
+    // també es pot definir el mètode genèric següent
     @Override
     public int hashCode() {
         return Objects.hash(nom);
     }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public int getEdat() {
-        return edat;
-    }
-    
-    
 }
 

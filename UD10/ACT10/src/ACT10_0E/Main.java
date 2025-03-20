@@ -10,13 +10,13 @@ import java.util.Map;
 public class Main {
 
     public static void main(String[] args) {
-        Map<Integer, String> mapa = new HashMap<>();  // No cal implementar 'hashCode()', 'equals()' d''Integer'
-        mapa.put(1,"Un"); // "Clau-valor": 1-"Un"
-        mapa.put(2, "Dos");
-        mapa.put(3, "Tres");
-        Integer clau = 1;
-        String valor = mapa.get(clau); // Obté el 'valor' de 'clau' = 1
-        System.out.println(valor);
+        Map<Integer, Persona> mapa = new HashMap<>();  // No cal implementar 'hashCode()', 'equals()' d''Integer'
+        mapa.put(1, new Persona("Joan", 23)); // "Clau-valor": 1-Persona
+        mapa.put(2, new Persona("Aina", 25));
+        mapa.put(3,  new Persona("Maria", 30));
+        
+        Persona persona = mapa.get(1); // Obté el 'valor' de 'clau' = 1
+        System.out.println(persona);
     }
     
 }

@@ -25,13 +25,13 @@ public class Persona {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Persona persona = (Persona) o;
-        return nom.equals(persona.nom) && edat == persona.edat;
+        return nom.equals(persona.nom);
     }
 
     // també es pot definir el mètode genèric següent
     @Override
     public int hashCode() {
-        return Objects.hash(nom, edat);
+        return Objects.hash(nom);
     }
 }
 

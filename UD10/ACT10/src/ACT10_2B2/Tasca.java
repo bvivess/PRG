@@ -1,4 +1,4 @@
-package ACT10_2B;
+package ACT10_2B2;
 
 import java.time.LocalTime;
 
