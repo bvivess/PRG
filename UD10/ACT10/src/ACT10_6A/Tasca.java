@@ -1,6 +1,7 @@
 package ACT10_6A;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Tasca {
     private LocalDate data;
@@ -11,10 +12,12 @@ public class Tasca {
         this.descripcio = titol;
     }
 
-    //@Override
-    //public int hashCode() {
-    //    return super.hashCode();
-    //}
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 79 * hash + Objects.hashCode(this.data);
+        return hash;
+    }
 
     @Override
     public boolean equals(Object o) {
