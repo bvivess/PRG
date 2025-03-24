@@ -11,20 +11,20 @@ public class Tasca {
         this.descripcio = titol;
     }
 
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
+    //@Override
+    //public int hashCode() {
+    //    return super.hashCode();
+    //}
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
+    public boolean equals(Object o) {
+        if (this == o) {
             return true;
         }
-        if (obj == null || getClass() != obj.getClass()) {
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Tasca t = (Tasca) obj;
+        Tasca t = (Tasca) o;
         return data.equals(t.data);
     }
     
