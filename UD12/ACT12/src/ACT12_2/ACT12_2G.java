@@ -6,11 +6,11 @@ import java.util.stream.*;
 public class ACT12_2G {
     public static void main(String[] args) {
         List<String> frases = Arrays.asList(
-            "Aprenent Java es divertit", 
-            "Java es un llenguatge potent", 
+            "Aprenent PHP és divertit", 
+            "Python és un llenguatge potent", 
             "M'encanta programar en Java", 
-            "Java es potent", 
-            "Java es facil d'aprendre");
+            "Java és potent", 
+            "PHP és fàcil d'aprendre");
 
         System.out.println("Llista: " + frases);
         frases.stream()
