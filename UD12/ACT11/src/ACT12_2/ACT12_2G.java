@@ -3,7 +3,7 @@ package ACT12_2;
 import java.util.*;
 import java.util.stream.*;
 
-public class ACT11_2G {
+public class ACT12_2G {
     public static void main(String[] args) {
         List<String> frases = Arrays.asList(
             "Aprenent Java es divertit", 

@@ -3,7 +3,7 @@ package ACT12_2;
 import java.util.*;
 import java.util.stream.*;
 
-public class ACT11_2E {
+public class ACT12_2E {
     public static void main(String[] args) {
         List<Double> preus = Arrays.asList(120.5, 55.0, 75.0, 150.0, 50.0, 75.0, 120.5, 45.0, 60.0);
 

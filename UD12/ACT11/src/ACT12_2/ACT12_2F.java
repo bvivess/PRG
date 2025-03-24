@@ -3,7 +3,7 @@ package ACT12_2;
 import java.util.*;
 import java.util.stream.*;
 
-public class ACT11_2F {
+public class ACT12_2F {
     public static void main(String[] args) {
         List<Integer> edats = Arrays.asList(15, 19, 22, 17, 21, 18, 20, 16);
 

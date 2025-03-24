@@ -1,9 +1,9 @@
 package ACT12_0J;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.UUID;
+import java.util.stream.Stream;
 
 public class Main {
 
@@ -11,47 +11,21 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        List<String> names = Arrays.asList("Anna", "Bernat", "Carla", "Anna");
-        
-        // MAP
-        List<Integer> nameLengths = names.stream().map(name -> name.length()).collect(Collectors.toList());
-        
-        // FILTER
-        List<String> namesStartWithA = names.stream().filter(name -> name.startsWith("a")).collect(Collectors.toList());
-        
-        // SORTED
-        List<String> nameSorted   = names.stream().sorted().collect(Collectors.toList());
-        
-        // DISTINCT
-        List<String> uniqueNames = names.stream().distinct().collect(Collectors.toList());
-        
-        // LIMIT
-        List<String> uniqueNames3 = names.stream().limit(3).collect(Collectors.toList());
-        
-        // SKIP
-        List<String> uniqueNames2 = names.stream().skip(2).collect(Collectors.toList());
-        
-        // COLLECT
-        List<String> names2 = names.stream().collect(Collectors.toList());
-        
-        // FOREACH
-        names.stream().forEach(name -> System.out.println(name)); // Equivalent a System.out::println
-        
-        // COUNT
-        long count = names.stream().count();
-        
-        // ANYMATCH
-        boolean hasAnyA = names.stream().anyMatch(name -> name.startsWith("a"));
-        
-        // ALLMATCH
-        boolean hasAllA = names.stream().allMatch(name -> name.startsWith("a"));
-        
-        // NONEMATCH
-        boolean hasNoneA = names.stream().noneMatch(name -> name.startsWith("a"));
-        
-        
-        System.out.println(names);
-        System.out.println(names2);
+        //
+        Stream.of("A", "B", "C").forEach(System.out::println);
+        //
+        Stream.ofNullable(null).forEach(System.out::println);
+        //
+        Stream.empty().forEach(System.out::println);
+        //
+        Stream.generate(() -> Math.random()).limit(5).forEach(System.out::println);
+        //
+        Stream.generate(() -> Math.random()).limit(5).forEach(System.out::println);
+        Stream.generate(() -> UUID.randomUUID().toString()).limit(5).forEach(System.out::println);
+        //
+        Arrays.stream(new String[]{"Anna", "Pere", "Joan"}).forEach(System.out::println);
+        //
+        List.of("Anna", "Pere", "Joan").stream().forEach(System.out::println);
         
     }
     

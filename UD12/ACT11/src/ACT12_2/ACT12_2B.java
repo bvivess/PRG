@@ -4,7 +4,7 @@ package ACT12_2;
 import java.util.*;
 import java.util.stream.*;
 
-public class ACT11_2B {
+public class ACT12_2B {
     public static void main(String[] args) {
         List<String> noms = Arrays.asList("Juan", "Jordi", "Joan", "Pere", "Maria", "Joaquim");
 

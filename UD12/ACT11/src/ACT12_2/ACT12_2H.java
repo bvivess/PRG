@@ -3,7 +3,7 @@ package ACT12_2;
 import java.util.*;
 import java.util.stream.*;
 
-public class ACT11_2H {
+public class ACT12_2H {
     public static void main(String[] args) {
         List<String> telefons = Arrays.asList(
             "123-456-789", 
