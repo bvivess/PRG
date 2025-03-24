@@ -43,18 +43,18 @@ public class Llibre {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
+    public boolean equals(Object o) {
+        if (this == o) {
             return true;
         }
-        if (obj == null) {
+        if ( o == null) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if (getClass() != o.getClass()) {
             return false;
         }
-        final Llibre other = (Llibre) obj;
-        return Objects.equals(this.idLlibre, other.idLlibre);
+        final Llibre l = (Llibre) o;
+        return this.idLlibre == l.idLlibre;
     }
 
     

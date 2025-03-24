@@ -18,7 +18,7 @@ public class Persona extends ValidadorDispositius {
         this.nom = nom;
     }
 
-    
+    /*
     @Override
     public boolean validaPatrons(Object o) {
         Telefon telefon = (Telefon) o;
@@ -34,7 +34,7 @@ public class Persona extends ValidadorDispositius {
             System.out.println("Telèfon no encès");
             return false;
         }     
-    }
+    }*/
 
 
     public String getNom() {
