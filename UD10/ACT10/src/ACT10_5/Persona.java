@@ -32,6 +32,7 @@ public class Persona extends ValidadorDispositius {
         this.patrons = patrons;
     }
     
+    /*
     @Override
     public boolean validaPatrons(Object o) {
         Telefon telefon = (Telefon) o;
@@ -52,4 +53,5 @@ public class Persona extends ValidadorDispositius {
             return false;
         }
     }
+    */
 }

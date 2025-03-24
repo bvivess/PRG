@@ -2,6 +2,7 @@ package ACT10_5;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  *
@@ -15,7 +16,30 @@ public abstract class ValidadorDispositius {
     }
     
     // Mètode abstracte
-    abstract boolean validaPatrons(Object o);
+    // abstract boolean validaPatrons(Object o);
+    // Mètode comú per validar patrons
+    public boolean validaPatrons(ValidadorDispositius altre) {
+        if (altre instanceof Telefon && !((Telefon) altre).getOnOff()) {
+            System.out.println("Telèfon no encès");
+            return false;
+        }
+
+        for (Map.Entry<TipusPatro, String> entryA : this.patrons.entrySet()) {
+            TipusPatro clauA = entryA.getKey();
+            String valorA = entryA.getValue();
+
+            for (Map.Entry<TipusPatro, String> entryB : altre.patrons.entrySet()) {
+                TipusPatro clauB = entryB.getKey();
+                String valorB = entryB.getValue();
+
+                if (clauA.equals(clauB) ) {
+                    return valorA.equals(valorB); // Retorna true només si clau i valor coincideixen
+                }
+            }
+        }
+        return false;
+    }
+
     
     // Mètode concret
     public void setPatrons() {
