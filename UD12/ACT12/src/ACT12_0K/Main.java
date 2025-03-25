@@ -15,6 +15,7 @@ public class Main {
         
         // MAP
         List<Integer> nameLengths = names.stream().map(name -> name.length()).collect(Collectors.toList());
+        List<String> nameUpperCase = names.stream().map(name -> name.toUpperCase()).collect(Collectors.toList());
         
         // FILTER
         List<String> namesStartWithA = names.stream().filter(name -> name.startsWith("a")).collect(Collectors.toList());
@@ -51,7 +52,7 @@ public class Main {
         
         
         System.out.println(names);
-        System.out.println(names2);
+        System.out.println(nameUpperCase);
         
     }
     
