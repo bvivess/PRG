@@ -7,7 +7,7 @@ import java.util.Queue;
 /**
  * @author T.Vives
  */
-public class Dia {
+public class Dia implements Comparable<Dia>{
     protected LocalDate data;
     protected Queue<String> tasques;
 
@@ -15,6 +15,13 @@ public class Dia {
     public Dia(LocalDate data, Queue<String> tasques) {
         this.data = data;
         this.tasques = tasques;
+    }
+
+    @Override
+    public int compareTo(Dia o) {
+        if (data.isAfter(o.data)) return 1;
+        else if (data.isBefore(o.data)) return -1;
+        else return 0;
     }
     
     // Getters i Setters

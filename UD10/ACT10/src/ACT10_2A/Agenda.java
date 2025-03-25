@@ -2,6 +2,7 @@ package ACT10_2A;
 
 import java.time.LocalDate;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
@@ -10,24 +11,22 @@ import java.util.Set;
  * @author winadmin
  */
 public class Agenda {
-    Set<Dia> dies;
+    List<Dia> dies;
 
     // Constructor
-    public Agenda(Set<Dia> dies) {
+    public Agenda(List<Dia> dies) {
         this.dies = dies;
     }
-    // es permet el constructor 'default'
     
     public void afegeixDia(LocalDate data, String ... atasques) {
-        Queue<String> tasques = new LinkedList<>();
         Dia dia = cercaDia(data);
         
         if ( dia == null) {  // afegir atasques a tasques
+            Queue<String> tasques = new LinkedList<>();
             for (String a:atasques)
                 // Afegir tasques
                 tasques.offer(a);
-            Dia nouDia = new Dia(data, tasques);
-            this.dies.add( nouDia );
+            this.dies.add( new Dia(data, tasques) );
         } else {
             for (String a:atasques)
                 dia.tasques.offer(a);

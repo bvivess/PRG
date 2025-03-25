@@ -1,6 +1,8 @@
 package ACT10_2A;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 
 /**
@@ -10,11 +12,11 @@ import java.util.HashSet;
 public class Main {
 
     public static void main(String[] args) {
-        Agenda agenda = new Agenda(new HashSet<>());
+        Agenda agenda = new Agenda(new ArrayList<>());
                 
         // DIA 1/1/2004: Tasca1, Tasca2, Tasca3
         // Afegir un dia a l'agenda
-        agenda.afegeixDia(LocalDate.of(2024, 1, 1), "Tasca1","Tasca2","Tasca3");
+        agenda.afegeixDia(LocalDate.of(2024, 1, 1), "Tasca1", "Tasca2", "Tasca3");
              
         // DIA 2/1/2004: Tasca1 
         agenda.afegeixDia(LocalDate.of(2024, 1, 2), "Tasca1");
@@ -26,6 +28,8 @@ public class Main {
         agenda.afegeixDia(LocalDate.of(2024, 1, 2), "Tasca2", "Tasca3");
         
         System.out.println(agenda.obteTasca(LocalDate.of(2024, 01, 02)));
+        
+        Collections.sort(agenda.dies);
     }
     
 }
