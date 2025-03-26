@@ -12,7 +12,7 @@ public class Agenda {
     private Map<LocalDate, List<Tasca>> tasques;
 
     public Agenda() {
-        tasques = new TreeMap<>();  // 'TreeMap' ordena el 'Map' per 'key'
+        tasques = new HashMap<>();  // 'TreeMap' ordena el 'Map' per 'key'
     }
 
     public void afegeixTasca(LocalDate data, LocalTime hora, String titol) {
