@@ -11,10 +11,10 @@ import java.util.Set;
  * @author winadmin
  */
 public class Agenda {
-    List<Dia> dies;
+    Set<Dia> dies;
 
     // Constructor
-    public Agenda(List<Dia> dies) {
+    public Agenda(Set<Dia> dies) {
         this.dies = dies;
     }
     

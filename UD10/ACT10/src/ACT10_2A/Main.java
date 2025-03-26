@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  *
@@ -12,7 +13,7 @@ import java.util.HashSet;
 public class Main {
 
     public static void main(String[] args) {
-        Agenda agenda = new Agenda(new ArrayList<>());
+        Agenda agenda = new Agenda(new HashSet<>());
                 
         // DIA 1/1/2004: Tasca1, Tasca2, Tasca3
         // Afegir un dia a l'agenda
@@ -29,7 +30,11 @@ public class Main {
         
         System.out.println(agenda.obteTasca(LocalDate.of(2024, 01, 02)));
         
-        Collections.sort(agenda.dies);
+        List agendaOrdenada = new ArrayList<>(agenda.dies);  // un 'Set' no es pot ordenar , cal transformar el 'Set' a 'ArrayList'
+        
+        Collections.sort(agendaOrdenada);
+        
+        System.out.println(agendaOrdenada);
     }
     
 }

@@ -47,6 +47,6 @@ public class Dia implements Comparable<Dia>{
     
     @Override
     public String toString() {
-        return tasques.toString();
+        return this.data + ": {" + this.tasques.toString() + "}";
     }
 }
