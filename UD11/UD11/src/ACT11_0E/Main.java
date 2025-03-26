@@ -18,7 +18,7 @@ public class Main {
         // Establir la connexió
         try ( Connection connexio = DriverManager.getConnection(servidor+bdades, usuari, passwd);
               Statement statement = connexio.createStatement();
-              ResultSet resultSet = statement.executeQuery(sql)) {
+              ResultSet resultSet = statement.executeQuery(sql) ) {
 
             System.out.println("Connexió amb la base de dades MySQL exitosa.");
             

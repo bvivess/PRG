@@ -27,10 +27,11 @@ public class Main {
         System.out.println("-------------------------");
         System.out.println(agenda.toString());
         System.out.println("-------------------------");
+        
         System.out.println("Tasca per 01/01/2024-12:00 - " +
                             agenda.obteTasca(LocalDate.of(2024, 1, 01), LocalTime.of(12,00)));
+        
         System.out.println("Tasca per 02/01/2024-11:00 - " +
                             agenda.obteTasca(LocalDate.of(2024, 1, 02), LocalTime.of(11,00)));
     }
 }
-
