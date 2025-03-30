@@ -12,8 +12,8 @@ public class ACT12_2F {
             .count(); // Comptar el nombre d'estudiants majors d'edat
 
         List<Integer> majors = edats.stream()
-            .filter(edat -> edat > 18) // Filtrar majors d'edat
-            .collect(Collectors.toList()); // Recollir els majors en una llista
+                                    .filter(edat -> edat > 18) // Filtrar majors d'edat
+                                    .collect(Collectors.toList()); // Recollir els majors en una llista
 
         boolean totsMajors = edats.stream()
             .allMatch(edat -> edat >= 18); // Comprovar si tots els estudiants són majors d'edat

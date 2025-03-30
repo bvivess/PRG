@@ -7,8 +7,7 @@ public class ACT12_2C {
     public static void main(String[] args) {
         List<String> noms = Arrays.asList("Juan", "Jordi", "Joan", "Pere", "Maria", "Joaquim");
 
-        boolean algunAmbA = noms.stream()
-            .anyMatch(n -> n.contains("a")); // Comprovar si hi ha algun nom amb "a"
+        boolean algunAmbA = noms.stream().anyMatch(n -> n.contains("a")); // Comprovar si hi ha algun nom amb "a"
         
         long nomsLlarg = noms.stream()
             .filter(n -> n.length() > 4) // Filtrar noms amb més de 4 lletres

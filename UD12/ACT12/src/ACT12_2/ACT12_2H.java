@@ -14,8 +14,8 @@ public class ACT12_2H {
 
         System.out.println("Llista: " + telefons);
         telefons.stream()
-            .map(t -> t.replace("-", "")) // Eliminar els guions per obtenir el número en format continu
-            .distinct() // Eliminar duplicats
-            .forEach(n -> System.out.println(n)); // Mostrar els números de telèfon resultants
+                .map(t -> t.replace("-", "")) // Eliminar els guions per obtenir el número en format continu
+                .distinct() // Eliminar duplicats
+                .forEach(n -> System.out.println(n)); // Mostrar els números de telèfon resultants
     }
 }
