@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Main {
+public class Main1 {
     public static void main(String[] args) {
         String rutaArchivo = "C:\\temp\\ACT11_2.cvs";
         Map<Integer, Persona> variables = new HashMap<>();
@@ -21,7 +21,7 @@ public class Main {
             Integer clau;
             Persona persona;
             while ((linea = bufferedReader.readLine()) != null) {
-                parts = linea.split("=");
+                parts = linea.split(";");
                 if (!linea.substring(0, 1).equals("#")) {
                     clau = Integer.valueOf(parts[0]);
                     persona = new Persona(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3]);

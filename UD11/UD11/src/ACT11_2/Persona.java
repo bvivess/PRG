@@ -49,6 +49,9 @@ public class Persona {
         this.email = email;
     }
 
-    
+    @Override
+    public String toString() {
+        return "Persona{" + "id=" + id + ", last_name=" + last_name + ", first_name=" + first_name + ", email=" + email + '}';
+    }
     
 }
