@@ -9,7 +9,7 @@ import java.util.Map;
 public class Main2 {
     public static void main(String[] args) {
         String arxiu = "C:\\temp\\ACT11_2.cvs";
-        Map<Integer, Persona> persones = new HashMap<>();
+        Map<Integer, Persona> persones;
 
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu));
             ) {
