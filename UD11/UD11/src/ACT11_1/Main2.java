@@ -34,6 +34,7 @@ public class Main2 {
         String[] parts;
         String clau;
         String valor;
+        
         while ((linea = bufferedReader.readLine()) != null) {
             // format: xxxx = yyyy
             if (!(linea.isEmpty() || linea.startsWith("#"))) {
@@ -43,7 +44,7 @@ public class Main2 {
                     clau = parts[0].trim();
                     valor = parts[1].trim();
                     variables.put(clau, valor);
-                }
+                } 
             }
         }
         return variables;
@@ -58,10 +59,12 @@ public class Main2 {
 
     private static boolean ComprovaVariables(Map<String,String> variables) {
         String[] valorsPossibles = {"address","netmask","dns_server","interface","gateway"};
+        
         for (String v:valorsPossibles) {
             if (variables.get(v) == null)
                 return false;
         }
+        
         return true;
     }
 }
