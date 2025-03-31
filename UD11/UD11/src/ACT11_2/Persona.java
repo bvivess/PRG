@@ -48,10 +48,10 @@ public class Persona {
     public void setEmail(String email) throws Exception {
         //if (email.contains("@"))
         //    this.email = email;
-        if ((email != null) && (email.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")))
-            this.email = email;
-        else
+        if (email == null || !email.matches("^[a-zA-Z0-9\\._%+-]+@[a-zA-Z0-9\\.-]+\\.[a-zA-Z]{2,}$"))
             throw new Exception ("Email incorrecte");
+        else
+            this.email = email;
                 
     }
 
