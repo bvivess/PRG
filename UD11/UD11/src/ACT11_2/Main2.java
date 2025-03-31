@@ -34,7 +34,7 @@ public class Main2 {
         
         while ((linea = bufferedReader.readLine()) != null) {
             try {
-                // format: xxxx = yyyy
+                // format: xxxx; yyyy; zzzz; ...
                 if (!(linea.isEmpty() || linea.startsWith("#"))) {
                     parts = linea.split(";");
                     if (!linea.substring(0, 1).equals("#")) {
