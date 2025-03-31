@@ -25,6 +25,7 @@ public class Main1 {
                 if (!linea.substring(0, 1).equals("#")) {
                     clau = Integer.valueOf(parts[0]);
                     persona = new Persona(clau, parts[1], parts[2], parts[3]);
+                    
                     persones.put(clau, persona);
                 }
             }

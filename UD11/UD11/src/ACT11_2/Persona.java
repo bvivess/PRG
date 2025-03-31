@@ -21,24 +21,33 @@ public class Persona {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int id) throws Exception {
+        if (firstName == null)
+            throw new Exception ("Id incorrecte");
+        else
+            this.id = id;
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastName(String lastName) throws Exception {
+        if (lastName == null)
+            throw new Exception ("Last name incorrecte");
+        else
+            this.lastName = lastName;
     }
 
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstName(String firstName) throws Exception {
+        if (firstName == null)
+            throw new Exception ("First name incorrecte");
+        else
+            this.firstName = firstName;
     }
 
     public String getEmail() {
@@ -48,7 +57,7 @@ public class Persona {
     public void setEmail(String email) throws Exception {
         //if (email.contains("@"))
         //    this.email = email;
-        if (email == null || !email.matches("^[a-zA-Z0-9\\._%+-]+@[a-zA-Z0-9\\.-]+\\.[a-zA-Z]{2,}$"))
+        if (email == null || !email.contains("@"))
             throw new Exception ("Email incorrecte");
         else
             this.email = email;
