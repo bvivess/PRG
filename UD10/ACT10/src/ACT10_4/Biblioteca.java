@@ -106,31 +106,21 @@ public class Biblioteca {
         return false;
     }
     
-    public void eliminaAnomalia(int idLlibre, Anomalia anomalia) {
+    public boolean eliminaAnomalia(int idLlibre, Anomalia anomalia) {
         boolean trobat = false;
-        int i = 0;
-        Iterator<Llibre> iterator;
-        Llibre element;
         
-        iterator = this.llibresDisponibles.iterator();
-        while (iterator.hasNext()) {
-            element = iterator.next();
-            if (element.getIdLlibre() == idLlibre) {
-                trobat = true;
-                element.getAnomalies().remove(i);
-            }
-            i++;
-        }
+        // Llibres disponibles
+        for (Llibre l : this.llibresDisponibles)
+            trobat = l.getAnomalies().remove(anomalia);
+
+        
         if (!trobat) {
-            i = 0;
-            iterator = this.llibresPrestats.iterator();
-            while (iterator.hasNext()) {
-               element = iterator.next();           
-                if (element.getIdLlibre() == idLlibre) 
-                    element.getAnomalies().remove(i);
-                i++;
-            }
+            // Llibres prestats
+            for (Llibre l : this.llibresPrestats) 
+                trobat = l.getAnomalies().remove(anomalia);
         }
+        
+        return trobat;
     }
   
 }
