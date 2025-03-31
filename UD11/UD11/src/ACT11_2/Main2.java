@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Main2 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         String arxiu = "C:\\temp\\ACT11_2.cvs";
         Map<Integer, Persona> persones;
 
@@ -16,6 +16,7 @@ public class Main2 {
             
             // Llegir el contingut línia a línia
             persones = LlegeixArxiu(bufferedReader);
+            
             // Mostrar el map
             MostraPersones(persones);
 
@@ -24,7 +25,7 @@ public class Main2 {
         }
     }
     
-    private static Map<Integer,Persona> LlegeixArxiu(BufferedReader bufferedReader) throws IOException {
+    private static Map<Integer,Persona> LlegeixArxiu(BufferedReader bufferedReader) throws IOException, Exception {
         Map<Integer,Persona> persones = new HashMap<>();
         String linea;
         String[] parts;
@@ -32,14 +33,18 @@ public class Main2 {
         Persona persona;
         
         while ((linea = bufferedReader.readLine()) != null) {
-            // format: xxxx = yyyy
-            if (!(linea.isEmpty() || linea.startsWith("#"))) {
-                parts = linea.split(";");
-                if (!linea.substring(0, 1).equals("#")) {
-                    clau = Integer.valueOf(parts[0]);
-                    persona = new Persona(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3]);
-                    persones.put(clau, persona);
+            try {
+                // format: xxxx = yyyy
+                if (!(linea.isEmpty() || linea.startsWith("#"))) {
+                    parts = linea.split(";");
+                    if (!linea.substring(0, 1).equals("#")) {
+                        clau = Integer.valueOf(parts[0]);
+                        persona = new Persona(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3]);
+                        persones.put(clau, persona);
+                    }
                 }
+            } catch (Exception e) {
+                System.err.println("Error carragant Persona: " + e.getMessage());
             }
         }
         return persones;

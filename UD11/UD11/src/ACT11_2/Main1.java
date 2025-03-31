@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Main1 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         String rutaArchivo = "C:\\temp\\ACT11_2.cvs";
         Map<Integer, Persona> variables = new HashMap<>();
         String[] parts;

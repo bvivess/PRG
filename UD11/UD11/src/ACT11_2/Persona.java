@@ -10,7 +10,7 @@ public class Persona {
     private String firstName;
     private String email;
 
-    public Persona(int id, String last_name, String first_name, String email) {
+    public Persona(int id, String last_name, String first_name, String email) throws Exception {
         setId(id);
         setLastName(last_name);
         setFirstName(first_name);
@@ -45,9 +45,14 @@ public class Persona {
         return email;
     }
 
-    public void setEmail(String email) {
-        if (email.contains("@"))
+    public void setEmail(String email) throws Exception {
+        //if (email.contains("@"))
+        //    this.email = email;
+        if ((email != null) && (email.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$")))
             this.email = email;
+        else
+            throw new Exception ("Email incorrecte");
+                
     }
 
     @Override
