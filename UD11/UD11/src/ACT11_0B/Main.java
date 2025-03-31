@@ -17,7 +17,7 @@ public class Main {
         try ( BufferedReader bufInput = new BufferedReader(new FileReader(nomArxiu));
               BufferedWriter bufOutput = new BufferedWriter(new FileWriter(nomArxiu2))
             ) {
-            String line = "";
+            String line;
             while ((line = bufInput.readLine()) != null) {
                 System.out.println(line);
                 
