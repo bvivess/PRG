@@ -11,8 +11,8 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        String arxiu1 = "C:\\temp\\ACT11_2B_departments.cvs";
-        String arxiu2 = "C:\\temp\\ACT11_2B_employees.cvs";
+        String arxiu1 = "C:\\temp\\ACT11_2B_departments.txt";
+        String arxiu2 = "C:\\temp\\ACT11_2B_employees.txt";
         
         // Estructures de memòria
         List<Department> departments = new ArrayList<>();
@@ -34,9 +34,9 @@ public class Main {
             
             // Mostrar el map
             mostraDepartments(departments);
-            mostraEmployees(employees);
-            mostraDepEmps(depEmps);
-            mostraEmpDeps(empDeps);
+            //mostraEmployees(employees);
+            //mostraDepEmps(depEmps);
+            //mostraEmpDeps(empDeps);
 
         } catch (IOException e) {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
