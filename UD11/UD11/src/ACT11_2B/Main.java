@@ -97,9 +97,12 @@ public class Main {
     }
     
     private static void carregaDepEmps(Map<Department, List<Employee>> depEmps, Map<Integer,Department> departments, Map<Integer,Employee> employees) {
-        for (Department d : departments.values()) {  // Crea 'depEmps' a partir de 'departments'
+        // Crea 'depEmps' a partir de 'departments'
+        for (Department d : departments.values()) {  
             depEmps.put(d, new ArrayList<>());
         }
+        
+        // Modifica la List de 'depEmps' a partir de cada 'employee'
         for (Employee e : employees.values()) {  // per a cada 'employee' afegeix-lo a la List de 'depEmps'
             Department department = new Department(e.getDepartmentId(), null);  // es crea un 'Department' amb les dades que cal cercar
             List<Employee> llistaEmployees = depEmps.get(department); // cerca la List per 'departmentId'
