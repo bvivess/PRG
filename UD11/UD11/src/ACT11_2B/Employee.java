@@ -11,23 +11,22 @@ public class Employee {
     private String lastName;
     private String firstName;
     private String email;
+    private int departmentId;
 
-    public Employee(int id, String last_name, String first_name, String email) throws Exception {
+    public Employee(int id, String last_name, String first_name, String email, int department_id) throws Exception {
         setId(id);
         setLastName(last_name);
         setFirstName(first_name);
         setEmail(email);
+        setDepartmentId(department_id);
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) throws Exception {
-        if (firstName == null)
-            throw new Exception ("Id incorrecte");
-        else
-            this.id = id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getLastName() {
@@ -66,9 +65,17 @@ public class Employee {
                 
     }
 
+    public int getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(int departmentId) {
+        this.departmentId = departmentId;
+    }
+    
     @Override
     public String toString() {
-        return "Persona{" + "id=" + id + ", last_name=" + lastName + ", first_name=" + firstName + ", email=" + email + '}';
+        return "Persona{" + "id=" + id + ", last_name=" + lastName + ", first_name=" + firstName + ", email=" + email + ", departmentId=" + departmentId + '}';
     }
     
 }
