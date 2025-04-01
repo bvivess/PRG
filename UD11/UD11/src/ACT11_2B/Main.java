@@ -97,14 +97,14 @@ public class Main {
     }
     
     private static void carregaDepEmps(Map<Department, List<Employee>> depEmps, Map<Integer,Department> departments, Map<Integer,Employee> employees) {
-        for (Department d : departments.values()) {
+        for (Department d : departments.values()) {  // Crea 'depEmps' a partir de 'departments'
             depEmps.put(d, new ArrayList<>());
         }
-        for (Employee e : employees.values()) {
-            Department d_ = new Department(e.getDepartmentId(),null);
-            List<Employee> e_ = depEmps.get(d_); // cerca per 'departmentId'
-            e_.add(e);
-            depEmps.put(d_,e_);  // Modifica l'array
+        for (Employee e : employees.values()) {  // per a cada 'employee' afegeix-lo a la List de 'depEmps'
+            Department department = new Department(e.getDepartmentId(), null);  // es crea un 'Department' amb les dades que cal cercar
+            List<Employee> llistaEmployees = depEmps.get(department); // cerca la List per 'departmentId'
+            llistaEmployees.add(e);  // afegeix 'e' a la List
+            depEmps.put(department, llistaEmployees);  // Modifica la List de 'depEmps'
         }
     }
     
