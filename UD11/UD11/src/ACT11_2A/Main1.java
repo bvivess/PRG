@@ -1,4 +1,4 @@
-package ACT11_2;
+package ACT11_2A;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class Main1 {
     public static void main(String[] args) throws Exception {
-        String rutaArchivo = "C:\\temp\\ACT11_2.cvs";
+        String rutaArchivo = "C:\\temp\\ACT11_2A.cvs";
         Map<Integer, Persona> persones = new HashMap<>();
         String[] parts;
 

@@ -1,14 +1,15 @@
-package ACT11_2;
+package ACT11_2B;
 
+import ACT11_2A.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Main2 {
+public class Main {
     public static void main(String[] args) throws Exception {
-        String arxiu = "C:\\temp\\ACT11_2.cvs";
+        String arxiu = "C:\\temp\\ACT11_2A.cvs";
         Map<Integer, Persona> persones;
 
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu));
