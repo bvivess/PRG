@@ -10,7 +10,7 @@ public class Persona {
     private String firstName;
     private String email;
 
-    public Persona(int id, String last_name, String first_name, String email) throws Exception {
+    public Persona(int id, String last_name, String first_name, String email) throws IllegalArgumentException {
         setId(id);
         setLastName(last_name);
         setFirstName(first_name);
@@ -21,20 +21,17 @@ public class Persona {
         return id;
     }
 
-    public void setId(int id) throws Exception {
-        if (firstName == null)
-            throw new Exception ("Id incorrecte");
-        else
-            this.id = id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) throws Exception {
+    public void setLastName(String lastName) throws IllegalArgumentException {
         if (lastName == null)
-            throw new Exception ("Last name incorrecte");
+            throw new IllegalArgumentException ("Last name incorrecte");
         else
             this.lastName = lastName;
     }
@@ -43,9 +40,9 @@ public class Persona {
         return firstName;
     }
 
-    public void setFirstName(String firstName) throws Exception {
+    public void setFirstName(String firstName) throws IllegalArgumentException {
         if (firstName == null)
-            throw new Exception ("First name incorrecte");
+            throw new IllegalArgumentException ("First name incorrecte");
         else
             this.firstName = firstName;
     }
@@ -54,11 +51,11 @@ public class Persona {
         return email;
     }
 
-    public void setEmail(String email) throws Exception {
+    public void setEmail(String email) throws IllegalArgumentException {
         //if (email.contains("@"))
         //    this.email = email;
         if (email == null || !email.contains("@"))
-            throw new Exception ("Email incorrecte");
+            throw new IllegalArgumentException ("Email incorrecte");
         else
             this.email = email;
                 
