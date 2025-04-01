@@ -4,7 +4,7 @@ package ACT11_2B;
  *
  * @author Administrador
  */
-public class Department {
+public class Department implements Comparable<Department> {
     private int department_id;
     private String departmentName;
 
@@ -28,6 +28,11 @@ public class Department {
         this.departmentName = departmentName;
     }
     
+    @Override
+    public int compareTo(Department other) {
+        return Integer.compare(this.department_id, other.department_id); // Ordenar per ID
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;

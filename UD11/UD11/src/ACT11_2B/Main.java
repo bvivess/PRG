@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,8 +13,8 @@ public class Main {
     public static void main(String[] args) throws Exception {
         String arxiu1 = "C:\\temp\\ACT11_2B_departments.cvs";
         String arxiu2 = "C:\\temp\\ACT11_2B_employees.cvs";
-        Map<Integer, Employee> employees = new HashMap<>();
-        Map<Integer, Department> departments = new HashMap<>();
+        List<Department> departments = new ArrayList<>();
+        List<Employee> employees = new ArrayList<>();
         Map<Department, List<Employee>> depEmps = new HashMap<>();
 
         try ( BufferedReader bufferedReader1 = new BufferedReader(new FileReader(arxiu1));
@@ -27,8 +28,8 @@ public class Main {
             // Càrrega 'depEmps'
             carregaDepEmps(depEmps, departments, employees);
             // Mostrar el map
-            //mostraDepartments(departments);
-            //mostraEmployees(employees);
+            mostraDepartments(departments);
+            mostraEmployees(employees);
             mostraDepEmps(depEmps);
 
         } catch (IOException e) {
@@ -36,10 +37,9 @@ public class Main {
         }
     }
 
-    private static void LlegeixArxiuDepartments(BufferedReader bufferedReader, Map<Integer,Department> departments) throws IOException, Exception {
+    private static void LlegeixArxiuDepartments(BufferedReader bufferedReader, List<Department> departments) throws IOException, Exception {
         String linea;
         String[] parts;
-        Integer clau;
         Department department;
         
         while ((linea = bufferedReader.readLine()) != null) {
@@ -48,9 +48,8 @@ public class Main {
                 if (!(linea.isEmpty() || linea.startsWith("#"))) {
                     parts = linea.split(";");
                     if (!linea.substring(0, 1).equals("#")) {
-                        clau = Integer.valueOf(parts[0].trim());
-                        department = new Department(Integer.parseInt(parts[0]), parts[1].trim());
-                        departments.put(clau, department);
+                        department = new Department(Integer.valueOf(parts[0].trim()), parts[1].trim());
+                        departments.add(department);
                     }
                 }
             } catch (Exception e) {
@@ -59,10 +58,9 @@ public class Main {
         }
     }
     
-    private static void LlegeixArxiuEmployees(BufferedReader bufferedReader, Map<Integer,Employee> employees) throws IOException, Exception {
+    private static void LlegeixArxiuEmployees(BufferedReader bufferedReader, List<Employee> employees) throws IOException, Exception {
         String linea;
         String[] parts;
-        Integer clau;
         Employee employee;
         
         while ((linea = bufferedReader.readLine()) != null) {
@@ -71,9 +69,8 @@ public class Main {
                 if (!(linea.isEmpty() || linea.startsWith("#"))) {
                     parts = linea.split(";");
                     if (!linea.substring(0, 1).equals("#")) {
-                        clau = Integer.valueOf(parts[0].trim());
-                        employee = new Employee(Integer.parseInt(parts[0]), parts[1].trim(), parts[2].trim(), parts[3].trim(), Integer.valueOf(parts[4].trim()));
-                        employees.put(clau, employee);
+                        employee = new Employee(Integer.parseInt(parts[0].trim()), parts[1].trim(), parts[2].trim(), parts[3].trim(), Integer.valueOf(parts[4].trim()));
+                        employees.add(employee);
                     }
                 }
             } catch (Exception e) {
@@ -82,28 +79,28 @@ public class Main {
         }
     }
 
-    private static void mostraDepartments(Map<Integer,Department> departments) {
-        for (Integer k : departments.keySet()) {
-            Department v = departments.get(k);
-            System.out.println(k + " = " + v);
+    private static void mostraDepartments(List<Department> departments) {
+        Collections.sort(departments);
+        for (Department d : departments) {
+            System.out.println(d.toString());
         }
     }
     
-    private static void mostraEmployees(Map<Integer,Employee> employees) {
-        for (Integer k : employees.keySet()) {
-            Employee v = employees.get(k);
-            System.out.println(k + " = " + v);
+    private static void mostraEmployees(List<Employee> employees) {
+        Collections.sort(employees); // Ordena la llista 'employees'
+
+        for (Employee e : employees) {  // Ara la llista ja està ordenada
+            System.out.println(e.toString());
         }
-    }
-    
-    private static void carregaDepEmps(Map<Department, List<Employee>> depEmps, Map<Integer,Department> departments, Map<Integer,Employee> employees) {
+    }    
+    private static void carregaDepEmps(Map<Department, List<Employee>> depEmps, List<Department> departments, List<Employee> employees) {
         // Crea 'depEmps' a partir de 'departments'
-        for (Department d : departments.values()) {  
+        for (Department d : departments) {  
             depEmps.put(d, new ArrayList<>());
         }
         
         // Modifica la List de 'depEmps' a partir de cada 'employee'
-        for (Employee e : employees.values()) {  // per a cada 'employee' afegeix-lo a la List de 'depEmps'
+        for (Employee e : employees) {  // per a cada 'employee' afegeix-lo a la List de 'depEmps'
             Department department = new Department(e.getDepartmentId(), null);  // es crea un 'Department' amb les dades que cal cercar
             List<Employee> llistaEmployees = depEmps.get(department); // cerca la List per 'departmentId'
             llistaEmployees.add(e);  // afegeix 'e' a la List

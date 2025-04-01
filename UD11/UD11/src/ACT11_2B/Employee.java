@@ -6,27 +6,27 @@ import ACT11_2A.*;
  *
  * @author Administrador
  */
-public class Employee {
-    private int id;
+public class Employee implements Comparable<Employee> {
+    private int employeeId;
     private String lastName;
     private String firstName;
     private String email;
     private int departmentId;
 
-    public Employee(int id, String last_name, String first_name, String email, int department_id) throws Exception {
-        setId(id);
+    public Employee(int employeeId, String last_name, String first_name, String email, int department_id) throws Exception {
+        setEmployeeId(employeeId);
         setLastName(last_name);
         setFirstName(first_name);
         setEmail(email);
         setDepartmentId(department_id);
     }
 
-    public int getId() {
-        return id;
+    public int getEmployeeId() {
+        return employeeId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
     }
 
     public String getLastName() {
@@ -74,8 +74,13 @@ public class Employee {
     }
     
     @Override
+    public int compareTo(Employee other) {
+        return Integer.compare(this.departmentId, other.departmentId); // Ordenar per ID
+    }
+    
+    @Override
     public String toString() {
-        return "Persona{" + "id=" + id + ", last_name=" + lastName + ", first_name=" + firstName + ", email=" + email + ", departmentId=" + departmentId + '}';
+        return "Persona{" + "id=" + employeeId + ", last_name=" + lastName + ", first_name=" + firstName + ", email=" + email + ", departmentId=" + departmentId + '}';
     }
     
 }
