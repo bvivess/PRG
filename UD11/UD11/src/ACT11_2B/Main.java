@@ -13,6 +13,8 @@ public class Main {
     public static void main(String[] args) throws Exception {
         String arxiu1 = "C:\\temp\\ACT11_2B_departments.cvs";
         String arxiu2 = "C:\\temp\\ACT11_2B_employees.cvs";
+        
+        // Estructures de memòria
         List<Department> departments = new ArrayList<>();
         List<Employee> employees = new ArrayList<>();
         Map<Department, List<Employee>> depEmps = new HashMap<>();
