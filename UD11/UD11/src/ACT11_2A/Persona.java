@@ -30,7 +30,7 @@ public class Persona {
     }
 
     public void setLastName(String lastName) throws IllegalArgumentException {
-        if (lastName == null)
+        if (lastName == null || lastName.isBlank())
             throw new IllegalArgumentException ("Last name incorrecte");
         else
             this.lastName = lastName;
@@ -41,7 +41,7 @@ public class Persona {
     }
 
     public void setFirstName(String firstName) throws IllegalArgumentException {
-        if (firstName == null)
+        if (firstName == null || firstName.isBlank())
             throw new IllegalArgumentException ("First name incorrecte");
         else
             this.firstName = firstName;
@@ -52,9 +52,7 @@ public class Persona {
     }
 
     public void setEmail(String email) throws IllegalArgumentException {
-        //if (email.contains("@"))
-        //    this.email = email;
-        if (email == null || !email.contains("@"))
+        if (email == null || email.isBlank() || !email.matches("^[a-zA-Z0-9\\._%+-]+@[a-zA-Z0-9\\.-]+\\.[a-zA-Z]{2,}$"))  // en comptes de: email.contains("@")
             throw new IllegalArgumentException ("Email incorrecte");
         else
             this.email = email;
