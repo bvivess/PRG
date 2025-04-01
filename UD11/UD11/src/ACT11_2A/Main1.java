@@ -9,7 +9,7 @@ import java.util.Map;
 public class Main1 {
     public static void main(String[] args) throws Exception {
         String rutaArchivo = "C:\\temp\\ACT11_2A.cvs";
-        Map<Integer, Persona> persones = new HashMap<>();
+        Map<Integer, Employee> persones = new HashMap<>();
         String[] parts;
 
         try ( FileReader fileReader = new FileReader(rutaArchivo);
@@ -19,12 +19,12 @@ public class Main1 {
             // Llegir el contingut línia a línia
             String linea;
             Integer clau;
-            Persona persona;
+            Employee persona;
             while ((linea = bufferedReader.readLine()) != null) {
                 parts = linea.split(";");
                 if (!linea.substring(0, 1).equals("#")) {
                     clau = Integer.valueOf(parts[0]);
-                    persona = new Persona(clau, parts[1], parts[2], parts[3]);
+                    persona = new Employee(clau, parts[1], parts[2], parts[3]);
                     
                     persones.put(clau, persona);
                 }
