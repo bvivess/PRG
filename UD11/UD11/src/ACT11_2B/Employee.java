@@ -6,13 +6,13 @@ import ACT11_2A.*;
  *
  * @author Administrador
  */
-public class Persona {
+public class Employee {
     private int id;
     private String lastName;
     private String firstName;
     private String email;
 
-    public Persona(int id, String last_name, String first_name, String email) throws Exception {
+    public Employee(int id, String last_name, String first_name, String email) throws Exception {
         setId(id);
         setLastName(last_name);
         setFirstName(first_name);
