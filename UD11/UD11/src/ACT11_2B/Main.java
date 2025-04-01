@@ -29,13 +29,14 @@ public class Main {
             LlegeixArxiuEmployees(bufferedReader2, employees);
            
             // Càrrega 'depEmps'
-            carregaDepEmps(depEmps, departments, employees);
-            carregaEmpDeps(empDeps, departments, employees);
+            carregaDepEmps(depEmps, departments, employees);  // relacio 1:N
+            carregaEmpDeps(empDeps, departments, employees);  // relació N:1
             
             // Mostrar el map
             mostraDepartments(departments);
             mostraEmployees(employees);
             mostraDepEmps(depEmps);
+            mostraEmpDeps(empDeps);
 
         } catch (IOException e) {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
@@ -126,6 +127,12 @@ public class Main {
         for (Map.Entry<Department, List<Employee>> tupla : depEmps.entrySet()) {
             if (!tupla.getValue().isEmpty())
                 System.out.println("Clau: " + tupla.getKey().toString() + ", Valor: " + tupla.getValue().toString());
+        }
+    }
+    
+    private static void mostraEmpDeps(Map<Employee, Department> empDeps) {
+        for (Map.Entry<Employee, Department> tupla : empDeps.entrySet()) {
+            System.out.println("Clau: " + tupla.getKey().toString() + ", Valor: " + tupla.getValue().toString());
         }
     }
 
