@@ -27,7 +27,7 @@ public class Department {
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 3;
