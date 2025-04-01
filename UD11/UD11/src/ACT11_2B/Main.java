@@ -17,7 +17,8 @@ public class Main {
         // Estructures de memòria
         List<Department> departments = new ArrayList<>();
         List<Employee> employees = new ArrayList<>();
-        Map<Department, List<Employee>> depEmps = new HashMap<>();
+        Map<Department, List<Employee>> depEmps = new HashMap<>();   // Relació 1:N
+        Map<Employee, Department> empDeps = new HashMap<>();   // Relació N:1
 
         try ( BufferedReader bufferedReader1 = new BufferedReader(new FileReader(arxiu1));
               BufferedReader bufferedReader2 = new BufferedReader(new FileReader(arxiu2));
@@ -29,6 +30,7 @@ public class Main {
            
             // Càrrega 'depEmps'
             carregaDepEmps(depEmps, departments, employees);
+            carregaEmpDeps(empDeps, departments, employees);
             
             // Mostrar el map
             mostraDepartments(departments);
@@ -96,6 +98,7 @@ public class Main {
             System.out.println(e.toString());
         }
     }    
+    
     private static void carregaDepEmps(Map<Department, List<Employee>> depEmps, List<Department> departments, List<Employee> employees) {
         // Crea 'depEmps' a partir de 'departments'
         for (Department d : departments) {  
@@ -108,6 +111,14 @@ public class Main {
             List<Employee> llistaEmployees = depEmps.get(department); // cerca la List per 'departmentId'
             llistaEmployees.add(e);  // afegeix 'e' a la List
             depEmps.put(department, llistaEmployees);  // Modifica la List de 'depEmps'
+        }
+    }
+    
+    private static void carregaEmpDeps(Map<Employee, Department> empDeps, List<Department> departments, List<Employee> employees) {
+        // Per a cada employees
+        for (Employee e : employees) {  
+            Department department = departments.get(departments.indexOf(new Department(e.getDepartmentId(), null)));  // cerca el 'department' a 'departments'
+            empDeps.put(e, department);  // afegeix a 'empDeps'
         }
     }
     
