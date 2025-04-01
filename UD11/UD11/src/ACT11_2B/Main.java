@@ -29,8 +29,8 @@ public class Main {
             LlegeixArxiuEmployees(bufferedReader2, employees);
            
             // Càrrega 'depEmps'
-            carregaDepEmps(depEmps, departments, employees);  // relacio 1:N
-            carregaEmpDeps(empDeps, departments, employees);  // relació N:1
+            carregaDepEmps(depEmps, departments, employees);  // Relacio 1:N
+            carregaEmpDeps(empDeps, departments, employees);  // Relació N:1
             
             // Mostrar el map
             mostraDepartments(departments);
