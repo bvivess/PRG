@@ -22,7 +22,6 @@ public class Main {
         Map<Employee, Department> empDeps = new HashMap<>();   // Relació N:1
         
         try {
-          
             // Llegir el contingut dels arxius línia a línia:
             LlegeixArxiuDepartments(arxiu1, departments);
             LlegeixArxiuEmployees(arxiu2, employees);
