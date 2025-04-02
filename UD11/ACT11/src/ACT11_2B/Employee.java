@@ -1,11 +1,5 @@
 package ACT11_2B;
 
-import ACT11_2A.*;
-
-/**
- *
- * @author Administrador
- */
 public class Employee implements Comparable<Employee> {
     private int employeeId;
     private String lastName;

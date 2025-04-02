@@ -48,8 +48,8 @@ public class Main {
                     if (!(linea.isEmpty() || linea.startsWith("#"))) {
                         parts = linea.split(";", 2);
 
-                        department = new Department( Integer.parseInt(parts[0].trim()),
-                                                     parts[1].trim() );
+                        department = new Department( Integer.parseInt(parts[0].trim()),  // departmentId
+                                                     parts[1].trim() );                  // departmentName
                         departments.add(department);
 
                     }
@@ -74,11 +74,11 @@ public class Main {
                     if (!(linea.isEmpty() || linea.startsWith("#"))) {
                         parts = linea.split(";", 5);
                         
-                        employee = new Employee( Integer.parseInt(parts[0].trim()), 
-                                                 parts[1].trim(), 
-                                                 parts[2].trim(), 
-                                                 parts[3].trim(),
-                                                 Integer.parseInt(parts[4].trim()) );
+                        employee = new Employee( Integer.parseInt(parts[0].trim()),    // employeeId
+                                                 parts[1].trim(),                      // firstName
+                                                 parts[2].trim(),                      // lasttName
+                                                 parts[3].trim(),                      // email
+                                                 Integer.parseInt(parts[4].trim()) );  // departmentId
                         employees.add(employee);
                     }
                 } catch (NumberFormatException e) {

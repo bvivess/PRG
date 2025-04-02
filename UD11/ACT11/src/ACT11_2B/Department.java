@@ -1,14 +1,10 @@
 package ACT11_2B;
 
-/**
- *
- * @author Administrador
- */
 public class Department implements Comparable<Department> {
     private int departmentId;
     private String departmentName;
 
-    public Department(int department_id, String departmentName) {
+    public Department(int department_id, String departmentName) throws IllegalArgumentException  {
         setDepartmentId(department_id);
         setDepartmentName(departmentName);
     }
