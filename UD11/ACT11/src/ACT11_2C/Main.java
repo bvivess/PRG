@@ -64,13 +64,13 @@ public class Main {
                     // format: xxxx; yyyy; zzzz; ...
                     if (!(linea.isEmpty() || linea.startsWith("#"))) {
                         parts = linea.split(";", 5);
-                        department = cercaDepartment(departments, Integer.parseInt(parts[4].trim()));
+                        department = cercaDepartment(departments, Integer.parseInt(parts[4].trim()));  // cerca 'department' en l'arraylist 'departments'
                         
                         employee = new Employee( Integer.parseInt(parts[0].trim()),    // employeeId
                                                  parts[1].trim(),                      // firstName
                                                  parts[2].trim(),                      // lasttName
                                                  parts[3].trim(),                      // email
-                                                 department );  // departmentId
+                                                 department );                         // department
                         employees.add(employee);
                     }
                 } catch (NumberFormatException e) {
@@ -99,7 +99,7 @@ public class Main {
     }    
 
     private static Department cercaDepartment(List<Department> departments, int departmentId) {
-        return departments.get(departments.indexOf(new Department(departmentId, null)));
+        return departments.get( departments.indexOf(new Department(departmentId, null)) );
     }
     
 }
