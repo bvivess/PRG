@@ -37,7 +37,7 @@ public class Main {
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu)) ) {       
             while ((linea = bufferedReader.readLine()) != null) {
                 try {
-                    // format: xxxx; yyyy; zzzz; ...
+                    // format: xxxx; yyyy 
                     if (!(linea.isEmpty() || linea.startsWith("#"))) {
                         parts = linea.split(";", 2);
 
@@ -64,7 +64,7 @@ public class Main {
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu)) ) {   
             while ((linea = bufferedReader.readLine()) != null) {
                 try {
-                    // format: xxxx; yyyy; zzzz; ...
+                    // format: wwww; xxxx; yyyy; zzzz
                     if (!(linea.isEmpty() || linea.startsWith("#"))) {
                         parts = linea.split(";", 5);
                         department = cercaDepartment(departments, Integer.parseInt(parts[4].trim()));  // cerca 'department' en l'arraylist 'departments'
