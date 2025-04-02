@@ -89,7 +89,7 @@ public class Employee implements Comparable<Employee> {
     
     @Override
     public int compareTo(Employee other) {
-        return Integer.compare(this.departmentId, other.departmentId); // Ordenar per ID
+        return Integer.compare(this.employeeId, other.employeeId); // Ordenar per ID
     }
     
     @Override

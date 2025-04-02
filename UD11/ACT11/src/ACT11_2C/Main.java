@@ -5,9 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -18,23 +16,15 @@ public class Main {
         // Estructures de memòria:
         List<Department> departments = new ArrayList<>();
         List<Employee> employees = new ArrayList<>();
-        Map<Department, List<Employee>> depEmps = new HashMap<>();   // Relació 1:N
-        Map<Employee, Department> empDeps = new HashMap<>();   // Relació N:1
           
         // Llegir el contingut dels arxius línia a línia:
         LlegeixArxiuDepartments(arxiu1, departments);
-        LlegeixArxiuEmployees(arxiu2, employees);
-
-        // Càrrega els 'Map' 'depEmps' i 'empDeps' a partir de les 'List' 'departments' i 'employees'
-        carregaDepEmps(depEmps, departments, employees);  // Relacio 1:N
-        carregaEmpDeps(empDeps, departments, employees);  // Relació N:1
+        LlegeixArxiuEmployees(arxiu2, departments, employees);
 
         // Mostrar les estructures de memòria:
         mostraDepartments(departments);
         mostraEmployees(employees);
-        mostraDepEmps(depEmps);
-        mostraEmpDeps(empDeps);
-        
+       
     }
 
     private static void LlegeixArxiuDepartments(String arxiu, List<Department> departments) throws IOException, NumberFormatException, IllegalArgumentException {
@@ -62,9 +52,10 @@ public class Main {
         }
     }
     
-    private static void LlegeixArxiuEmployees(String arxiu, List<Employee> employees) throws IOException, NumberFormatException, IllegalArgumentException {
+    private static void LlegeixArxiuEmployees(String arxiu, List<Department> departments, List<Employee> employees) throws IOException, NumberFormatException, IllegalArgumentException {
         String linea;
         String[] parts;
+        Department department;
         Employee employee;
 
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu)) ) {   
@@ -73,12 +64,13 @@ public class Main {
                     // format: xxxx; yyyy; zzzz; ...
                     if (!(linea.isEmpty() || linea.startsWith("#"))) {
                         parts = linea.split(";", 5);
+                        department = cercaDepartment(departments, Integer.parseInt(parts[4].trim()));
                         
                         employee = new Employee( Integer.parseInt(parts[0].trim()),    // employeeId
                                                  parts[1].trim(),                      // firstName
                                                  parts[2].trim(),                      // lasttName
                                                  parts[3].trim(),                      // email
-                                                 Integer.parseInt(parts[4].trim()) );  // departmentId
+                                                 department );  // departmentId
                         employees.add(employee);
                     }
                 } catch (NumberFormatException e) {
@@ -105,42 +97,10 @@ public class Main {
             System.out.println(e.toString());
         }
     }    
-    
-    private static void carregaDepEmps(Map<Department, List<Employee>> depEmps, List<Department> departments, List<Employee> employees) {
-        // Crea 'depEmps' a partir de 'departments'
-        for (Department d : departments) {  
-            depEmps.put(d, new ArrayList<>());
-        }
-        
-        // Modifica la List de 'depEmps' a partir de cada 'employee'
-        for (Employee e : employees) {  // per a cada 'employee', cerca el 'department' a la 'List' i afegeix-lo a 'depEmps'
-            Department department_ = new Department(e.getDepartmentId(), null);  // es crea un 'Department' temporal 'department_' amb les dades que cal cercar --> 'department_id'
-            List<Employee> llistaEmployees = depEmps.get(department_); // cerca en la List per 'departmentId'
-            llistaEmployees.add(e);  // afegeix 'e' a la List
-            depEmps.put(department_, llistaEmployees);  // cerca en el Map 'depEmps' per 'department_' i modifica la List de 'depEmps' amb 'llistaEmployees'
-        }
-    }
-    
-    private static void carregaEmpDeps(Map<Employee, Department> empDeps, List<Department> departments, List<Employee> employees) {
-        // Per a cada employees
-        for (Employee e : employees) {  
-            Department department = departments.get(departments.indexOf(new Department(e.getDepartmentId(), null)));  // cerca el 'department' a 'departments'
-            empDeps.put(e, department);  // afegeix a 'empDeps'
-        }
-    }
-    
-    private static void mostraDepEmps(Map<Department, List<Employee>> depEmps) {
-        for (Map.Entry<Department, List<Employee>> tupla : depEmps.entrySet()) {
-            if (!tupla.getValue().isEmpty())
-                System.out.println("Clau: " + tupla.getKey().toString() + ", Valor: " + tupla.getValue().toString());
-        }
-    }
-    
-    private static void mostraEmpDeps(Map<Employee, Department> empDeps) {
-        for (Map.Entry<Employee, Department> tupla : empDeps.entrySet()) {
-            System.out.println("Clau: " + tupla.getKey().toString() + ", Valor: " + tupla.getValue().toString());
-        }
-    }
 
+    private static Department cercaDepartment(List<Department> departments, int departmentId) {
+        return departments.get(departments.indexOf(new Department(departmentId, null)));
+    }
+    
 }
 
