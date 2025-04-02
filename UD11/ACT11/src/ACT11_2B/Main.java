@@ -124,7 +124,7 @@ public class Main {
     private static void carregaEmpDeps(Map<Employee, Department> empDeps, List<Department> departments, List<Employee> employees) {
         // Per a cada employees
         for (Employee e : employees) {  
-            Department department = departments.get(departments.indexOf(new Department(e.getDepartmentId(), null)));  // cerca el 'department' a 'departments'
+            Department department = departments.get(departments.indexOf(new Department(e.getDepartmentId(), ".")));  // cerca el 'department' a 'departments'
             empDeps.put(e, department);  // afegeix a 'empDeps'
         }
     }
