@@ -20,21 +20,25 @@ public class Main {
         List<Employee> employees = new ArrayList<>();
         Map<Department, List<Employee>> depEmps = new HashMap<>();   // Relació 1:N
         Map<Employee, Department> empDeps = new HashMap<>();   // Relació N:1
-          
-        // Llegir el contingut dels arxius línia a línia:
-        LlegeixArxiuDepartments(arxiu1, departments);
-        LlegeixArxiuEmployees(arxiu2, employees);
-
-        // Càrrega els 'Map' 'depEmps' i 'empDeps' a partir de les 'List' 'departments' i 'employees'
-        carregaDepEmps(depEmps, departments, employees);  // Relacio 1:N
-        carregaEmpDeps(empDeps, departments, employees);  // Relació N:1
-
-        // Mostrar les estructures de memòria:
-        mostraDepartments(departments);
-        mostraEmployees(employees);
-        mostraDepEmps(depEmps);
-        mostraEmpDeps(empDeps);
         
+        try {
+          
+            // Llegir el contingut dels arxius línia a línia:
+            LlegeixArxiuDepartments(arxiu1, departments);
+            LlegeixArxiuEmployees(arxiu2, employees);
+
+            // Càrrega els 'Map' 'depEmps' i 'empDeps' a partir de les 'List' 'departments' i 'employees'
+            carregaDepEmps(depEmps, departments, employees);  // Relacio 1:N
+            carregaEmpDeps(empDeps, departments, employees);  // Relació N:1
+
+            // Mostrar les estructures de memòria:
+            mostraDepartments(departments);
+            mostraEmployees(employees);
+            mostraDepEmps(depEmps);
+            mostraEmpDeps(empDeps);
+        } catch (Exception e) {
+            System.err.println("Error GENERAL " + e.getMessage());
+        }
     }
 
     private static void LlegeixArxiuDepartments(String arxiu, List<Department> departments) throws IOException, NumberFormatException, IllegalArgumentException {

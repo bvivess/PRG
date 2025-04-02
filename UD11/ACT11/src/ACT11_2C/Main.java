@@ -13,18 +13,21 @@ public class Main {
         String arxiu1 = "C:\\temp\\ACT11_2C_departments.cvs";
         String arxiu2 = "C:\\temp\\ACT11_2C_employees.cvs";
         
-        // Estructures de memòria:
-        List<Department> departments = new ArrayList<>();
-        List<Employee> employees = new ArrayList<>();
-          
-        // Llegir el contingut dels arxius línia a línia:
-        LlegeixArxiuDepartments(arxiu1, departments);
-        LlegeixArxiuEmployees(arxiu2, departments, employees);
+        try {
+            // Estructures de memòria:
+            List<Department> departments = new ArrayList<>();
+            List<Employee> employees = new ArrayList<>();
 
-        // Mostrar les estructures de memòria:
-        mostraDepartments(departments);
-        mostraEmployees(employees);
-       
+            // Llegir el contingut dels arxius línia a línia:
+            LlegeixArxiuDepartments(arxiu1, departments);
+            LlegeixArxiuEmployees(arxiu2, departments, employees);
+
+            // Mostrar les estructures de memòria:
+            mostraDepartments(departments);
+            mostraEmployees(employees);
+        } catch (Exception e) {
+            System.err.println("Error GENERAL " + e.getMessage());
+        }      
     }
 
     private static void LlegeixArxiuDepartments(String arxiu, List<Department> departments) throws IOException, NumberFormatException, IllegalArgumentException {
