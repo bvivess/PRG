@@ -122,8 +122,9 @@ public class Main {
     }
     
     private static void carregaEmpDeps(Map<Employee, Department> empDeps, List<Department> departments, List<Employee> employees) {
-        // Per a cada employees
         int index;
+
+        // Per a cada employees
         for (Employee e : employees) {  
             index = departments.indexOf(new Department(e.getDepartmentId(), "."));  // cerca la posició de 'department' a 'departments'
             if (index > 0 ) {
