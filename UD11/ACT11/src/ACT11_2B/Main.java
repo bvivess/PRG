@@ -37,7 +37,7 @@ public class Main {
         
     }
 
-    private static void LlegeixArxiuDepartments(String arxiu, List<Department> departments) throws IOException, Exception {
+    private static void LlegeixArxiuDepartments(String arxiu, List<Department> departments) throws IOException, NumberFormatException, IllegalArgumentException {
         String linea;
         String[] parts;
         Department department;
@@ -62,7 +62,7 @@ public class Main {
         }
     }
     
-    private static void LlegeixArxiuEmployees(String arxiu, List<Employee> employees) throws IOException, Exception {
+    private static void LlegeixArxiuEmployees(String arxiu, List<Employee> employees) throws IOException, NumberFormatException, IllegalArgumentException {
         String linea;
         String[] parts;
         Employee employee;
@@ -81,7 +81,7 @@ public class Main {
                                                  Integer.parseInt(parts[4].trim()) );
                         employees.add(employee);
                     }
-                } catch (Exception e) {
+                } catch (NumberFormatException e) {
                     System.err.println("Error carregant Employee: " + e.getMessage());
                 }
             }

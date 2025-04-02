@@ -5,38 +5,41 @@ package ACT11_2B;
  * @author Administrador
  */
 public class Department implements Comparable<Department> {
-    private int department_id;
+    private int departmentId;
     private String departmentName;
 
     public Department(int department_id, String departmentName) {
-        this.department_id = department_id;
-        this.departmentName = departmentName;
+        setDepartmentId(department_id);
+        setDepartmentName(departmentName);
     }
-    public int getDepartment_id() {
-        return department_id;
+    public int getDepartmentId() {
+        return departmentId;
     }
 
-    public void setDepartment_id(int department_id) {
-        this.department_id = department_id;
+    public void setDepartmentId(int departmentId) {
+        this.departmentId = departmentId;
     }
 
     public String getDepartmentName() {
         return departmentName;
     }
 
-    public void setDepartmentName(String departmentName) {
-        this.departmentName = departmentName;
+    public void setDepartmentName(String departmentName) throws IllegalArgumentException {
+        if (departmentName == null)
+            throw new IllegalArgumentException ("Department name incorrecte");
+        else
+            this.departmentName = departmentName;
     }
     
     @Override
     public int compareTo(Department other) {
-        return Integer.compare(this.department_id, other.department_id); // Ordenar per ID
+        return Integer.compare(this.departmentId, other.departmentId); // Ordenar per ID
     }
 
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 97 * hash + this.department_id;
+        hash = 97 * hash + this.departmentId;
         return hash;
     }
 
@@ -52,12 +55,12 @@ public class Department implements Comparable<Department> {
             return false;
         }
         final Department other = (Department) obj;
-        return this.department_id == other.department_id;
+        return this.departmentId == other.departmentId;
     }
     
     @Override
     public String toString() {
-        return "Department{" + "department_id=" + department_id + ", departmentName=" + departmentName + '}';
+        return "Department{" + "department_id=" + departmentId + ", departmentName=" + departmentName + '}';
     }
     
 }

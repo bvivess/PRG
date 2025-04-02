@@ -13,7 +13,7 @@ public class Employee implements Comparable<Employee> {
     private String email;
     private int departmentId;
 
-    public Employee(int employeeId, String last_name, String first_name, String email, int department_id) throws Exception {
+    public Employee(int employeeId, String last_name, String first_name, String email, int department_id) throws IllegalArgumentException {
         setEmployeeId(employeeId);
         setLastName(last_name);
         setFirstName(first_name);
@@ -33,9 +33,9 @@ public class Employee implements Comparable<Employee> {
         return lastName;
     }
 
-    public void setLastName(String lastName) throws Exception {
+    public void setLastName(String lastName) throws IllegalArgumentException {
         if (lastName == null)
-            throw new Exception ("Last name incorrecte");
+            throw new IllegalArgumentException ("Last name incorrecte");
         else
             this.lastName = lastName;
     }
@@ -44,9 +44,9 @@ public class Employee implements Comparable<Employee> {
         return firstName;
     }
 
-    public void setFirstName(String firstName) throws Exception {
+    public void setFirstName(String firstName) throws IllegalArgumentException {
         if (firstName == null)
-            throw new Exception ("First name incorrecte");
+            throw new IllegalArgumentException ("First name incorrecte");
         else
             this.firstName = firstName;
     }
@@ -55,11 +55,9 @@ public class Employee implements Comparable<Employee> {
         return email;
     }
 
-    public void setEmail(String email) throws Exception {
-        //if (email.contains("@"))
-        //    this.email = email;
-        if (email == null || !email.contains("@"))
-            throw new Exception ("Email incorrecte");
+    public void setEmail(String email) throws IllegalArgumentException {
+        if ((email == null) || (!(email.matches("^[a-zA-Z0-9\\._%+-]+@[a-zA-Z0-9\\.-]+\\.[a-zA-Z]{2,}$"))))  // en comptes de: email.contains("@")
+            throw new IllegalArgumentException ("Email incorrecte");
         else
             this.email = email;
                 
