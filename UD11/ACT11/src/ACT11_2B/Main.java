@@ -48,11 +48,12 @@ public class Main {
                     if (!(linea.isEmpty() || linea.startsWith("#"))) {
                         parts = linea.split(";");
 
-                        department = new Department(Integer.valueOf(parts[0].trim()), parts[1].trim());
+                        department = new Department( Integer.parseInt(parts[0].trim()),
+                                                     parts[1].trim() );
                         departments.add(department);
 
                     }
-                } catch (Exception e) {
+                } catch (NumberFormatException e) {
                     System.err.println("Error carregant Department: " + e.getMessage());
                 }
             }
@@ -72,7 +73,11 @@ public class Main {
                     // format: xxxx; yyyy; zzzz; ...
                     if (!(linea.isEmpty() || linea.startsWith("#"))) {
                         parts = linea.split(";");
-                        employee = new Employee(Integer.parseInt(parts[0].trim()), parts[1].trim(), parts[2].trim(), parts[3].trim(), Integer.valueOf(parts[4].trim()));
+                        employee = new Employee( Integer.parseInt(parts[0].trim()), 
+                                                 parts[1].trim(), 
+                                                 parts[2].trim(), 
+                                                 parts[3].trim(),
+                                                 Integer.parseInt(parts[4].trim()) );
                         employees.add(employee);
                     }
                 } catch (Exception e) {
