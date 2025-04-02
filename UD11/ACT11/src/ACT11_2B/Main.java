@@ -47,13 +47,13 @@ public class Main {
                     // format: xxxx; yyyy; zzzz; ...
                     if (!(linea.isEmpty() || linea.startsWith("#"))) {
                         parts = linea.split(";");
-                        if (!linea.substring(0, 1).equals("#")) {
-                            department = new Department(Integer.valueOf(parts[0].trim()), parts[1].trim());
-                            departments.add(department);
-                        }
+
+                        department = new Department(Integer.valueOf(parts[0].trim()), parts[1].trim());
+                        departments.add(department);
+
                     }
                 } catch (Exception e) {
-                    System.err.println("Error carregant Employee: " + e.getMessage());
+                    System.err.println("Error carregant Department: " + e.getMessage());
                 }
             }
         } catch (IOException e) {
@@ -72,10 +72,8 @@ public class Main {
                     // format: xxxx; yyyy; zzzz; ...
                     if (!(linea.isEmpty() || linea.startsWith("#"))) {
                         parts = linea.split(";");
-                        if (!linea.substring(0, 1).equals("#")) {
-                            employee = new Employee(Integer.parseInt(parts[0].trim()), parts[1].trim(), parts[2].trim(), parts[3].trim(), Integer.valueOf(parts[4].trim()));
-                            employees.add(employee);
-                        }
+                        employee = new Employee(Integer.parseInt(parts[0].trim()), parts[1].trim(), parts[2].trim(), parts[3].trim(), Integer.valueOf(parts[4].trim()));
+                        employees.add(employee);
                     }
                 } catch (Exception e) {
                     System.err.println("Error carregant Employee: " + e.getMessage());
