@@ -123,9 +123,13 @@ public class Main {
     
     private static void carregaEmpDeps(Map<Employee, Department> empDeps, List<Department> departments, List<Employee> employees) {
         // Per a cada employees
+        int index;
         for (Employee e : employees) {  
-            Department department = departments.get(departments.indexOf(new Department(e.getDepartmentId(), ".")));  // cerca el 'department' a 'departments'
-            empDeps.put(e, department);  // afegeix a 'empDeps'
+            index = departments.indexOf(new Department(e.getDepartmentId(), "."));  // cerca la posició de 'department' a 'departments'
+            if (index > 0 ) {
+                Department department = departments.get(index);  // cerca el 'department' a 'departments'
+                empDeps.put(e, department);  // afegeix a 'empDeps'
+            }
         }
     }
     

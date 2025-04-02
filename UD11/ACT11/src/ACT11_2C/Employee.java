@@ -63,7 +63,7 @@ public class Employee implements Comparable<Employee> {
 
     public void setDepartment(Department department) throws IllegalArgumentException {
         if (department == null)
-            throw new IllegalArgumentException ("Deparrtment incorrecte");
+            throw new IllegalArgumentException ("Department incorrecte");
         else
             this.department = department;
     }

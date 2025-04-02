@@ -99,7 +99,12 @@ public class Main {
     }    
 
     private static Department cercaDepartment(List<Department> departments, int departmentId) {
-        return departments.get( departments.indexOf(new Department(departmentId, ".")) );
+        int index = departments.indexOf(new Department(departmentId, "."));
+        
+        if (index > 0)
+            return departments.get( index );
+        else 
+            return null;
     }
     
 }
