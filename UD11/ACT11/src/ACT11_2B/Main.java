@@ -58,6 +58,8 @@ public class Main {
                     }
                 } catch (NumberFormatException e) {
                     System.err.println("Error carregant Department: " + e.getMessage());
+                } catch (IllegalArgumentException e) {
+                    System.err.println("Error carregant Department: " + e.getMessage());
                 }
             }
         } catch (IOException e) {
@@ -85,6 +87,8 @@ public class Main {
                         employees.add(employee);
                     }
                 } catch (NumberFormatException e) {
+                    System.err.println("Error carregant Employee: " + e.getMessage());
+                } catch (IllegalArgumentException e) {
                     System.err.println("Error carregant Employee: " + e.getMessage());
                 }
             }
@@ -117,10 +121,13 @@ public class Main {
         
         // Modifica la List de 'depEmps' a partir de cada 'employee'
         for (Employee e : employees) {  // per a cada 'employee', cerca el 'department' a la 'List' i afegeix-lo a 'depEmps'
-            Department department_ = new Department(e.getDepartmentId(), null);  // es crea un 'Department' temporal 'department_' amb les dades que cal cercar --> 'department_id'
-            List<Employee> llistaEmployees = depEmps.get(department_); // cerca en la List per 'departmentId'
-            llistaEmployees.add(e);  // afegeix 'e' a la List
-            depEmps.put(department_, llistaEmployees);  // cerca en el Map 'depEmps' per 'department_' i modifica la List de 'depEmps' amb 'llistaEmployees'
+            Department departmentTMP = new Department(e.getDepartmentId(), ".");  // es crea un 'Department' temporal 'department_' amb les dades que cal cercar --> 'department_id'
+
+            //List<Employee> llistaEmployees = depEmps.get(departmentTMP); // cerca en la List per 'departmentId'
+            //llistaEmployees.add(e);  // afegeix 'e' a la List
+            //depEmps.put(departmentTMP, llistaEmployees);  // cerca en el Map 'depEmps' per 'department_' i modifica la List de 'depEmps' amb 'llistaEmployees'
+            
+            depEmps.get(departmentTMP).add(e);  // afegeix 'e' a la List
         }
     }
     

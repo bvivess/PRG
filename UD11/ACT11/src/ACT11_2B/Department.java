@@ -8,6 +8,7 @@ public class Department implements Comparable<Department> {
         setDepartmentId(department_id);
         setDepartmentName(departmentName);
     }
+    
     public int getDepartmentId() {
         return departmentId;
     }

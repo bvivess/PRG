@@ -104,7 +104,7 @@ public class Main {
     private static Department cercaDepartment(List<Department> departments, int departmentId) {
         int index = departments.indexOf(new Department(departmentId, "."));
         
-        if (index > 0)
+        if (index != -1)
             return departments.get( index );
         else 
             return null;
