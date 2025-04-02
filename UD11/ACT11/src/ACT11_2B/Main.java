@@ -46,7 +46,7 @@ public class Main {
                 try {
                     // format: xxxx; yyyy; zzzz; ...
                     if (!(linea.isEmpty() || linea.startsWith("#"))) {
-                        parts = linea.split(";");
+                        parts = linea.split(";", 2);
 
                         department = new Department( Integer.parseInt(parts[0].trim()),
                                                      parts[1].trim() );
@@ -72,7 +72,8 @@ public class Main {
                 try {
                     // format: xxxx; yyyy; zzzz; ...
                     if (!(linea.isEmpty() || linea.startsWith("#"))) {
-                        parts = linea.split(";");
+                        parts = linea.split(";", 5);
+                        
                         employee = new Employee( Integer.parseInt(parts[0].trim()), 
                                                  parts[1].trim(), 
                                                  parts[2].trim(), 
