@@ -5,14 +5,14 @@ public class Employee implements Comparable<Employee> {
     private String lastName;
     private String firstName;
     private String email;
-    private int departmentId;
+    private Department department;
 
-    public Employee(int employeeId, String last_name, String first_name, String email, int department_id) throws IllegalArgumentException {
+    public Employee(int employeeId, String last_name, String first_name, String email, Department department) throws IllegalArgumentException {
         setEmployeeId(employeeId);
         setLastName(last_name);
         setFirstName(first_name);
         setEmail(email);
-        setDepartmentId(department_id);
+        setDepartment(department);
     }
 
     public int getEmployeeId() {
@@ -57,12 +57,15 @@ public class Employee implements Comparable<Employee> {
                 
     }
 
-    public int getDepartmentId() {
-        return departmentId;
+    public Department getDepartment() {
+        return department;
     }
 
-    public void setDepartmentId(int departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartment(Department department) throws IllegalArgumentException {
+        if (department == null)
+            throw new IllegalArgumentException ("Department incorrecte");
+        else
+            this.department = department;
     }
 
     @Override
@@ -94,7 +97,7 @@ public class Employee implements Comparable<Employee> {
     
     @Override
     public String toString() {
-        return "Persona{" + "id=" + employeeId + ", last_name=" + lastName + ", first_name=" + firstName + ", email=" + email + ", departmentId=" + departmentId + '}';
+        return "Persona{" + "id=" + employeeId + ", last_name=" + lastName + ", first_name=" + firstName + ", email=" + email + ", department=" + department.toString() + '}';
     }
     
 }
