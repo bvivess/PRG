@@ -11,28 +11,29 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws Exception {
+        // Arxius per a la càrrega de dades:
         String arxiu1 = "C:\\temp\\ACT11_2B_departments.cvs";
         String arxiu2 = "C:\\temp\\ACT11_2B_employees.cvs";
         
-        // Estructures de memòria
+        // Estructures de memòria:
         List<Department> departments = new ArrayList<>();
         List<Employee> employees = new ArrayList<>();
         Map<Department, List<Employee>> depEmps = new HashMap<>();   // Relació 1:N
         Map<Employee, Department> empDeps = new HashMap<>();   // Relació N:1
           
-        // Llegir el contingut línia a línia
+        // Llegir el contingut dels arxius línia a línia:
         LlegeixArxiuDepartments(arxiu1, departments);
         LlegeixArxiuEmployees(arxiu2, employees);
 
-        // Càrrega 'depEmps'
+        // Càrrega els 'Map' 'depEmps' i 'empDeps' a partir de les 'List' 'departments' i 'employees'
         carregaDepEmps(depEmps, departments, employees);  // Relacio 1:N
         carregaEmpDeps(empDeps, departments, employees);  // Relació N:1
 
-        // Mostrar el map
+        // Mostrar les estructures de memòria:
         mostraDepartments(departments);
-        //mostraEmployees(employees);
-        //mostraDepEmps(depEmps);
-        //mostraEmpDeps(empDeps);
+        mostraEmployees(employees);
+        mostraDepEmps(depEmps);
+        mostraEmpDeps(empDeps);
         
     }
 
