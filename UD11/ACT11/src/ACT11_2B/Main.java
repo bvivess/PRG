@@ -109,10 +109,10 @@ public class Main {
         
         // Modifica la List de 'depEmps' a partir de cada 'employee'
         for (Employee e : employees) {  // per a cada 'employee', cerca el 'department' a la 'List' i afegeix-lo a 'depEmps'
-            Department department = new Department(e.getDepartmentId(), null);  // es crea un 'Department' temporal amb les dades que cal cercar --> 'department_id'
-            List<Employee> llistaEmployees = depEmps.get(department); // cerca la List per 'departmentId'
+            Department department_ = new Department(e.getDepartmentId(), null);  // es crea un 'Department' temporal 'department_' amb les dades que cal cercar --> 'department_id'
+            List<Employee> llistaEmployees = depEmps.get(department_); // cerca en la List per 'departmentId'
             llistaEmployees.add(e);  // afegeix 'e' a la List
-            depEmps.put(department, llistaEmployees);  // Modifica la List de 'depEmps'
+            depEmps.put(department_, llistaEmployees);  // cerca en el Map 'depEmps' per 'department_' i modifica la List de 'depEmps' amb 'llistaEmployees'
         }
     }
     
