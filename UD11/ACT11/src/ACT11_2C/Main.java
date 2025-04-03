@@ -31,9 +31,13 @@ public class Main {
             carregaEmpDeps(empDeps, departments, employees);  // Relació N:1
 
             // Mostrar les estructures de memòria:
+            System.out.println("DEPARTMENTS");
             mostraDepartments(departments);
+            System.out.println("EMPLOYEES");
             mostraEmployees(employees);
+            System.out.println("DEPEMPS");
             mostraDepEmps(depEmps);
+            System.out.println("EMPDEPS");
             mostraEmpDeps(empDeps);
         } catch (Exception e) {
             System.err.println("Error GENERAL " + e.getMessage());
@@ -113,7 +117,7 @@ public class Main {
         }
     }    
     
-    private static void carregaDepEmps(Map<Department, List<Employee>> depEmps, List<Department> departments, List<Employee> employees) {
+    private static void carregaDepEmps(Map<Department, List<Employee>> depEmps, List<Department> departments, List<Employee> employees) throws Exception {
         // Crea 'depEmps' a partir de 'departments'
         for (Department d : departments) {  
             depEmps.put(d, new ArrayList<>());
@@ -122,12 +126,19 @@ public class Main {
         // Modifica la List de 'depEmps' a partir de cada 'employee'
         for (Employee e : employees) {  // per a cada 'employee', cerca el 'department' a la 'List' i afegeix-lo a 'depEmps'
             Department departmentTMP = new Department(e.getDepartmentId(), ".");  // es crea un 'Department' temporal 'department_' amb les dades que cal cercar --> 'department_id'
-
-            //List<Employee> llistaEmployees = depEmps.get(departmentTMP); // cerca en la List per 'departmentId'
-            //llistaEmployees.add(e);  // afegeix 'e' a la List
-            //depEmps.put(departmentTMP, llistaEmployees);  // cerca en el Map 'depEmps' per 'department_' i modifica la List de 'depEmps' amb 'llistaEmployees'
+            List<Employee> llistaEmployees = depEmps.get(departmentTMP);  // cerca en la List per 'departmentId'
             
-            depEmps.get(departmentTMP).add(e);  // afegeix 'e' a la List
+            // OPCIO1
+            //if (llistaEmployees != null) { // si el department es troba
+            //    llistaEmployees.add(e);  // afegeix 'e' a la List
+            //    depEmps.put(departmentTMP, llistaEmployees);  // cerca en el Map 'depEmps' per 'department_' i modifica la List de 'depEmps' amb 'llistaEmployees'
+            //}
+            
+            // OPCIO2
+            if (depEmps.containsKey(departmentTMP)) // si el department es troba            
+                depEmps.get(departmentTMP).add(e);  // afegeix 'e' a la List
+            else
+                throw new Exception("No es troba department");
         }
     }
     
