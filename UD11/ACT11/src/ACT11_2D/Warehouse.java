@@ -36,7 +36,7 @@ public class Warehouse implements Comparable<Warehouse> {
     }
 
     public int compareTo(Warehouse o) {
-        return Integer.compare(this.warehouseId, o.warehouseId); // Ordenar per ID
+        return this.warehouseName.compareTo(o.warehouseName); // Ordenar per Name
     }
 
     public int getWarehouseId() {
