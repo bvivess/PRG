@@ -1,19 +1,16 @@
 package ACT11_2D;
 
-import ACT11_2C.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws Exception {
         // Arxius per a la càrrega de dades:
-        String arxiu = "C:\\temp\\ACT11_2D_products_per_warehouses.cvs";
+        String arxiu = "C:\\temp\\ACT11_2D_products_per_warehouses.csv";
         
         // Estructures de memòria:
         List<Warehouse> warehouses = new ArrayList<>();

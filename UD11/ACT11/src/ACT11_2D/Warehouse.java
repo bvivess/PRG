@@ -1,7 +1,5 @@
 package ACT11_2D;
 
-import ACT11_2C.*;
-
 public class Warehouse implements Comparable<Warehouse> {
     private int warehouseId;
     private String warehouseName;

@@ -12,8 +12,8 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) throws Exception {
         // Arxius per a la càrrega de dades:
-        String arxiu1 = "C:\\temp\\ACT11_2C_departments.cvs";
-        String arxiu2 = "C:\\temp\\ACT11_2C_employees.cvs";
+        String arxiu1 = "C:\\temp\\ACT11_2C_departments.csv";
+        String arxiu2 = "C:\\temp\\ACT11_2C_employees.csv";
         
         // Estructures de memòria:
         List<Department> departments = new ArrayList<>();
