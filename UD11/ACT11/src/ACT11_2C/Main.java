@@ -127,14 +127,14 @@ public class Main {
         for (Employee e : employees) {  // per a cada 'employee', cerca el 'department' a la 'List' i afegeix-lo a 'depEmps'
             Department departmentTMP = new Department(e.getDepartmentId(), ".");  // es crea un 'Department' temporal 'department_' amb les dades que cal cercar --> 'department_id'
             
-            // OPCIO1
+            // OPCIO1:
             //if (depEmps.containsKey(departmentTMP)) // si el departmentTMP es troba 
             //    List<Employee> llistaEmployees = depEmps.get(departmentTMP);  // cerca en la List per 'departmentId'
             //    llistaEmployees.add(e);  // afegeix 'e' a la List
             //    depEmps.put(departmentTMP, llistaEmployees);  // cerca en el Map 'depEmps' per 'department_' i modifica la List de 'depEmps' amb 'llistaEmployees'
             //}
             
-            // OPCIO2
+            // OPCIO2:
             if (depEmps.containsKey(departmentTMP)) // si el departmentTMP es troba            
                 depEmps.get(departmentTMP).add(e);  // afegeix 'e' a la List
             else
