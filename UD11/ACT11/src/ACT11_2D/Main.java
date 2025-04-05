@@ -32,21 +32,27 @@ public class Main {
 
     private static void LlegeixArxiu(String arxiu,  List<Product> products, List<Warehouse> warehouses) throws IOException, NumberFormatException, IllegalArgumentException {
         String linea;
-        String[] parts;
+        int productId, warehouseId, quantity;
+        String productName, warehouseName;
+        //String[] parts;
         
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu)) ) {       
             while ((linea = bufferedReader.readLine()) != null) {
                 try {
-                    // format: xxxx; yyyy; zzzz; ...
+                    // format: xxxx  yyyy  zzzz  ...
                     if (!(linea.isEmpty() || linea.startsWith("#"))) {
-                        parts = linea.split("\t", 5);
+                        productId = Integer.parseInt(linea.substring(0, 8).trim());
+                        productName = linea.substring(8,32).trim();
+                        warehouseId = Integer.parseInt(linea.substring(32, 37).trim());
+                        warehouseName = linea.substring(38, 61).trim();
+                        quantity = Integer.parseInt(linea.substring(61, linea.length()).trim());
                         
                         // Products
-                        carregaProducts(Integer.parseInt(parts[0].trim()), parts[1].trim(), products );
+                        carregaProducts(productId, productName, products );
                         
                         // Warehouses
-                        carregaWarehouses(Integer.parseInt(parts[2].trim()), parts[3].trim(), Integer.parseInt(parts[4].trim()), warehouses );
-
+                        carregaWarehouses(warehouseId, warehouseName, quantity, warehouses );
+                        
                     }
                 } catch (NumberFormatException e) {
                     System.err.println("Error carregant Department: " + e.getMessage());
