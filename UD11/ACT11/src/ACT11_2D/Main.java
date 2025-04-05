@@ -39,7 +39,7 @@ public class Main {
                 try {
                     // format: xxxx; yyyy; zzzz; ...
                     if (!(linea.isEmpty() || linea.startsWith("#"))) {
-                        parts = linea.split(";", 5);
+                        parts = linea.split("\t", 5);
                         
                         // Products
                         carregaProducts(Integer.parseInt(parts[0].trim()), parts[1].trim(), products );
