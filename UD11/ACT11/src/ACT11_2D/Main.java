@@ -32,26 +32,27 @@ public class Main {
 
     private static void LlegeixArxiu(String arxiu,  List<Product> products, List<Warehouse> warehouses) throws IOException, NumberFormatException, IllegalArgumentException {
         String linea;
-        int productId, warehouseId, quantity;
-        String productName, warehouseName;
+        int _productId, _warehouseId, _quantity;
+        String _productName, _warehouseName;
         //String[] parts;
         
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu)) ) {       
             while ((linea = bufferedReader.readLine()) != null) {
                 try {
-                    // format: xxxx  yyyy  zzzz  ...
+                    // format: XXXXXXX XXXXXXXXXXXXXXXXXXXXXXX XXXX XXXXXXXXXXXXXXXXXXXXXXX XXXXXXX
+                    //         1       9                       33   38                      62
                     if (!(linea.isEmpty() || linea.startsWith("#"))) {
-                        productId = Integer.parseInt(linea.substring(0, 8).trim());
-                        productName = linea.substring(8,32).trim();
-                        warehouseId = Integer.parseInt(linea.substring(32, 37).trim());
-                        warehouseName = linea.substring(38, 61).trim();
-                        quantity = Integer.parseInt(linea.substring(61, linea.length()).trim());
+                        _productId = Integer.parseInt(linea.substring(0, 8).trim());
+                        _productName = linea.substring(8,32).trim();
+                        _warehouseId = Integer.parseInt(linea.substring(32, 37).trim());
+                        _warehouseName = linea.substring(37, 61).trim();
+                        _quantity = Integer.parseInt(linea.substring(61, linea.length()).trim());
                         
                         // Products
-                        carregaProducts(productId, productName, products );
+                        carregaProducts(_productId, _productName, products );
                         
                         // Warehouses
-                        carregaWarehouses(warehouseId, warehouseName, quantity, warehouses );
+                        carregaWarehouses(_warehouseId, _warehouseName, _quantity, warehouses );
                         
                     }
                 } catch (NumberFormatException e) {
