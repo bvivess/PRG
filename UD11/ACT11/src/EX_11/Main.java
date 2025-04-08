@@ -1,9 +1,7 @@
 package ACT11_2D;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,7 +11,6 @@ public class Main {
     public static void main(String[] args) throws Exception {
         // Arxius per a la càrrega de dades:
         String arxiu = "C:\\temp\\ACT11_2D_products_per_warehouses.csv";
-        String arxiuLog = "C:\\temp\\ACT11_2D_log.txt";
         
         // Estructures de memòria:
         List<Warehouse> warehouses = new ArrayList<>();
@@ -21,7 +18,7 @@ public class Main {
         
         try {
             // Llegir el contingut dels arxius línia a línia:
-            CarregaArxiu(arxiu, arxiuLog, products, warehouses);
+            LlegeixArxiu(arxiu, products, warehouses);
 
             // Mostrar les estructures de memòria:
             System.out.println("PRODUCTS");
@@ -33,21 +30,17 @@ public class Main {
         }
     }
 
-    private static void CarregaArxiu(String arxiu, String arxiuLog,  List<Product> products, List<Warehouse> warehouses) throws IOException, NumberFormatException, IllegalArgumentException {
+    private static void LlegeixArxiu(String arxiu,  List<Product> products, List<Warehouse> warehouses) throws IOException, NumberFormatException, IllegalArgumentException {
         String linea;
-        int numLinea = 0;
         int _productId, _warehouseId, _quantity;
         String _productName, _warehouseName;
         //String[] parts;
         
-        try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu));
-              BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(arxiuLog)) ) {       
+        try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu)) ) {       
             while ((linea = bufferedReader.readLine()) != null) {
                 try {
                     // format: XXXXXXX XXXXXXXXXXXXXXXXXXXXXXX XXXX XXXXXXXXXXXXXXXXXXXXXXX XXXXXXX
                     //         1       9                       33   38                      62
-                    numLinea = numLinea + 1 ;
-                    
                     if (!(linea.isEmpty() || linea.startsWith("#"))) {
                         _productId = Integer.parseInt(linea.substring(0, 8).trim());
                         _productName = linea.substring(8,32).trim();
@@ -63,11 +56,9 @@ public class Main {
                         
                     }
                 } catch (NumberFormatException e) {
-                    bufferedWriter.write("Error carregant Línia " + numLinea + ": " + e.getMessage());
-                    bufferedWriter.newLine();
+                    System.err.println("Error carregant Department: " + e.getMessage());
                 } catch (IllegalArgumentException e) {
-                    bufferedWriter.write("Error carregant Línia " + numLinea + ": " + e.getMessage());
-                    bufferedWriter.newLine();
+                    System.err.println("Error carregant Department: " + e.getMessage());
                 }
             }
         } catch (IOException e) {
