@@ -40,8 +40,6 @@ public class Product implements Comparable<Product> {
         return this.productName.compareTo(o.productName); // Ordenar per Name
     }
 
-
-
     @Override
     public int hashCode() {
         int hash = 3;
