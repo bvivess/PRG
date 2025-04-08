@@ -7,8 +7,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -16,7 +18,7 @@ public class Main {
         String arxiu = "C:\\temp\\EXAMEN.csv";
         
         // Estructures de memòria:
-        List<Article> articles = new ArrayList<>();
+        Set<Article> articles = new HashSet<>();
         Map<Integer, Order> orders = new HashMap<>();
         
         try {
@@ -35,7 +37,7 @@ public class Main {
         }
     }
 
-    private static void LlegeixArxiu(String arxiu, Map<Integer, Order> orders, List<Article> articles) throws IOException, NumberFormatException, IllegalArgumentException {
+    private static void LlegeixArxiu(String arxiu, Map<Integer, Order> orders, Set<Article> articles) throws IOException, NumberFormatException, IllegalArgumentException {
         String linea;
         String[] parts;
         int  _orderId, _articleId, _articlePrice;
@@ -64,8 +66,6 @@ public class Main {
                         
                         // Orders
                         carregaOrders(_orderId, _orderDate, _articleId, articles, orders );
-
-                        
                     }
                 } catch (NumberFormatException e) {
                     System.err.println("Error carregant Department: " + e.getMessage());
@@ -81,43 +81,49 @@ public class Main {
     }
     
     
-    private static void carregaArticles(int productId, String productName, int productPrice, List<Article> articles) {
-        Article article = new Article(productId, productName, productPrice);
-        
-        int indexArticles = articles.indexOf(article);
-        
-        if (indexArticles == -1) {
-            articles.add(article);
-        } 
+    private static void carregaArticles(int productId, String productName, int productPrice, Set<Article> articles) {
+
+        articles.add(new Article(productId, productName, productPrice));
+
     }
 
-    private static void carregaOrders(int orderId, LocalDate orderDate, int articleId, List<Article> articles, Map<Integer, Order> orders) {
-        Article article = articles.get(articles.indexOf( new Article(articleId, null, 0)));
-        ArrayList<Article> carrito;
+    private static void carregaOrders(int orderId, LocalDate orderDate, int articleId, Set<Article> articles, Map<Integer, Order> orders) {
+        Article article = cercaArticle(articleId, articles);
         
-        if (orders.containsKey(orderId)) {
-            orders.get(orderId).setOrderTotal(article.getProductPrice() + orders.get(orderId).getOrderTotal() );
-            orders.get(orderId).getCarrito().add(article);
-        } else
-            orders.put(orderId, new Order(orderId, orderDate, article.getProductPrice()));
+        if (article != null)
+            if (orders.containsKey(orderId)) {
+                orders.get(orderId).setOrderTotal(article.getProductPrice() + orders.get(orderId).getOrderTotal() );
+                orders.get(orderId).getCarrito().add(article);
+            } else
+                orders.put(orderId, new Order(orderId, orderDate, article.getProductPrice()));
 
     }
     
-    private static void mostraArticles(List<Article> products) {
-        Collections.sort(products); // Ordena la llista 'departments'
+    private static Article cercaArticle(int articleId, Set<Article> articles) {
+        for (Article a : articles) 
+            if (a.getProductId() == articleId)
+                return a;
+        return null;
+    }
+    
+    private static void mostraArticles(Set<Article> articles) {
+        List<Article> articles_ = new ArrayList<>(articles);
+        Collections.sort(articles_); // Ordena la llista 'departments'
         
-        for (Article p: products) {
+        for (Article p: articles_) {
             System.out.println(p.toString());
         }
     }
     
     private static void mostraOrders(Map<Integer, Order> orders) {
-        //Collections.sort(orders); // Ordena la llista 'employees'
+      List<Order> orders_ = new ArrayList<>(orders.values()); // Llista dels valors (Order)
 
-        for (Map.Entry<Integer, Order> tupla : orders.entrySet()) {
-            System.out.println("Clau: " + tupla.getKey().toString() + ", Valor: " + tupla.getValue().toString());
-        }
+    Collections.sort(orders_); 
+
+    for (Order o : orders_) {
+        System.out.println(o);
     }
+}
 
 }
 

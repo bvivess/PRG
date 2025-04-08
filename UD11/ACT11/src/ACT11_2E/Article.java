@@ -1,5 +1,7 @@
 package ACT11_2E;
 
+import java.util.Set;
+
 public class Article implements Comparable<Article> {
     private int productId;
     private String productName;
