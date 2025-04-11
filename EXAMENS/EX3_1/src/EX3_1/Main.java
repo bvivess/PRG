@@ -80,6 +80,7 @@ public class Main {
                         int importValue = Integer.parseInt(linea.substring(111,linea.length()).trim());  
 
                         // CARREGAR LES ESTRUCTURES DE MEMORIA
+                        // CARREGAR 'client' a 'clients'
                         // VARIANT2: cerca amb mètode de classe
                         // Cream l'objecte 'client' i el cercam en 'clients', que torna l'objecte existent o aquest nou 
                         //Client client = clients.cerca(new Client(clientId, clientName)); // Obtenim la instancia existent si hi es
@@ -87,11 +88,13 @@ public class Main {
                         // PROVA NO DUPLICACIÓ CLIENTS: Client client = new Client(clientId, clientName);
                         clients.add(client);
                         
+                        // CARREGAR 'producte' a productes'
                         // VARIANT1: cerca amb mètode estàtic
                         // No es modifica la cerca en 'productes' per fer veure com funcionen les 2 variants 
                         Producte producte = cercaEnSet(productes, new Producte(productId, productName, importValue)); // Obtenim la instancia existent si hi es
                         productes.add(producte);
 
+                        // CARREGAR 'factura' a 'factures'
                         // Afegim el producte a la llista de productes per aquesta factura
                         Factura factura = factures.get(facturaId);
                         if (factura == null) {
