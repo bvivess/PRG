@@ -131,13 +131,13 @@ public class Main {
     
     // Métode genèric per cercar en un Set emprant genèrics: substitueix els 2 anteriors
     private static <E> E cercaEnSet(Set<E> set, E element) {
-        for (E item : set) {
-            if (item.equals(element)) {
-                return item;
+        for (E e : set) {
+            if (e.equals(element)) {
+                return e;
             }
         }
         
-        return element; // Si no hi �s, retornem el nou (ser� afegit despr�s)
+        return element; // Si no hi és, retornem el nou (serà afegit després)
     }
     
     private static void mostraClients(HashSetMillorat<Client> clients) {
