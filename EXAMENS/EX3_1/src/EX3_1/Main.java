@@ -33,6 +33,15 @@ public class Main {
             // Llegir el contingut dels arxius línia a línia:
             LlegeixArxiu(arxiu, arxiuLog, factures, clients, productes);
 
+            // PROVA NO DUPLIACCIÓ CLIENTS: modificar un client
+            for (Client c : clients) {
+                if (c.getId().equals("C002")) {
+                    System.err.println("CLIENT TROBAT");
+                    c.setName("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+                    break;
+                }
+            }
+            
             // MOSTRAR LES ESTRUCTURES DE MEMÒRIA
             System.out.println("\nCLIENTS");
             mostraClients(clients);
@@ -59,13 +68,13 @@ public class Main {
                     if (!(linea.isEmpty() || linea.startsWith("#"))) {
                         // PARSEIG: DESTRIAR ELS ATRIBUTS PRESENTS A L'ARXIU
                         //invoice_id  invoice_date  client_id  client_name           product_id  product_name                           import  
-                        //0           13            28         38                    61          72                                     111
+                        //0           13            27         38                    61          72                                     111
                         String facturaId = linea.substring(0, 12).trim();  
                         int _dia = Integer.parseInt(linea.substring(13, 15));
                         int _mes = Integer.parseInt(linea.substring(16, 18));
                         int _any = Integer.parseInt(linea.substring(19, 23));
                         LocalDate data = LocalDate.of(_any, _mes, _dia); 
-                        String clientId = linea.substring(28, 37).trim();  
+                        String clientId = linea.substring(27, 37).trim();  
                         String clientName = linea.substring(38, 60).trim(); 
                         String productId = linea.substring(61, 71).trim();  
                         String productName = linea.substring(72, 110).trim();  
@@ -76,6 +85,7 @@ public class Main {
                         // Cream l'objecte 'client' i el cercam en 'clients', que torna l'objecte existent o aquest nou 
                         //Client client = clients.cerca(new Client(clientId, clientName)); // Obtenim la instancia existent si hi es
                         Client client = clients.cerca(new Client(clientId, clientName));
+                        // PROVA NO DUPLIACCIÓ CLIENTS: Client client = new Client(clientId, clientName);
                         clients.add(client);
                         
                         // VARIANT1: cerca amb mètode estàtic
