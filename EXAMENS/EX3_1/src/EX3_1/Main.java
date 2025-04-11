@@ -80,7 +80,7 @@ public class Main {
                         
                         // VARIANT1: cerca amb mètode estàtic
                         // No es modifica la cerca en 'productes' per fer veure com funcionen les 2 variants 
-                        Producte producte = cercaEnSet(productes, new Producte(productId, productName, importValue)); // Obtenim la inst�ncia existent si hi �s
+                        Producte producte = cercaEnSet(productes, new Producte(productId, productName, importValue)); // Obtenim la instancia existent si hi es
                         productes.add(producte);
 
                         // Afegim el producte a la llista de productes per aquesta factura
@@ -96,18 +96,19 @@ public class Main {
 
                     }
                 } catch (NumberFormatException e) {
-                    bufferedWriter.write("Error llegint l'arxiu en l�nia: " + numLinea + " --> " + e.getMessage());
+                    bufferedWriter.write("Error llegint l'arxiu en linia: " + numLinea + " --> " + e.getMessage());
                     bufferedWriter.newLine();
                 } catch (IllegalArgumentException e) {
-                    bufferedWriter.write("Error llegint l'arxiu en l�nia: " + numLinea + " --> " + e.getMessage());
+                    bufferedWriter.write("Error llegint l'arxiu en linia: " + numLinea + " --> " + e.getMessage());
                     bufferedWriter.newLine();
                 } 
             }
         } catch (Exception e) {
-            System.err.println("Error llegint l'arxiu en l�nia: " + numLinea + "--> " + e.getMessage());
+            System.err.println("Error llegint l'arxiu en linia: " + numLinea + "--> " + e.getMessage());
         }
     }
     
+    /*
     private static Client cercaEnSet(Set<Client> clients, Client client) {
         for (Client c : clients) {
             if (c.equals(client)) {
@@ -115,7 +116,7 @@ public class Main {
             }
         }
         
-        return client; // Si no hi �s, retornem el nou (ser� afegit despr�s)
+        return client; // Si no hi és, retornem el nou (serà afegit després)
     }
     
     private static Producte cercaEnSet(Set<Producte> productes, Producte producte) {
@@ -125,10 +126,10 @@ public class Main {
             }
         }
         
-        return producte; // Si no hi �s, retornem el nou (ser� afegit despr�s)
-    }    
+        return producte; // Si no hi és, retornem el nou (serà afegit després)
+    }  */  
     
-    // M�tode gen�ric per cercar en un Set emprant gen�rics: substitueix els 2 anteriors
+    // Métode genèric per cercar en un Set emprant genèrics: substitueix els 2 anteriors
     private static <E> E cercaEnSet(Set<E> set, E element) {
         for (E item : set) {
             if (item.equals(element)) {
