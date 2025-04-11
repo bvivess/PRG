@@ -84,7 +84,7 @@ public class Main {
                         // Cream l'objecte 'client' i el cercam en 'clients', que torna l'objecte existent o aquest nou 
                         //Client client = clients.cerca(new Client(clientId, clientName)); // Obtenim la instancia existent si hi es
                         Client client = clients.cerca(new Client(clientId, clientName));
-                        // PROVA NO DUPLIACCIÓ CLIENTS: Client client = new Client(clientId, clientName);
+                        // PROVA NO DUPLICACIÓ CLIENTS: Client client = new Client(clientId, clientName);
                         clients.add(client);
                         
                         // VARIANT1: cerca amb mètode estàtic
