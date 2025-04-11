@@ -1,6 +1,5 @@
 package EX3_1;
 
-import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
@@ -34,13 +33,13 @@ public class Main {
             LlegeixArxiu(arxiu, arxiuLog, factures, clients, productes);
 
             // PROVA NO DUPLIACCIÓ CLIENTS: modificar un client
-            for (Client c : clients) {
-                if (c.getId().equals("C002")) {
-                    System.err.println("CLIENT TROBAT");
-                    c.setName("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-                    break;
-                }
-            }
+            //for (Client c : clients) {
+            //    if (c.getId().equals("C002")) {
+            //        System.err.println("CLIENT TROBAT");
+            //        c.setName("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            //        break;
+            //    }
+            //}
             
             // MOSTRAR LES ESTRUCTURES DE MEMÒRIA
             System.out.println("\nCLIENTS");
@@ -68,7 +67,7 @@ public class Main {
                     if (!(linea.isEmpty() || linea.startsWith("#"))) {
                         // PARSEIG: DESTRIAR ELS ATRIBUTS PRESENTS A L'ARXIU
                         //invoice_id  invoice_date  client_id  client_name           product_id  product_name                           import  
-                        //0           13            27         38                    61          72                                     111
+                        //0           13            27         38                    60          72                                     111
                         String facturaId = linea.substring(0, 12).trim();  
                         int _dia = Integer.parseInt(linea.substring(13, 15));
                         int _mes = Integer.parseInt(linea.substring(16, 18));
@@ -76,7 +75,7 @@ public class Main {
                         LocalDate data = LocalDate.of(_any, _mes, _dia); 
                         String clientId = linea.substring(27, 37).trim();  
                         String clientName = linea.substring(38, 60).trim(); 
-                        String productId = linea.substring(61, 71).trim();  
+                        String productId = linea.substring(60, 71).trim();  
                         String productName = linea.substring(72, 110).trim();  
                         int importValue = Integer.parseInt(linea.substring(111,linea.length()).trim());  
 
