@@ -57,26 +57,28 @@ public class Main {
                 try {
                     numLinea++;
                     if (!(linea.isEmpty() || linea.startsWith("#"))) {
-                        // DESTRIAR ELS ATRIBUTS PRESENTS A L'ARXIU
+                        // PARSEIG: DESTRIAR ELS ATRIBUTS PRESENTS A L'ARXIU
                         //invoice_id  invoice_date  client_id  client_name           product_id  product_name                           import  
                         //0           13            28         38                    61          72                                     111
-                        String facturaId = linea.substring(0, 12).trim(); // "F001" (5 car�cters)
+                        String facturaId = linea.substring(0, 12).trim();  
                         int _dia = Integer.parseInt(linea.substring(13, 15));
                         int _mes = Integer.parseInt(linea.substring(16, 18));
                         int _any = Integer.parseInt(linea.substring(19, 23));
-                        LocalDate data = LocalDate.of(_any, _mes, _dia); // "01/03/2025" (10 car�cters)
-                        String clientId = linea.substring(28, 37).trim(); // "C001" (5 car�cters)
-                        String clientName = linea.substring(38, 60).trim(); // "TechnoSoft SL" (20 car�cters)
-                        String productId = linea.substring(61, 71).trim(); // "P0001" (5 car�cters)
-                        String productName = linea.substring(72, 110).trim(); // "Port�til Dell Inspiron 15" (33 car�cters)
-                        int importValue = Integer.parseInt(linea.substring(111,linea.length()).trim()); // Import (despr�s del car�cter 84 fins al final)
+                        LocalDate data = LocalDate.of(_any, _mes, _dia); 
+                        String clientId = linea.substring(28, 37).trim();  
+                        String clientName = linea.substring(38, 60).trim(); 
+                        String productId = linea.substring(61, 71).trim();  
+                        String productName = linea.substring(72, 110).trim();  
+                        int importValue = Integer.parseInt(linea.substring(111,linea.length()).trim());  
 
-                        // CARREGAR LES ESTRUCTURES DE MEM�RIA
+                        // CARREGAR LES ESTRUCTURES DE MEMORIA
+                        // VARIANT2: cerca amb mètode de classe
                         // Cream l'objecte 'client' i el cercam en 'clients', que torna l'objecte existent o aquest nou 
-                        //Client client = cercaEnSet(clients, new Client(clientId, clientName)); // Obtenim la inst�ncia existent si hi �s
-                        Client client = (Client) clients.cerca(new Client(clientId, clientName));
+                        //Client client = clients.cerca(new Client(clientId, clientName)); // Obtenim la instancia existent si hi es
+                        Client client = clients.cerca(new Client(clientId, clientName));
                         clients.add(client);
                         
+                        // VARIANT1: cerca amb mètode estàtic
                         // No es modifica la cerca en 'productes' per fer veure com funcionen les 2 variants 
                         Producte producte = cercaEnSet(productes, new Producte(productId, productName, importValue)); // Obtenim la inst�ncia existent si hi �s
                         productes.add(producte);
