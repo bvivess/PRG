@@ -20,20 +20,20 @@ import java.util.Set;
  */
 public class Main {
     public static void main(String[] args) throws Exception {
-        // Arxius per a la c�rrega de dades:
+        // Arxius per a la càrrega de dades:
         String arxiu = "C:\\temp\\EXAMEN.csv";
         String arxiuLog = "C:\\temp\\EXAMEN.log";
         
-        // Estructures de mem�ria:
+        // Estructures de memòria:
         HashSetMillorat<Client> clients = new HashSetMillorat<>();
         HashSetMillorat<Producte> productes = new HashSetMillorat<>();
         Map<String, Factura> factures = new HashMap<>();
         
         try {
-            // Llegir el contingut dels arxius l�nia a l�nia:
+            // Llegir el contingut dels arxius línia a línia:
             LlegeixArxiu(arxiu, arxiuLog, factures, clients, productes);
 
-            // MOSTRAR LES ESTRUCTURES DE MEM�RIA
+            // MOSTRAR LES ESTRUCTURES DE MEMÒRIA
             System.out.println("\nCLIENTS");
             mostraClients(clients);
             System.out.println("\nPRODUCTES");
