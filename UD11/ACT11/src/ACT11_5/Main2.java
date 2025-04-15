@@ -65,22 +65,25 @@ public class Main2 {
             String line = reader.readLine(); // Es descarta la primera línia
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(";");
-                String departmentId = parts[0];
+                int departmentId = Integer.parseInt(parts[0]);
                 String departmentName = parts[1];
-                String managerId = parts[2];
-                String locationId = parts[3];
+                int managerId = Integer.parseInt(parts[2]);
+                int locationId = Integer.parseInt(parts[3]);
+                Employee employee = new Employee(managerId, "S/D", "S/D", "IT_PROG");
+                Location location = new Location(locationId, "S/D");
+                Department department = new Department(departmentId, departmentName, managerId, locationId);
 
                 try {
                     // Comprovar integritat referencial amb 'employees'
-                    if (!SQLCheckPK(connexio, "employees", Integer.parseInt(managerId)))
-                        SQLInsert(connexio, "employees", parts[2], "S/D","S/D", "IT_PROG");
+                    if (!SQLCheckPK(connexio, "employees", managerId))
+                        SQLInsert(connexio, "employees", employee);
                     
                     // Comprovar integritat referencial amb 'locations'
-                    if (!SQLCheckPK(connexio, "locations", Integer.parseInt(locationId)))
-                        SQLInsert(connexio, "locations", parts[3], "S/D");
+                    if (!SQLCheckPK(connexio, "locations", locationId))
+                        SQLInsert(connexio, "locations", location);
                     
                     // Insertar la fila a 'departments'
-                    SQLInsert(connexio, "departments", departmentId, departmentName, managerId, locationId );
+                    SQLInsert(connexio, "departments", department);
                     System.out.println("Insertant departament: " + parts[0]);
 
                     connexio.commit();
@@ -95,7 +98,7 @@ public class Main2 {
         }
     }
     
-    private static void SQLInsert(Connection connexio, String table, String... valors) throws SQLException  {
+    private static void SQLInsert(Connection connexio, String table, Object o) throws SQLException  {
         String sql="";
         PreparedStatement statement;
         
@@ -115,25 +118,31 @@ public class Main2 {
         try {
             if (table.equals("employees")) {
                 sql = "INSERT INTO employees (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID) VALUES (?, ?, ?, ?)";
+                Employee e = (Employee) o;
+                
                 statement = connexio.prepareStatement(sql);
-                statement.setInt(1, Integer.parseInt(valors[0]));
-                statement.setString(2, valors[1]);
-                statement.setString(3, valors[2]);
-                statement.setString(4, valors[3]);
+                statement.setInt(1, e.getEmployeeId());
+                statement.setString(2, e.getFirstName());
+                statement.setString(3, e.getLastName());
+                statement.setString(4, e.getJobId());
                 statement.executeUpdate();
             } else if (table.equals("locations")) {
                 sql = "INSERT INTO locations (LOCATION_ID, CITY) VALUES (?,?)";
+                Location l = (Location) o;
+                
                 statement = connexio.prepareStatement(sql);
-                statement.setInt(1, Integer.parseInt(valors[0]));
-                statement.setString(2, valors[1]);
+                statement.setInt(1, l.getLocationId());
+                statement.setString(2, l.getCity());
                 statement.executeUpdate();
             } else if (table.equals("departments")) {
                 sql = "INSERT INTO departments (DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID) VALUES (?, ?, ?, ?)";
+                Department d = (Department) o;
+                
                 statement = connexio.prepareStatement(sql);
-                statement.setInt(1, Integer.parseInt(valors[0]));
-                statement.setString(2, valors[1]);
-                statement.setInt(3, Integer.parseInt(valors[2]));
-                statement.setInt(4, Integer.parseInt(valors[3]));
+                statement.setInt(1, d.getDepartmentId());
+                statement.setString(2, d.getDepartmentName());
+                statement.setInt(3, d.getManagerId());
+                statement.setInt(4, d.getLocationId());
                 statement.executeUpdate();
             }
         } catch (SQLException e) {
