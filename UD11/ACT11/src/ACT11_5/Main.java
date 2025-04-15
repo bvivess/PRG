@@ -113,21 +113,7 @@ public class Main {
         //    AND   TABLE_NAME = &&tabla;
 
         try {
-            if (table.equals("departments")) {
-                sql = "INSERT INTO departments (DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID) VALUES (?, ?, ?, ?)";
-                statement = connexio.prepareStatement(sql);
-                statement.setInt(1, Integer.parseInt(valors[0]));
-                statement.setString(2, valors[1]);
-                statement.setInt(3, Integer.parseInt(valors[2]));
-                statement.setInt(4, Integer.parseInt(valors[3]));
-                statement.executeUpdate();
-            } else if (table.equals("locations")) {
-                sql = "INSERT INTO locations (LOCATION_ID, CITY) VALUES (?,?)";
-                statement = connexio.prepareStatement(sql);
-                statement.setInt(1, Integer.parseInt(valors[0]));
-                statement.setString(2, valors[1]);
-                statement.executeUpdate();
-            } else if (table.equals("employees")) {
+            if (table.equals("employees")) {
                 sql = "INSERT INTO employees (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID) VALUES (?, ?, ?, ?)";
                 statement = connexio.prepareStatement(sql);
                 statement.setInt(1, Integer.parseInt(valors[0]));
@@ -135,8 +121,21 @@ public class Main {
                 statement.setString(3, valors[2]);
                 statement.setString(4, valors[3]);
                 statement.executeUpdate();
+            } else if (table.equals("locations")) {
+                sql = "INSERT INTO locations (LOCATION_ID, CITY) VALUES (?,?)";
+                statement = connexio.prepareStatement(sql);
+                statement.setInt(1, Integer.parseInt(valors[0]));
+                statement.setString(2, valors[1]);
+                statement.executeUpdate();
+            } else if (table.equals("departments")) {
+                sql = "INSERT INTO departments (DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID) VALUES (?, ?, ?, ?)";
+                statement = connexio.prepareStatement(sql);
+                statement.setInt(1, Integer.parseInt(valors[0]));
+                statement.setString(2, valors[1]);
+                statement.setInt(3, Integer.parseInt(valors[2]));
+                statement.setInt(4, Integer.parseInt(valors[3]));
+                statement.executeUpdate();
             }
-            
         } catch (SQLException e) {
             throw e;
         } 

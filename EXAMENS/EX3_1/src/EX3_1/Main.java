@@ -57,6 +57,7 @@ public class Main {
     
     public static void LlegeixArxiu(String arxiu, String arxiuLog, Map<String, Factura> factures, HashSetMillorat<Client> clients, HashSetMillorat<Producte> productes) {
         String linea;
+        //String[] parts;
         int numLinea = 0;
         
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu));
@@ -72,6 +73,7 @@ public class Main {
                         int _dia = Integer.parseInt(linea.substring(13, 15));
                         int _mes = Integer.parseInt(linea.substring(16, 18));
                         int _any = Integer.parseInt(linea.substring(19, 23));
+                        // parts = linea.substring(13,23).split("/");
                         LocalDate data = LocalDate.of(_any, _mes, _dia); 
                         String clientId = linea.substring(27, 37).trim();  
                         String clientName = linea.substring(38, 60).trim(); 
@@ -139,7 +141,7 @@ public class Main {
         }
         
         return producte; // Si no hi és, retornem el nou (serà afegit després)
-    }  */  
+    }  */
     
     // Métode genèric per cercar en un Set emprant genèrics: substitueix els 2 anteriors
     private static <E> E cercaEnSet(Set<E> set, E element) {
