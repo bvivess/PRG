@@ -30,7 +30,7 @@ public class Main {
         
         try {
             // Llegir el contingut dels arxius línia a línia:
-            LlegeixArxiu(arxiu, arxiuLog, factures, clients, productes);
+            llegeixArxiu(arxiu, arxiuLog, factures, clients, productes);
 
             // PROVA NO DUPLIACCIÓ CLIENTS: modificar un client
             //for (Client c : clients) {
@@ -55,7 +55,7 @@ public class Main {
         }
     }
     
-    public static void LlegeixArxiu(String arxiu, String arxiuLog, Map<String, Factura> factures, HashSetMillorat<Client> clients, HashSetMillorat<Producte> productes) {
+    public static void llegeixArxiu(String arxiu, String arxiuLog, Map<String, Factura> factures, HashSetMillorat<Client> clients, HashSetMillorat<Producte> productes) {
         String linea;
         //String[] parts;
         int numLinea = 0;

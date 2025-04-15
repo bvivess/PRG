@@ -17,7 +17,7 @@ public class Main {
             System.out.println("Connexió establerta.");
  
             connexio.setAutoCommit(false);
-            insertDepartmentsFromFile(connexio, "c:\\temp\\ACT11_5.txt");
+            llegeixArxiuABBDD(connexio, "c:\\temp\\ACT11_5.txt");
             
             System.out.println("Connexió tancada.");
         } catch (Exception e) {
@@ -60,7 +60,7 @@ public class Main {
         return DriverManager.getConnection(servidor + bdades, usuari, passwd);
     }
     
-    private static void insertDepartmentsFromFile(Connection connexio, String filename) throws SQLException, IOException {
+    private static void llegeixArxiuABBDD(Connection connexio, String filename) throws SQLException, IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line = reader.readLine(); // Es descarta la primera línia
             while ((line = reader.readLine()) != null) {
