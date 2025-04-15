@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Main {
+public class Main2 {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         // Establir la connexió
         try ( Connection connexio = getConnectionFromFile("c:\\temp\\mysql.con")  ) {
@@ -65,22 +65,22 @@ public class Main {
             String line = reader.readLine(); // Es descarta la primera línia
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(";");
-                //int departmentId = Integer.parseInt(parts[0]);
-                //String departmentName = parts[1];
-                //int managerId = Integer.parseInt(parts[2]);
-                //int locationId = Integer.parseInt(parts[3]);
+                String departmentId = parts[0];
+                String departmentName = parts[1];
+                String managerId = parts[2];
+                String locationId = parts[3];
 
                 try {
                     // Comprovar integritat referencial amb 'employees'
-                    if (!SQLCheckPK(connexio, "employees", Integer.parseInt(parts[2])))
+                    if (!SQLCheckPK(connexio, "employees", Integer.parseInt(managerId)))
                         SQLInsert(connexio, "employees", parts[2], "S/D","S/D", "IT_PROG");
                     
                     // Comprovar integritat referencial amb 'locations'
-                    if (!SQLCheckPK(connexio, "locations", Integer.parseInt(parts[3])))
+                    if (!SQLCheckPK(connexio, "locations", Integer.parseInt(locationId)))
                         SQLInsert(connexio, "locations", parts[3], "S/D");
                     
                     // Insertar la fila a 'departments'
-                    SQLInsert(connexio, "departments", parts[0], parts[1], parts[2], parts[3] );
+                    SQLInsert(connexio, "departments", departmentId, departmentName, managerId, locationId );
                     System.out.println("Insertant departament: " + parts[0]);
 
                     connexio.commit();
