@@ -9,6 +9,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main2 {
     public static void main(String[] args) throws FileNotFoundException, IOException {
@@ -26,38 +28,41 @@ public class Main2 {
     }
     
     private static Connection getConnectionFromFile(String filename) throws SQLException, IOException {
-        String servidor = "";
-        String bdades = "";
-        String usuari = "";
-        String passwd = "";
+        Map<ValorsConnexio, String> valors = new HashMap<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
+            String linia;
+            while ((linia = reader.readLine()) != null) {
                 try {
-                    String[] parts = line.split("=");
-                    String clau = parts[0].trim();
-                    String valor = parts[1].trim();
+                    if (!linia.substring(0, 1).equals("#")) {
+                        String[] parts = linia.split("=");
+                        String clau = parts[0].trim();
+                        String valor = parts[1].trim();
                     
-                    switch (clau) {
-                        case "SERVER" -> servidor = valor;
-                        case "DBASE" -> bdades = valor;
-                        case "USER" -> usuari = valor;
-                        case "PASSWD" -> passwd = valor;
-                        default -> System.err.println("Clau no vàlida: " + clau);
+                        switch (clau) {
+                            case "SERVER" -> valors.put( ValorsConnexio.SERVER, valor);
+                            case "DBASE" -> valors.put( ValorsConnexio.DBASE, valor);
+                            case "USER" -> valors.put( ValorsConnexio.USER, valor);
+                            case "PASSWD" -> valors.put( ValorsConnexio.PASSWD, valor);
+                            default -> System.err.println("Clau no vàlida: " + clau);
+                        }
                     }
                 } catch (IndexOutOfBoundsException e) {
-                    // En cas de '#', l'split no fnciona
+                    // Cas que l'split no fncioni
                     // No fer res
                 }
             }
+            if (valors.size() != 4)
+                throw new SQLException("L'arxiu no contemple totes les dades de connexió");
         } catch (IOException e) {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
             throw e;  // Es propaga l'excepció al mètode anterior
         }
 
         // Estableix la connexió a la BD Mysql
-        return DriverManager.getConnection(servidor + bdades, usuari, passwd);
+        return DriverManager.getConnection( valors.get(ValorsConnexio.SERVER) + valors.get(ValorsConnexio.DBASE), 
+                                            valors.get(ValorsConnexio.USER), 
+                                            valors.get(ValorsConnexio.PASSWD));
     }
     
     private static void llegeixArxiuABBDD(Connection connexio, String filename) throws SQLException, IOException {
