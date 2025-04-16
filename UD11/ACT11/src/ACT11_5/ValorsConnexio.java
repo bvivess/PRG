@@ -11,7 +11,7 @@ public enum ValorsConnexio {
     ValorsConnexio(String abreviacio) { // constructor
         this.abreviacio = abreviacio;
     }
-    public String getabreviacio() { // getter
+    public String getAbreviacio() { // getter
         return this.abreviacio;
     }
 
