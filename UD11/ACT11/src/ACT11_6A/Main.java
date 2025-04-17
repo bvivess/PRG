@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        GestorVendes gestor = new GestorVendes();
+        UtilVendes gestor = new UtilVendes();
 
         gestor.carregaClients("clients", "c:\\temp\\clients.csv");
         gestor.carregaProductes("productes", "c:\\temp\\productes.csv");

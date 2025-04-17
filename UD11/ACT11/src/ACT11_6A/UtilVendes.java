@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.sql.Date;
 
-class GestorVendes {
+class UtilVendes {
     private List<Client> clients = new ArrayList<>();
     private List<Producte> productes = new ArrayList<>();
     private Map<Integer,Venda> vendes = new HashMap<>();
