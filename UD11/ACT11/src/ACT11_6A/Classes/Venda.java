@@ -47,6 +47,30 @@ public class Venda {
     public void setProductes(List<Producte> productes) {
         this.productes = productes;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 17 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Venda other = (Venda) obj;
+        return this.id == other.id;
+    }
+    
+    
     
     @Override
     public String toString() {

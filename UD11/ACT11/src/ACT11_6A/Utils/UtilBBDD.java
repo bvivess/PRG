@@ -1,12 +1,9 @@
 package ACT11_6A.Utils;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -31,7 +28,7 @@ public class UtilBBDD {
                             case "DBASE" -> valorsConnexio.put( "DBASE", valor);
                             case "USER" -> valorsConnexio.put( "USER", valor);
                             case "PASSWD" -> valorsConnexio.put( "PASSWD", valor);
-                            default -> System.err.println("Clau no vàlida: " + clau);
+                            default -> System.err.println("Clau no vàlida en arxiu de connexió: " + clau);
                         }
                     }
                 } catch (IndexOutOfBoundsException e) {

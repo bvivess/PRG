@@ -11,7 +11,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -19,24 +18,27 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 public class UtilVendes {
-    List<Client> clients = new ArrayList<>();
-    List<Producte> productes = new ArrayList<>();
+    Set<Client> clients = new HashSet<>();
+    Set<Producte> productes = new HashSet<>();
     Map<Integer,Venda> vendes = new HashMap<>();
     
     // --- ALTA DE CLIENTS 
     public void carregaClients(String path) throws SQLException, IOException {
         carregaClientsCSV(this.clients, path);
         carregaClientsBBDD(this.clients);
+        System.out.println(this.clients);
     }
 
-    public void carregaClientsCSV(List<Client> clients, String path) throws IOException {
+    public void carregaClientsCSV(Set<Client> clients, String path) throws IOException {
         try (BufferedReader br = Files.newBufferedReader(Paths.get(path))) {
             String linia;
             while ((linia = br.readLine()) != null) {
-                if (!linia.substring(0, 1).equals("#")) {
+                if (!(linia.isEmpty() || linia.startsWith("#"))) {
                     String[] parts = linia.split(",");
                     if (parts.length == 3) 
                         afegeixClient(clients, new Client( Integer.parseInt(parts[0]),
@@ -49,39 +51,42 @@ public class UtilVendes {
         }
     }
     
-    public void carregaClientsBBDD(List<Client> clients) throws SQLException, IOException{ 
+    public void carregaClientsBBDD(Set<Client> clients) throws SQLException, IOException{ 
         UtilBBDD gestorBBDD = new UtilBBDD();
-        
         String sql = "SELECT id, nom, email FROM clients";
         try ( Connection connexio = gestorBBDD.getConnectionFromFile("c:\\temp\\mysql.con");
               Statement statement = connexio.createStatement();
               ResultSet resultSet = statement.executeQuery(sql) ) {
-            while (resultSet.next())
+            
+            while (resultSet.next()) {
                 afegeixClient( clients, new Client( resultSet.getInt("id"),
                                                     resultSet.getString("nom"), 
                                                     resultSet.getString("email") )
                              );
+            }
         } catch (SQLException e) {
             System.err.println("Error carregant clients BBDD: " + e.getMessage());
         }
     }
     
-    public void afegeixClient(List<Client> clients, Client client) {
-        if (clients.indexOf(client.getId()) == -1 )
-            clients.add(client);
+    public void afegeixClient(Set<Client> clients, Client client) {
+        clients.add(client);
     }
     
     // --- ALTA PRODUCTES
     public void carregaProductes(String path) throws SQLException, IOException {
         carregaProductesCSV(this.productes, path);
         carregaProductesBBDD(this.productes);
+        
+        System.out.println(this.productes);
+        
     }
     
-    public void carregaProductesCSV(List<Producte> productes, String path) {
+    public void carregaProductesCSV(Set<Producte> productes, String path) {
         try (BufferedReader br = Files.newBufferedReader(Paths.get(path))) {
             String linia;
             while ((linia = br.readLine()) != null) {
-                if (!linia.substring(0, 1).equals("#")) {
+                if (!(linia.isEmpty() || linia.startsWith("#"))) {
                     String[] parts = linia.split(",");
                     if (parts.length == 4)
                         afegeixProducte(productes, new Producte( Integer.parseInt(parts[0]),
@@ -95,10 +100,10 @@ public class UtilVendes {
         }
     }
     
-    public void carregaProductesBBDD(List<Producte> productes) throws SQLException, IOException{ 
+    public void carregaProductesBBDD(Set<Producte> productes) throws SQLException, IOException{ 
         UtilBBDD gestorBBDD = new UtilBBDD();
         
-        String sql = "SELECT id, nom, preu, categoria FROM clients";
+        String sql = "SELECT id, nom, preu, categoria FROM productes";
         try ( Connection connexio = gestorBBDD.getConnectionFromFile("c:\\temp\\mysql.con");
               Statement statement = connexio.createStatement();
               ResultSet resultSet = statement.executeQuery(sql) ) {
@@ -113,22 +118,23 @@ public class UtilVendes {
         }
     }
 
-    public void afegeixProducte(List<Producte> productes, Producte producte) {
-        if (productes.indexOf(producte.getId()) == -1 )
-            productes.add(producte);
+    public void afegeixProducte(Set<Producte> productes, Producte producte) {
+        productes.add(producte);
     }
     
     // --- ALTA DE VENDES 
     public void carregaVendes(String path) throws SQLException, IOException {
         carregaVendesCSV(this.vendes, path);
-        //carregaVendesBBDD(clients, "CLIENTS");
+        carregaVendesBBDD(this.vendes);
+        
+        System.out.println(this.vendes);
     }
 
     public void carregaVendesCSV(Map<Integer,Venda> vendes, String path) throws IOException {
         try (BufferedReader br = Files.newBufferedReader(Paths.get(path))) {
             String linia;
             while ((linia = br.readLine()) != null) {
-                if (!linia.substring(0, 1).equals("#")) {
+                if (!(linia.isEmpty() || linia.startsWith("#"))) {
                     String[] parts = linia.split(",");
                     if (parts.length == 4) {
                         // Processar els productes separats per ;
@@ -160,19 +166,19 @@ public class UtilVendes {
         try ( Connection connexio = gestorBBDD.getConnectionFromFile("c:\\temp\\mysql.con");
               Statement statement = connexio.createStatement();
               ResultSet resultSet = statement.executeQuery(sql) ) {
-            Venda venda=null;
+            Venda venda = null;
             while (resultSet.next()) {
                 venda = vendes.get(resultSet.getInt("id"));
-                if ( venda == null)
+                if ( venda == null) {
                     venda = new Venda(  resultSet.getInt("id"),
                                         resultSet.getDate("data").toLocalDate(),
                                         cercaClient( new Client(resultSet.getInt("client_id"), null, null) ),
                                         new ArrayList<>() ); 
-                
+                }
                 venda.getProductes().add( cercaProducte( new Producte(resultSet.getInt("producte_id"), null, 0.0, null) ) );
-                    
+                afegeixVenda(vendes, venda);
             }
-            afegeixVenda(vendes, venda);
+            
                                                   
         } catch (SQLException e) {
             System.err.println("Error carregant clients BBDD: " + e.getMessage());
@@ -180,7 +186,7 @@ public class UtilVendes {
     }
 
     public void afegeixVenda(Map<Integer,Venda> vendes, Venda venda) {
-        if (vendes.get(venda.getId()) == null )
+        //if (vendes.get(venda.getId()) == null )
             vendes.put(venda.getId(), venda);
     }
     
