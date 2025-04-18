@@ -22,7 +22,7 @@ public class Main {
             gestorVendes.carregaClients(clients, "c:\\temp\\clients.csv");
             gestorVendes.carregaProductes(productes, "c:\\temp\\productes.csv");
             
-            gestorVendes.carregaVendes(vendes, , "c:\\temp\\vendes.csv")
+            gestorVendes.carregaVendes(vendes, "c:\\temp\\vendes.csv");
 
             /*
             Client c = new Client(1, "Joan", "joan@gmail.com");
