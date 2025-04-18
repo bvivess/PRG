@@ -1,7 +1,5 @@
 package ACT11_6A.Classes;
 
-import ACT11_6A.Classes.Categoria;
-
 public class Producte implements Comparable <Producte>{
     int id;
     String nom;
@@ -21,8 +19,6 @@ public class Producte implements Comparable <Producte>{
         else if (this.id < p.id) return -1;
         else return 0;
     }
-    
-    
 
     public int getId() {
         return id;

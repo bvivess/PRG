@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class UtilBBDD {
     
-    protected static Connection getConnectionFromFile(String filename) throws SQLException, IOException {
+    protected Connection getConnectionFromFile(String filename) throws SQLException, IOException {
         Map<String, String> valorsConnexio = new HashMap<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {

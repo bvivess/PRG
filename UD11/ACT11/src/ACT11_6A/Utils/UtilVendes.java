@@ -25,13 +25,11 @@ public class UtilVendes {
     List<Client> clients = new ArrayList<>();
     List<Producte> productes = new ArrayList<>();
     Map<Integer,Venda> vendes = new HashMap<>();
-
-    UtilVendes gestorVendes = new UtilVendes();
     
     // --- ALTA DE CLIENTS 
     public void carregaClients(String path) throws SQLException, IOException {
         carregaClientsCSV(this.clients, path);
-        carregaClientsBBDD(this.clients, "CLIENTS");
+        carregaClientsBBDD(this.clients);
     }
 
     public void carregaClientsCSV(List<Client> clients, String path) throws IOException {
@@ -51,7 +49,7 @@ public class UtilVendes {
         }
     }
     
-    public void carregaClientsBBDD(List<Client> clients, String taula) throws SQLException, IOException{ 
+    public void carregaClientsBBDD(List<Client> clients) throws SQLException, IOException{ 
         UtilBBDD gestorBBDD = new UtilBBDD();
         
         String sql = "SELECT id, nom, email FROM clients";
@@ -121,9 +119,9 @@ public class UtilVendes {
     }
     
     // --- ALTA DE VENDES 
-    public void carregaVendes(Map<Integer,Venda> vendes, String path) throws SQLException, IOException {
-        carregaVendesCSV(vendes, path);
-        //carregaClientsBBDD(clients, "CLIENTS");
+    public void carregaVendes(String path) throws SQLException, IOException {
+        carregaVendesCSV(this.vendes, path);
+        //carregaVendesBBDD(clients, "CLIENTS");
     }
 
     public void carregaVendesCSV(Map<Integer,Venda> vendes, String path) throws IOException {
@@ -145,13 +143,45 @@ public class UtilVendes {
                                 venda.getProductes().add( cercaProducte( new Producte(Integer.parseInt(pId.trim()), null, 0.0, null) ) );
                             }
                         }
-                        afegeixVenda(vendes, venda );
+                        
+                        afegeixVenda(this.vendes, venda );
                     }
                 }
             }
         } catch (IOException | NumberFormatException e) {
             System.err.println("Error carregant clients CVS: " + e.getMessage());
         }
+    }
+    
+    public void carregaVendesBBDD(Map<Integer,Venda> vendes) throws SQLException, IOException{ 
+        UtilBBDD gestorBBDD = new UtilBBDD();
+        
+        String sql = "SELECT id, client_id, data, producte_id FROM vendes, venda_producte where id = venda_id";
+        try ( Connection connexio = gestorBBDD.getConnectionFromFile("c:\\temp\\mysql.con");
+              Statement statement = connexio.createStatement();
+              ResultSet resultSet = statement.executeQuery(sql) ) {
+            Venda venda=null;
+            while (resultSet.next()) {
+                venda = vendes.get(resultSet.getInt("id"));
+                if ( venda == null)
+                    venda = new Venda(  resultSet.getInt("id"),
+                                        resultSet.getDate("data").toLocalDate(),
+                                        cercaClient( new Client(resultSet.getInt("client_id"), null, null) ),
+                                        new ArrayList<>() ); 
+                
+                venda.getProductes().add( cercaProducte( new Producte(resultSet.getInt("producte_id"), null, 0.0, null) ) );
+                    
+            }
+            afegeixVenda(vendes, venda);
+                                                  
+        } catch (SQLException e) {
+            System.err.println("Error carregant clients BBDD: " + e.getMessage());
+        }
+    }
+
+    public void afegeixVenda(Map<Integer,Venda> vendes, Venda venda) {
+        if (vendes.get(venda.getId()) == null )
+            vendes.put(venda.getId(), venda);
     }
     
     private Client cercaClient (Client c) throws NoSuchElementException {
@@ -169,29 +199,8 @@ public class UtilVendes {
         
         throw new NoSuchElementException("Producte no trobat a la llista.");
     }
+   
 
-/*    
-    public void carregaClientsBBDD(List<Client> clients, String taula) throws SQLException, IOException{ 
-        UtilBBDD gestorBBDD = new UtilBBDD();
-        
-        String sql = "SELECT id, nom, email FROM clients";
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile("c:\\temp\\mysql.con");
-              Statement statement = connexio.createStatement();
-              ResultSet resultSet = statement.executeQuery(sql) ) {
-            while (resultSet.next())
-                afegeixClient( clients, new Client( resultSet.getInt("id"),
-                                                    resultSet.getString("nom"), 
-                                                    resultSet.getString("email") )
-                             );
-        } catch (SQLException e) {
-            System.err.println("Error carregant clients BBDD: " + e.getMessage());
-        }
-    }
-*/    
-    public void afegeixVenda(Map<Integer,Venda> vendes, Venda venda) {
-        if (vendes.get(venda.getId()) == null )
-            vendes.put(venda.getId(), venda);
-    }
 
     
 }
