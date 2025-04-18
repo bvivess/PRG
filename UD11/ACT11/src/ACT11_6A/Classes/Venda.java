@@ -23,6 +23,14 @@ public class Venda {
     public void setId(int id) {
         this.id = id;
     }
+    
+    public LocalDate getDataVenda() {
+        return dataVenda;
+    }
+
+    public void setDataVenda(LocalDate dataVenda) {
+        this.dataVenda = dataVenda;
+    }
 
     public Client getClient() {
         return client;
@@ -39,16 +47,6 @@ public class Venda {
     public void setProductes(List<Producte> productes) {
         this.productes = productes;
     }
-
-    public LocalDate getDataVenda() {
-        return dataVenda;
-    }
-
-    public void setDataVenda(LocalDate dataVenda) {
-        this.dataVenda = dataVenda;
-    }
-
-    
     
     @Override
     public String toString() {

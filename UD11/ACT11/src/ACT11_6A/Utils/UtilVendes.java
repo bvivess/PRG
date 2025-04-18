@@ -19,13 +19,19 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.sql.Date;
+import java.util.NoSuchElementException;
 
 public class UtilVendes {
+    List<Client> clients = new ArrayList<>();
+    List<Producte> productes = new ArrayList<>();
+    Map<Integer,Venda> vendes = new HashMap<>();
+
+    UtilVendes gestorVendes = new UtilVendes();
     
     // --- ALTA DE CLIENTS 
-    public void carregaClients(List<Client> clients, String path) throws SQLException, IOException {
-        carregaClientsCSV(clients, path);
-        carregaClientsBBDD(clients, "CLIENTS");
+    public void carregaClients(String path) throws SQLException, IOException {
+        carregaClientsCSV(this.clients, path);
+        carregaClientsBBDD(this.clients, "CLIENTS");
     }
 
     public void carregaClientsCSV(List<Client> clients, String path) throws IOException {
@@ -68,9 +74,9 @@ public class UtilVendes {
     }
     
     // --- ALTA PRODUCTES
-    public void carregaProductes(List<Producte> productes, String path) throws SQLException, IOException {
-        carregaProductesCSV(productes, path);
-        carregaProductesBBDD(productes);
+    public void carregaProductes(String path) throws SQLException, IOException {
+        carregaProductesCSV(this.productes, path);
+        carregaProductesBBDD(this.productes);
     }
     
     public void carregaProductesCSV(List<Producte> productes, String path) {
@@ -128,25 +134,40 @@ public class UtilVendes {
                     String[] parts = linia.split(",");
                     if (parts.length == 4) {
                         // Processar els productes separats per ;
+                        Venda venda = new Venda( Integer.parseInt(parts[0]),
+                                                 LocalDate.parse(parts[1]),
+                                                 cercaClient( new Client(Integer.parseInt(parts[2]), null, null) ), // 'client' temporal
+                                                 new ArrayList<>() );
                         String[] producteIds = parts[3].split(";");
-                        List<Producte> productes = new ArrayList<>();
-                        for (String prodIdStr : producteIds) {
-                            prodIdStr = prodIdStr.trim();
-                            if (!prodIdStr.isEmpty()) {
-                                int idProducte = Integer.parseInt(prodIdStr);
-                                productes.add(new Producte(idProducte, null, 0.0, null));
+
+                        for (String pId : producteIds) {
+                            if (!pId.trim().isEmpty()) {
+                                venda.getProductes().add( cercaProducte( new Producte(Integer.parseInt(pId.trim()), null, 0.0, null) ) );
                             }
                         }
-                        afegeixVenda(vendes, new Venda( Integer.parseInt(parts[0]),
-                                                        LocalDate.parse(parts[1]),
-                                                        new Client(Integer.parseInt(parts[2]),null,null),
-                                                        productes ) );
+                        afegeixVenda(vendes, venda );
                     }
                 }
             }
         } catch (IOException | NumberFormatException e) {
             System.err.println("Error carregant clients CVS: " + e.getMessage());
         }
+    }
+    
+    private Client cercaClient (Client c) throws NoSuchElementException {
+        for (Client client : this.clients) 
+            if (c.equals(client))
+                return client;
+        
+        throw new NoSuchElementException("Client no trobat a la llista.");
+    }
+    
+    private Producte cercaProducte (Producte p) throws NoSuchElementException {
+        for (Producte producte : this.productes) 
+            if (p.equals(producte))
+                return producte;
+        
+        throw new NoSuchElementException("Producte no trobat a la llista.");
     }
 
 /*    

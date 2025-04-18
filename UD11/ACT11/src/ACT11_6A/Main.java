@@ -11,19 +11,15 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-        List<Client> clients = new ArrayList<>();
-        List<Producte> productes = new ArrayList<>();
-        Map<Integer,Venda> vendes = new HashMap<>();
 
-        UtilVendes gestorVendes = new UtilVendes();
         
         try {
             // CLIENTS i PRODUCTES
-            gestorVendes.carregaClients(clients, "c:\\temp\\clients.csv");
-            gestorVendes.carregaProductes(productes, "c:\\temp\\productes.csv");
+            gestorVendes.carregaClients("c:\\temp\\clients.csv");
+            gestorVendes.carregaProductes("c:\\temp\\productes.csv");
             
             // VENDES
-            gestorVendes.carregaVendes(vendes, "c:\\temp\\vendes.csv");
+            gestorVendes.carregaVendes("c:\\temp\\vendes.csv");
 
             /*
             Client c = new Client(1, "Joan", "joan@gmail.com");
