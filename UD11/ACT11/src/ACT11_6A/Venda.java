@@ -3,7 +3,7 @@ package ACT11_6A;
 import java.time.LocalDate;
 import java.util.List;
 
-class Venda {
+public class Venda {
     int idVenda;
     Client client;
     List<Producte> productes;

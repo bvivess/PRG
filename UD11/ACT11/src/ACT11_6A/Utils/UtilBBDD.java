@@ -1,4 +1,4 @@
-package ACT11_6A;
+package ACT11_6A.Utils;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -11,10 +11,11 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+
 public class UtilBBDD {
-  
-    private static Connection getConnectionFromFile(String filename) throws SQLException, IOException {
-        Map<String, String> valors = new HashMap<>();
+    
+    protected static Connection getConnectionFromFile(String filename) throws SQLException, IOException {
+        Map<String, String> valorsConnexio = new HashMap<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String linia;
@@ -26,10 +27,10 @@ public class UtilBBDD {
                         String valor = parts[1].trim();
                     
                         switch (clau) {
-                            case "SERVER" -> valors.put( "SERVER", valor);
-                            case "DBASE" -> valors.put( "DBASE", valor);
-                            case "USER" -> valors.put( "USER", valor);
-                            case "PASSWD" -> valors.put( "PASSWD", valor);
+                            case "SERVER" -> valorsConnexio.put( "SERVER", valor);
+                            case "DBASE" -> valorsConnexio.put( "DBASE", valor);
+                            case "USER" -> valorsConnexio.put( "USER", valor);
+                            case "PASSWD" -> valorsConnexio.put( "PASSWD", valor);
                             default -> System.err.println("Clau no vàlida: " + clau);
                         }
                     }
@@ -38,7 +39,7 @@ public class UtilBBDD {
                     // No fer res
                 }
             }
-            if (valors.size() != 4)
+            if (valorsConnexio.size() != 4)
                 throw new SQLException("L'arxiu no contemple totes les dades de connexió");
         } catch (IOException e) {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
@@ -46,8 +47,8 @@ public class UtilBBDD {
         }
 
         // Estableix la connexió a la BD Mysql
-        return DriverManager.getConnection( valors.get("SERVER") + valors.get("DBASE"), 
-                                            valors.get("USER"), 
-                                            valors.get("PASSWD"));
+        return DriverManager.getConnection( valorsConnexio.get("SERVER") + valorsConnexio.get("DBASE"), 
+                                            valorsConnexio.get("USER"), 
+                                            valorsConnexio.get("PASSWD"));
     }
 }

@@ -1,6 +1,6 @@
 package ACT11_6A;
 
-enum Categoria {
+public enum Categoria {
     ALIMENTACIO, 
     ELECTRONICA, 
     ROBA

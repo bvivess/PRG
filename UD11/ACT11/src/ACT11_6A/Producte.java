@@ -1,6 +1,6 @@
 package ACT11_6A;
 
-class Producte implements Comparable <Producte>{
+public class Producte implements Comparable <Producte>{
     int id;
     String nom;
     double preu;

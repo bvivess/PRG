@@ -28,7 +28,7 @@ public class Main2 {
     }
     
     private static Connection getConnectionFromFile(String filename) throws SQLException, IOException {
-        Map<ValorsConnexio, String> valors = new HashMap<>();
+        Map<ValorsConnexio, String> valorsConnexio = new HashMap<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String linia;
@@ -40,10 +40,10 @@ public class Main2 {
                         String valor = parts[1].trim();
                     
                         switch (clau) {
-                            case "SERVER" -> valors.put( ValorsConnexio.SERVER, valor);
-                            case "DBASE" -> valors.put( ValorsConnexio.DBASE, valor);
-                            case "USER" -> valors.put( ValorsConnexio.USER, valor);
-                            case "PASSWD" -> valors.put( ValorsConnexio.PASSWD, valor);
+                            case "SERVER" -> valorsConnexio.put( ValorsConnexio.SERVER, valor);
+                            case "DBASE" -> valorsConnexio.put( ValorsConnexio.DBASE, valor);
+                            case "USER" -> valorsConnexio.put( ValorsConnexio.USER, valor);
+                            case "PASSWD" -> valorsConnexio.put( ValorsConnexio.PASSWD, valor);
                             default -> System.err.println("Clau no vàlida: " + clau);
                         }
                     }
@@ -52,7 +52,7 @@ public class Main2 {
                     // No fer res
                 }
             }
-            if (valors.size() != 4)
+            if (valorsConnexio.size() != 4)
                 throw new SQLException("L'arxiu no contemple totes les dades de connexió");
         } catch (IOException e) {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
@@ -60,9 +60,9 @@ public class Main2 {
         }
 
         // Estableix la connexió a la BD Mysql
-        return DriverManager.getConnection( valors.get(ValorsConnexio.SERVER) + valors.get(ValorsConnexio.DBASE), 
-                                            valors.get(ValorsConnexio.USER), 
-                                            valors.get(ValorsConnexio.PASSWD));
+        return DriverManager.getConnection( valorsConnexio.get(ValorsConnexio.SERVER) + valorsConnexio.get(ValorsConnexio.DBASE), 
+                                            valorsConnexio.get(ValorsConnexio.USER), 
+                                            valorsConnexio.get(ValorsConnexio.PASSWD));
     }
     
     private static void llegeixArxiuABBDD(Connection connexio, String filename) throws SQLException, IOException {
