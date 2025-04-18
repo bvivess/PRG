@@ -1,4 +1,6 @@
-package ACT11_6A;
+package ACT11_6A.Classes;
+
+import ACT11_6A.Classes.Categoria;
 
 public class Producte implements Comparable <Producte>{
     int id;

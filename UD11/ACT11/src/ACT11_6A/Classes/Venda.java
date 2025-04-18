@@ -1,5 +1,6 @@
-package ACT11_6A;
+package ACT11_6A.Classes;
 
+import ACT11_6A.Classes.Client;
 import java.time.LocalDate;
 import java.util.List;
 

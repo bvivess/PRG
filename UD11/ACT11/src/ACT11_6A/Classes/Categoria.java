@@ -1,4 +1,4 @@
-package ACT11_6A;
+package ACT11_6A.Classes;
 
 public enum Categoria {
     ALIMENTACIO, 

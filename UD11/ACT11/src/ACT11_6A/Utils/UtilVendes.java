@@ -1,9 +1,9 @@
 package ACT11_6A.Utils;
 
-import ACT11_6A.Categoria;
-import ACT11_6A.Client;
-import ACT11_6A.Producte;
-import ACT11_6A.Venda;
+import ACT11_6A.Classes.Categoria;
+import ACT11_6A.Classes.Client;
+import ACT11_6A.Classes.Producte;
+import ACT11_6A.Classes.Venda;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.io.BufferedReader;

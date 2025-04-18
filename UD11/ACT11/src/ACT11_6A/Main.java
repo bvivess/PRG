@@ -1,5 +1,8 @@
 package ACT11_6A;
 
+import ACT11_6A.Classes.Producte;
+import ACT11_6A.Classes.Venda;
+import ACT11_6A.Classes.Client;
 import ACT11_6A.Utils.UtilVendes;
 import java.time.LocalDate;
 import java.util.ArrayList;
