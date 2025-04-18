@@ -18,10 +18,11 @@ public class Main {
         UtilVendes gestorVendes = new UtilVendes();
         
         try {
-
+            // CLIENTS i PRODUCTES
             gestorVendes.carregaClients(clients, "c:\\temp\\clients.csv");
             gestorVendes.carregaProductes(productes, "c:\\temp\\productes.csv");
             
+            // VENDES
             gestorVendes.carregaVendes(vendes, "c:\\temp\\vendes.csv");
 
             /*
