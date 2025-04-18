@@ -1,9 +1,7 @@
 package ACT11_6A.Utils;
 
-import ACT11_6A.Classes.Categoria;
-import ACT11_6A.Classes.Client;
 import ACT11_6A.Classes.Producte;
-import ACT11_6A.Classes.Venda;
+import ACT11_6A.Classes.*;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.io.BufferedReader;
@@ -116,5 +114,63 @@ public class UtilVendes {
             productes.add(producte);
     }
     
+    // --- ALTA DE VENDES 
+    public void carregaVendes(Map<Integer,Venda> vendes, String path) throws SQLException, IOException {
+        carregaVendesCSV(vendes, path);
+        //carregaClientsBBDD(clients, "CLIENTS");
+    }
 
+    public void carregaVendesCSV(Map<Integer,Venda> vendes, String path) throws IOException {
+        try (BufferedReader br = Files.newBufferedReader(Paths.get(path))) {
+            String linia;
+            while ((linia = br.readLine()) != null) {
+                if (!linia.substring(0, 1).equals("#")) {
+                    String[] parts = linia.split(",");
+                    if (parts.length == 4) {
+                        // Processar els productes separats per ;
+                        String[] producteIds = parts[3].split(";");
+                        List<Producte> productes = new ArrayList<>();
+                        for (String prodIdStr : producteIds) {
+                            prodIdStr = prodIdStr.trim();
+                            if (!prodIdStr.isEmpty()) {
+                                int idProducte = Integer.parseInt(prodIdStr);
+                                productes.add(new Producte(idProducte, null, 0.0, null));
+                            }
+                        }
+                        afegeixVenda(vendes, new Venda( Integer.parseInt(parts[0]),
+                                                        LocalDate.parse(parts[1]),
+                                                        new Client(Integer.parseInt(parts[2]),null,null),
+                                                        productes ) );
+                    }
+                }
+            }
+        } catch (IOException | NumberFormatException e) {
+            System.err.println("Error carregant clients CVS: " + e.getMessage());
+        }
+    }
+
+/*    
+    public void carregaClientsBBDD(List<Client> clients, String taula) throws SQLException, IOException{ 
+        UtilBBDD gestorBBDD = new UtilBBDD();
+        
+        String sql = "SELECT id, nom, email FROM clients";
+        try ( Connection connexio = gestorBBDD.getConnectionFromFile("c:\\temp\\mysql.con");
+              Statement statement = connexio.createStatement();
+              ResultSet resultSet = statement.executeQuery(sql) ) {
+            while (resultSet.next())
+                afegeixClient( clients, new Client( resultSet.getInt("id"),
+                                                    resultSet.getString("nom"), 
+                                                    resultSet.getString("email") )
+                             );
+        } catch (SQLException e) {
+            System.err.println("Error carregant clients BBDD: " + e.getMessage());
+        }
+    }
+*/    
+    public void afegeixVenda(Map<Integer,Venda> vendes, Venda venda) {
+        if (vendes.get(venda.getId()) == null )
+            vendes.put(venda.getId(), venda);
+    }
+
+    
 }

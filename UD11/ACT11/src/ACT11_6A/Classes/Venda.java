@@ -1,28 +1,27 @@
 package ACT11_6A.Classes;
 
-import ACT11_6A.Classes.Client;
 import java.time.LocalDate;
 import java.util.List;
 
 public class Venda {
-    int idVenda;
+    int id;
+    LocalDate dataVenda;
     Client client;
     List<Producte> productes;
-    LocalDate dataVenda;
 
-    public Venda(int idVenda, Client client, List<Producte> productes, LocalDate dataVenda) {
-        this.idVenda = idVenda;
+    public Venda(int id, LocalDate dataVenda, Client client, List<Producte> productes) {
+        this.id = id;
+        this.dataVenda = dataVenda;
         this.client = client;
         this.productes = productes;
-        this.dataVenda = dataVenda;
     }
 
-    public int getIdVenda() {
-        return idVenda;
+    public int getId() {
+        return id;
     }
 
-    public void setIdVenda(int idVenda) {
-        this.idVenda = idVenda;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Client getClient() {
@@ -57,6 +56,6 @@ public class Venda {
         for (Producte p : productes) {
             sb.append(p.id).append(";");
         }
-        return idVenda + "," + client.id + "," + dataVenda + "," + sb.toString();
+        return id + "," + client.id + "," + dataVenda + "," + sb.toString();
     }
 }

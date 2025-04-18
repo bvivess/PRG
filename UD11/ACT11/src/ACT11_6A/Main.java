@@ -1,8 +1,6 @@
 package ACT11_6A;
 
-import ACT11_6A.Classes.Producte;
-import ACT11_6A.Classes.Venda;
-import ACT11_6A.Classes.Client;
+import ACT11_6A.Classes.*;
 import ACT11_6A.Utils.UtilVendes;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -23,21 +21,14 @@ public class Main {
 
             gestorVendes.carregaClients(clients, "c:\\temp\\clients.csv");
             gestorVendes.carregaProductes(productes, "c:\\temp\\productes.csv");
+            
+            gestorVendes.carregaVendes(vendes, , "c:\\temp\\vendes.csv")
 
             /*
             Client c = new Client(1, "Joan", "joan@gmail.com");
             Producte p1 = new Producte(1, "Televisor", 399.99, Categoria.ELECTRONICA);
             Producte p2 = new Producte(2, "Pantalons", 29.99, Categoria.ROBA);
 
-            gestor.afegirClient(c);
-            gestor.afegirProducte(p1);
-            gestor.afegirProducte(p2); */
-
-            /*
-            gestor.desaClientAMySQL(c);
-            gestor.desaProducteAMySQL(p1);
-            gestor.desaProducteAMySQL(p2);
-            */
 
             /*
             gestorVendes.registrarVenda(1001, 101, Arrays.asList(201, 202), LocalDate.now());
