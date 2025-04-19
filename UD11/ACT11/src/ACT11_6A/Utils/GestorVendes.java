@@ -216,13 +216,37 @@ public class GestorVendes {
     }
     
     // --- DESCÀRREGA CLIENTS
-    public void desaClients(String path) {
+    public void desaClients(String path) throws SQLException, IOException {
         desaClientsBBDD(this.clients);
         desaClientsCVS(this.clients, path);
     }
     
-    private void desaClientsBBDD(Set<Client> clients) {
-        
+    private void desaClientsBBDD(Set<Client> clients) throws SQLException, IOException {
+        UtilBBDD gestorBBDD = new UtilBBDD();
+        String sql = "INSERT INTO clients (id, nom, email) VALUES (?,?,?)";
+
+        try ( Connection connexio = gestorBBDD.getConnectionFromFile("c:\\temp\\mysql.con")  ) {
+            connexio.setAutoCommit(true);
+            
+            for (Client c : clients) {
+                try (PreparedStatement statement = connexio.prepareStatement(sql)) {
+                    statement.setInt(1, c.getId());
+                    statement.setString(2, c.getNom());
+                    statement.setString(3, c.getEmail());
+                    statement.executeUpdate();
+                } catch (SQLException e) {
+                    if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062) {
+                        // Error por PK, no fer res
+                    } else {
+                        throw e; // Re-llança si no és error de PK
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("S'ha produït l'error general: " + e.getMessage());
+        } catch (IOException e) {
+            System.err.println("");
+        }
     }
     
     private void desaClientsCVS(Set<Client> clients, String path) {
@@ -237,13 +261,40 @@ public class GestorVendes {
     }
     
     // --- DESCÀRREGA PRODUCTES
-    public void desaProductes(String path) {
+    public void desaProductes(String path) throws SQLException, IOException {
         desaProductesBBDD(this.productes);
         desaProductesCVS(this.productes, path);
     }
     
-    private void desaProductesBBDD(Set<Producte> productes) {
-        
+    private void desaProductesBBDD(Set<Producte> productes) throws SQLException, IOException {
+        UtilBBDD gestorBBDD = new UtilBBDD();
+        String sql = "INSERT INTO productes (id, nom, preu, categoria) VALUES (?,?,?,?)";
+
+        try ( Connection connexio = gestorBBDD.getConnectionFromFile("c:\\temp\\mysql.con")  ) {
+            connexio.setAutoCommit(true);
+            
+            for (Producte p : productes) {
+                try (PreparedStatement statement = connexio.prepareStatement(sql)) {
+                    statement.setInt(1, p.getId());
+                    statement.setString(2, p.getNom());
+                    statement.setDouble(3, p.getPreu());
+                    statement.setString(4, p.getCategoria());
+                    statement.executeUpdate();
+                    
+                    System.out.println(sql);
+                } catch (SQLException e) {
+                    if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062) {
+                        // Error por PK, no fer res
+                    } else {
+                        throw e; // Re-llança si no és error de PK
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("S'ha produït l'error general: " + e.getMessage());
+        } catch (IOException e) {
+            System.err.println("");
+        }
     }
     
     private void desaProductesCVS(Set<Producte> productes, String path) {
