@@ -15,11 +15,11 @@ public class Main {
             gestorVendes.carregaVendes("c:\\temp\\vendes.csv");
             
             // DESA CLIENTS i PRODUCTES
-            gestorVendes.desaClients();
-            gestorVendes.desaProductes();
+            gestorVendes.desaClients("c:\\temp\\clients_out.csv");
+            gestorVendes.desaProductes("c:\\temp\\productes_out.csv");
             
             // DESA VENDES
-            gestorVendes.desaClients();
+            gestorVendes.desaClients("c:\\temp\\vendes_out.csv");
 
         } catch (Exception e) {
             System.out.println("Error GENERAL: " + e.getMessage());

@@ -215,42 +215,42 @@ public class GestorVendes {
         throw new NoSuchElementException("Producte no trobat a la llista.");
     }
     
-    public void desaClients() {
+    public void desaClients(String path) {
         desaClientsBBDD(this.clients);
-        desaClientsCVS(this.clients);
+        desaClientsCVS(this.clients, path);
     }
     
     private void desaClientsBBDD(Set<Client> clients) {
         
     }
     
-    private void desaClientsCVS(Set<Client> clients) {
+    private void desaClientsCVS(Set<Client> clients, String path) {
         
     }
     
-    public void desaProductes() {
+    public void desaProductes(String path) {
         desaProductesBBDD(this.productes);
-        desaProductesCVS(this.productes);
+        desaProductesCVS(this.productes, path);
     }
     
     private void desaProductesBBDD(Set<Producte> productes) {
         
     }
     
-    private void desaProductesCVS(Set<Producte> productes) {
+    private void desaProductesCVS(Set<Producte> productes, String path) {
         
     }   
     
-    public void desaVendes() {
+    public void desaVendes(String path) {
         desaVendesBBDD(this.vendes);
-        desaVendesCVS(this.vendes);
+        desaVendesCVS(this.vendes, path);
     }
     
     private void desaVendesBBDD(Map<Integer,Venda> vendes) {
         
     }
     
-    private void desaVendesCVS(Map<Integer,Venda> vendes) {
+    private void desaVendesCVS(Map<Integer,Venda> vendes, String path) {
         
     }
 }
