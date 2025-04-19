@@ -215,4 +215,16 @@ public class GestorVendes {
         throw new NoSuchElementException("Producte no trobat a la llista.");
     }
     
+    public void desaClients() {
+        desaClientsBBDD();
+        desaClientsCVS();
+    }
+    
+    private void desaClientsBBDD() {
+        
+    }
+    
+    private void desaClientsCVS() {
+        
+    }
 }

@@ -13,6 +13,8 @@ public class Main {
             
             // VENDES
             gestorVendes.carregaVendes("c:\\temp\\vendes.csv");
+            
+            gestorVendes.desaClients();
 
         } catch (Exception e) {
             System.out.println("Error GENERAL: " + e.getMessage());
