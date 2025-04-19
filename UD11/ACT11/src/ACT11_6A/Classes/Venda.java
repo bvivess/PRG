@@ -10,10 +10,10 @@ public class Venda {
     List<Producte> productes;
 
     public Venda(int id, LocalDate dataVenda, Client client, List<Producte> productes) {
-        this.id = id;
-        this.dataVenda = dataVenda;
-        this.client = client;
-        this.productes = productes;
+        setId(id);
+        setDataVenda(dataVenda);
+        setClient(client);
+        setProductes(productes);
     }
 
     public int getId() {

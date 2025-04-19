@@ -6,9 +6,9 @@ public class Client implements Comparable<Client>{
     String email;
 
     public Client(int id, String nom, String email) {
-        this.id = id;
-        this.nom = nom;
-        this.email = email;
+        setId(id);
+        setNom(nom);
+        setEmail(email);
     }
 
     @Override

@@ -7,10 +7,10 @@ public class Producte implements Comparable <Producte>{
     Categoria categoria;
 
     public Producte(int id, String nom, double preu, Categoria categoria) {
-        this.id = id;
-        this.nom = nom;
-        this.preu = preu;
-        this.categoria = categoria;
+        setId(id);
+        setNom(nom);
+        setPreu(preu);
+        setCategoria(categoria);
     }
 
     @Override

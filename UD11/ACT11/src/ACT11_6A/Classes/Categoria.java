@@ -5,7 +5,7 @@ public enum Categoria {
     ELECTRONICA, 
     ROBA;
     
-    @Override    
+    @Override
     public String toString() {
         return "Categoria{" + "ordinal=" + ordinal() + ", name=" + name() + '}';
     }
