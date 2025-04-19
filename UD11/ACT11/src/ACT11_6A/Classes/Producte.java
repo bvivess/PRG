@@ -41,7 +41,10 @@ public class Producte implements Comparable <Producte>{
     }
 
     public void setPreu(double preu) {
-        this.preu = preu;
+        if (preu < 0)
+            throw new IllegalArgumentException ("Producte.Preu incorrecte");
+        else
+            this.preu = preu;
     }
 
     public Categoria getCategoria() {

@@ -52,7 +52,6 @@ public class GestorVendes {
             System.err.println("Error carregant clients BBDD: " + e.getMessage());
         }
     }
-    
 
     public void carregaClientsCSV(Set<Client> clients, String path) throws IOException {
         try (BufferedReader br = Files.newBufferedReader(Paths.get(path))) {

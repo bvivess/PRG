@@ -29,7 +29,10 @@ public class Venda {
     }
 
     public void setDataVenda(LocalDate dataVenda) {
-        this.dataVenda = dataVenda;
+        if (dataVenda == null || dataVenda.getYear() < 2000)
+            throw new IllegalArgumentException ("Venda.Data incorrecte");
+        else
+            this.dataVenda = dataVenda;
     }
 
     public Client getClient() {
