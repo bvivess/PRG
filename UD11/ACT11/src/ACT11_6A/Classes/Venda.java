@@ -69,15 +69,18 @@ public class Venda {
         final Venda other = (Venda) obj;
         return this.id == other.id;
     }
-    
-    
-    
+
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        for (Producte p : productes) {
-            sb.append(p.id).append(";");
+        String text = "Venda{" + "id=" + id + ", dataVenda=" + dataVenda + ", client=" + client + ", productes=";
+        double total = 0;
+        for (Producte p : this.productes) {
+            text += "\n\t\t" + p.toString();
+            total += p.getPreu();
         }
-        return id + "," + client.id + "," + dataVenda + "," + sb.toString();
+        
+        text += "\n\tTOTAL: " + total;
+        return text;
     }
+    
 }

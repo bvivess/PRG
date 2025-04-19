@@ -63,11 +63,10 @@ public class Client implements Comparable<Client>{
         final Client other = (Client) obj;
         return this.id == other.id;
     }
-    
-    
 
     @Override
     public String toString() {
-        return id + "," + nom + "," + email;
+        return "Client{" + "id=" + id + ", nom=" + nom + ", email=" + email + '}';
     }
+
 }

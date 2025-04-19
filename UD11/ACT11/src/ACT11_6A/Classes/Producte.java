@@ -73,11 +73,10 @@ public class Producte implements Comparable <Producte>{
         final Producte other = (Producte) obj;
         return this.id == other.id;
     }
-    
-    
 
     @Override
     public String toString() {
-        return id + "," + nom + "," + preu + "," + categoria;
+        return "Producte{" + "id=" + id + ", nom=" + nom + ", preu=" + preu + ", categoria=" + categoria.toString() + '}';
     }
+    
 }

@@ -1,10 +1,10 @@
 package ACT11_6A;
 
-import ACT11_6A.Utils.UtilVendes;
+import ACT11_6A.Utils.GestorVendes;
 
 public class Main {
     public static void main(String[] args) {
-        UtilVendes gestorVendes = new UtilVendes();
+        GestorVendes gestorVendes = new GestorVendes();
         
         try {
             // CLIENTS i PRODUCTES
