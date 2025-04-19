@@ -7,6 +7,6 @@ public enum Categoria {
     
     @Override
     public String toString() {
-        return "Categoria{" + "ordinal=" + ordinal() + ", name=" + name() + '}';
+        return name();
     }
 }

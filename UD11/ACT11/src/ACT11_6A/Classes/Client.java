@@ -31,9 +31,9 @@ public class Client implements Comparable<Client>{
     }
 
     public void setNom(String nom) {
-        if (nom == null || nom.isBlank())
-            throw new IllegalArgumentException ("Client.Nom incorrecte");
-        else
+        //if (nom == null || nom.isBlank())
+        //    throw new IllegalArgumentException ("Client.Nom incorrecte");
+        //else
             this.nom = nom;
     }
 

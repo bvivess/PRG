@@ -19,7 +19,7 @@ public class Main {
             gestorVendes.desaProductes("c:\\temp\\productes_out.csv");
             
             // DESA VENDES
-            gestorVendes.desaClients("c:\\temp\\vendes_out.csv");
+            gestorVendes.desaVendes("c:\\temp\\vendes_out.csv");
 
         } catch (Exception e) {
             System.out.println("Error GENERAL: " + e.getMessage());

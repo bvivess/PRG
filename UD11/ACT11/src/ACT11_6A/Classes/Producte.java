@@ -47,8 +47,8 @@ public class Producte implements Comparable <Producte>{
             this.preu = preu;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
+    public String getCategoria() {
+        return categoria.name();
     }
 
     public void setCategoria(Categoria categoria) {

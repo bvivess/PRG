@@ -27,7 +27,7 @@ public class GestorVendes {
     Set<Producte> productes = new HashSet<>();
     Map<Integer,Venda> vendes = new HashMap<>();
     
-    // --- ALTA DE CLIENTS 
+    // --- CÀRREGA CLIENTS 
     public void carregaClients(String path) throws SQLException, IOException {
         carregaClientsBBDD(this.clients);
         carregaClientsCSV(this.clients, path);
@@ -74,7 +74,7 @@ public class GestorVendes {
         clients.add(client);
     }
     
-    // --- ALTA PRODUCTES
+    // --- CÀRREGA PRODUCTES
     public void carregaProductes(String path) throws SQLException, IOException {
         carregaProductesBBDD(this.productes);
         carregaProductesCSV(this.productes, path);
@@ -123,7 +123,7 @@ public class GestorVendes {
         productes.add(producte);
     }
     
-    // --- ALTA DE VENDES 
+    // --- CÀRREGA VENDES 
     public void carregaVendes(String path) throws SQLException, IOException {
         carregaVendesBBDD(this.vendes);
         carregaVendesCSV(this.vendes, path);
@@ -144,10 +144,10 @@ public class GestorVendes {
                 if ( venda == null) {
                     venda = new Venda(  resultSet.getInt("id"),
                                         resultSet.getDate("data").toLocalDate(),
-                                        cercaClient( new Client(resultSet.getInt("client_id"), null, null) ),
+                                        cercaClient( new Client(resultSet.getInt("client_id"), ".", ".") ),
                                         new ArrayList<>() ); 
                 }
-                venda.getProductes().add( cercaProducte( new Producte(resultSet.getInt("producte_id"), null, 0.0, null) ) );
+                venda.getProductes().add( cercaProducte( new Producte(resultSet.getInt("producte_id"), ".", 0.0, null) ) );
                 afegeixVenda(vendes, venda);
             }
             
@@ -215,6 +215,7 @@ public class GestorVendes {
         throw new NoSuchElementException("Producte no trobat a la llista.");
     }
     
+    // --- DESCÀRREGA CLIENTS
     public void desaClients(String path) {
         desaClientsBBDD(this.clients);
         desaClientsCVS(this.clients, path);
@@ -225,9 +226,17 @@ public class GestorVendes {
     }
     
     private void desaClientsCVS(Set<Client> clients, String path) {
-        
+        try (BufferedWriter br = Files.newBufferedWriter(Paths.get(path))) {
+            for (Client c : clients) {
+                br.write(c.getId() + "," + c.getNom() + "," + c.getEmail());
+                br.newLine();
+            }
+        } catch (IOException | NumberFormatException e) {
+            System.err.println("Error descarregant clients CVS: " + e.getMessage());
+        }
     }
     
+    // --- DESCÀRREGA PRODUCTES
     public void desaProductes(String path) {
         desaProductesBBDD(this.productes);
         desaProductesCVS(this.productes, path);
@@ -238,9 +247,17 @@ public class GestorVendes {
     }
     
     private void desaProductesCVS(Set<Producte> productes, String path) {
-        
-    }   
+        try (BufferedWriter br = Files.newBufferedWriter(Paths.get(path))) {
+            for (Producte p : productes) {
+                br.write(p.getId() + "," + p.getNom() + "," + p.getPreu() + "," + p.getCategoria());
+                br.newLine();
+            }
+        } catch (IOException | NumberFormatException e) {
+            System.err.println("Error descarregant clients CVS: " + e.getMessage());
+        }
+    }  
     
+    // --- DESCÀRREGA VENDES
     public void desaVendes(String path) {
         desaVendesBBDD(this.vendes);
         desaVendesCVS(this.vendes, path);
@@ -251,6 +268,16 @@ public class GestorVendes {
     }
     
     private void desaVendesCVS(Map<Integer,Venda> vendes, String path) {
-        
+        try (BufferedWriter br = Files.newBufferedWriter(Paths.get(path))) {
+            for (Venda v : vendes.values()) {
+                String text = v.getId() + "," + v.getDataVenda() + "," + v.getClient().getId() + ",";
+                for (Producte p : v.getProductes())
+                    text += p.getId() + ";";
+                br.write(text);
+                br.newLine();
+            }
+        } catch (IOException | NumberFormatException e) {
+            System.err.println("Error descarregant clients CVS: " + e.getMessage());
+        }
     }
 }
