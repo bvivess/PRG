@@ -216,15 +216,41 @@ public class GestorVendes {
     }
     
     public void desaClients() {
-        desaClientsBBDD();
-        desaClientsCVS();
+        desaClientsBBDD(this.clients);
+        desaClientsCVS(this.clients);
     }
     
-    private void desaClientsBBDD() {
+    private void desaClientsBBDD(Set<Client> clients) {
         
     }
     
-    private void desaClientsCVS() {
+    private void desaClientsCVS(Set<Client> clients) {
+        
+    }
+    
+    public void desaProductes() {
+        desaProductesBBDD(this.productes);
+        desaProductesCVS(this.productes);
+    }
+    
+    private void desaProductesBBDD(Set<Producte> productes) {
+        
+    }
+    
+    private void desaProductesCVS(Set<Producte> productes) {
+        
+    }   
+    
+    public void desaVendes() {
+        desaVendesBBDD(this.vendes);
+        desaVendesCVS(this.vendes);
+    }
+    
+    private void desaVendesBBDD(Map<Integer,Venda> vendes) {
+        
+    }
+    
+    private void desaVendesCVS(Map<Integer,Venda> vendes) {
         
     }
 }

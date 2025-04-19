@@ -7,13 +7,18 @@ public class Main {
         GestorVendes gestorVendes = new GestorVendes();
         
         try {
-            // CLIENTS i PRODUCTES
+            // CÀRREGA CLIENTS i PRODUCTES
             gestorVendes.carregaClients("c:\\temp\\clients.csv");
             gestorVendes.carregaProductes("c:\\temp\\productes.csv");
             
-            // VENDES
+            // CÀRREGA VENDES
             gestorVendes.carregaVendes("c:\\temp\\vendes.csv");
             
+            // DESA CLIENTS i PRODUCTES
+            gestorVendes.desaClients();
+            gestorVendes.desaProductes();
+            
+            // DESA VENDES
             gestorVendes.desaClients();
 
         } catch (Exception e) {
