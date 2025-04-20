@@ -6,10 +6,73 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
 
 public class UtilBBDD {
+    final String MYSQL_CON = "c:\\temp\\mysql.con";
+    
+    public ResultSet executaQuerySQL(String sql, Object... arguments) throws SQLException, IOException {
+        try ( Connection connexio = getConnectionFromFile(MYSQL_CON);
+              PreparedStatement stmt = connexio.prepareStatement(sql) ) {
+            for (int i = 0; i < arguments.length; i++) {
+                Object arg = arguments[i];
+                
+                if (arg == null) {
+                    stmt.setObject(i + 1, null);
+                } else if (arg instanceof Integer) {
+                    stmt.setInt(i + 1, (Integer) arg);
+                } else if (arg instanceof Double) {
+                    stmt.setDouble(i + 1, (Double) arg);
+                } else if (arg instanceof Boolean) {
+                    stmt.setBoolean(i + 1, (Boolean) arg);
+                } else if (arg instanceof java.time.LocalDate) {
+                    stmt.setDate(i + 1, java.sql.Date.valueOf((java.time.LocalDate) arg));
+                } else if (arg instanceof java.sql.Date) {
+                    stmt.setDate(i + 1, (java.sql.Date) arg);
+                } else {
+                    stmt.setObject(i + 1, arg); // per defecte, assumeix que és un tipus compatible
+                }
+            }
+            return stmt.executeQuery(); // Retorna el ResultSet
+         } catch (SQLException e) {
+            System.err.println("Error executant SQL: " + e.getMessage());
+            return null;
+        }           
+    }
+    
+    public int executaSQL(Connection connexio, String sql, Object... arguments) throws SQLException, IOException {
+        try ( PreparedStatement stmt = connexio.prepareStatement(sql) ) {
+
+            for (int i = 0; i < arguments.length; i++) {
+                Object arg = arguments[i];
+                
+                if (arg == null) {
+                    stmt.setObject(i + 1, null);
+                } else if (arg instanceof Integer) {
+                    stmt.setInt(i + 1, (Integer) arg);
+                } else if (arg instanceof Double) {
+                    stmt.setDouble(i + 1, (Double) arg);
+                } else if (arg instanceof Boolean) {
+                    stmt.setBoolean(i + 1, (Boolean) arg);
+                } else if (arg instanceof java.time.LocalDate) {
+                    stmt.setDate(i + 1, java.sql.Date.valueOf((java.time.LocalDate) arg));
+                } else if (arg instanceof java.sql.Date) {
+                    stmt.setDate(i + 1, (java.sql.Date) arg);
+                } else {
+                    stmt.setObject(i + 1, arg); // per defecte, assumeix que és un tipus compatible
+                }
+            }
+
+            return stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            System.err.println("Error executant SQL: " + e.getMessage());
+            return -1;
+        }
+    }
     
     protected Connection getConnectionFromFile(String filename) throws SQLException, IOException {
         Map<String, String> valorsConnexio = new HashMap<>();

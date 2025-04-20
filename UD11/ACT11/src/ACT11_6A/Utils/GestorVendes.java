@@ -2,6 +2,8 @@ package ACT11_6A.Utils;
 
 import ACT11_6A.Classes.Producte;
 import ACT11_6A.Classes.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.io.BufferedReader;
@@ -12,8 +14,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
+
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -250,7 +251,7 @@ public class GestorVendes {
                     }
                 }
             }
-        } catch (SQLException e) {
+        } catch (SQLException e) {        
             System.err.println("S'ha produït l'error general en Clients: " + e.getMessage());
         } catch (IOException e) {
             System.err.println("");
@@ -360,8 +361,8 @@ public class GestorVendes {
                         deleteStmt.setInt(1, v.getId());
                         deleteStmt.executeUpdate();
                     }
+                    
                     String insert1SQL = "INSERT INTO venda_producte (venda_id, producte_id) VALUES(?,?)";
-
                     for (Producte p : v.getProductes()) {
                         try (PreparedStatement insert1Stmt = connexio.prepareStatement(insert1SQL)) {
                            insert1Stmt.setInt(1, v.getId());
