@@ -21,6 +21,7 @@ import java.util.NoSuchElementException;
 import java.util.Set;
 
 public class GestorVendes {
+    final String MYSQL_CON = "c:\\temp\\mysql.con";
     Set<Client> clients = new HashSet<>();
     Set<Producte> productes = new HashSet<>();
     Map<Integer,Venda> vendes = new HashMap<>();
@@ -36,7 +37,7 @@ public class GestorVendes {
     public void carregaClientsBBDD(Set<Client> clients) throws SQLException, IOException{ 
         UtilBBDD gestorBBDD = new UtilBBDD();
         String sql = "SELECT id, nom, email FROM clients";
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile("c:\\temp\\mysql.con");
+        try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON);
               Statement statement = connexio.createStatement();
               ResultSet resultSet = statement.executeQuery(sql) ) {
             
@@ -85,7 +86,7 @@ public class GestorVendes {
         UtilBBDD gestorBBDD = new UtilBBDD();
         
         String sql = "SELECT id, nom, preu, categoria FROM productes";
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile("c:\\temp\\mysql.con");
+        try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON);
               Statement statement = connexio.createStatement();
               ResultSet resultSet = statement.executeQuery(sql) ) {
             while (resultSet.next())
@@ -135,7 +136,7 @@ public class GestorVendes {
         UtilBBDD gestorBBDD = new UtilBBDD();
         
         String sql = "SELECT id, client_id, data, producte_id FROM vendes, venda_producte where id = venda_id";
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile("c:\\temp\\mysql.con");
+        try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON);
               Statement statement = connexio.createStatement();
               ResultSet resultSet = statement.executeQuery(sql) ) {
             Venda venda = null;
@@ -226,7 +227,7 @@ public class GestorVendes {
         String insertSQL = "INSERT INTO clients (id, nom, email) VALUES (?,?,?)";
         String updateSQL = "UPDATE clients SET nom = ?, email = ? WHERE id = ?";
         
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile("c:\\temp\\mysql.con")  ) {
+        try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON)  ) {
             connexio.setAutoCommit(true);
             
             for (Client c : clients) {
@@ -278,7 +279,7 @@ public class GestorVendes {
         String insertSQL = "INSERT INTO productes (id, nom, preu, categoria) VALUES (?,?,?,?)";
         String updateSQL = "UPDATE productes SET nom = ?, preu = ?, categoria = ? WHERE id = ?";
 
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile("c:\\temp\\mysql.con")  ) {
+        try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON)  ) {
             connexio.setAutoCommit(true);
             
             for (Producte p : productes) {
@@ -332,7 +333,7 @@ public class GestorVendes {
         String insertSQL = "INSERT INTO vendes (id, client_id, data) VALUES (?,?,?)";
         String updateSQL = "UPDATE vendes SET client_id = ?, data = ? WHERE id = ?";
 
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile("c:\\temp\\mysql.con")  ) {
+        try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON)  ) {
             connexio.setAutoCommit(true);
             
             for (Venda v : vendes.values()) {
