@@ -394,6 +394,7 @@ public class GestorVendes {
     public void modifica() {
         modificaClients();
         modificaProductes();
+        modificaVendes();
     }
     
     public void modificaClients() {
@@ -410,4 +411,11 @@ public class GestorVendes {
         }
     }
 
+    public void modificaVendes() {
+        for (Venda v: this.vendes.values()) {
+            v.setDataVenda(v.getDataVenda().plusYears(1));
+
+            vendes.put(v.getId(), v);  // modifica el map
+        }
+    }
 }

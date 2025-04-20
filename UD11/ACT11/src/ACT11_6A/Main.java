@@ -15,7 +15,7 @@ public class Main {
             System.out.println("VENDES");
             gestorVendes.carregaVendes("c:\\temp\\vendes.csv");
             
-            // MODIFICA CLIENTS
+            // MODIFICA DADES
             gestorVendes.modifica();
             
             // DESA CLIENTS, PRODUCTES i VENDES
