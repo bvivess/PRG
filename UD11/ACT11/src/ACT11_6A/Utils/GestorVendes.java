@@ -328,7 +328,53 @@ public class GestorVendes {
     }
     
     private void desaVendesBBDD(Map<Integer,Venda> vendes) {
-        
+        UtilBBDD gestorBBDD = new UtilBBDD();
+        String insertSQL = "INSERT INTO vendes (id, client_id, data) VALUES (?,?,?)";
+        String updateSQL = "UPDATE vendes SET client_id = ?, data = ? WHERE id = ?";
+
+        try ( Connection connexio = gestorBBDD.getConnectionFromFile("c:\\temp\\mysql.con")  ) {
+            connexio.setAutoCommit(true);
+            
+            for (Venda v : vendes.values()) {
+                try (PreparedStatement insertStmt = connexio.prepareStatement(insertSQL)) {
+                    insertStmt.setInt(1, v.getId());
+                    insertStmt.setInt(2, v.getClient().getId());
+                    insertStmt.setDate(3, java.sql.Date.valueOf(v.getDataVenda()));
+                    insertStmt.executeUpdate();
+                } catch (SQLException e) {
+                    if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062) {
+                        // Error per PK, modificar
+                        try (PreparedStatement updateStmt = connexio.prepareStatement(updateSQL)) {
+                            updateStmt.setInt(1, v.getClient().getId());
+                            updateStmt.setDate(2, java.sql.Date.valueOf(v.getDataVenda()));
+                            updateStmt.setInt(3, v.getId());
+                            updateStmt.executeUpdate();
+                        }
+                    } else {
+                        throw e; // Re-llança si no és error de PK
+                    }
+                } finally {
+                    String deleteSQL = "DELETE FROM venda_producte where venda_id = ?";
+                    try (PreparedStatement deleteStmt = connexio.prepareStatement(deleteSQL)) {
+                        deleteStmt.setInt(1, v.getId());
+                        deleteStmt.executeUpdate();
+                    }
+                    String insert1SQL = "INSERT INTO venda_producte (venda_id, producte_id) VALUES(?,?)";
+
+                    for (Producte p : v.getProductes()) {
+                        try (PreparedStatement insert1Stmt = connexio.prepareStatement(insert1SQL)) {
+                           insert1Stmt.setInt(1, v.getId());
+                           insert1Stmt.setInt(2, p.getId());
+                           insert1Stmt.executeUpdate();
+                        }                       
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("S'ha produït l'error general: " + e.getMessage());
+        } catch (IOException e) {
+            System.err.println("");
+        }
     }
     
     private void desaVendesCVS(Map<Integer,Venda> vendes, String path) {
@@ -360,7 +406,7 @@ public class GestorVendes {
     public void modificaProductes() {
         for (Producte p: this.productes) {
             p.setNom(p.getNom().toUpperCase());
-            p.setPreu(p.getPreu()*10);
+            p.setPreu(p.getPreu()/10);
         }
     }
 
