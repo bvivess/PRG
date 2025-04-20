@@ -406,7 +406,7 @@ public class GestorVendes {
     public void modificaProductes() {
         for (Producte p: this.productes) {
             p.setNom(p.getNom().toUpperCase());
-            p.setPreu(p.getPreu()/10);
+            p.setPreu(p.getPreu()*10);
         }
     }
 
