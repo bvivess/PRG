@@ -7,18 +7,20 @@ public class Main {
         GestorVendes gestorVendes = new GestorVendes();
         
         try {
-            // CÀRREGA CLIENTS i PRODUCTES
+            // CÀRREGA CLIENTS, PRODUCTES i VENDES
+            System.out.println("CLIENTS");
             gestorVendes.carregaClients("c:\\temp\\clients.csv");
+            System.out.println("PRODUCTES");
             gestorVendes.carregaProductes("c:\\temp\\productes.csv");
-            
-            // CÀRREGA VENDES
+            System.out.println("VENDES");
             gestorVendes.carregaVendes("c:\\temp\\vendes.csv");
             
-            // DESA CLIENTS i PRODUCTES
+            // MODIFICA CLIENTS
+            gestorVendes.modifica();
+            
+            // DESA CLIENTS, PRODUCTES i VENDES
             gestorVendes.desaClients("c:\\temp\\clients_out.csv");
             gestorVendes.desaProductes("c:\\temp\\productes_out.csv");
-            
-            // DESA VENDES
             gestorVendes.desaVendes("c:\\temp\\vendes_out.csv");
 
         } catch (Exception e) {

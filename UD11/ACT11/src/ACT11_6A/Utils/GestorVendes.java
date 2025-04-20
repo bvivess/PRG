@@ -14,10 +14,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.sql.Date;
 import java.util.HashSet;
 import java.util.NoSuchElementException;
 import java.util.Set;
@@ -97,7 +95,7 @@ public class GestorVendes {
                                                           Categoria.valueOf(resultSet.getString("categoria").toUpperCase()) )
                              );
         } catch (SQLException e) {
-            System.err.println("Error carregant clients BBDD: " + e.getMessage());
+            System.err.println("Error carregant productes BBDD: " + e.getMessage());
         }
     }
     
@@ -115,7 +113,9 @@ public class GestorVendes {
                 }
             }
         } catch (IOException | NumberFormatException e) {
-            System.err.println("Error carregant productes: " + e.getMessage());
+            System.err.println("Error carregant productes CVS: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Error general carregant productes CVS: " + e.getMessage());
         }
     }
 
@@ -182,7 +182,7 @@ public class GestorVendes {
                 }
             }
         } catch (IOException | NumberFormatException e) {
-            System.err.println("Error carregant clients CVS: " + e.getMessage());
+            System.err.println("Error carregant vendes CVS: " + e.getMessage());
         }
     }
   
@@ -223,27 +223,34 @@ public class GestorVendes {
     
     private void desaClientsBBDD(Set<Client> clients) throws SQLException, IOException {
         UtilBBDD gestorBBDD = new UtilBBDD();
-        String sql = "INSERT INTO clients (id, nom, email) VALUES (?,?,?)";
-
+        String insertSQL = "INSERT INTO clients (id, nom, email) VALUES (?,?,?)";
+        String updateSQL = "UPDATE clients SET nom = ?, email = ? WHERE id = ?";
+        
         try ( Connection connexio = gestorBBDD.getConnectionFromFile("c:\\temp\\mysql.con")  ) {
             connexio.setAutoCommit(true);
             
             for (Client c : clients) {
-                try (PreparedStatement statement = connexio.prepareStatement(sql)) {
-                    statement.setInt(1, c.getId());
-                    statement.setString(2, c.getNom());
-                    statement.setString(3, c.getEmail());
-                    statement.executeUpdate();
+                try (PreparedStatement insertStmt = connexio.prepareStatement(insertSQL)) {
+                    insertStmt.setInt(1, c.getId());
+                    insertStmt.setString(2, c.getNom());
+                    insertStmt.setString(3, c.getEmail());
+                    insertStmt.executeUpdate();
                 } catch (SQLException e) {
                     if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062) {
-                        // Error por PK, no fer res
+                        // Error per PK, modificar
+                        try (PreparedStatement updateStmt = connexio.prepareStatement(updateSQL)) {
+                            updateStmt.setString(1, c.getNom());
+                            updateStmt.setString(2, c.getEmail());
+                            updateStmt.setInt(3, c.getId());
+                            updateStmt.executeUpdate();
+                        }
                     } else {
                         throw e; // Re-llança si no és error de PK
                     }
                 }
             }
         } catch (SQLException e) {
-            System.err.println("S'ha produït l'error general: " + e.getMessage());
+            System.err.println("S'ha produït l'error general en Clients: " + e.getMessage());
         } catch (IOException e) {
             System.err.println("");
         }
@@ -268,23 +275,29 @@ public class GestorVendes {
     
     private void desaProductesBBDD(Set<Producte> productes) throws SQLException, IOException {
         UtilBBDD gestorBBDD = new UtilBBDD();
-        String sql = "INSERT INTO productes (id, nom, preu, categoria) VALUES (?,?,?,?)";
+        String insertSQL = "INSERT INTO productes (id, nom, preu, categoria) VALUES (?,?,?,?)";
+        String updateSQL = "UPDATE productes SET nom = ?, preu = ?, categoria = ? WHERE id = ?";
 
         try ( Connection connexio = gestorBBDD.getConnectionFromFile("c:\\temp\\mysql.con")  ) {
             connexio.setAutoCommit(true);
             
             for (Producte p : productes) {
-                try (PreparedStatement statement = connexio.prepareStatement(sql)) {
-                    statement.setInt(1, p.getId());
-                    statement.setString(2, p.getNom());
-                    statement.setDouble(3, p.getPreu());
-                    statement.setString(4, p.getCategoria());
-                    statement.executeUpdate();
-                    
-                    System.out.println(sql);
+                try (PreparedStatement insertStmt = connexio.prepareStatement(insertSQL)) {
+                    insertStmt.setInt(1, p.getId());
+                    insertStmt.setString(2, p.getNom());
+                    insertStmt.setDouble(3, p.getPreu());
+                    insertStmt.setString(4, p.getCategoria());
+                    insertStmt.executeUpdate();
                 } catch (SQLException e) {
                     if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062) {
-                        // Error por PK, no fer res
+                        // Error per PK, modificar
+                        try (PreparedStatement updateStmt = connexio.prepareStatement(updateSQL)) {
+                            updateStmt.setString(1, p.getNom());
+                            updateStmt.setDouble(2, p.getPreu());
+                            updateStmt.setString(3, p.getCategoria());
+                            updateStmt.setInt(4, p.getId());
+                            updateStmt.executeUpdate();
+                        }
                     } else {
                         throw e; // Re-llança si no és error de PK
                     }
@@ -331,4 +344,24 @@ public class GestorVendes {
             System.err.println("Error descarregant clients CVS: " + e.getMessage());
         }
     }
+    
+    public void modifica() {
+        modificaClients();
+        modificaProductes();
+    }
+    
+    public void modificaClients() {
+        for (Client c : this.clients) {
+            c.setNom(c.getNom().toUpperCase());
+            c.setEmail(c.getEmail().toLowerCase());
+        }
+    }
+    
+    public void modificaProductes() {
+        for (Producte p: this.productes) {
+            p.setNom(p.getNom().toUpperCase());
+            p.setPreu(p.getPreu()*10);
+        }
+    }
+
 }
