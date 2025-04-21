@@ -1,6 +1,5 @@
 package ACT11_6A.Utils;
 
-import ACT11_6A.Classes.Producte;
 import ACT11_6A.Classes.*;
 import java.sql.SQLException;
 import java.sql.Connection;
