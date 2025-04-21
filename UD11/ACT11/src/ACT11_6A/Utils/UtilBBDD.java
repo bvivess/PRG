@@ -52,9 +52,8 @@ public class UtilBBDD {
                                             valorsConnexio.get("PASSWD"));
     }
     
-    public ResultSet executaQuerySQL(String sql, Object... arguments) throws SQLException, IOException {
-        try ( Connection connexio = getConnectionFromFile(MYSQL_CON);
-              PreparedStatement stmt = connexio.prepareStatement(sql) ) {
+    public ResultSet executaQuerySQL(Connection connexio, String sql, Object... arguments) throws SQLException, IOException {
+        try { PreparedStatement stmt = connexio.prepareStatement(sql);
             for (int i = 0; i < arguments.length; i++) {
                 Object arg = arguments[i];
                 
@@ -76,14 +75,13 @@ public class UtilBBDD {
             }
             return stmt.executeQuery(); // Retorna el ResultSet
          } catch (SQLException e) {
-            System.err.println("Error executant SQL: " + e.getMessage());
-            return null;
+            throw e;  // Es propaga l'excepció al mètode anterior
+            //return null;
         }           
     }
     
-    public int executaSQL(String sql, Object... arguments) throws SQLException, IOException {
-        try ( Connection connexio = getConnectionFromFile(MYSQL_CON);
-              PreparedStatement stmt = connexio.prepareStatement(sql) ) {
+    public void executaSQL(Connection connexio, String sql, Object... arguments) throws SQLException, IOException {
+        try { PreparedStatement stmt = connexio.prepareStatement(sql);
 
             for (int i = 0; i < arguments.length; i++) {
                 Object arg = arguments[i];
@@ -105,11 +103,11 @@ public class UtilBBDD {
                 }
             }
 
-            return stmt.executeUpdate();
+            stmt.executeUpdate();
 
         } catch (SQLException e) {
-            System.err.println("Error executant SQL: " + e.getMessage());
-            return -1;
+            throw e;  // Es propaga l'excepció al mètode anterior
+            //return -1;
         }
     }
     

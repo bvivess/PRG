@@ -38,9 +38,9 @@ public class GestorVendes {
     public void carregaClientsBBDD(Set<Client> clients) throws SQLException, IOException{ 
         UtilBBDD gestorBBDD = new UtilBBDD();
         String sql = "SELECT id, nom, email FROM clients";
+        
         try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON);
-              Statement statement = connexio.createStatement();
-              ResultSet resultSet = statement.executeQuery(sql) ) {
+              ResultSet resultSet = gestorBBDD.executaQuerySQL(connexio, sql) ) {   
             
             while (resultSet.next()) {
                 afegeixClient( clients, new Client( resultSet.getInt("id"),
@@ -48,6 +48,7 @@ public class GestorVendes {
                                                     resultSet.getString("email") )
                              );
             }
+            
         } catch (SQLException e) {
             System.err.println("Error carregant clients BBDD: " + e.getMessage());
         }
@@ -85,17 +86,18 @@ public class GestorVendes {
         
     public void carregaProductesBBDD(Set<Producte> productes) throws SQLException, IOException{ 
         UtilBBDD gestorBBDD = new UtilBBDD();
-        
         String sql = "SELECT id, nom, preu, categoria FROM productes";
+        
         try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON);
-              Statement statement = connexio.createStatement();
-              ResultSet resultSet = statement.executeQuery(sql) ) {
+              ResultSet resultSet = gestorBBDD.executaQuerySQL(connexio, sql) ) { 
+            
             while (resultSet.next())
                 afegeixProducte( productes, new Producte( resultSet.getInt("id"),
                                                           resultSet.getString("nom"), 
                                                           resultSet.getDouble("preu"),
                                                           Categoria.valueOf(resultSet.getString("categoria").toUpperCase()) )
                              );
+            
         } catch (SQLException e) {
             System.err.println("Error carregant productes BBDD: " + e.getMessage());
         }
@@ -135,11 +137,11 @@ public class GestorVendes {
   
     public void carregaVendesBBDD(Map<Integer,Venda> vendes) throws SQLException, IOException{ 
         UtilBBDD gestorBBDD = new UtilBBDD();
-        
         String sql = "SELECT id, client_id, data, producte_id FROM vendes, venda_producte where id = venda_id";
+        
         try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON);
-              Statement statement = connexio.createStatement();
-              ResultSet resultSet = statement.executeQuery(sql) ) {
+              ResultSet resultSet = gestorBBDD.executaQuerySQL(connexio, sql) ) { 
+            
             Venda venda = null;
             while (resultSet.next()) {
                 venda = vendes.get(resultSet.getInt("id"));
@@ -232,23 +234,17 @@ public class GestorVendes {
             connexio.setAutoCommit(true);
             
             for (Client c : clients) {
-                try (PreparedStatement insertStmt = connexio.prepareStatement(insertSQL)) {
-                    insertStmt.setInt(1, c.getId());
-                    insertStmt.setString(2, c.getNom());
-                    insertStmt.setString(3, c.getEmail());
-                    insertStmt.executeUpdate();
+                try {
+                    gestorBBDD.executaSQL( connexio, insertSQL,
+                                           (Integer) c.getId(),  c.getNom(), c.getEmail() );
+
                 } catch (SQLException e) {
-                    if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062) {
+                    if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)
                         // Error per PK, modificar
-                        try (PreparedStatement updateStmt = connexio.prepareStatement(updateSQL)) {
-                            updateStmt.setString(1, c.getNom());
-                            updateStmt.setString(2, c.getEmail());
-                            updateStmt.setInt(3, c.getId());
-                            updateStmt.executeUpdate();
-                        }
-                    } else {
+                        gestorBBDD.executaSQL( connexio, updateSQL,
+                                               c.getNom(), c.getEmail(), (Integer) c.getId() );
+                    else
                         throw e; // Re-llança si no és error de PK
-                    }
                 }
             }
         } catch (SQLException e) {        
@@ -284,25 +280,16 @@ public class GestorVendes {
             connexio.setAutoCommit(true);
             
             for (Producte p : productes) {
-                try (PreparedStatement insertStmt = connexio.prepareStatement(insertSQL)) {
-                    insertStmt.setInt(1, p.getId());
-                    insertStmt.setString(2, p.getNom());
-                    insertStmt.setDouble(3, p.getPreu());
-                    insertStmt.setString(4, p.getCategoria());
-                    insertStmt.executeUpdate();
+                try {
+                    gestorBBDD.executaSQL( connexio, insertSQL,
+                                           (Integer) p.getId(), p.getNom(), (Double) p.getPreu(), p.getCategoria() );
                 } catch (SQLException e) {
-                    if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062) {
+                    if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)
                         // Error per PK, modificar
-                        try (PreparedStatement updateStmt = connexio.prepareStatement(updateSQL)) {
-                            updateStmt.setString(1, p.getNom());
-                            updateStmt.setDouble(2, p.getPreu());
-                            updateStmt.setString(3, p.getCategoria());
-                            updateStmt.setInt(4, p.getId());
-                            updateStmt.executeUpdate();
-                        }
-                    } else {
+                        gestorBBDD.executaSQL( connexio, updateSQL,
+                                               p.getNom(), (Double) p.getPreu(), p.getCategoria(), (Integer) p.getId() );
+                    else
                         throw e; // Re-llança si no és error de PK
-                    }
                 }
             }
         } catch (SQLException e) {
@@ -338,38 +325,24 @@ public class GestorVendes {
             connexio.setAutoCommit(true);
             
             for (Venda v : vendes.values()) {
-                try (PreparedStatement insertStmt = connexio.prepareStatement(insertSQL)) {
-                    insertStmt.setInt(1, v.getId());
-                    insertStmt.setInt(2, v.getClient().getId());
-                    insertStmt.setDate(3, java.sql.Date.valueOf(v.getDataVenda()));
-                    insertStmt.executeUpdate();
+                try {
+                    gestorBBDD.executaSQL( connexio, insertSQL,  
+                                           (Integer) v.getId(), (Integer) v.getClient().getId(), java.sql.Date.valueOf(v.getDataVenda()) );
                 } catch (SQLException e) {
-                    if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062) {
+                    if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)
                         // Error per PK, modificar
-                        try (PreparedStatement updateStmt = connexio.prepareStatement(updateSQL)) {
-                            updateStmt.setInt(1, v.getClient().getId());
-                            updateStmt.setDate(2, java.sql.Date.valueOf(v.getDataVenda()));
-                            updateStmt.setInt(3, v.getId());
-                            updateStmt.executeUpdate();
-                        }
-                    } else {
+                        gestorBBDD.executaSQL( connexio, updateSQL,
+                                               (Integer) v.getClient().getId(), java.sql.Date.valueOf(v.getDataVenda()), (Integer) v.getId());
+                    else 
                         throw e; // Re-llança si no és error de PK
-                    }
                 } finally {
-                    String deleteSQL = "DELETE FROM venda_producte where venda_id = ?";
-                    try (PreparedStatement deleteStmt = connexio.prepareStatement(deleteSQL)) {
-                        deleteStmt.setInt(1, v.getId());
-                        deleteStmt.executeUpdate();
-                    }
+                    gestorBBDD.executaSQL( connexio, "DELETE FROM venda_producte where venda_id = ?",
+                                           (Integer) v.getId() );
                     
-                    String insert1SQL = "INSERT INTO venda_producte (venda_id, producte_id) VALUES(?,?)";
-                    for (Producte p : v.getProductes()) {
-                        try (PreparedStatement insert1Stmt = connexio.prepareStatement(insert1SQL)) {
-                           insert1Stmt.setInt(1, v.getId());
-                           insert1Stmt.setInt(2, p.getId());
-                           insert1Stmt.executeUpdate();
-                        }                       
-                    }
+                    for (Producte p : v.getProductes()) 
+                        gestorBBDD.executaSQL( connexio, "INSERT INTO venda_producte (venda_id, producte_id) VALUES(?,?)",
+                                               (Integer) v.getId(), (Integer) p.getId());
+
                 }
             }
         } catch (SQLException e) {
