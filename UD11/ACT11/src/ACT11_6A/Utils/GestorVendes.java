@@ -2,27 +2,27 @@ package ACT11_6A.Utils;
 
 import ACT11_6A.Classes.Producte;
 import ACT11_6A.Classes.*;
+import java.sql.SQLException;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
 import java.sql.ResultSet;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.NoSuchElementException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.NoSuchElementException;
 import java.util.Set;
+import java.util.HashSet;
+import java.time.LocalDate;
+
 
 public class GestorVendes {
     final String MYSQL_CON = "c:\\temp\\mysql.con";
+    UtilBBDD gestorBBDD = new UtilBBDD();
+    
     Set<Client> clients = new HashSet<>();
     Set<Producte> productes = new HashSet<>();
     Map<Integer,Venda> vendes = new HashMap<>();
@@ -36,18 +36,16 @@ public class GestorVendes {
     }
     
     public void carregaClientsBBDD(Set<Client> clients) throws SQLException, IOException{ 
-        UtilBBDD gestorBBDD = new UtilBBDD();
         String sql = "SELECT id, nom, email FROM clients";
         
         try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON);
               ResultSet resultSet = gestorBBDD.executaQuerySQL(connexio, sql) ) {   
             
-            while (resultSet.next()) {
+            while (resultSet.next())
                 afegeixClient( clients, new Client( resultSet.getInt("id"),
                                                     resultSet.getString("nom"), 
                                                     resultSet.getString("email") )
                              );
-            }
             
         } catch (SQLException e) {
             System.err.println("Error carregant clients BBDD: " + e.getMessage());
@@ -85,7 +83,6 @@ public class GestorVendes {
     }
         
     public void carregaProductesBBDD(Set<Producte> productes) throws SQLException, IOException{ 
-        UtilBBDD gestorBBDD = new UtilBBDD();
         String sql = "SELECT id, nom, preu, categoria FROM productes";
         
         try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON);
@@ -136,7 +133,6 @@ public class GestorVendes {
     }
   
     public void carregaVendesBBDD(Map<Integer,Venda> vendes) throws SQLException, IOException{ 
-        UtilBBDD gestorBBDD = new UtilBBDD();
         String sql = "SELECT id, client_id, data, producte_id FROM vendes, venda_producte where id = venda_id";
         
         try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON);
@@ -145,12 +141,11 @@ public class GestorVendes {
             Venda venda = null;
             while (resultSet.next()) {
                 venda = vendes.get(resultSet.getInt("id"));
-                if ( venda == null) {
+                if ( venda == null)
                     venda = new Venda(  resultSet.getInt("id"),
                                         resultSet.getDate("data").toLocalDate(),
                                         cercaClient( new Client(resultSet.getInt("client_id"), ".", ".") ),
                                         new ArrayList<>() ); 
-                }
                 venda.getProductes().add( cercaProducte( new Producte(resultSet.getInt("producte_id"), ".", 0.0, null) ) );
                 afegeixVenda(vendes, venda);
             }
@@ -175,11 +170,9 @@ public class GestorVendes {
                                                  new ArrayList<>() );
                         String[] producteIds = parts[3].split(";");
 
-                        for (String pId : producteIds) {
-                            if (!pId.trim().isEmpty()) {
+                        for (String pId : producteIds) 
+                            if (!pId.trim().isEmpty()) 
                                 venda.getProductes().add( cercaProducte( new Producte(Integer.parseInt(pId.trim()), null, 0.0, null) ) );
-                            }
-                        }
                         
                         afegeixVenda(this.vendes, venda );
                     }
@@ -196,9 +189,8 @@ public class GestorVendes {
     
     public String mostraVendes(Map<Integer,Venda> vendes) {
         String text="Vendes: \n";
-        for (Venda v : vendes.values()) {
+        for (Venda v : vendes.values())
             text += "\t" + v.toString() + "\n";
-        }
         
         return text;
     }
@@ -226,27 +218,22 @@ public class GestorVendes {
     }
     
     private void desaClientsBBDD(Set<Client> clients) throws SQLException, IOException {
-        UtilBBDD gestorBBDD = new UtilBBDD();
-        String insertSQL = "INSERT INTO clients (id, nom, email) VALUES (?,?,?)";
-        String updateSQL = "UPDATE clients SET nom = ?, email = ? WHERE id = ?";
-        
         try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON)  ) {
             connexio.setAutoCommit(true);
             
-            for (Client c : clients) {
+            for (Client c : clients)
                 try {
-                    gestorBBDD.executaSQL( connexio, insertSQL,
+                    gestorBBDD.executaSQL( connexio, "INSERT INTO clients (id, nom, email) VALUES (?,?,?)",
                                            (Integer) c.getId(),  c.getNom(), c.getEmail() );
 
                 } catch (SQLException e) {
                     if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)
                         // Error per PK, modificar
-                        gestorBBDD.executaSQL( connexio, updateSQL,
+                        gestorBBDD.executaSQL( connexio, "UPDATE clients SET nom = ?, email = ? WHERE id = ?",
                                                c.getNom(), c.getEmail(), (Integer) c.getId() );
                     else
                         throw e; // Re-llança si no és error de PK
                 }
-            }
         } catch (SQLException e) {        
             System.err.println("S'ha produït l'error general en Clients: " + e.getMessage());
         } catch (IOException e) {
@@ -272,21 +259,17 @@ public class GestorVendes {
     }
     
     private void desaProductesBBDD(Set<Producte> productes) throws SQLException, IOException {
-        UtilBBDD gestorBBDD = new UtilBBDD();
-        String insertSQL = "INSERT INTO productes (id, nom, preu, categoria) VALUES (?,?,?,?)";
-        String updateSQL = "UPDATE productes SET nom = ?, preu = ?, categoria = ? WHERE id = ?";
-
         try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON)  ) {
             connexio.setAutoCommit(true);
             
             for (Producte p : productes) {
                 try {
-                    gestorBBDD.executaSQL( connexio, insertSQL,
+                    gestorBBDD.executaSQL( connexio, "INSERT INTO productes (id, nom, preu, categoria) VALUES (?,?,?,?)",
                                            (Integer) p.getId(), p.getNom(), (Double) p.getPreu(), p.getCategoria() );
                 } catch (SQLException e) {
                     if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)
                         // Error per PK, modificar
-                        gestorBBDD.executaSQL( connexio, updateSQL,
+                        gestorBBDD.executaSQL( connexio, "UPDATE productes SET nom = ?, preu = ?, categoria = ? WHERE id = ?",
                                                p.getNom(), (Double) p.getPreu(), p.getCategoria(), (Integer) p.getId() );
                     else
                         throw e; // Re-llança si no és error de PK
@@ -317,21 +300,17 @@ public class GestorVendes {
     }
     
     private void desaVendesBBDD(Map<Integer,Venda> vendes) {
-        UtilBBDD gestorBBDD = new UtilBBDD();
-        String insertSQL = "INSERT INTO vendes (id, client_id, data) VALUES (?,?,?)";
-        String updateSQL = "UPDATE vendes SET client_id = ?, data = ? WHERE id = ?";
-
         try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON)  ) {
             connexio.setAutoCommit(true);
             
             for (Venda v : vendes.values()) {
                 try {
-                    gestorBBDD.executaSQL( connexio, insertSQL,  
+                    gestorBBDD.executaSQL( connexio, "INSERT INTO vendes (id, client_id, data) VALUES (?,?,?)",  
                                            (Integer) v.getId(), (Integer) v.getClient().getId(), java.sql.Date.valueOf(v.getDataVenda()) );
                 } catch (SQLException e) {
                     if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)
                         // Error per PK, modificar
-                        gestorBBDD.executaSQL( connexio, updateSQL,
+                        gestorBBDD.executaSQL( connexio, "UPDATE vendes SET client_id = ?, data = ? WHERE id = ?",
                                                (Integer) v.getClient().getId(), java.sql.Date.valueOf(v.getDataVenda()), (Integer) v.getId());
                     else 
                         throw e; // Re-llança si no és error de PK
