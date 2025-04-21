@@ -53,7 +53,9 @@ public class UtilBBDD {
     }
     
     public ResultSet executaQuerySQL(Connection connexio, String sql, Object... arguments) throws SQLException, IOException {
-        try { PreparedStatement stmt = connexio.prepareStatement(sql);
+        try { 
+            PreparedStatement stmt = connexio.prepareStatement(sql);
+            
             for (int i = 0; i < arguments.length; i++) {
                 Object arg = arguments[i];
                 
@@ -81,7 +83,8 @@ public class UtilBBDD {
     }
     
     public void executaSQL(Connection connexio, String sql, Object... arguments) throws SQLException, IOException {
-        try { PreparedStatement stmt = connexio.prepareStatement(sql);
+        try { 
+            PreparedStatement stmt = connexio.prepareStatement(sql);
 
             for (int i = 0; i < arguments.length; i++) {
                 Object arg = arguments[i];
