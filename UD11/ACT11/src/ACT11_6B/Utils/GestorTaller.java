@@ -6,6 +6,9 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -26,18 +29,52 @@ public class GestorTaller {
     Map<Integer, Reparacio> reparacions = new HashMap<>();
     Queue<Vehicle> cuaReparacionsPendents = new LinkedList<>();
 
-    // Carrega dades
-    public void carregaClients(String path) throws IOException {
+    // --- CÀRREGA CLIENTS 
+    public void carregaClients(String path) throws SQLException, IOException {
+        carregaClientsBBDD(this.clients);
+        carregaClientsCSV(this.clients, path);
+
+        System.out.println(this.clients);
+    }
+    
+    public void carregaClientsBBDD(Set<Client> clients) throws SQLException, IOException{ 
+        String sql = "SELECT id, nom, email FROM clients";
+        
+        try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON);
+              ResultSet resultSet = gestorBBDD.executaQuerySQL(connexio, sql) ) {   
+            
+            while (resultSet.next())
+                afegeixClient( clients, new Client( resultSet.getInt("id"),
+                                                    resultSet.getString("nom"), 
+                                                    resultSet.getString("email") )
+                             );
+            
+        } catch (SQLException e) {
+            System.err.println("Error carregant clients BBDD: " + e.getMessage());
+        }
+    }
+
+    public void carregaClientsCSV(Set<Client> clients, String path) throws IOException {
         try (BufferedReader br = Files.newBufferedReader(Paths.get(path))) {
             String linia;
             while ((linia = br.readLine()) != null) {
-                if (!linia.startsWith("#") && !linia.isBlank()) {
-                    String[] p = linia.split(",");
-                    clients.add(new Client(Integer.parseInt(p[0]), p[1], p[2], p[3]));
+                if (!(linia.isEmpty() || linia.startsWith("#"))) {
+                    String[] parts = linia.split(",");
+                    if (parts.length == 3) 
+                        afegeixClient(clients, new Client( Integer.parseInt(parts[0]),
+                                                           parts[1],
+                                                           parts[2]) );
                 }
             }
+        } catch (IOException | NumberFormatException e) {
+            System.err.println("Error carregant clients CVS: " + e.getMessage());
         }
     }
+    
+    public void afegeixClient(Set<Client> clients, Client client) {
+        clients.add(client);
+    }
+
 
     public void carregaVehicles(String path) throws IOException {
         try (BufferedReader br = Files.newBufferedReader(Paths.get(path))) {
@@ -89,7 +126,7 @@ public class GestorTaller {
     public void desaClients(String path) throws IOException {
         try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(path))) {
             for (Client c : clients) {
-                bw.write(c.getId() + "," + c.getNom() + "," + c.getTelefon() + "," + c.getEmail());
+                bw.write(c.getId() + "," + c.getNom() + "," + c.getEmail());
                 bw.newLine();
             }
         }
@@ -121,6 +158,7 @@ public class GestorTaller {
 
     public void processarSeguentVehicle() {
         Vehicle v = cuaReparacionsPendents.poll();
+        
         if (v != null) {
             Reparacio nova = new Reparacio(
                 reparacions.size() + 1,

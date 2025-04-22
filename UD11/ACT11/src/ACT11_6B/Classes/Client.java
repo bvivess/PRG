@@ -1,16 +1,21 @@
 package ACT11_6B.Classes;
 
-public class Client {
-    private int id;
-    private String nom;
-    private String telefon;
-    private String email;
+public class Client implements Comparable<Client>{
+    int id;
+    String nom;
+    String email;
 
-    public Client(int id, String nom, String telefon, String email) {
-        this.id = id;
-        this.nom = nom;
-        this.telefon = telefon;
-        this.email = email;
+    public Client(int id, String nom, String email) {
+        setId(id);
+        setNom(nom);
+        setEmail(email);
+    }
+
+    @Override
+    public int compareTo(Client c) {
+        if (this.id > c.id) return 1;
+        else if (this.id < c.id) return -1;
+        else return 0;
     }
 
     public int getId() {
@@ -26,15 +31,10 @@ public class Client {
     }
 
     public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getTelefon() {
-        return telefon;
-    }
-
-    public void setTelefon(String telefon) {
-        this.telefon = telefon;
+        //if (nom == null || nom.isBlank())
+        //    throw new IllegalArgumentException ("Client.Nom incorrecte");
+        //else
+            this.nom = nom;
     }
 
     public String getEmail() {
@@ -46,9 +46,30 @@ public class Client {
     }
 
     @Override
-    public String toString() {
-        return "Client{" + "id=" + id + ", nom=" + nom + ", telefon=" + telefon + ", email=" + email + '}';
+    public int hashCode() {
+        int hash = 5;
+        hash = 89 * hash + this.id;
+        return hash;
     }
 
-    
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Client other = (Client) obj;
+        return this.id == other.id;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" + "id=" + id + ", nom=" + nom + ", email=" + email + '}';
+    }
+
 }
