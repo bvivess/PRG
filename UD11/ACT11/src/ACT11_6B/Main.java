@@ -11,7 +11,8 @@ public class Main {
             gestorTaller.carregaClients("c:\\temp\\clients.csv");
             System.out.println("VEHICLES");
             gestorTaller.carregaVehicles("c:\\temp\\vehicles.csv");
-            //gestorTaller.carregaReparacions("c:\\temp\\reparacions.csv");
+            System.out.println("REPARACIONS");
+            gestorTaller.carregaReparacions("c:\\temp\\reparacions.csv");
 
             //gestorTaller.mostraClients();
             //gestorTaller.mostraVehicles();

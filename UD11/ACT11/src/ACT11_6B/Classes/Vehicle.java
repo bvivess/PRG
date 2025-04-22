@@ -1,5 +1,7 @@
 package ACT11_6B.Classes;
 
+import java.util.Objects;
+
 public class Vehicle {
     private String matricula;
     private String marca;
@@ -43,6 +45,28 @@ public class Vehicle {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 37 * hash + Objects.hashCode(this.matricula);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Vehicle other = (Vehicle) obj;
+        return Objects.equals(this.matricula, other.matricula);
     }
 
     @Override

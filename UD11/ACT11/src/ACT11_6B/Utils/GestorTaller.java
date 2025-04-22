@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -26,9 +25,8 @@ public class GestorTaller {
     UtilBBDD gestorBBDD = new UtilBBDD();
     
     Set<Client> clients = new HashSet<>();
-    List<Vehicle> vehicles = new ArrayList<>();
+    Set<Vehicle> vehicles = new HashSet<>();
     Map<Integer, Reparacio> reparacions = new HashMap<>();
-    Queue<Vehicle> cuaReparacionsPendents = new LinkedList<>();
 
     // --- CÀRREGA CLIENTS 
     public void carregaClients(String path) throws SQLException, IOException {
@@ -79,7 +77,7 @@ public class GestorTaller {
         System.out.println(this.vehicles);
     }
 
-    private void carregaVehiclesBBDD(List<Vehicle> vehicles) throws SQLException, IOException {
+    private void carregaVehiclesBBDD(Set<Vehicle> vehicles) throws SQLException, IOException {
         String sql = "SELECT matricula, marca, model, client_id FROM vehicles";
         
         try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON);
@@ -97,7 +95,7 @@ public class GestorTaller {
         }
     }
         
-    private void carregaVehiclesCSV(List<Vehicle> vehicles, String path) throws IOException {
+    private void carregaVehiclesCSV(Set<Vehicle> vehicles, String path) throws IOException {
         try (BufferedReader br = Files.newBufferedReader(Paths.get(path))) {
             String linia;
             while ((linia = br.readLine()) != null) {
@@ -125,36 +123,57 @@ public class GestorTaller {
         throw new NoSuchElementException("Client no trobat a la llista.");
     }
     
-    public void afegeixVehicle(List<Vehicle> vehicles, Vehicle vehicle) {
+    public void afegeixVehicle(Set<Vehicle> vehicles, Vehicle vehicle) {
         vehicles.add(vehicle);
+    }
+    
+    private Vehicle cercaVehicle (Vehicle v) throws NoSuchElementException {
+        for (Vehicle vehicle : this.vehicles) 
+            if (v.equals(vehicle))
+                return vehicle;
+        
+        throw new NoSuchElementException("Vehicle no trobat a la llista.");
     }
     
     public void carregaReparacions(String path) throws SQLException, IOException {
         //carregaReparacionsBBDD(this.vehicles);
         carregaReparacionsCSV(this.reparacions, path);
 
-        System.out.println(this.vehicles);
+        System.out.println(this.reparacions);
     }
+    
 
     public void carregaReparacionsCSV(Map<Integer, Reparacio> reparacions, String path) throws IOException {
         try (BufferedReader br = Files.newBufferedReader(Paths.get(path))) {
             String linia;
             while ((linia = br.readLine()) != null) {
                 if (!linia.startsWith("#") && !linia.isBlank()) {
-                    String[] parts = linia.split(",");
-                    Vehicle v = cercaVehiclePerMatricula(parts[2].trim());
-                    Reparacio r = new Reparacio( Integer.parseInt(parts[0].trim()),
-                                                 LocalDate.parse(parts[1].trim()),
-                                                 v,
-                                                 parts[3].trim(),
-                                                 Double.parseDouble(parts[4].trim()),
-                                                 EstatReparacio.valueOf(parts[5].trim())
-                                                );
-                    
-                    reparacions.put(r.getId(), r);
+                    String[] parts = linia.split(",",5);
+                     
+                    if (parts.length == 5) {
+                        Reparacio reparacio = new Reparacio( Integer.parseInt(parts[0].trim()),
+                                                     LocalDate.parse(parts[1].trim()),
+                                                     cercaVehicle( new Vehicle(parts[2].trim(),null,null,null) ),
+                                                     Double.parseDouble(parts[3].trim()),
+                                                     new ArrayList<>() );
+                        
+                        
+                        
+                        String[] llistaTasques = parts[4].trim().split(";");
+                        for (String llTasques: llistaTasques) {
+                            String[] t = llTasques.split(",");
+                            
+                            reparacio.getTasques().add ( new Tasca(t[0].trim(), EstatReparacio.valueOf(t[1].trim())) );
+                        }
+                        afegeixReparacio(this.reparacions, reparacio );
+                    }
                 }
             }
         }
+    }
+    
+    public void afegeixReparacio(Map<Integer, Reparacio> reparacions, Reparacio reparacio) {
+        reparacions.put(reparacio.getId(), reparacio);
     }
 
     // Modifica dades
@@ -169,75 +188,5 @@ public class GestorTaller {
         reparacions.values().forEach(r -> r.setCost(r.getCost() * 1.05));
     }
 
-    // Desa dades
-    public void desaClients(String path) throws IOException {
-        try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(path))) {
-            for (Client c : clients) {
-                bw.write(c.getId() + "," + c.getNom() + "," + c.getEmail());
-                bw.newLine();
-            }
-        }
-    }
 
-    public void desaVehicles(String path) throws IOException {
-        try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(path))) {
-            for (Vehicle v : vehicles) {
-                bw.write(v.getMatricula() + "," + v.getMarca() + "," + v.getModel() + "," + v.getClient().getId());
-                bw.newLine();
-            }
-        }
-    }
-
-    public void desaReparacions(String path) throws IOException {
-        try (BufferedWriter bw = Files.newBufferedWriter(Paths.get(path))) {
-            for (Reparacio r : reparacions.values()) {
-                bw.write(r.getId() + "," + r.getDataEntrada() + "," + r.getVehicle().getMatricula() + "," + r.getDescripcio() + "," + r.getCost() + "," + r.getEstat());
-                bw.newLine();
-            }
-        }
-    }
-
-    // Gestió de la cua
-    public void afegirVehicleARevisar(String matricula) {
-        Vehicle v = cercaVehiclePerMatricula(matricula);
-        cuaReparacionsPendents.offer(v);
-    }
-
-    public void processarSeguentVehicle() {
-        Vehicle v = cuaReparacionsPendents.poll();
-        
-        if (v != null) {
-            Reparacio nova = new Reparacio(
-                reparacions.size() + 1,
-                LocalDate.now(),
-                v,
-                "Diagnòstic inicial",
-                0.0,
-                EstatReparacio.EN_PROCES
-            );
-            reparacions.put(nova.getId(), nova);
-        }
-    }
-
-    // Consultes
-    public void mostraClients() {
-        clients.stream().sorted(Comparator.comparing(Client::getId)).forEach(System.out::println);
-    }
-
-    public void mostraVehicles() {
-        vehicles.stream().sorted(Comparator.comparing(Vehicle::getMatricula)).forEach(System.out::println);
-    }
-
-    public void mostraReparacions() {
-        reparacions.values().stream().sorted(Comparator.comparing(Reparacio::getId)).forEach(System.out::println);
-    }
-
-    // Cerca
-    private Client cercaClientPerId(int id) {
-        return clients.stream().filter(c -> c.getId() == id).findFirst().orElseThrow();
-    }
-
-    private Vehicle cercaVehiclePerMatricula(String m) {
-        return vehicles.stream().filter(v -> v.getMatricula().equalsIgnoreCase(m)).findFirst().orElseThrow();
-    }
 }

@@ -167,8 +167,8 @@ public class GestorVendes {
                                                  LocalDate.parse(parts[1].trim()),
                                                  cercaClient( new Client(Integer.parseInt(parts[2].trim()), null, null) ), // 'client' temporal
                                                  new ArrayList<>() );
+                        
                         String[] producteIds = parts[3].trim().split(";");
-
                         for (String pId : producteIds) 
                             if (!pId.trim().isEmpty()) 
                                 venda.getProductes().add( cercaProducte( new Producte(Integer.parseInt(pId.trim()), null, 0.0, null) ) );

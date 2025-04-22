@@ -1,22 +1,21 @@
 package ACT11_6B.Classes;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Reparacio {
     private int id;
     private LocalDate dataEntrada;
     private Vehicle vehicle;
-    private String descripcio;
     private double cost;
-    private EstatReparacio estat;
+    private List<Tasca> tasques;
 
-    public Reparacio(int id, LocalDate dataEntrada, Vehicle vehicle, String descripcio, double cost, EstatReparacio estat) {
+    public Reparacio(int id, LocalDate dataEntrada, Vehicle vehicle, double cost, List<Tasca> tasques) {
         this.id = id;
         this.dataEntrada = dataEntrada;
         this.vehicle = vehicle;
-        this.descripcio = descripcio;
         this.cost = cost;
-        this.estat = estat;
+        this.tasques = tasques;
     }
 
     public int getId() {
@@ -43,14 +42,6 @@ public class Reparacio {
         this.vehicle = vehicle;
     }
 
-    public String getDescripcio() {
-        return descripcio;
-    }
-
-    public void setDescripcio(String descripcio) {
-        this.descripcio = descripcio;
-    }
-
     public double getCost() {
         return cost;
     }
@@ -59,18 +50,39 @@ public class Reparacio {
         this.cost = cost;
     }
 
-    public EstatReparacio getEstat() {
-        return estat;
+    public List<Tasca> getTasques() {
+        return tasques;
     }
 
-    public void setEstat(EstatReparacio estat) {
-        this.estat = estat;
+    public void setTasques(List<Tasca> tasques) {
+        this.tasques = tasques;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 89 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Reparacio other = (Reparacio) obj;
+        return this.id == other.id;
     }
 
     @Override
     public String toString() {
-        return "Reparacio{" + "id=" + id + ", dataEntrada=" + dataEntrada + ", vehicle=" + vehicle + ", descripcio=" + descripcio + ", cost=" + cost + ", estat=" + estat + '}';
+        return "Reparacio{" + "id=" + id + ", dataEntrada=" + dataEntrada + ", vehicle=" + vehicle + ", cost=" + cost + ", tasques=" + tasques + '}';
     }
-
 
 }
