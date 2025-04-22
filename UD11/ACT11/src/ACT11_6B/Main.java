@@ -7,8 +7,10 @@ public class Main {
         GestorTaller gestorTaller = new GestorTaller();
 
         try {
+            System.out.println("CLIENTS");
             gestorTaller.carregaClients("c:\\temp\\clients.csv");
-            //gestorTaller.carregaVehicles("c:\\temp\\vehicles.csv");
+            System.out.println("VEHICLES");
+            gestorTaller.carregaVehicles("c:\\temp\\vehicles.csv");
             //gestorTaller.carregaReparacions("c:\\temp\\reparacions.csv");
 
             //gestorTaller.mostraClients();

@@ -58,9 +58,9 @@ public class GestorVendes {
                 if (!(linia.isEmpty() || linia.startsWith("#"))) {
                     String[] parts = linia.split(",");
                     if (parts.length == 3) 
-                        afegeixClient(clients, new Client( Integer.parseInt(parts[0]),
-                                                           parts[1],
-                                                           parts[2]) );
+                        afegeixClient(clients, new Client( Integer.parseInt(parts[0].trim()),
+                                                           parts[1].trim(),
+                                                           parts[2].trim()) );
                 }
             }
         } catch (IOException | NumberFormatException e) {
@@ -106,10 +106,10 @@ public class GestorVendes {
                 if (!(linia.isEmpty() || linia.startsWith("#"))) {
                     String[] parts = linia.split(",");
                     if (parts.length == 4)
-                        afegeixProducte(productes, new Producte( Integer.parseInt(parts[0]),
-                                                                 parts[1],
-                                                                 Double.parseDouble(parts[2]),
-                                                                 Categoria.valueOf(parts[3])) );
+                        afegeixProducte(productes, new Producte( Integer.parseInt(parts[0].trim()),
+                                                                 parts[1].trim(),
+                                                                 Double.parseDouble(parts[2].trim()),
+                                                                 Categoria.valueOf(parts[3].trim())) );
                 }
             }
         } catch (IOException | NumberFormatException e) {
@@ -163,11 +163,11 @@ public class GestorVendes {
                     String[] parts = linia.split(",");
                     if (parts.length == 4) {
                         // Processar els productes separats per ;
-                        Venda venda = new Venda( Integer.parseInt(parts[0]),
-                                                 LocalDate.parse(parts[1]),
-                                                 cercaClient( new Client(Integer.parseInt(parts[2]), null, null) ), // 'client' temporal
+                        Venda venda = new Venda( Integer.parseInt(parts[0].trim()),
+                                                 LocalDate.parse(parts[1].trim()),
+                                                 cercaClient( new Client(Integer.parseInt(parts[2].trim()), null, null) ), // 'client' temporal
                                                  new ArrayList<>() );
-                        String[] producteIds = parts[3].split(";");
+                        String[] producteIds = parts[3].trim().split(";");
 
                         for (String pId : producteIds) 
                             if (!pId.trim().isEmpty()) 

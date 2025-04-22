@@ -17,6 +17,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Queue;
 import java.util.Set;
 
@@ -61,9 +62,9 @@ public class GestorTaller {
                 if (!(linia.isEmpty() || linia.startsWith("#"))) {
                     String[] parts = linia.split(",");
                     if (parts.length == 3) 
-                        afegeixClient(clients, new Client( Integer.parseInt(parts[0]),
-                                                           parts[1],
-                                                           parts[2]) );
+                        afegeixClient(clients, new Client( Integer.parseInt(parts[0].trim()),
+                                                           parts[1].trim(),
+                                                           parts[2].trim()) );
                 }
             }
         } catch (IOException | NumberFormatException e) {
@@ -71,22 +72,61 @@ public class GestorTaller {
         }
     }
     
-    public void afegeixClient(Set<Client> clients, Client client) {
-        clients.add(client);
+    public void carregaVehicles(String path) throws SQLException, IOException {
+        carregaVehiclesBBDD(this.vehicles);
+        carregaVehiclesCSV(this.vehicles, path);
+
+        System.out.println(this.vehicles);
     }
 
-
-    public void carregaVehicles(String path) throws IOException {
+    private void carregaVehiclesBBDD(List<Vehicle> vehicles) throws SQLException, IOException {
+        String sql = "SELECT matricula, marca, model, client_id FROM vehicles";
+        
+        try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON);
+              ResultSet resultSet = gestorBBDD.executaQuerySQL(connexio, sql) ) { 
+            
+            while (resultSet.next())
+                afegeixVehicle( vehicles, new Vehicle( resultSet.getString("matricula"),
+                                                       resultSet.getString("marca"), 
+                                                       resultSet.getString("model"),
+                                                       cercaClient( new Client(resultSet.getInt("client_id"), ".", ".") ) )
+                              );
+            
+        } catch (SQLException e) {
+            System.err.println("Error carregant vehicles BBDD: " + e.getMessage());
+        }
+    }
+        
+    private void carregaVehiclesCSV(List<Vehicle> vehicles, String path) throws IOException {
         try (BufferedReader br = Files.newBufferedReader(Paths.get(path))) {
             String linia;
             while ((linia = br.readLine()) != null) {
                 if (!linia.startsWith("#") && !linia.isBlank()) {
-                    String[] p = linia.split(",");
-                    Client c = cercaClientPerId(Integer.parseInt(p[3]));
-                    vehicles.add(new Vehicle(p[0], p[1], p[2], c));
+                    String[] parts = linia.split(",");
+                 
+                    afegeixVehicle( vehicles, new Vehicle( parts[0].trim(), 
+                                                           parts[1].trim(), 
+                                                           parts[2].trim(), 
+                                                           cercaClient( new Client(Integer.parseInt(parts[3].trim()), ".", ".") ) ) );
                 }
             }
         }
+    }
+    
+    public void afegeixClient(Set<Client> clients, Client client) {
+        clients.add(client);
+    }
+    
+    private Client cercaClient (Client c) throws NoSuchElementException {
+        for (Client client : this.clients) 
+            if (c.equals(client))
+                return client;
+        
+        throw new NoSuchElementException("Client no trobat a la llista.");
+    }
+    
+    public void afegeixVehicle(List<Vehicle> vehicles, Vehicle vehicle) {
+        vehicles.add(vehicle);
     }
 
     public void carregaReparacions(String path) throws IOException {
