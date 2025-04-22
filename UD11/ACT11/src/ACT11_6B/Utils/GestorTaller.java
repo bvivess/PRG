@@ -128,22 +128,29 @@ public class GestorTaller {
     public void afegeixVehicle(List<Vehicle> vehicles, Vehicle vehicle) {
         vehicles.add(vehicle);
     }
+    
+    public void carregaReparacions(String path) throws SQLException, IOException {
+        //carregaReparacionsBBDD(this.vehicles);
+        carregaReparacionsCSV(this.reparacions, path);
 
-    public void carregaReparacions(String path) throws IOException {
+        System.out.println(this.vehicles);
+    }
+
+    public void carregaReparacionsCSV(Map<Integer, Reparacio> reparacions, String path) throws IOException {
         try (BufferedReader br = Files.newBufferedReader(Paths.get(path))) {
             String linia;
             while ((linia = br.readLine()) != null) {
                 if (!linia.startsWith("#") && !linia.isBlank()) {
-                    String[] p = linia.split(",");
-                    Vehicle v = cercaVehiclePerMatricula(p[2]);
-                    Reparacio r = new Reparacio(
-                        Integer.parseInt(p[0]),
-                        LocalDate.parse(p[1]),
-                        v,
-                        p[3],
-                        Double.parseDouble(p[4]),
-                        EstatReparacio.valueOf(p[5])
-                    );
+                    String[] parts = linia.split(",");
+                    Vehicle v = cercaVehiclePerMatricula(parts[2].trim());
+                    Reparacio r = new Reparacio( Integer.parseInt(parts[0].trim()),
+                                                 LocalDate.parse(parts[1].trim()),
+                                                 v,
+                                                 parts[3].trim(),
+                                                 Double.parseDouble(parts[4].trim()),
+                                                 EstatReparacio.valueOf(parts[5].trim())
+                                                );
+                    
                     reparacions.put(r.getId(), r);
                 }
             }
