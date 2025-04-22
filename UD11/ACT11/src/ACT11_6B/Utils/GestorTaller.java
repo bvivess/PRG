@@ -136,14 +136,38 @@ public class GestorTaller {
     }
     
     public void carregaReparacions(String path) throws SQLException, IOException {
-        //carregaReparacionsBBDD(this.vehicles);
+        carregaReparacionsBBDD(this.reparacions);
         carregaReparacionsCSV(this.reparacions, path);
 
         System.out.println(this.reparacions);
     }
     
+    private void carregaReparacionsBBDD(Map<Integer, Reparacio> reparacions) throws SQLException, IOException {
+        String sql = "SELECT r.id id, dataEntrada, matricula, cost, descripcio, estat FROM reparacions r, tasques t where r.id = reparacio_id;";
+        
+        try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON);
+              ResultSet resultSet = gestorBBDD.executaQuerySQL(connexio, sql) ) { 
+            
+            Reparacio reparacio = null;
+            while (resultSet.next()) {
+                reparacio = reparacions.get(resultSet.getInt("id"));
+                if ( reparacio == null)
+                    reparacio = new Reparacio( resultSet.getInt("id"),
+                                               resultSet.getDate("dataEntrada").toLocalDate(),
+                                               cercaVehicle( new Vehicle(resultSet.getString("matricula"), ".", ".", null) ),
+                                               resultSet.getDouble("cost"),
+                                               new ArrayList<>() ); 
+                reparacio.getTasques().add( new Tasca(resultSet.getString("descripcio"), null)  );
+                afegeixReparacio( reparacions, reparacio );
+            }
+            
+                                                  
+        } catch (SQLException e) {
+            System.err.println("Error carregant clients BBDD: " + e.getMessage());
+        }        
+    }
 
-    public void carregaReparacionsCSV(Map<Integer, Reparacio> reparacions, String path) throws IOException {
+    private void carregaReparacionsCSV(Map<Integer, Reparacio> reparacions, String path) throws IOException {
         try (BufferedReader br = Files.newBufferedReader(Paths.get(path))) {
             String linia;
             while ((linia = br.readLine()) != null) {
@@ -152,10 +176,10 @@ public class GestorTaller {
                      
                     if (parts.length == 5) {
                         Reparacio reparacio = new Reparacio( Integer.parseInt(parts[0].trim()),
-                                                     LocalDate.parse(parts[1].trim()),
-                                                     cercaVehicle( new Vehicle(parts[2].trim(),null,null,null) ),
-                                                     Double.parseDouble(parts[3].trim()),
-                                                     new ArrayList<>() );
+                                                             LocalDate.parse(parts[1].trim()),
+                                                             cercaVehicle( new Vehicle(parts[2].trim(), null, null, null) ),
+                                                             Double.parseDouble(parts[3].trim()),
+                                                             new ArrayList<>() );
                         
                         
                         
@@ -165,7 +189,7 @@ public class GestorTaller {
                             
                             reparacio.getTasques().add ( new Tasca(t[0].trim(), EstatReparacio.valueOf(t[1].trim())) );
                         }
-                        afegeixReparacio(this.reparacions, reparacio );
+                        afegeixReparacio( reparacions, reparacio );
                     }
                 }
             }
