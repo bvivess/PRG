@@ -351,24 +351,24 @@ public class GestorVendes {
     }
     
     public void modificaClients() {
-        for (Client c : this.clients) {
-            c.setNom(c.getNom().toUpperCase());
-            c.setEmail(c.getEmail().toLowerCase());
+        for (Client client : this.clients) {
+            client.setNom(client.getNom().toUpperCase());
+            client.setEmail(client.getEmail().toLowerCase());
         }
     }
     
     public void modificaProductes() {
-        for (Producte p: this.productes) {
-            p.setNom(p.getNom().toUpperCase());
-            p.setPreu(p.getPreu()*10);
+        for (Producte producte: this.productes) {
+            producte.setNom(producte.getNom().toUpperCase());
+            producte.setPreu(producte.getPreu()*10);
         }
     }
 
     public void modificaVendes() {
-        for (Venda v: this.vendes.values()) {
-            v.setDataVenda(v.getDataVenda().plusYears(1));
+        for (Venda venda: this.vendes.values()) {
+            venda.setDataVenda(venda.getDataVenda().plusYears(1));
 
-            vendes.put(v.getId(), v);  // modifica el map
+            vendes.put(venda.getId(), venda);  // modifica el map
         }
     }
 }

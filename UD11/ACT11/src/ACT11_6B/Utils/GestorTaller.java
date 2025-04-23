@@ -342,7 +342,6 @@ public class GestorTaller {
         }
     }
 
-
     // Modifica dades
     public void modifica() {
         clients.forEach( client -> { client.setNom(client.getNom().toUpperCase());
