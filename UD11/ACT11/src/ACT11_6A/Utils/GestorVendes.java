@@ -344,6 +344,7 @@ public class GestorVendes {
         }
     }
     
+    // MODIFICACIONS
     public void modifica() {
         modificaClients();
         modificaProductes();
