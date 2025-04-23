@@ -17,8 +17,8 @@ public class Tasca {
         this.descripcio = descripcio;
     }
 
-    public EstatReparacio getEstat() {
-        return estat;
+    public String getEstat() {
+        return estat.name();
     }
 
     public void setEstat(EstatReparacio estat) {

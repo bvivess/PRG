@@ -226,7 +226,7 @@ public class GestorTaller {
                         throw e; // Re-llança si no és error de PK
                 }
         } catch (SQLException e) {        
-            System.err.println("S'ha produït l'error general en Clients: " + e.getMessage());
+            System.err.println("Error descarregant clients BBDD: " + e.getMessage());
         } catch (IOException e) {
             System.err.println("");
         }
@@ -245,26 +245,81 @@ public class GestorTaller {
     
     // --- DESCÀRREGA VEHICLES
     public void desaVehicles(String path) throws SQLException, IOException {
-        //desaVehiclesBBDD(this.clients);
+        desaVehiclesBBDD(this.vehicles);
         //desaVehiclesCVS(this.clients, path);
+    }
+    
+    private void desaVehiclesBBDD(Set<Vehicle> vehicles) throws SQLException, IOException {
+        try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON)  ) {
+            connexio.setAutoCommit(true);
+            
+            for (Vehicle v : vehicles) {
+                try {
+                    gestorBBDD.executaSQL( connexio, "INSERT INTO vehicles (matricula, marca, model, client_id) VALUES (?,?,?,?)",
+                                           v.getMatricula(), v.getMarca(), v.getModel(), v.getClient().getId() );
+                } catch (SQLException e) {
+                    if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)
+                        // Error per PK, modificar
+                        gestorBBDD.executaSQL( connexio, "UPDATE vehicles SET marca = ?, model = ?, client_id = ? WHERE matricula = ?",
+                                               v.getMarca(), v.getModel(), v.getClient().getId(), v.getMatricula() );
+                    else
+                        throw e; // Re-llança si no és error de PK
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error descarregant vehicles BBDD: " + e.getMessage());
+        } catch (IOException e) {
+            System.err.println("");
+        }
     }
     
     // --- DESCÀRREGA VEHICLES
     public void desaReparacions(String path) throws SQLException, IOException {
-        //desaReparacionsBBDD(this.clients);
+        desaReparacionsBBDD(this.reparacions);
         //desaReparacionsCVS(this.clients, path);
+    }
+    
+    private void desaReparacionsBBDD(Map<Integer,Reparacio> reparacions) {
+        try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON)  ) {
+            connexio.setAutoCommit(true);
+            
+            for (Reparacio r : reparacions.values()) {
+                try {
+                    gestorBBDD.executaSQL( connexio, "INSERT INTO reparacions (id, dataEntrada, matricula, cost) VALUES (?, ?, ?, ?)",  
+                                           (Integer) r.getId(), java.sql.Date.valueOf(r.getDataEntrada()), r.getVehicle().getMatricula(), (Double) r.getCost() );
+                } catch (SQLException e) {
+                    if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)
+                        // Error per PK, modificar
+                        gestorBBDD.executaSQL( connexio, "UPDATE reparacions SET dataEntrada = ?, matricula = ?, cost = ? WHERE id = ?",
+                                               java.sql.Date.valueOf(r.getDataEntrada()), r.getVehicle().getMatricula(), (Double) r.getCost(), (Integer) r.getId() );
+                    else 
+                        throw e; // Re-llança si no és error de PK
+                } finally {
+                    gestorBBDD.executaSQL( connexio, "DELETE FROM tasques where reparacio_id = ?",
+                                           (Integer) r.getId() );
+                    
+                    for (Tasca t : r.getTasques()) 
+                        gestorBBDD.executaSQL( connexio, "INSERT INTO tasques (reparacio_id, descripcio, estat) VALUES(?, ?, ?)",
+                                               (Integer) r.getId(), t.getDescripcio(), t.getEstat() );
+
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Error descarregant reparacions BBDD: " + e.getMessage());
+        } catch (IOException e) {
+            System.err.println("");
+        }
     }
 
     // Modifica dades
     public void modifica() {
-        clients.forEach(c -> {
-            c.setNom(c.getNom().toUpperCase());
-            c.setEmail(c.getEmail().toLowerCase());
-        });
+        clients.forEach( client -> { client.setNom(client.getNom().toUpperCase());
+                                     client.setEmail(client.getEmail().toLowerCase() );
+                                   });
 
-        vehicles.forEach(v -> v.setModel(v.getModel().toUpperCase()));
+        vehicles.forEach( vehicle -> vehicle.setModel(vehicle.getModel().toUpperCase()) );
 
-        reparacions.values().forEach(r -> r.setCost(r.getCost() * 1.05));
+        reparacions.values().forEach( reparacio -> reparacio.setCost(reparacio.getCost() * 1.05) );
     }
 
 

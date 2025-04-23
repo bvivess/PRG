@@ -222,7 +222,7 @@ public class GestorVendes {
             
             for (Client c : clients)
                 try {
-                    gestorBBDD.executaSQL( connexio, "INSERT INTO clients (id, nom, email) VALUES (?,?,?)",
+                    gestorBBDD.executaSQL( connexio, "INSERT INTO clients (id, nom, email) VALUES (?, ?, ?)",
                                            (Integer) c.getId(),  c.getNom(), c.getEmail() );
 
                 } catch (SQLException e) {
@@ -234,7 +234,7 @@ public class GestorVendes {
                         throw e; // Re-llança si no és error de PK
                 }
         } catch (SQLException e) {        
-            System.err.println("S'ha produït l'error general en Clients: " + e.getMessage());
+            System.err.println("Error descarregant clients BBDD: " + e.getMessage());
         } catch (IOException e) {
             System.err.println("");
         }
@@ -263,7 +263,7 @@ public class GestorVendes {
             
             for (Producte p : productes) {
                 try {
-                    gestorBBDD.executaSQL( connexio, "INSERT INTO productes (id, nom, preu, categoria) VALUES (?,?,?,?)",
+                    gestorBBDD.executaSQL( connexio, "INSERT INTO productes (id, nom, preu, categoria) VALUES (?, ?, ?, ?)",
                                            (Integer) p.getId(), p.getNom(), (Double) p.getPreu(), p.getCategoria() );
                 } catch (SQLException e) {
                     if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)
@@ -275,7 +275,7 @@ public class GestorVendes {
                 }
             }
         } catch (SQLException e) {
-            System.err.println("S'ha produït l'error general: " + e.getMessage());
+            System.err.println("Error descarregant productes BBDD: " + e.getMessage());
         } catch (IOException e) {
             System.err.println("");
         }
@@ -288,7 +288,7 @@ public class GestorVendes {
                 br.newLine();
             }
         } catch (IOException | NumberFormatException e) {
-            System.err.println("Error descarregant clients CVS: " + e.getMessage());
+            System.err.println("Error descarregant productes CVS: " + e.getMessage());
         }
     }  
     
@@ -324,7 +324,7 @@ public class GestorVendes {
                 }
             }
         } catch (SQLException e) {
-            System.err.println("S'ha produït l'error general: " + e.getMessage());
+            System.err.println("Error descarregant vendes BBDD: " + e.getMessage());
         } catch (IOException e) {
             System.err.println("");
         }
@@ -340,7 +340,7 @@ public class GestorVendes {
                 br.newLine();
             }
         } catch (IOException | NumberFormatException e) {
-            System.err.println("Error descarregant clients CVS: " + e.getMessage());
+            System.err.println("Error descarregant vendes CVS: " + e.getMessage());
         }
     }
     
