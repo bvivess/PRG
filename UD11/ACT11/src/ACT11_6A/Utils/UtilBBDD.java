@@ -12,12 +12,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UtilBBDD {
-    final String MYSQL_CON = "c:\\temp\\mysql.con";
+    private String MYSQL_CON = "c:\\temp\\mysql.con";
+
+    public UtilBBDD(String MYSQL_CON) {
+        this.MYSQL_CON = MYSQL_CON;
+    }    
     
-    protected Connection getConnectionFromFile(String filename) throws SQLException, IOException {
+    protected Connection getConnectionFromFile() throws SQLException, IOException {
         Map<String, String> valorsConnexio = new HashMap<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(this.MYSQL_CON))) {
             String linia;
             while ((linia = reader.readLine()) != null) {
                 try {

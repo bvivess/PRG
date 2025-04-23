@@ -19,7 +19,7 @@ import java.util.Set;
 
 public class GestorTaller {
     final String MYSQL_CON = "c:\\temp\\mysql.con";
-    UtilBBDD gestorBBDD = new UtilBBDD();
+    UtilBBDD gestorBBDD = new UtilBBDD(MYSQL_CON);
     
     Set<Client> clients = new HashSet<>();
     Set<Vehicle> vehicles = new HashSet<>();
@@ -36,7 +36,7 @@ public class GestorTaller {
     public void carregaClientsBBDD(Set<Client> clients) throws SQLException, IOException{ 
         String sql = "SELECT id, nom, email FROM clients";
         
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON);
+        try ( Connection connexio = gestorBBDD.getConnectionFromFile();
               ResultSet resultSet = gestorBBDD.executaQuerySQL(connexio, sql) ) {   
             
             while (resultSet.next())
@@ -90,7 +90,7 @@ public class GestorTaller {
     private void carregaVehiclesBBDD(Set<Vehicle> vehicles) throws SQLException, IOException {
         String sql = "SELECT matricula, marca, model, client_id FROM vehicles";
         
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON);
+        try ( Connection connexio = gestorBBDD.getConnectionFromFile();
               ResultSet resultSet = gestorBBDD.executaQuerySQL(connexio, sql) ) { 
             
             while (resultSet.next())
@@ -144,7 +144,7 @@ public class GestorTaller {
     private void carregaReparacionsBBDD(Map<Integer, Reparacio> reparacions) throws SQLException, IOException {
         String sql = "SELECT r.id id, dataEntrada, matricula, cost, descripcio, estat FROM reparacions r, tasques t where r.id = t.reparacio_id";
         
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON);
+        try ( Connection connexio = gestorBBDD.getConnectionFromFile();
               ResultSet resultSet = gestorBBDD.executaQuerySQL(connexio, sql) ) { 
             
             Reparacio reparacio = null;
@@ -215,7 +215,7 @@ public class GestorTaller {
     }
     
     private void desaClientsBBDD(Set<Client> clients) throws SQLException, IOException {
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON)  ) {
+        try ( Connection connexio = gestorBBDD.getConnectionFromFile()  ) {
             connexio.setAutoCommit(true);
             
             for (Client c : clients)
@@ -256,7 +256,7 @@ public class GestorTaller {
     }
     
     private void desaVehiclesBBDD(Set<Vehicle> vehicles) throws SQLException, IOException {
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON)  ) {
+        try ( Connection connexio = gestorBBDD.getConnectionFromFile() ) {
             connexio.setAutoCommit(true);
             
             for (Vehicle v : vehicles) {
@@ -298,7 +298,7 @@ public class GestorTaller {
     }
     
     private void desaReparacionsBBDD(Map<Integer,Reparacio> reparacions) {
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON)  ) {
+        try ( Connection connexio = gestorBBDD.getConnectionFromFile() ) {
             connexio.setAutoCommit(true);
             
             for (Reparacio r : reparacions.values()) {
