@@ -138,7 +138,7 @@ public class GestorTaller {
         carregaReparacionsBBDD(this.reparacions);
         carregaReparacionsCSV(this.reparacions, path);
 
-        System.out.println(this.reparacions);
+        System.out.println(mostraReparacions(this.reparacions));
     }
     
     private void carregaReparacionsBBDD(Map<Integer, Reparacio> reparacions) throws SQLException, IOException {
@@ -156,7 +156,8 @@ public class GestorTaller {
                                                cercaVehicle( new Vehicle(resultSet.getString("matricula"), ".", ".", null) ),
                                                resultSet.getDouble("cost"),
                                                new ArrayList<>() ); 
-                reparacio.getTasques().add( new Tasca(resultSet.getString("descripcio"), null)  );
+                reparacio.getTasques().add( new Tasca( resultSet.getString("descripcio"), 
+                                                       EstatReparacio.valueOf(resultSet.getString("estat").toUpperCase()) )  );
                 afegeixReparacio( reparacions, reparacio );
             }
             
@@ -197,6 +198,14 @@ public class GestorTaller {
     
     public void afegeixReparacio(Map<Integer, Reparacio> reparacions, Reparacio reparacio) {
         reparacions.put(reparacio.getId(), reparacio);
+    }
+    
+    public String mostraReparacions(Map<Integer, Reparacio> reparacions) {
+        String text="Reparacions: \n";
+        for (Reparacio r : reparacions.values())
+            text += "\t" + r.toString() + "\n";
+        
+        return text;
     }
     
     // --- DESCÀRREGA CLIENTS
@@ -310,7 +319,6 @@ public class GestorTaller {
                     for (Tasca t : r.getTasques()) 
                         gestorBBDD.executaSQL( connexio, "INSERT INTO tasques (reparacio_id, descripcio, estat) VALUES(?, ?, ?)",
                                                (Integer) r.getId(), t.getDescripcio(), t.getEstat() );
-
                 }
             }
         } catch (SQLException e) {

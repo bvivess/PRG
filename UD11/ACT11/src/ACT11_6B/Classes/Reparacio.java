@@ -3,7 +3,7 @@ package ACT11_6B.Classes;
 import java.time.LocalDate;
 import java.util.List;
 
-public class Reparacio {
+public class Reparacio implements Comparable<Reparacio> {
     private int id;
     private LocalDate dataEntrada;
     private Vehicle vehicle;
@@ -59,6 +59,13 @@ public class Reparacio {
     }
 
     @Override
+    public int compareTo(Reparacio r) {
+        if (this.id > r.id) return 1;
+        else if (this.id < r.id) return -1;
+        else return 0;
+    }
+
+    @Override
     public int hashCode() {
         int hash = 3;
         hash = 89 * hash + this.id;
@@ -82,7 +89,12 @@ public class Reparacio {
 
     @Override
     public String toString() {
-        return "Reparacio{" + "id=" + id + ", dataEntrada=" + dataEntrada + ", vehicle=" + vehicle + ", cost=" + cost + ", tasques=" + tasques + '}';
+        String text = "Reparacio{" + "id=" + id + ", dataEntrada=" + dataEntrada + ", vehicle=" + vehicle + ", cost=" + cost + ", tasques=";
+        for (Tasca t : this.tasques) {
+            text += "\n\t\t" + t.toString();
+        }
+        
+        return text;
     }
 
 }
