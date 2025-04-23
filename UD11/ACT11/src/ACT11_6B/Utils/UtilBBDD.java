@@ -18,7 +18,7 @@ public class UtilBBDD {
         this.MYSQL_CON = MYSQL_CON;
     }    
     
-    protected Connection getConnectionFromFile() throws SQLException, IOException {
+    public Connection getConnectionFromFile() throws SQLException, IOException {
         Map<String, String> valorsConnexio = new HashMap<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(this.MYSQL_CON))) {
