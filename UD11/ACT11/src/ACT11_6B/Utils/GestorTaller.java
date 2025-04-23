@@ -145,7 +145,7 @@ public class GestorTaller {
     }
     
     private void carregaReparacionsBBDD(Map<Integer, Reparacio> reparacions) throws SQLException, IOException {
-        String sql = "SELECT r.id id, dataEntrada, matricula, cost, descripcio, estat FROM reparacions r, tasques t where r.id = reparacio_id;";
+        String sql = "SELECT r.id id, dataEntrada, matricula, cost, descripcio, estat FROM reparacions r, tasques t where r.id = t.reparacio_id";
         
         try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON);
               ResultSet resultSet = gestorBBDD.executaQuerySQL(connexio, sql) ) { 
