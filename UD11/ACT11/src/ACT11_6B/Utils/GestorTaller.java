@@ -314,10 +314,12 @@ public class GestorTaller {
     // Modifica dades
     public void modifica() {
         clients.forEach( client -> { client.setNom(client.getNom().toUpperCase());
-                                     client.setEmail(client.getEmail().toLowerCase() );
+                                     client.setEmail(client.getEmail().toLowerCase());
                                    });
 
-        vehicles.forEach( vehicle -> vehicle.setModel(vehicle.getModel().toUpperCase()) );
+        vehicles.forEach( vehicle -> { vehicle.setModel(vehicle.getModel().toUpperCase());
+                                       vehicle.setMarca(vehicle.getMarca().toUpperCase());
+                                     });
 
         reparacions.values().forEach( reparacio -> reparacio.setCost(reparacio.getCost() * 1.05) );
     }
