@@ -19,9 +19,9 @@ public class Main {
             gestorTaller.modifica();
 
             // DESA CLIENTS, VEHICLES i REPARACIONS
-            //gestorTaller.desaClients("c:/temp/clients_out.csv");
-            //gestorTaller.desaVehicles("c:/temp/vehicles_out.csv");
-            //gestorTaller.desaReparacions("c:/temp/reparacions_out.csv");
+            gestorTaller.desaClients("c:/temp/clients_out.csv");
+            gestorTaller.desaVehicles("c:/temp/vehicles_out.csv");
+            gestorTaller.desaReparacions("c:/temp/reparacions_out.csv");
 
         } catch (Exception e) {
             System.err.println("Error general: " + e.getMessage());

@@ -201,6 +201,59 @@ public class GestorTaller {
     public void afegeixReparacio(Map<Integer, Reparacio> reparacions, Reparacio reparacio) {
         reparacions.put(reparacio.getId(), reparacio);
     }
+    
+    // --- DESCÀRREGA CLIENTS
+    public void desaClients(String path) throws SQLException, IOException {
+        desaClientsBBDD(this.clients);
+        desaClientsCVS(this.clients, path);
+    }
+    
+    private void desaClientsBBDD(Set<Client> clients) throws SQLException, IOException {
+        try ( Connection connexio = gestorBBDD.getConnectionFromFile(MYSQL_CON)  ) {
+            connexio.setAutoCommit(true);
+            
+            for (Client c : clients)
+                try {
+                    gestorBBDD.executaSQL( connexio, "INSERT INTO clients (id, nom, email) VALUES (?,?,?)",
+                                           (Integer) c.getId(),  c.getNom(), c.getEmail() );
+
+                } catch (SQLException e) {
+                    if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)
+                        // Error per PK, modificar
+                        gestorBBDD.executaSQL( connexio, "UPDATE clients SET nom = ?, email = ? WHERE id = ?",
+                                               c.getNom(), c.getEmail(), (Integer) c.getId() );
+                    else
+                        throw e; // Re-llança si no és error de PK
+                }
+        } catch (SQLException e) {        
+            System.err.println("S'ha produït l'error general en Clients: " + e.getMessage());
+        } catch (IOException e) {
+            System.err.println("");
+        }
+    }
+    
+    private void desaClientsCVS(Set<Client> clients, String path) {
+        try (BufferedWriter br = Files.newBufferedWriter(Paths.get(path))) {
+            for (Client c : clients) {
+                br.write(c.getId() + "," + c.getNom() + "," + c.getEmail());
+                br.newLine();
+            }
+        } catch (IOException | NumberFormatException e) {
+            System.err.println("Error descarregant clients CVS: " + e.getMessage());
+        }
+    }
+    
+    // --- DESCÀRREGA VEHICLES
+    public void desaVehicles(String path) throws SQLException, IOException {
+        //desaVehiclesBBDD(this.clients);
+        //desaVehiclesCVS(this.clients, path);
+    }
+    
+    // --- DESCÀRREGA VEHICLES
+    public void desaReparacions(String path) throws SQLException, IOException {
+        //desaReparacionsBBDD(this.clients);
+        //desaReparacionsCVS(this.clients, path);
+    }
 
     // Modifica dades
     public void modifica() {
