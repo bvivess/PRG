@@ -72,6 +72,14 @@ public class GestorVendes {
         clients.add(client);
     }
     
+    private Client cercaClient (Client c) throws NoSuchElementException {
+        for (Client client : this.clients) 
+            if (c.equals(client))
+                return client;
+        
+        throw new NoSuchElementException("Client no trobat a la llista.");
+    }
+    
     // --- CÀRREGA PRODUCTES
     public void carregaProductes(String path) throws SQLException, IOException {
         carregaProductesBBDD(this.productes);
@@ -121,6 +129,14 @@ public class GestorVendes {
 
     public void afegeixProducte(Set<Producte> productes, Producte producte) {
         productes.add(producte);
+    }
+    
+    private Producte cercaProducte (Producte p) throws NoSuchElementException {
+        for (Producte producte : this.productes) 
+            if (p.equals(producte))
+                return producte;
+        
+        throw new NoSuchElementException("Producte no trobat a la llista.");
     }
     
     // --- CÀRREGA VENDES 
@@ -192,22 +208,6 @@ public class GestorVendes {
             text += "\t" + v.toString() + "\n";
         
         return text;
-    }
-    
-    private Client cercaClient (Client c) throws NoSuchElementException {
-        for (Client client : this.clients) 
-            if (c.equals(client))
-                return client;
-        
-        throw new NoSuchElementException("Client no trobat a la llista.");
-    }
-    
-    private Producte cercaProducte (Producte p) throws NoSuchElementException {
-        for (Producte producte : this.productes) 
-            if (p.equals(producte))
-                return producte;
-        
-        throw new NoSuchElementException("Producte no trobat a la llista.");
     }
     
     // --- DESCÀRREGA CLIENTS

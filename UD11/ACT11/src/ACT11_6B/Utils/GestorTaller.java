@@ -70,6 +70,19 @@ public class GestorTaller {
         }
     }
     
+    public void afegeixClient(Set<Client> clients, Client client) {
+        clients.add(client);
+    }
+    
+    private Client cercaClient (Client c) throws NoSuchElementException {
+        for (Client client : this.clients) 
+            if (c.equals(client))
+                return client;
+        
+        throw new NoSuchElementException("Client no trobat a la llista.");
+    }
+ 
+    // --- CÀRREGA VEHICLES
     public void carregaVehicles(String path) throws SQLException, IOException {
         carregaVehiclesBBDD(this.vehicles);
         carregaVehiclesCSV(this.vehicles, path);
@@ -110,20 +123,8 @@ public class GestorTaller {
             }
         }
     }
-    
-    public void afegeixClient(Set<Client> clients, Client client) {
-        clients.add(client);
-    }
-    
-    private Client cercaClient (Client c) throws NoSuchElementException {
-        for (Client client : this.clients) 
-            if (c.equals(client))
-                return client;
-        
-        throw new NoSuchElementException("Client no trobat a la llista.");
-    }
-    
-    public void afegeixVehicle(Set<Vehicle> vehicles, Vehicle vehicle) {
+
+   public void afegeixVehicle(Set<Vehicle> vehicles, Vehicle vehicle) {
         vehicles.add(vehicle);
     }
     
@@ -135,6 +136,7 @@ public class GestorTaller {
         throw new NoSuchElementException("Vehicle no trobat a la llista.");
     }
     
+    // CARREGA REPARACIONS  
     public void carregaReparacions(String path) throws SQLException, IOException {
         carregaReparacionsBBDD(this.reparacions);
         carregaReparacionsCSV(this.reparacions, path);
