@@ -246,7 +246,7 @@ public class GestorTaller {
     // --- DESCÀRREGA VEHICLES
     public void desaVehicles(String path) throws SQLException, IOException {
         desaVehiclesBBDD(this.vehicles);
-        //desaVehiclesCVS(this.clients, path);
+        desaVehiclesCVS(this.vehicles, path);
     }
     
     private void desaVehiclesBBDD(Set<Vehicle> vehicles) throws SQLException, IOException {
@@ -273,10 +273,22 @@ public class GestorTaller {
         }
     }
     
+    private void desaVehiclesCVS(Set<Vehicle> vehicles, String path) {
+        try (BufferedWriter br = Files.newBufferedWriter(Paths.get(path))) {
+            for (Vehicle v : vehicles) {
+                br.write(v.getMatricula() + "," + v.getMarca() + "," + v.getModel() + "," + v.getClient().getId());
+                br.newLine();
+            }
+        } catch (IOException | NumberFormatException e) {
+            System.err.println("Error descarregant clients CVS: " + e.getMessage());
+        }
+    }  
+
+    
     // --- DESCÀRREGA VEHICLES
     public void desaReparacions(String path) throws SQLException, IOException {
         desaReparacionsBBDD(this.reparacions);
-        //desaReparacionsCVS(this.clients, path);
+        desaReparacionsCVS(this.reparacions, path);
     }
     
     private void desaReparacionsBBDD(Map<Integer,Reparacio> reparacions) {
@@ -310,6 +322,21 @@ public class GestorTaller {
             System.err.println("");
         }
     }
+    
+    private void desaReparacionsCVS(Map<Integer,Reparacio> reparacions, String path) {
+        try (BufferedWriter br = Files.newBufferedWriter(Paths.get(path))) {
+            for (Reparacio r : reparacions.values()) {
+                String text = r.getId() + "," + r.getDataEntrada() + "," + r.getVehicle().getMatricula() + "," + r.getCost() + ",";
+                for (Tasca t : r.getTasques())
+                    text += t.getDescripcio() + "," + t.getEstat() + ";";
+                br.write(text);
+                br.newLine();
+            }
+        } catch (IOException | NumberFormatException e) {
+            System.err.println("Error descarregant vendes CVS: " + e.getMessage());
+        }
+    }
+
 
     // Modifica dades
     public void modifica() {
@@ -323,6 +350,5 @@ public class GestorTaller {
 
         reparacions.values().forEach( reparacio -> reparacio.setCost(reparacio.getCost() * 1.05) );
     }
-
 
 }
