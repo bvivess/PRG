@@ -58,7 +58,6 @@ public class UtilBBDD {
             return stmt.executeQuery();
         } catch (SQLException e) {
             throw e;  // Es propaga l'excepció al mètode anterior
-            //return -1;
         }
     }
     
@@ -70,7 +69,6 @@ public class UtilBBDD {
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw e;  // Es propaga l'excepció al mètode anterior
-            //return -1;
         }
     }
     
