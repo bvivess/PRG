@@ -24,7 +24,7 @@ public class Main {
             gestorTaller.desaReparacions("c:/temp/reparacions_out.csv");
 
         } catch (Exception e) {
-            System.err.println("Error general: " + e.getMessage());
+            System.err.println("Error GENERAL: " + e.getMessage());
         }
     }
 }
