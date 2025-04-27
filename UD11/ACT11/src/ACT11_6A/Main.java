@@ -24,7 +24,7 @@ public class Main {
             gestorVendes.desaVendes("c:\\temp\\vendes_out.csv");
 
         } catch (Exception e) {
-            System.out.println("Error GENERAL: " + e.getMessage());
+            System.out.println( "Error GENERAL: " + e.getMessage() );
         }
     }
 }
