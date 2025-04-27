@@ -54,6 +54,9 @@ public class GestorTaller {
         try (BufferedReader br = Files.newBufferedReader(Paths.get(path))) {
             String linia;
             while ((linia = br.readLine()) != null) {
+                
+                System.out.println(linia);
+                
                 if (!(linia.isEmpty() || linia.startsWith("#"))) {
                     String[] parts = linia.split(",");
                     if (parts.length == 3) 
@@ -63,7 +66,7 @@ public class GestorTaller {
                 }
             }
         } catch (IOException | NumberFormatException e) {
-            System.err.println("Error carregant clients CVS: " + e.getMessage());
+            System.err.println("Error carregant clients CSV: " + e.getMessage());
         }
     }
     
@@ -118,6 +121,10 @@ public class GestorTaller {
                                                            cercaClient( new Client(Integer.parseInt(parts[3].trim()), ".", ".") ) ) );
                 }
             }
+        } catch (IOException | NumberFormatException e) {
+            System.err.println("Error carregant vehicles CSV: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Error general carregant vehicles CSV: " + e.getMessage());
         }
     }
 
@@ -193,6 +200,10 @@ public class GestorTaller {
                     }
                 }
             }
+        } catch (IOException | NumberFormatException e) {
+            System.err.println("Error carregant reparacions CSV: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Error general carregant reparacions CSV: " + e.getMessage());
         }
     }
     
@@ -211,7 +222,7 @@ public class GestorTaller {
     // --- DESCÀRREGA CLIENTS
     public void desaClients(String path) throws SQLException, IOException {
         desaClientsBBDD(this.clients);
-        desaClientsCVS(this.clients, path);
+        desaClientsCSV(this.clients, path);
     }
     
     private void desaClientsBBDD(Set<Client> clients) throws SQLException, IOException {
@@ -238,21 +249,21 @@ public class GestorTaller {
         }
     }
     
-    private void desaClientsCVS(Set<Client> clients, String path) {
+    private void desaClientsCSV(Set<Client> clients, String path) {
         try (BufferedWriter br = Files.newBufferedWriter(Paths.get(path))) {
             for (Client c : clients) {
                 br.write(c.getId() + "," + c.getNom() + "," + c.getEmail());
                 br.newLine();
             }
         } catch (IOException | NumberFormatException e) {
-            System.err.println("Error descarregant clients CVS: " + e.getMessage());
+            System.err.println("Error descarregant clients CSV: " + e.getMessage());
         }
     }
     
     // --- DESCÀRREGA VEHICLES
     public void desaVehicles(String path) throws SQLException, IOException {
         desaVehiclesBBDD(this.vehicles);
-        desaVehiclesCVS(this.vehicles, path);
+        desaVehiclesCSV(this.vehicles, path);
     }
     
     private void desaVehiclesBBDD(Set<Vehicle> vehicles) throws SQLException, IOException {
@@ -279,14 +290,14 @@ public class GestorTaller {
         }
     }
     
-    private void desaVehiclesCVS(Set<Vehicle> vehicles, String path) {
+    private void desaVehiclesCSV(Set<Vehicle> vehicles, String path) {
         try (BufferedWriter br = Files.newBufferedWriter(Paths.get(path))) {
             for (Vehicle v : vehicles) {
                 br.write(v.getMatricula() + "," + v.getMarca() + "," + v.getModel() + "," + v.getClient().getId());
                 br.newLine();
             }
         } catch (IOException | NumberFormatException e) {
-            System.err.println("Error descarregant clients CVS: " + e.getMessage());
+            System.err.println("Error descarregant clients CSV: " + e.getMessage());
         }
     }  
 
@@ -294,7 +305,7 @@ public class GestorTaller {
     // --- DESCÀRREGA VEHICLES
     public void desaReparacions(String path) throws SQLException, IOException {
         desaReparacionsBBDD(this.reparacions);
-        desaReparacionsCVS(this.reparacions, path);
+        desaReparacionsCSV(this.reparacions, path);
     }
     
     private void desaReparacionsBBDD(Map<Integer,Reparacio> reparacions) {
@@ -328,7 +339,7 @@ public class GestorTaller {
         }
     }
     
-    private void desaReparacionsCVS(Map<Integer,Reparacio> reparacions, String path) {
+    private void desaReparacionsCSV(Map<Integer,Reparacio> reparacions, String path) {
         try (BufferedWriter br = Files.newBufferedWriter(Paths.get(path))) {
             for (Reparacio r : reparacions.values()) {
                 String text = r.getId() + "," + r.getDataEntrada() + "," + r.getVehicle().getMatricula() + "," + r.getCost() + ",";
@@ -338,7 +349,7 @@ public class GestorTaller {
                 br.newLine();
             }
         } catch (IOException | NumberFormatException e) {
-            System.err.println("Error descarregant vendes CVS: " + e.getMessage());
+            System.err.println("Error descarregant vendes CSV: " + e.getMessage());
         }
     }
 

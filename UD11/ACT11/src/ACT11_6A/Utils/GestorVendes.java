@@ -64,7 +64,7 @@ public class GestorVendes {
                 }
             }
         } catch (IOException | NumberFormatException e) {
-            System.err.println("Error carregant clients CVS: " + e.getMessage());
+            System.err.println("Error carregant clients CSV: " + e.getMessage());
         }
     }
 
@@ -121,9 +121,9 @@ public class GestorVendes {
                 }
             }
         } catch (IOException | NumberFormatException e) {
-            System.err.println("Error carregant productes CVS: " + e.getMessage());
+            System.err.println("Error carregant productes CSV: " + e.getMessage());
         } catch (Exception e) {
-            System.err.println("Error general carregant productes CVS: " + e.getMessage());
+            System.err.println("Error general carregant productes CSV: " + e.getMessage());
         }
     }
 
@@ -194,7 +194,7 @@ public class GestorVendes {
                 }
             }
         } catch (IOException | NumberFormatException e) {
-            System.err.println("Error carregant vendes CVS: " + e.getMessage());
+            System.err.println("Error carregant vendes CSV: " + e.getMessage());
         }
     }
   
@@ -213,7 +213,7 @@ public class GestorVendes {
     // --- DESCÀRREGA CLIENTS
     public void desaClients(String path) throws SQLException, IOException {
         desaClientsBBDD(this.clients);
-        desaClientsCVS(this.clients, path);
+        desaClientsCSV(this.clients, path);
     }
     
     private void desaClientsBBDD(Set<Client> clients) throws SQLException, IOException {
@@ -240,21 +240,21 @@ public class GestorVendes {
         }
     }
     
-    private void desaClientsCVS(Set<Client> clients, String path) {
+    private void desaClientsCSV(Set<Client> clients, String path) {
         try (BufferedWriter br = Files.newBufferedWriter(Paths.get(path))) {
             for (Client c : clients) {
                 br.write(c.getId() + "," + c.getNom() + "," + c.getEmail());
                 br.newLine();
             }
         } catch (IOException | NumberFormatException e) {
-            System.err.println("Error descarregant clients CVS: " + e.getMessage());
+            System.err.println("Error descarregant clients CSV: " + e.getMessage());
         }
     }
     
     // --- DESCÀRREGA PRODUCTES
     public void desaProductes(String path) throws SQLException, IOException {
         desaProductesBBDD(this.productes);
-        desaProductesCVS(this.productes, path);
+        desaProductesCSV(this.productes, path);
     }
     
     private void desaProductesBBDD(Set<Producte> productes) throws SQLException, IOException {
@@ -281,21 +281,21 @@ public class GestorVendes {
         }
     }
     
-    private void desaProductesCVS(Set<Producte> productes, String path) {
+    private void desaProductesCSV(Set<Producte> productes, String path) {
         try (BufferedWriter br = Files.newBufferedWriter(Paths.get(path))) {
             for (Producte p : productes) {
                 br.write(p.getId() + "," + p.getNom() + "," + p.getPreu() + "," + p.getCategoria());
                 br.newLine();
             }
         } catch (IOException | NumberFormatException e) {
-            System.err.println("Error descarregant productes CVS: " + e.getMessage());
+            System.err.println("Error descarregant productes CSV: " + e.getMessage());
         }
     }  
     
     // --- DESCÀRREGA VENDES
     public void desaVendes(String path) {
         desaVendesBBDD(this.vendes);
-        desaVendesCVS(this.vendes, path);
+        desaVendesCSV(this.vendes, path);
     }
     
     private void desaVendesBBDD(Map<Integer,Venda> vendes) {
@@ -330,7 +330,7 @@ public class GestorVendes {
         }
     }
     
-    private void desaVendesCVS(Map<Integer,Venda> vendes, String path) {
+    private void desaVendesCSV(Map<Integer,Venda> vendes, String path) {
         try (BufferedWriter br = Files.newBufferedWriter(Paths.get(path))) {
             for (Venda v : vendes.values()) {
                 String text = v.getId() + "," + v.getDataVenda() + "," + v.getClient().getId() + ",";
@@ -340,7 +340,7 @@ public class GestorVendes {
                 br.newLine();
             }
         } catch (IOException | NumberFormatException e) {
-            System.err.println("Error descarregant vendes CVS: " + e.getMessage());
+            System.err.println("Error descarregant vendes CSV: " + e.getMessage());
         }
     }
     
