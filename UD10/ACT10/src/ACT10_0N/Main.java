@@ -12,7 +12,7 @@ public class Main {
             new Persona("Anna", 30)
         );
 
-        // Collections.sort(persones, new ComparadorPersonaPerEdat());
+        //Collections.sort(persones, new ComparadorPersonaPerEdat());
         persones.sort(new ComparadorPersonaPerEdat());  // Ordena segons 'ComparadorPersonaPerEdat'
         
         System.out.println(persones);  // [Joan (25), Anna (30), Marc (35)]
