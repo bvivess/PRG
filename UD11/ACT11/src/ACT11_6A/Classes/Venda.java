@@ -1,15 +1,15 @@
 package ACT11_6A.Classes;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 
 public class Venda {
     int id;
     LocalDate dataVenda;
     Client client;
-    List<Producte> productes;
+    Set<Producte> productes;
 
-    public Venda(int id, LocalDate dataVenda, Client client, List<Producte> productes) {
+    public Venda(int id, LocalDate dataVenda, Client client, Set<Producte> productes) {
         setId(id);
         setDataVenda(dataVenda);
         setClient(client);
@@ -43,11 +43,11 @@ public class Venda {
         this.client = client;
     }
 
-    public List<Producte> getProductes() {
+    public Set<Producte> getProductes() {
         return productes;
     }
 
-    public void setProductes(List<Producte> productes) {
+    public void setProductes(Set<Producte> productes) {
         this.productes = productes;
     }
 

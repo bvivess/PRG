@@ -72,6 +72,7 @@ public class GestorVendes {
         clients.add(client);
     }
     
+    // cerca la referència del client en 'clients'
     private Client cercaClient (Client c) throws NoSuchElementException {
         for (Client client : this.clients) 
             if (c.equals(client))
@@ -131,6 +132,7 @@ public class GestorVendes {
         productes.add(producte);
     }
     
+    // cerca la referència del producte en 'productes'
     private Producte cercaProducte (Producte p) throws NoSuchElementException {
         for (Producte producte : this.productes) 
             if (p.equals(producte))
@@ -141,8 +143,9 @@ public class GestorVendes {
     
     // --- CÀRREGA VENDES 
     public void carregaVendes(String path) throws SQLException, IOException {
-        carregaVendesBBDD(this.vendes);
         carregaVendesCSV(this.vendes, path);
+        carregaVendesBBDD(this.vendes);
+        
         
         System.out.println(mostraVendes(this.vendes));
     }
@@ -155,17 +158,17 @@ public class GestorVendes {
             
             Venda venda = null;
             while (resultSet.next()) {
-                venda = vendes.get(resultSet.getInt("id"));
-                if ( venda == null)
+                venda = vendes.get(resultSet.getInt("id"));  // cerca venda en el 'map' vendes ?
+                if ( venda == null)  // si no existeix, crear nova venda
                     venda = new Venda(  resultSet.getInt("id"),
                                         resultSet.getDate("data").toLocalDate(),
                                         cercaClient( new Client(resultSet.getInt("client_id"), ".", ".") ),
-                                        new ArrayList<>() ); 
+                                        new HashSet<>() ); 
+                // crear el producte sobre l'arraylist creat o trobat
                 venda.getProductes().add( cercaProducte( new Producte(resultSet.getInt("producte_id"), ".", 0.0, null) ) );
-                afegeixVenda(vendes, venda);
+                afegeixVenda(vendes, venda);  // afegeix l'objecte al 'map' vendes
             }
-            
-                                                  
+                                                          
         } catch (SQLException e) {
             System.err.println("Error carregant clients BBDD: " + e.getMessage());
         }
@@ -179,17 +182,20 @@ public class GestorVendes {
                     String[] parts = linia.split(",");
                     if (parts.length == 4) {
                         // Processar els productes separats per ;
-                        Venda venda = new Venda( Integer.parseInt(parts[0].trim()),
-                                                 LocalDate.parse(parts[1].trim()),
-                                                 cercaClient( new Client(Integer.parseInt(parts[2].trim()), null, null) ), // 'client' temporal
-                                                 new ArrayList<>() );
+                        Venda venda = vendes.get(Integer.parseInt(parts[0].trim()));  // cerca venda en el 'map' vendes ?
+                        if ( venda == null)  // si no existeix, crear nova venda 
+                            venda = new Venda( Integer.parseInt(parts[0].trim()),
+                                                     LocalDate.parse(parts[1].trim()),
+                                                     cercaClient( new Client(Integer.parseInt(parts[2].trim()), null, null) ), // 'client' temporal
+                                                     new HashSet<>() );
                         
+                        // crear els productes sobre l'arraylist creat o trobat
                         String[] producteIds = parts[3].trim().split(";");
                         for (String pId : producteIds) 
                             if (!pId.trim().isEmpty()) 
                                 venda.getProductes().add( cercaProducte( new Producte(Integer.parseInt(pId.trim()), null, 0.0, null) ) );
                         
-                        afegeixVenda(this.vendes, venda );
+                        afegeixVenda(this.vendes, venda );  // afegeix l'objecte al 'map' vendes
                     }
                 }
             }
