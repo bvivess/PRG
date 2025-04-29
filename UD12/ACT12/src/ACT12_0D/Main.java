@@ -1,8 +1,9 @@
 package ACT12_0D;
 
+import java.util.List;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.List;
+import java.util.Comparator;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,9 +13,14 @@ public class Main {
             new Persona("Anna", 30)
         );
 
-        // Collections.sort(persones, new ComparadorPersonaPerEdat());
-        // persones.sort(new ComparadorPersonaPerEdat());  // Ordena segons 'ComparadorPersonaPerEdat'
-        persones.sort((p1, p2) -> Integer.compare(p1.getEdat(), p2.getEdat()));
+        Collections.sort( persones,
+                          new Comparator<Persona>() { @Override
+                                                      public int compare(Persona p1, Persona p2) {
+                                                          return Integer.compare(p1.getEdat(), p2.getEdat());
+                                                          //return p1.getNom().compareTo(p2.getNom());
+                                                      }
+                                                     });
         System.out.println(persones);  // [Joan (25), Anna (30), Marc (35)]
     }
 }
+

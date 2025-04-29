@@ -9,7 +9,7 @@ abstract class Persona {
         this.edat = edat;
     }
    
-    public abstract void saluda();
+    public abstract void saluda();  // Métode abstracte en classe abstracte
 
     public String getNom() {
         return nom;

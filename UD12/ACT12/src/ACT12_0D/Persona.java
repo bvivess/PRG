@@ -2,10 +2,6 @@ package ACT12_0D;
 
 import java.util.Objects;
 
-/**
- *
- * @author winadmin
- */
 public class Persona {
     private String nom;
     private int edat;
@@ -13,11 +9,6 @@ public class Persona {
     public Persona(String nom, int edat) {
         this.nom = nom;
         this.edat = edat;
-    }
-
-    @Override
-    public String toString() {
-        return "Persona{" + "nom=" + nom + ", edat=" + edat + '}';
     }
     
     @Override
@@ -40,7 +31,11 @@ public class Persona {
     public int getEdat() {
         return edat;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Persona{" + "nom=" + nom + ", edat=" + edat + '}';
+    }    
     
 }
 

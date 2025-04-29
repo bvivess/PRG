@@ -15,11 +15,6 @@ public class Persona {
         this.nom = nom;
         this.edat = edat;
     }
-
-    @Override
-    public String toString() {
-        return "Persona{" + "nom=" + nom + ", edat=" + edat + '}';
-    }
     
     @Override
     public boolean equals(Object o) {
@@ -42,5 +37,9 @@ public class Persona {
         return edat;
     }
 
+    @Override
+    public String toString() {
+        return "Persona{" + "nom=" + nom + ", edat=" + edat + '}';
+    }
 }
 
