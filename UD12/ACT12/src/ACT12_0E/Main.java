@@ -1,7 +1,7 @@
 package ACT12_0E;
 
 import java.util.Arrays;
-import java.util.Collections;
+// import java.util.Collections;
 import java.util.List;
 
 public class Main {
