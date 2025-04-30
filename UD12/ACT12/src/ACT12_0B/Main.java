@@ -8,7 +8,7 @@ public class Main {
             
             @Override
             public void saluda(){ 
-                System.out.println("Hola, sóc " + super.getNom() + " una persona anònima");
+                System.out.println("Hola, sóc " + super.getNom() + ", una persona anònima");
             }
             
         }.saluda();
