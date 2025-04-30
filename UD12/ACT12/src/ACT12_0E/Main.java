@@ -16,6 +16,7 @@ public class Main {
         persones.sort(null);  // ordenat per l''ordre natural'
         
         // Collections.sort(persones, new ComparadorPersonaPerEdat());
+        // persones.sort( new ComparadorPersonaPerEdat() );
         persones.sort( (p1, p2) -> Integer.compare(p1.getEdat(), p2.getEdat()) );  // ordenat segons la Interfície funcional 'Comparator' (o la seva lambda)
         /*
         persones.sort( (Persona p1, Persona p2) -> { int resultat;
