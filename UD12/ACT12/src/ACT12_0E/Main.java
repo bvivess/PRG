@@ -14,6 +14,7 @@ public class Main {
 
         // Collections.sort(persones);
         persones.sort(null);  // ordenat per l''ordre natural'
+        System.out.println(persones);  // [Persona{nom=Anna, edat=30}, Persona{nom=Joan, edat=25}, Persona{nom=Marc, edat=35}]
         
         // Collections.sort(persones, new ComparadorPersonaPerEdat());
         // persones.sort( new ComparadorPersonaPerEdat() );
@@ -25,6 +26,6 @@ public class Main {
                                                    }
                       );
         */
-        System.out.println(persones);  // [Joan (25), Anna (30), Marc (35)]
+        System.out.println(persones);  // [Persona{nom=Joan, edat=25}, Persona{nom=Anna, edat=30}, Persona{nom=Marc, edat=35}]
     }
 }
