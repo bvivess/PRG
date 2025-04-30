@@ -7,13 +7,18 @@ import java.util.Objects;
  *
  * @author winadmin
  */
-public class Persona {
+public class Persona implements Comparable<Persona> {
     private String nom;
     private int edat;
 
     public Persona(String nom, int edat) {
         this.nom = nom;
         this.edat = edat;
+    }
+    
+    @Override
+    public int compareTo(Persona p) {
+        return this.nom.compareTo(p.nom); // Ordre per Nom
     }
     
     @Override
