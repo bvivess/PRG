@@ -36,13 +36,15 @@ public class Main {
                      );
         
         // EMPRANT funcions lambda de la interfície funcional 'Comparator'
+        // versió lambda detallada
         persones.sort( (Persona p1, Persona p2) -> { int resultat;
                                                      resultat = Integer.compare(p1.getEdat(), p2.getEdat());
                                                      return resultat;
                                                    }
                       );
-
+        // versió lambda reduïda
         persones.sort( (p1, p2) -> Integer.compare(p1.getEdat(), p2.getEdat()) );  // ordenat segons la Interfície funcional 'Comparator' (o la seva lambda)
         System.out.println(persones);  // [Persona{nom=Joan, edat=25}, Persona{nom=Anna, edat=30}, Persona{nom=Marc, edat=35}]
+        
     }
 }
