@@ -4,11 +4,13 @@ public class Main {
 
     public static void main(String[] args) {
         // Classe anònima a partir d'Interfície
-        new Persona(){
+        new Persona() {
+            private String nom = "Bernat";
+            private int edat = 23;
             
             @Override
             public void saluda(){ 
-                System.out.println("Hola, sóc una persona anònima");
+                System.out.println("Hola, sóc " + this.nom + " una persona anònima");
             }
             
         }.saluda();
