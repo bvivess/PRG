@@ -3,6 +3,7 @@ package ACT12_0C;
 public class Main {
 
     public static void main(String[] args) {
+        // Classe anònima a partir d'Interfície
         new Persona(){
             
             @Override
