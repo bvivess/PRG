@@ -18,19 +18,16 @@ public class Main {
 
             String sql = "INSERT INTO usuaris (nom) VALUES (?)";
 
-            try ( PreparedStatement stmt = conn.prepareStatement(sql) ) {
-                noms.stream()
-                    .forEach( nom -> { 
-                                        try {
-                                            //stmt.setString(1, nom);
-                                            //stmt.executeUpdate();
-                                            gestorBBDD.executaQuerySQL(conn, sql, nom);
-                                        } catch (SQLException e) {
-                                            System.err.println(e.getMessage());
-                                        }
-                                     }
-                            );
-            }
+            noms.stream()
+                .forEach( nom -> { 
+                                    try {
+                                        gestorBBDD.executaSQL(conn, sql, nom);
+                                    } catch (SQLException e) {
+                                        System.err.println(e.getMessage());
+                                    }
+                                 }
+                        );
+
 
         } catch (Exception e) {
             System.err.println(e.getMessage());
