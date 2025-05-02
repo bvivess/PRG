@@ -20,7 +20,7 @@ import java.time.LocalDate;
 
 public class GestorVendes {
     final String MYSQL_CON = "c:\\temp\\mysql.con";
-    UtilBBDD gestorBBDD = new UtilBBDD(MYSQL_CON);
+    GestorBBDD gestorBBDD = new GestorBBDD(MYSQL_CON);
     
     Set<Client> clients = new HashSet<>();
     Set<Producte> productes = new HashSet<>();
@@ -37,8 +37,8 @@ public class GestorVendes {
     public void carregaClientsBBDD(Set<Client> clients) throws SQLException, IOException{ 
         String sql = "SELECT id, nom, email FROM clients";
         
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile();
-              ResultSet resultSet = gestorBBDD.executaQuerySQL(connexio, sql) ) {   
+        try ( Connection conn = gestorBBDD.getConnectionFromFile();
+              ResultSet resultSet = gestorBBDD.executaQuerySQL(conn, sql) ) {   
             
             while (resultSet.next())
                 afegeixClient( clients, new Client( resultSet.getInt("id"),
@@ -93,8 +93,8 @@ public class GestorVendes {
     public void carregaProductesBBDD(Set<Producte> productes) throws SQLException, IOException{ 
         String sql = "SELECT id, nom, preu, categoria FROM productes";
         
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile();
-              ResultSet resultSet = gestorBBDD.executaQuerySQL(connexio, sql) ) { 
+        try ( Connection conn = gestorBBDD.getConnectionFromFile();
+              ResultSet resultSet = gestorBBDD.executaQuerySQL(conn, sql) ) { 
             
             while (resultSet.next())
                 afegeixProducte( productes, new Producte( resultSet.getInt("id"),
@@ -153,8 +153,8 @@ public class GestorVendes {
     public void carregaVendesBBDD(Map<Integer,Venda> vendes) throws SQLException, IOException{ 
         String sql = "SELECT id, client_id, data, producte_id FROM vendes, venda_producte where id = venda_id";
         
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile();
-              ResultSet resultSet = gestorBBDD.executaQuerySQL(connexio, sql) ) { 
+        try ( Connection conn = gestorBBDD.getConnectionFromFile();
+              ResultSet resultSet = gestorBBDD.executaQuerySQL(conn, sql) ) { 
             
             Venda venda = null;
             while (resultSet.next()) {
@@ -223,18 +223,18 @@ public class GestorVendes {
     }
     
     private void desaClientsBBDD(Set<Client> clients) throws SQLException, IOException {
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile()  ) {
-            connexio.setAutoCommit(true);
+        try ( Connection conn = gestorBBDD.getConnectionFromFile()  ) {
+            conn.setAutoCommit(true);
             
             for (Client c : clients)
                 try {
-                    gestorBBDD.executaSQL( connexio, "INSERT INTO clients (id, nom, email) VALUES (?, ?, ?)",
+                    gestorBBDD.executaSQL( conn, "INSERT INTO clients (id, nom, email) VALUES (?, ?, ?)",
                                            (Integer) c.getId(),  c.getNom(), c.getEmail() );
 
                 } catch (SQLException e) {
                     if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)
                         // Error per PK, modificar
-                        gestorBBDD.executaSQL( connexio, "UPDATE clients SET nom = ?, email = ? WHERE id = ?",
+                        gestorBBDD.executaSQL( conn, "UPDATE clients SET nom = ?, email = ? WHERE id = ?",
                                                c.getNom(), c.getEmail(), (Integer) c.getId() );
                     else
                         throw e; // Re-llança si no és error de PK
@@ -264,17 +264,17 @@ public class GestorVendes {
     }
     
     private void desaProductesBBDD(Set<Producte> productes) throws SQLException, IOException {
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile()  ) {
-            connexio.setAutoCommit(true);
+        try ( Connection conn = gestorBBDD.getConnectionFromFile()  ) {
+            conn.setAutoCommit(true);
             
             for (Producte p : productes) {
                 try {
-                    gestorBBDD.executaSQL( connexio, "INSERT INTO productes (id, nom, preu, categoria) VALUES (?, ?, ?, ?)",
+                    gestorBBDD.executaSQL( conn, "INSERT INTO productes (id, nom, preu, categoria) VALUES (?, ?, ?, ?)",
                                            (Integer) p.getId(), p.getNom(), (Double) p.getPreu(), p.getCategoria() );
                 } catch (SQLException e) {
                     if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)
                         // Error per PK, modificar
-                        gestorBBDD.executaSQL( connexio, "UPDATE productes SET nom = ?, preu = ?, categoria = ? WHERE id = ?",
+                        gestorBBDD.executaSQL( conn, "UPDATE productes SET nom = ?, preu = ?, categoria = ? WHERE id = ?",
                                                p.getNom(), (Double) p.getPreu(), p.getCategoria(), (Integer) p.getId() );
                     else
                         throw e; // Re-llança si no és error de PK
@@ -305,26 +305,26 @@ public class GestorVendes {
     }
     
     private void desaVendesBBDD(Map<Integer,Venda> vendes) {
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile()  ) {
-            connexio.setAutoCommit(true);
+        try ( Connection conn = gestorBBDD.getConnectionFromFile()  ) {
+            conn.setAutoCommit(true);
             
             for (Venda v : vendes.values()) {
                 try {
-                    gestorBBDD.executaSQL( connexio, "INSERT INTO vendes (id, client_id, data) VALUES (?,?,?)",  
+                    gestorBBDD.executaSQL( conn, "INSERT INTO vendes (id, client_id, data) VALUES (?,?,?)",  
                                            (Integer) v.getId(), (Integer) v.getClient().getId(), java.sql.Date.valueOf(v.getDataVenda()) );
                 } catch (SQLException e) {
                     if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)
                         // Error per PK, modificar
-                        gestorBBDD.executaSQL( connexio, "UPDATE vendes SET client_id = ?, data = ? WHERE id = ?",
+                        gestorBBDD.executaSQL( conn, "UPDATE vendes SET client_id = ?, data = ? WHERE id = ?",
                                                (Integer) v.getClient().getId(), java.sql.Date.valueOf(v.getDataVenda()), (Integer) v.getId());
                     else 
                         throw e; // Re-llança si no és error de PK
                 } finally {
-                    gestorBBDD.executaSQL( connexio, "DELETE FROM venda_producte where venda_id = ?",
+                    gestorBBDD.executaSQL( conn, "DELETE FROM venda_producte where venda_id = ?",
                                            (Integer) v.getId() );
                     
                     for (Producte p : v.getProductes()) 
-                        gestorBBDD.executaSQL( connexio, "INSERT INTO venda_producte (venda_id, producte_id) VALUES(?,?)",
+                        gestorBBDD.executaSQL( conn, "INSERT INTO venda_producte (venda_id, producte_id) VALUES(?,?)",
                                                (Integer) v.getId(), (Integer) p.getId());
 
                 }

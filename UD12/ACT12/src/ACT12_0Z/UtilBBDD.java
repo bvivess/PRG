@@ -50,9 +50,9 @@ public class UtilBBDD {
                                             valorsConnexio.get("PASSWD"));
     }
     
-    public ResultSet executaQuerySQL(Connection connexio, String sql, Object... arguments) throws SQLException {
+    public ResultSet executaQuerySQL(Connection conn, String sql, Object... arguments) throws SQLException {
         try {
-            PreparedStatement stmt = connexio.prepareStatement(sql);
+            PreparedStatement stmt = conn.prepareStatement(sql);
             assignaArguments(stmt, arguments);
             
             return stmt.executeQuery();
@@ -61,9 +61,9 @@ public class UtilBBDD {
         }
     }
     
-    public void executaSQL(Connection connexio, String sql, Object... arguments) throws SQLException {
+    public void executaSQL(Connection conn, String sql, Object... arguments) throws SQLException {
         try {
-            PreparedStatement stmt = connexio.prepareStatement(sql);
+            PreparedStatement stmt = conn.prepareStatement(sql);
             assignaArguments(stmt, arguments);
             
             stmt.executeUpdate();

@@ -19,7 +19,7 @@ import java.util.Set;
 
 public class GestorTaller {
     final String MYSQL_CON = "c:\\temp\\mysql.con";
-    UtilBBDD gestorBBDD = new UtilBBDD(MYSQL_CON);
+    GestorBBDD gestorBBDD = new GestorBBDD(MYSQL_CON);
     
     Set<Client> clients = new HashSet<>();
     Set<Vehicle> vehicles = new HashSet<>();
@@ -36,8 +36,8 @@ public class GestorTaller {
     public void carregaClientsBBDD(Set<Client> clients) throws SQLException, IOException{ 
         String sql = "SELECT id, nom, email FROM clients";
         
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile();
-              ResultSet resultSet = gestorBBDD.executaQuerySQL(connexio, sql) ) {   
+        try ( Connection conn = gestorBBDD.getConnectionFromFile();
+              ResultSet resultSet = gestorBBDD.executaQuerySQL(conn, sql) ) {   
             
             while (resultSet.next())
                 afegeixClient( clients, new Client( resultSet.getInt("id"),
@@ -93,8 +93,8 @@ public class GestorTaller {
     private void carregaVehiclesBBDD(Set<Vehicle> vehicles) throws SQLException, IOException {
         String sql = "SELECT matricula, marca, model, client_id FROM vehicles";
         
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile();
-              ResultSet resultSet = gestorBBDD.executaQuerySQL(connexio, sql) ) { 
+        try ( Connection conn = gestorBBDD.getConnectionFromFile();
+              ResultSet resultSet = gestorBBDD.executaQuerySQL(conn, sql) ) { 
             
             while (resultSet.next())
                 afegeixVehicle( vehicles, new Vehicle( resultSet.getString("matricula"),
@@ -151,8 +151,8 @@ public class GestorTaller {
     private void carregaReparacionsBBDD(Map<Integer, Reparacio> reparacions) throws SQLException, IOException {
         String sql = "SELECT r.id id, dataEntrada, matricula, cost, descripcio, estat FROM reparacions r, tasques t where r.id = t.reparacio_id";
         
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile();
-              ResultSet resultSet = gestorBBDD.executaQuerySQL(connexio, sql) ) { 
+        try ( Connection conn = gestorBBDD.getConnectionFromFile();
+              ResultSet resultSet = gestorBBDD.executaQuerySQL(conn, sql) ) { 
             
             Reparacio reparacio = null;
             while (resultSet.next()) {
@@ -226,18 +226,18 @@ public class GestorTaller {
     }
     
     private void desaClientsBBDD(Set<Client> clients) throws SQLException, IOException {
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile()  ) {
-            connexio.setAutoCommit(true);
+        try ( Connection conn = gestorBBDD.getConnectionFromFile()  ) {
+            conn.setAutoCommit(true);
             
             for (Client c : clients)
                 try {
-                    gestorBBDD.executaSQL( connexio, "INSERT INTO clients (id, nom, email) VALUES (?,?,?)",
+                    gestorBBDD.executaSQL( conn, "INSERT INTO clients (id, nom, email) VALUES (?,?,?)",
                                            (Integer) c.getId(),  c.getNom(), c.getEmail() );
 
                 } catch (SQLException e) {
                     if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)
                         // Error per PK, modificar
-                        gestorBBDD.executaSQL( connexio, "UPDATE clients SET nom = ?, email = ? WHERE id = ?",
+                        gestorBBDD.executaSQL( conn, "UPDATE clients SET nom = ?, email = ? WHERE id = ?",
                                                c.getNom(), c.getEmail(), (Integer) c.getId() );
                     else
                         throw e; // Re-llança si no és error de PK
@@ -267,17 +267,17 @@ public class GestorTaller {
     }
     
     private void desaVehiclesBBDD(Set<Vehicle> vehicles) throws SQLException, IOException {
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile() ) {
-            connexio.setAutoCommit(true);
+        try ( Connection conn = gestorBBDD.getConnectionFromFile() ) {
+            conn.setAutoCommit(true);
             
             for (Vehicle v : vehicles) {
                 try {
-                    gestorBBDD.executaSQL( connexio, "INSERT INTO vehicles (matricula, marca, model, client_id) VALUES (?,?,?,?)",
+                    gestorBBDD.executaSQL( conn, "INSERT INTO vehicles (matricula, marca, model, client_id) VALUES (?,?,?,?)",
                                            v.getMatricula(), v.getMarca(), v.getModel(), v.getClient().getId() );
                 } catch (SQLException e) {
                     if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)
                         // Error per PK, modificar
-                        gestorBBDD.executaSQL( connexio, "UPDATE vehicles SET marca = ?, model = ?, client_id = ? WHERE matricula = ?",
+                        gestorBBDD.executaSQL( conn, "UPDATE vehicles SET marca = ?, model = ?, client_id = ? WHERE matricula = ?",
                                                v.getMarca(), v.getModel(), v.getClient().getId(), v.getMatricula() );
                     else
                         throw e; // Re-llança si no és error de PK
@@ -309,26 +309,26 @@ public class GestorTaller {
     }
     
     private void desaReparacionsBBDD(Map<Integer,Reparacio> reparacions) {
-        try ( Connection connexio = gestorBBDD.getConnectionFromFile() ) {
-            connexio.setAutoCommit(true);
+        try ( Connection conn = gestorBBDD.getConnectionFromFile() ) {
+            conn.setAutoCommit(true);
             
             for (Reparacio r : reparacions.values()) {
                 try {
-                    gestorBBDD.executaSQL( connexio, "INSERT INTO reparacions (id, dataEntrada, matricula, cost) VALUES (?, ?, ?, ?)",  
+                    gestorBBDD.executaSQL( conn, "INSERT INTO reparacions (id, dataEntrada, matricula, cost) VALUES (?, ?, ?, ?)",  
                                            (Integer) r.getId(), java.sql.Date.valueOf(r.getDataEntrada()), r.getVehicle().getMatricula(), (Double) r.getCost() );
                 } catch (SQLException e) {
                     if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)
                         // Error per PK, modificar
-                        gestorBBDD.executaSQL( connexio, "UPDATE reparacions SET dataEntrada = ?, matricula = ?, cost = ? WHERE id = ?",
+                        gestorBBDD.executaSQL( conn, "UPDATE reparacions SET dataEntrada = ?, matricula = ?, cost = ? WHERE id = ?",
                                                java.sql.Date.valueOf(r.getDataEntrada()), r.getVehicle().getMatricula(), (Double) r.getCost(), (Integer) r.getId() );
                     else 
                         throw e; // Re-llança si no és error de PK
                 } finally {
-                    gestorBBDD.executaSQL( connexio, "DELETE FROM tasques where reparacio_id = ?",
+                    gestorBBDD.executaSQL( conn, "DELETE FROM tasques where reparacio_id = ?",
                                            (Integer) r.getId() );
                     
                     for (Tasca t : r.getTasques()) 
-                        gestorBBDD.executaSQL( connexio, "INSERT INTO tasques (reparacio_id, descripcio, estat) VALUES(?, ?, ?)",
+                        gestorBBDD.executaSQL( conn, "INSERT INTO tasques (reparacio_id, descripcio, estat) VALUES(?, ?, ?)",
                                                (Integer) r.getId(), t.getDescripcio(), t.getEstat() );
                 }
             }
