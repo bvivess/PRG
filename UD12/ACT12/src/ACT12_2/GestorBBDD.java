@@ -1,4 +1,4 @@
-package ACT12_0Z;
+package ACT12_2;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -8,10 +8,10 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UtilBBDD {
+public class GestorBBDD {
     private final String MYSQL_CON;
 
-    public UtilBBDD(String MYSQL_CON) {
+    public GestorBBDD(String MYSQL_CON) {
         this.MYSQL_CON = MYSQL_CON;
     }    
     

@@ -1,27 +1,28 @@
-package ACT12_0Z;
+package ACT12_2;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
 
     public static void main(String[] args) {
         final String MYSQL_CON = "c:\\temp\\mysql.con";
-        UtilBBDD gestorBBDD = new UtilBBDD(MYSQL_CON);
+        GestorBBDD gestorBBDD = new GestorBBDD(MYSQL_CON);
     
-        List<String> noms = List.of("Anna", "Joan", "Maria");
+        Map<Integer, String> names = new HashMap<>();
+        names.put(1, "Anna"); names.put(2,"Pere"); names.put(3,"Joan");
 
         // Connexió a la base de dades
         try ( Connection conn = gestorBBDD.getConnectionFromFile() ) {
 
-            String sql = "INSERT INTO usuaris (nom) VALUES (?)";
+            String sql = "INSERT INTO usuaris (id,nom) VALUES (?,?)";
 
-            noms.stream()
-                .forEach( nom -> { 
+            names.entrySet().stream()
+                .forEach( entry -> { 
                                     try {
-                                        gestorBBDD.executaSQL(conn, sql, nom);
+                                        gestorBBDD.executaSQL(conn, sql, entry.getKey(), entry.getValue());
                                     } catch (SQLException e) {
                                         System.err.println(e.getMessage());
                                     }
