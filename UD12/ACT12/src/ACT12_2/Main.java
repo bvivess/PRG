@@ -17,7 +17,7 @@ public class Main {
         // Connexió a la base de dades
         try ( Connection conn = gestorBBDD.getConnectionFromFile() ) {
 
-            String sql = "INSERT INTO usuaris (id,nom) VALUES (?,?)";
+            String sql = "INSERT INTO usuaris (id, nom) VALUES (?, ?)";
 
             names.entrySet().stream()
                 .forEach( entry -> { 
