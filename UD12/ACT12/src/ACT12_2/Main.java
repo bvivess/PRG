@@ -8,7 +8,7 @@ public class Main{
         try (Stream<String> linies = Files.lines(Paths.get("c:\\temp\\clients.csv"))) {
             
             linies
-                .filter(linia -> !linia.isBlank())
+                .filter(linia -> !linia.isBlank() && !linia.startsWith("#"))
                 .map(String::toUpperCase)
                 .forEach(System.out::println);
             
