@@ -13,9 +13,11 @@ public class ACT12_2C {
                                                 new Persona("Jaume", 7),
                                                 new Persona("Judith", 8) );
 
-         persones.stream()
-                 .filter(p->p.getNom().contains("A") && p.getEdat()>5)
-                 .forEach(System.out::println);
+        Long total = persones.stream()
+                             .filter(p->p.getNom().contains("A") && p.getEdat()>5)
+                             .count();
+        
+        System.out.println(total);
         
     }
 }
