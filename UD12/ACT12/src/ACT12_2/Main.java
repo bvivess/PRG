@@ -8,12 +8,12 @@ public class Main{
         try (Stream<String> linies = Files.lines(Paths.get("c:\\temp\\clients.csv"))) {
             
             linies.filter(linia -> !linia.isBlank() && !linia.startsWith("#"))
-                  .map(linia -> linia.split(",")) // Separa per comes
-                  .forEach(parts -> System.out.println("ID: " + parts[0] +  " Nom: " + parts[1] +  " Email: " + parts[2])
-                  );
+                  .map(linia -> linia.split(","))
+                  .forEach(parts -> System.out.println("ID: " + parts[0] +  " Nom: " + parts[1] +  " Email: " + parts[2]));
             
         } catch (IOException e) {
             e.printStackTrace();
         }
+        
     }
 }
