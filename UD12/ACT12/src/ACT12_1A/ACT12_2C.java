@@ -1,7 +1,8 @@
 package ACT12_1A;
 
-import java.util.*;
-import java.util.stream.*;
+import java.util.Arrays;
+import java.util.List;
+
 
 public class ACT12_2C {
     public static void main(String[] args) {
