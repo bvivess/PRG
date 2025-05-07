@@ -14,8 +14,6 @@ public class ACT12_2I {
                                          .filter(n -> n > 0) // Filtrar només els números positius
                                          .map(n -> n * 10) // Multiplicar per 10
                                          .collect(Collectors.toList()); // Recollir en una llista
-        
- 
 
         double suma = numeros.stream().mapToDouble(n->n).sum();
         int max = numeros.stream().mapToInt(n->n).max().orElse(0);

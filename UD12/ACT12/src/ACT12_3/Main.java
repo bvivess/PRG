@@ -20,15 +20,14 @@ public class Main {
             String sql = "INSERT INTO usuaris (id, nom) VALUES (?, ?)";
 
             names.entrySet().stream()
-                .forEach( entry -> { 
-                                    try {
-                                        gestorBBDD.executaSQL(conn, sql, entry.getKey(), entry.getValue());
-                                    } catch (SQLException e) {
-                                        System.err.println(e.getMessage());
+                 .forEach( entry -> { 
+                                     try {
+                                            gestorBBDD.executaSQL(conn, sql, entry.getKey(), entry.getValue());
+                                         } catch (SQLException e) {
+                                            System.err.println(e.getMessage());
+                                         }
                                     }
-                                 }
-                        );
-
+                         );
 
         } catch (Exception e) {
             System.err.println(e.getMessage());
