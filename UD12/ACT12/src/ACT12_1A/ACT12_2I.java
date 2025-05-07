@@ -21,7 +21,7 @@ public class ACT12_2I {
         double avg = numeros.stream().mapToInt(n->n).average().orElse(0);
 
         System.out.println("Llista: " + numeros);
-        System.out.println("Cap numero es negatiu: " + capNegatiu);
+        System.out.println("Cap numero és negatiu?: " + capNegatiu);
         System.out.println("Resultat multiplicat per 10: " + resultats);
         System.out.println("Suma/ Màxim / Mínim / Mitjana: " + suma + " / " + max + " / " + min + " / " + avg);
     }
