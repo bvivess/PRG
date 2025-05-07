@@ -20,9 +20,9 @@ public class Main {
             String sql = "INSERT INTO usuaris (id, nom) VALUES (?, ?)";
 
             names.entrySet().stream()
-                 .forEach( entry -> { 
+                 .forEach( tupla -> { 
                                      try {
-                                            gestorBBDD.executaSQL(conn, sql, entry.getKey(), entry.getValue());
+                                            gestorBBDD.executaSQL(conn, sql, tupla.getKey(), tupla.getValue());
                                          } catch (SQLException e) {
                                             System.err.println(e.getMessage());
                                          }
