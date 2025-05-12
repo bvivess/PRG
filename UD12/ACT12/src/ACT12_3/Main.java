@@ -16,15 +16,21 @@ public class Main {
 
         // Connexió a la base de dades
         try ( Connection conn = gestorBBDD.getConnectionFromFile() ) {
-
-            String sql = "INSERT INTO usuaris (id, nom) VALUES (?, ?)";
-
             names.entrySet().stream()
                  .forEach( tupla -> { 
                                      try {
-                                            gestorBBDD.executaSQL(conn, sql, tupla.getKey(), tupla.getValue());
+                                            gestorBBDD.executaSQL(conn, "INSERT INTO usuaris (id, nom) VALUES (?, ?)",
+                                                                  tupla.getKey(), tupla.getValue());
                                          } catch (SQLException e) {
-                                            System.err.println(e.getMessage());
+                                             try {
+                                                if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)
+                                                    gestorBBDD.executaSQL( conn, "UPDATE usuaris SET nom = ? WHERE id = ?",
+                                                                           tupla.getValue(), tupla.getKey() );
+                                                else 
+                                                    throw new RuntimeException (e);
+                                             } catch (SQLException e2) {
+                                                 throw new RuntimeException (e2);
+                                             }
                                          }
                                     }
                          );
