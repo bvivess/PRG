@@ -1,4 +1,4 @@
-package ACT12_2;
+package ACT12_2A;
 
 import java.io.IOException;
 import java.nio.file.Files;

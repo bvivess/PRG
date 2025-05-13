@@ -1,4 +1,4 @@
-package ACT12_2;
+package ACT12_2C;
 
 public class Client implements Comparable<Client>{
     int id;

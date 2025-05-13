@@ -1,4 +1,4 @@
-package ACT12_3;
+package ACT12_2B;
 
 import java.sql.Connection;
 import java.sql.SQLException;
