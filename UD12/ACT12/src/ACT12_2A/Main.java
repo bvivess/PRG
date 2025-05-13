@@ -15,10 +15,11 @@ public class Main {
                    linies.filter(linia -> !linia.isBlank() && !linia.startsWith("#"))
                   .map(linia -> linia.split(","))
                   .sorted((parts1, parts2) -> parts1[1].compareTo(parts2[1])) // ordenat per nom
-                  .map(parts -> new Client(
-                                    Integer.parseInt(parts[0].trim()),
-                                    parts[1].trim(),
-                                    parts[2].trim()))
+                  .map(parts -> new Client( Integer.parseInt(parts[0].trim()),
+                                            parts[1].trim(),
+                                            parts[2].trim()
+                                          )
+                      )
                   .collect(Collectors.toList());
             
             // Imprimeix la llista
