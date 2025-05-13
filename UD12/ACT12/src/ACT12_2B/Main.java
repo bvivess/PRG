@@ -27,9 +27,9 @@ public class Main {
                                                     gestorBBDD.executaSQL( conn, "UPDATE usuaris SET nom = ? WHERE id = ?",
                                                                            tupla.getValue(), tupla.getKey() );
                                                 else 
-                                                    throw new RuntimeException (e);
+                                                    throw new RuntimeException (e);  // en un 'forEach' cal disparar aquesta exception
                                              } catch (SQLException e2) {
-                                                 throw new RuntimeException (e2);
+                                                 throw new RuntimeException (e2);  // en un 'forEach' cal disparar aquesta exception
                                              }
                                          }
                                     }
