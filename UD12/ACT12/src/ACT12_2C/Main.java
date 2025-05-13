@@ -20,7 +20,7 @@ public class Main {
                   .forEach(parts -> {
                       try {
                           gestorBBDD.executaSQL(conn,
-                                  "INSERT INTO usuaris (id, nom, email) VALUES (?, ?, ?)",
+                                  "INSERT INTO clients (id, nom, email) VALUES (?, ?, ?)",
                                   Integer.parseInt(parts[0].trim()), parts[1].trim(),parts[2].trim());
 
                       } catch (SQLException e) {
@@ -32,7 +32,7 @@ public class Main {
                                   String email = parts[2].toLowerCase().trim();
 
                                   gestorBBDD.executaSQL(conn,
-                                          "UPDATE usuaris SET nom = ?, email = ? WHERE id = ?",
+                                          "UPDATE clients SET nom = ?, email = ? WHERE id = ?",
                                           nom, email, id);
                               } else {
                                   throw new RuntimeException(e);
