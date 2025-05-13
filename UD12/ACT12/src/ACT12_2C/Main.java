@@ -28,8 +28,8 @@ public class Main {
                               if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062) {
                                   // Clau primària duplicada → fem UPDATE
                                   int id = Integer.parseInt(parts[0].trim());
-                                  String nom = parts[1].trim();
-                                  String email = parts[2].trim();
+                                  String nom = parts[1].toUpperCase().trim();
+                                  String email = parts[2].toLowerCase().trim();
 
                                   gestorBBDD.executaSQL(conn,
                                           "UPDATE usuaris SET nom = ?, email = ? WHERE id = ?",
