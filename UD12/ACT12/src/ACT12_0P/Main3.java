@@ -1,9 +1,9 @@
-package ACT12_0M;
+package ACT12_0P;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Main2 {
+public class Main3 {
 
     public static void main(String[] args) {
         Map<Integer, String> names = new HashMap<>();
@@ -11,9 +11,9 @@ public class Main2 {
         
         System.out.println(names);
         
-        names.computeIfAbsent(1, k -> "Maria"); // No farà res
-        names.computeIfAbsent(4, k -> "Marc"); // Modifica 4-"Msrc"
-        names.computeIfAbsent(5, k -> "Nuria"); // Afegeix 5-"Nuria"
+        names.computeIfPresent(1, (k, v) -> v + " Maria"); // Modifica 1-"Anna Maria"
+        names.computeIfPresent(3, (k, v) -> null); // Elimina 3-"Joan"
+        names.computeIfPresent(5, (k, v) -> v + " Joana"); // No fa res
         
         System.out.println(names);
     }
