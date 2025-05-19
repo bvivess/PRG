@@ -11,7 +11,7 @@ public class ACT12_2A {
                                         .filter(n -> n % 2 != 0) // Filtrar nombres imparells
                                         .map(n -> n * 2) // Multiplicar per 2
                                         .distinct() // Eliminar duplicats
-                                        .sorted()   // Ordenar-los
+                                        .sorted((x,y)->x.compareTo(y)*(-1))   // Ordenar-los de manera descendent
                                         .collect(Collectors.toList()); // Recollir el resultat en una llista
 
         System.out.println("Llista: " + numeros);
