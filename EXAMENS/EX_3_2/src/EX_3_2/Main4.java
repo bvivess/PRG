@@ -18,7 +18,7 @@ public class Main4 {
         try ( Connection conn = gestorBBDD.getConnectionFromFile();
               ResultSet resultSet = gestorBBDD.executaQuerySQL(conn, sql, (Integer) 2020 ) ) { 
             
-            while (resultSet.next())
+            while (resultSet.next()) 
                 vehicles.add(new Vehicle( resultSet.getString("matricula"),
                                           resultSet.getString("marca"), 
                                           resultSet.getString("model"),
