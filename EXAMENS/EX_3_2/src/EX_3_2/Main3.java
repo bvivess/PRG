@@ -34,12 +34,12 @@ public class Main3 {
         // Aplica la lambda a cada vehicle i imprimeix el resultat
         vehicles.stream()
                 .map(incrementaPreu1)
-                .forEach(v -> System.out.println(v));
+                .forEach(System.out::println);
         
         // Aplica la lambda a cada vehicle i imprimeix el resultat
         vehicles.stream()
                 .map(v -> incrementaPreu2.apply(v, 1.10))
-                .forEach(v -> System.out.println(v));
+                .forEach(System.out::println);
     }
 }
 
