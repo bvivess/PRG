@@ -25,6 +25,7 @@ public class Main3 {
                                                            v.setPreu((v.getPreu() * 1.10));
                                                            return v;
                                                          };
+        
         // Lambda que incrementa el preu del vehicle un 10%, modificant l'objecte
         BiFunction<Vehicle, Double, Vehicle> incrementaPreu2 = (v, factor) -> {
                                                                                v.setPreu((int) (v.getPreu() * factor));

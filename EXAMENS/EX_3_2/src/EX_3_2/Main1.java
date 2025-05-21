@@ -13,7 +13,7 @@ public class Main1 {
             new Vehicle("5669-HYM", "Volkswagen", "Polo",    2020, 21000),
             new Vehicle("9012-NPR", "Seat",       "Ibiza",   2015, 10000),
             new Vehicle("3456-STU", "Tesla",      "Model 3", 2022, 40000),
-            new Vehicle("7890-VWX", "Renault",    "Clio",    2012,  9000)
+            new Vehicle("7890-VWX", "Renault",    "Clio",    2012, 9000)
         );
 
         List<String> result = vehicles.stream()
