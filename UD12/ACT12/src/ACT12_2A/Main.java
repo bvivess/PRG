@@ -3,29 +3,48 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
-        try (Stream<String> linies = Files.lines(Paths.get("c:\\temp\\clients.csv"))) {
+        List<Department> departments;
+        List<Client> clients = new ArrayList<Client>();
+        
+        departments = carregaDepartments("c:\\temp\\clients.csv");
+        clients = carregaClients("c:\\temp\\clients.csv");
+        
+        // Imprimeix la llista
+        System.out.println("Departments");
+        departments.stream().sorted((d1, d2) -> d1.getId().compareTo(d2.getId())).forEach(System.out::println);  // Ordenat per Id
+        
+        System.out.println("");
+        
+        // Imprimeix la llista
+        System.out.println("Clients");
+        clients.stream().sorted((c1, c2) -> c1.getNom().compareTo(c2.getNom())).forEach(System.out::println);  // Ordenat per nom
+    }
+    
+    private static List<Department> carregaDepartments(String f) {
+        try (Stream<String> linies = Files.lines(Paths.get(f))) {
             List<Department> departments = 
                    linies.filter(linia -> !linia.isBlank() && !linia.startsWith("#"))
                   .map(linia -> linia.split(","))
                   .map(parts -> parts[3].trim())
                   .distinct()
                   .map(d -> new Department(d))
-                  .collect(Collectors.toList());
-         
-            // Imprimeix la llista
-            departments.stream().sorted((d1, d2) -> d1.getId().compareTo(d2.getId())).forEach(System.out::println);  // Ordenat per Id
-            
+                  .collect(Collectors.toList());  
+            return departments;
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
-        try (Stream<String> linies = Files.lines(Paths.get("c:\\temp\\clients.csv"))) {
+        return null;
+    }
+    
+    private static List<Client> carregaClients(String f) {
+        try (Stream<String> linies = Files.lines(Paths.get(f))) {
             List<Client> clients = 
                    linies.filter(linia -> !linia.isBlank() && !linia.startsWith("#"))
                   .map(linia -> linia.split(","))
@@ -34,14 +53,11 @@ public class Main {
                                             parts[2].trim()
                                           )
                       )
-                  .collect(Collectors.toList());
-
-            // Imprimeix la llista
-            clients.stream().sorted((c1, c2) -> c1.getNom().compareTo(c2.getNom())).forEach(System.out::println);  // Ordenat per nom
-            
+                  .collect(Collectors.toList()); 
+            return clients;
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return null;
     }
 }
-
