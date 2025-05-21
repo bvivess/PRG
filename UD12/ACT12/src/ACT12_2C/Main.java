@@ -29,37 +29,8 @@ public class Main {
         System.out.println("Clients");
         clients.stream().sorted((c1, c2) -> c1.getNom().compareTo(c2.getNom())).forEach(System.out::println);  // Ordenat per nom
         
-        try (Connection conn = gestorBBDD.getConnectionFromFile()) {
-            clients.stream()
-                  .forEach(c -> {
-                      try {
-                          gestorBBDD.executaSQL(conn,
-                                  "INSERT INTO clients (id, nom, email) VALUES (?, ?, ?)",
-                                  c.getId(), c.getNom(),c.getEmail().trim());
-
-                      } catch (SQLException e) {
-                          try {
-                              if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062) {
-                                  // Clau primària duplicada → fem UPDATE
-                                  int id = c.getId();
-                                  String nom = c.getNom().toUpperCase().trim();
-                                  String email = c.getEmail().toLowerCase().trim();
-
-                                  gestorBBDD.executaSQL(conn,
-                                          "UPDATE clients SET nom = ?, email = ? WHERE id = ?",
-                                          nom, email, id);
-                              } else {
-                                  throw new RuntimeException(e);
-                              }
-                          } catch (SQLException e2) {
-                              throw new RuntimeException(e2);
-                          }
-                      }
-                  });
-
-        } catch (IOException | SQLException e) {
-            e.printStackTrace();
-        }
+        desaDepartments(gestorBBDD, departments);
+        desaClients(gestorBBDD, clients);
     }
     
     private static List<Department> carregaDepartments(String f) {
@@ -95,6 +66,61 @@ public class Main {
         }
         return null;
     }
+    
+    private static void desaDepartments(GestorBBDD gestorBBDD, List<Department> departments) {
+        try (Connection conn = gestorBBDD.getConnectionFromFile()) {
+            departments.stream()
+                  .forEach(d -> {
+                      try {
+                          gestorBBDD.executaSQL(conn,
+                                  "INSERT INTO departaments (id) VALUES (?)",
+                                  d.getId() );
+
+                      } catch (SQLException e) {
+                            if (!((e.getSQLState().equals("23000") && e.getErrorCode() == 1062)))
+                                throw new RuntimeException(e);
+                      }
+                  });
+
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    
+    private static void desaClients(GestorBBDD gestorBBDD, List<Client> clients) {
+        try (Connection conn = gestorBBDD.getConnectionFromFile()) {
+            clients.stream()
+                  .forEach(c -> {
+                      try {
+                          gestorBBDD.executaSQL(conn,
+                                  "INSERT INTO clients (id, nom, email) VALUES (?, ?, ?)",
+                                  c.getId(), c.getNom(),c.getEmail().trim());
+
+                      } catch (SQLException e) {
+                          try {
+                              if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062) {
+                                  // Clau primària duplicada → fem UPDATE
+                                  int id = c.getId();
+                                  String nom = c.getNom().toUpperCase().trim();
+                                  String email = c.getEmail().toLowerCase().trim();
+
+                                  gestorBBDD.executaSQL(conn,
+                                          "UPDATE clients SET nom = ?, email = ? WHERE id = ?",
+                                          nom, email, id);
+                              } else {
+                                  throw new RuntimeException(e);
+                              }
+                          } catch (SQLException e2) {
+                              throw new RuntimeException(e2);
+                          }
+                      }
+                  });
+
+        } catch (IOException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+            
 }
 
 
