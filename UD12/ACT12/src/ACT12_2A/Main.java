@@ -3,7 +3,6 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -11,7 +10,7 @@ import java.util.stream.Stream;
 public class Main {
     public static void main(String[] args) {
         List<Department> departments;
-        List<Client> clients = new ArrayList<Client>();
+        List<Client> clients;
         
         departments = carregaDepartments("c:\\temp\\clients.csv");
         clients = carregaClients("c:\\temp\\clients.csv");
