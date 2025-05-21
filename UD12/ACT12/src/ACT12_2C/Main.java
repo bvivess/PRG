@@ -17,20 +17,22 @@ public class Main {
         List<Department> departments;
         List<Client> clients;
         
+        // Carrega les llistes
         departments = carregaDepartments("c:\\temp\\clients.csv");
         clients = carregaClients("c:\\temp\\clients.csv");
         
         // Imprimeix la llista
-        departments.stream().sorted((d1, d2) -> d1.getId().compareTo(d2.getId())).forEach(System.out::println);  // Ordenat per Id
-        
+        System.out.println("Departaments");
+        departments.stream().forEach(System.out::println);  // Ordenat per Id
         System.out.println("");
-        
-        // Imprimeix la llista
         System.out.println("Clients");
-        clients.stream().sorted((c1, c2) -> c1.getNom().compareTo(c2.getNom())).forEach(System.out::println);  // Ordenat per nom
+        clients.stream().forEach(System.out::println);  // Ordenat per nom
         
+        // Desa les llistes
         desaDepartments(gestorBBDD, departments);
         desaClients(gestorBBDD, clients);
+        
+        System.out.println("BBDD modificada correctament");
     }
     
     private static List<Department> carregaDepartments(String f) {
@@ -41,6 +43,7 @@ public class Main {
                   .map(parts -> parts[3].trim())
                   .distinct()
                   .map(d -> new Department(d))
+                  .sorted((d1, d2) -> d1.getId().compareTo(d2.getId()))
                   .collect(Collectors.toList());  
             return departments;
         } catch (IOException e) {
@@ -59,6 +62,7 @@ public class Main {
                                             parts[2].trim()
                                           )
                       )
+                  .sorted((c1, c2) -> c1.getNom().compareTo(c2.getNom()))
                   .collect(Collectors.toList()); 
             return clients;
         } catch (IOException e) {
