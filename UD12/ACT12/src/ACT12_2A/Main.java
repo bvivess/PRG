@@ -19,7 +19,7 @@ public class Main {
                   .collect(Collectors.toList());
          
             // Imprimeix la llista
-            departments.stream().sorted((d1, d2) -> d1.getId().compareTo(d2.getId())).forEach(System.out::println);  // Ordenat per nom
+            departments.stream().sorted((d1, d2) -> d1.getId().compareTo(d2.getId())).forEach(System.out::println);  // Ordenat per Id
             
         } catch (IOException e) {
             e.printStackTrace();
