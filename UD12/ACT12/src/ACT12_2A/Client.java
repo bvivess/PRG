@@ -1,6 +1,6 @@
 package ACT12_2A;
 
-public class Client implements Comparable<Client>{
+public class Client implements Comparable<Client> {
     int id;
     String nom;
     String email;
@@ -13,9 +13,7 @@ public class Client implements Comparable<Client>{
 
     @Override
     public int compareTo(Client c) {
-        if (this.id > c.id) return 1;
-        else if (this.id < c.id) return -1;
-        else return 0;
+        return this.compareTo(c);
     }
 
     public int getId() {
