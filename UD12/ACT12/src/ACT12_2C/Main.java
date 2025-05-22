@@ -14,12 +14,10 @@ public class Main {
         final String MYSQL_CON = "c:\\temp\\mysql.con";
         GestorBBDD gestorBBDD = new GestorBBDD(MYSQL_CON);
         
-        List<Department> departments;
-        List<Client> clients;
-        
         // Carrega les llistes
-        departments = carregaDepartments("c:\\temp\\clients.csv");
-        clients = carregaClients("c:\\temp\\clients.csv");
+        List<String[]> liniesCSV = llegeixLiniesCSV("c:\\temp\\clients.csv");
+        List<Department> departments = carregaDepartments(liniesCSV);
+        List<Client> clients = carregaClients(liniesCSV);
         
         // Imprimeix la llista
         System.out.println("Departaments");
@@ -35,40 +33,35 @@ public class Main {
         System.out.println("BBDD modificada correctament");
     }
     
-    private static List<Department> carregaDepartments(String f) {
+    private static List<String[]> llegeixLiniesCSV(String f) {
         try (Stream<String> linies = Files.lines(Paths.get(f))) {
-            List<Department> departments = 
-                   linies.filter(linia -> !linia.isBlank() && !linia.startsWith("#"))
-                  .map(linia -> linia.split(","))
-                  .map(parts -> parts[3].trim())
-                  .distinct()
-                  .map(d -> new Department(d))
-                  .sorted((d1, d2) -> d1.getId().compareTo(d2.getId()))
-                  .collect(Collectors.toList());  
-            return departments;
+            return linies
+                    .filter(linia -> !linia.isBlank() && !linia.startsWith("#"))
+                    .map(linia -> linia.split(","))
+                    .collect(Collectors.toList());
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
-        return null;
+        return List.of();  // retorna llista buida en cas d’error
     }
-    
-    private static List<Client> carregaClients(String f) {
-        try (Stream<String> linies = Files.lines(Paths.get(f))) {
-            List<Client> clients = 
-                   linies.filter(linia -> !linia.isBlank() && !linia.startsWith("#"))
-                  .map(linia -> linia.split(","))
-                  .map(parts -> new Client( Integer.parseInt(parts[0].trim()),
-                                            parts[1].trim(),
-                                            parts[2].trim()
-                                          )
-                      )
-                  .sorted((c1, c2) -> c1.getNom().compareTo(c2.getNom()))
-                  .collect(Collectors.toList()); 
-            return clients;
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
-        }
-        return null;
+
+    private static List<Department> carregaDepartments(List<String[]> linies) {
+        return linies.stream()
+                .map(parts -> parts[3].trim())
+                .distinct()
+                .map(Department::new)
+                .sorted((d1, d2) -> d1.getId().compareTo(d2.getId()))
+                .collect(Collectors.toList());
+    }
+
+    private static List<Client> carregaClients(List<String[]> linies) {
+        return linies.stream()
+                .map(parts -> new Client(
+                        Integer.parseInt(parts[0].trim()),
+                        parts[1].trim(),
+                        parts[2].trim()))
+                .sorted((c1, c2) -> c1.getNom().compareTo(c2.getNom()))
+                .collect(Collectors.toList());
     }
     
     private static void desaDepartments(GestorBBDD gestorBBDD, List<Department> departments) {
@@ -126,7 +119,3 @@ public class Main {
     }
             
 }
-
-
-
-
