@@ -37,7 +37,7 @@ public class Main {
                   .collect(Collectors.toList());  
             return departments;
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
         return null;
     }
@@ -55,7 +55,7 @@ public class Main {
                   .collect(Collectors.toList()); 
             return clients;
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
         return null;
     }

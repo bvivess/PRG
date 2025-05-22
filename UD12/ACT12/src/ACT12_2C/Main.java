@@ -47,7 +47,7 @@ public class Main {
                   .collect(Collectors.toList());  
             return departments;
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
         return null;
     }
@@ -66,7 +66,7 @@ public class Main {
                   .collect(Collectors.toList()); 
             return clients;
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
         return null;
     }
@@ -87,7 +87,7 @@ public class Main {
                   });
 
         } catch (IOException | SQLException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
     }
     
@@ -121,7 +121,7 @@ public class Main {
                   });
 
         } catch (IOException | SQLException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
     }
             
