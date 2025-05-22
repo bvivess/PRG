@@ -4,11 +4,13 @@ public class Client implements Comparable<Client>{
     int id;
     String nom;
     String email;
+    String department_id;
 
-    public Client(int id, String nom, String email) {
+    public Client(int id, String nom, String email, String department_id) {
         setId(id);
         setNom(nom);
         setEmail(email);
+        setDepartment_id(department_id);
     }
 
     @Override
@@ -43,6 +45,14 @@ public class Client implements Comparable<Client>{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getDepartment_id() {
+        return department_id;
+    }
+
+    public void setDepartment_id(String department_id) {
+        this.department_id = department_id;
     }
 
     @Override

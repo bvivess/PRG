@@ -9,19 +9,14 @@ import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
-        List<Department> departments;
-        List<Client> clients;
+        // Carrega les llistes
+        List<Department> departments = carregaDepartments("c:\\temp\\clients.csv");
+        List<Client> clients = carregaClients("c:\\temp\\clients.csv");
         
-        departments = carregaDepartments("c:\\temp\\clients.csv");
-        clients = carregaClients("c:\\temp\\clients.csv");
-        
-        // Imprimeix la llista
+        // Imprimeix les llistes
         System.out.println("Departments");
         departments.stream().sorted((d1, d2) -> d1.getId().compareTo(d2.getId())).forEach(System.out::println);  // Ordenat per Id
-        
         System.out.println("");
-        
-        // Imprimeix la llista
         System.out.println("Clients");
         clients.stream().sorted((c1, c2) -> c1.getNom().compareTo(c2.getNom())).forEach(System.out::println);  // Ordenat per nom
     }

@@ -19,7 +19,7 @@ public class Main {
         List<Department> departments = carregaDepartments(liniesCSV);
         List<Client> clients = carregaClients(liniesCSV);
         
-        // Imprimeix la llista
+        // Imprimeix les llistes
         System.out.println("Departaments");
         departments.stream().forEach(System.out::println);  // Ordenat per Id
         System.out.println("");
@@ -59,25 +59,26 @@ public class Main {
                 .map(parts -> new Client(
                         Integer.parseInt(parts[0].trim()),
                         parts[1].trim(),
-                        parts[2].trim()))
+                        parts[2].trim(),
+                        parts[3].trim()))
                 .sorted((c1, c2) -> c1.getNom().compareTo(c2.getNom()))
                 .collect(Collectors.toList());
     }
     
     private static void desaDepartments(GestorBBDD gestorBBDD, List<Department> departments) {
         try (Connection conn = gestorBBDD.getConnectionFromFile()) {
-            departments.stream()
-                  .forEach(d -> {
-                      try {
-                          gestorBBDD.executaSQL(conn,
-                                  "INSERT INTO departaments (id) VALUES (?)",
-                                  d.getId() );
+            departments.stream()                       
+                       .forEach(d -> {
+                            try {
+                                gestorBBDD.executaSQL(conn,
+                                        "INSERT INTO departaments (id) VALUES (?)",
+                                        d.getId() );
 
-                      } catch (SQLException e) {
-                            if (!((e.getSQLState().equals("23000") && e.getErrorCode() == 1062)))
-                                throw new RuntimeException(e);
-                      }
-                  });
+                            } catch (SQLException e) {
+                                  if (!((e.getSQLState().equals("23000") && e.getErrorCode() == 1062)))
+                                      throw new RuntimeException(e);
+                            }
+                       });
 
         } catch (IOException | SQLException e) {
             System.err.println(e.getMessage());
@@ -87,23 +88,19 @@ public class Main {
     private static void desaClients(GestorBBDD gestorBBDD, List<Client> clients) {
         try (Connection conn = gestorBBDD.getConnectionFromFile()) {
             clients.stream()
-                  .forEach(c -> {
+                   .forEach(c -> {
                       try {
                           gestorBBDD.executaSQL(conn,
-                                  "INSERT INTO clients (id, nom, email) VALUES (?, ?, ?)",
-                                  c.getId(), c.getNom(),c.getEmail().trim());
+                                  "INSERT INTO clients (id, nom, email, department_id) VALUES (?, ?, ?, ?)",
+                                  c.getId(), c.getNom(), c.getEmail(), c.getDepartment_id());
 
                       } catch (SQLException e) {
                           try {
                               if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062) {
                                   // Clau primària duplicada → fem UPDATE
-                                  int id = c.getId();
-                                  String nom = c.getNom().toUpperCase().trim();
-                                  String email = c.getEmail().toLowerCase().trim();
-
                                   gestorBBDD.executaSQL(conn,
-                                          "UPDATE clients SET nom = ?, email = ? WHERE id = ?",
-                                          nom, email, id);
+                                          "UPDATE clients SET nom = ?, email = ?, department_id = ? WHERE id = ?",
+                                          c.getNom(), c.getEmail(), c.getDepartment_id(), c.getId());
                               } else {
                                   throw new RuntimeException(e);
                               }
@@ -111,7 +108,7 @@ public class Main {
                               throw new RuntimeException(e2);
                           }
                       }
-                  });
+                   });
 
         } catch (IOException | SQLException e) {
             System.err.println(e.getMessage());
