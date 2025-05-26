@@ -2,10 +2,6 @@ package ACT12_1B;
 
 import java.util.Objects;
 
-/**
- *
- * @author winadmin
- */
 public class Persona {
     private String nom;
     private int edat;
