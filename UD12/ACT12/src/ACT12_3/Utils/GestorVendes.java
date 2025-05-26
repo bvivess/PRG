@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -72,16 +71,17 @@ public class GestorVendes {
         clients.add(client);
     }
     
-    // cerca la refer�ncia del client en 'clients'
+    // cerca la referència del client en 'clients'
     private Client cercaClient (Client c) throws NoSuchElementException {
-        for (Client client : this.clients) 
-            if (c.equals(client))
-                return client;
+        Client client = this.clients.stream().filter(c1 -> c1.equals(c)).findFirst().orElse(null);
         
-        throw new NoSuchElementException("Client no trobat a la llista.");
+        if (client != null)
+            return client;
+        else
+            throw new NoSuchElementException("Client no trobat a la llista.");
     }
     
-    // --- C�RREGA PRODUCTES
+    // --- CÀRREGA PRODUCTES
     public void carregaProductes(String path) throws SQLException, IOException {
         carregaProductesBBDD(this.productes);
         carregaProductesCSV(this.productes, path);
@@ -132,7 +132,7 @@ public class GestorVendes {
         productes.add(producte);
     }
     
-    // cerca la refer�ncia del producte en 'productes'
+    // cerca la referència del producte en 'productes'
     private Producte cercaProducte (Producte p) throws NoSuchElementException {
         for (Producte producte : this.productes) 
             if (p.equals(producte))
@@ -141,7 +141,7 @@ public class GestorVendes {
         throw new NoSuchElementException("Producte no trobat a la llista.");
     }
     
-    // --- C�RREGA VENDES 
+    // --- CÀRREGA VENDES 
     public void carregaVendes(String path) throws SQLException, IOException {
         carregaVendesCSV(this.vendes, path);
         carregaVendesBBDD(this.vendes);
@@ -257,7 +257,7 @@ public class GestorVendes {
         }
     }
     
-    // --- DESC�RREGA PRODUCTES
+    // --- DESCÀRREGA PRODUCTES
     public void desaProductes(String path) throws SQLException, IOException {
         desaProductesBBDD(this.productes);
         desaProductesCSV(this.productes, path);
@@ -298,7 +298,7 @@ public class GestorVendes {
         }
     }  
     
-    // --- DESC�RREGA VENDES
+    // --- DESCÀRREGA VENDES
     public void desaVendes(String path) {
         desaVendesBBDD(this.vendes);
         desaVendesCSV(this.vendes, path);
