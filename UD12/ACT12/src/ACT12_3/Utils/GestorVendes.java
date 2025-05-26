@@ -25,7 +25,7 @@ public class GestorVendes {
     Set<Producte> productes = new HashSet<>();
     Map<Integer,Venda> vendes = new HashMap<>();
     
-    // --- C�RREGA CLIENTS 
+    // --- CÀRREGA CLIENTS 
     public void carregaClients(String path) throws SQLException, IOException {
         carregaClientsBBDD(this.clients);
         carregaClientsCSV(this.clients, path);
@@ -216,7 +216,7 @@ public class GestorVendes {
         return text;
     }
     
-    // --- DESC�RREGA CLIENTS
+    // --- DESCÀRREGA CLIENTS
     public void desaClients(String path) throws SQLException, IOException {
         desaClientsBBDD(this.clients);
         desaClientsCSV(this.clients, path);
