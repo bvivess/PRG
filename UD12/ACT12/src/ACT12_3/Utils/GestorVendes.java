@@ -79,6 +79,14 @@ public class GestorVendes {
             return client;
         else
             throw new NoSuchElementException("Client no trobat a la llista.");
+        
+        /*
+        for (Client client : this.clients) 
+            if (c.equals(client))
+                return client;
+        
+        throw new NoSuchElementException("Client no trobat a la llista.");
+        */
     }
     
     // --- CÀRREGA PRODUCTES
