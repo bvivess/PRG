@@ -15,7 +15,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.HashSet;
 import java.time.LocalDate;
-
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class GestorVendes {
     final String MYSQL_CON = "c:\\temp\\mysql.con";
@@ -51,6 +52,22 @@ public class GestorVendes {
     }
 
     public void carregaClientsCSV(Set<Client> clients, String path) throws IOException {
+        try (Stream<String> linies = Files.lines(Paths.get(path))) {
+            Set<Client> nouClients = 
+                   linies.filter(linia -> !linia.isBlank() && !linia.startsWith("#"))
+                  .map(linia -> linia.split(","))
+                  .map(parts -> new Client( Integer.parseInt(parts[0].trim()),
+                                            parts[1].trim(),
+                                            parts[2].trim())) 
+                  .collect(Collectors.toSet());  
+
+            clients.addAll(nouClients);
+            
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+    }        
+        /*
         try (BufferedReader br = Files.newBufferedReader(Paths.get(path))) {
             String linia;
             while ((linia = br.readLine()) != null) {
@@ -65,7 +82,7 @@ public class GestorVendes {
         } catch (IOException | NumberFormatException e) {
             System.err.println("Error carregant clients CSV: " + e.getMessage());
         }
-    }
+    }*/
 
     public void afegeixClient(Set<Client> clients, Client client) {
         clients.add(client);
@@ -231,6 +248,32 @@ public class GestorVendes {
     }
     
     private void desaClientsBBDD(Set<Client> clients) throws SQLException, IOException {
+        try ( Connection conn = gestorBBDD.getConnectionFromFile() ) {
+            conn.setAutoCommit(false);
+            clients.stream()
+                   .forEach( c -> { 
+                                try {
+                                       gestorBBDD.executaSQL( conn, "INSERT INTO clients (id, nom, email) VALUES (?, ?, ?)",
+                                                              (Integer) c.getId(),  c.getNom(), c.getEmail() );
+                                    } catch (SQLException e) {
+                                        try {
+                                           if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)
+                                               gestorBBDD.executaSQL( conn, "UPDATE clients SET nom = ?, email = ? WHERE id = ?",
+                                                                      c.getNom().toLowerCase(), c.getEmail().toLowerCase(), (Integer) c.getId() );
+                                           else 
+                                               throw new RuntimeException (e);  // en un 'forEach' cal disparar aquesta exception
+                                        } catch (SQLException e2) {
+                                            throw new RuntimeException (e2);  // en un 'forEach' cal disparar aquesta exception
+                                        }
+                                    }
+                                }
+                         );
+            conn.commit();
+
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }        
+        /*
         try ( Connection conn = gestorBBDD.getConnectionFromFile()  ) {
             conn.setAutoCommit(true);
             
@@ -245,13 +288,13 @@ public class GestorVendes {
                         gestorBBDD.executaSQL( conn, "UPDATE clients SET nom = ?, email = ? WHERE id = ?",
                                                c.getNom(), c.getEmail(), (Integer) c.getId() );
                     else
-                        throw e; // Re-llan�a si no �s error de PK
+                        throw e; // Re-llança si no és error de PK
                 }
         } catch (SQLException e) {        
             System.err.println("Error descarregant clients BBDD: " + e.getMessage());
         } catch (IOException e) {
             System.err.println("");
-        }
+        }*/
     }
     
     private void desaClientsCSV(Set<Client> clients, String path) {

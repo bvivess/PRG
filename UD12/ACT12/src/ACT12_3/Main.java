@@ -7,7 +7,7 @@ public class Main {
         GestorVendes gestorVendes = new GestorVendes();
         
         try {
-            // C�RREGA CLIENTS, PRODUCTES i VENDES
+            // CÀRREGA CLIENTS, PRODUCTES i VENDES
             System.out.println("CLIENTS");
             gestorVendes.carregaClients("c:\\temp\\clients.csv");
             System.out.println("PRODUCTES");
