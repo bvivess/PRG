@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -26,21 +27,20 @@ public class Biblioteca {
 
     public void afegeixLlibre(int idLlibre, String titol, String autor, int anyPublicacio) {
         Llibre nouLlibre = new Llibre(idLlibre, titol, autor, anyPublicacio);
-        this.llibresDisponibles.add(nouLlibre);
-
-        if (!titolsDisponibles.containsKey(titol)) {
-            this.titolsDisponibles.put(titol, new ArrayList<>());
+        
+        if (this.llibresDisponibles.add(nouLlibre)) {
+            if (!titolsDisponibles.containsKey(titol)) {
+                this.titolsDisponibles.put(titol, new ArrayList<>());
+            }
+            this.titolsDisponibles.get(titol).add(nouLlibre);  // afegeix el 'llibre' a la llista de títols
         }
-        this.titolsDisponibles.get(titol).add(nouLlibre);  // afegeix el 'llibre' a la llista de títols
     }
 
     public Llibre cercaLlibreDisponible(String titol) {
-        for (Llibre l : this.llibresDisponibles) {
-            if (l.getTitol().equals(titol)) {
-                return l;
-            }
-        }
-        return null;
+        return this.llibresDisponibles.stream().filter(l->l.getTitol().equals(titol)).collect(Collectors.toList()).get(0);
+        
+        
+ 
     }
 
     public void prestaLlibre(String titol) {

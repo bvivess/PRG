@@ -17,9 +17,9 @@ public class Main {
         biblioteca.mostraLlibresPrestats();
         System.out.println("-----------------------------------------");
         
-        biblioteca.prestaLlibre("El Quijote");
+        biblioteca.prestaLlibre("El Quijo   aszsdadaffdte");
         biblioteca.mostraLlibresDisponibles();
-        biblioteca.mostraLlibresPrestats();
+        //mostraLlibresPrestats();
         System.out.println("-----------------------------------------");
 
         biblioteca.tornaLlibre();       

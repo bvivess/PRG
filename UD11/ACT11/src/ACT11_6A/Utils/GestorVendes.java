@@ -35,10 +35,10 @@ public class GestorVendes {
     }
     
     public void carregaClientsBBDD(Set<Client> clients) throws SQLException, IOException{ 
-        String sql = "SELECT id, nom, email FROM clients";
+        String sql = "SELECT id, nom, email FROM clients WHERE id = ? and xxx = ?";
         
         try ( Connection conn = gestorBBDD.getConnectionFromFile();
-              ResultSet resultSet = gestorBBDD.executaQuerySQL(conn, sql) ) {   
+              ResultSet resultSet = gestorBBDD.executaQuerySQL(conn, sql, "a", (Integer) 1) ) {   
             
             while (resultSet.next())
                 afegeixClient( clients, new Client( resultSet.getInt("id"),
