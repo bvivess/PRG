@@ -17,9 +17,9 @@ public class ACT3_4_03 {
         }
 
         // Imprimir el contingut de la matriu
-		System.out.println("[");
+        System.out.println("[");
         for (int[] array : matriu) {
-			System.out.print("[ ");
+            System.out.print("[ ");
             for (int a: array) {
                 System.out.print(a + " ");
             }
@@ -28,19 +28,23 @@ public class ACT3_4_03 {
 		System.out.println("]");
 
         // Imprimir el contingut de la diagonal principal
-		System.out.println();
-		System.out.print("[ ");
+        System.out.println();
+        System.out.print("[ ");
         for (int i = 0; i < matriu.length; i++) {
-			System.out.print(matriu[i][i] + " ");
+            System.out.print(matriu[i][i] + " ");
         }
-		System.out.println("]");
+        System.out.println("]");
 		
-		// Imprimir el contingut de la diagonal secundÃ ria 
-		System.out.println();
-		System.out.print("[ ");
+        // Imprimir el contingut de la diagonal secund?ria 
+        System.out.println();
+        System.out.print("[ ");
         for (int i = 0, j=matriu.length-1; i < matriu.length; i++, j--) {
-			System.out.print(matriu[i][j] + " ");
+            System.out.print(matriu[i][j] + " ");
         }
-		System.out.print("]");
+        // o també
+        for (int i = 0; i < matriu.length; i++) {
+            System.out.println(matriu[i][(matriu.length-1) - i] + " ");
+        }
+        System.out.print("]");
     }
 }
