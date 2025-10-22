@@ -16,9 +16,21 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class GestorExamen {
-    private Map<String, Employee> employees = new HashMap<>();
     private Set<Department> departments = new HashSet<>();
+    private Map<String, Employee> employees = new HashMap<>();
     private Map<Department, List<Employee>> departmentsXemployees = new HashMap<>();
+
+    public Map<String, Employee> getEmployees() {
+        return employees;
+    }
+
+    public Set<Department> getDepartments() {
+        return departments;
+    }
+
+    public Map<Department, List<Employee>> getDepartmentsXemployees() {
+        return departmentsXemployees;
+    }
     
     final String MYSQL_CON = "c:\\temp\\mysql.con";
     GestorBBDD gestorBBDD = new GestorBBDD(MYSQL_CON);
@@ -78,17 +90,17 @@ public class GestorExamen {
         departmentsXempleats.computeIfAbsent(department, d -> new ArrayList<>()).add(employee);
     }
     
-    public void mostraDepartments() {
+    public void mostraDepartments(Set<Department> departments ) {
         System.out.println("DEPARTMENTS");
         this.departments.stream().sorted().forEach(System.out::println);
     }   
 
-    public void mostraEmployees() {
+    public void mostraEmployees(Map<String, Employee> employees) {
         System.out.println("EMPLOYEES");
         this.employees.values().stream().sorted().forEach(System.out::println);
     } 
     
-    public void mostraDepartmentsXEmployees() {
+    public void mostraDepartmentsXEmployees(Map<Department, List<Employee>> departmentsXemployees) {
         System.out.println("DEPARTMENTS X EMPLOYEES");
             departmentsXemployees.entrySet().stream()
                                            .sorted(Map.Entry.comparingByKey()) 

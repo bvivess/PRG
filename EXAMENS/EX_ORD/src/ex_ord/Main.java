@@ -9,9 +9,9 @@ public class Main {
         try {
             gestor.carregaDades();
 
-            gestor.mostraDepartments();
-            gestor.mostraEmployees();
-            gestor.mostraDepartmentsXEmployees();
+            gestor.mostraDepartments( gestor.getDepartments() );
+            gestor.mostraEmployees( gestor.getEmployees() );
+            gestor.mostraDepartmentsXEmployees( gestor.getDepartmentsXemployees() );
             
             gestor.desaDepartmentsXEmployeesCSV("c:\\temp\\departmentXEmpleats.cvs");
 
