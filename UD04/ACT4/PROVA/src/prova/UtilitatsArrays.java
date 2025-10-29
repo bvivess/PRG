@@ -107,7 +107,7 @@ public class UtilitatsArrays {
      * @param longitud La longitud de l'array
      * @param minim, el min valor
      * @param maxim, el max valor
-     * @return L'array emplenat de forma aleat√≤ria.
+     * @return L'array emplenat de forma aleat√»ria.
      */
     public static int[] generaArray(int longitud, int minim, int maxim) {
         int[] array = new int[longitud];
@@ -140,10 +140,5 @@ public class UtilitatsArrays {
             sonIguals = false;
         }
         return sonIguals;
-    }
-    
-    public static int mostrarMaxim(int[] array) {
-        
-        return 0;
     }
 }
