@@ -6,6 +6,8 @@ public class PROVA {
         int[] array = {10, 11, 12, 13, 14};
         
         UtilitatsArrays.mostraArray(array);
+        
+        System.out.println(UtilitatsArrays.mostrarMaxim(array));
     }
 }
 

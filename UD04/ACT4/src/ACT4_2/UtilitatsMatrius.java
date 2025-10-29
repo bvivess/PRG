@@ -74,19 +74,15 @@ public class UtilitatsMatrius {
      * @param matriu
      */
     public static int[] generaFila(int[][] matriu, int x) {
-        int[] sortida = new int[matriu.length];
-        
-        for (int i = 0, j=matriu.length-1; i < matriu.length; i++, j--) {
-            sortida[i] = matriu[x][j];
-        }
-        return sortida;
+
+        return matriu[x];
     }
     
     public static int[] generaColumna(int[][] matriu, int y) {
         int[] sortida = new int[matriu.length];
         
-        for (int i = 0, j=matriu.length-1; i < matriu.length; i++, j--) {
-            sortida[i] = matriu[j][y];
+        for (int i = 0; i < matriu.length; i++) {
+            sortida[i] = matriu[i][y];
         }
         return sortida;
     }
