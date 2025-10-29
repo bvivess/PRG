@@ -41,10 +41,17 @@ public class ACT3_4_03 {
         for (int i = 0, j=matriu.length-1; i < matriu.length; i++, j--) {
             System.out.print(matriu[i][j] + " ");
         }
-        // o també
+        // o també:
         for (int i = 0; i < matriu.length; i++) {
             System.out.println(matriu[i][(matriu.length-1) - i] + " ");
         }
         System.out.print("]");
+        
+        // Imprimir 2 columnes aleat?ries, p.e. 1 i 3
+        int[] COL = {0,3};
+        for (int c=0; c < COL.length; c++)
+                for (int i = 0; i < matriu.length; i++) 
+                        System.out.print(matriu[i][COL[c]] + " ");
+        
     }
 }

@@ -1,4 +1,4 @@
-package ACT4_1;
+package PROVA;
 
 /**
  * @author joan
@@ -107,7 +107,7 @@ public class UtilitatsArrays {
      * @param longitud La longitud de l'array
      * @param minim, el min valor
      * @param maxim, el max valor
-     * @return L'array emplenat de forma aleat√≤ria.
+     * @return L'array emplenat de forma aleat√»ria.
      */
     public static int[] generaArray(int longitud, int minim, int maxim) {
         int[] array = new int[longitud];

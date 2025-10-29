@@ -26,12 +26,12 @@ public class ACT3_4_01 {
 			}
 
         // Mostra la matriu 
-		System.out.println("La matriu és:");
-		for (int[] array : matriu) {
-			for (int valor : array) 
-				System.out.print( valor + " " );
-			System.out.println();
-		}
+        System.out.println("La matriu és:");
+        for (int[] array : matriu) {
+            for (int valor : array) 
+                System.out.print( valor + " " );
+            System.out.println();
+        }
 			
 		// Calcula el min
         min = matriu[0][0];
@@ -48,8 +48,8 @@ public class ACT3_4_01 {
 				if (valor > max)
 					max = valor;
 				
-		// Calcula la mitjana
-		total = 0; suma = 0;
+        // Calcula la mitjana
+        total = 0; suma = 0;
         for (int[] array : matriu)
 			for (int valor : array) {
 				suma += valor;
