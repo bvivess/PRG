@@ -1,15 +1,15 @@
-package ACT4_2;
+package ACT4;
 
-import ACT4_1.UtilitatsArrays;
+import ACT4.UtilitatsArrays;
 
 /**
  *
  * @author Tomeu Vives
  */
 public class UtilitatsMatrius {
-    // ACT4_7
+    // ACT4_2
     /**
-     * Assigna a cada posicio de la matriu la suma de les seves coordenades
+     * Assigna a cada posicio de 
      * @param longitud
      * @param minim
      * @param maxim
@@ -23,12 +23,7 @@ public class UtilitatsMatrius {
         }
         return matriu;
     }
-
-    // ACT4_7
-    /**
-     * Mostra la matriu
-     * @param matriu
-     */
+    
     public static void mostrarMatriu(int[][] matriu) {
         String separador = "  ";
         System.out.println('[');
@@ -40,7 +35,7 @@ public class UtilitatsMatrius {
         System.out.println(']');
     }
  
-    // ACT4_7
+    // ACT4_2
     /**
      * Mostra per consola la diagonal principal de la matriu
      * @param matriu
@@ -54,7 +49,7 @@ public class UtilitatsMatrius {
         return sortida;
     }
  
-    // ACT4_7
+    // ACT4_2
     /**
      * Mostra per consola la diagonal secundaria de la matriu
      * @param matriu
@@ -64,6 +59,30 @@ public class UtilitatsMatrius {
         
         for (int i = 0, j=matriu.length-1; i < matriu.length; i++, j--) {
             sortida[i] = matriu[i][j];
+        }
+        return sortida;
+    }
+    
+    // ACT4_2
+    /**
+     * Genera un array associat a una fila
+     * @param matriu
+     */
+    public static int[] generaFila(int[][] matriu, int x) {
+
+        return matriu[x];
+    }
+    
+    // ACT4_2
+    /**
+     * Genera un array associat a una columna
+     * @param matriu
+     */    
+    public static int[] generaColumna(int[][] matriu, int y) {
+        int[] sortida = new int[matriu.length];
+        
+        for (int i = 0; i < matriu.length; i++) {
+            sortida[i] = matriu[i][y];
         }
         return sortida;
     }

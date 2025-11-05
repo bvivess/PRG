@@ -1,4 +1,4 @@
-package ACT4_3;
+package ACT4;
 
 import java.util.Scanner;
 

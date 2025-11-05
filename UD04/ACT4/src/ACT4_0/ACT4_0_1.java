@@ -8,31 +8,31 @@ public class ACT4_0_1 {
  */
     public static void main(String[] args) {
         int numElements, min, max, total, suma;
-		int[][] matriu;
-		float mitjana;
-		
-		// Llegeix mida de la matriu
-		numElements = LlegeixElements("Introduexi el núm elements de la matriu: ");
+        int[][] matriu;
+        float mitjana;
+
+        // Llegeix mida de la matriu
+        numElements = LlegeixElements("Introduexi el núm elements de la matriu: ");
 
         matriu = new int [numElements] [numElements];
 
         // Llegeix les dades de la matriu per teclat
-		matriu = LlegeixMatriu(matriu);
+        matriu = LlegeixMatriu(matriu);
 
         // Mostra la matriu 
-		MostraMatriu(matriu);
-			
-		// Calcula el min
-		min = CalculaMin(matriu);
-			
-		// Calcula el max
+        MostraMatriu(matriu);
+
+        // Calcula el min
+        min = CalculaMin(matriu);
+
+        // Calcula el max
         max = CalculaMax(matriu);
-		
-		// Calcula la mitjana
-		mitjana = CalculaMitjana(matriu);
-		
-		// Mostra resultats
-		MostraResultats(min, max, mitjana);
+
+        // Calcula la mitjana
+        mitjana = CalculaMitjana(matriu);
+
+        // Mostra resultats
+        MostraResultats(min, max, mitjana);
     }
 		
 	// Mètodes del programa:		

@@ -9,7 +9,7 @@ import ACT4_1.UtilitatsArrays;
 public class UtilitatsMatrius {
     // ACT4_2
     /**
-     * Assigna a cada posicio de la matriu la suma de les seves coordenades
+     * Assigna a cada posicio de 
      * @param longitud
      * @param minim
      * @param maxim
@@ -23,12 +23,7 @@ public class UtilitatsMatrius {
         }
         return matriu;
     }
-
-    // ACT4_2
-    /**
-     * Mostra la matriu
-     * @param matriu
-     */
+    
     public static void mostrarMatriu(int[][] matriu) {
         String separador = "  ";
         System.out.println('[');
@@ -78,6 +73,11 @@ public class UtilitatsMatrius {
         return matriu[x];
     }
     
+    // ACT4_2
+    /**
+     * Genera un array associat a una columna
+     * @param matriu
+     */    
     public static int[] generaColumna(int[][] matriu, int y) {
         int[] sortida = new int[matriu.length];
         
