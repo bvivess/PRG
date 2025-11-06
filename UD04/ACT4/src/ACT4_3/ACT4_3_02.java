@@ -16,19 +16,19 @@ public class ACT4_3_02 {
         String[] alumnes = new String [NUM_ALUMNES];
         int[][] notes = new int[NUM_ALUMNES][NUM_ALUMNES]; // UtilitatsMatrius.generaMatriu(MIDA, 0, 10);
 
-        // Llegir el nom dels alumnes:
+        // 1. Llegir el nom dels alumnes:
         for (int i=0; i<alumnes.length; i++){
             alumnes[i] = UtilitatsConsola.llegirCadena("Nom de l'alumne: ");
         }
         
-        // Llegir les notes per a cada alumne:
+        // 2. Llegir les notes per a cada alumne:
         for (int i=0; i<notes.length; i++) {
             System.out.println("Alumne: " + alumnes[i]);
             for (int j=0; j<notes[i].length; j++) 
                 notes[i][j] = UtilitatsConsola.llegirSencer("Introdueixi la nota [" + j + "]: ");
         }
         
-        // Mostra els alumnes i les seves notes
+        // 3. Mostra els alumnes i les seves notes
         for (int i=0; i<alumnes.length; i++){
             System.out.print(alumnes[i] + ": ");
             UtilitatsArrays.mostraArray(notes[i]);
