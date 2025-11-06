@@ -6,9 +6,9 @@ package PROVA;
 
 public class UtilitatsArrays {
     /**
-     * Mostra l'array de sencers que rep com a paràmetre per pantalla
+     * Mostra l'array de sencers que rep com a parĂ metre per pantalla
      *
-     * @param array L'array que conté els valors que volem mostrar per pantalla.
+     * @param array L'array que contĂ© els valors que volem mostrar per pantalla.
      */
     public static void mostraArray(int[] array) {
         String separador = "";
@@ -23,9 +23,9 @@ public class UtilitatsArrays {
     }
 
     /**
-     * Mostra l'array de double que rep com a paràmetre per pantalla
+     * Mostra l'array de double que rep com a parĂ metre per pantalla
      *
-     * @param array L'array que conté els valors que volem mostrar per pantalla.
+     * @param array L'array que contĂ© els valors que volem mostrar per pantalla.
      */
     public static void mostraArray(boolean[] array) {
         String separador = "";
@@ -40,9 +40,9 @@ public class UtilitatsArrays {
     }
 
     /**
-     * Mostra l'array de double que rep com a paràmetre per pantalla
+     * Mostra l'array de double que rep com a parĂ metre per pantalla
      *
-     * @param array L'array que conté els valors que volem mostrar per pantalla.
+     * @param array L'array que contĂ© els valors que volem mostrar per pantalla.
      */
     public static void mostraArray(double[] array) {
         String separador = "";
@@ -57,9 +57,9 @@ public class UtilitatsArrays {
     }
 
     /**
-     * Mostra l'array de double que rep com a paràmetre per pantalla
+     * Mostra l'array de double que rep com a parĂ metre per pantalla
      *
-     * @param array L'array que conté els valors que volem mostrar per pantalla.
+     * @param array L'array que contĂ© els valors que volem mostrar per pantalla.
      */
     
     public static void mostraArray(String[] array) {
@@ -103,7 +103,7 @@ public class UtilitatsArrays {
      * @param longitud La longitud de l'array
      * @param minim, el min valor
      * @param maxim, el max valor
-     * @return L'array emplenat de forma aleatòria.
+     * @return L'array emplenat de forma aleatĂČria.
      */
     public static int[] generaArray(int longitud, int minim, int maxim) {
         int[] array = new int[longitud];

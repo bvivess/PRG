@@ -1,4 +1,4 @@
-package ACT4_1;
+package ACT4;
 
 /**
  * @author joan
