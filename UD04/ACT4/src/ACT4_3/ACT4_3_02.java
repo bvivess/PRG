@@ -2,8 +2,7 @@ package ACT4_3;
 
 import ACT4_1.UtilitatsArrays;
 import ACT4_2.UtilitatsMatrius;
-import ACT4_2.UtilitatsMatrius;
-import ACT4_3.UtilitatsConsola;
+
 
  /**
   * Crea una classe que inicialitzi una matriu quadrada, pe 5x5:
@@ -15,13 +14,21 @@ public class ACT4_3_02 {
      * @param args Els arguments passats per la línia de comandes
      */
     public static void main(String[] args) {
-        final int MIDA=5;
+        final int MIDA=3;
         String[] alumnes = new String [MIDA];
-        int[][] notes = UtilitatsMatrius.generaMatriu(MIDA, 0, 10);
+        int[][] notes = new int[MIDA][MIDA]; // UtilitatsMatrius.generaMatriu(MIDA, 0, 10);
 
+        // Llegir el nom dels alumnes:
         for (int i=0; i<alumnes.length; i++){
             alumnes[i] = UtilitatsConsola.llegirCadena("Nom de l'alumne: ");
         }
+        
+        // Llegir les notes per a cada alumne:
+        for (int i=0; i<notes.length; i++) {
+            System.out.println("Alumne: " + alumnes[i]);
+            for (int j=0; j<notes[i].length; j++) 
+                notes[i][j] = UtilitatsConsola.llegirSencer("Introdueixi la nota [" + j + "]: ");
+        }      
         
         // Mostra la alumnes i notes
         for (int i=0; i<alumnes.length; i++){
