@@ -9,14 +9,11 @@ import ACT4_1.UtilitatsArrays;
   *      Mostra-la per pantalla, cada fila a una lí­nia.
   */
 public class ACT4_3_02 {
-     /**
-     *
-     * @param args Els arguments passats per la lÃ­nia de comandes
-     */
+
     public static void main(String[] args) {
-        final int MIDA=5;
-        String[] alumnes = new String [MIDA];
-        int[][] notes = new int[MIDA][MIDA]; // UtilitatsMatrius.generaMatriu(MIDA, 0, 10);
+        final int NUM_ALUMNES=5;
+        String[] alumnes = new String [NUM_ALUMNES];
+        int[][] notes = new int[NUM_ALUMNES][NUM_ALUMNES]; // UtilitatsMatrius.generaMatriu(MIDA, 0, 10);
 
         // Llegir el nom dels alumnes:
         for (int i=0; i<alumnes.length; i++){
