@@ -1,22 +1,38 @@
-package ACT4;
-
-import java.util.Scanner;
+package ACT4_1;
 
 /**
  * @author joan
  */
+
 public class UtilitatsArrays {
     /**
-     * Mostra l'array de sencers que rep com a paràmetre per pantalla
+     * Mostra l'array de sencers que rep com a parĂ metre per pantalla
      *
-     * @param valors L'array que conté els valors que volem mostrar per pantalla.
+     * @param array L'array que contĂ© els valors que volem mostrar per pantalla.
      */
-    public static void mostraArray(int[] valors) {
+    public static void mostraArray(int[] array) {
         String separador = "";
         System.out.print('[');
-		
-        for (int i = 0; i < valors.length; i++) {
-            System.out.print(separador + valors[i]);
+
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(separador + array[i]);
+            separador = ", ";
+        }
+        System.out.println(']');
+
+    }
+
+    /**
+     * Mostra l'array de double que rep com a parĂ metre per pantalla
+     *
+     * @param array L'array que contĂ© els valors que volem mostrar per pantalla.
+     */
+    public static void mostraArray(boolean[] array) {
+        String separador = "";
+        System.out.print('[');
+
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(separador + array[i]);
             separador = ", ";
         }
         System.out.println(']');
@@ -24,16 +40,16 @@ public class UtilitatsArrays {
     }
 
     /**
-     * Mostra l'array de double que rep com a paràmetre per pantalla
+     * Mostra l'array de double que rep com a parĂ metre per pantalla
      *
-     * @param valors L'array que conté els valors que volem mostrar per pantalla.
+     * @param array L'array que contĂ© els valors que volem mostrar per pantalla.
      */
-    public static void mostraArray(boolean[] valors) {
+    public static void mostraArray(double[] array) {
         String separador = "";
         System.out.print('[');
 
-        for (int i = 0; i < valors.length; i++) {
-            System.out.print(separador + valors[i]);
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(separador + array[i]);
             separador = ", ";
         }
         System.out.println(']');
@@ -41,37 +57,83 @@ public class UtilitatsArrays {
     }
 
     /**
-     * Mostra l'array de double que rep com a paràmetre per pantalla
+     * Mostra l'array de double que rep com a parĂ metre per pantalla
      *
-     * @param valors L'array que conté els valors que volem mostrar per pantalla.
+     * @param array L'array que contĂ© els valors que volem mostrar per pantalla.
      */
-    public static void mostraArray(double[] valors) {
+    
+    public static void mostraArray(String[] array) {
         String separador = "";
         System.out.print('[');
-
-        for (int i = 0; i < valors.length; i++) {
-            System.out.print(separador + valors[i]);
+        for (String a : array) {
+            System.out.print(separador + a);
             separador = ", ";
         }
         System.out.println(']');
-        System.out.println();
     }
 
     /**
-     * Mostra l'array de double que rep com a paràmetre per pantalla
-     *
-     * @param valors L'array que conté els valors que volem mostrar per pantalla.
+     * Suma els sencers d'un array
+     * @param array 
+     * @return int.
      */
-    public static void mostraArray(String[] valors) {
-        String separador = "";
-        System.out.print('[');
-
-        for (int i = 0; i < valors.length; i++) {
-            System.out.print(separador + valors[i]);
-            separador = ", ";
+    public static int sumaArray(int[] array) {
+        int suma = 0;
+        
+        for (int i = 0; i < array.length; i++) {
+            suma += array[i];
         }
-        System.out.println(']');
-        System.out.println();
+        return suma;
     }
 
+    /**
+     * Suma els sencers d'un array
+     * @param array 
+     * @return int.
+     */
+    public static float mitjanaArray(int[] array) {
+        int suma = sumaArray(array);
+        int total = array.length;
+
+        return ((float) suma/(float) total);
+    }
+
+    /**
+     * Genera un array de sencers de la longitud demanada
+     * @param longitud La longitud de l'array
+     * @param minim, el min valor
+     * @param maxim, el max valor
+     * @return L'array emplenat de forma aleatĂČria.
+     */
+    public static int[] generaArray(int longitud, int minim, int maxim) {
+        int[] array = new int[longitud];
+        
+        for (int i = 0; i < array.length; i++) {
+            array[i] = minim + (int) (Math.random() * (maxim - minim + 1));
+        }
+        return array;
+    }
+     
+    /**
+     * Compara dos arrrays de sencers de qualsevol longitud
+     *
+     * @param array1 El primer array
+     * @param array2 El segon array
+     * @return El resultat
+     */
+    public static boolean comparaArrays(int[] array1, int[] array2) {
+        boolean sonIguals = true;
+        
+        if (array1.length == array2.length) {
+            for (int i = 0; i < array1.length; i++) {
+                if (array1[i] != array2[i]) {
+                    sonIguals = false;
+                    break;
+                }
+            }
+        } else {
+            sonIguals = false;
+        }
+        return sonIguals;
+    }
 }

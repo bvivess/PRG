@@ -72,7 +72,6 @@ public class UtilitatsArrays {
         System.out.println(']');
     }
 
-    // ACT 4_1_2
     /**
      * Suma els sencers d'un array
      * @param array 
@@ -87,7 +86,6 @@ public class UtilitatsArrays {
         return suma;
     }
 
-    // ACT4_1_2
     /**
      * Suma els sencers d'un array
      * @param array 
@@ -100,8 +98,6 @@ public class UtilitatsArrays {
         return ((float) suma/(float) total);
     }
 
-    
-    // ACT4_1_4
     /**
      * Genera un array de sencers de la longitud demanada
      * @param longitud La longitud de l'array
@@ -118,7 +114,6 @@ public class UtilitatsArrays {
         return array;
     }
      
-    //ACT4_1_5
     /**
      * Compara dos arrrays de sencers de qualsevol longitud
      *
@@ -140,10 +135,5 @@ public class UtilitatsArrays {
             sonIguals = false;
         }
         return sonIguals;
-    }
-    
-    public static int mostrarMaxim(int[] array) {
-        
-        return 0;
     }
 }
