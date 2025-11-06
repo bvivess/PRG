@@ -17,24 +17,35 @@ public class ACT4_3_02 {
         int[][] notes = new int[NUM_ALUMNES][NUM_ALUMNES]; // UtilitatsMatrius.generaMatriu(MIDA, 0, 10);
 
         // 1. Llegir el nom dels alumnes:
-        for (int i=0; i<alumnes.length; i++){
-            alumnes[i] = UtilitatsConsola.llegirCadena("Nom de l'alumne: ");
-        }
+        llegirAlumnes(alumnes);
         
         // 2. Llegir les notes per a cada alumne:
-        for (int i=0; i<notes.length; i++) {
-            System.out.println("Alumne: " + alumnes[i]);
-            for (int j=0; j<notes[i].length; j++) 
-                notes[i][j] = UtilitatsConsola.llegirSencer("Introdueixi la nota [" + j + "]: ");
-        }
+        llegirNotes(alumnes, notes);
         
         // 3. Mostra els alumnes i les seves notes
-        for (int i=0; i<alumnes.length; i++){
-            System.out.print(alumnes[i] + ": ");
-            UtilitatsArrays.mostraArray(notes[i]);
-            System.out.println("Mitjana: " + UtilitatsArrays.mitjanaArray(notes[i]));
-            System.out.println("----------");
+        mostrar(alumnes, notes);
+    }
+    
+    public static void llegirAlumnes(String[] a) {
+        for (int i=0; i<a.length; i++){
+            a[i] = UtilitatsConsola.llegirCadena("Nom de l'alumne: ");
         }
     }
     
+    public static void llegirNotes(String[] a, int[][] n) {
+        for (int i=0; i<n.length; i++) {
+            System.out.println("Alumne: " + a[i]);
+            for (int j=0; j<n[i].length; j++) 
+                n[i][j] = UtilitatsConsola.llegirSencer("Introdueixi la nota [" + j + "]: ");
+        }
+    }
+    
+    public static void mostrar(String[] a, int[][] n) {
+        for (int i=0; i<a.length; i++){
+            System.out.print(a[i] + ": ");
+            UtilitatsArrays.mostraArray(n[i]);
+            System.out.println("Mitjana: " + UtilitatsArrays.mitjanaArray(n[i]));
+            System.out.println("----------");
+        }
+    }
 }
