@@ -5,8 +5,9 @@ import ACT4_1.UtilitatsArrays;
 
 
  /**
-  * Crea una classe que inicialitzi una matriu quadrada, pe 5x5:
-  *      Mostra-la per pantalla, cada fila a una lí­nia.
+    * Crea un array d 'String' de 5 posicions de nom 'alumnes'. Llegeix per teclat el nom de cada alumne. 
+    * A continuació,  crea una matriu d''int' de 5x5 de nom 'notes' i que permeti introduir les notes de cada alumne de manera manual. 
+    * NOTA: També pots considerar inicilitzar la matriu amb notes aleatòries entre els valors d'aquesta entre MIN=0 a MAX=10. 
   */
 public class ACT4_3_02 {
 
@@ -25,7 +26,7 @@ public class ACT4_3_02 {
             System.out.println("Alumne: " + alumnes[i]);
             for (int j=0; j<notes[i].length; j++) 
                 notes[i][j] = UtilitatsConsola.llegirSencer("Introdueixi la nota [" + j + "]: ");
-        }      
+        }
         
         // Mostra els alumnes i les seves notes
         for (int i=0; i<alumnes.length; i++){
