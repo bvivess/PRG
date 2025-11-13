@@ -15,8 +15,8 @@ public class ACT4_6_A1 {
  
     
     public static void main(String[] args) {
-        int[][] tauler = new int[NTAULER][NTAULER];  // tauler del joc
-        int[] cuc = new int [2]; // posició {fila,columna} del cuc
+        int[][] tauler = UtilitatsMatrius.generaMatriu(NTAULER, 0, 0);  // tauler del joc
+        int[] cuc = UtilitatsArrays.generaArray(2, 0, NTAULER-1);  // posició {fila,columna} del cuc
         int accio; 
 
         // Emplena el tauler amb el cuc i les fulles
@@ -35,7 +35,6 @@ public class ACT4_6_A1 {
     
     public static void emplenaTauler(int[][] tauler, int[] cuc) {
         // Situa cuc en el tauler
-        cuc = UtilitatsArrays.generaArray(2, 0, NTAULER-1); 
         tauler[ cuc[0] ] [ cuc[1] ] = SIMBOL_CUC;
     }
     

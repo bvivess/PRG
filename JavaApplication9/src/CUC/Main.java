@@ -8,8 +8,8 @@ public class Main {
     static final int NFULLES = UtilitatsConsola.llegirSencer("Numero de fulles: ");
     
     public static void main(String[] args) {
-        int[][] tauler = new int[NTAULER][NTAULER];  // tauler del joc
-        int[] cuc = new int[2]; // posició {fila,columna} del cuc
+        int[][] tauler = UtilitatsMatrius.generaMatriu(NTAULER, 0, 0);  // tauler del joc
+        int[] cuc = UtilitatsArrays.generaArray(2, 0, NTAULER-1);  // posició {fila,columna} del cuc
         int accio;
         
         // Emplena el tauler amb el cuc i les fulles
@@ -31,7 +31,6 @@ public class Main {
     public static void emplenaTauler(int[][] tauler, int[] cuc) {
         int[] fulla;
         // Situam el cuc:
-        cuc = UtilitatsArrays.generaArray(2, 0, NTAULER-1); // --> cuc = {2,2}
         tauler [cuc[0]] [cuc[1]] = SIMBOL_CUC;
         
         // Situam les fulles:
@@ -47,6 +46,19 @@ public class Main {
     }
     
     public static void cambiaPosicio(int[][] tauler, int[] cuc, int accio) {
+        final int MIDA = tauler.length;
         
+        tauler[cuc[0]][cuc[1]] = SIMBOL_BUIT;
+        switch (accio) {
+            case 4 -> // ESQ
+                cuc[1] = (cuc[1]==0 ? MIDA-1 : cuc[1]-1); 
+            case 6  -> // DRETA
+                cuc[1] = (cuc[1]==MIDA-1 ? 0 : cuc[1]+1); 
+            case 8  -> // ALT
+                cuc[0] = (cuc[0]==0 ? MIDA-1 : cuc[0]-1); 
+            case 2 -> //BAIX
+                cuc[0] = (cuc[0]==MIDA-1 ? 0 : cuc[0]+1); 
+        }
+        tauler[cuc[0]][cuc[1]] = SIMBOL_CUC;
     }
 }
