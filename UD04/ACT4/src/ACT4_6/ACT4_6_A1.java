@@ -11,19 +11,20 @@ import ACT4_3.UtilitatsConsola;
 public class ACT4_6_A1 {
     static int SIMBOL_BUIT = 0;
     static int SIMBOL_CUC = 1;
-    static int[][] tauler;
-    static int[] cuc; // x,y del cuc
-    static int accio;  
+    static final int NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
+ 
     
     public static void main(String[] args) {
-        final int NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
-        tauler = UtilitatsMatrius.generaMatriu(NTAULER, 0, 0);  // matriu NTAULERxNTAULER
-        cuc = UtilitatsArrays.generaArray(2,0, tauler.length-1);     // (x,y) del cuc
+        int[][] tauler = new int[NTAULER][NTAULER];  // tauler del joc
+        int[] cuc = new int [2]; // posició {fila,columna} del cuc
+        int accio; 
 
+        // Emplena el tauler amb el cuc i les fulles
         emplenaTauler(tauler, cuc);
         
         do {
             UtilitatsMatrius.mostrarMatriu(tauler);
+            
             accio=UtilitatsConsola.llegirSencer("ACCIONS: 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
             
             cambiaPosicio(tauler, cuc, accio);
@@ -32,8 +33,12 @@ public class ACT4_6_A1 {
     }
     
     public static void emplenaTauler(int[][] tauler, int[] cuc) {
+        // Inicialitzam el tauler de 0
+        tauler = UtilitatsMatrius.generaMatriu(NTAULER, 0, 0);
+        
         // Situa cuc en el tauler
-        tauler[cuc[0]][cuc[1]] = SIMBOL_CUC;
+        cuc = UtilitatsArrays.generaArray(2, 0, NTAULER-1); 
+        tauler[ cuc[0] ] [ cuc[1] ] = SIMBOL_CUC;
     }
     
     public static void cambiaPosicio(int[][] tauler, int[] cuc, int accio) {
