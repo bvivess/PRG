@@ -41,7 +41,7 @@ public class ACT4_6_A2 {
     
     public static void emplenaTauler(int[][] tauler, int[] cuc) {
         int[] fulla;
-        1
+        
         // Situam el cuc:
         cuc = UtilitatsArrays.generaArray(2, 0, NTAULER-1); 
         tauler [cuc[0]] [cuc[1]] = SIMBOL_CUC;
