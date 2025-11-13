@@ -9,7 +9,7 @@ public class Main {
     
     public static void main(String[] args) {
         int[][] tauler = new int[NTAULER][NTAULER];  // tauler del joc
-        int[] cuc = new int [2]; // posició {fila,columna} del cuc
+        int[] cuc = new int[2]; // posició {fila,columna} del cuc
         int accio;
         
         // Emplena el tauler amb el cuc i les fulles
@@ -19,9 +19,9 @@ public class Main {
             // Mostra el tauler
             UtilitatsArrays.mostraArray(cuc);
             UtilitatsMatrius.mostrarMatriu(tauler);
-            
+
             // Cambia la posició del cuc
-            accio = UtilitatsConsola.llegirSencer("Accio a realitzar(2,4,6,8,0): ");
+            accio = UtilitatsConsola.llegirSencer("ACCIONS: 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
             cambiaPosicio(tauler,cuc,accio);
 
 
@@ -30,9 +30,6 @@ public class Main {
     
     public static void emplenaTauler(int[][] tauler, int[] cuc) {
         int[] fulla;
-        // Inicialitzam el tauler de 0
-        tauler = UtilitatsMatrius.generaMatriu(NTAULER, 0, 0);
-        
         // Situam el cuc:
         cuc = UtilitatsArrays.generaArray(2, 0, NTAULER-1); // --> cuc = {2,2}
         tauler [cuc[0]] [cuc[1]] = SIMBOL_CUC;

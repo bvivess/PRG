@@ -34,20 +34,16 @@ public class ACT4_6_A2 {
             UtilitatsMatrius.mostrarMatriu(tauler);
             
             // Cambia la posició del cuc
-            accio = UtilitatsConsola.llegirSencer("Accio a realitzar(2,4,6,8,0): ");
+            accio = UtilitatsConsola.llegirSencer("ACCIONS: 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
             cambiaPosicio(tauler,cuc,accio);
-
-
         } while (accio != 0);
     }
     
     public static void emplenaTauler(int[][] tauler, int[] cuc) {
         int[] fulla;
-        // Inicialitzam el tauler de 0
-        tauler = UtilitatsMatrius.generaMatriu(NTAULER, 0, 0);
-        
+        1
         // Situam el cuc:
-        cuc = UtilitatsArrays.generaArray(2, 0, NTAULER-1); // --> cuc = {2,2}
+        cuc = UtilitatsArrays.generaArray(2, 0, NTAULER-1); 
         tauler [cuc[0]] [cuc[1]] = SIMBOL_CUC;
         
         // Situam les fulles:

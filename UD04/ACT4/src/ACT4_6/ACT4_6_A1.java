@@ -23,19 +23,17 @@ public class ACT4_6_A1 {
         emplenaTauler(tauler, cuc);
         
         do {
+            // Mostra el tauler
+            UtilitatsArrays.mostraArray(cuc);
             UtilitatsMatrius.mostrarMatriu(tauler);
             
-            accio=UtilitatsConsola.llegirSencer("ACCIONS: 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
-            
+            // Cambia la posició del cuc
+            accio=UtilitatsConsola.llegirSencer("ACCIONS: 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");     
             cambiaPosicio(tauler, cuc, accio);
-
         } while (accio!=0);
     }
     
     public static void emplenaTauler(int[][] tauler, int[] cuc) {
-        // Inicialitzam el tauler de 0
-        tauler = UtilitatsMatrius.generaMatriu(NTAULER, 0, 0);
-        
         // Situa cuc en el tauler
         cuc = UtilitatsArrays.generaArray(2, 0, NTAULER-1); 
         tauler[ cuc[0] ] [ cuc[1] ] = SIMBOL_CUC;
