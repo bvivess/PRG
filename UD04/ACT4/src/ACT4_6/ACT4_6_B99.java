@@ -12,7 +12,7 @@ import ACT4_3.UtilitatsConsola;
   *     des de 1 fins a (FULLA-1) --> part del cuc
   */
 
-public class ACT4_6_C99 { 
+public class ACT4_6_B99 { 
     static int NTAULER;
     static int NFULLES;
     static final int SIMBOL_BUIT = 0;
