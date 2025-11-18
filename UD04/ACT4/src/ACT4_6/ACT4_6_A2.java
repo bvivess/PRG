@@ -58,18 +58,16 @@ public class ACT4_6_A2 {
     }
     
     public static void cambiaPosicio(int[][] tauler, int[] cuc, int accio) {
-        final int MIDA = tauler.length;
-        
         tauler[cuc[0]][cuc[1]] = SIMBOL_BUIT;
         switch (accio) {
             case 4 -> // ESQ
-                cuc[1] = (cuc[1]==0 ? MIDA-1 : cuc[1]-1); 
+                cuc[1] = (cuc[1]==0 ? NTAULER-1 : --cuc[1]); 
             case 6  -> // DRETA
-                cuc[1] = (cuc[1]==MIDA-1 ? 0 : cuc[1]+1); 
+                cuc[1] = (cuc[1]==NTAULER-1 ? 0 : ++cuc[1]); 
             case 8  -> // ALT
-                cuc[0] = (cuc[0]==0 ? MIDA-1 : cuc[0]-1); 
+                cuc[0] = (cuc[0]==0 ? NTAULER-1 : --cuc[0]); 
             case 2 -> //BAIX
-                cuc[0] = (cuc[0]==MIDA-1 ? 0 : cuc[0]+1); 
+                cuc[0] = (cuc[0]==NTAULER-1 ? 0 : ++cuc[0]); 
         }
         tauler[cuc[0]][cuc[1]] = SIMBOL_CUC;
     }

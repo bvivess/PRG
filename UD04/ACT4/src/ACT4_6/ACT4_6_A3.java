@@ -13,25 +13,23 @@ import ACT4_3.UtilitatsConsola;
   */
 
 public class ACT4_6_A3 { 
-    static int NTAULER;
-    static int NFULLES;
+    static int NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
+    static int NFULLES=UtilitatsConsola.llegirSencer("Nombre de fulles: ");
     static final int SIMBOL_BUIT = 0;
     static final int SIMBOL_FULLA = 99;  // cal modificar a 99 perquè el cuc pugui créixer
     static int SIMBOL_CUC = 1;  // 1,2,3 ... va creixent a mida que el cuc creix
-    static int[][] tauler;
-    static int[] cuc;
-    static int accio;
 
     public static void main(String[] args) {
-        NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
-        NFULLES=UtilitatsConsola.llegirSencer("Nombre de fulles: ");
-        tauler = UtilitatsMatrius.generaMatriu(NTAULER, 0, 0);  // matriu NTAULERxNTAULER
-        cuc = UtilitatsArrays.generaArray(2,0, tauler.length-1);     // (x,y) del cuc
+        int[][] tauler = UtilitatsMatrius.generaMatriu(NTAULER, 0, 0);  // matriu NTAULERxNTAULER
+        int[] cuc = UtilitatsArrays.generaArray(2,0, tauler.length-1);     // (x,y) del cuc
+        int accio;
         
         emplenaTauler(tauler, cuc);
         
         do {
+            UtilitatsArrays.mostraArray(cuc);  //
             mostrarTauler(tauler);
+            UtilitatsMatrius.mostrarMatriu(tauler);
             accio = UtilitatsConsola.llegirSencer("Puntuació: " + (float) SIMBOL_CUC +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
             if ((accio == 2) | (accio == 4)| (accio == 6)| (accio == 8)) {
                 cambiaPosicio(tauler, cuc, accio);
@@ -41,14 +39,19 @@ public class ACT4_6_A3 {
     }
     
     public static void emplenaTauler(int[][] tauler, int[] cuc) {
-        int[] fulla;
-       
+        int[] fulla;  // posicio nova fulla
         // Situa cuc en el tauler
         tauler[cuc[0]][cuc[1]] = SIMBOL_CUC;
         
-        // Genera posició de cada fulla i situa en el tauler
-        for (int i=0; i<NFULLES; i++) {
-            afegeixFulla(tauler);
+        // Situam les fulles:
+        int nfulles = 0;
+        while (nfulles <= NFULLES) {
+            // Generam una posició aleatòria per a una fulla
+            fulla = UtilitatsArrays.generaArray(2, 0, NTAULER-1);
+            if (tauler[fulla[0]][fulla[1]] == SIMBOL_BUIT) {
+              tauler[fulla[0]][fulla[1]] = SIMBOL_FULLA;
+              nfulles++;
+            }
         }
     }
     
@@ -67,27 +70,25 @@ public class ACT4_6_A3 {
     }
     
     public static void cambiaPosicio(int[][] tauler, int[] posicio, int accio) {
-        int mida = tauler.length;
- 
         switch (accio) {
             case 4 -> // ESQ
-                posicio[1] = (posicio[1] == 0 ? mida-1 : posicio[1]-1); 
+                posicio[1] = (posicio[1] == 0 ? NTAULER-1 : --posicio[1]); 
             case 6  -> // DRETA
-                posicio[1] = (posicio[1] == mida-1 ? 0 : posicio[1]+1); 
+                posicio[1] = (posicio[1] == NTAULER-1 ? 0 : ++posicio[1]); 
             case 8  -> // ALT
-                posicio[0] = (posicio[0] == 0 ? mida-1 : posicio[0]-1); 
+                posicio[0] = (posicio[0] == 0 ? NTAULER-1 : --posicio[0]); 
             case 2 -> //BAIX
-                posicio[0] = (posicio[0] == mida-1 ? 0 : posicio[0]+1); 
+                posicio[0] = (posicio[0] == NTAULER-1 ? 0 : ++posicio[0]); 
         }
         // re-escriure el cuc
         if ((tauler[posicio[0]][posicio[1]]) == SIMBOL_FULLA) {  // cuc menja fulla
             SIMBOL_CUC++;
             tauler[posicio[0]][posicio[1]] = SIMBOL_CUC;
             
-            afegeixFulla(tauler); // nova fulla
+            //afegeixFulla(tauler); // nova fulla
         } else if ((tauler[posicio[0]][posicio[1]]) == SIMBOL_BUIT) {  // cuc es mou
-            for (int i=0; i<mida; i++) {
-                for (int j=0; j<mida; j++) {
+            for (int i=0; i<NTAULER; i++) {
+                for (int j=0; j<NTAULER; j++) {
                     if ((tauler[i][j] > SIMBOL_BUIT) & (tauler[i][j] < SIMBOL_FULLA)) {
                         tauler[i][j] = tauler[i][j] - 1;
                     }
@@ -97,25 +98,21 @@ public class ACT4_6_A3 {
         } else {                                                // cuc es tropitja
             SIMBOL_CUC = SIMBOL_BUIT-1;                         // tornam -1 --> fi de la partida !!!
         }
-        
-        //return longitudCuc;
     }
  
     public static void mostrarTauler(int[][] matriu) {
-        String car;
+        String car = "   ";
         for (int i = 0; i < matriu.length; i++) {
             System.out.print('|');
             for (int j = 0; j < matriu[i].length; j++) {
-                if (matriu[i][j] == 0) {
+                if (matriu[i][j] == SIMBOL_BUIT) {
                     car = "   ";
-                } else if (matriu[i][j] == 1) {
-                    car = " . ";
-                } else if (matriu[i][j]==SIMBOL_FULLA) {
-                    car = " * ";
-                } else if (matriu[i][j]==SIMBOL_CUC) {
+                } else if (matriu[i][j] == SIMBOL_CUC) {
                     car = " O ";
-                } else {
-                    car = " - ";
+                } else if (matriu[i][j] == SIMBOL_FULLA) {
+                    car = " * ";
+                } else if (matriu[i][j] > SIMBOL_BUIT && matriu[i][j] < SIMBOL_CUC) {
+                    car = " . ";
                 }
                 System.out.print(car);
             }

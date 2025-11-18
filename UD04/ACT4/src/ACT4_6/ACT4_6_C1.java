@@ -138,13 +138,13 @@ public class ACT4_6_C1 {
         
         switch (accio) {
             case 4 -> // ESQ
-                posCucCap[1] = (posCucCap[1] == 0 ? mida-1 : posCucCap[1]-1); 
+                posCucCap[1] = (posCucCap[1] == 0 ? mida-1 : --posCucCap[1]); 
             case 6  -> // DRETA
-                posCucCap[1] = (posCucCap[1] == mida-1 ? 0 : posCucCap[1]+1); 
+                posCucCap[1] = (posCucCap[1] == mida-1 ? 0 : ++posCucCap[1]); 
             case 8  -> // ALT
-                posCucCap[0] = (posCucCap[0] == 0 ? mida-1 : posCucCap[0]-1); 
+                posCucCap[0] = (posCucCap[0] == 0 ? mida-1 : --posCucCap[0]); 
             case 2 -> //BAIX
-                posCucCap[0] = (posCucCap[0] == mida-1 ? 0 : posCucCap[0]+1); 
+                posCucCap[0] = (posCucCap[0] == mida-1 ? 0 : ++posCucCap[0]); 
         }
         
         // Moure el cuc: 
