@@ -11,6 +11,6 @@ public class ACT4_2_02 {
         int[][] matriu = UtilitatsMatrius.generaMatriu(MIDA, 10, 100);
 
         System.out.println();
-        UtilitatsMatrius.mostrarMatriu(matriu);
+        UtilitatsMatrius.mostraMatriu(matriu);
     }
 }

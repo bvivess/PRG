@@ -1,8 +1,5 @@
 package ACT4_6;
 
-import ACT4_1.UtilitatsArrays;
-import ACT4_2.UtilitatsMatrius;
-import ACT4_3.UtilitatsConsola;
 
  /**
   * Crea una classe que inicialitzi una matriu quadrada,
@@ -29,7 +26,7 @@ public class ACT4_6_A3 {
         do {
             UtilitatsArrays.mostraArray(cuc);  //
             mostrarTauler(tauler);
-            UtilitatsMatrius.mostrarMatriu(tauler);
+            UtilitatsMatrius.mostraMatriu(tauler);
             accio = UtilitatsConsola.llegirSencer("Puntuació: " + (float) SIMBOL_CUC +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
             
             if (cambiaPosicio(tauler, cuc, accio)) {  // cuc es tropitja
@@ -106,18 +103,18 @@ public class ACT4_6_A3 {
         return false;
     }
  
-    public static void mostrarTauler(int[][] matriu) {
+    public static void mostrarTauler(int[][] tauler) {
         String car = "   ";
-        for (int i = 0; i < matriu.length; i++) {
+        for (int i = 0; i < NTAULER; i++) {
             System.out.print('|');
-            for (int j = 0; j < matriu[i].length; j++) {
-                if (matriu[i][j] == SIMBOL_BUIT) {
+            for (int j = 0; j < NTAULER; j++) {
+                if (tauler[i][j] == SIMBOL_BUIT) {
                     car = "   ";
-                } else if (matriu[i][j] == SIMBOL_CUC) {
+                } else if (tauler[i][j] == SIMBOL_CUC) {
                     car = " O ";
-                } else if (matriu[i][j] == SIMBOL_FULLA) {
+                } else if (tauler[i][j] == SIMBOL_FULLA) {
                     car = " * ";
-                } else if (matriu[i][j] > SIMBOL_BUIT && matriu[i][j] < SIMBOL_CUC) {
+                } else if (tauler[i][j] > SIMBOL_BUIT && tauler[i][j] < SIMBOL_CUC) {
                     car = " . ";
                 }
                 System.out.print(car);

@@ -14,7 +14,7 @@ public class ACT4_2_06 {
         int[] fila;
 
         System.out.println();
-        UtilitatsMatrius.mostrarMatriu(matriu);
+        UtilitatsMatrius.mostraMatriu(matriu);
         System.out.println();
         fila = UtilitatsMatrius.generaColumna(matriu, 2);
         UtilitatsArrays.mostraArray(fila);

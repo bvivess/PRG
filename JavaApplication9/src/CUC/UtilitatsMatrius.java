@@ -24,7 +24,7 @@ public class UtilitatsMatrius {
         return matriu;
     }
     
-    public static void mostrarMatriu(int[][] matriu) {
+    public static void mostraMatriu(int[][] matriu) {
         String separador = "  ";
         System.out.println('[');
         for (int i = 0; i < matriu.length; i++) {

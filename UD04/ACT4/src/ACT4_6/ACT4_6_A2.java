@@ -1,11 +1,10 @@
 package ACT4_6;
 
 import ACT4_1.UtilitatsArrays;
-import ACT4_3.UtilitatsConsola;
 import ACT4_2.UtilitatsMatrius;
+import ACT4_3.UtilitatsConsola;
 
-
- /**
+/**
   * Crea una classe que inicialitzi una matriu quadrada,
   * A continuaciÃ³ gestiona el joc del cuc.
   *     SIMBOL_FULLA --> fulla
@@ -31,7 +30,8 @@ public class ACT4_6_A2 {
         do {
             // Mostra el tauler
             UtilitatsArrays.mostraArray(cuc);
-            UtilitatsMatrius.mostrarMatriu(tauler);
+            UtilitatsMatrius.mostraMatriu(tauler);
+            mostraTauler(tauler);
             
             // Cambia la posició del cuc
             accio = UtilitatsConsola.llegirSencer("ACCIONS: 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
@@ -70,6 +70,26 @@ public class ACT4_6_A2 {
                 cuc[0] = (cuc[0]==NTAULER-1 ? 0 : ++cuc[0]); 
         }
         tauler[cuc[0]][cuc[1]] = SIMBOL_CUC;
+    }
+    
+    public static void mostraTauler(int[][] tauler) {
+        String car = "   ";
+        for (int i = 0; i < NTAULER; i++) {
+            System.out.print('|');
+            for (int j = 0; j < NTAULER; j++) {
+                if (tauler[i][j] == SIMBOL_BUIT) {
+                    car = "   ";
+                } else if (tauler[i][j] == SIMBOL_CUC) {
+                    car = " O ";
+                } else if (tauler[i][j] == SIMBOL_FULLA) {
+                    car = " * ";
+                } else if (tauler[i][j] > SIMBOL_BUIT && tauler[i][j] < SIMBOL_CUC) {
+                    car = " . ";
+                }
+                System.out.print(car);
+            }
+            System.out.println("|");
+        }
     }
     
 }

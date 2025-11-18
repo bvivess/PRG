@@ -14,7 +14,7 @@ public class ACT4_2_04 {
         int[] diagonal;
 
         System.out.println();
-        UtilitatsMatrius.mostrarMatriu(matriu);
+        UtilitatsMatrius.mostraMatriu(matriu);
         System.out.println();
         diagonal = UtilitatsMatrius.generaDiagonalSecundaria(matriu);
         UtilitatsArrays.mostraArray(diagonal);

@@ -18,7 +18,8 @@ public class Main {
         do {
             // Mostra el tauler
             UtilitatsArrays.mostraArray(cuc);
-            UtilitatsMatrius.mostrarMatriu(tauler);
+            UtilitatsMatrius.mostraMatriu(tauler);
+            mostraTauler(tauler);
 
             // Cambia la posició del cuc
             accio = UtilitatsConsola.llegirSencer("ACCIONS: 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
@@ -58,5 +59,21 @@ public class Main {
                 cuc[0] = (cuc[0]==NTAULER-1 ? 0 : ++cuc[0]); 
         }
         tauler[cuc[0]][cuc[1]] = SIMBOL_CUC;
+    }
+    
+    public static void mostraTauler(int[][] tauler) {
+        String car = "   ";
+        for (int i = 0; i < NTAULER; i++) {
+            System.out.print('|');
+            for (int j = 0; j < NTAULER; j++) {
+                switch (tauler[i][j]) {
+                    case SIMBOL_BUIT  -> car = "   ";
+                    case SIMBOL_CUC   ->  car = " O ";
+                    case SIMBOL_FULLA -> car = " * ";
+                }
+                System.out.print(car);
+            }
+            System.out.println("|");
+        }
     }
 }

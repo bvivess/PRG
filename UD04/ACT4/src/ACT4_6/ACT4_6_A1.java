@@ -24,7 +24,7 @@ public class ACT4_6_A1 {
         do {
             // Mostra el tauler
             UtilitatsArrays.mostraArray(cuc);
-            UtilitatsMatrius.mostrarMatriu(tauler);
+            UtilitatsMatrius.mostraMatriu(tauler);
             
             // Cambia la posició del cuc
             accio=UtilitatsConsola.llegirSencer("ACCIONS: 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");     

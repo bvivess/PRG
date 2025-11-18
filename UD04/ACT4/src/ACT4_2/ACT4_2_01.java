@@ -13,7 +13,7 @@ public class ACT4_2_01 {
         int[][] matriu = generaMatriu(MIDA, 10, 100);
 
         System.out.println();
-        UtilitatsMatrius.mostrarMatriu(matriu);
+        UtilitatsMatrius.mostraMatriu(matriu);
     }
     
     /**
