@@ -47,7 +47,7 @@ public class ACT4_6_A2 {
         
         // Situam les fulles:
         int nfulles = 0;
-        while (nfulles <= NFULLES) {
+        while (nfulles < NFULLES) {
             // Generam una posició aleatòria per a una fulla
             fulla = UtilitatsArrays.generaArray(2, 0, NTAULER-1);
             if (tauler[fulla[0]][fulla[1]] == SIMBOL_BUIT) {

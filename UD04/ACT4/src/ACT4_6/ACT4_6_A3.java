@@ -31,11 +31,15 @@ public class ACT4_6_A3 {
             mostrarTauler(tauler);
             UtilitatsMatrius.mostrarMatriu(tauler);
             accio = UtilitatsConsola.llegirSencer("Puntuació: " + (float) SIMBOL_CUC +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
-            if ((accio == 2) | (accio == 4)| (accio == 6)| (accio == 8)) {
-                cambiaPosicio(tauler, cuc, accio);
-                accio = (SIMBOL_CUC == SIMBOL_BUIT-1 ? 0 : accio); // fi de la partida ?
+            
+            if (cambiaPosicio(tauler, cuc, accio)) {  // cuc es tropitja
+                System.out.println("YOU LOSE");
+                break;
+            } else if (SIMBOL_CUC == NFULLES+1) {  // el nombre de segments del cuc és igual al nombre de fulles, NOTA: el cuc té 1 segment inicial
+                System.out.println("YOU WIN"); 
+                break;
             }
-        } while (accio != 0);
+        } while (accio != 0); 
     }
     
     public static void emplenaTauler(int[][] tauler, int[] cuc) {
@@ -45,7 +49,7 @@ public class ACT4_6_A3 {
         
         // Situam les fulles:
         int nfulles = 0;
-        while (nfulles <= NFULLES) {
+        while (nfulles < NFULLES) {
             // Generam una posició aleatòria per a una fulla
             fulla = UtilitatsArrays.generaArray(2, 0, NTAULER-1);
             if (tauler[fulla[0]][fulla[1]] == SIMBOL_BUIT) {
@@ -69,7 +73,7 @@ public class ACT4_6_A3 {
         
     }
     
-    public static void cambiaPosicio(int[][] tauler, int[] posicio, int accio) {
+    public static boolean cambiaPosicio(int[][] tauler, int[] posicio, int accio) {
         switch (accio) {
             case 4 -> // ESQ
                 posicio[1] = (posicio[1] == 0 ? NTAULER-1 : --posicio[1]); 
@@ -96,8 +100,10 @@ public class ACT4_6_A3 {
             }
             tauler[posicio[0]][posicio[1]] = SIMBOL_CUC;
         } else {                                                // cuc es tropitja
-            SIMBOL_CUC = SIMBOL_BUIT-1;                         // tornam -1 --> fi de la partida !!!
+            //SIMBOL_CUC = SIMBOL_BUIT-1;                         // tornam -1 --> fi de la partida !!!
+            return true;
         }
+        return false;
     }
  
     public static void mostrarTauler(int[][] matriu) {

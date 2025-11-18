@@ -35,7 +35,7 @@ public class Main {
         
         // Situam les fulles:
         int nfulles = 0;
-        while (nfulles <= NFULLES) {
+        while (nfulles < NFULLES) {
             // Generam una posició aleat?ria per a una fulla
             fulla = UtilitatsArrays.generaArray(2, 0, NTAULER-1);
             if (tauler[fulla[0]][fulla[1]] == SIMBOL_BUIT) {
