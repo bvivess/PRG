@@ -9,11 +9,11 @@ import ACT4_1.UtilitatsArrays;
 public class ACT4_4_06 {
 
     public static void main(String[] args) {
-        int[] array = UtilitatsArrays.generaArray(25, 0, 3);
-        ArrayList<Integer> resultat = new ArrayList<>();
+        int[] array = UtilitatsArrays.generaArray(10, 0, 9);
+        ArrayList<Integer> resultat = new ArrayList<>();;
         
         UtilitatsArrays.mostraArray(array);
-        resultat = UtilitatsClasses.mostraDiferentsMillorat(array);
+        resultat = UtilitatsClasses.obteParellsOrdenatSenseRepeticions(array);
         UtilitatsClasses.mostraArrayListInt(resultat);
     }
 }

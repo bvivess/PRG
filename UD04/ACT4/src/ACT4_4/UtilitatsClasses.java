@@ -143,6 +143,28 @@ public class UtilitatsClasses {
         return resultat;
     } 
     
+        /**
+     * Crear un ArraList 
+     *      s'avalua cada element de l'array en l'ArrayList
+     * @return ArrayList 
+     */    
+    public static ArrayList<Integer> obteParellsOrdenatSenseRepeticions(int[] array) {
+        ArrayList<Integer> resultat;
+
+        // Cridada a 'obteParells'
+        resultat = UtilitatsClasses.obteParells(array);  // 'obteParells'
+        
+        // Transforma la sortida d'un mète en l'entrada del següent
+        int[] array2 = new int[resultat.size()];
+        for (int i = 0; i < resultat.size(); i++) {
+            array2[i] = resultat.get(i);
+        }
+        
+        // Cridada a 'ordenaArray'
+        resultat = UtilitatsClasses.ordenaArraySenseRepeticions( array2 );
+        return resultat;
+    } 
+    
     /**
      * Transforma un int[] a un ArrayList<Integer>
      * @param array --> int[]
