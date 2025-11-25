@@ -79,6 +79,71 @@ public class UtilitatsClasses {
     }
     
     /**
+     * Crear un ArraList 
+     *      s'avalua cada element de l'array en l'ArrayList
+     * @return ArrayList 
+     */    
+    public static ArrayList<Integer> ordenaArraySenseRepeticions(int[] array) {
+        ArrayList<Integer> resultat = new ArrayList<>();
+        
+        resultat.add(array[0]);
+        for (int i=1; i<array.length; i++) {
+            boolean trobat = false;
+            for (int j=0; j<resultat.size(); j++) {
+                if (array[i] == resultat.get(j)) {
+                    trobat = true;
+                    break;
+                } else if (array[i] < resultat.get(j))  {
+                    resultat.add(j, array[i]);  // afegir en la posició 'j' de 'resultat'
+                    trobat = true;
+                    break;
+                }
+            }
+            if (!trobat) {
+                resultat.add(array[i]);  // afegir al final de 'resultat'
+            }
+        }
+        return resultat;
+    }
+
+    /**
+     * Crear un ArraList 
+     *      s'avalua cada element de l'array en l'ArrayList
+     * @return ArrayList 
+     */    
+    public static ArrayList<Integer> obteParells(int[] array) {
+        ArrayList<Integer> resultat = new ArrayList<>();
+        
+        for (int a : array) {
+            if (a % 2 == 0)
+                resultat.add(a);  // afegir en 'resultat'
+        }
+        return resultat;
+    }
+    
+    /**
+     * Crear un ArraList 
+     *      s'avalua cada element de l'array en l'ArrayList
+     * @return ArrayList 
+     */    
+    public static ArrayList<Integer> obteParellsOrdenat(int[] array) {
+        ArrayList<Integer> resultat;
+
+        // Cridada a 'obteParells'
+        resultat = UtilitatsClasses.obteParells(array);  // 'obteParells'
+        
+        // Transforma la sortida d'un mète en l'entrada del següent
+        int[] array2 = new int[resultat.size()];
+        for (int i = 0; i < resultat.size(); i++) {
+            array2[i] = resultat.get(i);
+        }
+        
+        // Cridada a 'ordenaArray'
+        resultat = UtilitatsClasses.ordenaArray( array2 );
+        return resultat;
+    } 
+    
+    /**
      * Transforma un int[] a un ArrayList<Integer>
      * @param array --> int[]
      * @return ArrayList<Integer>

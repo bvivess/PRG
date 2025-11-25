@@ -6,14 +6,14 @@ import ACT4_1.UtilitatsArrays;
  *
  * @author T.Vives
  */
-public class ACT4_4_03 {
+public class ACT4_4_05 {
 
     public static void main(String[] args) {
         int[] array = UtilitatsArrays.generaArray(10, 0, 9);
         ArrayList<Integer> resultat = new ArrayList<>();;
         
         UtilitatsArrays.mostraArray(array);
-        resultat = UtilitatsClasses.ordenaArraySenseRepeticions(array);
+        resultat = UtilitatsClasses.obteParellsOrdenat(array);
         UtilitatsClasses.mostraArrayListInt(resultat);
     }
 }
