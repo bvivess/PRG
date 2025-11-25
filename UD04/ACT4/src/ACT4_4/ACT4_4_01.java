@@ -8,7 +8,7 @@ import ACT4_1.UtilitatsArrays;
 public class ACT4_4_01 {
     public static void main(String[] args) {
         int[] array = UtilitatsArrays.generaArray(10, 0, 3);
-        ArrayList<Integer> diferents = new ArrayList<>();
+        ArrayList<Integer> diferents;
         
         UtilitatsArrays.mostraArray(array);
         diferents = UtilitatsClasses.generaDiferents(array);

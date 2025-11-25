@@ -10,7 +10,7 @@ public class ACT4_4_03 {
 
     public static void main(String[] args) {
         int[] array = UtilitatsArrays.generaArray(10, 0, 9);
-        ArrayList<Integer> resultat = new ArrayList<>();;
+        ArrayList<Integer> resultat;
         
         UtilitatsArrays.mostraArray(array);
         resultat = UtilitatsClasses.ordenaArraySenseRepeticions(array);

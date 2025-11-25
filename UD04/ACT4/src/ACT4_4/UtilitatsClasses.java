@@ -132,37 +132,31 @@ public class UtilitatsClasses {
         // Cridada a 'obteParells'
         resultat = UtilitatsClasses.obteParells(array);  // 'obteParells'
         
-        // Transforma la sortida d'un mète en l'entrada del següent
-        int[] array2 = new int[resultat.size()];
-        for (int i = 0; i < resultat.size(); i++) {
-            array2[i] = resultat.get(i);
-        }
-        
+        // Transforma la sortida d'un mètode en l'entrada del següent
+        int[] array2 = ArrayListToArray(resultat);
+       
         // Cridada a 'ordenaArray'
         resultat = UtilitatsClasses.ordenaArray( array2 );
         return resultat;
     } 
     
-        /**
+    public static int[] ArrayListToArray(ArrayList<Integer> arrayL) {
+        int[] resultat = new int[arrayL.size()];
+        for (int i = 0; i < arrayL.size(); i++) {
+            resultat[i] = arrayL.get(i);
+        }
+        
+        return resultat;
+    }
+    
+    /**
      * Crear un ArraList 
      *      s'avalua cada element de l'array en l'ArrayList
      * @return ArrayList 
      */    
     public static ArrayList<Integer> obteParellsOrdenatSenseRepeticions(int[] array) {
-        ArrayList<Integer> resultat;
-
-        // Cridada a 'obteParells'
-        resultat = UtilitatsClasses.obteParells(array);  // 'obteParells'
-        
-        // Transforma la sortida d'un mète en l'entrada del següent
-        int[] array2 = new int[resultat.size()];
-        for (int i = 0; i < resultat.size(); i++) {
-            array2[i] = resultat.get(i);
-        }
-        
-        // Cridada a 'ordenaArray'
-        resultat = UtilitatsClasses.ordenaArraySenseRepeticions( array2 );
-        return resultat;
+        // Cridada entre mètodes de manera directa
+        return UtilitatsClasses.ordenaArraySenseRepeticions( ArrayListToArray( UtilitatsClasses.obteParells(array) ) );
     } 
     
     /**
