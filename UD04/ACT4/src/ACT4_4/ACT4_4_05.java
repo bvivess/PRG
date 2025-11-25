@@ -13,7 +13,9 @@ public class ACT4_4_05 {
         ArrayList<Integer> resultat;
         
         UtilitatsArrays.mostraArray(array);
+        
         resultat = UtilitatsClasses.obteParellsOrdenat(array);
+        
         UtilitatsClasses.mostraArrayListInt(resultat);
     }
 }

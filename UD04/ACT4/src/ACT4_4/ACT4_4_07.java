@@ -15,7 +15,9 @@ public class ACT4_4_07 {
         
         UtilitatsArrays.mostraArray(array1);
         UtilitatsArrays.mostraArray(array2);
+        
         resultat = UtilitatsClasses.obteRepetits(array1, array2);
+        
         UtilitatsClasses.mostraArrayListInt(resultat);
     }
 }

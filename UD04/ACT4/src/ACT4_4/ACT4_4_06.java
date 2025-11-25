@@ -13,7 +13,9 @@ public class ACT4_4_06 {
         ArrayList<Integer> resultat;
         
         UtilitatsArrays.mostraArray(array);
+        
         resultat = UtilitatsClasses.obteParellsOrdenatSenseRepeticions(array);
+        
         UtilitatsClasses.mostraArrayListInt(resultat);
     }
 }
