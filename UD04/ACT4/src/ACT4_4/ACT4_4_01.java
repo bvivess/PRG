@@ -1,17 +1,18 @@
 package ACT4_4;
 import java.util.ArrayList;
+import ACT4_1.UtilitatsArrays;
 /**
  *
  * @author T.Vives
  */
 public class ACT4_4_01 {
     public static void main(String[] args) {
-        ArrayList<String> array = new ArrayList<>();
+        int[] array = UtilitatsArrays.generaArray(10, 0, 3);
+        ArrayList<Integer> diferents = new ArrayList<>();
+        
+        UtilitatsArrays.mostraArray(array);
+        diferents = UtilitatsClasses.generaDiferents(array);
 
-        for (String a: args) {
-            array.add(a);			
-        }
-
-        UtilitatsClasses.mostrarArrayListStr(array);
+        UtilitatsClasses.mostraArrayListInt(diferents);
     }
 }

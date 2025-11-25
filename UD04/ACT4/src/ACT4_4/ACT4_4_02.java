@@ -9,11 +9,11 @@ import ACT4_1.UtilitatsArrays;
 public class ACT4_4_02 {
 
     public static void main(String[] args) {
-        int[] array = UtilitatsArrays.generaArray(25, 0, 10);
-        ArrayList<Integer> resultat = new ArrayList<>();
+        int[] array = UtilitatsArrays.generaArray(10, 0, 3);
+        ArrayList<Integer> resultat = new ArrayList<>();;
         
         UtilitatsArrays.mostraArray(array);
-        resultat = UtilitatsClasses.mostrarDiferents(array);
-        UtilitatsClasses.mostrarArrayListInt(resultat);
+        resultat = UtilitatsClasses.ordenaArray(array);
+        UtilitatsClasses.mostraArrayListInt(resultat);
     }
 }
