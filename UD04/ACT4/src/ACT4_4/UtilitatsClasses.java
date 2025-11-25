@@ -160,6 +160,28 @@ public class UtilitatsClasses {
     } 
     
     /**
+     * Crear un ArraList 
+     *      s'avalua cada element de l'array1 en array2
+     * @return ArrayList 
+     */    
+    public static ArrayList<Integer> obteRepetits(int[] array1, int[] array2) {
+        ArrayList<Integer> resultat = new ArrayList<>();
+        
+        return  resultat;
+    }
+    
+    /**
+     * Crear un ArraList 
+     *      s'avalua cada element de l'array1 en array2
+     * @return ArrayList 
+     */    
+    public static ArrayList<Integer> obteDiferents(int[] array1, int[] array2) {
+        ArrayList<Integer> resultat = new ArrayList<>();
+        
+        return  resultat;
+    }
+    
+    /**
      * Transforma un int[] a un ArrayList<Integer>
      * @param array --> int[]
      * @return ArrayList<Integer>
