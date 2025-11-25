@@ -13,13 +13,11 @@ public class UtilitatsArrays {
     public static void mostraArray(int[] array) {
         String separador = "";
         System.out.print('[');
-
         for (int i = 0; i < array.length; i++) {
             System.out.print(separador + array[i]);
             separador = ", ";
         }
         System.out.println(']');
-
     }
 
     /**

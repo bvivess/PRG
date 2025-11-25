@@ -13,19 +13,23 @@ public class UtilitatsClasses {
      * @param array
      */
     public static void mostraArrayListInt(ArrayList<Integer> array) {
-        System.out.print("[ ");
+        String separador = "";
+        System.out.print('[');
         for (Integer a : array) {
-            System.out.print(a + " ");
+            System.out.print(separador + a);
+            separador = ", ";
         }
-        System.out.println("]");
+        System.out.println(']');
     }
     
-        public static void mostraArrayListStr(ArrayList<String> array) {
-        System.out.print("[ ");
+    public static void mostraArrayListStr(ArrayList<String> array) {
+        String separador = "";
+        System.out.print('[');
         for (String a : array) {
-            System.out.print(a + " ");
+            System.out.print(separador + a);
+            separador = ", ";
         }
-        System.out.println("]");
+        System.out.println(']');
     }
 
     /**
@@ -142,6 +146,7 @@ public class UtilitatsClasses {
     
     public static int[] ArrayListToArray(ArrayList<Integer> arrayL) {
         int[] resultat = new int[arrayL.size()];
+        
         for (int i = 0; i < arrayL.size(); i++) {
             resultat[i] = arrayL.get(i);
         }
