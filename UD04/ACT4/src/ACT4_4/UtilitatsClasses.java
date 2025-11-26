@@ -142,6 +142,9 @@ public class UtilitatsClasses {
         // Cridada a 'ordenaArray'
         resultat = UtilitatsClasses.ordenaArray( array2 );
         return resultat;
+        
+        // també
+        // return UtilitatsClasses.ordenaArray( ArrayListToArray( UtilitatsClasses.obteParells(array) ));
     } 
     
     public static int[] ArrayListToArray(ArrayList<Integer> arrayL) {
@@ -164,28 +167,7 @@ public class UtilitatsClasses {
         return UtilitatsClasses.ordenaArraySenseRepeticions( ArrayListToArray( UtilitatsClasses.obteParells(array) ) );
     } 
     
-    /**
-     * Crear un ArraList 
-     *      s'avalua cada element de l'array1 en array2
-     * @return ArrayList 
-     */    
-    public static ArrayList<Integer> obteRepetits(int[] array1, int[] array2) {
-        ArrayList<Integer> resultat = new ArrayList<>();
-        
-        return  resultat;
-    }
-    
-    /**
-     * Crear un ArraList 
-     *      s'avalua cada element de l'array1 en array2
-     * @return ArrayList 
-     */    
-    public static ArrayList<Integer> obteDiferents(int[] array1, int[] array2) {
-        ArrayList<Integer> resultat = new ArrayList<>();
-        
-        return  resultat;
-    }
-    
+ 
     /**
      * Transforma un int[] a un ArrayList<Integer>
      * @param array --> int[]
