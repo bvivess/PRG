@@ -167,7 +167,8 @@ public class UtilitatsClasses {
         return UtilitatsClasses.ordenaArraySenseRepeticions( ArrayListToArray( UtilitatsClasses.obteParells(array) ) );
     } 
     
- 
+
+    
     /**
      * Transforma un int[] a un ArrayList<Integer>
      * @param array --> int[]
