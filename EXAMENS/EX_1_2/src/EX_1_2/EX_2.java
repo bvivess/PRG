@@ -10,7 +10,7 @@ public class EX_2 {
         
         // Crea 2 'Array' de 10 posicions amb números aleatoris entre 0 i 9
         array1 = UtilitatsArrays.generaArray(5, 0, 9);
-        array2 = UtilitatsArrays.generaArray(5, 0, 9);
+        array2 = UtilitatsArrays.generaArray(5, 10, 19);
         
         // Calcula l''ArrayList' emprant el mètode 'obteRepetits' 
         resultat = UtilExamen.obteRepetits(array1, array2);

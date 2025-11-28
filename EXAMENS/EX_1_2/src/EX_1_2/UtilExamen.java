@@ -49,7 +49,7 @@ public class UtilExamen {
     public static ArrayList<Integer> ordenaArray(int[] array) {
         ArrayList<Integer> resultat = new ArrayList<>();
         
-        resultat.add(array[0]);
+        if (array.length > 0) resultat.add(array[0]);
         for (int i=1; i<array.length; i++) {
             boolean trobat = false;
             for (int j=0; j<resultat.size(); j++) {
