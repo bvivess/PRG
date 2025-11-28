@@ -167,7 +167,48 @@ public class UtilitatsClasses {
         return UtilitatsClasses.ordenaArraySenseRepeticions( ArrayListToArray( UtilitatsClasses.obteParells(array) ) );
     } 
     
-
+    /**
+     * Crear un ArraList 
+     *      s'avalua cada element de l'array1 en array2
+     * @return ArrayList 
+     */    
+    public static ArrayList<Integer> obteRepetits(int[] array1, int[] array2) {
+        ArrayList<Integer> resultat = new ArrayList<>();
+        
+        for (int a1 : array1)
+            for (int a2 : array2)
+                if (a1 == a2) {
+                    resultat.add(a1);
+                    break;
+                }
+            
+        return  resultat;
+    }
+    
+    /**
+     * Crear un ArraList 
+     *      s'avalua cada element de l'array1 en array2
+     * @param array1
+     * @param array2
+     * @return ArrayList 
+     */    
+    public static ArrayList<Integer> obteDiferents(int[] array1, int[] array2) {
+        ArrayList<Integer> resultat = new ArrayList<>();
+        boolean trobat;
+        
+        for (int a1 : array1) {
+            trobat = false;
+            for (int a2 : array2)
+                if (a1 == a2) {
+                    trobat = true;
+                    break;
+                }
+            if (!trobat)
+                resultat.add(a1);
+        }
+            
+        return  resultat;
+    }
     
     /**
      * Transforma un int[] a un ArrayList<Integer>
