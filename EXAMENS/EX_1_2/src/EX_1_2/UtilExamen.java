@@ -48,12 +48,13 @@ public class UtilExamen {
     
     public static ArrayList<Integer> ordenaArray(int[] array) {
         ArrayList<Integer> resultat = new ArrayList<>();
+        boolean trobat;
         
         if (array.length > 0) {
             resultat.add(array[0]);
 
             for (int i=1; i<array.length; i++) {
-                boolean trobat = false;
+                trobat = false;
                 for (int j=0; j<resultat.size(); j++) {
                     if (array[i] < resultat.get(j))  {
                         resultat.add(j, array[i]);  // afegir en la posició 'j' de 'resultat'
