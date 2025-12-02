@@ -22,7 +22,7 @@ public class ACT4_6_B2 {
     static final int SIMBOL_CUC = 1;
     static final int SIMBOL_CAPCUC = 2;
     static int[][] tauler;
-    static ArrayList<int[]> cuc = new ArrayList<>();  // [[m,n][k,l]...[a,b]] --> [a,b] és el cap, [m,n] és la cua 
+    static ArrayList<int[]> cuc = new ArrayList<>();  // [[m,n][k,l]...[a,b]] --> [a,b] és el cap del cuc, [m,n] és la cua 
     static ArrayList<int[]> fulles = new ArrayList<>();  // [[m,n][k,l]...[a,b]] --> posició de les fulles
     static int accio;
 
@@ -63,7 +63,7 @@ public class ACT4_6_B2 {
     public static void afegeixFulla(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
         ArrayList<int[]> cucIfulles = new ArrayList<>();
         int[] posNovaFulla;  // posicio nova fulla
-        boolean okFulla = true;
+        boolean okFulla;
 
         // Recorre 'cuc' i 'fulles' per veure que 'posFulla' és correcta
         cucIfulles.addAll(cuc);  // afegeix 'cuc' a cucIfulles'
@@ -151,7 +151,7 @@ public class ACT4_6_B2 {
     }
     
      public static void netejaTauler(int[][] tauler){
-        for (int i = 0; i < tauler.length; i++) 
+        for (var i = 0; i < tauler.length; i++) 
             for (int j = 0; j < tauler[i].length; j++)
                 tauler[i][j] = SIMBOL_BUIT;
     }    
