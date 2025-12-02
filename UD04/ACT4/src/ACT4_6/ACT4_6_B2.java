@@ -75,7 +75,7 @@ public class ACT4_6_B2 {
             // Recorre 'cuc' i 'fulles' per veure que 'posFulla' és correcta
             okFulla = true;
             for (int[] pos : cucIfulles) {
-                if (Arrays.equals(pos,posNovaFulla)) {
+                if (Arrays.equals(pos, posNovaFulla)) {
                     okFulla = false;
                     break;
                 }
