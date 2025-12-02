@@ -58,7 +58,7 @@ public class ACT4_6_B1 {
      *      - les 'fulles'
      */
     public static void emplenaTauler(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
-        int[] pos;  // posició (x,y)
+        int[] pos;  // posició genèrica (x,y)
         
         // Genera posició Inicial cuc
         pos = UtilitatsArrays.generaArray(2,0, tauler.length-1);

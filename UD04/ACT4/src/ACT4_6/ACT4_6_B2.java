@@ -51,18 +51,18 @@ public class ACT4_6_B2 {
     
     public static void emplenaTauler(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
         // Genera posició Inicial cuc
-        int[] posCuc = UtilitatsArrays.generaArray(2,0, tauler.length-1);
-        cuc.add(posCuc);
+        int[] pos = UtilitatsArrays.generaArray(2,0, tauler.length-1);
+        cuc.add(pos);
       
         // Genera posició de cada fulla 
         for (int i=0; i<NFULLES; i++) {
-            afegeixFulla(tauler, cuc, fulles);
+            afegeixUnaFulla(tauler, cuc, fulles);
         }
     }
     
-    public static void afegeixFulla(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
+    public static void afegeixUnaFulla(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
         ArrayList<int[]> cucIfulles = new ArrayList<>();
-        int[] posNovaFulla;  // posicio nova fulla
+        int[] pos;  // posicio nova fulla
         boolean okFulla;
 
         // Recorre 'cuc' i 'fulles' per veure que 'posFulla' és correcta
@@ -70,12 +70,12 @@ public class ACT4_6_B2 {
         cucIfulles.addAll(fulles);  // afegeix 'fulles' a cucIfulles'
         
         do {
-            posNovaFulla  = UtilitatsArrays.generaArray(2,0, NTAULER-1); // genera posició de la fulla
+            pos  = UtilitatsArrays.generaArray(2,0, NTAULER-1); // genera posició de la fulla
             
             // Recorre 'cuc' i 'fulles' per veure que 'posFulla' és correcta
             okFulla = true;
-            for (int[] pos : cucIfulles) {
-                if (Arrays.equals(pos, posNovaFulla)) {
+            for (int[] p : cucIfulles) {
+                if (Arrays.equals(p, pos)) {
                     okFulla = false;
                     break;
                 }
@@ -83,7 +83,7 @@ public class ACT4_6_B2 {
         } while (!okFulla);
         
         // Afegeix fulla
-        fulles.add(posNovaFulla);
+        fulles.add(pos);
     }
     
     public static boolean cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles, int accio) {  // torna 'true' si el 'cuc' es tropitja, 'false' en cas contrari
