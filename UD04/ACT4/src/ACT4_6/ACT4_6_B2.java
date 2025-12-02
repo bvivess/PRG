@@ -36,7 +36,7 @@ public class ACT4_6_B2 {
         do {
             mostrarTauler(tauler, cuc, fulles);
             accio = UtilitatsConsola.llegirSencer("Puntuació: " + cuc.size() +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
-            if ((accio == 2) | (accio == 4)| (accio == 6)| (accio == 8))
+            if (accio != 0)
                 if (cambiaPosicio(tauler, cuc, fulles, accio)) {
                     if (fulles.size() == 0) {
                         System.out.println("YOU WIN !!");
@@ -65,8 +65,8 @@ public class ACT4_6_B2 {
         int[] posNovaFulla;  // posicio nova fulla
         boolean okFulla = true;
 
-        cucIfulles.addAll(cuc);
-        cucIfulles.addAll(fulles);
+        cucIfulles.addAll(cuc);  // afegeix 'cuc' a cucIfulles'
+        cucIfulles.addAll(fulles);  // afegeix 'fulles' a cucIfulles'
         
         do {
             posNovaFulla  = UtilitatsArrays.generaArray(2,0, NTAULER-1); // genera posició de la fulla
@@ -125,26 +125,6 @@ public class ACT4_6_B2 {
 
         return true;       
     }
-
-    public static void netejaTauler(int[][] tauler){
-        for (int i = 0; i < tauler.length; i++) 
-            for (int j = 0; j < tauler[i].length; j++)
-                tauler[i][j] = SIMBOL_BUIT;
-    }    
-
-    public static void situaCuc(int[][] tauler, ArrayList<int[]> cuc){
-        int i=0;
-        for (int[] posCuc : cuc) {
-            tauler[posCuc[0]][posCuc[1]] = (i==cuc.size()-1 ? SIMBOL_CAPCUC: SIMBOL_CUC);
-            i++;
-        }
-    }
-    
-    public static void situaFulles(int[][] tauler, ArrayList<int[]> fulles){
-        for (int[] posFulla : fulles) {
-            tauler[posFulla[0]][posFulla[1]] = SIMBOL_FULLA;
-        }
-    }
  
     public static void mostrarTauler(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
         String car="";
@@ -168,4 +148,23 @@ public class ACT4_6_B2 {
         }
     }
     
+     public static void netejaTauler(int[][] tauler){
+        for (int i = 0; i < tauler.length; i++) 
+            for (int j = 0; j < tauler[i].length; j++)
+                tauler[i][j] = SIMBOL_BUIT;
+    }    
+
+    public static void situaCuc(int[][] tauler, ArrayList<int[]> cuc){
+        int i=0;
+        for (int[] posCuc : cuc) {
+            tauler[posCuc[0]][posCuc[1]] = (i==cuc.size()-1 ? SIMBOL_CAPCUC: SIMBOL_CUC);
+            i++;
+        }
+    }
+    
+    public static void situaFulles(int[][] tauler, ArrayList<int[]> fulles){
+        for (int[] posFulla : fulles) {
+            tauler[posFulla[0]][posFulla[1]] = SIMBOL_FULLA;
+        }
+    }   
 }
