@@ -58,21 +58,7 @@ public class ACT4_6_A3 {
             }
         }
     }
-    
-    public static void afegeixFulla(int[][] tauler) {
-        int[] fulla;  // posicio nova fulla
-        boolean okfulla = true;
-        
-        do {
-            fulla  = UtilitatsArrays.generaArray(2,0, NTAULER-1); // genera posició de la fulla
-            if (tauler[fulla[0]][fulla[1]] == SIMBOL_BUIT) { // situa la fulla al tauler si la posició està  buida
-                tauler[fulla[0]][fulla[1]] = SIMBOL_FULLA;
-                okfulla = false;
-            }
-        } while (okfulla);
-        
-    }
-    
+      
     public static boolean cambiaPosicio(int[][] tauler, int[] posicio, int accio) {
         switch (accio) {
             case 4 -> // ESQ

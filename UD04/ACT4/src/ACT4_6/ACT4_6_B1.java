@@ -58,43 +58,27 @@ public class ACT4_6_B1 {
      *      - les 'fulles'
      */
     public static void emplenaTauler(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
+        int[] pos;  // posició (x,y)
         
         // Genera posició Inicial cuc
-        int[] posCuc = UtilitatsArrays.generaArray(2,0, tauler.length-1);
-        cuc.add(posCuc);
+        pos = UtilitatsArrays.generaArray(2,0, tauler.length-1);
+        cuc.add(pos);
+        tauler[pos[0]][pos[1]] = SIMBOL_CUC;
       
-        // Genera posició de cada fulla 
-        for (int i=0; i<NFULLES; i++) {
-            afegeixFulla(tauler, cuc, fulles);
+        // Situam les fulles:
+        int nfulles = 0;
+        while (nfulles < NFULLES) {
+            // Generam una posició aleatòria per a una fulla
+            pos = UtilitatsArrays.generaArray(2, 0, NTAULER-1);
+            if (tauler[pos[0]][pos[1]] == SIMBOL_BUIT) {
+              tauler[pos[0]][pos[1]] = SIMBOL_FULLA;
+              fulles.add(pos);
+              nfulles++;
+            }
         }
+
     }
     
-    /**
-     * @param tauler
-     * @param cuc
-     * @param fulles 
-     * 
-     * Ha de rebre el 'tauler' i el 'cuc' i de crear :
-     *      - 1 fulla
-     * 
-     * Per veure que una fulla és correcte, no ha de coincidir amb:
-     *      - alguna posició del 'cuc'
-     *      - alguna posició de les 'fulles'
-     * creats anteriorent
-     */
-    public static void afegeixFulla(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
-        int[] posNovaFulla;  // posicio nova fulla
-        boolean okFulla = true;
-        
-        do {
-            posNovaFulla  = UtilitatsArrays.generaArray(2,0, NTAULER-1); // genera posició de la fulla
-            // Recorre 'cuc' i 'fulles' per veure que 'posFulla' és correcta
-
-        } while (!okFulla);
-        
-        // Afegeix fulla
-        
-    }
     /**
     * @param tauler
     * @param cuc
