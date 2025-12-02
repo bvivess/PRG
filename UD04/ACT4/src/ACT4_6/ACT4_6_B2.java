@@ -65,12 +65,14 @@ public class ACT4_6_B2 {
         int[] posNovaFulla;  // posicio nova fulla
         boolean okFulla = true;
 
+        // Recorre 'cuc' i 'fulles' per veure que 'posFulla' és correcta
         cucIfulles.addAll(cuc);  // afegeix 'cuc' a cucIfulles'
         cucIfulles.addAll(fulles);  // afegeix 'fulles' a cucIfulles'
         
         do {
             posNovaFulla  = UtilitatsArrays.generaArray(2,0, NTAULER-1); // genera posició de la fulla
-            // Recorre 'fulles' per veure que 'posFulla' és correcta
+            
+            // Recorre 'cuc' i 'fulles' per veure que 'posFulla' és correcta
             okFulla = true;
             for (int[] pos : cucIfulles) {
                 if (Arrays.equals(pos,posNovaFulla)) {
