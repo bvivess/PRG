@@ -35,12 +35,12 @@ public class ACT4_6_B1 {
         do {
             mostrarTauler(tauler, cuc, fulles);  //
             accio = UtilitatsConsola.llegirSencer("Puntuació: " + cuc.size() +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
-            if (cambiaPosicio(tauler, cuc, fulles, accio))
-                if (fulles.isEmpty()) {
+            if (cambiaPosicio(tauler, cuc, fulles, accio)) {
+                if (fulles.size() == 0) {
                     System.out.println("YOU WIN !!");
                     accio = 0;
                 }
-            else {
+            } else {
                 System.out.println("YOU LOSE !!");
                 accio = 0;
             }
