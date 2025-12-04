@@ -13,11 +13,11 @@ import ACT4_3.UtilitatsConsola;
   */
 
 public class ACT4_6_A2 {
+    static final int NTAULER = UtilitatsConsola.llegirSencer("Introdueixi la mida del tauler: ");
+    static final int NFULLES = UtilitatsConsola.llegirSencer("Numero de fulles: ");
     static final int SIMBOL_BUIT = 0;
     static final int SIMBOL_CUC = 1;
     static final int SIMBOL_FULLA = 9;
-    static final int NTAULER = UtilitatsConsola.llegirSencer("Introdueixi la mida del tauler: ");
-    static final int NFULLES = UtilitatsConsola.llegirSencer("Numero de fulles: ");
     
     public static void main(String[] args) {
         int[][] tauler = new int[NTAULER][NTAULER];  // tauler del joc

@@ -13,15 +13,15 @@ import ACT4_3.UtilitatsConsola;
   */
 
 public class ACT4_6_A3 { 
-    static int NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
-    static int NFULLES=UtilitatsConsola.llegirSencer("Nombre de fulles: ");
+    static int NTAULER = UtilitatsConsola.llegirSencer("Mida del tauler: ");
+    static int NFULLES = UtilitatsConsola.llegirSencer("Nombre de fulles: ");
     static final int SIMBOL_BUIT = 0;
     static final int SIMBOL_FULLA = 99;  // cal modificar a 99 perquè el cuc pugui créixer
     static int SIMBOL_CUC = 1;  // 1,2,3 ... va creixent a mida que el cuc creix
 
     public static void main(String[] args) {
-        int[][] tauler = UtilitatsMatrius.generaMatriu(NTAULER, 0, 0);  // matriu NTAULERxNTAULER
-        int[] cuc = UtilitatsArrays.generaArray(2,0, tauler.length-1);     // (x,y) del cuc
+        int[][] tauler = new int[NTAULER][NTAULER];  // tauler del joc
+        int[] cuc = new int[2];  // posició {fila,columna} del cuc
         int accio;
         
         emplenaTauler(tauler, cuc);

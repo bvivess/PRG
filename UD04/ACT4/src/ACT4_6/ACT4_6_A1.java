@@ -9,7 +9,7 @@ import ACT4_3.UtilitatsConsola;
   *      Mostra-la per pantalla, cada fila a una línia.
   */
 public class ACT4_6_A1 {
-    static final int NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
+    static final int NTAULER = UtilitatsConsola.llegirSencer("Mida del tauler: ");
     static int SIMBOL_BUIT = 0;
     static int SIMBOL_CUC = 1;
  
