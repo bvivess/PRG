@@ -21,14 +21,13 @@ public class ACT4_6_B2 {
     static final int SIMBOL_FULLA = 9;
     static final int SIMBOL_CUC = 1;
     static final int SIMBOL_CAPCUC = 2;
-    static int[][] tauler;
-    static int accio;
 
     public static void main(String[] args) {
+        int[][] tauler = new int[NTAULER][NTAULER];  // matriu NTAULERxNTAULER
         ArrayList<int[]> cuc = new ArrayList<>();  // [[m,n][k,l]...[a,b]] --> [a,b] és el cap del cuc, [m,n] és la cua 
         ArrayList<int[]> fulles = new ArrayList<>();  // [[m,n][k,l]...[a,b]] --> posició de les fulles
+        int accio;
         
-        tauler = new int[NTAULER][NTAULER];  // matriu NTAULERxNTAULER
         emplenaTauler(tauler, cuc, fulles);
         
         do {
