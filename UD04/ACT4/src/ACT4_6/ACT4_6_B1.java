@@ -116,8 +116,8 @@ public class ACT4_6_B1 {
      */
     public static boolean cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles, int accio) {  // torna 'true' si el 'cuc' es tropitja, 'false' en cas contrari
         int mida = tauler.length;
-        int[] posCucCap = new int[] { cuc.get(cuc.size()-1)[0],
-                                      cuc.get(cuc.size()-1)[1] }; // posició actual del cap és la darrera posició de l'arraylist
+        int[] posCucCap = { cuc.get(cuc.size() - 1)[0], 
+                            cuc.get(cuc.size() - 1)[1] }; // posició actual del cap és la darrera posició de l'arraylist
         
         switch (accio) {
             case 4 -> // ESQ
