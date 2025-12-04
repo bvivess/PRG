@@ -19,7 +19,7 @@ public class ACT4_6_A1 {
         int accio; 
 
         // Emplena el tauler amb el cuc i les fulles
-        emplenaTauler(tauler, cuc);
+        inicialitzaJoc(tauler, cuc);
         
         do {
             // Mostra el tauler
@@ -32,7 +32,7 @@ public class ACT4_6_A1 {
         } while (accio!=0);
     }
     
-    public static void emplenaTauler(int[][] tauler, int[] cuc) {
+    public static void inicialitzaJoc(int[][] tauler, int[] cuc) {
         // Generam una posició aleatòria pel cuc
         int[] pos = UtilitatsArrays.generaArray(2, 0, NTAULER-1);
         cuc[0] = pos[0];

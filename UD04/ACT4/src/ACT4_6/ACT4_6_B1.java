@@ -14,8 +14,8 @@ import ACT4_3.UtilitatsConsola;
   */
 
 public class ACT4_6_B1 { 
-    static int NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
-    static int NFULLES=UtilitatsConsola.llegirSencer("Nombre de fulles: ");
+    static int NTAULER = UtilitatsConsola.llegirSencer("Mida del tauler: ");
+    static int NFULLES = UtilitatsConsola.llegirSencer("Nombre de fulles: ");
     static final int SIMBOL_BUIT = 0;
     static final int SIMBOL_FULLA = 9;
     static final int SIMBOL_CUC = 1;
@@ -27,10 +27,10 @@ public class ACT4_6_B1 {
         ArrayList<int[]> fulles = new ArrayList<>();  // [[m,n][k,l]...[a,b]] --> posició de les fulles
         int accio;
         
-        emplenaTauler(tauler, cuc, fulles);
+        inicialitzaJoc(tauler, cuc, fulles);
         
         do {
-            mostrarTauler(tauler, cuc, fulles);  //
+            mostrarTauler(tauler, cuc, fulles);
             accio = UtilitatsConsola.llegirSencer("Puntuació: " + cuc.size() +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
             if (cambiaPosicio(tauler, cuc, fulles, accio)) {
                 if (fulles.isEmpty()) {
@@ -54,7 +54,7 @@ public class ACT4_6_B1 {
      *      - el 'cuc'
      *      - les 'fulles'
      */
-    public static void emplenaTauler(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
+    public static void inicialitzaJoc(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
         int[] pos;  // posició genèrica (x,y)
         
         // Genera posició Inicial cuc

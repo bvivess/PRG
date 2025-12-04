@@ -24,12 +24,13 @@ public class ACT4_6_A3 {
         int[] cuc = new int[2];  // posició {fila,columna} del cuc
         int accio;
         
-        emplenaTauler(tauler, cuc);
+        inicialitzaJoc(tauler, cuc);
         
         do {
-            UtilitatsArrays.mostraArray(cuc);  //
-            mostrarTauler(tauler);
+            UtilitatsArrays.mostraArray(cuc);
             UtilitatsMatrius.mostraMatriu(tauler);
+            mostrarTauler(tauler);
+
             accio = UtilitatsConsola.llegirSencer("Puntuació: " + (float) SIMBOL_CUC +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
             
             if (cambiaPosicio(tauler, cuc, accio)) {  // cuc es tropitja
@@ -42,7 +43,7 @@ public class ACT4_6_A3 {
         } while (accio != 0); 
     }
     
-    public static void emplenaTauler(int[][] tauler, int[] cuc) {
+    public static void inicialitzaJoc(int[][] tauler, int[] cuc) {
         // Generam una posició aleatòria pel cuc
         int[] pos = UtilitatsArrays.generaArray(2, 0, NTAULER-1);
         cuc[0] = pos[0];
