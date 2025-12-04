@@ -9,13 +9,13 @@ import ACT4_3.UtilitatsConsola;
   *      Mostra-la per pantalla, cada fila a una lÃ­nia.
   */
 public class ACT4_6_A1 {
+    static final int NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
     static int SIMBOL_BUIT = 0;
     static int SIMBOL_CUC = 1;
-    static final int NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
  
     public static void main(String[] args) {
-        int[][] tauler = UtilitatsMatrius.generaMatriu(NTAULER, 0, 0);  // tauler del joc
-        int[] cuc = UtilitatsArrays.generaArray(2, 0, NTAULER-1);  // posició {fila,columna} del cuc
+        int[][] tauler = new int[NTAULER][NTAULER];  // tauler del joc
+        int[] cuc = new int[2];  // posició {fila,columna} del cuc
         int accio; 
 
         // Emplena el tauler amb el cuc i les fulles
@@ -33,6 +33,11 @@ public class ACT4_6_A1 {
     }
     
     public static void emplenaTauler(int[][] tauler, int[] cuc) {
+        // Generam una posició aleatòria pel cuc
+        int[] pos = UtilitatsArrays.generaArray(2, 0, NTAULER-1);
+        cuc[0] = pos[0];
+        cuc[1] = pos[1];
+        
         // Situa cuc en el tauler
         tauler[ cuc[0] ] [ cuc[1] ] = SIMBOL_CUC;
     }

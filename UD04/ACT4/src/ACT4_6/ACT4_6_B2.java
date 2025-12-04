@@ -15,20 +15,18 @@ import java.util.Arrays;
   */
 
 public class ACT4_6_B2 { 
-    static int NTAULER;
-    static int NFULLES;
+    static int NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
+    static int NFULLES=UtilitatsConsola.llegirSencer("Nombre de fulles: ");
     static final int SIMBOL_BUIT = 0;
     static final int SIMBOL_FULLA = 9;
     static final int SIMBOL_CUC = 1;
     static final int SIMBOL_CAPCUC = 2;
     static int[][] tauler;
-    static ArrayList<int[]> cuc = new ArrayList<>();  // [[m,n][k,l]...[a,b]] --> [a,b] és el cap del cuc, [m,n] és la cua 
-    static ArrayList<int[]> fulles = new ArrayList<>();  // [[m,n][k,l]...[a,b]] --> posició de les fulles
     static int accio;
 
     public static void main(String[] args) {
-        NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
-        NFULLES=UtilitatsConsola.llegirSencer("Nombre de fulles: ");
+        ArrayList<int[]> cuc = new ArrayList<>();  // [[m,n][k,l]...[a,b]] --> [a,b] és el cap del cuc, [m,n] és la cua 
+        ArrayList<int[]> fulles = new ArrayList<>();  // [[m,n][k,l]...[a,b]] --> posició de les fulles
         
         tauler = new int[NTAULER][NTAULER];  // matriu NTAULERxNTAULER
         emplenaTauler(tauler, cuc, fulles);
@@ -87,20 +85,19 @@ public class ACT4_6_B2 {
     }
     
     public static boolean cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles, int accio) {  // torna 'true' si el 'cuc' es tropitja, 'false' en cas contrari
-        int mida = tauler.length;
         int[] posFulla, posCuc;
         int[] posCucCap = { cuc.get(cuc.size() - 1)[0], 
                             cuc.get(cuc.size() - 1)[1] }; // posició actual del cap és la darrera posició de l'arraylist
         
         switch (accio) {
             case 4 -> // ESQ
-                posCucCap[1] = (posCucCap[1] == 0 ? mida-1 : --posCucCap[1]); 
+                posCucCap[1] = (posCucCap[1] == 0 ? NTAULER-1 : --posCucCap[1]); 
             case 6  -> // DRETA
-                posCucCap[1] = (posCucCap[1] == mida-1 ? 0 : ++posCucCap[1]); 
+                posCucCap[1] = (posCucCap[1] == NTAULER-1 ? 0 : ++posCucCap[1]); 
             case 8  -> // ALT
-                posCucCap[0] = (posCucCap[0] == 0 ? mida-1 : --posCucCap[0]); 
+                posCucCap[0] = (posCucCap[0] == 0 ? NTAULER-1 : --posCucCap[0]); 
             case 2 -> //BAIX
-                posCucCap[0] = (posCucCap[0] == mida-1 ? 0 : ++posCucCap[0]); 
+                posCucCap[0] = (posCucCap[0] == NTAULER-1 ? 0 : ++posCucCap[0]); 
         }
         
         // Cuc menja fulla ?

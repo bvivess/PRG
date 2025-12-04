@@ -14,20 +14,18 @@ import ACT4_3.UtilitatsConsola;
   */
 
 public class ACT4_6_B1 { 
-    static int NTAULER;
-    static int NFULLES;
+    static int NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
+    static int NFULLES=UtilitatsConsola.llegirSencer("Nombre de fulles: ");
     static final int SIMBOL_BUIT = 0;
     static final int SIMBOL_FULLA = 9;
     static final int SIMBOL_CUC = 1;
     static final int SIMBOL_CAPCUC = 2;
     static int[][] tauler;
-    static ArrayList<int[]> cuc = new ArrayList<>();  // [[m,n][k,l]...[a,b]] --> [a,b] és el cap del cuc, [m,n] és la cua 
-    static ArrayList<int[]> fulles = new ArrayList<>();  // [[m,n][k,l]...[a,b]] --> posició de les fulles
     static int accio;
 
     public static void main(String[] args) {
-        NTAULER=UtilitatsConsola.llegirSencer("Mida del tauler: ");
-        NFULLES=UtilitatsConsola.llegirSencer("Nombre de fulles: ");
+        ArrayList<int[]> cuc = new ArrayList<>();  // [[m,n][k,l]...[a,b]] --> [a,b] és el cap del cuc, [m,n] és la cua 
+        ArrayList<int[]> fulles = new ArrayList<>();  // [[m,n][k,l]...[a,b]] --> posició de les fulles
         
         tauler = new int[NTAULER][NTAULER];  // matriu NTAULERxNTAULER
         emplenaTauler(tauler, cuc, fulles);
@@ -36,7 +34,7 @@ public class ACT4_6_B1 {
             mostrarTauler(tauler, cuc, fulles);  //
             accio = UtilitatsConsola.llegirSencer("Puntuació: " + cuc.size() +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
             if (cambiaPosicio(tauler, cuc, fulles, accio)) {
-                if (fulles.isEmpty()) {
+                if (fulles.size()==0) {
                     System.out.println("YOU WIN !!");
                     accio = 0;
                 }
@@ -63,7 +61,6 @@ public class ACT4_6_B1 {
         // Genera posició Inicial cuc
         pos = UtilitatsArrays.generaArray(2,0, tauler.length-1);
         cuc.add(pos);
-        tauler[pos[0]][pos[1]] = SIMBOL_CUC;
       
         // Situam les fulles:
         int nfulles = 0;
@@ -71,7 +68,6 @@ public class ACT4_6_B1 {
             // Generam una posició aleatòria per a una fulla
             pos = UtilitatsArrays.generaArray(2, 0, NTAULER-1);
             if (tauler[pos[0]][pos[1]] == SIMBOL_BUIT) {
-              tauler[pos[0]][pos[1]] = SIMBOL_FULLA;
               fulles.add(pos);
               nfulles++;
             }
@@ -115,19 +111,18 @@ public class ACT4_6_B1 {
     * 
      */
     public static boolean cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles, int accio) {  // torna 'true' si el 'cuc' es tropitja, 'false' en cas contrari
-        int mida = tauler.length;
         int[] posCucCap = { cuc.get(cuc.size() - 1)[0], 
                             cuc.get(cuc.size() - 1)[1] }; // posició actual del cap és la darrera posició de l'arraylist
         
         switch (accio) {
             case 4 -> // ESQ
-                posCucCap[1] = (posCucCap[1] == 0 ? mida-1 : --posCucCap[1]); 
+                posCucCap[1] = (posCucCap[1] == 0 ? NTAULER-1 : --posCucCap[1]); 
             case 6  -> // DRETA
-                posCucCap[1] = (posCucCap[1] == mida-1 ? 0 : ++posCucCap[1]); 
+                posCucCap[1] = (posCucCap[1] == NTAULER-1 ? 0 : ++posCucCap[1]); 
             case 8  -> // ALT
-                posCucCap[0] = (posCucCap[0] == 0 ? mida-1 : --posCucCap[0]); 
+                posCucCap[0] = (posCucCap[0] == 0 ? NTAULER-1 : --posCucCap[0]); 
             case 2 -> //BAIX
-                posCucCap[0] = (posCucCap[0] == mida-1 ? 0 : ++posCucCap[0]); 
+                posCucCap[0] = (posCucCap[0] == NTAULER-1 ? 0 : ++posCucCap[0]); 
         }
         
         // Moure el cuc: 

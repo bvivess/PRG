@@ -43,17 +43,21 @@ public class ACT4_6_A3 {
     }
     
     public static void emplenaTauler(int[][] tauler, int[] cuc) {
-        int[] fulla;  // posicio nova fulla
+        // Generam una posició aleatòria pel cuc
+        int[] pos = UtilitatsArrays.generaArray(2, 0, NTAULER-1);
+        cuc[0] = pos[0];
+        cuc[1] = pos[1];
+        
         // Situa cuc en el tauler
-        tauler[cuc[0]][cuc[1]] = SIMBOL_CUC;
+        tauler[ cuc[0] ] [ cuc[1] ] = SIMBOL_CUC;
         
         // Situam les fulles:
         int nfulles = 0;
         while (nfulles < NFULLES) {
             // Generam una posició aleatòria per a una fulla
-            fulla = UtilitatsArrays.generaArray(2, 0, NTAULER-1);
-            if (tauler[fulla[0]][fulla[1]] == SIMBOL_BUIT) {
-              tauler[fulla[0]][fulla[1]] = SIMBOL_FULLA;
+            pos = UtilitatsArrays.generaArray(2, 0, NTAULER-1);
+            if (tauler[pos[0]][pos[1]] == SIMBOL_BUIT) {
+              tauler[pos[0]][pos[1]] = SIMBOL_FULLA;
               nfulles++;
             }
         }
