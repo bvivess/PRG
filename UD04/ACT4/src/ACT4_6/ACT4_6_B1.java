@@ -36,7 +36,7 @@ public class ACT4_6_B1 {
             mostrarTauler(tauler, cuc, fulles);  //
             accio = UtilitatsConsola.llegirSencer("Puntuació: " + cuc.size() +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
             if (cambiaPosicio(tauler, cuc, fulles, accio)) {
-                if (fulles.size() == 0) {
+                if (fulles.isEmpty()) {
                     System.out.println("YOU WIN !!");
                     accio = 0;
                 }
@@ -131,8 +131,8 @@ public class ACT4_6_B1 {
         }
         
         // Moure el cuc: 
-        //    'cuc' es tropitja ? --> return false;
         //    'cuc' menja 'fulla' ? --> return true;
+        //    'cuc' es tropitja ? --> return false;
         //    'cuc' es mou --> return true;
         
         return true || false;

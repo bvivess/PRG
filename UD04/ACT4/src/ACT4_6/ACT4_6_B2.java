@@ -38,7 +38,7 @@ public class ACT4_6_B2 {
             accio = UtilitatsConsola.llegirSencer("Puntuació: " + cuc.size() +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
             if (accio != 0)
                 if (cambiaPosicio(tauler, cuc, fulles, accio)) {
-                    if (fulles.size() == 0) {
+                    if (fulles.isEmpty()) {
                         System.out.println("YOU WIN !!");
                         accio = 0;
                     }
@@ -65,7 +65,7 @@ public class ACT4_6_B2 {
         int[] pos;  // posicio nova fulla
         boolean okFulla;
 
-        // Recorre 'cuc' i 'fulles' per veure que 'posFulla' és correcta
+        // Recorre 'cuc' + 'fulles' per veure que 'posFulla' és correcta
         cucIfulles.addAll(cuc);  // afegeix 'cuc' a cucIfulles'
         cucIfulles.addAll(fulles);  // afegeix 'fulles' a cucIfulles'
         
