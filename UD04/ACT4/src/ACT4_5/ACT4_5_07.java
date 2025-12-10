@@ -7,7 +7,7 @@ public class ACT4_5_07 {
         String cadena = UtilitatsConsola.llegirCadena("Introdueix una cadena: ");
         char lletra = UtilitatsConsola.llegirCar("Introdueix el caràcter a contar: ");
 
-        int total = UtilitatsRecOrdCerca.contaLletraEnCadena(cadena, lletra);
+        int total = UtilitatsRecOrdCerca.comptaLletraEnCadena(cadena, lletra);
         System.out.println("El caràcter '" + lletra + "' apareix " + total + " vegades en '" + cadena + "'");
     }
 }

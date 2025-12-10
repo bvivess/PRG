@@ -8,6 +8,7 @@ public class ACT4_5_06 {
 
         System.out.println("Patró generat:");
         UtilitatsRecOrdCerca.imprimeixPatro(mida);
+        System.out.println();
     }
 
 

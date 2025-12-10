@@ -12,10 +12,10 @@ public class UtilitatsRecOrdCerca {
     public static double calculaPotencia(int base, int exponent) {
         System.out.print(" >" + base + "^" + exponent);
         if (exponent == 1) {
-            System.out.print(" ***" + (base));
+            System.out.print(" = " + (base));
             return base;
         } else {
-            System.out.print(" *2x" + (base) + "^" + (exponent-1));
+            System.out.print(" * ("+base+"x" + (base) + "^" + (exponent-1) + ")");
             return (base * calculaPotencia(base, exponent - 1));
         }
     } 
@@ -74,16 +74,16 @@ public class UtilitatsRecOrdCerca {
      * @return el fibonacci d'un numero
      */
     public static int calculaFibonacci(int base) {
-        System.out.print(" >" + base);
+        //System.out.print(" >" + base);
         if (base == 0) {
-            System.out.print(" ***" + (base));
+            //ystem.out.print(" ***" + (base));
             return base;
         } else if (base == 1) {
-            System.out.print(" ***" + (base));
+            //System.out.print(" ***" + (base));
             return base;
         }
         else {
-            System.out.print(" *" + (base-1) + " *" + (base-2));
+            //System.out.print(" *" + (base-1) + " *" + (base-2));
             return calculaFibonacci(base - 1) + calculaFibonacci(base - 2);
         }
     }  
@@ -98,7 +98,7 @@ public class UtilitatsRecOrdCerca {
      * @param n 
      */
     public static void imprimeixPatro(int n) {
-        if (n <= 0) {  // cas base
+        if (n <= 1) {  // cas base
             System.out.print("*");
         } else {
             // Imprimir 'n' asterics 
@@ -118,7 +118,7 @@ public class UtilitatsRecOrdCerca {
     * @param lletra cercar
     * @return int
     */    
-    public static int contaLletraEnCadena(String cadena, char lletra) {
+    public static int comptaLletraEnCadena(String cadena, char lletra) {
         int total;
         
         if (cadena.isEmpty()) // cas base
@@ -126,7 +126,7 @@ public class UtilitatsRecOrdCerca {
         else {
             // Comprobar si el primer carácter coincide y sumar el resultado de la llamada recursiva
             total = (cadena.charAt(0) == lletra) ? 1 : 0;
-            return total + contaLletraEnCadena(cadena.substring(1), lletra);
+            return total + comptaLletraEnCadena(cadena.substring(1), lletra);
         }
     }
     
