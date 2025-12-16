@@ -147,7 +147,7 @@ public class ACT4_6_B2 {
     }
     
      public static void netejaTauler(int[][] tauler){
-        for (var i = 0; i < tauler.length; i++) 
+        for (int i = 0; i < tauler.length; i++) 
             for (int j = 0; j < tauler[i].length; j++)
                 tauler[i][j] = SIMBOL_BUIT;
     }    
