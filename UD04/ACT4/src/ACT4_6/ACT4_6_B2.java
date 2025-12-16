@@ -33,22 +33,22 @@ public class ACT4_6_B2 {
         do {
             mostrarTauler(tauler, cuc, fulles);
             accio = UtilitatsConsola.llegirSencer("Puntuació: " + cuc.size() +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
-            if (accio != 0)
-                if (cambiaPosicio(tauler, cuc, fulles, accio)) {
-                    if (fulles.isEmpty()) {
-                        System.out.println("YOU WIN !!");
-                        accio = 0;
-                    }
-                } else {
-                    System.out.println("YOU LOSE !!");
+
+            if (cambiaPosicio(tauler, cuc, fulles, accio)) {
+                if (fulles.isEmpty()) {
+                    System.out.println("YOU WIN !!");
                     accio = 0;
                 }
+            } else {
+                System.out.println("YOU LOSE !!");
+                accio = 0;
+            }
         } while (accio != 0);
     }
     
     public static void inicialitzaJoc(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
         // Genera posició Inicial cuc
-        int[] pos = UtilitatsArrays.generaArray(2,0, tauler.length-1);
+        int[] pos = UtilitatsArrays.generaArray(2,0, NTAULER-1);
         cuc.add(pos);
       
         // Genera posició de cada fulla 
@@ -131,9 +131,9 @@ public class ACT4_6_B2 {
         situaCuc(tauler, cuc);
         situaFulles(tauler, fulles);
               
-        for (int i = 0; i < tauler.length; i++) {
+        for (int i = 0; i < NTAULER ; i++) {
             System.out.print('|');
-            for (int j = 0; j < tauler[i].length; j++) {
+            for (int j = 0; j < NTAULER; j++) {
                 switch (tauler[i][j]) {
                     case SIMBOL_BUIT -> car = "   ";
                     case SIMBOL_FULLA -> car = " * ";
