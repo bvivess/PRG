@@ -52,9 +52,8 @@ public class ACT4_6_B2 {
         cuc.add(pos);
       
         // Genera posició de cada fulla 
-        for (int i=0; i<NFULLES; i++) {
+        for (int i=0; i<NFULLES; i++)
             afegeixUnaFulla(tauler, cuc, fulles);
-        }
     }
     
     public static void afegeixUnaFulla(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
