@@ -16,8 +16,8 @@ public class Main {
 
         r.alcada = 20;
         r.amplada = 2;
-        System.out.println("Àrea: " + r.calcularArea() );
-        System.out.println("Perímetre: " + r.calcularPerimetre() );
+        System.out.println("Àrea: " + r.calculaArea() );
+        System.out.println("Perímetre: " + r.calculaPerimetre() );
     }
     
 }

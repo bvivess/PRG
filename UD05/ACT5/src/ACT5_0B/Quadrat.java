@@ -9,11 +9,11 @@ public class Quadrat {
     public double costat;
     
     // Mètodes
-    public double calcularArea() {
+    public double calculaArea() {
         return Math.PI * Math.pow(costat,2);
     }
     
-    public double calcularPerimetre() {
+    public double calculaPerimetre() {
         return 4 * costat;
     }
     

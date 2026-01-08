@@ -10,11 +10,11 @@ public class Rectangle {
     public double alcada;
     
     // Mètodes
-    public double calcularArea() {
+    public double calculaArea() {
         return amplada * alcada;
     }
     
-    public double calcularPerimetre() {
+    public double calculaPerimetre() {
         return 2 * (amplada + alcada);
     }
 }

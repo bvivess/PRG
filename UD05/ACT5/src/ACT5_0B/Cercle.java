@@ -9,11 +9,11 @@ public class Cercle {
     public double radi;
     
     // Mètodes
-    public double calcularArea() {
+    public double calculaArea() {
         return Math.PI * Math.pow(radi,2);
     }
     
-    public double calcularPerimetre() {
+    public double calculaPerimetre() {
         return 2 * (Math.PI + radi);
     }
 }

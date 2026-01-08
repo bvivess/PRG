@@ -24,7 +24,6 @@ public class EX_1 {
             accio = UtilitatsConsola.llegirSencer("PUNTUACIÓ: " + (NALIENS - aliens.size()) + ", 4:ESQUERRA, 6:DRETA, 9: DISPAR, 0:SORTIR: ");
 
             if (executaAccio(tauler, nau, aliens, accio)) {
-                System.out.println("Seguim");
                 if (aliens.isEmpty()) {
                     System.out.println("YOU WIN !!");
                     accio = 0;
@@ -32,7 +31,7 @@ public class EX_1 {
             } else {
                 mostrarTauler(tauler, nau, aliens);
                 System.out.println("PUNTUACIÓ: " + (NALIENS - aliens.size()) + " YOU LOSE !!");
-                accio = 0;
+                break;
             }
         } while (accio != 0);
     }
@@ -44,7 +43,7 @@ public class EX_1 {
         nau[1] = pos[1];
       
         // Genera posició de cada alien 
-        for (int i=0; i < NALIENS; i++)
+        for (int i=1; i <= NALIENS; i++)
             afegeixUnAlien(tauler, nau, aliens);
     }
     
@@ -55,11 +54,12 @@ public class EX_1 {
         // Recorre 'aliens' per veure que 'pos' és correcta
         do {
             ok = true;
-            pos  = UtilitatsArrays.generaArray(2,0, NTAULER-1); // genera posició de la fulla
+            pos  = UtilitatsArrays.generaArray(2,0, NTAULER-1); // genera posició del alien
+            
             if (pos[0] <= FILA_INICIAL_ALIENS)
                 ok = false;
             else
-            // Recorre 'aliens' per veure que 'pos' és correcta
+                // Recorre 'aliens' per veure que 'pos' és correcta
                 for (int[] p : aliens) {
                     if (Arrays.equals(p, pos)){
                         ok = false;
@@ -76,10 +76,18 @@ public class EX_1 {
         int[] posNauEnemiga;
         
         switch (accio) {
-            case 4 -> // ESQ
+            case 4 -> { // ESQ
                 nau[1] = (nau[1] == 0 ? NTAULER-1 : --nau[1]); 
-            case 6  -> // DRETA
+
+                for (int[] alien : aliens)
+                    alien[1] = (alien[1] == NTAULER-1 ? 0 : ++alien[1]);
+            }
+            case 6  -> { // DRETA
                 nau[1] = (nau[1] == NTAULER-1 ? 0 : ++nau[1]); 
+
+                for (int[] alien : aliens)
+                    alien[1] = (alien[1] == 0 ? NTAULER-1 : --alien[1]);
+            }
             case 9 -> { // DISPARAR
                 // Cada dispar menja alien ?
                 for (int i=1; i < NTAULER; i++) {
@@ -92,8 +100,8 @@ public class EX_1 {
                 }
                 
                 // Desprès de cada dispar, cal baixar cada alien en una fila
-                for (int[] a : aliens)
-                    if (--a[0] == 0) {
+                for (int[] alien : aliens)
+                    if (--alien[0] == 0) {
                         return false;
                 }
             }
@@ -101,12 +109,12 @@ public class EX_1 {
         return true;
     }
  
-    public static void mostrarTauler(int[][] tauler, int[] nau, ArrayList<int[]> nausEnemigues) {
+    public static void mostrarTauler(int[][] tauler, int[] nau, ArrayList<int[]> aliens) {
         String car="";
         
         netejaTauler(tauler);
         situaNau(tauler, nau);
-        situaNausEnemigues(tauler, nausEnemigues);
+        situaAliens(tauler, aliens);
         
         for (int i = 0; i < NTAULER ; i++) {
             System.out.print('|');
@@ -132,8 +140,8 @@ public class EX_1 {
         tauler[nau[0]][nau[1]] = SIMBOL_NAU;
     }
     
-    public static void situaNausEnemigues(int[][] tauler, ArrayList<int[]> neusEnemigues){
-        for (int[] pos : neusEnemigues) {
+    public static void situaAliens(int[][] tauler, ArrayList<int[]> aliens){
+        for (int[] pos : aliens) {
             tauler[pos[0]][pos[1]] = SIMBOL_ALIEN;
         }
     }   

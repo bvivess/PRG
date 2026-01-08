@@ -10,11 +10,11 @@ public class Rombe {
     public double apotema;
     
     // Mètodes
-    public double calcularArea() {
-        return (5 * calcularPerimetre() * apotema)  / 2;
+    public double calculaArea() {
+        return (5 * calculaPerimetre() * apotema)  / 2;
     }
     
-    public double calcularPerimetre() {
+    public double calculaPerimetre() {
         return 5 * base;
     }
     

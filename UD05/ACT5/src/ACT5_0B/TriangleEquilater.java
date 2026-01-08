@@ -10,11 +10,11 @@ public class TriangleEquilater {
     public double altura;
     
     // Mètodes
-    public double calcularArea() {
+    public double calculaArea() {
         return (base * altura)  / 2;
     }
     
-    public double calcularPerimetre() {
+    public double calculaPerimetre() {
         return 3 * base;
     }
  

@@ -14,7 +14,11 @@ public class Empleat {
         souBase = nouSouBase;
     }
     // Mètode no estàtic
-    public double calcularSou() {
+    public double calculaSou() {
         return souBase + souVariable;
+    }
+    
+    public void mostraPersona() {
+            System.out.println("Nom: " + nom + " " + nom+ " Sou: " + calculaSou() );
     }
 }
