@@ -14,10 +14,10 @@ public class Persona {
     
     // Constructors
     public Persona(String nom, String llinatge1, String llinatge2, int edat) {
-        this.nom = nom;
-        this.llinatge1 = llinatge1;
-        this.llinatge2 = llinatge2;
-        this.edat = edat;
+        setNom(nom);  // this.nom = nom;
+        setLlinatge1(llinatge1);  // this.llinatge1 = llinatge1;
+        setLlinatge2(llinatge2);  // this.llinatge2 = llinatge2;
+        setEdat(edat);  // this.edat = edat;
     }
     
     // Mètodes específics
