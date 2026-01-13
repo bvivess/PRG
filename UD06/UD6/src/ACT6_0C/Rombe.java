@@ -21,7 +21,7 @@ public class Rombe {
      * @return double àrea
      */
     public double calcularArea() {
-        return (5 * calcularPerimetre() * apotema)  / 2;
+        return (5 * this.calcularPerimetre() * this.apotema)  / 2;
     }
     
     /**
@@ -29,7 +29,7 @@ public class Rombe {
      * @return double àrea
     */    
     public double calcularPerimetre() {
-        return 5 * base;
+        return 5 * this.base;
     }
     
     // Getters i Setters

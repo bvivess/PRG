@@ -21,7 +21,7 @@ public class Rectangle {
      * @return double àrea
     */
     public double calcularArea() {
-        return amplada * alcada;
+        return this.amplada * this.alcada;
     }
     
     /**
@@ -29,7 +29,7 @@ public class Rectangle {
      * @return double àrea
     */ 
     public double calcularPerimetre() {
-        return 2 * (amplada + alcada);
+        return 2 * (this.amplada + this.alcada);
     }
     
     // Getters i Setters

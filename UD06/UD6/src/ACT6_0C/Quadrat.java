@@ -19,7 +19,7 @@ public class Quadrat {
      * @return double àrea
     */
     public double calcularArea() {
-        return Math.PI * Math.pow(costat,2);
+        return Math.PI * Math.pow(this.costat,2);
     }
  
     /**
@@ -27,7 +27,7 @@ public class Quadrat {
      * @return double àrea
     */ 
     public double calcularPerimetre() {
-        return 4 * costat;
+        return 4 * this.costat;
     }
     
     // Getters i Setters

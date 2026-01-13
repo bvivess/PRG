@@ -21,7 +21,7 @@ public class TriangleEquilater {
      * @return double àrea
      */
     public double calcularArea() {
-        return (base * altura)  / 2;
+        return (this.base * this.altura)  / 2;
     }
     
     /**
@@ -29,7 +29,7 @@ public class TriangleEquilater {
      * @return double àrea
     */     
     public double calcularPerimetre() {
-        return 3 * base;
+        return 3 * this.base;
     }
  
     // Getters i Setters

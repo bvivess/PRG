@@ -19,7 +19,7 @@ public class Cercle {
      * @return double àrea
     */
     public double calcularArea() {
-        return Math.PI * Math.pow(radi,2);
+        return Math.PI * Math.pow(this.radi,2);
     }
     
     /**
@@ -27,7 +27,7 @@ public class Cercle {
      * @return double àrea
     */    
     public double calcularPerimetre() {
-        return 2 * (Math.PI + radi);
+        return 2 * (Math.PI + this.radi);
     }
     
     // Getters i Setters
