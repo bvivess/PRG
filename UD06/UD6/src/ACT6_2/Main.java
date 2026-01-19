@@ -13,7 +13,7 @@ public class Main {
             // Declarar i instanciar un compte bancari
             ArrayList<Compte> comptes1 = new ArrayList<>();
             ArrayList<Compte> comptes2 = new ArrayList<>();
-            Compte compte1 = new Compte("0001","0001","01", "0000000001",0);
+            Compte compte1 = new Compte("0001", "0001", "01", "0000000001", 0);
             comptes1.add(compte1);
             
             // Declarar i instanciar un compte bancari
@@ -25,8 +25,8 @@ public class Main {
             comptes2.add(compte3);
             
             // Declarar i instanciar un client
-            Client client1 = new Client("Soler","Matemales", "Joan", comptes1);
-            Client client2 = new Client("Vidal","Palmer", "Pere", comptes2);
+            Client client1 = new Client("Soler", "Matemales", "Joan", comptes1);
+            Client client2 = new Client("Vidal", "Palmer", "Pere", comptes2);
             
             // Realitzar transaccions
             try {
