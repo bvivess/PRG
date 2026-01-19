@@ -2,7 +2,7 @@ package ACT7_0E;
 
 /**
  *
- * @author winadmin
+ * @author T.Vives
  */
 // Classe Abstracta 
 abstract class FiguraGeometrica {
@@ -20,7 +20,6 @@ abstract class FiguraGeometrica {
     public void hasColor(String color) {
         this.color = color;
     }
-    
     
     @Override
     public String toString() {

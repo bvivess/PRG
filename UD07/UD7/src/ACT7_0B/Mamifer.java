@@ -9,7 +9,7 @@ public class Mamifer extends Animal {
     private String tipusMamifer;
 
     public Mamifer(String tipusAnimal, String tipusMamifer) {
-        super(tipusAnimal);  // COnstructor de la Superclasse
+        super(tipusAnimal);  // Constructor de la Superclasse
         this.tipusMamifer = tipusMamifer;
     }
     
