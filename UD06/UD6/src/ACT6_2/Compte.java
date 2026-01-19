@@ -25,6 +25,10 @@ public class Compte {
     }
 
     // Mètodes específics
+    public String mostraCompte() {
+        return this.getBanc() + "-" + this.getOficina() + "-" + this.getDc() + "-" + this.getNumCompte() + ": " + this.getSaldo();
+    }
+        
     public void ingresa(double quantitat) {
         // ha d'incrementar la 'quantitat' al saldo del compte
         //saldo += quantitat;

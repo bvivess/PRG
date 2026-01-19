@@ -41,13 +41,9 @@ public class Main {
             }
 
             // Mostrar saldo final
-            client1.mostraClient();
-            System.out.println("amb SALDO:" );
-            client1.mostraSaldo();
+            System.out.println(client1.mostraClient());
             //
-            client2.mostraClient();
-            System.out.println("amb SALDO:" );
-            client2.mostraSaldo();
+            System.out.println(client2.mostraClient());
 
         } catch (Exception e) {
             System.err.println(e.getMessage());

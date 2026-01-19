@@ -14,7 +14,7 @@ public class Client {
     private ArrayList<Compte> comptes;
 
     // Constructor
-    public Client(String llinatge1, String llinatge2, String nom, ArrayList<Compte> comptes) {
+    public Client(String llinatge1, String llinatge2, String nom, ArrayList<Compte> comptes ) {
         this.llinatge1 = llinatge1;
         this.llinatge2 = llinatge2;
         this.nom = nom;
@@ -22,30 +22,28 @@ public class Client {
     }
 
     // Mètodes específics
+    public String mostraClient() {
+        String text = "Client " + this.nom + " " + this.llinatge1 + " " + this.llinatge2;
+        for (Compte c:comptes)
+            text += "\t" + c.mostraCompte();
+        
+        return text;
+    }
+    
     public void realitzaTransaccio(Compte compteAModificar, double quantitat) {
         // es cerca 'compteAModificar' per a cada 'comptePossible' del 'client'
-        for (Compte comptePossible:comptes) {
-            if (comptePossible.equals(compteAModificar))  // es compara pels 4 atributs de cada compte
+        for (Compte c : comptes) {
+            if (c.equals(compteAModificar))  // es compara pels 4 atributs de cada compte
                 if (quantitat > 0) {
-                    comptePossible.ingresa(quantitat);
+                    c.ingresa(quantitat);
                     break;
                 } else if (quantitat < 0) { 
-                    comptePossible.reintegra(Math.abs(quantitat));  // valor en positiu de 'quantitat'
+                    c.reintegra(Math.abs(quantitat));  // valor en positiu de 'quantitat'
                     break;
                 }
         }
     }
-    
-    public void mostraClient() {
-        System.out.println("Client " + this.nom + " " + this.llinatge1 + " " + this.llinatge2 );
-    }
-    
-    public void mostraSaldo() {
-        // ha de mostrar cada un dels comptes del client amb els seus saldos
-        for (Compte compte:comptes)
-            System.out.println("\t" + compte.getBanc() + "-" + compte.getOficina() + "-" + compte.getDc() + "-" + compte.getNumCompte() + ": " + compte.getSaldo());
-    }
-    
+       
     // Getters i Setters
     public String getLlinatge1() {
         return llinatge1;
