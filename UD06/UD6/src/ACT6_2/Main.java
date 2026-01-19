@@ -30,12 +30,12 @@ public class Main {
             
             // Realitzar transaccions
             try {
-                client1.realitzaTransaccio(compte1,500.0);
-                client1.realitzaTransaccio(compte1,-200.0);
-                client1.realitzaTransaccio(compte2,1000.0);
-                client1.realitzaTransaccio(compte2,-500.0);
-                client2.realitzaTransaccio(compte3,500.0);
-                client2.realitzaTransaccio(compte3,-1500.0); // transacció no es realitzarà
+                client1.realitzaTransaccio(compte1, 500.0);
+                client1.realitzaTransaccio(compte1, -200.0);
+                client1.realitzaTransaccio(compte2, 1000.0);
+                client1.realitzaTransaccio(compte2, -500.0);
+                client2.realitzaTransaccio(compte3, 500.0);
+                client2.realitzaTransaccio(compte3, -1500.0); // transacció no es realitzarà
             } catch (Exception e) {
                 System.err.println(e.getMessage());
             }
