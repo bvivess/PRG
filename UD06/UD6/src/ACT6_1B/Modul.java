@@ -1,55 +1,58 @@
 package ACT6_1B;
 
 /**
- * Representa cada un dels moduls associats a un cicle formatiu
+ *
  * @author T.Vives
  */
 public class Modul {
-    private  int idModul;
+    private int idModul;
     private String nom;
     private int horesSetmanals;
     //
-    private static int comptadorModuls=1;
+    public static int comptadorModuls=1;
 
-    // Constructors
-    public Modul(String nom, int horesSetmanals) {
-        if (nom == null || nom.length() == 0){
-            System.out.println("El nom no pot ser nul");
-        } else { 
-            this.idModul = getComptadorModuls();
-            this.nom = nom;
-            this.horesSetmanals = horesSetmanals;
-        }
-        
+    public Modul(int idModul, String nom, int horesSetmanals) {
+        this.idModul = idModul;
+        this.nom = nom;
+        this.horesSetmanals = horesSetmanals;
     }
     
-    // Getters i Setters
+    // Mòduls
+    public String mostraModul() {
+        return "Modul " + "ID=" + this.idModul + ", nom=" + this.nom + ", Hores setmanals=" + this.horesSetmanals;
+    }
+
     public int getIdModul() {
-        return this.idModul;
-    }
-
-    public String getNom() {
-        return this.nom;
-    }
-
-    public int getHoresSetmanals() {
-        return this.horesSetmanals;
-    }
-
-    public static int getComptadorModuls() {
-        return comptadorModuls++;
+        return idModul;
     }
 
     public void setIdModul(int idModul) {
         this.idModul = idModul;
     }
 
+    public String getNom() {
+        return nom;
+    }
+
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public int getHoresSetmanals() {
+        return horesSetmanals;
     }
 
     public void setHoresSetmanals(int horesSetmanals) {
         this.horesSetmanals = horesSetmanals;
     }
 
+    public static int getComptadorModuls() {
+        return Modul.comptadorModuls;
+    }
+
+    public static void setComptadorModuls(int comptadorModuls) {
+        Modul.comptadorModuls = comptadorModuls;
+    }
+    
+    
 }

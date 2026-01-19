@@ -13,8 +13,8 @@ public class Institut {
 
     // Constructors
     public Institut(String idInstitut, String nom) {
-        this.setIdInstitut(idInstitut);
-        this.setNom(nom);
+        this.idInstitut = idInstitut;
+        this.nom = nom;
         this.cicles = new ArrayList<>();
     }
     
@@ -26,22 +26,6 @@ public class Institut {
     
     // Mètodes específics
     /**
-     * Mostra els atributs de la classe
-     * @return String amb les dades concatenades
-     */
-    public String mostraInstitut() {
-        String text;
-        
-        text = "Institut " + "ID=" + idInstitut + ", nom=" + nom + "; \n" + "Cicles: {";
-        for (Cicle c: cicles) {
-            text = text + "\n\t" + c.mostraCicle();
-        }
-        text = text +"}";
-        
-        return text;
-    }
-    
-    /**
      * Afegeix un cicle en l'Arralist de Institut
      * @param nouCicle 
      */
@@ -49,23 +33,20 @@ public class Institut {
         this.cicles.add(nouCicle);
     }
     
-    private int cercaCicle(String nom) {
-        for (int i=0; i < this.cicles.size(); i++) {
-            if (this.cicles.get(i).getNom().equalsIgnoreCase(nom)) {
-                return i;
-            }
-        }
-        return -1;
-    }
-    
-    public boolean eliminaCicle(String nom) {
-        int i = this.cercaCicle(nom);
+    /**
+     * Mostra els atributs de la classe
+     * @return String amb les dades concatenades
+     */
+    public String mostraInstitut() {
+        String text;
         
-        if (i >= 0) {
-            this.cicles.remove(i);
-            return true;
+        text = "Institut " + "ID=" + idInstitut + ", nom=" + nom + ";\n Cicles: {";
+        for (Cicle c: cicles) {
+            text = text + "\n" + c.mostraCicle();
         }
-        return false;
+        text = text +"}";
+        
+        return text;
     }
     
     // Getters i setters
@@ -87,6 +68,10 @@ public class Institut {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public void setCicles(ArrayList<Cicle> cicles) {
+        this.cicles = cicles;
     }
         
 }

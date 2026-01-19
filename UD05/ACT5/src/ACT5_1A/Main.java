@@ -4,7 +4,7 @@ package ACT5_1A;
  *
  * @author T.Vives
  */
-public class Institut {
+public class Main {
 
     public static void main (String[] args) {
         // Cicle

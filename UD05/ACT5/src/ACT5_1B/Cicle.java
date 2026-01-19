@@ -18,13 +18,11 @@ public class Cicle {
     public String mostraCicle() {
         String text;
         
-        text = "Cicle: " + "ID=" + idCicle + ", nom=" + nom + ", numAlumnes=" + numAlumnes + 
-               "; \n\t" +
-               "Mòduls: {";
-        for (Modul modul: moduls) {
-            text = text + modul.idModul + "-" + modul.nom + " ";
+        text = "Cicle: " + "ID=" + this.idCicle + ", nom=" + this.nom + ", numAlumnes=" + this.numAlumnes + "Mòduls: {";
+        for (Modul m : moduls) {
+            text += "; \n\t" + m.mostraModul();
         }
-        text = text +"}";
+        text += "}";
         
         return text;
     }   

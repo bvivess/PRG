@@ -13,6 +13,6 @@ public class Modul {
     
     // Mòduls
     public String mostraModul() {
-        return "Modul " + "ID=" + idModul + ", nom=" + nom + ", Hores setmanals=" + horesSetmanals;
+        return "Modul " + "ID=" + this.idModul + ", nom=" + this.nom + ", Hores setmanals=" + this.horesSetmanals;
     }
 }

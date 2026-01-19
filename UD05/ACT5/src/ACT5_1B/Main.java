@@ -6,7 +6,7 @@ import java.util.ArrayList;
  *
  * @author T.Vives
  */
-public class Institut {
+public class Main {
 
     public static void main (String[] args) {
         // Mòduls DAW

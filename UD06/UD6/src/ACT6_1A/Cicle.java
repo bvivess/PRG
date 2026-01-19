@@ -10,7 +10,6 @@ public class Cicle {
     private int numAlumnes;
     
     // Constructor
-
     public Cicle(int idCicle, String nom, int numAlumnes) {
         this.idCicle = idCicle;
         this.nom = nom;
