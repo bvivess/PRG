@@ -41,7 +41,7 @@ public class Main {
         Modul.setComptadorModuls(Modul.getComptadorModuls()+1);
         cicle2.afegeixModul(new Modul(Modul.getComptadorModuls(), "Implantació de S.O.", 3));
         Modul.setComptadorModuls(Modul.getComptadorModuls()+1);
-        cicle2.afegeixModul(new Modul(Modul.getComptadorModuls(), "Fonaments de Hasdware", 5));
+        cicle2.afegeixModul(new Modul(Modul.getComptadorModuls(), "Fonaments de Hardware", 5));
         Modul.setComptadorModuls(Modul.getComptadorModuls()+1);
         
         // Cicle SMX
