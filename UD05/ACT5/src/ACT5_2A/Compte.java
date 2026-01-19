@@ -14,16 +14,22 @@ public class Compte {
     public void ingresa(double quantitat) {
         // ha d'incrementar la 'quantitat' al saldo del compte
         saldo = saldo + quantitat;
-        System.out.println("Ingrès de " + quantitat + " en el compte " + banc + "-" + oficina + "-" + dc + "-" + numCompte);
+        System.out.println("Ingrès de " + quantitat + " en el compte " + this.banc + "-" + this.oficina + "-" + this.dc + "-" + this.numCompte);
     }
 
     public void reintegra(double quantitat) {
         // ha de decrementar la 'quantitat' al saldo del compte. 
         // Si la quantitat és superior al saldo cal donar un avis
-        if (quantitat <= saldo) {
-            saldo = saldo - quantitat;
-            System.out.println("Retirada de " + quantitat + " del compte " + banc + "-" + oficina + "-" + dc + "-" + numCompte);
+        if (quantitat <= this.saldo) {
+            this.saldo = this.saldo - quantitat;
+            System.out.println("Retirada de " + quantitat + " del compte " + this.banc + "-" + this.oficina + "-" + this.dc + "-" + this.numCompte);
         } else 
-            System.out.println("Saldo insuficient " + saldo + " en el compte " + banc + "-" + oficina + "-" + dc + "-" + numCompte);
+            System.out.println("Saldo insuficient " + this.saldo + " en el compte " + this.banc + "-" + this.oficina + "-" + this.dc + "-" + this.numCompte);
     }
+
+    public String mostraCompte() {
+        return "Compte{" + "banc=" + this.banc + ", oficina=" + this.oficina + ", dc=" + this.dc + ", numCompte=" + this.numCompte + ", saldo=" + this.saldo + '}';
+    }
+    
+    
 }

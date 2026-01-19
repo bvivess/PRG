@@ -59,14 +59,10 @@ public class Main {
         client2.realitzaTransaccio(compte3, 500.0);
         client2.realitzaTransaccio(compte3, -1500.0); // transacció no es realitzarà
 
-        // Mostrar saldo final
-        client1.mostraClient();
-        System.out.println(" amb SALDO:" );
-        client1.mostraSaldo();
+        // Mostrar dades
+        System.out.println(client1.mostraClient());
 
-        client2.mostraClient();
-        System.out.println(" amb SALDO:" );
-        client2.mostraSaldo();
+        System.out.println(client2.mostraClient());
 
     }
 }

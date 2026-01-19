@@ -31,14 +31,13 @@ public class Client {
         }
     }
 
-    public void mostraClient() {
-        System.out.println("Client " + this.nom + " " + this.llinatge1 + " " + this.llinatge2 );
+    public String mostraClient() {
+        String text;
+        text = "Client " + this.nom + " " + this.llinatge1 + " " + this.llinatge2;
+        for (Compte c : this.comptes) 
+            text += "\n\t" + c.banc + "-" + c.oficina + "-" + c.dc + "-" + c.numCompte + ": " + c.saldo;
+        return text;
     }
-    
-    public void mostraSaldo() {
-        // ha de mostrar cada un dels comptes del client amb els seus saldos
-        for (Compte compte:comptes) 
-            System.out.println(compte.banc + "-" + compte.oficina + "-" + compte.dc + "-" + compte.numCompte + ": " + compte.saldo);
-    }
+
 }
 

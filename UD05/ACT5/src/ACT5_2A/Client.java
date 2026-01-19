@@ -20,5 +20,11 @@ public class Client {
             compte.reintegra(Math.abs(quantitat));  // valor en positiu de 'quantitat'
         }
     }
+
+    public String mostraClient() {
+        return "Client{" + "llinatge1=" + this.llinatge1 + ", llinatge2=" + this.llinatge2 + ", nom=" + this.nom + ", compte=" + this.compte.mostraCompte() + '}';
+    }
+    
+    
 }
 
