@@ -12,12 +12,7 @@ public class Modul {
     public int horesSetmanals;
  
     // Mòduls
-    public String mostraModul(int p_idCicle) {
-        String text = "";
-        
-        if (idCicle == p_idCicle)
-            text = "Modul " + "ID=" + idModul + ", nom=" + nom + ", Hores setmanals=" + horesSetmanals;
-        
-        return text;
+    public String mostraModul() {
+        return "Modul " + "ID=" + idModul + ", nom=" + nom + ", Hores setmanals=" + horesSetmanals;
     }
 }

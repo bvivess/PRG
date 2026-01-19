@@ -15,7 +15,7 @@ public class Estudiant extends Persona {
     
     void mostraEstudiant() {
         mostraPersona(); 
-        System.out.println("Curs: " + curs);
+        System.out.println("Curs: " + this.curs);
     }
 
     public String getCurs() {

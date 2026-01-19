@@ -10,7 +10,7 @@ public class Cercle {
     
     // Constructor
     public Cercle(double radi) {
-        this.radi = radi;
+        this.setRadi(radi);
     }
     
     // Mètodes específics

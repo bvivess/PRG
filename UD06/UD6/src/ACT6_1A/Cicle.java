@@ -19,16 +19,33 @@ public class Cicle {
     
     // Mòduls
     public String mostraCicle() {
-        String text;
-        
-        text = "Cicle " + "ID=" + idCicle + ", nom=" + nom + ", numAlumnes=" + numAlumnes;
-        
-        return text;
+        return "Cicle " + "ID=" + this.idCicle + ", nom=" + this.nom + ", numAlumnes=" + this.numAlumnes;
     }
     
-    // Getter
+    // Getters i Setters
     public int getIdCicle() {
         return idCicle;
     }
+
+    public void setIdCicle(int idCicle) {
+        this.idCicle = idCicle;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public int getNumAlumnes() {
+        return numAlumnes;
+    }
+
+    public void setNumAlumnes(int numAlumnes) {
+        this.numAlumnes = numAlumnes;
+    }
+
     
 }

@@ -23,11 +23,11 @@ public class Institut {
 
         // Mostrar
         System.out.println(cicle.mostraCicle());
-        System.out.println("\t"+modul1.mostraModul(cicle.getIdCicle()));
-        System.out.println("\t"+modul2.mostraModul(cicle.getIdCicle()));
-        System.out.println("\t"+modul3.mostraModul(cicle.getIdCicle()));
-        System.out.println("\t"+modul4.mostraModul(cicle.getIdCicle()));
-        System.out.println("\t"+modul5.mostraModul(cicle.getIdCicle()));
+        System.out.println("\t"+modul1.mostraModul());
+        System.out.println("\t"+modul2.mostraModul());
+        System.out.println("\t"+modul3.mostraModul());
+        System.out.println("\t"+modul4.mostraModul());
+        System.out.println("\t"+modul5.mostraModul());
         
         // Falta afegir els mòduls d'ASIX i SMX
         // ...

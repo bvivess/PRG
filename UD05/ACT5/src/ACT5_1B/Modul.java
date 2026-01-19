@@ -10,4 +10,9 @@ public class Modul {
     public int horesSetmanals;
     //
     public static int comptadorModuls=1;
+    
+    // Mòduls
+    public String mostraModul() {
+        return "Modul " + "ID=" + idModul + ", nom=" + nom + ", Hores setmanals=" + horesSetmanals;
+    }
 }

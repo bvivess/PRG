@@ -20,13 +20,8 @@ public class Modul {
     }
 
     // Mòduls
-    public String mostraModul(int p_idCicle) {
-        String text = "";
-        
-        if (idCicle == p_idCicle)
-            text = "Modul " + "ID=" + idModul + ", nom=" + nom + ", Hores setmanals=" + horesSetmanals;
-        
-        return text;
+    public String mostraModul() {
+        return "Modul " + "ID=" + this.idModul + ", nom=" + this.nom + ", Hores setmanals=" + this.horesSetmanals;
     }
     
 }

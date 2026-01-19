@@ -11,8 +11,8 @@ public class Rombe {
 
     // Constructor
     public Rombe(double base, double apotema) {
-        this.base = base;
-        this.apotema = apotema;
+        this.setBase(base);
+        this.setApotema(apotema);
     }
 
     // Mètodes específics

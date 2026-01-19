@@ -11,8 +11,8 @@ public class Rectangle {
     
     // Constructor
     public Rectangle(double amplada, double alcada) {
-        this.amplada = amplada;
-        this.alcada = alcada;
+        this.setAmplada(amplada);
+        this.setAlcada(alcada);
     }
     
     // Mètodes específics

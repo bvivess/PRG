@@ -11,8 +11,8 @@ public class TriangleEquilater {
     
     // Constructor
     public TriangleEquilater(double base, double altura) {
-        this.base = base;
-        this.altura = altura;
+        this.setBase(base);
+        this.setAltura(altura);
     }
 
     // Mètodes específics

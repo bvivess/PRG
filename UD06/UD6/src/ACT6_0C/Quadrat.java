@@ -10,7 +10,7 @@ public class Quadrat {
 
     // Constructor
     public Quadrat(double costat) {
-        this.costat = costat;
+        this.setCostat(costat);
     }
     
     // Mètodes específics
