@@ -15,36 +15,36 @@ public class Elevator {
     // modifica 'doorOpen'=true
     public void openDoor() {
         System.out.println("...Obrint la porta");
-        doorOpen = true;
+        this.doorOpen = true;
     }
     
     // modifica 'doorOpen'=false
     public void closeDoor() {
         System.out.println("...Tancant la porta");
-        doorOpen = false;
+        this.doorOpen = false;
     }
     
     // augmenta 'currentFloor' si ascensor no está al darrer pis i la porta está tancada
     public void goUp() {
         System.out.println("...Anant a d'alt");
-        if (!doorOpen) {
-            if (currentFloor < topFloor) {
-                currentFloor++;
+        if (!this.doorOpen) {
+            if (this.currentFloor < this.topFloor) {
+                this.currentFloor++;
             } else {
                 System.err.println("No és possible pujar, ja en el pis de d'alt");
             }
         } else {
             System.err.println("Porta oberta, cal tancar-la");
         }
-        System.out.println("\tPis actual: " + currentFloor);
+        System.out.println("\tPis actual: " + this.currentFloor);
     }
     
     // disminueix 'currentFloor' si ascensor no está al primer pis i la porta está tancada
     public void goDown() {
         System.out.println("...Anant abaix");
-        if (!doorOpen) {
-            if (currentFloor > bottomFloor) {
-                currentFloor--;
+        if (!this.doorOpen) {
+            if (currentFloor > this.bottomFloor) {
+                this.currentFloor--;
             } else {
                 System.err.println("No és possible baixar, ja en el pis de baix");
             }
