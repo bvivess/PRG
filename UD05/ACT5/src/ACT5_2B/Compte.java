@@ -28,4 +28,8 @@ public class Compte {
             System.out.println("Saldo insuficient " + saldo + " en el compte " + banc + "-" + oficina + "-" + dc + "-" + numCompte);
         }
     }
+    
+    public String mostraCompte() {
+        return "Compte{" + "banc=" + this.banc + ", oficina=" + this.oficina + ", dc=" + this.dc + ", numCompte=" + this.numCompte + ", saldo=" + this.saldo + '}';
+    }
 }

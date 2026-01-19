@@ -33,9 +33,11 @@ public class Client {
 
     public String mostraClient() {
         String text;
+        // Dades client
         text = "Client " + this.nom + " " + this.llinatge1 + " " + this.llinatge2;
+        // Comptes
         for (Compte c : this.comptes) 
-            text += "\n\t" + c.banc + "-" + c.oficina + "-" + c.dc + "-" + c.numCompte + ": " + c.saldo;
+            text += "\n\t" + c.mostraCompte();
         return text;
     }
 
