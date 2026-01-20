@@ -1,7 +1,6 @@
 package ACT7_1;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 /**
  * Representa cada un dels cicles existents en un institut
