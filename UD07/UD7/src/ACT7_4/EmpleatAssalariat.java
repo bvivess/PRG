@@ -21,4 +21,5 @@ class EmpleatAssalariat extends Empleat {
         // El salario total es igual al salario base para empleados asalariados
         return super.souBase;
     }
+    
 }

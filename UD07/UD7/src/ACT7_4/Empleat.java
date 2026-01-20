@@ -24,22 +24,17 @@ abstract class Empleat {
      */
     public abstract double calculaSalari();
 
-    /** Mètode concret per mostrar detalls de l'empleat
-     * 
-     * @return String 
-     */
-    @Override
-    public String toString() {
-        return "Nombre: " + nom + " " + llinatge + ", Sou Base: " + souBase + ", Salari " + calculaSalari();
-    }
-
     @Override
     public boolean equals(Object obj) {
         Empleat empleat = (Empleat) obj;
         
-        return (this.nom.equals(empleat.nom)) && (this.llinatge.equals(empleat.llinatge));
+        return (this.nom.equals(empleat.nom)) &&
+               (this.llinatge.equals(empleat.llinatge));
     }
     
-    
+    @Override
+    public String toString() {
+        return "Nombre: " + nom + " " + llinatge + ", Sou Base: " + souBase + ", Salari " + calculaSalari();
+    }
 
 }
