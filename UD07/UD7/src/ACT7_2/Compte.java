@@ -15,34 +15,34 @@ public class Compte {
     // Constructor
     
     public Compte(String banc, String oficina, String dc, String numCompte, double saldo) {
-        this.banc = banc;
-        this.oficina = oficina;
-        this.dc = dc;
-        this.numCompte = numCompte;
-        this.saldo = saldo;
+        this.setBanc(banc);
+        this.setOficina(oficina);
+        this.setDc(dc);
+        this.setNumCompte(numCompte);
+        this.ingresa(saldo);
     }
 
     // Mètodes específics
     public void ingresa(double quantitat) {
         // ha d'incrementar la 'quantitat' al saldo del compte
         //saldo += quantitat;
-        setSaldo(saldo+quantitat);
-        System.out.println("Ingrès de " + quantitat + " en el compte " + banc + "-" + oficina + "-" + dc + "-" + numCompte);
+        System.out.println("Ingrès de " + quantitat + " del compte " + this.banc + "-" + this.oficina + "-" + this.dc + "-" + this.numCompte);
+        setSaldo(this.saldo + quantitat);
     }
 
     public void reintegra(double quantitat) {
         // ha de decrementar la 'quantitat' al saldo del compte. 
         // Si la quantitat és superior al saldo cal donar un avis
         /*
-        if (quantitat <= saldo) {
+        if (quantitat <= this.saldo) {
             saldo -= quantitat;
-            System.out.println("Retirada de " + quantitat + " del compte " + banc + "-" + oficina + "-" + dc + "-" + numCompte);
+            System.out.println("Retirada de " + this.quantitat + " del compte " + this.banc + "-" + this.oficina + "-" + this.dc + "-" + this.numCompte);
         } else {
-            System.out.println("Saldo insuficient " + saldo + " en el compte " + banc + "-" + oficina + "-" + dc + "-" + numCompte);
+            System.out.println("Saldo insuficient " + this.saldo + " en el compte " + this.banc + "-" + this.oficina + "-" + this.dc + "-" + this.numCompte);
         }
         */
-        System.out.println("Retirada de " + quantitat + " del compte " + banc + "-" + oficina + "-" + dc + "-" + numCompte);
-        setSaldo(saldo-quantitat);
+        System.out.println("Retirada de " + quantitat + " del compte " + this.banc + "-" + this.oficina + "-" + this.dc + "-" + this.numCompte);
+        setSaldo(this.saldo - quantitat);
     }
     
     // Getters i Setters
