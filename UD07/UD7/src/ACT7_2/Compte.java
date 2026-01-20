@@ -51,7 +51,10 @@ public class Compte {
     }
 
     public void setBanc(String banc) {
-        this.banc = banc;
+        if (banc != null && banc.length() == 4)
+            this.banc = banc;
+        else
+            throw new IllegalArgumentException("El codi del banc ha de tenir 4 caràcters");
     }
 
     public String getOficina() {
@@ -59,7 +62,10 @@ public class Compte {
     }
 
     public void setOficina(String oficina) {
-        this.oficina = oficina;
+        if (oficina != null && oficina.length() == 4)
+            this.oficina = oficina;
+        else
+            throw new IllegalArgumentException("El codi de l'oficina ha de tenir 4 caràcters");
     }
 
     public String getDc() {
@@ -67,7 +73,10 @@ public class Compte {
     }
 
     public void setDc(String dc) {
-        this.dc = dc;
+        if (dc != null && dc.length() == 2)
+            this.dc = dc;
+        else
+            throw new IllegalArgumentException("El codi de control ha de tenir 2 caràcters");
     }
 
     public String getNumCompte() {
@@ -75,7 +84,10 @@ public class Compte {
     }
 
     public void setNumCompte(String numCompte) {
-        this.numCompte = numCompte;
+        if (numCompte != null && numCompte.length() == 10)
+            this.numCompte = numCompte;
+        else
+            throw new IllegalArgumentException("El codi de compte ha de tenir 10 caràcters");
     }
 
     public double getSaldo() {

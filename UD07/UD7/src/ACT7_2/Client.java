@@ -36,8 +36,7 @@ public class Client {
     public void realitzaTransaccio(Compte compteAModificar, double quantitat) {
         int i = this.comptes.indexOf(compteAModificar);
 
-        System.out.println("Transaccio al compte: " +
-                compteAModificar.getNumCompte() + " " + quantitat);
+        System.out.println("Transaccio al compte: " + compteAModificar.getNumCompte() + " " + quantitat);
 
         if (i != -1) {
             Compte c = this.comptes.get(i);
