@@ -6,7 +6,7 @@ import java.util.ArrayList;
  *
  * @author T.Vives
  */
-public class Client {
+public final class Client {
     // Atributs
     private String llinatge1;
     private String llinatge2;
@@ -15,17 +15,17 @@ public class Client {
 
     // Constructor
     public Client(String llinatge1, String llinatge2, String nom) {
-        this.llinatge1 = llinatge1;
-        this.llinatge2 = llinatge2;
-        this.nom = nom;
-        this.comptes = new ArrayList<Compte>();
+        this.setLlinatge1(llinatge1);
+        this.setLlinatge2(llinatge2);
+        this.setNom(nom);
+        this.comptes = new ArrayList<>();
     }
     
     public Client(String llinatge1, String llinatge2, String nom, ArrayList<Compte> comptes) {
-        this.llinatge1 = llinatge1;
-        this.llinatge2 = llinatge2;
-        this.nom = nom;
-        this.comptes = comptes;
+        this.setLlinatge1(llinatge1);
+        this.setLlinatge2(llinatge2);
+        this.setNom(nom);
+        this.setComptes(comptes);
     }
 
     // Mètodes específics
