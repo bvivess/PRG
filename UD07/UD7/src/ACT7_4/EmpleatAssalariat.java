@@ -1,4 +1,4 @@
-package ACT7_3;
+package ACT7_4;
 
 /** Subclasse d'empleat: Asalariat: té un salari fixe
  * 

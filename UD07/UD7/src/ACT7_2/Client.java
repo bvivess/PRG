@@ -23,17 +23,13 @@ public class Client {
 
     // Mètodes específics
     public void realitzaTransaccio(Compte compteAModificar, double quantitat) {
-        // es cerca 'compteAModificar' per a cada 'comptePossible' del 'client'
-        for (Compte comptePossible : comptes) {
-            if (comptePossible.equals(compteAModificar))  // es compara pels 4 atributs de cada compte
-                if (quantitat > 0) {
-                    comptePossible.ingresa(quantitat);
-                    break;
-                } else if (quantitat < 0) { 
-                    comptePossible.reintegra(Math.abs(quantitat));  // valor en positiu de 'quantitat'
-                    break;
-                }
-        }
+        int i = this.comptes.indexOf(compteAModificar);  // es compara pels 4 atributs de cada compte (segons 'compte.equals'
+        
+        if (i != -1)  
+            if (quantitat > 0)
+                this.comptes.get(i).ingresa(quantitat);
+            else if (quantitat < 0)
+                this.comptes.get(i).reintegra(Math.abs(quantitat));  // valor en positiu de 'quantitat'
     }
     
     // Getters i Setters
@@ -75,9 +71,9 @@ public class Client {
         double saldo=0;
         texte = "Client " + this.nom + " " + this.llinatge1 + " " + this.llinatge2;
         texte += "\namb COMPTES:\n";
-        for (Compte compte:comptes) {
-            texte += "\t"+compte.toString() +"\n";
-            saldo += compte.getSaldo();
+        for (Compte c : comptes) {
+            texte += "\t" + c .toString() +"\n";
+            saldo += c .getSaldo();
         }
         texte += "\n amb SALDO TOTAL: " + saldo;
         return texte;

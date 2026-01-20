@@ -1,4 +1,4 @@
-package ACT7_1A;
+package ACT7_3A;
 
 import java.util.Objects;
 
@@ -13,11 +13,6 @@ public class Employee {
     private double salary;
 
     public Employee(int empId, String name, String ssn, double salary) {
-        //this.empId = empId;
-        // this.name = name;
-        // this.ssn = ssn;
-        // this.salary = salary;
-
         this.setEmpId(empId);
         this.setName(name);
         this.setSsn(ssn);

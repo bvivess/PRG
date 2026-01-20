@@ -1,4 +1,4 @@
-package ACT7_3;
+package ACT7_4;
 
 /** Clase principal para probar el sistema
  *

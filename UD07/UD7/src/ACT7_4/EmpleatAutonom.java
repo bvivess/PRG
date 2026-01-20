@@ -1,4 +1,4 @@
-package ACT7_3;
+package ACT7_4;
 
 /** Subclasse d'empleat: Compte pròpia
  *

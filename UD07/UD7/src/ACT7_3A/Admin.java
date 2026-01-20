@@ -1,4 +1,4 @@
-package ACT7_1A;
+package ACT7_3A;
 
 public class Admin extends Employee {
 

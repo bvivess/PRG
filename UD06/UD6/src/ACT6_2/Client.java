@@ -24,7 +24,7 @@ public class Client {
     // Mètodes específics
     public String mostraClient() {
         String text = "Client " + this.nom + " " + this.llinatge1 + " " + this.llinatge2;
-        for (Compte c:comptes)
+        for (Compte c : comptes)
             text += "\t" + c.mostraCompte();
         
         return text;
