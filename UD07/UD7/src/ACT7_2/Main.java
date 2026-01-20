@@ -46,8 +46,7 @@ public class Main {
             }
 
             // Mostrar client i comptes
-            System.out.println();
-            System.out.println("INFORMACIONS CLIENTS");
+            System.out.println("\nINFORMACIONS CLIENTS");
             System.out.println(client1.toString());
             System.out.println("-----------------");
             System.out.println(client2.toString());
