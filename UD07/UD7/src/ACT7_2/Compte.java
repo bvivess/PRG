@@ -93,13 +93,10 @@ public class Compte {
     public boolean equals(Object o) {
         Compte c = (Compte) o;
         
-        if ((c.banc.equalsIgnoreCase(this.banc)) &&
-            (c.oficina.equalsIgnoreCase(this.oficina)) &&
-            (c.dc.equalsIgnoreCase(this.dc)) &&
-            (c.numCompte.equalsIgnoreCase(this.numCompte)))
-            return true;
-        else
-            return false;
+        return (this.banc.equalsIgnoreCase(c.banc)) &&
+               (this.oficina.equalsIgnoreCase(c.oficina)) &&
+               (this.dc.equalsIgnoreCase(c.dc)) &&
+               (this.numCompte.equalsIgnoreCase(c.numCompte));
     }
     
     @Override

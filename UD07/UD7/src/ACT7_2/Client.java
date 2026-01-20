@@ -92,7 +92,7 @@ public class Client {
             texte += "\t" + c .toString() +"\n";
             saldo += c .getSaldo();
         }
-        texte += "\n amb SALDO TOTAL: " + saldo;
+        texte += "\n amb SALDO TOTAL CLIENT: " + saldo;
         return texte;
     }
     
