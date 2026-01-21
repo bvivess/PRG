@@ -4,7 +4,7 @@ package ACT7_2;
  *
  * @author T.Vives
  */
-public class Compte {
+public final class Compte {
     // El codi d'un compte està format per 4 atribut: banc+oficina+dc+numCompte
     private String banc;  // codi banc: String 4 posicions
     private String oficina;  // codi oficina: String 4 posicions
