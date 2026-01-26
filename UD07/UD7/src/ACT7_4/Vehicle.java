@@ -48,9 +48,17 @@ class Vehicle {
 
     @Override
     public String toString() {
-        return "Vehicle [" + "Marca:" + this.marca + " Model: " + this.model + " Preu base: " + this.preuBase + " EUR]\n" +
-               "Característiques: " + this.caracteristiques.toString() + "\n" +
-               "Extres: " + extres.toString();
+        String text = "Vehicle [" + "Marca:" + this.marca + " Model: " + this.model + " Preu base: " + this.preuBase + " EUR]\n";
+        
+        text += "Caracteristiques: ";
+        for (Caracteristica c : this.caracteristiques)
+            text += c.toString() + " ";
+        
+        text += "\nExtres: ";
+        for (Extra e : this.extres)
+            text += e.toString() + "\n";
+        
+        return text;
     }
 
 }
