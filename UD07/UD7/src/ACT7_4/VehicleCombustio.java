@@ -31,9 +31,9 @@ class VehicleCombustio extends VehicleMotor {
 
     @Override
     public boolean equals(Object o) {
-        if (!super.equals(o)) return false;
-        VehicleCombustio vc = (VehicleCombustio) o;
-        return tipusCombustible.equals(vc.tipusCombustible);
+        VehicleCombustio vCombustio = (VehicleCombustio) o;
+        return super.equals(vCombustio) &&
+               this.tipusCombustible.equals(vCombustio.tipusCombustible);
     }
     
     @Override

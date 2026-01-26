@@ -19,9 +19,9 @@ class VehicleMotor extends Vehicle {
     
     @Override
     public boolean equals(Object o) {
-        if (!super.equals(o)) return false;
-        VehicleMotor vm = (VehicleMotor) o;
-        return potencia == vm.potencia;
+        VehicleMotor vMotor = (VehicleMotor) o;
+        return super.equals(vMotor) &&
+               potencia == vMotor.potencia;
     }
     
     @Override
