@@ -1,13 +1,13 @@
 package ACT7_4;
 
-import java.util.*;
+import java.util.ArrayList;
 
 class Vehicle {
     private String marca;
     private String model;
     private double preuBase;
-    private List<Caracteristica> caracteristiques;
-    private List<Extra> extres;
+    private ArrayList<Caracteristica> caracteristiques;
+    private ArrayList<Extra> extres;
 
     public Vehicle(String marca, String model, double preuBase) {
         this.marca = marca;
