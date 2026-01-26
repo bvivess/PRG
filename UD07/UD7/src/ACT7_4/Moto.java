@@ -10,5 +10,6 @@ final class Moto extends VehicleCombustio {
         return super.toString() + "\n" +
                "Preu total: " + this.calculaPreu();
     }
+    
 }
 

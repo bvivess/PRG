@@ -10,5 +10,6 @@ final class Furgoneta extends VehicleCombustio {
         return super.toString() + "\n" +
                "Preu total: " + this.calculaPreu();
     }
+    
 }
 

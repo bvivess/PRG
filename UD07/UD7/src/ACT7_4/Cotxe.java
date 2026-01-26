@@ -10,4 +10,5 @@ final class Cotxe extends VehicleCombustio {
         return super.toString() + "\n" +
                "Preu total: " + this.calculaPreu();
     }
+    
 }

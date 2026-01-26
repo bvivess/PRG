@@ -10,4 +10,5 @@ final class Patinet extends VehicleElectric {
         return super.toString() + "\n" +
                "Preu total: " + this.calculaPreu();
     }
+    
 }
