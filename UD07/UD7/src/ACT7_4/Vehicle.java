@@ -48,12 +48,9 @@ class Vehicle {
 
     @Override
     public String toString() {
-        return "Vehicle [" + this.marca + " " + this.model + "] Preu final: " + calculaPreu() + " ¤\n" +
-               "Característiques: " + this.caracteristiques + "\n" +
-               "Extres: " + extres + "\n";
+        return "Vehicle [" + "Marca:" + this.marca + " Model: " + this.model + " Preu base: " + this.preuBase + " EUR]\n" +
+               "Característiques: " + this.caracteristiques.toString() + "\n" +
+               "Extres: " + extres.toString();
     }
 
-    protected double getPreuBase() {
-        return this.preuBase;
-    }
 }

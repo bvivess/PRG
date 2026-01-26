@@ -35,6 +35,12 @@ class VehicleCombustio extends VehicleMotor {
         VehicleCombustio vc = (VehicleCombustio) o;
         return tipusCombustible.equals(vc.tipusCombustible);
     }
+    
+    @Override
+    public String toString() {
+        return super.toString() + "\n" +
+               "Tipus Combustible: " + this.tipusCombustible;
+    }
 }
 
 

@@ -34,4 +34,10 @@ class VehicleElectric extends VehicleMotor {
         VehicleElectric vElectric = (VehicleElectric) o;
         return capacitatBateria == vElectric.capacitatBateria;
     }
+    
+    @Override
+    public String toString() {
+        return super.toString() + "\n" +
+               "Bateria: " + this.capacitatBateria;
+    }
 }

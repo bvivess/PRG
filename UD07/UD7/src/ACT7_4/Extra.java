@@ -15,6 +15,6 @@ class Extra {
 
     @Override
     public String toString() {
-        return nom + " (" + preu + " ¤)";
+        return nom + " (" + preu + " EUR)";
     }
 }

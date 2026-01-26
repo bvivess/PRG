@@ -9,14 +9,6 @@ class Caracteristica {
         this.valor = valor;
     }
 
-    public String getNom() {
-        return nom;
-    }
-
-    public String getValor() {
-        return valor;
-    }
-
     @Override
     public String toString() {
         return nom + ": " + valor;

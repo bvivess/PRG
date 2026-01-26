@@ -23,4 +23,10 @@ class VehicleMotor extends Vehicle {
         VehicleMotor vm = (VehicleMotor) o;
         return potencia == vm.potencia;
     }
+    
+    @Override
+    public String toString() {
+        return super.toString() + "\n" +
+               "Potència: " + this.potencia;
+    }
 }
