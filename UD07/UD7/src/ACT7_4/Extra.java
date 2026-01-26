@@ -5,12 +5,20 @@ class Extra {
     private double preu;
 
     public Extra(String nom, double preu) {
-        this.nom = nom;
-        this.preu = preu;
+        this.setNom(nom);
+        this.setPreu(preu);
     }
 
     public double getPreu() {
         return preu;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setPreu(double preu) {
+        this.preu = preu;
     }
 
     @Override

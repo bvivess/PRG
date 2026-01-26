@@ -5,7 +5,7 @@ class VehicleCombustio extends VehicleMotor {
 
     public VehicleCombustio(String marca, String model, double preuBase, int potencia, String tipusCombustible) {
         super(marca, model, preuBase, potencia);
-        this.tipusCombustible = tipusCombustible;
+        setTipusCombustible(tipusCombustible);
     }
 
     @Override

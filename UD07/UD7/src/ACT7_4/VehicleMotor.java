@@ -6,7 +6,7 @@ class VehicleMotor extends Vehicle {
 
     public VehicleMotor(String marca, String model, double preuBase, int potencia) {
         super(marca, model, preuBase);
-        this.potencia = potencia;
+        this.setPotencia(potencia);
     }
     
     @Override
@@ -15,6 +15,10 @@ class VehicleMotor extends Vehicle {
         
         return total + 
             ( this.potencia < 100 ? 500 : 1000 );
+    }
+    
+    public void setPotencia(int potencia) {
+        this.potencia = potencia;
     }
     
     @Override

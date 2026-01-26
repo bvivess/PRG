@@ -11,5 +11,3 @@ final class Cotxe extends VehicleCombustio {
                "Preu total: " + this.calculaPreu();
     }
 }
-
-

@@ -5,7 +5,7 @@ class VehicleElectric extends VehicleMotor {
 
     public VehicleElectric(String marca, String model, double preuBase, int potencia, int capacitatBateria) {
         super(marca, model, preuBase, potencia);
-        this.capacitatBateria = capacitatBateria;
+        setCapacitatBateria(capacitatBateria);
     }
 
     @Override

@@ -5,7 +5,15 @@ class Caracteristica {
     private String valor;
 
     public Caracteristica(String nom, String valor) {
+        this.setNom(nom);
+        this.setValor(valor);
+    }
+
+    public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public void setValor(String valor) {
         this.valor = valor;
     }
 
