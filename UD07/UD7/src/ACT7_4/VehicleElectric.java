@@ -1,0 +1,37 @@
+package ACT7_4;
+
+class VehicleElectric extends VehicleMotor {
+    private int capacitatBateria;
+
+    public VehicleElectric(String marca, String model, double preuBase, int potencia, int capacitatBateria) {
+        super(marca, model, preuBase, potencia);
+        this.capacitatBateria = capacitatBateria;
+    }
+
+    @Override
+    public double calculaPreu() {
+        double total = super.calculaPreu();
+        
+        return total + 
+            ( this.capacitatBateria == 40 ? 8000 :
+              this.capacitatBateria == 60 ? 12000 :
+              this.capacitatBateria == 80 ? 16000 :
+              0 );
+    }
+    
+    public void setCapacitatBateria(int capacitatBateria)  {
+        if ((this.capacitatBateria == 40) ||
+            (this.capacitatBateria == 60) ||
+            (this.capacitatBateria == 80))
+            this.capacitatBateria = capacitatBateria;
+        else
+            throw new IllegalArgumentException("Capacitat bateria incorrecte");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!super.equals(o)) return false;
+        VehicleElectric vElectric = (VehicleElectric) o;
+        return capacitatBateria == vElectric.capacitatBateria;
+    }
+}
