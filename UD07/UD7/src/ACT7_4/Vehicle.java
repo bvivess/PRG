@@ -1,9 +1,5 @@
 package ACT7_4;
 
-
-// =============================
-// Classe abstracta Vehicle
-// =============================
 import java.util.*;
 
 class Vehicle {
