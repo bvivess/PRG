@@ -20,9 +20,9 @@ class VehicleElectric extends VehicleMotor {
     }
     
     public void setCapacitatBateria(int capacitatBateria)  {
-        if ((this.capacitatBateria == 40) ||
-            (this.capacitatBateria == 60) ||
-            (this.capacitatBateria == 80))
+        if ((capacitatBateria == 40) ||
+            (capacitatBateria == 60) ||
+            (capacitatBateria == 80))
             this.capacitatBateria = capacitatBateria;
         else
             throw new IllegalArgumentException("Capacitat bateria incorrecte");

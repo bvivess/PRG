@@ -21,9 +21,9 @@ class VehicleCombustio extends VehicleMotor {
     }
 
     public void setTipusCombustible(String tipusCombustible)  {
-        if ((this.tipusCombustible.equals("gasolina")) ||
-            (this.tipusCombustible.equals("diesel")) ||
-            (this.tipusCombustible.equals("hibrid")))
+        if ((tipusCombustible.equals("gasolina")) ||
+            (tipusCombustible.equals("diesel")) ||
+            (tipusCombustible.equals("hibrid")))
             this.tipusCombustible = tipusCombustible;
         else
             throw new IllegalArgumentException("Tipus combustible incorrecte");
