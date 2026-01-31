@@ -16,7 +16,7 @@ public class Dispositiu {
     }
 
     public boolean afegeixModul(Modul m) {
-        if (this.moduls.indexOf(m) == -1)
+        if (this.moduls.indexOf(m) == -1)  // també: 'if (this.moduls.contains(m)'
             return moduls.add(m);
         return false;
     }
