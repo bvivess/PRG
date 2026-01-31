@@ -15,7 +15,7 @@ public class EquipComputacio extends Dispositiu {
     }
 
     public boolean afegeixComponent(Component c) {
-        if (this.components.indexOf(c)==-1 )
+        if (this.components.indexOf(c)==-1 )    // també: 'if (this.components.contains(c)'
             return components.add(c);
         return false;
     }
@@ -47,14 +47,6 @@ public class EquipComputacio extends Dispositiu {
         return total;
     }
     
-    protected String getProcessador() {
-        return processador;
-    }
-
-    public void setQuantitatRAM(int quantitatRAM) {
-        this.memoria = quantitatRAM;
-    }
-
     public void setProcessador(String processador) {
         switch (processador) {
             case "i3", "i5", "i7", "i9" -> this.processador = processador;
@@ -69,8 +61,6 @@ public class EquipComputacio extends Dispositiu {
         }
     }
 
-    
-    
     @Override
     public String toString() {
         String text = super.toString() + 
