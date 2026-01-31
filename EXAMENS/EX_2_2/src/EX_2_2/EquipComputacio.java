@@ -7,10 +7,10 @@ public class EquipComputacio extends Dispositiu {
     private int memoria;
     private ArrayList<Component> components = new ArrayList<>();
 
-    public EquipComputacio(String codiInventari, String nom, int consumBase, String processador, int ram) {
+    public EquipComputacio(String codiInventari, String nom, int consumBase, String processador, int memoria) {
         super(codiInventari, nom, consumBase);
-        this.processador = processador;
-        this.memoria = ram;
+        this.setProcessador(processador);
+        this.setMemoria(memoria);
         this.components = new ArrayList<>();
     }
 
@@ -55,6 +55,22 @@ public class EquipComputacio extends Dispositiu {
         this.memoria = quantitatRAM;
     }
 
+    public void setProcessador(String processador) {
+        switch (processador) {
+            case "i3", "i5", "i7", "i9" -> this.processador = processador;
+            default -> throw new IllegalArgumentException("Tipus de processador incorrecte");
+        }
+    }
+
+    public void setMemoria(int memoria) {
+        switch (memoria) {
+            case 8, 16, 32, 64 -> this.memoria = memoria;
+            default -> throw new IllegalArgumentException("Tipus combustible incorrecte");
+        }
+    }
+
+    
+    
     @Override
     public String toString() {
         String text = super.toString() + 
