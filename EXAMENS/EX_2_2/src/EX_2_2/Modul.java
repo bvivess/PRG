@@ -41,7 +41,6 @@ public class Modul {
         return Objects.equals(this.nom, other.nom);
     }
 
-
     @Override
     public String toString() {
         return nom + " (" + consum + "W)";
