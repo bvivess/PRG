@@ -1,4 +1,4 @@
-package ex_2_2;
+package EX_2_2;
 
 public class EquipXarxa extends Dispositiu {
     private int nombrePorts;

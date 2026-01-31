@@ -1,4 +1,4 @@
-package ex_2_2;
+package EX_2_2;
 
 public final class Commutador extends EquipXarxa {
     public Commutador(String codiInventari, String nom, int consumBase, int ports) {
