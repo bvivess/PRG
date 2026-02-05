@@ -1,10 +1,10 @@
-package ACT8_3A;
+package ACT8_3;
 
 // Clase principal Main
 public class Main {
     public static void main(String[] args) {
-        Llibre llibre = new Llibre("Java Programming", 2020, "John Smith", 35.0);
-        Revista revista = new Revista("Tech Magazine", 2021, 25, 10.0);
+        Llibre llibre = new Llibre("Java Programming", 2020, 35.0, "John Smith");
+        Revista revista = new Revista("Tech Magazine", 2021, 10.0, 25);
 
         // Array de Publicacions
         Publicacio[] publicacions = {llibre, revista};

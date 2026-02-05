@@ -1,4 +1,4 @@
-package ACT8_3A;
+package ACT8_3;
 
 import java.util.Objects;
 
@@ -10,10 +10,12 @@ import java.util.Objects;
 abstract class PublicacioBase implements Publicacio {
     private String titol;
     private int anyPublicacio;
+    private double preu;
 
-    public PublicacioBase(String titol, int anyPublicacio) {
+    public PublicacioBase(String titol, int anyPublicacio, double preu) {
         setTitol(titol);
         setAnyPublicacio(anyPublicacio);
+        setPreu(preu);
     }
 
     public String getTitol() {
@@ -32,9 +34,17 @@ abstract class PublicacioBase implements Publicacio {
         return anyPublicacio;
     }
 
+    public double getPreu() {
+        return preu;
+    }
+
+    public void setPreu(double preu) {
+        this.preu = preu;
+    }
+
     @Override
     public String toString() {
-        return "PublicacioBase {" + "titol=" + this.getTitol() + ", anyPublicacio=" + this.getAnyPublicacio() + '}';
+        return "PublicacioBase {" + "titol=" + this.getTitol() + ", anyPublicacio=" + this.getAnyPublicacio() + ", preuBase=" + this.preu + "}";
     }
     
     

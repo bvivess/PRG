@@ -1,4 +1,4 @@
-package ACT8_3A;
+package ACT8_3;
 
 /**
  *
@@ -7,25 +7,19 @@ package ACT8_3A;
 // Clase Revista
 class Revista extends PublicacioBase {
     private int numeroEdicio;
-    private double preu;
 
-    public Revista(String titol, int anioPublicacio, int numeroEdicio, double preu) {
-        super(titol, anioPublicacio);
-        setNumeroEdicio(numeroEdicio);
-        setPreu(preu);
+    public Revista(String titol, int anioPublicacio, double preu, int numeroEdicio) {
+        super(titol, anioPublicacio, preu);
+        this.numeroEdicio = numeroEdicio;
     }
 
     @Override
     public double calculaPrecio() {
-        return preu * 1.10;
+        return getPreu() * 1.10;
     }
 
     public void setNumeroEdicio(int numeroEdicio) {
         this.numeroEdicio = numeroEdicio;
-    }
-
-    public void setPreu(double preu) {
-        this.preu = preu;
     }
 
     @Override

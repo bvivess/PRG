@@ -1,4 +1,4 @@
-package ACT8_3B;
+package ACT8_3;
 
 /**
  *
@@ -7,12 +7,11 @@ package ACT8_3B;
 // Clase Libro
 class Llibre extends PublicacioBase {
     private String autor;
-    private double preu;
 
-    public Llibre(String titulo, int anioPublicacion, String autor, double preu) {
-        super(titulo, anioPublicacion);
+
+    public Llibre(String titulo, int anyPublicacio, double preu, String autor) {
+        super(titulo, anyPublicacio, preu);
         setAutor(autor);
-        setPreu(preu);
     }
 
     @Override
@@ -20,16 +19,8 @@ class Llibre extends PublicacioBase {
         return getPreu() * 1.21;
     }
 
-    public double getPreu() {
-        return preu;
-    }
-
     public void setAutor(String autor) {
         this.autor = autor;
-    }
-
-    public void setPreu(double preu) {
-        this.preu = preu;
     }
     
     @Override
