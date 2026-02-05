@@ -8,12 +8,10 @@ import ACT8_0B.*;
  * @author winadmin
  */
 class Cercle implements FiguraGeometrica, Coloreador {
-    String color;
     double radi;
     
     // Constructor
-    public Cercle(String color, double radi) {
-        this.color = color;
+    public Cercle(double radi) {
         this.radi = radi;
     }
     
@@ -31,12 +29,6 @@ class Cercle implements FiguraGeometrica, Coloreador {
     @Override
     public int calculaNCostats() {
         return 0;
-    }
-    
-    // Implementació del mètode de 'Colorear'
-    @Override
-    public void aplicaColor(String color) {
-        this.color = color;
     }
     
     @Override

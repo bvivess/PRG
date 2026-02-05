@@ -8,12 +8,10 @@ import ACT8_0B.*;
  */
 public class Rombe implements FiguraGeometrica, Coloreador {
     // Atributs
-    String color;
     private double base, apotema;
 
     // Constructor
-    public Rombe(String color, double base, double apotema) {
-        this.color = color;
+    public Rombe(double base, double apotema) {
         this.base = base;
         this.apotema = apotema;
     }
@@ -33,12 +31,6 @@ public class Rombe implements FiguraGeometrica, Coloreador {
     public int calculaNCostats() {
         return 4;
     }  
-   
-    // Implementació del mètode de 'Coloreador'
-    @Override
-    public void aplicaColor(String color) {
-        this.color = color;
-    }
 
     @Override
     public String toString() {
