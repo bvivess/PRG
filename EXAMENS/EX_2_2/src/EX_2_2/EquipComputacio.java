@@ -49,15 +49,19 @@ public class EquipComputacio extends Dispositiu {
     
     public void setProcessador(String processador) {
         switch (processador) {
-            case "i3", "i5", "i7", "i9" -> this.processador = processador;
-            default -> throw new IllegalArgumentException("Tipus de processador incorrecte");
+            case "i3", "i5", "i7", "i9" -> 
+                this.processador = processador;
+            default -> 
+                throw new IllegalArgumentException("Tipus de processador incorrecte");
         }
     }
 
     public void setMemoria(int memoria) {
         switch (memoria) {
-            case 8, 16, 32, 64 -> this.memoria = memoria;
-            default -> throw new IllegalArgumentException("Tipus combustible incorrecte");
+            case 8, 16, 32, 64 -> 
+                this.memoria = memoria;
+            default -> 
+                throw new IllegalArgumentException("Tipus combustible incorrecte");
         }
     }
 

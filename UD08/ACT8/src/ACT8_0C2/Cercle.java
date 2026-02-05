@@ -1,35 +1,36 @@
-package ACT8_0C;
+package ACT8_0C2;
 
 /**
  *
  * @author winadmin
  */
-public class Rectangle extends Coloreador implements FiguraGeometrica{
-    double amplada, alcada;
+class Cercle extends Coloreador implements FiguraGeometrica  {
+    String color;
+    double radi;
     
-    Rectangle(String color, double amplada, double alcada) {
+    // Constructor
+    public Cercle(String color, double radi) {
         super(color);
-        this.amplada = amplada;
-        this.alcada = alcada;
+        this.radi = radi;
     }
     
     // Implementació del mètode de 'FiguraGeometrica'
     @Override
     public double calculaArea() {
-        return amplada * alcada;
-    }
-    
-    @Override
-    public double calculaPerimetre() {
-        return 2 * (amplada + alcada);
+        return Math.PI * Math.pow(radi, 2);
     }
 
     @Override
-    public int calculaNCostats() {
-        return 4;
+    public double calculaPerimetre() {
+        return Math.PI * 2 * radi;
     }
     
-    // Implementació del mètode de 'Coloreador'
+    @Override
+    public int calculaNCostats() {
+        return 0;
+    }
+    
+    // Implementació del mètode de 'Colorear'
     @Override
     public void aplicaColor(String color) {
         this.color = color;
@@ -37,6 +38,6 @@ public class Rectangle extends Coloreador implements FiguraGeometrica{
     
     @Override
     public String toString() {  // si es poden implementar els mètodes d''Object'
-        return "Color: " + this.color + " Amplada: " + this.amplada + " Alçada: " + this.alcada;
+        return "Color: " + color + " Radi: " + radi;
     }
 }

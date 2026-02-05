@@ -1,16 +1,19 @@
-package ACT8_0C;
+package ACT8_0C1;
+
+import ACT8_0B.*;
 
 /**
 * Forma geomètrica: Rombe
  * @author T.Vives
  */
-public class Rombe extends Coloreador implements FiguraGeometrica {
+public class Rombe implements FiguraGeometrica, Coloreador {
     // Atributs
+    String color;
     private double base, apotema;
 
     // Constructor
     public Rombe(String color, double base, double apotema) {
-        super(color);
+        this.color = color;
         this.base = base;
         this.apotema = apotema;
     }
@@ -39,7 +42,7 @@ public class Rombe extends Coloreador implements FiguraGeometrica {
 
     @Override
     public String toString() {
-        return "Rombe{" + "color=" + super.color + ", base=" + this.base + ", apotema=" + this.apotema + '}';
+        return "Rombe{" + "color=" + this.color + ", base=" + this.base + ", apotema=" + this.apotema + '}';
     }
     
 }

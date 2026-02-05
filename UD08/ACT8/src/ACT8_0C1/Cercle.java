@@ -1,16 +1,19 @@
-package ACT8_0C;
+package ACT8_0C1;
+
+import ACT8_0B.*;
+
 
 /**
  *
  * @author winadmin
  */
-class Cercle extends Coloreador implements FiguraGeometrica  {
+class Cercle implements FiguraGeometrica, Coloreador {
     String color;
     double radi;
     
     // Constructor
     public Cercle(String color, double radi) {
-        super(color);
+        this.color = color;
         this.radi = radi;
     }
     
