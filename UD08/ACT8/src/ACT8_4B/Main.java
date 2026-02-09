@@ -24,6 +24,7 @@ public class Main {
         
         // -----------------------------------------
         // Versió 2
+        // Creació de concessionari 
         ArrayList<ArrayList<Vehicle>> concesionari = new ArrayList<Vehicle>();
         
         ArrayList<Vehicle> motos = new ArrayList<Vehicle>();
