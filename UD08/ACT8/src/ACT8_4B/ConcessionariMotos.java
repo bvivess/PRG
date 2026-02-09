@@ -27,7 +27,7 @@ public class ConcessionariMotos implements Concessionari {
         String text="";
         
         for (Motocicleta m : motos )
-            text += "\n\t" + m.toString() + " Imposts: " + m.calculaImpost();;
+            text += "\n\t" + m.toString() + " Imposts: " + m.calculaImpost();
 
         return "ConcessionariMotos {" + text + "\n" + "}";
     }
