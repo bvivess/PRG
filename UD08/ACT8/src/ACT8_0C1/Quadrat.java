@@ -31,9 +31,4 @@ public class Quadrat implements FiguraGeometrica, Coloreador {
         return 4;
     }
 
-    // Implementació del mètode de 'Coloreador'
-    @Override
-    public void aplicaColor(String color) {
-        this.color = color;
-    }
 }

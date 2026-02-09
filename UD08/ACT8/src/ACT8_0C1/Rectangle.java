@@ -32,12 +32,6 @@ public class Rectangle implements FiguraGeometrica, Coloreador {
         return 4;
     }
     
-    // Implementació del mètode de 'Coloreador'
-    @Override
-    public void aplicaColor(String color) {
-        this.color = color;
-    }
-    
     @Override
     public String toString() {  // si es poden implementar els mètodes d''Object'
         return "Color: " + this.color + " Amplada: " + this.amplada + " Alçada: " + this.alcada;
