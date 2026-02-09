@@ -14,7 +14,7 @@ public class Camio extends Vehicle {
 
     @Override
     public double calculaImpost() {
-        return super.getPreu() * 0.15;  // Impuest del 15%
+        return super.getPreu() * 0.15;  // Impost del 15%
     }  
     
 }
