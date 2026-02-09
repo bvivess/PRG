@@ -8,6 +8,7 @@ import java.util.ArrayList;
  */
 public class Main {
     public static void main(String[] args) {
+        // Versió 1
         // Creació de concessionaris i vehicles
         ConcessionariAutos concessionariAutos = new ConcessionariAutos();
         creaConcessionariAutos(concessionariAutos);
@@ -22,7 +23,7 @@ public class Main {
         System.out.println("Ingressos del Concesionari de Motos: " + concessionariMotos.calculaIngressos());
         
         // -----------------------------------------
-        
+        // Versió 2
         ArrayList<ArrayList<Vehicle>> concesionari = new ArrayList<Vehicle>();
         
         ArrayList<Vehicle> motos = new ArrayList<Vehicle>();
@@ -43,8 +44,8 @@ public class Main {
     private static void creaConcessionariAutos(ConcessionariAutos concessionariAutos) {
         concessionariAutos.setVehicle(new Automobil("Renault", "Megane", 25000.0, "Turisme", 4, 500.0));
         concessionariAutos.setVehicle(new Automobil("Honda", "Civic", 22000.0, "Turisme", 4, 450.0));
-        concessionariAutos.setVehicle(new Camio("Pegasus", "Brabus",15000,"Trucker", 5000.0));
-        concessionariAutos.setVehicle(new Camio("Ebro", "Santana",10000, "Truck", 500.0));
+        concessionariAutos.setVehicle(new Camio("Pegasus", "Brabus", 15000.0,"Trucker", 5000.0));
+        concessionariAutos.setVehicle(new Camio("Ebro", "Santana", 10000.0, "Truck", 500.0));
         
         
     }
