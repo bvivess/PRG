@@ -27,7 +27,7 @@ public class ConcessionariAutos implements Concessionari {
     public String toString() {
         String text="";
         
-        for (Vehicle v : vehicles )
+        for (Vehicle v : this.vehicles )
             text += "\n\t" + v.toString() + " Imposts: " + v.calculaImpost();
         
         return "ConcessionariAutos {" + text + "\n" + "}";

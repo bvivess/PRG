@@ -25,21 +25,24 @@ public class Main {
         // -----------------------------------------
         // Versió 2
         // Creació de concessionari 
-        ArrayList<ArrayList<Vehicle>> concesionari = new ArrayList<Vehicle>();
+        ArrayList< ArrayList<Vehicle> > concesionari = new ArrayList<>();
         
-        ArrayList<Vehicle> motos = new ArrayList<Vehicle>();
+        ArrayList<Vehicle> motos = new ArrayList<>();
         motos.add(new Motocicleta("Vespa", "Primavera", 2000.0, "Scotter", 125));
+        motos.add(new Motocicleta("Honda", "CBR", 15000.0, "Deportiva", 600));
         
-        ArrayList<Vehicle> autos = new ArrayList<Vehicle>();
+        ArrayList<Vehicle> autos = new ArrayList<>();
         autos.add(new Automobil("Renault", "Megane", 25000.0, "Turisme", 4, 500.0));
         
-        ArrayList<Vehicle> camions = new ArrayList<Vehicle>();
+        ArrayList<Vehicle> camions = new ArrayList<>();
         camions.add(new Camio("Ebro", "Santana", 10000, "Truck", 500.0));
         
         
         concesionari.add(motos);
         concesionari.add(autos);
         concesionari.add(camions);
+        
+        concesionari.get(0);
     }
     
     private static void creaConcessionariAutos(ConcessionariAutos concessionariAutos) {
