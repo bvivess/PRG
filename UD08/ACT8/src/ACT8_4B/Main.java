@@ -41,8 +41,6 @@ public class Main {
         concesionari.add(motos);
         concesionari.add(autos);
         concesionari.add(camions);
-        
-        concesionari.get(0);
     }
     
     private static void creaConcessionariAutos(ConcessionariAutos concessionariAutos) {
@@ -50,12 +48,10 @@ public class Main {
         concessionariAutos.setVehicle(new Automobil("Honda", "Civic", 22000.0, "Turisme", 4, 450.0));
         concessionariAutos.setVehicle(new Camio("Pegasus", "Brabus", 15000.0,"Trucker", 5000.0));
         concessionariAutos.setVehicle(new Camio("Ebro", "Santana", 10000.0, "Truck", 500.0));
-        
-        
     }
     
     private static void creaConcessionariMotos(ConcessionariMotos concessionariMotos) {
-        concessionariAutos.setMotocicleta(new Motocicleta("Labretta", "Model D", 3300.0, "Scotter", 125));
+        concessionariMotos.setMotocicleta(new Motocicleta("Labretta", "Model D", 3300.0, "Scotter", 125));
         concessionariMotos.setMotocicleta(new Motocicleta("Vespa", "Primavera", 2000.0, "Scotter", 125));
         concessionariMotos.setMotocicleta(new Motocicleta("Honda", "CBR", 15000.0, "Deportiva", 600));
     }
