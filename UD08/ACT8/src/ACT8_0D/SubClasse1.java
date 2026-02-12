@@ -20,12 +20,6 @@ class SubClasse1 extends ClasseAbstracta {
         System.out.println("MÈTODE ABSTRACTE implementat en SubClasse1");
     }
     
-    // Implementació del Mètode concret de la Classe abstracta  
-    @Override
-    public void metodeConcret() {
-        System.out.println("MÈTODE CONCRET implementat en SubClasse1");
-    }
-    
     //@Override
     public static void metodeEstatic() {
         System.out.println("MÈTODE ESTÀTIC en SubClasse1");
