@@ -31,4 +31,9 @@ public class Quadrat implements FiguraGeometrica, Coloreador {
         return 4;
     }
 
+    @Override
+    public String toString() {
+        return "Quadrat{" + "color=" + this.color + ", costat=" + this.costat + '}';
+    }
+
 }

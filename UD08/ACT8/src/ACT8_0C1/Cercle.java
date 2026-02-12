@@ -33,6 +33,6 @@ class Cercle implements FiguraGeometrica, Coloreador {
     
     @Override
     public String toString() {  // si es poden implementar els mètodes d''Object'
-        return "Color: " + color + " Radi: " + radi;
+        return "Color: " + this.color + " Radi: " + this.radi;
     }
 }
