@@ -8,13 +8,13 @@ class Classe2 implements Interficie {
     
     @Override
     public void metodeAbstracte() {
-        System.out.println("MÈTODE ABSTRACTE en Classe2: " + this.a1);
+        System.out.println("MÈTODE ABSTRACTE en Classe2: " + Interficie.a1);  // també 'this.a1'
     }
     
     // La Classe2 sobreescriu el metodePerDefecte() de la interfície
     @Override
     public void metodePerDefecte() {
-        System.out.println("MÈTODE PER DEFECTE en Classe2: " + this.a1);
+        System.out.println("MÈTODE PER DEFECTE en Classe2: " + this.a1);  // també 'Interficie.a1'
     }
     
 
