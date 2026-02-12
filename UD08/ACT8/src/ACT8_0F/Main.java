@@ -6,20 +6,20 @@ package ACT8_0F;
  */
 public class Main {
     public static void main(String[] args) {
-        SubClasse instancia = new SubClasse();
+        SubClasse subclasse = new SubClasse();
         
-        instancia.metodeAbstracteClasse(); // Implementació del mètode abstracte de classe en 'SubClasse'
-        instancia.metodeAbstracteInterficie(); // Implementación del mètode abstracte de interfície en 'SubClasse'
+        subclasse.metodeAbstracteClasse(); // Implementació del mètode abstracte de classe en 'SubClasse'
+        subclasse.metodeAbstracteInterficie(); // Implementación del mètode abstracte de interfície en 'SubClasse'
         //
-        instancia.metodeConcret(); // Implementació concreta en la 'classe abstracta'
-        instancia.metodePerDefecte();  // Implementació del mètode per defecte en 'Interficie'
+        subclasse.metodeConcret(); // Implementació concreta en la 'classe abstracta'
+        subclasse.metodePerDefecte();  // Implementació del mètode per defecte en 'Interficie'
         //
         SubClasse.metodeEstatic();
         Interficie.metodeEstatic();
         //
-        instancia.atributAbstracte = "Abstracte";  // o amb 'setter()'
+        subclasse.atributAbstracte = "Abstracte";  // o amb 'setter()'
         //instancia.atributInterficie = "InterficieX";  // no és possible, és final
-        System.out.println(instancia.atributInterficie);
-        System.out.println(instancia.atributAbstracte);
+        System.out.println(subclasse.atributInterficie);
+        System.out.println(subclasse.atributAbstracte);
     }
 }
