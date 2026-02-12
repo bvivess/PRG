@@ -6,6 +6,10 @@ package ACT8_0F;
  */
 // Clase que extiende la clase abstracta e implementa la interfaz
 class SubClasse extends ClasseAbstracta implements Interficie {
+
+    public SubClasse(int b1, String b2) {
+        super(b1, b2);
+    }
     
     // Implementació del mètode de la classe abstracta
     @Override
