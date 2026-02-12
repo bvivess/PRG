@@ -30,12 +30,6 @@ public class Rombe extends Coloreador implements FiguraGeometrica {
     public int calculaNCostats() {
         return 4;
     }  
-   
-    // Implementació del mètode de 'Coloreador'
-    @Override
-    public void aplicaColor(String color) {
-        this.color = color;
-    }
 
     @Override
     public String toString() {

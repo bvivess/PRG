@@ -30,12 +30,6 @@ class Cercle extends Coloreador implements FiguraGeometrica  {
         return 0;
     }
     
-    // Implementació del mètode de 'Colorear'
-    @Override
-    public void aplicaColor(String color) {
-        this.color = color;
-    }
-    
     @Override
     public String toString() {  // si es poden implementar els mètodes d''Object'
         return "Color: " + color + " Radi: " + radi;

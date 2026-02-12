@@ -11,6 +11,9 @@ abstract class Coloreador {
         this.color = color;
     }
     
-    abstract void aplicaColor(String color);  // declarar, no implementar
+    // Implementació del mètode concret de 'Coloreador'
+    public void aplicaColor(String color) {
+        this.color = color;
+    }
 
 }

@@ -1,7 +1,5 @@
 package ACT8_0C1;
 
-import ACT8_0B.*;
-
 /**
  *
  * @author winadmin
