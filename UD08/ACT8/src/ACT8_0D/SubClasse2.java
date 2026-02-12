@@ -17,4 +17,10 @@ class SubClasse2 extends ClasseAbstracta {
     public void metodeAbstracte() {
         System.out.println("MÈTODE ABSTRACTE implementat en 'Classe2'");
     }
+    
+    // Mètode concret en la Subclasse2
+    @Override
+    public void metodeConcret() {
+        System.out.println("MÈTODE CONCRET en Subclase2");
+    }
 }
