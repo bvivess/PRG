@@ -17,9 +17,9 @@ public class Main {
         SubClasse.metodeEstatic();
         Interficie.metodeEstatic();
         //
-        subclasse.atributAbstracte = "Abstracte";  // o amb 'setter()'
+        subclasse.b2 = "Abstracte";  // o amb 'setter()'
         // subclasse.atributInterficie = "InterficieX";  // no és possible, és final
-        System.out.println(subclasse.atributInterficie);
-        System.out.println(subclasse.atributAbstracte);
+        System.out.println(subclasse.a1);
+        System.out.println(subclasse.b2);
     }
 }

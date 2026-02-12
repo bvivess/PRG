@@ -7,7 +7,7 @@ package ACT8_0F;
 
 // Interfaz
 interface Interficie {
-    public final String atributInterficie="Interficie";  // 'final' no és obligatòria
+    public final String a1 = "Interficie";  // 'final' no és obligatòria
     
     
     public abstract void metodeAbstracteInterficie();  // 'abstract' no és obligatòria
