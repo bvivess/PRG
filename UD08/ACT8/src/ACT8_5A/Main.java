@@ -9,7 +9,7 @@ public class Main {
         
         CompteEstalvis compteEstalvis = new CompteEstalvis("0001-0001-0001", "CompteEstalvis1", 0, 0, 1000, new ArrayList<Tarjeta>());
         productesBancaris.add(compteEstalvis);
-        Deposit deposit = new Deposit("0001-0001-0002", "Deposit1", 100, 2.5, 10);
+        Diposit deposit = new Diposit("0001-0001-0002", "Deposit1", 100, 2.5, 10);
         productesBancaris.add(deposit);
         Hipoteca hipoteca = new Hipoteca("0001-0001-0003", "Hipoteca1", 100, 5, 1, 10);
         productesBancaris.add(hipoteca);        

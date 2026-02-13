@@ -74,8 +74,6 @@ public class Modul {
         return Objects.equals(this.nom, other.nom);
     }
     
-    
-    
     public String toString() {
         return "Modul " + "ID=" + this.idModul + ", nom=" + this.nom + ", Hores setmanals=" + this.horesSetmanals;
     }

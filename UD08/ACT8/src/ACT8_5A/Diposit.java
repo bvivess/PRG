@@ -4,10 +4,10 @@ package ACT8_5A;
  *
  * @author winadmin
  */
-public class Deposit extends ProducteBancari {
+public class Diposit extends ProducteBancari {
     private int nombrePeriodes;
 
-    public Deposit(String codiProducte, String nom, double importContractat, double interesPeriode, int nombrePeriodes) {
+    public Diposit(String codiProducte, String nom, double importContractat, double interesPeriode, int nombrePeriodes) {
         super(codiProducte, nom, importContractat, interesPeriode);
         this.nombrePeriodes = nombrePeriodes;
     }
@@ -18,7 +18,7 @@ public class Deposit extends ProducteBancari {
     }
 
     public int getNombrePeriodes() {
-        return nombrePeriodes;
+        return this.nombrePeriodes;
     }
 
     public void setNombrePeriodes(int nombrePeriodes) {

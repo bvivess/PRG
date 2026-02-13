@@ -20,7 +20,7 @@ public class Hipoteca extends ProducteBancari{
     }
 
     public double getComisApertura() {
-        return comisApertura;
+        return this.comisApertura;
     }
 
     public void setComisApertura(double comisApertura) {
@@ -28,7 +28,7 @@ public class Hipoteca extends ProducteBancari{
     }
 
     public int getNombrePeriodes() {
-        return nombrePeriodes;
+        return this.nombrePeriodes;
     }
 
     public void setNombrePeriodes(int nombrePeriodes) {
