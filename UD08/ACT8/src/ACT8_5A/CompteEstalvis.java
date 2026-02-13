@@ -17,8 +17,10 @@ public class CompteEstalvis extends ProducteBancari {
     }
         
     boolean afegirTarjeta(Tarjeta t) {
-        if (this.tarjetes.contains(t))
+        System.out.println(this.tarjetes.contains(t));
+        if (!this.tarjetes.contains(t)) {
             return tarjetes.add(t);
+        }
         return false;
     }
     
@@ -41,6 +43,11 @@ public class CompteEstalvis extends ProducteBancari {
         }
         
         return remuneracio;
+    }
+
+    @Override
+    public String toString() {
+        return "CompteEstalvis{" + "comisMantCompte=" + comisMantCompte + ", tarjetes=" + tarjetes.toString() + '}';
     }
     
 }
