@@ -11,10 +11,33 @@ public class Persona {
     private int edat;
     private ArrayList<ProducteBancari> productesBancaris;
     
-    public Persona(String nom, int edat, ArrayList<ProducteBancari> productesBancaris) {
+    public Persona(String nom, int edat) {
         this.nom = nom;
         this.edat = edat;
-        this.productesBancaris = productesBancaris;
+        this.productesBancaris = new ArrayList<>();
+    }
+    
+    boolean afegirProducteBancari(ProducteBancari p) {
+        if (!this.productesBancaris.contains(p))
+            return this.productesBancaris.add(p);
+        return false;
+    }
+    
+    boolean eliminaProducteBancari(String c) {
+        /*
+        return this.productesBancaris.remove(new ProducteBancari(c) { @Override
+                                                                      double calculaRemuneracio() {
+                                                                          return 0;
+                                                                      }
+                                                                    });  // Classe anònima amb mètode
+        */
+        for (int i = 0; i < this.productesBancaris.size(); i++) {
+            if (productesBancaris.get(i).codiProducte.equals(c)) {
+                this.productesBancaris.remove(i);
+                return true;  // eliminem només la primera coincidència
+            }
+        }
+        return false;  // no hi havia cap coincidència
     }
     
     double calculaRemuneracioTotal() {

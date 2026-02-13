@@ -5,16 +5,16 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        ArrayList<ProducteBancari> productesBancaris = new ArrayList<>();
+        CompteEstalvis compteEstalvis = new CompteEstalvis("0001-0001-0001", "CompteEstalvis1", 0, 0, 1000);
+        compteEstalvis.afegirTarjeta(new Credit("000-0000-0000-0001",0,1000,1000,0));
+        compteEstalvis.afegirTarjeta(new Debit("000-0000-0000-0001",0,1000,1000,0));
         
-        CompteEstalvis compteEstalvis = new CompteEstalvis("0001-0001-0001", "CompteEstalvis1", 0, 0, 1000, new ArrayList<Tarjeta>());
-        productesBancaris.add(compteEstalvis);
-        Diposit deposit = new Diposit("0001-0001-0002", "Deposit1", 100, 2.5, 10);
-        productesBancaris.add(deposit);
-        Hipoteca hipoteca = new Hipoteca("0001-0001-0003", "Hipoteca1", 100, 5, 1, 10);
-        productesBancaris.add(hipoteca);        
+        Persona persona = new Persona("Joana Moragues", 27);
+        persona.afegirProducteBancari(compteEstalvis);
         
-        Persona persona = new Persona("Joana Moragues", 27, productesBancaris );
+        persona.afegirProducteBancari(new Diposit("0001-0001-0002", "Deposit1", 100, 2.5, 10));
+        persona.afegirProducteBancari(new Hipoteca("0001-0001-0003", "Hipoteca1", 100, 5, 1, 10));
+        
         
         System.out.println(persona.toString() + "\n Total Remuneració: " + persona.calculaRemuneracioTotal());
     }
