@@ -1,4 +1,4 @@
-package ACT8_6B;
+package ACT8_6;
 
 public final class Telefon extends Electronic {
     public Telefon(String nom, double preu, double consumEnergetic, int garantiaMesos, int midaPantalla, String processador, int ram, int hdd) {

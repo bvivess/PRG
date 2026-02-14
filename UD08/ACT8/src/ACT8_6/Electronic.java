@@ -1,4 +1,4 @@
-package ACT8_6B;
+package ACT8_6;
 
 public abstract class Electronic extends Producte {
     private int midaPantalla;

@@ -1,4 +1,4 @@
-package ACT8_6B;
+package ACT8_6;
 
 public final class Rentavaixelles extends Electrodomestic {
     

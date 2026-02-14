@@ -6,6 +6,7 @@ import ACT8_5.Tarjetes.*;
 
 /**
     |-- src
+        Main.java
         |-- Productes
             |-- ProducteBancari.java
             |-- CompteEstalvis.java
@@ -18,7 +19,7 @@ import ACT8_5.Tarjetes.*;
             |-- Debit.java
         |-- Classes
             |-- Persona.java
-    |-- Main.java
+
  */
 
 public class Main {

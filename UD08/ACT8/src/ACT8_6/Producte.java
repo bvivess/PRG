@@ -1,4 +1,4 @@
-package ACT8_6B;
+package ACT8_6;
 
 import java.util.Objects;
 
@@ -13,6 +13,10 @@ public abstract class Producte {
         this.preuBase = preuBase;
         this.consumEnergetic = consumEnergetic;
         this.garantiaMesos = garantiaMesos;
+    }
+    
+    public Producte(String nom) {
+        this.nom = nom;
     }
     
     public abstract double calculaDescompte();

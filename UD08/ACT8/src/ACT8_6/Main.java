@@ -1,11 +1,21 @@
-package ACT8_6B;
+package ACT8_6;
 
 import java.util.ArrayList;
+/*
+    |-- src
+        Main.java
+        |-- Productes
+                Producte.java
+            |-- Electronics
+                Telefon.java
+                Portatil.java
+                Televisor.java
+            |-- Electrodomestics
+                Gelera.java
+                Rentavaixelles.java
+                Rentadora.java
+*/
 
-/**
- *
- * @author winadmin
- */
 public class Main {
     public static void main(String[] args) {
         ArrayList<Producte> productes = new ArrayList<Producte>();

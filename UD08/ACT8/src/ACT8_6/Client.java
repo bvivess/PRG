@@ -1,15 +1,15 @@
-package ACT8_6B;
+package ACT8_6;
 
 import java.util.ArrayList;
 
 public class Client {
     private String nom;
-    private String cognom;
+    private String llinatge;
     private ArrayList<Producte> productes;
 
-    public Client(String nom, String cognom) {
+    public Client(String nom, String llinatge) {
         this.nom = nom;
-        this.cognom = cognom;
+        this.llinatge = llinatge;
         this.productes = new ArrayList<Producte>();
     }
     
@@ -20,16 +20,23 @@ public class Client {
     }
     
     public boolean eliminaProducte(String s) {
-        return this.productes.remove(this.cercaProducte(s));
+        int posicio = this.cercaProducte(s);
+        
+        if (posicio != -1) {
+           this.productes.remove(posicio);
+           return true;
+        } else 
+            return false;
     }
-            
-    
-    public Producte cercaProducte(String s) {
+
+    public int cercaProducte(String s) {
+        int i = 0;
         for (Producte p : this.productes) {
             if (p.getNom().equals(s))
-                return p;
+                return i;
+            i++;
         }
-        return null;
+        return -1;
     }
 
     // Mètode per calcular preu total del 'productes' 
@@ -44,7 +51,7 @@ public class Client {
 
     @Override
     public String toString() {
-        String text = "Client {Nom: " + this.nom + ", Cognom: " + this.cognom + " Productes={";
+        String text = "Client {Nom: " + this.nom + ", Cognom: " + this.llinatge + " Productes={";
         
         for (Producte p : productes)
             text += "\n\t " + p.toString();
