@@ -3,17 +3,19 @@ package ACT8_6;
 import java.util.ArrayList;
 /*
     |-- src
-        Main.java
+        |-- Main.java
+        |-- Classes
+            |-- Persona.java
         |-- Productes
-                Producte.java
+            |-- Producte.java
             |-- Electronics
-                Telefon.java
-                Portatil.java
-                Televisor.java
+                |-- Telefon.java
+                |-- Portatil.java
+                |-- Televisor.java
             |-- Electrodomestics
-                Gelera.java
-                Rentavaixelles.java
-                Rentadora.java
+                |-- Gelera.java
+                |-- Rentavaixelles.java
+                |-- Rentadora.java
 */
 
 public class Main {
