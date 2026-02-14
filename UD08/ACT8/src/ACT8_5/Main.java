@@ -1,5 +1,9 @@
 package ACT8_5;
 
+import ACT8_5.Classes.*;
+import ACT8_5.Productes.*;
+import ACT8_5.Tarjetes.*;
+
 /**
     |-- src
         |-- Productes
@@ -15,10 +19,7 @@ package ACT8_5;
         |-- Classes
             |-- Persona.java
     |-- Main.java
-
- * @author winadmin
  */
-
 
 public class Main {
 

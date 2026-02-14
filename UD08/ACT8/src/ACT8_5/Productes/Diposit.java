@@ -1,4 +1,4 @@
-package ACT8_5;
+package ACT8_5.Productes;
 
 public class Diposit extends ProducteBancari {
     private int nombrePeriodes;
@@ -9,7 +9,7 @@ public class Diposit extends ProducteBancari {
     }
 
     @Override
-    double calculaRemuneracio() {
+    public double calculaRemuneracio() {
         return + (super.getImportContractat() * super.getInteresPeriode() * this.nombrePeriodes);
     }
 

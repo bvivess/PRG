@@ -1,6 +1,7 @@
-package ACT8_5;
+package ACT8_5.Classes;
 
 import java.util.ArrayList;
+import ACT8_5.Productes.ProducteBancari;
 
 public class Persona {
     private String nom;
@@ -13,13 +14,13 @@ public class Persona {
         this.productesBancaris = new ArrayList<>();
     }
     
-    boolean afegirProducteBancari(ProducteBancari p) {
+    public boolean afegirProducteBancari(ProducteBancari p) {
         if (!this.productesBancaris.contains(p))
             return this.productesBancaris.add(p);
         return false;
     }
     
-    boolean eliminaProducteBancari(String c) {
+    public boolean eliminaProducteBancari(String c) {
         /*
         return this.productesBancaris.remove(new ProducteBancari(c) { @Override
                                                                       double calculaRemuneracio() {
@@ -36,7 +37,7 @@ public class Persona {
         return false;  // no hi havia cap coincidència
     }
     
-    double calculaRemuneracioTotal() {
+    public double calculaRemuneracioTotal() {
         double remuneracio = 0;
         for (ProducteBancari p : productesBancaris) {
             remuneracio += p.calculaRemuneracio();

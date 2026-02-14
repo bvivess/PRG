@@ -1,4 +1,4 @@
-package ACT8_5;
+package ACT8_5.Productes;
 
 import java.util.Objects;
 
@@ -20,7 +20,7 @@ public abstract class ProducteBancari {
         this.codiProducte = codiProducte;
     }
     
-    abstract double calculaRemuneracio();
+    public abstract double calculaRemuneracio();
 
     public String getCodiProducte() {
         return codiProducte;

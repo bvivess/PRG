@@ -1,4 +1,4 @@
-package ACT8_5;
+package ACT8_5.Productes;
 
 public class FonsInversio extends ProducteBancari {
     private double comisApertura;

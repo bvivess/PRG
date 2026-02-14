@@ -1,12 +1,12 @@
-package ACT8_5;
+package ACT8_5.Tarjetes;
 
 import java.util.Objects;
 
 public abstract class Tarjeta {
-    protected String codiTarjeta;
-    protected double comisUs;
-    protected double importMaximCaixer;
-    protected double importMaximCompra;
+    private String codiTarjeta;
+    private double comisUs;
+    private double importMaximCaixer;
+    private double importMaximCompra;
 
     public Tarjeta(String codiTarjeta, double comisUs, double importMaximCaixer, double importMaximCompra) {
         this.codiTarjeta = codiTarjeta;
@@ -17,6 +17,22 @@ public abstract class Tarjeta {
     
     public Tarjeta(String codiTarjeta) {
         this.codiTarjeta = codiTarjeta;
+    }
+
+    public String getCodiTarjeta() {
+        return codiTarjeta;
+    }
+
+    public double getComisUs() {
+        return comisUs;
+    }
+
+    public double getImportMaximCaixer() {
+        return importMaximCaixer;
+    }
+
+    public double getImportMaximCompra() {
+        return importMaximCompra;
     }
 
     @Override

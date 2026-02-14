@@ -1,6 +1,8 @@
-package ACT8_5;
+package ACT8_5.Productes;
 
 import java.util.ArrayList;
+
+import ACT8_5.Tarjetes.Tarjeta;
 
 public class CompteEstalvis extends ProducteBancari {
     private double comisMantCompte;
@@ -12,7 +14,7 @@ public class CompteEstalvis extends ProducteBancari {
         this.tarjetes = new ArrayList<>();
     }
         
-    boolean afegirTarjeta(Tarjeta t) {
+    public boolean afegirTarjeta(Tarjeta t) {
         System.out.println(this.tarjetes.contains(t));
         if (!this.tarjetes.contains(t)) {
             return tarjetes.add(t);
@@ -20,11 +22,11 @@ public class CompteEstalvis extends ProducteBancari {
         return false;
     }
     
-    boolean eliminaTarjeta(String c) {
+    public boolean eliminaTarjeta(String c) {
         // return this.tarjetes.remove(new Tarjeta(c) {});  // Classe anònima
         
         for (int i = 0; i < this.tarjetes.size(); i++) {
-            if (tarjetes.get(i).codiTarjeta.equals(c)) {
+            if (tarjetes.get(i).getCodiTarjeta().equals(c)) {
                 this.tarjetes.remove(i);
                 return true;  // eliminem només la primera coincidència
             }
@@ -32,10 +34,10 @@ public class CompteEstalvis extends ProducteBancari {
         return false;  // no hi havia cap coincidència
     }
     @Override
-    double calculaRemuneracio() {
+    public double calculaRemuneracio() {
         double remuneracio = -(this.comisMantCompte);
         for (Tarjeta t : this.tarjetes) {
-            remuneracio -= t.comisUs;
+            remuneracio -= t.getComisUs();
         }
         
         return remuneracio;
