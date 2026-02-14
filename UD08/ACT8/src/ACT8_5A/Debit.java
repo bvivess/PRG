@@ -1,9 +1,5 @@
 package ACT8_5A;
 
-/**
- *
- * @author winadmin
- */
 public class Debit extends Tarjeta {
     private double importCompraMinim;
 

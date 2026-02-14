@@ -2,10 +2,6 @@ package ACT8_5A;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author winadmin
- */
 public class Persona {
     private String nom;
     private int edat;
@@ -32,7 +28,7 @@ public class Persona {
                                                                     });  // Classe anònima amb mètode
         */
         for (int i = 0; i < this.productesBancaris.size(); i++) {
-            if (productesBancaris.get(i).codiProducte.equals(c)) {
+            if (productesBancaris.get(i).getCodiProducte().equals(c)) {
                 this.productesBancaris.remove(i);
                 return true;  // eliminem només la primera coincidència
             }

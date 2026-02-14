@@ -17,7 +17,7 @@ public class Persona {
     
     public double calculaRemuneracioTotal() {
         double remuneracio = 0;
-        for (ProducteBancari p : productesBancaris) {
+        for (ProducteBancari p : this.productesBancaris) {
             remuneracio += p.calculaRemuneracio();
         }
         

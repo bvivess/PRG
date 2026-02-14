@@ -2,7 +2,6 @@ package ACT8_5B;
 
 import java.util.ArrayList;
 
-import ACT8_5B.Tarjetes.*;
 import ACT8_5B.Productes.*;
 import ACT8_5B.Classes.*;
 

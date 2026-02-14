@@ -1,5 +1,25 @@
 package ACT8_5A;
 
+/**
+    |-- src
+        |-- Productes
+            |-- ProducteBancari.java
+            |-- CompteEstalvis.java
+            |-- Deposit.java
+            |-- Hipoteca.java
+            |-- FonsInversio.java
+        |-- Tarjetes
+            |-- Tarjeta.java
+            |-- Credit.java
+            |-- Debit.java
+        |-- Classes
+            |-- Persona.java
+    |-- Main.java
+
+ * @author winadmin
+ */
+
+
 public class Main {
 
     public static void main(String[] args) {
@@ -16,6 +36,7 @@ public class Main {
         persona.afegirProducteBancari(new Hipoteca("0001-0001-0003", "Hipoteca1", 100, 5, 1, 10));
         persona.afegirProducteBancari(new Hipoteca("0001-0001-0003", "Hipoteca1", 100, 5, 1, 10));  // Duplicada, no l'afegeix
         persona.eliminaProducteBancari("0001-0001-0003");
+        persona.afegirProducteBancari(new FonsInversio("0001-0001-0004", "FonsInversio1", 100, 5, 1, 10));
         
         System.out.println(persona.toString() + "\n Total Remuneració: " + persona.calculaRemuneracioTotal());
     }

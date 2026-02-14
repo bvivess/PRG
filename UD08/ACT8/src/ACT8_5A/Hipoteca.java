@@ -1,9 +1,5 @@
 package ACT8_5A;
 
-/**
- *
- * @author winadmin
- */
 public class Hipoteca extends ProducteBancari{
     private double comisApertura;
     private int nombrePeriodes;
@@ -16,7 +12,7 @@ public class Hipoteca extends ProducteBancari{
     
     @Override
     double calculaRemuneracio() {
-        return - (super.importContractat * super.interesPeriode * this.nombrePeriodes) - this.comisApertura;
+        return - (super.getImportContractat() * super.getInteresPeriode() * this.nombrePeriodes) - this.comisApertura;
     }
 
     public double getComisApertura() {

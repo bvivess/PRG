@@ -2,10 +2,6 @@ package ACT8_5A;
 
 import java.util.Objects;
 
-/**
- *
- * @author winadmin
- */
 public abstract class Tarjeta {
     protected String codiTarjeta;
     protected double comisUs;

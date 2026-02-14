@@ -2,16 +2,13 @@ package ACT8_5A;
 
 import java.util.Objects;
 
-/**
- *
- * @author winadmin
- */
 public abstract class ProducteBancari {
-    protected String codiProducte;
-    protected String nom;
-    protected double importContractat;
-    protected double interesPeriode;
+    private String codiProducte;
+    private String nom;
+    private double importContractat;
+    private double interesPeriode;
 
+    // Constructors
     public ProducteBancari(String codiProducte, String nom, double importContractat, double interesPeriode) {
         this.codiProducte = codiProducte;
         this.nom = nom;
@@ -24,6 +21,22 @@ public abstract class ProducteBancari {
     }
     
     abstract double calculaRemuneracio();
+
+    public String getCodiProducte() {
+        return codiProducte;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public double getImportContractat() {
+        return importContractat;
+    }
+
+    public double getInteresPeriode() {
+        return interesPeriode;
+    }
 
     @Override
     public int hashCode() {
