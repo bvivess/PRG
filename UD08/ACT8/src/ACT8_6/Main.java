@@ -29,6 +29,7 @@ public class Main {
         Client client = new Client("Pere", "Gómez");
         client.afegeixProducte(new Telefon("iPhone", 1200.0, 15.0, 8, 5, "Snapdragon", 16, 128));
         client.afegeixProducte(new Telefon("iPhone", 1200.0, 15.0, 8, 5, "Snapdragon", 16, 128));  // Repetit !!
+        //client.eliminaProducte("iPhone");
         client.afegeixProducte(new Portatil("Dell XPS", 1500.0, 18.0, 12, 15, "Intel i5",16, 512));
         client.afegeixProducte(new Televisor("Samsung 4K", 800.0, 30.0, 36, 55, "Snapdragon",16, 256));
         client.afegeixProducte(new Gelera("Edesa no Frost", 500.0, 150.0, 24, 'A'));
