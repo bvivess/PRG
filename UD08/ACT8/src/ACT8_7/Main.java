@@ -22,20 +22,19 @@ public class Main {
 
         // Prestar alguns llibres al client
         Llibre llibrePrestat1 = biblioteca.cercaLlibre("El Senyor dels Anells");
-        Llibre llibrePrestat2 = biblioteca.cercaLlibre("Cien a?os de soledad");
-
         if (llibrePrestat1 != null) {
             client.prestaLlibre(llibrePrestat1);
         }
 
+        Llibre llibrePrestat2 = biblioteca.cercaLlibre("Cien a?os de soledad");
         if (llibrePrestat2 != null) {
             client.prestaLlibre(llibrePrestat2);
         }
 
         // Mostrar els llibres prestats pel client
-        System.out.println("\nLlibres prestats per " + client.getNom() + " " + client.getCognom() + ":");
+        System.out.println("\nLlibres prestats a: " + client.getNom() + " " + client.getLlinatge() + ":");
         for (Llibre llibre : client.getLlibresPrestats()) {
-            System.out.println(llibre);
+            System.out.println("\t" + llibre);
         }
     }
 }

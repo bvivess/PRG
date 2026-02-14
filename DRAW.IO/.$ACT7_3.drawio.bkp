@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2026-02-14T15:20:42.048Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.16 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="2P9WDAZYF86hstGSXsRc" version="22.1.16" type="device">
+<mxfile host="Electron" modified="2024-01-31T20:27:29.191Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.16 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="_vPpAH4x8tgdtb8-4ILz" version="22.1.16" type="device">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="1120" dy="524" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="864" dy="508" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -37,10 +37,10 @@
           <mxGeometry y="96" width="160" height="57" as="geometry" />
         </mxCell>
         <mxCell id="b4w10FD1L1iH1ylHdtIp-8" value="EmpleatAssalariat" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="165" y="361" width="160" height="72" as="geometry" />
+          <mxGeometry x="165" y="361" width="160" height="34" as="geometry" />
         </mxCell>
         <mxCell id="b4w10FD1L1iH1ylHdtIp-10" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="b4w10FD1L1iH1ylHdtIp-8" vertex="1">
-          <mxGeometry y="26" width="160" height="46" as="geometry" />
+          <mxGeometry y="26" width="160" height="8" as="geometry" />
         </mxCell>
         <mxCell id="b4w10FD1L1iH1ylHdtIp-16" value="Extends" style="endArrow=block;endSize=16;endFill=0;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="b4w10FD1L1iH1ylHdtIp-8" target="b4w10FD1L1iH1ylHdtIp-0" edge="1">
           <mxGeometry width="160" relative="1" as="geometry">

@@ -2,18 +2,14 @@ package ACT8_7;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author winadmin
- */
 public class Client {
     private String nom;
-    private String cognom;
+    private String llinatge;
     private ArrayList<Llibre> llibresPrestats;
 
     public Client(String nom, String cognom) {
         this.nom = nom;
-        this.cognom = cognom;
+        this.llinatge = cognom;
         this.llibresPrestats = new ArrayList<>();
     }
 
@@ -31,12 +27,12 @@ public class Client {
         this.nom = nom;
     }
 
-    public String getCognom() {
-        return cognom;
+    public String getLlinatge() {
+        return llinatge;
     }
 
-    public void setCognom(String cognom) {
-        this.cognom = cognom;
+    public void setLlinatge(String llinatge) {
+        this.llinatge = llinatge;
     }
 
     public ArrayList<Llibre> getLlibresPrestats() {
