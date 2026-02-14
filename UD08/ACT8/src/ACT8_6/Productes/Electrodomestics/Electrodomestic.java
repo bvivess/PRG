@@ -1,4 +1,6 @@
-package ACT8_6;
+package ACT8_6.Productes.Electrodomestics;
+
+import ACT8_6.Productes.*;
 
 public abstract class Electrodomestic extends Producte {
     private char classeEnergetica;

@@ -1,6 +1,7 @@
-package ACT8_6;
+package ACT8_6.Classes;
 
 import java.util.ArrayList;
+import ACT8_6.Productes.*;
 
 public class Client {
     private String nom;

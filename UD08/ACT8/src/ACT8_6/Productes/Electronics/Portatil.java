@@ -1,4 +1,4 @@
-package ACT8_6;
+package ACT8_6.Productes.Electronics;
 
 public final class Portatil extends Electronic {
     public Portatil(String nom, double preu, double consumEnergetic, int garantiaMesos, int midaPantalla, String processador, int ram, int hdd) {

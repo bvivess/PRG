@@ -1,5 +1,10 @@
 package ACT8_6;
 
+import ACT8_6.Productes.*;
+import ACT8_6.Productes.Electrodomestics.*;
+import ACT8_6.Productes.Electronics.*;
+import ACT8_6.Classes.*;
+
 import java.util.ArrayList;
 /*
     |-- src

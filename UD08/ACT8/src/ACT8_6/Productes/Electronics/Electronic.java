@@ -1,4 +1,6 @@
-package ACT8_6;
+package ACT8_6.Productes.Electronics;
+
+import ACT8_6.Productes.*;
 
 public abstract class Electronic extends Producte {
     private int midaPantalla;

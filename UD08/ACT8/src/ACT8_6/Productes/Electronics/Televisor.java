@@ -1,4 +1,4 @@
-package ACT8_6;
+package ACT8_6.Productes.Electronics;
 
 public final class Televisor extends Electronic {
 
