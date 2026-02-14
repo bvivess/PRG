@@ -1,5 +1,7 @@
 package ACT8_7;
 
+import java.util.Objects;
+
 /**
  *
  * @author winadmin
@@ -15,6 +17,10 @@ class Llibre {
         this.autor = autor;
         this.anyPublicacio = anyPublicacio;
         this.preu = preu;
+    }
+    
+    public Llibre(String titol) {
+        this.titol = titol;
     }
 
     // Getters i setters
@@ -49,6 +55,28 @@ class Llibre {
 
     public void setPreu(double preu) {
         this.preu = preu;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.titol);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Llibre other = (Llibre) obj;
+        return Objects.equals(this.titol, other.titol);
     }
 
     @Override
