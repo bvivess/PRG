@@ -1,4 +1,4 @@
-package ACT8_5A;
+package ACT8_5;
 
 public class Debit extends Tarjeta {
     private double importCompraMinim;
