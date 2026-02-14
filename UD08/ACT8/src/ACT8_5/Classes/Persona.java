@@ -14,7 +14,7 @@ public class Persona {
         this.productesBancaris = new ArrayList<>();
     }
     
-    public boolean afegirProducteBancari(ProducteBancari p) {
+    public boolean afegeixProducteBancari(ProducteBancari p) {
         if (!this.productesBancaris.contains(p))
             return this.productesBancaris.add(p);
         return false;

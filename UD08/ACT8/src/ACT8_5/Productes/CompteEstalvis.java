@@ -14,7 +14,7 @@ public class CompteEstalvis extends ProducteBancari {
         this.tarjetes = new ArrayList<>();
     }
         
-    public boolean afegirTarjeta(Tarjeta t) {
+    public boolean afegeixTarjeta(Tarjeta t) {
         System.out.println(this.tarjetes.contains(t));
         if (!this.tarjetes.contains(t)) {
             return tarjetes.add(t);
