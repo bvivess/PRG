@@ -17,6 +17,4 @@ class Classe2 implements Interficie {
         System.out.println("MÈTODE PER DEFECTE en Classe2: " + this.a1);  // també 'Interficie.a1'
     }
     
-
 }
-
