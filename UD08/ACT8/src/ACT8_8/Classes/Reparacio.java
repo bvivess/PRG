@@ -1,4 +1,4 @@
-package ACT8_8;
+package ACT8_8.Classes;
 
 public class Reparacio {
     String descripcio;
@@ -11,6 +11,10 @@ public class Reparacio {
 
     public String getDescripcio() {
         return descripcio;
+    }
+
+    public double getPreu() {
+        return preu;
     }
 
     @Override

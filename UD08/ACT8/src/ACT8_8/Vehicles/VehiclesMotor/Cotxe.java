@@ -1,7 +1,7 @@
-package ACT8_8;
+package ACT8_8.Vehicles.VehiclesMotor;
 
 // Classe Cotxe que hereta de Vehicle i implementa VehicleMotor
-class Cotxe extends VehicleMotor {
+public class Cotxe extends VehicleMotor {
 
     public Cotxe(String matricula, String marca, String model, int any, double potencia) {
         super(matricula, marca, model, any, potencia);

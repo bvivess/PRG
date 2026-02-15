@@ -1,10 +1,10 @@
-package ACT8_8;
+package ACT8_8.Vehicles;
 
-// Classe abstracta Vehicle
-
+import ACT8_8.Classes.*;
 import java.util.ArrayList;
 
-abstract class Vehicle {
+// Classe abstracta Vehicle
+public abstract class Vehicle {
     private String matricula;
     private String marca;
     private String model;
@@ -28,7 +28,7 @@ abstract class Vehicle {
     public double calculaReparacions() {
         double total=0;
         for (Reparacio r : this.reparacions)
-            total += r.preu;
+            total += r.getPreu();
         
         return total;
     }

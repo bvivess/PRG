@@ -1,4 +1,4 @@
-package ACT8_8;
+package ACT8_8.Vehicles.VehiclesPersonal;
 
 // Classe Bicicleta que només hereta de Vehicle
 class Patinet extends VehiclePersonal {

@@ -1,7 +1,9 @@
-package ACT8_8;
+package ACT8_8.Vehicles.VehiclesMotor;
+
+import ACT8_8.Vehicles.*;
 
 // Interfície per als vehicles de motor
-abstract class VehicleMotor extends Vehicle {
+public abstract class VehicleMotor extends Vehicle {
     private double potencia;
     
     public VehicleMotor(String matricula, String marca, String model, int any, double potencia) {

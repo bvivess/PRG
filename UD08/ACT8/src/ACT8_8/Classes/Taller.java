@@ -1,10 +1,10 @@
-package ACT8_8;
+package ACT8_8.Classes;
 
-// Classe Taller que conté una llista de vehicles
-
+import ACT8_8.Vehicles.*;
 import java.util.ArrayList;
 
-class Taller {
+// Classe Taller que conté una llista de vehicles
+public class Taller {
     private String nom;
     private ArrayList<Vehicle> vehicles;
     

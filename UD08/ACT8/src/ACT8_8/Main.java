@@ -1,5 +1,10 @@
 package ACT8_8;
 
+import ACT8_8.Classes.*;
+import ACT8_8.Vehicles.VehiclesMotor.*;
+import ACT8_8.Vehicles.VehiclesPersonal.*;
+        
+        
 // Classe Main per a proves
 public class Main {
     public static void main(String[] args) {

@@ -1,4 +1,6 @@
-package ACT8_8;
+package ACT8_8.Vehicles.VehiclesPersonal;
+
+import ACT8_8.Vehicles.*;
 
 // Interfície per als vehicles de motor
 abstract class VehiclePersonal extends Vehicle {
