@@ -2,7 +2,7 @@ package ACT8_5.Productes;
 
 import java.util.Objects;
 
-public abstract class ProducteBancari {
+public abstract class ProducteBancari implements ProducteBancariBase {
     private String codiProducte;
     private String nom;
     private double importContractat;
@@ -20,8 +20,6 @@ public abstract class ProducteBancari {
         this.codiProducte = codiProducte;
     }
     
-    public abstract double calculaRemuneracio();
-
     public String getCodiProducte() {
         return codiProducte;
     }
