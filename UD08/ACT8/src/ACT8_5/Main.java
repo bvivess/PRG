@@ -25,7 +25,6 @@ import ACT8_5.Tarjetes.*;
 public class Main {
 
     public static void main(String[] args) {
-        Diposit diposit = new Diposit("0001-0001-0002", "Deposit1", 100, 2.5, 10);
         CompteEstalvis compteEstalvis = new CompteEstalvis("0001-0001-0001", "CompteEstalvis1", 0, 0, 1000);
         compteEstalvis.afegeixTarjeta(new Credit("000-0000-0000-0001",0,1000,1000,0));
         compteEstalvis.afegeixTarjeta(new Credit("000-0000-0000-0001",0,1000,1000,0));  // Duplicada, no l'afegeix
@@ -34,7 +33,7 @@ public class Main {
         
         Persona persona = new Persona("Joana Moragues", 27);
         persona.afegeixProducteBancari(compteEstalvis);
-        persona.afegeixProducteBancari(diposit);
+        persona.afegeixProducteBancari(new Diposit("0001-0001-0002", "Deposit1", 100, 2.5, 10));
         persona.afegeixProducteBancari(new Hipoteca("0001-0001-0003", "Hipoteca1", 100, 5, 1, 10));
         persona.afegeixProducteBancari(new Hipoteca("0001-0001-0003", "Hipoteca1", 100, 5, 1, 10));  // Duplicada, no l'afegeix
         persona.eliminaProducteBancari("0001-0001-0003");
