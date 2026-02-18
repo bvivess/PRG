@@ -21,16 +21,8 @@ public final class Hipoteca extends ProducteBancari{
         return this.comisApertura;
     }
 
-    public void setComisApertura(double comisApertura) {
-        this.comisApertura = comisApertura;
-    }
-
     public int getNombrePeriodes() {
         return this.nombrePeriodes;
-    }
-
-    public void setNombrePeriodes(int nombrePeriodes) {
-        this.nombrePeriodes = nombrePeriodes;
     }
 
     @Override

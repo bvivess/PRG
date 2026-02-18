@@ -20,10 +20,6 @@ public final class Diposit extends ProducteBancari {
         return this.nombrePeriodes;
     }
 
-    public void setNombrePeriodes(int nombrePeriodes) {
-        this.nombrePeriodes = nombrePeriodes;
-    }
-
     @Override
     public String toString() {
         return super.toString() + " Diposit{" + "nombrePeriodes=" + nombrePeriodes + '}';

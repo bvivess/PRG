@@ -1,6 +1,7 @@
 package ACT8_5.Productes;
 
 import java.util.Objects;
+import ACT8_5.Tarjetes.Tarjeta;
 
 public abstract class ProducteBancari implements ProducteBancariBase {
     private String codiProducte;
@@ -28,7 +29,7 @@ public abstract class ProducteBancari implements ProducteBancariBase {
             // calculaRemuneracio de 'CompteEstalvis'
             double remuneracio = -compte.getComisMantCompte();
 
-            for (var t : compte.getTarjetes()) {
+            for (Tarjeta t : compte.getTarjetes()) {
                 remuneracio -= t.getComisUs();
             }
 

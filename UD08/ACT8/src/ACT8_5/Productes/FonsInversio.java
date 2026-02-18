@@ -6,8 +6,8 @@ public final class FonsInversio extends ProducteBancari {
 
     public FonsInversio(String codiProducte, String nom, double importContractat, double interesPeriode, double comisApertura, int nombrePeriodes) {
         super(codiProducte, nom, importContractat, interesPeriode);
-        setComisApertura(comisApertura);
-        setNombrePeriodes(nombrePeriodes);
+        this.comisApertura = comisApertura;
+        this.nombrePeriodes = nombrePeriodes;
     }
 
     /*
@@ -24,14 +24,6 @@ public final class FonsInversio extends ProducteBancari {
 
     public int getNombrePeriodes() {
         return nombrePeriodes;
-    }
-
-    public void setComisApertura(double comisApertura) {
-        this.comisApertura = comisApertura;
-    }
-
-    public void setNombrePeriodes(int nombrePeriodes) {
-        this.nombrePeriodes = nombrePeriodes;
     }
 
     @Override
