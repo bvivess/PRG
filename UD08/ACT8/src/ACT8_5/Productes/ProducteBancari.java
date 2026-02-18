@@ -48,7 +48,6 @@ public abstract class ProducteBancari implements ProducteBancariBase {
         } else
             throw new UnsupportedOperationException("Tipus de producte no suportat");
     }
-
     
     public ProducteBancari(String codiProducte) {
         this.codiProducte = codiProducte;
