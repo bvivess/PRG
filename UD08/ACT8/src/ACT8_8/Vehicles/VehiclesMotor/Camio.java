@@ -1,7 +1,7 @@
 package ACT8_8.Vehicles.VehiclesMotor;
 
 // Classe Cotxe que hereta de Vehicle i implementa VehicleMotor
-public class Camio extends VehicleMotor {
+public final class Camio extends VehicleMotor {
     boolean esFrigorific;
 
     public Camio(String matricula, String marca, String model, int any, double potencia, boolean esFrigorific) {

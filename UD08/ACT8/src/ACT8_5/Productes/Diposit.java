@@ -1,6 +1,6 @@
 package ACT8_5.Productes;
 
-public class Diposit extends ProducteBancari {
+public final class Diposit extends ProducteBancari {
     private int nombrePeriodes;
 
     public Diposit(String codiProducte, String nom, double importContractat, double interesPeriode, int nombrePeriodes) {

@@ -1,6 +1,6 @@
 package ACT8_5.Productes;
 
-public class FonsInversio extends ProducteBancari {
+public final class FonsInversio extends ProducteBancari {
     private double comisApertura;
     private int nombrePeriodes;
 

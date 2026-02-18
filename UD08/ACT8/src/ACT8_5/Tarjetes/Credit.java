@@ -1,6 +1,6 @@
 package ACT8_5.Tarjetes;
 
-public class Credit extends Tarjeta {
+public final class Credit extends Tarjeta {
     private double importEnNegatiu;
 
     public Credit(String codiTarjeta, double comisUs, double importMaximCaixer, double importMaximCompra, double importEnNegatiu) {
