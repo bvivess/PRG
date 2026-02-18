@@ -8,11 +8,13 @@ public final class Diposit extends ProducteBancari {
         this.nombrePeriodes = nombrePeriodes;
     }
 
+    /*
     @Override
     public double calculaRemuneracio() {
         return + (super.getImportContractat() * super.getInteresPeriode() * this.nombrePeriodes);
     }
-
+    */
+    
     public int getNombrePeriodes() {
         return this.nombrePeriodes;
     }

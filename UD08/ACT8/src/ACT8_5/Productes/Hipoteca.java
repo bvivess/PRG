@@ -10,10 +10,11 @@ public final class Hipoteca extends ProducteBancari{
         this.nombrePeriodes = nombrePeriodes;
     }
     
+    /*
     @Override
     public double calculaRemuneracio() {
         return - (super.getImportContractat() * super.getInteresPeriode() * this.nombrePeriodes) - this.comisApertura;
-    }
+    } */
 
     public double getComisApertura() {
         return this.comisApertura;

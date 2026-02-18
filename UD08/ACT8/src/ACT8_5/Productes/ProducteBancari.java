@@ -16,6 +16,39 @@ public abstract class ProducteBancari implements ProducteBancariBase {
         this.interesPeriode = interesPeriode;
     }
     
+    @Override
+    /** ALERTA: AQUESTA OPCIÓ ELIMINA ELS 'calculaRemuneracio()' del les classes hereves 
+     * 
+     * ÉS UNA OPCIÓ ALTAMENT NO RECOMANABLE, JA QUE NO ÉS UNA BONA PRÀCTICA.
+     * SIMPLEMENT ES POSA A MODE D'EXEMPLE
+     */
+    public double calculaRemuneracio() {
+
+        if (this instanceof CompteEstalvis compte) {
+            // calculaRemuneracio de 'CompteEstalvis'
+            double remuneracio = -compte.getComisMantCompte();
+
+            for (var t : compte.getTarjetes()) {
+                remuneracio -= t.getComisUs();
+            }
+
+            return remuneracio;
+        } else if (this instanceof Diposit diposit) {
+            // calculaRemuneracio de 'Diposit'
+            return getImportContractat() * getInteresPeriode() * diposit.getNombrePeriodes();
+        } else if (this instanceof Hipoteca hipoteca) {
+            // calculaRemuneracio de 'Hipoteca'
+            return - (getImportContractat() * getInteresPeriode() * hipoteca.getNombrePeriodes())
+                    - hipoteca.getComisApertura();
+        } else if (this instanceof FonsInversio fons) {
+            // calculaRemuneracio de 'FonsInversio'
+            return (getImportContractat() * getInteresPeriode() * fons.getNombrePeriodes())
+                    - fons.getComisApertura();
+        } else
+            throw new UnsupportedOperationException("Tipus de producte no suportat");
+    }
+
+    
     public ProducteBancari(String codiProducte) {
         this.codiProducte = codiProducte;
     }

@@ -33,6 +33,7 @@ public class CompteEstalvis extends ProducteBancari {
         }
         return false;  // no hi havia cap coincidència
     }
+    /*
     @Override
     public double calculaRemuneracio() {
         double remuneracio = -(this.comisMantCompte);
@@ -41,7 +42,16 @@ public class CompteEstalvis extends ProducteBancari {
         }
         
         return remuneracio;
+    }*/
+
+    public double getComisMantCompte() {
+        return comisMantCompte;
     }
+
+    public ArrayList<Tarjeta> getTarjetes() {
+        return tarjetes;
+    }
+    
 
     @Override
     public String toString() {

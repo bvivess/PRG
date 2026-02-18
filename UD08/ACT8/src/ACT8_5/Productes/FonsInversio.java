@@ -10,10 +10,12 @@ public final class FonsInversio extends ProducteBancari {
         setNombrePeriodes(nombrePeriodes);
     }
 
+    /*
     @Override
     public double calculaRemuneracio() {
         return + (super.getImportContractat() * super.getInteresPeriode() * this.getNombrePeriodes()) - this.getComisApertura();
     }
+    */
 
     public double getComisApertura() {
         return comisApertura;
