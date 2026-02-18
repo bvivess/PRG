@@ -33,7 +33,6 @@ public class Main {
         
         Persona persona = new Persona("Joana Moragues", 27);
         persona.afegeixProducteBancari(compteEstalvis);
-        
         persona.afegeixProducteBancari(new Diposit("0001-0001-0002", "Deposit1", 100, 2.5, 10));
         persona.afegeixProducteBancari(new Hipoteca("0001-0001-0003", "Hipoteca1", 100, 5, 1, 10));
         persona.afegeixProducteBancari(new Hipoteca("0001-0001-0003", "Hipoteca1", 100, 5, 1, 10));  // Duplicada, no l'afegeix
