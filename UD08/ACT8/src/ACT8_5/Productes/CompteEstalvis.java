@@ -34,6 +34,7 @@ public class CompteEstalvis extends ProducteBancari {
         return false;  // no hi havia cap coincidència
     }
     /*
+    * ELIMINAT A MODE D'EXEMPLE PER LA PRESÈNCIA DE 'ProducteBancari.calculaRemuneracio()'
     @Override
     public double calculaRemuneracio() {
         double remuneracio = -(this.comisMantCompte);

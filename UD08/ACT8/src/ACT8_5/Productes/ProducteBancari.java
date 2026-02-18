@@ -16,12 +16,12 @@ public abstract class ProducteBancari implements ProducteBancariBase {
         this.interesPeriode = interesPeriode;
     }
     
-    @Override
-    /** ALERTA: AQUESTA OPCIÓ ELIMINA ELS 'calculaRemuneracio()' del les classes hereves 
+    /** ALERTA: AQUESTA OPCIÓ ELIMINA ELS 'calculaRemuneracio()' de 'CompteEstalvis', 'Diposit', 'Hipoteca', 'FonsInversio'
      * 
      * ÉS UNA OPCIÓ ALTAMENT NO RECOMANABLE, JA QUE NO ÉS UNA BONA PRÀCTICA.
      * SIMPLEMENT ES POSA A MODE D'EXEMPLE
      */
+    @Override
     public double calculaRemuneracio() {
 
         if (this instanceof CompteEstalvis compte) {

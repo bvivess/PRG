@@ -11,6 +11,7 @@ public final class FonsInversio extends ProducteBancari {
     }
 
     /*
+    * ELIMINAT A MODE D'EXEMPLE PER LA PRESÈNCIA DE 'ProducteBancari.calculaRemuneracio()'
     @Override
     public double calculaRemuneracio() {
         return + (super.getImportContractat() * super.getInteresPeriode() * this.getNombrePeriodes()) - this.getComisApertura();
