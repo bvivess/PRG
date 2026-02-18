@@ -20,5 +20,11 @@ public class Diposit extends ProducteBancari {
     public void setNombrePeriodes(int nombrePeriodes) {
         this.nombrePeriodes = nombrePeriodes;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + " Diposit{" + "nombrePeriodes=" + nombrePeriodes + '}';
+    }
+    
     
 }

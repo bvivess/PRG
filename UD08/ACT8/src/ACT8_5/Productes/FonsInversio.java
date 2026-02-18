@@ -30,5 +30,10 @@ public class FonsInversio extends ProducteBancari {
     public void setNombrePeriodes(int nombrePeriodes) {
         this.nombrePeriodes = nombrePeriodes;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + " FonsInversio{" + "comisApertura=" + comisApertura + ", nombrePeriodes=" + nombrePeriodes + '}';
+    }
     
 }

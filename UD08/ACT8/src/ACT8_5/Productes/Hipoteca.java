@@ -30,6 +30,11 @@ public class Hipoteca extends ProducteBancari{
     public void setNombrePeriodes(int nombrePeriodes) {
         this.nombrePeriodes = nombrePeriodes;
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + " Hipoteca{" + "comisApertura=" + comisApertura + ", nombrePeriodes=" + nombrePeriodes + '}';
+    }
     
     
 }
