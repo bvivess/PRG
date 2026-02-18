@@ -39,7 +39,7 @@ public class Main {
         persona.eliminaProducteBancari("0001-0001-0003");  // Eliminada
         persona.afegeixProducteBancari(new FonsInversio("0001-0001-0004", "FonsInversio1", 100, 5, 1, 10));
         
-        System.out.println(persona.toString() + "\n Total Remuneració: " + persona.calculaRemuneracioTotal());
+        System.out.println(persona.toString());
     }
     
 }

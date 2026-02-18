@@ -22,7 +22,7 @@ public final class Diposit extends ProducteBancari {
 
     @Override
     public String toString() {
-        return super.toString() + " Diposit{" + "nombrePeriodes=" + nombrePeriodes + '}';
+        return super.toString() + " Diposit{" + "nombrePeriodes=" + this.nombrePeriodes + '}';
     }
     
     

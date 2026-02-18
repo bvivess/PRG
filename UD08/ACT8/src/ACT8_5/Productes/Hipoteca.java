@@ -27,7 +27,7 @@ public final class Hipoteca extends ProducteBancari{
 
     @Override
     public String toString() {
-        return super.toString() + " Hipoteca{" + "comisApertura=" + comisApertura + ", nombrePeriodes=" + nombrePeriodes + '}';
+        return super.toString() + " Hipoteca{" + "comisApertura=" + this.comisApertura + ", nombrePeriodes=" + this.nombrePeriodes + '}';
     }
     
     

@@ -28,7 +28,7 @@ public final class FonsInversio extends ProducteBancari {
 
     @Override
     public String toString() {
-        return super.toString() + " FonsInversio{" + "comisApertura=" + comisApertura + ", nombrePeriodes=" + nombrePeriodes + '}';
+        return super.toString() + " this.FonsInversio{" + "comisApertura=" + this.comisApertura + ", nombrePeriodes=" + this.nombrePeriodes + '}';
     }
     
 }

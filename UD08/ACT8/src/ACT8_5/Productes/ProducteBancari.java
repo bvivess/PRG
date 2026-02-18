@@ -94,6 +94,6 @@ public abstract class ProducteBancari implements ProducteBancariBase {
 
     @Override
     public String toString() {
-        return "ProducteBancari {" + "codiProducte=" + codiProducte + ", nom=" + nom + '}';
+        return "ProducteBancari {" + "codiProducte=" + this.codiProducte + ", nom=" + this.nom + "} Remuneració = " + this.calculaRemuneracio();
     }
 }

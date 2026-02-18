@@ -49,9 +49,9 @@ public class Persona {
     @Override
     public String toString() {
         String text;
-        text = "Persona nom=" + nom + ", edat=" + edat;
+        text = "Persona nom=" + nom + ", edat=" + edat + ", Remuneració total= " + this.calculaRemuneracioTotal();
         for (ProducteBancari p : productesBancaris)
-            text += "\n\t" + p.toString() + " Remuneració: " + p.calculaRemuneracio();;
+            text += "\n\t" + p.toString();
         
         return text;
     }

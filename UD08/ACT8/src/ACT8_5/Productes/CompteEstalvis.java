@@ -56,7 +56,7 @@ public class CompteEstalvis extends ProducteBancari {
 
     @Override
     public String toString() {
-        return "CompteEstalvis{" + "comisMantCompte=" + comisMantCompte + ", tarjetes=" + tarjetes.toString() + '}';
+        return super.toString() + " CompteEstalvis{" + "comisMantCompte=" + this.comisMantCompte + ", tarjetes=" + this.tarjetes.toString() + '}';
     }
     
 }
