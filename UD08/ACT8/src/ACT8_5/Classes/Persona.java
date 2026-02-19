@@ -28,6 +28,7 @@ public class Persona {
                                                                       }
                                                                     });  // Classe anònima amb mètode
         */
+        
         int pos = cercaProducteBancari(c);
         if (pos != -1) {
             this.productesBancaris.remove(pos);
