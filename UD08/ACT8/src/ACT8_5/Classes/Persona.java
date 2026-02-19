@@ -28,13 +28,19 @@ public class Persona {
                                                                       }
                                                                     });  // Classe anònima amb mètode
         */
-        for (int i = 0; i < this.productesBancaris.size(); i++) {
-            if (productesBancaris.get(i).getCodiProducte().equals(c)) {
-                this.productesBancaris.remove(i);
-                return true;  // eliminem només la primera coincidència
-            }
+        int pos = cercaProducteBancari(c);
+        if (pos != -1) {
+            this.productesBancaris.remove(pos);
+            return true;  // eliminem només la primera coincidència
         }
         return false;  // no hi havia cap coincidència
+    }
+    
+    private int cercaProducteBancari(String c) {
+        for (int i = 0; i < this.productesBancaris.size(); i++) 
+            if (productesBancaris.get(i).getCodiProducte().equals(c)) 
+                return i;
+        return -1;
     }
     
     public double calculaRemuneracioTotal() {

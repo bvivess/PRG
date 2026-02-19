@@ -25,14 +25,22 @@ public class CompteEstalvis extends ProducteBancari {
     public boolean eliminaTarjeta(String c) {
         // return this.tarjetes.remove(new Tarjeta(c) {});  // Classe anònima
         
-        for (int i = 0; i < this.tarjetes.size(); i++) {
-            if (tarjetes.get(i).getCodiTarjeta().equals(c)) {
-                this.tarjetes.remove(i);
-                return true;  // eliminem només la primera coincidència
-            }
+        int pos = cercaTarjeta(c);
+        if (pos != -1) {
+            this.tarjetes.remove(pos);
+            return true;  // eliminem només la primera coincidència
         }
         return false;  // no hi havia cap coincidència
     }
+    
+    private int cercaTarjeta(String c) {
+        for (int i = 0; i < this.tarjetes.size(); i++) {
+            if (tarjetes.get(i).getCodiTarjeta().equals(c))
+                return i;  // eliminem només la primera coincidència
+        }
+        return -1;
+    }
+    
     /*
     * ELIMINAT A MODE D'EXEMPLE PER LA PRESÈNCIA DE 'ProducteBancari.calculaRemuneracio()'
     @Override
