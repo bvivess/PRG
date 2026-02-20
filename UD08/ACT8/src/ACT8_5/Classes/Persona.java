@@ -33,8 +33,8 @@ public class Persona {
         if (pos != -1) {
             this.productesBancaris.remove(pos);
             return true;  // eliminem només la primera coincidència
-        }
-        return false;  // no hi havia cap coincidència
+        } else
+            return false;  // no hi havia cap coincidència
     }
     
     private int cercaProducteBancari(String c) {

@@ -29,8 +29,8 @@ public class CompteEstalvis extends ProducteBancari {
         if (pos != -1) {
             this.tarjetes.remove(pos);
             return true;  // eliminem només la primera coincidència
-        }
-        return false;  // no hi havia cap coincidència
+        } else
+            return false;  // no hi havia cap coincidència
     }
     
     private int cercaTarjeta(String c) {
