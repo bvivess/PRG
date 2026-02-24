@@ -21,9 +21,10 @@ public final class Estancia extends ServeiTuristic {
     }
     
     @Override
-    public double calculaPreu() {
-        return  super.calculaPreu() +
-                (this.esPremium() ? super.calculaPreu() * Promocionable.SUPLEMENT_PREMIUM : 1 );
+    public double calculaPreu() {  // Calcula els suplements / Descomptes per a 'Estancia'
+        double preuBase = super.calculaPreu();
+        return preuBase + (this.esPremium()    ? preuBase * Promocionable.SUPLEMENT_PREMIUM : 0 ) -
+                          (this.esSostenible() ? preuBase * Promocionable.DESCOMPTE_BASE : 0 );
     }
 
     @Override

@@ -25,12 +25,10 @@ public abstract class ServeiTuristic implements Comercialitzable, Promocionable 
     }
     
     @Override
-    public double calculaPreu() {
+    public double calculaPreu() {  // Calcula Preu Base
         double total = 0;
         for (Caracteristica c : this.caracteristiques) {
-            total += c.getPreuCaracteristica() + 
-                    (this.esPremium()    ? c.getPreuCaracteristica() * Promocionable.SUPLEMENT_PREMIUM : 0 ) -
-                    (this.esSostenible() ? c.getPreuCaracteristica() * Promocionable.DESCOMPTE_BASE : 0 );
+            total += c.getPreuCaracteristica();
         }
         return total;
     }
