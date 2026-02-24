@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class PaquetVacacional implements Comercialitzable {
+public class PaquetVacacional implements Comercialitzable, Promocionable {
     private String nom;
     private Estancia estancia;
     private ArrayList<Transport> transports;
@@ -28,7 +28,31 @@ public class PaquetVacacional implements Comercialitzable {
         }
         return false;
     }
-
+    
+    @Override
+    public boolean esSostenible() {
+        if (this.estancia.esSostenible())
+            for (Transport t : this.transports) {
+                if (!(t.esSostenible()))
+                    return false;
+            }
+        else
+            return false;
+        return true;
+    }
+    
+    @Override
+    public boolean esPremium() {
+        if (this.estancia.esPremium())
+            for (Transport t : this.transports) {
+                if (!(t.esPremium()))
+                    return false;
+            }
+        else
+            return false;
+        return true;
+    }
+    
     @Override
     public double calculaPreu() {
         double total = this.estancia.calculaPreu();
