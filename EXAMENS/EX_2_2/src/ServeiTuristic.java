@@ -21,7 +21,13 @@ public abstract class ServeiTuristic implements Comercialitzable, Promocionable 
     }
     
     public boolean eliminaCaracteristica(String n) {
-        return true;
+        for (int i = 0; i < this.caracteristiques.size(); i++) {
+            if (this.caracteristiques.get(i).getNom().equals(nom)) {
+                this.caracteristiques.remove(i);
+                return true;
+            }
+        }
+        return false;
     }
     
     @Override
