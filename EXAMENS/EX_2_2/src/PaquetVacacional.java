@@ -19,14 +19,21 @@ public class PaquetVacacional implements Comercialitzable, Promocionable {
         return false;
     }
 
-    public boolean eliminaTransport(String nom) {
-        for (int i = 0; i < this.transports.size(); i++) {
-            if (this.transports.get(i).getNom().equals(nom)) {
-                this.transports.remove(i);
-                return true;
-            }
-        }
-        return false;
+    public boolean eliminaTransport(String n) {
+        int i = cercaTransport(n);
+        
+        if (i != -1) {
+            this.transports.remove(i);
+            return true;
+        } else
+            return false;
+    }
+    
+    private int cercaTransport(String n) {
+        for (int i = 0; i < this.transports.size(); i++)
+            if (this.transports.get(i).getNom().equals(n)) 
+                return i;
+        return -1;
     }
     
     @Override
