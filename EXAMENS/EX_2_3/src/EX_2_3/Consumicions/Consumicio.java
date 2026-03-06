@@ -8,7 +8,7 @@ public abstract class Consumicio {
 
     public Consumicio(String nom, double preu) {
         this.nom = nom;
-        this.preu = preu;
+        this.setPreu(preu);
     }
     
     public Consumicio(String nom) {
@@ -22,6 +22,14 @@ public abstract class Consumicio {
     public double getPreu() {
         return preu;
     }
+
+    public void setPreu(double preu) {
+        if (preu >= 0)
+            this.preu = preu;
+        else
+            throw new IllegalArgumentException("Preu incorrecte");
+    }
+    
 
     @Override
     public int hashCode() {
