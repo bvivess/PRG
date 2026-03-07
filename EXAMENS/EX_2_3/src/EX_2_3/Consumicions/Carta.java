@@ -39,7 +39,7 @@ public class Carta {
         if (!eliminaMenjar(n)) {
             return eliminaBeure(n);
         } else
-            return true;
+            return false;
     }
 
     private boolean eliminaMenjar(String n) {
