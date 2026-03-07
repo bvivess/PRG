@@ -53,7 +53,7 @@ public class Combinat extends Beguda {
 
     @Override
     public String toString() {
-        return super.toString() + " ingredients=" + ingredients;
+        return super.toString() + " ingredients=" + ingredients.toString();
     }
 
 }
