@@ -1,11 +1,10 @@
 package ACT09_1;
 
 import java.util.Scanner;
-import java.util.InputMismatchException;
 
 /**
  *
- * @author T,Vives
+ * @author T.Vives
  */
 public class ACT09_3A {
 
@@ -22,7 +21,7 @@ public class ACT09_3A {
             try {
                 System.out.println(array[posicio]);
             } catch (Exception e) {
-                System.out.println("Excepción capturada en el try interior: " + e.getMessage());
+                System.out.println("Excepción capturada en el 'try interior': " + e.getMessage());
             }
      
         } catch (Exception e) {

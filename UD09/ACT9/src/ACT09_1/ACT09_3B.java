@@ -1,11 +1,10 @@
 package ACT09_1;
 
 import java.util.Scanner;
-import java.util.InputMismatchException;
 
 /**
  *
- * @author T,Vives
+ * @author T.Vives
  */
 public class ACT09_3B {
 

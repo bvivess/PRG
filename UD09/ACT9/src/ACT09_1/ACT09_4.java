@@ -5,7 +5,7 @@ import java.util.InputMismatchException;
 
 /**
  *
- * @author T,Vives
+ * @author T.Vives
  */
 public class ACT09_4 {
 

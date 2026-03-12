@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author T,Vives
+ * @author T.Vives
  */
 public class ACT09_3C {
 
