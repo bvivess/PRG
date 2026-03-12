@@ -7,15 +7,15 @@ public class ACT09_4F {
             try {
                 int[] v = {1,2,3};
                 System.out.println(v[5]);
-            }
-            catch (ArithmeticException e) {
+                System.out.println("linea 0");
+            } catch (ArithmeticException e) {
                 System.out.println("Error aritmètic");
             }
-        }
-        catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("linia 1");
+        } catch (ArithmeticException e) {
             System.out.println("L'error no s'ha capturat dins");
+        } catch (Exception e) {
             System.out.println("Capturat al nivell superior");
         }
-
     }
 }
