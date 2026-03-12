@@ -15,7 +15,7 @@ public class ACT09_2 {
         
         try {
             System.out.print("Introdueixi la posició de l'array a llegir (0-" + (array.length-1) + "): ");
-            posicio = scanner.nextInt();
+            posicio = scanner.nextInt();  // 10
             System.out.println(array[posicio]);
         } catch (IndexOutOfBoundsException e) {
             System.out.println(e.getMessage());

@@ -14,6 +14,8 @@ public class ACT09_4C {
             catch (ArrayIndexOutOfBoundsException ex) {
                 System.out.println("Error d'índex dins del catch");
             }
+        } finally {
+            System.out.println("Finally exterior");
         }
 
         System.out.println("Programa continua");
