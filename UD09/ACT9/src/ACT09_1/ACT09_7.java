@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class ACT09_6 {
+public class ACT09_7 {
 
     public static class ErrorFormatHTML extends Exception { 
         // Constructor
