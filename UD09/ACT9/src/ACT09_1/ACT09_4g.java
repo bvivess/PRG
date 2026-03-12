@@ -4,9 +4,10 @@ import java.io.*;
 
 public class ACT09_4G {
     public static void main(String[] args) {
+        BufferedReader br = null;
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader("dades.txt"));
+            br = new BufferedReader(new FileReader("dades.txt")); // Obrir l'arxiu
 
             String linia;
             while((linia = br.readLine()) != null) {
@@ -24,10 +25,15 @@ public class ACT09_4G {
                     System.out.println("No és un número: " + linia);
                 }
             }
-            br.close();
         }
         catch (IOException e) {
             System.out.println("Error d'entrada/sortida");
+        } finally {
+            try {
+                br.close(); // Tancar el recurs (en aquest cas, el BufferedReader)
+            } catch (Exception e) {
+                System.out.println("Error al tancar el 'BufferedReader': " + e.getMessage());
+            }
         }
 
     }
