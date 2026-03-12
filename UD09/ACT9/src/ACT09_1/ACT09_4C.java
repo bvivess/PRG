@@ -7,7 +7,6 @@ public class ACT09_4C {
             int x = 10 / 0;
         } catch (ArithmeticException e) {
             System.out.println("Error de divisió");
-
             try {
                 int[] v = {1,2,3};
                 System.out.println(v[4]);

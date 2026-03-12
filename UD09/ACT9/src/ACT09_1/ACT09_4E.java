@@ -1,34 +1,50 @@
 package ACT09_1;
 
-import java.io.*;
 
 public class ACT09_4E {
+
     public static void main(String[] args) {
 
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("dades.txt"));
+        CompteBancari compte = new CompteBancari(100);
 
-            String linia;
-            while((linia = br.readLine()) != null) {
-                try {
-                    int numero = Integer.parseInt(linia);
-                    try {
-                        int resultat = 100 / numero;
-                        System.out.println(resultat);
-                    }
-                    catch (ArithmeticException e) {
-                        System.out.println("Divisió per zero");
-                    }
-                }
-                catch (NumberFormatException e) {
-                    System.out.println("No és un número: " + linia);
-                }
-            }
-            br.close();
+        try {
+            compte.retirar(200);
         }
-        catch (IOException e) {
-            System.out.println("Error d'entrada/sortida");
+        catch(SaldoInsuficientException e) {
+            System.out.println("Error: " + e.getMessage());
         }
 
     }
+}
+
+
+// Classe del compte bancari
+class CompteBancari {
+
+    private double saldo;
+
+    public CompteBancari(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public void retirar(double quantitat) throws SaldoInsuficientException {
+
+        if(quantitat > saldo) {
+            throw new SaldoInsuficientException("Saldo insuficient. Saldo actual: " + saldo);
+        }
+
+        saldo -= quantitat;
+        System.out.println("Retirada correcta. Nou saldo: " + saldo);
+    }
+
+}
+
+
+// Excepció pròpia
+class SaldoInsuficientException extends Exception {
+
+    public SaldoInsuficientException(String missatge) {
+        super(missatge);
+    }
+
 }

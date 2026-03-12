@@ -1,21 +1,21 @@
 package ACT09_1;
 
+
 public class ACT09_4D {
     public static void main(String[] args) {
-
         try {
-            try {
-                int[] v = {1,2,3};
-                System.out.println(v[5]);
-            }
-            catch (ArithmeticException e) {
-                System.out.println("Error aritmètic");
-            }
+            comprovarEdat(16);
         }
-        catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println("L'error no s'ha capturat dins");
-            System.out.println("Capturat al nivell superior");
+        catch(IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+    
+    private static void comprovarEdat(int edat) {
+        if(edat < 18) {
+            throw new IllegalArgumentException("Edat insuficient");
         }
 
+        System.out.println("Accés permès");
     }
 }
