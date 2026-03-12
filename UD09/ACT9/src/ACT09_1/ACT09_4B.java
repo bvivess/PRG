@@ -10,14 +10,12 @@ public class ACT09_4B {
                 try {
                     System.out.println("Nivell 3");
                     int x = 10 / 0;
-                }
-                catch (ArithmeticException e) {
+                } catch (ArithmeticException e) {
                     System.out.println("Error aritmètic capturat al nivell 3");
                 }
                 int[] v = {1,2,3};
                 System.out.println(v[5]);
-            }
-            catch (ArrayIndexOutOfBoundsException e) {
+            } catch (ArrayIndexOutOfBoundsException e) {
                 System.out.println("Error d'índex capturat al nivell 2");
             }
             String s = null;
