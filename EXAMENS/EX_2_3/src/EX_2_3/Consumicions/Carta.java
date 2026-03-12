@@ -12,11 +12,12 @@ public class Carta {
     }
     
     public boolean afegeixConsumicio(Consumicio c) {
-        if (c instanceof Menjar)
-            return afegeixMenjar((Menjar) c);
-        else if (c instanceof Beguda)
-            return afegeixBeure((Beguda) c);
-        return false;
+        return 
+            switch (c) {  // 'instanceof'
+                case Menjar m -> afegeixMenjar(m);
+                case Beguda b -> afegeixBeure(b);
+                default -> false;
+            };
     }
     
     private boolean afegeixMenjar(Menjar m) {

@@ -1,6 +1,7 @@
 package ACT09_1;
 
 import java.util.Scanner;
+import java.util.InputMismatchException;
 
 /**
  *
@@ -21,18 +22,17 @@ public class ACT09_3B {
      
         } catch (Exception e) {
             // Captura i maneja l'excepció si l'usuari no introdueix un enter
-            System.err.println("Error general en el 'main': " + e.getMessage());
+            System.err.println("Error general en el 'main'");
         } finally {
             System.err.println("Finally en el 'main'");
         }
     }
 
-    public static void mostraArray(int[] array, int posicio)  {
+    private static void mostraArray(int[] array, int posicio) {
         try {
             System.out.println(array[posicio]);
         } catch (Exception e) {
             System.out.println("Excepción capturada en el mètode 'mostraArray: " + e.getMessage());
-            throw new IndexOutOfBoundsException("Es llança una 'excepció' de manera manual");
         }
     }
 
