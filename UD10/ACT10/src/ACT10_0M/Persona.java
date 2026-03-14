@@ -25,11 +25,6 @@ public class Persona implements Comparable<Persona> {  // <Persona> evita la 'Cl
     }
 
     @Override
-    public String toString() {
-        return "Persona{" + "nom=" + nom + ", edat=" + edat + '}';
-    }
-    
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -41,5 +36,11 @@ public class Persona implements Comparable<Persona> {  // <Persona> evita la 'Cl
     public int hashCode() {
         return Objects.hash(nom);
     }
+    
+    @Override
+    public String toString() {
+        return "Persona{" + "nom=" + nom + ", edat=" + edat + '}';
+    }
+    
 }
 

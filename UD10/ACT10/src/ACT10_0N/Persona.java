@@ -23,8 +23,8 @@ public class Persona implements Comparable<Persona> {
     }
 
     @Override
-    public String toString() {
-        return "Persona{" + "nom=" + nom + ", edat=" + edat + '}';
+    public int hashCode() {
+        return Objects.hash(nom);
     }
     
     @Override
@@ -35,11 +35,6 @@ public class Persona implements Comparable<Persona> {
         return nom.equals(persona.nom);
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(nom);
-    }
-
     public String getNom() {
         return nom;
     }
@@ -47,7 +42,11 @@ public class Persona implements Comparable<Persona> {
     public int getEdat() {
         return edat;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Persona{" + "nom=" + nom + ", edat=" + edat + '}';
+    }    
     
 }
 
