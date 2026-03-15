@@ -2,12 +2,8 @@ package ACT10_0M;
 
 import java.util.Objects;
 
-/**
- *
- * @author winadmin
- */
-public class Persona implements Comparable<Persona> {  // <Persona> evita la 'Classe Genèric',
-    private String nom;                                //           per tant evita fer un casting posterorment a 'compareTo'
+public class Persona implements Comparable<Persona> {  // <Persona> empra la interfície amb genèrics, per tant es pot particularitzar amb la classe 'Persona',
+    private String nom;                                //           per tant evita fer un casting posteriorment a 'compareTo'
     private int edat;
 
     public Persona(String nom, int edat) {
