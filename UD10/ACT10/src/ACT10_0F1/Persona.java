@@ -1,4 +1,4 @@
-package ACT10_0F;
+package ACT10_0F1;
 
 import java.util.Objects;
 
@@ -14,11 +14,6 @@ public class Persona {
         this.nom = nom;
         this.edat = edat;
     }
-
-    @Override
-    public String toString() {
-        return "Persona{" + "nom=" + nom + ", edat=" + edat + '}';
-    }
     
     @Override
     public boolean equals(Object o) {
@@ -32,6 +27,11 @@ public class Persona {
     @Override
     public int hashCode() {
         return Objects.hash(nom);
+    }
+    
+    @Override
+    public String toString() {
+        return "Persona{" + "nom=" + nom + ", edat=" + edat + '}';
     }
 }
 
