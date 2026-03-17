@@ -8,7 +8,8 @@ import java.time.LocalDateTime;
  */
 public class Main3 {
     public static void main (String[] args) {
-        LocalDateTime dataHoraActual = LocalDateTime.now();
+        // LocalDateTime dataHoraActual = LocalDateTime.now();
+        LocalDateTime dataHoraActual = LocalDateTime.of(2026,03,16,19,05);
 
         int mes = dataHoraActual.getMonthValue();
         int dia = dataHoraActual.getDayOfMonth();

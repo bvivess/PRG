@@ -10,7 +10,8 @@ import java.time.LocalTime;
 public class Main2 {
 
     public static void main (String[] args) {
-        LocalTime horaActual = LocalTime.now();
+        //LocalTime horaActual = LocalTime.now();
+        LocalTime horaActual = LocalTime.of(19,05);
 
         int hora = horaActual.getHour();
         int minut = horaActual.getMinute();
