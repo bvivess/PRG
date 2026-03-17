@@ -10,7 +10,7 @@ public class Main {
         mapa.put("43044380H", new Persona("Maria", "43044380H", 30)); 
         mapa.put("18233438V", new Persona("Joan", "18233438V", 25)); 
         mapa.put("41312060N", new Persona("Pere", "41312060N", 20));
-        mapa.put("43044380H", new Persona("Maria", "43044380H", 30));  // Clau duplicada, no s'inserta
+        mapa.put("43044380H", new Persona("M'és igual", "també", 30));  // Clau duplicada, no s'inserta
 
         // Iteració per 'clau'?'valor': ordenar prèviament 'mapa.keySet()' si cal ordenació
         for (String key : mapa.keySet()) {
