@@ -1,6 +1,5 @@
-package ACT10_0F2;
+package ACT10_0E1;
 
-import ACT10_0F1.*;
 import java.util.Objects;
 
 /**
@@ -44,7 +43,7 @@ public class Persona {
     
     @Override
     public String toString() {
-        return "Persona{" + "nom=" + nom + ", edat=" + edat + '}';
+        return "Persona{" + "nom=" + nom + "DNI=" + dni + ", edat=" + edat + '}';
     }
 }
 

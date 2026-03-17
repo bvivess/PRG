@@ -1,4 +1,4 @@
-package ACT10_0F2;
+package ACT10_0F;
 
 import java.util.HashMap;
 import java.util.Map;
