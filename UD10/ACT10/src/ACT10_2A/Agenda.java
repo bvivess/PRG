@@ -1,8 +1,8 @@
 package ACT10_2A;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 
@@ -14,8 +14,8 @@ public class Agenda {
     Set<Dia> dies;
 
     // Constructor
-    public Agenda(Set<Dia> dies) {
-        this.dies = dies;
+    public Agenda() {
+        this.dies = new HashSet<>();
     }
     
     public void afegeixDia(LocalDate data, String ... atasques) {

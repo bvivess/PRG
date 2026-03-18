@@ -16,7 +16,7 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" + "nom=" + nom + ", edat=" + edat + '}';
+        return "Persona{" + "nom=" + this.nom + ", edat=" + this.edat + '}';
     }
 
 }

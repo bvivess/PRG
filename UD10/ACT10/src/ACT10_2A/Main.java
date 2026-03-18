@@ -3,7 +3,6 @@ package ACT10_2A;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -13,7 +12,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        Agenda agenda = new Agenda(new HashSet<>());
+        Agenda agenda = new Agenda();
                 
         // DIA 1/1/2004: Tasca1, Tasca2, Tasca3
         // Afegir un dia a l'agenda

@@ -24,6 +24,6 @@ class Tasca {
 
     @Override
     public String toString() {
-        return hora + " - " + titol;
+        return this.hora + " - " + this.titol;
     }
 }

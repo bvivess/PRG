@@ -23,15 +23,15 @@ public class Modul {
     
     // Getters i Setters
     public String getNom() {
-        return nom;
+        return this.nom;
     }
 
     public int getHoresSetmanals() {
-        return horesSetmanals;
+        return this.horesSetmanals;
     }
 
     public static int getComptadorModuls() {
-        return comptadorModuls++;
+        return Modul.comptadorModuls++;
     }
 
     public void setNom(String nom) {
@@ -45,8 +45,8 @@ public class Modul {
     @Override
     public String toString() {
         String texte = "";
-        texte += "Modul{" + "nom=" + nom + ", horesSetmanals=" + horesSetmanals + ", matricula={";
-        for (Persona p : matricula) 
+        texte += "Modul{" + "nom=" + this.nom + ", horesSetmanals=" + this.horesSetmanals + ", matricula={";
+        for (Persona p : this.matricula) 
             texte += "\n\t" + p.toString();
         texte += '}';
         
