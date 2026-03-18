@@ -35,7 +35,7 @@ public class Agenda {
     
     public Dia cercaDia(LocalDate data) {
         for (Dia d :this.dies) {
-            if (d.data.isEqual(data))
+            if (d.data.equals(data))  // isEquals()
                 return d;
         }
         return null;
