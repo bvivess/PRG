@@ -14,13 +14,18 @@ public class Agenda {
     public Agenda() {
         this.tasques = new HashMap<>();  // 'TreeMap' ordena el 'Map' per 'key'
     }
+    
+    public List<Tasca> cercaDia(LocalDate data) {
+        return this.tasques.get(data);  // 'get' és un cerca: torna la referència de la 'List<Tasca>'
+                                        // get retorna 'null' en cas de no trobar la 'clau'
+    }
 
     public void afegeixTasca(LocalDate data, LocalTime hora, String titol) {
-        List<Tasca> tasquesEnData = cercaDia(data);
-        if (tasquesEnData == null)
+        List<Tasca> tasquesDeLaDataCercada = cercaDia(data);
+        if (tasquesDeLaDataCercada == null)
             this.tasques.put(data, new ArrayList<>());
         else
-            tasquesEnData.add(new Tasca(hora, titol));
+            tasquesDeLaDataCercada.add(new Tasca(hora, titol));
         /*
         if (!this.tasques.containsKey(data)) {
             this.tasques.put(data, new ArrayList<>());
@@ -28,15 +33,12 @@ public class Agenda {
         this.tasques.get(data).add(new Tasca(hora, titol));
         */
     }
-    
-    public List<Tasca> cercaDia(LocalDate data) {
-        return this.tasques.get(data);  // get retorna 'null' en cas de no trobar la 'clau'
-    }
 
     public void eliminaTasca(LocalDate data, LocalTime hora) {
-        if (this.tasques.containsKey(data)) {
-            List<Tasca> tasquesDeLaDataCercada = this.tasques.get(data);  // 'get' és un cerca: torna la referència de la 'List<Tasca>'
-            for (Tasca t : tasquesDeLaDataCercada) {
+        List<Tasca> tasquesDeLaDataCercada = cercaDia(data);
+        
+        if (tasquesDeLaDataCercada != null) { //if (this.tasques.containsKey(data)) {
+            for (Tasca t : tasquesDeLaDataCercada) {  // cerca la 'Tasca' per 'hora'
                 if (t.getHora().equals(hora)) {
                     tasquesDeLaDataCercada.remove(t);
                     break;
