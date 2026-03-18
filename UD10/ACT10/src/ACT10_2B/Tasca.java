@@ -15,15 +15,15 @@ class Tasca {
     }
 
     public String getTitol() {
-        return titol;
+        return this.titol;
     }
 
     public LocalTime getHora() {
-        return hora;
+        return this.hora;
     }
 
     @Override
     public String toString() {
-        return hora + " - " + titol;
+        return this.hora + " - " + this.titol;
     }
 }
