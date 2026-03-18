@@ -13,7 +13,10 @@ public class Main {
         Set<Persona> persones = new HashSet<>();   // Cal implementar 'hashCode()', 'equals()' de 'Persona'
         persones.add(new Persona("Maria", 25));
         persones.add(new Persona("Joana", 30));
-        persones.add(new Persona("Maria", 25));  // No duplicats
+        persones.add(new Persona("Maria", 30));  // No duplicats
+        
+        persones.size();
+        
         for (Persona p : persones)
             System.out.println(p.toString()); // ? 2
     }

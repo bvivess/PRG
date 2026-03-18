@@ -15,7 +15,13 @@ public class Main {
         Queue<String> cua = new LinkedList<>();  // FIFO
         cua.offer("Element1");
         cua.offer("Element2");
+        cua.offer("Element1");
         System.out.println(cua.poll());  // element ? "Element1"
+        
+        for (String s : cua) 
+            System.out.println(s);
+        
+        
         /*
         Deque<String> cua = new LinkedList<>();    // LIFO
         cua.push("Element1");

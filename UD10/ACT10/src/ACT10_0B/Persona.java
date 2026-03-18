@@ -30,7 +30,11 @@ public class Persona {
 
     @Override
     public int hashCode() {
-        return Objects.hash(nom);
+        int hash = 7;
+        hash = 83 * hash + Objects.hashCode(this.nom);
+        return hash;
     }
+
+
 }
 
