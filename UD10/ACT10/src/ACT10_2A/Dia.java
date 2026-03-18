@@ -4,9 +4,6 @@ import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Queue;
 
-/**
- * @author T.Vives
- */
 public class Dia implements Comparable<Dia>{
     protected LocalDate data;
     protected Queue<String> tasques;
