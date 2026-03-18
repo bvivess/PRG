@@ -35,14 +35,14 @@ public class Agenda {
 
     public void eliminaTasca(LocalDate data, LocalTime hora) {
         if (this.tasques.containsKey(data)) {
-            List<Tasca> tasquesEnData = this.tasques.get(data);  // apunta per referència a la 'List<Tasca>'
-            for (Tasca t : tasquesEnData) {
+            List<Tasca> tasquesDeLaData = this.tasques.get(data);  // 'get' és un cerca: torna la referència de la 'List<Tasca>'
+            for (Tasca t : tasquesDeLaData) {
                 if (t.getHora().equals(hora)) {
-                    tasquesEnData.remove(t);
+                    tasquesDeLaData.remove(t);
                     break;
                 }
             }
-            if (tasquesEnData.isEmpty()) {
+            if (tasquesDeLaData.isEmpty()) {
                 tasques.remove(data);
             }
         }
