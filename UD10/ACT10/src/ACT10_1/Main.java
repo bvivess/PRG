@@ -35,7 +35,6 @@ public class Main {
             System.out.println("Clau: " + k + ", Valor: " + modul.toString());
         }
 
-        
         // Del mòdul amb clau=1, Nom del mòdul i a continuació Nom de la tercera persona matriculada
         System.out.println(moduls.get(1).nom + ": " + moduls.get(1).matricula.get(2).nom );
         
