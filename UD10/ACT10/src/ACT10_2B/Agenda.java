@@ -22,6 +22,7 @@ public class Agenda {
 
     public void afegeixTasca(LocalDate data, LocalTime hora, String titol) {
         List<Tasca> tasquesDeLaDataCercada = cercaDia(data);
+        
         if (tasquesDeLaDataCercada == null)
             this.tasques.put(data, new ArrayList<>());
         else
