@@ -14,17 +14,17 @@ public class Agenda {
         this.dies = new HashSet<>();
     }
     
-    public void afegeixDia(LocalDate data, String ... atasques) {
+    public void afegeixDia(LocalDate data, String ... llistaTasques) {
         Dia dia = cercaDia(data);
         
-        if ( dia == null) {  // afegir atasques a tasques
+        if ( dia == null) {  // afegir 'atasques' a tasques
             Queue<String> tasques = new LinkedList<>();
-            for (String a:atasques)
+            for (String a:llistaTasques)
                 // Afegir tasques
                 tasques.offer(a);
             this.dies.add( new Dia(data, tasques) );
         } else {
-            for (String a:atasques)
+            for (String a:llistaTasques)
                 dia.tasques.offer(a);
         }
     }
