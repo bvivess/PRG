@@ -30,7 +30,7 @@ public class Agenda {
     }
     
     public List<Tasca> cercaDia(LocalDate data) {
-        return this.tasques.get(data);
+        return this.tasques.get(data);  // get retorna 'null' en cas de no trobar la 'clau'
     }
 
     public void eliminaTasca(LocalDate data, LocalTime hora) {
