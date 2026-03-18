@@ -19,13 +19,13 @@ public class Agenda {
         
         if ( dia == null) {  // afegir 'atasques' a tasques
             Queue<String> tasques = new LinkedList<>();
-            for (String a:llistaTasques)
+            for (String t : llistaTasques)
                 // Afegir tasques
-                tasques.offer(a);
+                tasques.offer(t);
             this.dies.add( new Dia(data, tasques) );
         } else {
-            for (String a:llistaTasques)
-                dia.tasques.offer(a);
+            for (String t : llistaTasques)
+                dia.tasques.offer(t);
         }
     }
     
