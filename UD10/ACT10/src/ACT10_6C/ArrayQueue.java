@@ -7,6 +7,7 @@ import java.util.ArrayList;
  *    1. E - el tipus d'elements en aquest 'ArrayQueue'
  */
 public class ArrayQueue<E> extends ArrayList<E> {  // 'E' representa la classe dels elements de l''ArrayQueue'
+
     // Sobreescriptura d''add'
     @Override
     public boolean add(E e) {
