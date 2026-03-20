@@ -1,6 +1,6 @@
 package ACT10_6A;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Main {
 
@@ -9,12 +9,13 @@ public class Main {
         ArraySet<Tasca> tasques = new ArraySet<>();
        
         // Prova de 'ArraySet'
-        tasques.add(new Tasca(LocalDate.now(), "Anar al metge"));
-        tasques.add(new Tasca(LocalDate.now(), "Anar a classe"));  // Error: no s'admeten 2 tasques pel mateix dia
-        tasques.add(new Tasca(LocalDate.now(), "Comprar menjar"));  // Error: no s'admeten 2 tasques pel mateix dia
-        tasques.add(new Tasca(LocalDate.now(), "Fer els ejercicis"));  // Error: no s'admeten 2 tasques pel mateix dia
-        tasques.add(new Tasca(LocalDate.now(), "Sopar"));  // Error: no s'admeten 2 tasques pel mateix dia
-        tasques.add(new Tasca(LocalDate.now(), "Domir"));  // Error: no s'admeten 2 tasques pel mateix dia
+        LocalDateTime dataHora = LocalDateTime.now();
+        tasques.add(new Tasca(dataHora, "Anar al metge"));
+        tasques.add(new Tasca(dataHora, "Anar a classe"));  // Error: no s'admeten 2 tasques pel mateix dia
+        tasques.add(new Tasca(dataHora, "Comprar menjar"));  // Error: no s'admeten 2 tasques pel mateix dia
+        tasques.add(new Tasca(dataHora, "Fer els ejercicis"));  // Error: no s'admeten 2 tasques pel mateix dia
+        tasques.add(new Tasca(dataHora, "Sopar"));  // Error: no s'admeten 2 tasques pel mateix dia
+        tasques.add(new Tasca(dataHora, "Domir"));  // Error: no s'admeten 2 tasques pel mateix dia
         
         for (Tasca t : tasques) {
             System.out.println(t.toString()); 

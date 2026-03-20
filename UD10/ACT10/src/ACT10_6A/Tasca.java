@@ -1,21 +1,21 @@
 package ACT10_6A;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Tasca {
-    private LocalDate data;
+    private LocalDateTime dataHora;
     private String descripcio;
 
-    public Tasca(LocalDate data, String titol) {
-        this.data = data;
+    public Tasca(LocalDateTime dataHora, String titol) {
+        this.dataHora = dataHora;
         this.descripcio = titol;
     }
 
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 79 * hash + Objects.hashCode(this.data);
+        hash = 79 * hash + Objects.hashCode(this.dataHora);
         return hash;
     }
 
@@ -28,12 +28,12 @@ public class Tasca {
             return false;
         }
         Tasca t = (Tasca) o;
-        return data.equals(t.data);
+        return dataHora.equals(t.dataHora);
     }
     
     @Override
     public String toString() {
-        return "Tasca = {" + this.data + ", " + this.descripcio + "}";
+        return "Tasca = {" + this.dataHora + ", " + this.descripcio + "}";
     }
     
     
