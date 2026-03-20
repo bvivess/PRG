@@ -27,8 +27,8 @@ public class ArrayQueue<E> extends ArrayList<E> {  // 'E' representa la classe d
     }
     
     public E poll() {
-        E lastElement = this.remove(0); 
-        return lastElement;
+        E e = this.remove(0); 
+        return e;
     }
     
 }
