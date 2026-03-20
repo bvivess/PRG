@@ -2,12 +2,9 @@ package ACT10_6D;
 
 import java.util.ArrayList;
 
-/** ArrayDeque: 'ArrayList' amb un número màxim d'elements prefixat
- public class ArraySet<E>(int maxSize) extends ArrayList<E> 
- * 
+/** ArrayDeque: 'ArrayList' amb comportament de 'Deque' (LIFO)
  * Tipus de paràmetre:
- *    1. E - el tipus d'elements en aquest 'ArrayMax'
- *    2. maxSize - nombre màxim d'elements permesos
+ *    1. E - el tipus d'elements en aquest 'ArrayDeque'
  */
 public class ArrayDeque<E> extends ArrayList<E> {  // 'E' representa la classe dels elements de l''ArrayDeque'
 
@@ -28,8 +25,7 @@ public class ArrayDeque<E> extends ArrayList<E> {  // 'E' representa la classe d
     }
 
     public E pop() {
-        E lastElement = this.remove(0); 
-        return lastElement;
+        return this.remove(0);
     }
     
 }

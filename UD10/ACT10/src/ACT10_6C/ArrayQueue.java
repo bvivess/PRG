@@ -2,15 +2,11 @@ package ACT10_6C;
 
 import java.util.ArrayList;
 
-/** ArrayQueue: 'ArrayList'  amb comportament de 'Queue' (FIFO)
- public class ArraySet<E>(int maxSize) extends ArrayList<E> 
- * 
+/** ArrayQueue: 'ArrayList' amb comportament de 'Queue' (FIFO)
  * Tipus de paràmetre:
- *    1. E - el tipus d'elements en aquest 'ArrayMax'
- *    2. maxSize - nombre màxim d'elements permesos
+ *    1. E - el tipus d'elements en aquest 'ArrayQueue'
  */
 public class ArrayQueue<E> extends ArrayList<E> {  // 'E' representa la classe dels elements de l''ArrayQueue'
-
     // Sobreescriptura d''add'
     @Override
     public boolean add(E e) {
