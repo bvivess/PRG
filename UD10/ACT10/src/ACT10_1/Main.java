@@ -23,27 +23,27 @@ public class Main {
         persones.add(new Persona("Maria",18));
         
         // Mòduls
-        Map<Integer, Modul> moduls = new HashMap<>();
-        moduls.put(1, new Modul("Programació",7, persones));
-        moduls.put(2, new Modul("Gestió de Base de Dades",8, persones));
-        moduls.put(3, new Modul("Llenguatge de Marques",4, persones));
-        moduls.put(4, new Modul("Sistemes d'Informació",7, persones));
-        moduls.put(5, new Modul("Entorns de Desenvolupament",3, persones));
+        Map<String, Modul> moduls = new HashMap<>();
+        moduls.put("PRG", new Modul("Programació",7, persones));
+        moduls.put("GBD", new Modul("Gestió de Base de Dades",8, persones));
+        moduls.put("LLM", new Modul("Llenguatge de Marques",4, persones));
+        moduls.put("SI", new Modul("Sistemes d'Informació",7, persones));
+        moduls.put("ED", new Modul("Entorns de Desenvolupament",3, persones));
         
-        for (Integer k : moduls.keySet()) {
+        for (String k : moduls.keySet()) {
             Modul modul = moduls.get(k);
             System.out.println("Clau: " + k + ", Valor: " + modul.toString());
         }
 
-        // Del mòdul amb clau=1, Nom del mòdul i a continuació Nom de la tercera persona matriculada
-        System.out.println(moduls.get(1).nom + ": " + moduls.get(1).matricula.get(2).nom );
+        // Del mòdul amb clau="PRG", Nom del mòdul i a continuació Nom de la tercera persona matriculada
+        System.out.println(moduls.get("PRG").nom + ": " + moduls.get("PRG").matricula.get(2).nom );
         
-        // Del mòdul amb clau=2, Nom del mòdul i a continuació Total de persones matriculades
-        System.out.println(moduls.get(2).nom + ": " + moduls.get(2).matricula.size());
+        // Del mòdul amb clau="GBD", Nom del mòdul i a continuació Total de persones matriculades
+        System.out.println(moduls.get("GBD").nom + ": " + moduls.get("GBD").matricula.size());
         
-        // Del mòdul amb clau=3, Nom del mòdul i a continuació: Llista totes les persones matriculades
-        System.out.println(moduls.get(3).nom + ":");
-        for (Persona p : moduls.get(3).matricula) {
+        // Del mòdul amb clau="LLM", Nom del mòdul i a continuació: Llista totes les persones matriculades
+        System.out.println(moduls.get("LLM").nom + ":");
+        for (Persona p : moduls.get("LLM").matricula) {
             System.out.print("\t" + p.nom);
         }
         System.out.print("\n");
