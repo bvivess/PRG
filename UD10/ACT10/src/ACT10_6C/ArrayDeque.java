@@ -1,4 +1,4 @@
-package ACT10_6D;
+package ACT10_6C;
 
 import java.util.ArrayList;
 
@@ -9,19 +9,21 @@ import java.util.ArrayList;
 public class ArrayDeque<E> extends ArrayList<E> {  // 'E' representa la classe dels elements de l''ArrayDeque'
 
     // Sobreescriptura d''add'
+    /*
     @Override
     public boolean add(E e) {
-        this.add(0,e);
+        this.add(0, e);
         return true;
     }
 
     @Override
     public void add(int index, E element) {
         super.add(0, element);
-    }
+    } */
 
     public boolean push(E e) {
-        return add(e);
+        this.add(0, e);
+        return true;
     }
 
     public E pop() {

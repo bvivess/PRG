@@ -1,12 +1,10 @@
 package ACT10_0R;
 
-import java.util.List;
-
 public class Main {
 
     public static void main(String[] args) {
         // Declaració d''ArraySet'
-        List<String> elements = new ArraySet<>();
+        ArraySet<String> elements = new ArraySet<>();
        
         // Prova de 'ArraySet'
         elements.add("Element1");

@@ -5,16 +5,16 @@ import java.time.LocalDateTime;
 public class Main {
 
     public static void main(String[] args) {
-        // Declaració d''ArrayQueue'
-        ArrayQueue<Tasca> tasques = new ArrayQueue<>();  // nombre màxim d'elements permès? 5
+        // Declaració d''ArrayDeque'
+        ArrayDeque<Tasca> tasques = new ArrayDeque<>(); 
         
         // Prova de 'ArrayQueue'
-        tasques.offer(new Tasca(LocalDateTime.now(), "Anar al metge"));
-        tasques.offer(new Tasca(LocalDateTime.now(), "Anar a classe"));
-        tasques.offer(new Tasca(LocalDateTime.now(), "Comprar menjar"));
-        tasques.offer(new Tasca(LocalDateTime.now(), "Fer els ejercicis"));
-        tasques.offer(new Tasca(LocalDateTime.now(), "Sopar"));
-        tasques.offer(new Tasca(LocalDateTime.now(), "Domir"));
+        tasques.push(new Tasca(LocalDateTime.now(), "Anar al metge"));
+        tasques.push(new Tasca(LocalDateTime.now(), "Anar a classe"));
+        tasques.push(new Tasca(LocalDateTime.now(), "Comprar menjar"));
+        tasques.push(new Tasca(LocalDateTime.now(), "Fer els ejercicis"));
+        tasques.push(new Tasca(LocalDateTime.now(), "Sopar"));
+        tasques.push(new Tasca(LocalDateTime.now(), "Domir"));
    
         System.out.println("-------------------");
         for (Tasca t : tasques) {
@@ -22,7 +22,7 @@ public class Main {
         }
         
         System.out.println("-------------------");        
-        System.out.println(tasques.poll().toString());
+        System.out.println(tasques.pop().toString());
         
         System.out.println("-------------------");
         for (Tasca t : tasques) {
@@ -30,7 +30,7 @@ public class Main {
         }
         
         System.out.println("-------------------");
-        System.out.println(tasques.poll().toString());
+        System.out.println(tasques.pop().toString());
     }
 }
 
