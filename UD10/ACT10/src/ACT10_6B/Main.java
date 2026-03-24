@@ -9,7 +9,6 @@ public class Main {
         ArrayQueue<Tasca> tasques = new ArrayQueue<>(); 
         
         // Prova de 'ArrayQueue'
-        tasques.offer(new Tasca(LocalDateTime.now(), "Anar al metge"));
         tasques.offer(new Tasca(LocalDateTime.now(), "Anar a classe"));
         tasques.offer(new Tasca(LocalDateTime.now(), "Comprar menjar"));
         tasques.offer(new Tasca(LocalDateTime.now(), "Fer els ejercicis"));

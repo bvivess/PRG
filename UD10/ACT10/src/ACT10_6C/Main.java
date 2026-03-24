@@ -8,8 +8,7 @@ public class Main {
         // Declaració d''ArrayDeque'
         ArrayDeque<Tasca> tasques = new ArrayDeque<>(); 
         
-        // Prova de 'ArrayQueue'
-        tasques.push(new Tasca(LocalDateTime.now(), "Anar al metge"));
+        // Prova de 'ArrayDeque'
         tasques.push(new Tasca(LocalDateTime.now(), "Anar a classe"));
         tasques.push(new Tasca(LocalDateTime.now(), "Comprar menjar"));
         tasques.push(new Tasca(LocalDateTime.now(), "Fer els ejercicis"));
