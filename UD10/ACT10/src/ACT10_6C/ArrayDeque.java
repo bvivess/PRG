@@ -3,8 +3,10 @@ package ACT10_6C;
 import java.util.ArrayList;
 
 /** ArrayDeque: 'ArrayList' amb comportament de 'Deque' (LIFO)
+ *     Inserció ? els elements s?afegeixen al principi de la cua
+ *     Extracció ? els elements es treuen pel principi de la cua
  * Tipus de paràmetre:
- *    1. E - el tipus d'elements en aquest 'ArrayDeque'
+ *    1. E - el tipus d'elements d'aquest 'ArrayDeque'
  */
 public class ArrayDeque<E> extends ArrayList<E> {  // 'E' representa la classe dels elements de l''ArrayDeque'
 
@@ -22,12 +24,12 @@ public class ArrayDeque<E> extends ArrayList<E> {  // 'E' representa la classe d
     } */
 
     public boolean push(E e) {
-        this.add(0, e);
+        this.add(0, e);  // els elements s?afegeixen al principi de la cua
         return true;
     }
 
     public E pop() {
-        return this.remove(0);
+        return this.remove(0);  // els elements es treuen pel principi de la cua
     }
     
 }

@@ -15,7 +15,6 @@ public class Main {
         tasques.offer(new Tasca(LocalDateTime.now(), "Fer els ejercicis"));
         tasques.offer(new Tasca(LocalDateTime.now(), "Sopar"));
         tasques.offer(new Tasca(LocalDateTime.now(), "Domir"));
-        tasques.add(2,new Tasca(LocalDateTime.now(), "cagar"));
    
         System.out.println("-------------------");
         for (Tasca t : tasques) {
