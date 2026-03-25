@@ -14,14 +14,18 @@ public class Main {
     public static void main(String[] args) {
         List<Persona> persones = new ArrayList<>();
         List<Telefon> telefons = new ArrayList<>();
+        
+        try {
+            carregaPersones(persones);
+            carregaTelefons(telefons, persones);
 
-        carregaPersones(persones);
-        carregaTelefons(telefons, persones);
-
-        encenDispositius(telefons);
-        validaDispositius(telefons, persones);
-        validaPersones(telefons, persones);
-        apagaDispositius(telefons);
+            encenDispositius(telefons);
+            validaDispositius(telefons, persones);
+            validaPersones(telefons, persones);
+            apagaDispositius(telefons);
+        } catch (Exception e) {
+            System.out.println("S'ha produït un error: " + e.getMessage());
+        }
     }
 
     private static void carregaPersones(List<Persona> persones) {

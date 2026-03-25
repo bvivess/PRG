@@ -8,29 +8,33 @@ public class Main {
         // Declaració d''ArrayDeque'
         ArrayDeque<Tasca> tasques = new ArrayDeque<>(); 
         
-        // Prova de 'ArrayDeque'
-        tasques.push(new Tasca(LocalDateTime.now(), "Anar a classe"));
-        tasques.push(new Tasca(LocalDateTime.now(), "Comprar menjar"));
-        tasques.push(new Tasca(LocalDateTime.now(), "Fer els ejercicis"));
-        tasques.push(new Tasca(LocalDateTime.now(), "Sopar"));
-        tasques.push(new Tasca(LocalDateTime.now(), "Llegir un llibre"));
-        tasques.push(new Tasca(LocalDateTime.now(), "Domir"));
-   
-        System.out.println("-------------------");
-        for (Tasca t : tasques) {
-            System.out.println(t.toString()); 
+        try {
+            // Prova de 'ArrayDeque'
+            tasques.push(new Tasca(LocalDateTime.now(), "Anar a classe"));
+            tasques.push(new Tasca(LocalDateTime.now(), "Comprar menjar"));
+            tasques.push(new Tasca(LocalDateTime.now(), "Fer els ejercicis"));
+            tasques.push(new Tasca(LocalDateTime.now(), "Sopar"));
+            tasques.push(new Tasca(LocalDateTime.now(), "Llegir un llibre"));
+            tasques.push(new Tasca(LocalDateTime.now(), "Domir"));
+
+            System.out.println("-------------------");
+            for (Tasca t : tasques) {
+                System.out.println(t.toString()); 
+            }
+
+            System.out.println("-------------------");        
+            System.out.println(tasques.pop().toString());
+
+            System.out.println("-------------------");
+            for (Tasca t : tasques) {
+                System.out.println(t.toString()); 
+            }
+
+            System.out.println("-------------------");
+            System.out.println(tasques.pop().toString());
+        } catch (Exception e) {
+            System.out.println("S'ha produït un error: " + e.getMessage());
         }
-        
-        System.out.println("-------------------");        
-        System.out.println(tasques.pop().toString());
-        
-        System.out.println("-------------------");
-        for (Tasca t : tasques) {
-            System.out.println(t.toString()); 
-        }
-        
-        System.out.println("-------------------");
-        System.out.println(tasques.pop().toString());
     }
 }
 
