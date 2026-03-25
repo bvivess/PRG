@@ -14,8 +14,7 @@ public class ArrayDeque<E> extends ArrayList<E> {  // 'E' representa la classe d
     /*
     @Override
     public boolean add(E e) {
-        this.add(0, e);
-        return true;
+        return this.add(0, e);
     }
 
     @Override
