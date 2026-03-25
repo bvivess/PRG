@@ -13,6 +13,7 @@ public class Main {
         tasques.offer(new Tasca(LocalDateTime.now(), "Comprar menjar"));
         tasques.offer(new Tasca(LocalDateTime.now(), "Fer els ejercicis"));
         tasques.offer(new Tasca(LocalDateTime.now(), "Sopar"));
+        tasques.offer(new Tasca(LocalDateTime.now(), "Llegir un llibre"));
         tasques.offer(new Tasca(LocalDateTime.now(), "Domir"));
    
         System.out.println("-------------------");
