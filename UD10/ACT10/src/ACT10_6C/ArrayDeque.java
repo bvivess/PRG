@@ -24,7 +24,7 @@ public class ArrayDeque<E> extends ArrayList<E> {  // 'E' representa la classe d
     } */
 
     public boolean push(E e) {
-        this.add(0, e);  // els elements s?afegeixen al principi de la cua
+        super.add(0, e);  // els elements s?afegeixen al principi de la cua
         return true;
     }
 
