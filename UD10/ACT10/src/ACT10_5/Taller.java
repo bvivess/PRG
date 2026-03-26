@@ -14,13 +14,13 @@ class Taller {
     private Set<Vehicle> vehiclesRegistrats;
     private Queue<Vehicle> cuaRecepcio;
     private Map<EstatReparacio, List<Vehicle>> vehiclesPerEstat;
-    private List<Vehicle> historics;
+    private List<Vehicle> vehiclesHistorics;
 
     public Taller() {
         this.vehiclesRegistrats = new HashSet<>();
         this.cuaRecepcio = new LinkedList<>();
         this.vehiclesPerEstat = new HashMap<>();
-        this.historics = new ArrayList<>();
+        this.vehiclesHistorics = new ArrayList<>();
         
         // Inicialitza les llistes del Map per a cada estat
         for (EstatReparacio e : EstatReparacio.values()) {
@@ -33,7 +33,7 @@ class Taller {
         Vehicle v = new Vehicle(matricula, marca, model, any);
 
         // Només afegim si no existeix al Set
-        if (vehiclesRegistrats.add(v)) {
+        if (this.vehiclesRegistrats.add(v)) {
             // Afegir a la 'cuaRecepcio'
             this.cuaRecepcio.offer(v);
 
@@ -53,13 +53,13 @@ class Taller {
         Vehicle v = this.cuaRecepcio.poll();
         if (v != null) {
             // Treure de la llista antiga
-            vehiclesPerEstat.get(v.getEstat()).remove(v);
+            this.vehiclesPerEstat.get(v.getEstat()).remove(v);
 
             // Canviar l'estat
             v.setEstat(EstatReparacio.EN_DIAGNOSTIC);
 
             // Afegir a la nova llista
-            vehiclesPerEstat.get(v.getEstat()).add(v);
+            this.vehiclesPerEstat.get(v.getEstat()).add(v);
 
             System.out.println("Vehicle en diagnòstic: " + v);
         } else {
@@ -100,7 +100,7 @@ class Taller {
             vehiclesPerEstat.get(v.getEstat()).add(v);
 
             // Afegir a l'històric
-            historics.add(v);
+            this.vehiclesHistorics.add(v);
 
             System.out.println("Vehicle reparat: " + v);
         } else {
@@ -110,7 +110,7 @@ class Taller {
 
     // Cerca vehicle per matrícula
     public Vehicle cercaVehicle(String matricula) {
-        for (Vehicle v : vehiclesRegistrats) {
+        for (Vehicle v : this.vehiclesRegistrats) {
             if (v.getMatricula().equals(matricula))
                 return v;
         }
@@ -119,13 +119,13 @@ class Taller {
 
     // Retorna vehicles per estat
     public List<Vehicle> cercaVehiclesPerEstat(EstatReparacio estat) {
-        return vehiclesPerEstat.get(estat);
+        return this.vehiclesPerEstat.get(estat);
     }
 
     // Mostra tots els vehicles registrats
     public void mostraVehiclesRegistrats() {
         System.out.println("=== Vehicles registrats ===");
-        for (Vehicle v : vehiclesRegistrats)
+        for (Vehicle v : this.vehiclesRegistrats)
             System.out.println(v);
     }
 
@@ -140,14 +140,14 @@ class Taller {
     public void mostraVehiclesPerEstat() {
         System.out.println("=== Vehicles per estat ===");
         for (EstatReparacio e : EstatReparacio.values()) {
-            System.out.println(e + ": " + vehiclesPerEstat.get(e));
+            System.out.println(e + ": " + this.vehiclesPerEstat.get(e).toString());
         }
     }
 
     // Mostra històric de reparats
     public void mostraHistorics() {
         System.out.println("=== Vehicles reparats ===");
-        for (Vehicle v : historics) {
+        for (Vehicle v : this.vehiclesHistorics) {
             System.out.println(v);
         }
     }
