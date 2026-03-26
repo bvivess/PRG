@@ -11,13 +11,13 @@ import java.util.Set;
 
 // Classe Taller
 class Taller {
-    private Set<Vehicle> vehicles;
+    private Set<Vehicle> vehiclesRegistrats;
     private Queue<Vehicle> cuaRecepcio;
     private Map<EstatReparacio, List<Vehicle>> vehiclesPerEstat;
     private List<Vehicle> historics;
 
     public Taller() {
-        this.vehicles = new HashSet<>();
+        this.vehiclesRegistrats = new HashSet<>();
         this.cuaRecepcio = new LinkedList<>();
         this.vehiclesPerEstat = new HashMap<>();
         this.historics = new ArrayList<>();
@@ -33,7 +33,7 @@ class Taller {
         Vehicle v = new Vehicle(matricula, marca, model, any);
 
         // Només afegim si no existeix al Set
-        if (vehicles.add(v)) {
+        if (vehiclesRegistrats.add(v)) {
             // Afegir a la 'cuaRecepcio'
             this.cuaRecepcio.offer(v);
 
@@ -110,7 +110,7 @@ class Taller {
 
     // Cerca vehicle per matrícula
     public Vehicle cercaVehicle(String matricula) {
-        for (Vehicle v : vehicles) {
+        for (Vehicle v : vehiclesRegistrats) {
             if (v.getMatricula().equals(matricula))
                 return v;
         }
@@ -125,7 +125,7 @@ class Taller {
     // Mostra tots els vehicles registrats
     public void mostraVehiclesRegistrats() {
         System.out.println("=== Vehicles registrats ===");
-        for (Vehicle v : vehicles)
+        for (Vehicle v : vehiclesRegistrats)
             System.out.println(v);
     }
 
