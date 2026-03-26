@@ -11,13 +11,13 @@ public class Main {
         taller.registraVehicle("9999XYZ", "Ford", "Focus", 2020);
 
         taller.mostraVehiclesRegistrats();
-        taller.iniciaDiagnostic();
-        taller.iniciaDiagnostic();
+        taller.iniciaDiagnostic();  // Inicia el diagnòstic del primer de la cua
+        taller.iniciaDiagnostic();  // Inicia el diagnòstic del primer de la cua
 
-        taller.enviaAReparacio("1234ABC");
-        taller.enviaAReparacio("5678DEF");
+        taller.enviaAReparacio("1234ABC");  // Canvia estat
+        taller.enviaAReparacio("5678DEF");  // Canvia estat
 
-        taller.finalitzaReparacio("1234ABC");
+        taller.finalitzaReparacio("1234ABC");  // Canvia estat
 
         taller.mostraVehiclesPerEstat();
         taller.mostraHistorics();

@@ -51,6 +51,7 @@ class Taller {
     // Inicia diagnòstic del primer vehicle a la cua
     public void iniciaDiagnostic() {
         Vehicle v = this.cuaRecepcio.poll();
+        
         if (v != null) {
             // Treure de la llista antiga
             this.vehiclesPerEstat.get(v.getEstat()).remove(v);
