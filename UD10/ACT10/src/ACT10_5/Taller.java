@@ -32,7 +32,7 @@ class Taller {
     public void registraVehicle(String matricula, String marca, String model, int any) {
         Vehicle v = new Vehicle(matricula, marca, model, any);
 
-        // Només afegim si no existeix ja al Set
+        // Només afegim si no existeix al Set
         if (vehicles.add(v)) {
             // Afegir a la 'cuaRecepcio'
             this.cuaRecepcio.offer(v);
