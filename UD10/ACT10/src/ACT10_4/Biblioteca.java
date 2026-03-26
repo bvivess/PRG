@@ -27,12 +27,13 @@ public class Biblioteca {
 
     public void afegeixLlibre(int idLlibre, String titol, String autor, int anyPublicacio) {
         Llibre nouLlibre = new Llibre(idLlibre, titol, autor, anyPublicacio);
-        this.llibresDisponibles.add(nouLlibre);
-
-        if (!titolsDisponibles.containsKey(titol)) {  // si el llibre no es troba
-            this.titolsDisponibles.put(titol, new ArrayList<>());
+        
+        if (this.llibresDisponibles.add(nouLlibre)) {
+            if (!titolsDisponibles.containsKey(titol)) {  // si el llibre no es troba
+                this.titolsDisponibles.put(titol, new ArrayList<>());
+            }
+            this.titolsDisponibles.get(titol).add(nouLlibre);  // afegeix el 'llibre' a la llista de títols
         }
-        this.titolsDisponibles.get(titol).add(nouLlibre);  // afegeix el 'llibre' a la llista de títols
     }
 
     public Llibre cercaLlibreDisponible(String titol) {
