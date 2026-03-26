@@ -17,13 +17,14 @@ class Taller {
     private List<Vehicle> historics;
 
     public Taller() {
-        vehicles = new HashSet<>();
-        cuaRecepcio = new LinkedList<>();
-        vehiclesPerEstat = new HashMap<>();
-        historics = new ArrayList<>();
+        this.vehicles = new HashSet<>();
+        this.cuaRecepcio = new LinkedList<>();
+        this.vehiclesPerEstat = new HashMap<>();
+        this.historics = new ArrayList<>();
+        
         // Inicialitza les llistes del Map per a cada estat
         for (EstatReparacio e : EstatReparacio.values()) {
-            vehiclesPerEstat.put(e, new ArrayList<>());
+            this.vehiclesPerEstat.put(e, new ArrayList<>());
         }
     }
 
@@ -33,13 +34,14 @@ class Taller {
 
         // Només afegim si no existeix ja al Set
         if (vehicles.add(v)) {
-            // 1?? Afegim a la cua de recepció
-            cuaRecepcio.add(v);
+            // Afegir a la 'cuaRecepcio'
+            this.cuaRecepcio.offer(v);
 
-            // 2?? Afegim a la llista del seu estat dins el Map
-            List<Vehicle> llista = vehiclesPerEstat.get(v.getEstat());
-            llista.add(v);
-
+            // Afegir a 'vehiclesPerEstat'
+            List<Vehicle> llista = vehiclesPerEstat.get(v.getEstat());  // extreu la 'llista' del 'map'
+            llista.add(v);  // modifica la llista
+            // vehiclesPerEstat.get(v.getEstat()).add(v);  // directament
+            
             System.out.println("Vehicle registrat: " + v);
         } else {
             System.out.println("El vehicle ja està registrat: " + matricula);
@@ -48,7 +50,7 @@ class Taller {
 
     // Inicia diagnòstic del primer vehicle a la cua
     public void iniciaDiagnostic() {
-        Vehicle v = cuaRecepcio.poll();
+        Vehicle v = this.cuaRecepcio.poll();
         if (v != null) {
             // Treure de la llista antiga
             List<Vehicle> antigaLlista = vehiclesPerEstat.get(v.getEstat());
@@ -136,7 +138,7 @@ class Taller {
     // Mostra la cua de recepció
     public void mostraCuaRecepcio() {
         System.out.println("=== Cua de recepció ===");
-        for (Vehicle v : cuaRecepcio) {
+        for (Vehicle v : this.cuaRecepcio) {
             System.out.println(v);
         }
     }
