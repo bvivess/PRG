@@ -40,7 +40,7 @@ class Taller {
             // Afegir a 'vehiclesPerEstat'
             List<Vehicle> llista = vehiclesPerEstat.get(v.getEstat());  // extreu la 'llista' del 'map'
             llista.add(v);  // modifica la llista
-            // vehiclesPerEstat.get(v.getEstat()).add(v);  // directament
+            // vehiclesPerEstat.get(v.getEstat()).add(v);  // Afegir a 'vehiclesPerEstat' directament
             
             System.out.println("Vehicle registrat: " + v);
         } else {
@@ -53,15 +53,13 @@ class Taller {
         Vehicle v = this.cuaRecepcio.poll();
         if (v != null) {
             // Treure de la llista antiga
-            List<Vehicle> antigaLlista = vehiclesPerEstat.get(v.getEstat());
-            antigaLlista.remove(v);
+            vehiclesPerEstat.get(v.getEstat()).remove(v);
 
             // Canviar l'estat
             v.setEstat(EstatReparacio.EN_DIAGNOSTIC);
 
             // Afegir a la nova llista
-            List<Vehicle> novaLlista = vehiclesPerEstat.get(v.getEstat());
-            novaLlista.add(v);
+            vehiclesPerEstat.get(v.getEstat()).add(v);
 
             System.out.println("Vehicle en diagnòstic: " + v);
         } else {
@@ -74,15 +72,13 @@ class Taller {
         Vehicle v = cercaVehicle(matricula);
         if (v != null && v.getEstat() == EstatReparacio.EN_DIAGNOSTIC) {
             // Treure de la llista de l'estat actual
-            List<Vehicle> llistaActual = vehiclesPerEstat.get(v.getEstat());
-            llistaActual.remove(v);
+            vehiclesPerEstat.get(v.getEstat()).remove(v);
 
             // Canviar l'estat
             v.setEstat(EstatReparacio.EN_REPARACIO);
 
             // Afegir a la nova llista
-            List<Vehicle> llistaNova = vehiclesPerEstat.get(v.getEstat());
-            llistaNova.add(v);
+            vehiclesPerEstat.get(v.getEstat()).add(v);
 
             System.out.println("Vehicle enviat a reparació: " + v);
         } else {
@@ -95,15 +91,13 @@ class Taller {
         Vehicle v = cercaVehicle(matricula);
         if (v != null && v.getEstat() == EstatReparacio.EN_REPARACIO) {
             // Treure de la llista de l'estat actual
-            List<Vehicle> llistaActual = vehiclesPerEstat.get(v.getEstat());
-            llistaActual.remove(v);
+            vehiclesPerEstat.get(v.getEstat()).remove(v);
 
             // Canviar l'estat
             v.setEstat(EstatReparacio.REPARAT);
 
             // Afegir a la nova llista
-            List<Vehicle> llistaNova = vehiclesPerEstat.get(v.getEstat());
-            llistaNova.add(v);
+            vehiclesPerEstat.get(v.getEstat()).add(v);
 
             // Afegir a l'històric
             historics.add(v);
@@ -117,7 +111,8 @@ class Taller {
     // Cerca vehicle per matrícula
     public Vehicle cercaVehicle(String matricula) {
         for (Vehicle v : vehicles) {
-            if (v.getMatricula().equals(matricula)) return v;
+            if (v.getMatricula().equals(matricula))
+                return v;
         }
         return null;
     }
@@ -130,17 +125,15 @@ class Taller {
     // Mostra tots els vehicles registrats
     public void mostraVehiclesRegistrats() {
         System.out.println("=== Vehicles registrats ===");
-        for (Vehicle v : vehicles) {
+        for (Vehicle v : vehicles)
             System.out.println(v);
-        }
     }
 
     // Mostra la cua de recepció
     public void mostraCuaRecepcio() {
         System.out.println("=== Cua de recepció ===");
-        for (Vehicle v : this.cuaRecepcio) {
+        for (Vehicle v : this.cuaRecepcio)
             System.out.println(v);
-        }
     }
 
     // Mostra vehicles agrupats per estat
