@@ -92,7 +92,7 @@ class Taller {
         Vehicle v = cercaVehicle(matricula);
         if (v != null && v.getEstat() == EstatReparacio.EN_REPARACIO) {
             // Treure de la llista de l'estat actual
-            vehiclesPerEstat.get(v.getEstat()).remove(v);
+            this.vehiclesPerEstat.get(v.getEstat()).remove(v);
 
             // Canviar l'estat
             v.setEstat(EstatReparacio.REPARAT);
@@ -120,7 +120,7 @@ class Taller {
 
     // Retorna vehicles per estat
     public List<Vehicle> cercaVehiclesPerEstat(EstatReparacio estat) {
-        return this.vehiclesPerEstat.get(estat);
+        return this.vehiclesPerEstat.get(estat);  // retorna una llista
     }
 
     // Mostra tots els vehicles registrats

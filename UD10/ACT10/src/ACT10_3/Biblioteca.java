@@ -37,10 +37,14 @@ public class Biblioteca {
     }
 
     public Llibre cercaLlibreDisponible(String titol) {
-        return this.llibresDisponibles.stream().filter(l->l.getTitol().equals(titol)).collect(Collectors.toList()).get(0);
+        for (Llibre l : this.llibresDisponibles) {
+            if (l.getTitol().equals(titol)) {
+                return l;
+            }
+        }
+        return null;
         
-        
- 
+        // return this.llibresDisponibles.stream().filter(l->l.getTitol().equals(titol)).collect(Collectors.toList()).get(0);
     }
 
     public void prestaLlibre(String titol) {
