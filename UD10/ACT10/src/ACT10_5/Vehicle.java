@@ -28,11 +28,6 @@ class Vehicle {
     public void setEstat(EstatReparacio estat) { this.estat = estat; }
 
     @Override
-    public String toString() {
-        return String.format("%s - %s %s (%d) [%s]", matricula, marca, model, any, estat);
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Vehicle)) return false;
@@ -44,5 +39,11 @@ class Vehicle {
     public int hashCode() {
         return Objects.hash(matricula);
     }
+
+    @Override
+    public String toString() {
+        return "Vehicle {" + "matricula=" + this.matricula + ", marca=" + this.marca + ", model=" + this.model + ", any=" + this.any + ", estat=" + this.estat.getDescripcio() + '}';
+    }
+    
 }
 

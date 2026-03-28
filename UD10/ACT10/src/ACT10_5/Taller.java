@@ -127,21 +127,21 @@ class Taller {
     public void mostraVehiclesRegistrats() {
         System.out.println("=== Vehicles registrats ===");
         for (Vehicle v : this.vehiclesRegistrats)
-            System.out.println(v);
+            System.out.println(v.toString());
     }
 
     // Mostra la cua de recepció
     public void mostraCuaRecepcio() {
         System.out.println("=== Cua de recepció ===");
         for (Vehicle v : this.cuaRecepcio)
-            System.out.println(v);
+            System.out.println(v.toString());
     }
 
-    // Mostra vehicles agrupats per estat
+    // Mostra vehicles agrupats per estats
     public void mostraVehiclesPerEstat() {
         System.out.println("=== Vehicles per estat ===");
-        for (EstatReparacio e : EstatReparacio.values()) {
-            System.out.println(e + ": " + this.vehiclesPerEstat.get(e).toString());
+        for (Map.Entry<EstatReparacio, List<Vehicle>> e : this.vehiclesPerEstat.entrySet()) {
+            System.out.println(e.getKey().getDescripcio() + ": " + e.getValue().toString());
         }
     }
 
@@ -149,7 +149,7 @@ class Taller {
     public void mostraHistorics() {
         System.out.println("=== Vehicles reparats ===");
         for (Vehicle v : this.vehiclesHistorics) {
-            System.out.println(v);
+            System.out.println(v.toString());
         }
     }
 }

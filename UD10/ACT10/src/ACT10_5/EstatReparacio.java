@@ -4,10 +4,10 @@ import java.util.*;
 
 // ENUM amb els possibles estats d'un vehicle
 enum EstatReparacio {
-    PENDENT       ("Pendent"),
-    EN_DIAGNOSTIC ("Diagnòstic"),
-    EN_REPARACIO  ("Reparació"),
-    REPARAT       ("Reparat");
+    PENDENT       ("'Pendent de reparació'"),
+    EN_DIAGNOSTIC ("'En Diagnòstic'"),
+    EN_REPARACIO  ("'En Reparació'"),
+    REPARAT       ("'Reparat'");
     
     private final String descripcio; // atribut
     
