@@ -1,6 +1,7 @@
 package ACT10_5;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -30,19 +31,19 @@ class Taller {
 
     // Registra un vehicle
     public void registraVehicle(String matricula, String marca, String model, int any) {
-        Vehicle v = new Vehicle(matricula, marca, model, any);
+        Vehicle nouVehicle = new Vehicle(matricula, marca, model, any);
 
         // Només afegim si no existeix al Set
-        if (this.vehiclesRegistrats.add(v)) {
+        if (this.vehiclesRegistrats.add(nouVehicle)) {  // Si no està repetit
             // Afegir a la 'cuaRecepcio'
-            this.cuaRecepcio.offer(v);
+            this.cuaRecepcio.offer(nouVehicle);
 
             // Afegir a 'vehiclesPerEstat'
-            List<Vehicle> llista = vehiclesPerEstat.get(v.getEstat());  // extreu la 'llista' del 'map'
-            llista.add(v);  // modifica la llista
-            // vehiclesPerEstat.get(v.getEstat()).add(v);  // Afegir a 'vehiclesPerEstat' directament
+            List<Vehicle> llista = vehiclesPerEstat.get(nouVehicle.getEstat());  // extreu la 'llista' del 'map'
+            llista.add(nouVehicle);  // modifica la llista
+            // vehiclesPerEstat.get(v.getEstat()).add(nouVehicle);  // Afegir a 'vehiclesPerEstat' directament
             
-            System.out.println("Vehicle registrat: " + v);
+            System.out.println("Vehicle registrat: " + nouVehicle.toString());
         } else {
             System.out.println("El vehicle ja està registrat: " + matricula);
         }
@@ -125,21 +126,22 @@ class Taller {
 
     // Mostra tots els vehicles registrats
     public void mostraVehiclesRegistrats() {
-        System.out.println("=== Vehicles registrats ===");
-        for (Vehicle v : this.vehiclesRegistrats)
+        List<Vehicle> vehiclesRegistratsPerImprimir = new ArrayList<>(this.vehiclesRegistrats);
+        Collections.sort(vehiclesRegistratsPerImprimir);
+        for (Vehicle v : vehiclesRegistratsPerImprimir)
             System.out.println(v.toString());
     }
 
     // Mostra la cua de recepció
     public void mostraCuaRecepcio() {
-        System.out.println("=== Cua de recepció ===");
-        for (Vehicle v : this.cuaRecepcio)
+        List<Vehicle> cuaRecepcioPerImprimir = new ArrayList<>(this.cuaRecepcio);
+        Collections.sort(cuaRecepcioPerImprimir);
+        for (Vehicle v : cuaRecepcioPerImprimir)
             System.out.println(v.toString());
     }
 
     // Mostra vehicles agrupats per estats
     public void mostraVehiclesPerEstat() {
-        System.out.println("=== Vehicles per estat ===");
         for (Map.Entry<EstatReparacio, List<Vehicle>> e : this.vehiclesPerEstat.entrySet()) {  // per a cada estat
             System.out.println(e.getKey().getDescripcio() + ": ");
             for (Vehicle v : e.getValue()) // per a cada vehicle 
@@ -149,7 +151,6 @@ class Taller {
 
     // Mostra històric de reparats
     public void mostraHistorics() {
-        System.out.println("=== Vehicles reparats ===");
         for (Vehicle v : this.vehiclesHistorics) {
             System.out.println(v.toString());
         }

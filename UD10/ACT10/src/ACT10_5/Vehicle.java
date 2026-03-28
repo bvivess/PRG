@@ -4,7 +4,7 @@ import java.util.Objects;
 
 
 // Classe Vehicle
-class Vehicle {
+class Vehicle implements Comparable<Vehicle> {
     private String matricula;
     private String marca;
     private String model;
@@ -40,6 +40,11 @@ class Vehicle {
         return Objects.hash(matricula);
     }
 
+    @Override
+    public int compareTo(Vehicle v) {
+        return this.matricula.compareTo(v.getMatricula());
+    }
+    
     @Override
     public String toString() {
         return "Vehicle {" + "matricula=" + this.matricula + ", marca=" + this.marca + ", model=" + this.model + ", any=" + this.any + ", estat=" + this.estat.getDescripcio() + '}';
