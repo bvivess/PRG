@@ -130,6 +130,7 @@ class Taller {
         Set<Vehicle> vehiclesRegistratsPerImprimir = new TreeSet<>(this.vehiclesRegistrats);  // 'Set' ordenat
         for (Vehicle v : vehiclesRegistratsPerImprimir)
             System.out.println(v.toString());
+        vehiclesRegistratsPerImprimir = null;  // per alliberar memòria
     }
 
     // Mostra la cua de recepció
@@ -137,22 +138,26 @@ class Taller {
         Set<Vehicle> cuaRecepcioPerImprimir = new TreeSet<>(this.cuaRecepcio);  // 'Set' ordenat
         for (Vehicle v : cuaRecepcioPerImprimir)
             System.out.println(v.toString());
+        cuaRecepcioPerImprimir = null;  // per alliberar memòria
     }
 
     // Mostra vehicles agrupats per estats
     public void mostraVehiclesPerEstat() {
+        List<Vehicle> llistavehiclesPerEstatPerImprimir;
         for (Map.Entry<EstatReparacio, List<Vehicle>> e : this.vehiclesPerEstat.entrySet()) {  // per a cada estat
             System.out.println(e.getKey().getDescripcio() + ": ");
             // Ordena llista de 'vehiclesPerEstat'
-            List<Vehicle> llistavehiclesPerEstatPerImprimir = new ArrayList<>(e.getValue());
+            llistavehiclesPerEstatPerImprimir = new ArrayList<>(e.getValue());
             Collections.sort(llistavehiclesPerEstatPerImprimir);
             for (Vehicle v : llistavehiclesPerEstatPerImprimir)
                 System.out.println("\t" + v.toString());
         }
+        llistavehiclesPerEstatPerImprimir = null;  // per alliberar memòria
     }
 
     // Mostra històric de reparats
     public void mostraHistorics() {
+        Collections.sort(this.vehiclesHistorics);
         for (Vehicle v : this.vehiclesHistorics) {
             System.out.println(v.toString());
         }
