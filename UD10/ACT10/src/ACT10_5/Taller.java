@@ -140,8 +140,10 @@ class Taller {
     // Mostra vehicles agrupats per estats
     public void mostraVehiclesPerEstat() {
         System.out.println("=== Vehicles per estat ===");
-        for (Map.Entry<EstatReparacio, List<Vehicle>> e : this.vehiclesPerEstat.entrySet()) {
-            System.out.println(e.getKey().getDescripcio() + ": " + e.getValue().toString());
+        for (Map.Entry<EstatReparacio, List<Vehicle>> e : this.vehiclesPerEstat.entrySet()) {  // per a cada estat
+            System.out.println(e.getKey().getDescripcio() + ": ");
+            for (Vehicle v : e.getValue()) // per a cada vehicle 
+                System.out.println("\t" + v.toString());
         }
     }
 
