@@ -143,10 +143,10 @@ class Taller {
     public void mostraVehiclesPerEstat() {
         for (Map.Entry<EstatReparacio, List<Vehicle>> e : this.vehiclesPerEstat.entrySet()) {  // per a cada estat
             System.out.println(e.getKey().getDescripcio() + ": ");
-            // Ordena llista
-            List<Vehicle> llistaOrdenada = new ArrayList<>(e.getValue());
-            Collections.sort(llistaOrdenada);
-            for (Vehicle v : llistaOrdenada)
+            // Ordena llista de 'vehiclesPerEstat'
+            List<Vehicle> llistavehiclesPerEstatPerImprimir = new ArrayList<>(e.getValue());
+            Collections.sort(llistavehiclesPerEstatPerImprimir);
+            for (Vehicle v : llistavehiclesPerEstatPerImprimir)
                 System.out.println("\t" + v.toString());
         }
     }
