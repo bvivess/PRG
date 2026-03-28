@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
+import java.util.TreeSet;
 
 // Classe Taller
 class Taller {
@@ -126,16 +127,14 @@ class Taller {
 
     // Mostra tots els vehicles registrats
     public void mostraVehiclesRegistrats() {
-        List<Vehicle> vehiclesRegistratsPerImprimir = new ArrayList<>(this.vehiclesRegistrats);
-        Collections.sort(vehiclesRegistratsPerImprimir);
+        Set<Vehicle> vehiclesRegistratsPerImprimir = new TreeSet<>(this.vehiclesRegistrats);  // 'Set' ordenat
         for (Vehicle v : vehiclesRegistratsPerImprimir)
             System.out.println(v.toString());
     }
 
     // Mostra la cua de recepció
     public void mostraCuaRecepcio() {
-        List<Vehicle> cuaRecepcioPerImprimir = new ArrayList<>(this.cuaRecepcio);
-        Collections.sort(cuaRecepcioPerImprimir);
+        Set<Vehicle> cuaRecepcioPerImprimir = new TreeSet<>(this.cuaRecepcio);  // 'Set' ordenat
         for (Vehicle v : cuaRecepcioPerImprimir)
             System.out.println(v.toString());
     }
@@ -144,7 +143,10 @@ class Taller {
     public void mostraVehiclesPerEstat() {
         for (Map.Entry<EstatReparacio, List<Vehicle>> e : this.vehiclesPerEstat.entrySet()) {  // per a cada estat
             System.out.println(e.getKey().getDescripcio() + ": ");
-            for (Vehicle v : e.getValue()) // per a cada vehicle 
+            // Ordena llista
+            List<Vehicle> llistaOrdenada = new ArrayList<>(e.getValue());
+            Collections.sort(llistaOrdenada);
+            for (Vehicle v : llistaOrdenada)
                 System.out.println("\t" + v.toString());
         }
     }
