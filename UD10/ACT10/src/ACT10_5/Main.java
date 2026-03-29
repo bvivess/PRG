@@ -1,7 +1,7 @@
 package ACT10_5;
 
 
-// Classe de prova
+// Classe Main
 public class Main {
     public static void main(String[] args) {
         Taller taller = new Taller();

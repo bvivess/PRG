@@ -55,14 +55,8 @@ class Taller {
         Vehicle v = this.cuaRecepcio.poll();
         
         if (v != null) {
-            // Treure de la llista antiga
-            this.vehiclesPerEstat.get(v.getEstat()).remove(v);
-
-            // Canviar l'estat
-            v.setEstat(EstatReparacio.EN_DIAGNOSTIC);
-
-            // Afegir a la nova llista
-            this.vehiclesPerEstat.get(v.getEstat()).add(v);
+            // Canvia l'estat del 'v'
+            canviaEstat(v, EstatReparacio.EN_DIAGNOSTIC);
 
             System.out.println("Vehicle en diagnòstic: " + v);
         } else {
@@ -74,14 +68,8 @@ class Taller {
     public void enviaAReparacio(String matricula) {
         Vehicle v = cercaVehicle(matricula);
         if (v != null && v.getEstat() == EstatReparacio.EN_DIAGNOSTIC) {
-            // Treure de la llista de l'estat actual
-            vehiclesPerEstat.get(v.getEstat()).remove(v);
-
-            // Canviar l'estat
-            v.setEstat(EstatReparacio.EN_REPARACIO);
-
-            // Afegir a la nova llista
-            vehiclesPerEstat.get(v.getEstat()).add(v);
+            // Canvia l'estat del 'v'
+            canviaEstat(v, EstatReparacio.EN_REPARACIO);
 
             System.out.println("Vehicle enviat a reparació: " + v);
         } else {
@@ -93,14 +81,8 @@ class Taller {
     public void finalitzaReparacio(String matricula) {
         Vehicle v = cercaVehicle(matricula);
         if (v != null && v.getEstat() == EstatReparacio.EN_REPARACIO) {
-            // Treure de la llista de l'estat actual
-            this.vehiclesPerEstat.get(v.getEstat()).remove(v);
-
-            // Canviar l'estat
-            v.setEstat(EstatReparacio.REPARAT);
-
-            // Afegir a la nova llista
-            vehiclesPerEstat.get(v.getEstat()).add(v);
+            // Canvia l'estat del 'v'
+            canviaEstat(v, EstatReparacio.REPARAT);
 
             // Afegir a l'històric
             this.vehiclesHistorics.add(v);
@@ -111,6 +93,17 @@ class Taller {
         }
     }
 
+    private void canviaEstat(Vehicle v, EstatReparacio nouEstat) {
+        // Treure de la llista de l'estat actual
+        vehiclesPerEstat.get(v.getEstat()).remove(v);
+        
+        // Canviar l'estat
+        v.setEstat(nouEstat);
+        
+        // Afegir a la nova llista
+        vehiclesPerEstat.get(v.getEstat()).add(v);
+        }
+    
     // Cerca vehicle per matrícula
     public Vehicle cercaVehicle(String matricula) {
         for (Vehicle v : this.vehiclesRegistrats) {
@@ -127,6 +120,7 @@ class Taller {
 
     // Mostra tots els vehicles registrats
     public void mostraVehiclesRegistrats() {
+        // Convertim a TreeSet per mostrar ordenat per matrícula
         Set<Vehicle> vehiclesRegistratsPerImprimir = new TreeSet<>(this.vehiclesRegistrats);  // 'Set' ordenat
         for (Vehicle v : vehiclesRegistratsPerImprimir)
             System.out.println(v.toString());
@@ -135,6 +129,7 @@ class Taller {
 
     // Mostra la cua de recepció
     public void mostraCuaRecepcio() {
+        // Convertim a TreeSet per mostrar ordenat per matrícula
         Set<Vehicle> cuaRecepcioPerImprimir = new TreeSet<>(this.cuaRecepcio);  // 'Set' ordenat
         for (Vehicle v : cuaRecepcioPerImprimir)
             System.out.println(v.toString());
