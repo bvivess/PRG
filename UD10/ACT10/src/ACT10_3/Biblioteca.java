@@ -71,8 +71,8 @@ public class Biblioteca {
     
     public void mostraTitolsDisponibles() {
         System.out.println("Títols Disponibles:");
-        for (String t : titolsDisponibles.keySet() ) {
-            System.out.println(t + "-" + this.titolsDisponibles.get(t).toString());
+        for (Map.Entry<String, List<Llibre>> e : this.titolsDisponibles.entrySet()) {  // per a cada títol
+            System.out.println(e.getKey() + "-" +  e.getValue().toString());
         }
     }
 
