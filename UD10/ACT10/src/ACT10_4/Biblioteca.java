@@ -56,7 +56,7 @@ public class Biblioteca {
     }
 
     public void tornaLlibre() {
-        Llibre llibreRetornat = llibresPrestats.poll();
+        Llibre llibreRetornat = this.llibresPrestats.poll();
         if (llibreRetornat != null) {
             llibresDisponibles.add(llibreRetornat);
         }
@@ -64,7 +64,7 @@ public class Biblioteca {
     
     public void mostraLlibresDisponibles() {
         System.out.println("Llibres disponibles:");
-        for (Llibre llibre : llibresDisponibles) {
+        for (Llibre llibre : this.llibresDisponibles) {
             System.out.println(llibre.toString());
         }
     }
@@ -78,7 +78,7 @@ public class Biblioteca {
 
     public void mostraLlibresPrestats() {
         System.out.println("Llibres prestats:");
-        for (Llibre llibre : llibresPrestats) {
+        for (Llibre llibre : this.llibresPrestats) {
             System.out.println(llibre.toString());
         }
     }
