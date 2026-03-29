@@ -105,7 +105,7 @@ class Taller {
         }
     
     // Cerca vehicle per matrícula en el 'Set'
-    public Vehicle cercaVehicle(String matricula) {  // cerca eb 'Set'
+    public Vehicle cercaVehicle(String matricula) {  // cerca en 'Set'
         for (Vehicle v : this.vehiclesRegistrats) {
             if (v.getMatricula().equals(matricula))
                 return v;
@@ -114,14 +114,14 @@ class Taller {
     }
     
     // Cerca vehicle per matrícula en 'VehiclesHistorics'
-    public Vehicle cercaVehiclesHistorics(String matricula) {  // cerca eb 'Liat'
+    public Vehicle cercaVehiclesHistorics(String matricula) {  // cerca en 'Liat'
         int i = this.vehiclesHistorics.indexOf(new Vehicle(matricula));
         return (i != -1 ) ? this.vehiclesHistorics.get(i) : null;
     }
 
 
     // Retorna vehicles per estat
-    public List<Vehicle> cercaVehiclesPerEstat(EstatReparacio estat) {  // cerca eb 'Map'
+    public List<Vehicle> cercaVehiclesPerEstat(EstatReparacio estat) {  // cerca en 'Map'
         return this.vehiclesPerEstat.get(estat);  // retorna una llista
     }
 
