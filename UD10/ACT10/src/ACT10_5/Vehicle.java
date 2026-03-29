@@ -19,6 +19,11 @@ class Vehicle implements Comparable<Vehicle> {
         this.estat = EstatReparacio.PENDENT; // inicialitza amb PENDENT
     }
 
+    public Vehicle(String matricula) {
+        this.matricula = matricula;
+    }
+
+    
     // Getters i setters
     public String getMatricula() { return matricula; }
     public String getMarca() { return marca; }

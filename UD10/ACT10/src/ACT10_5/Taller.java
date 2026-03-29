@@ -104,7 +104,7 @@ class Taller {
         vehiclesPerEstat.get(v.getEstat()).add(v);
         }
     
-    // Cerca vehicle per matrícula
+    // Cerca vehicle per matrícula en el 'Set'
     public Vehicle cercaVehicle(String matricula) {
         for (Vehicle v : this.vehiclesRegistrats) {
             if (v.getMatricula().equals(matricula))
@@ -112,6 +112,13 @@ class Taller {
         }
         return null;
     }
+    
+    // Cerca vehicle per matrícula en 'VehiclesHistorics'
+    public Vehicle cercaVehiclesHistorics(String matricula) {
+        int i = this.vehiclesHistorics.indexOf(new Vehicle(matricula));
+        return (i != -1 ) ? this.vehiclesHistorics.get(i) : null;
+    }
+
 
     // Retorna vehicles per estat
     public List<Vehicle> cercaVehiclesPerEstat(EstatReparacio estat) {
