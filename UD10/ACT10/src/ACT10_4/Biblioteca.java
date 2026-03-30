@@ -50,15 +50,15 @@ public class Biblioteca {
     public void prestaLlibre(String titol) {
         Llibre llibrePerPrestar = cercaLlibreDisponible(titol);
         if ( llibrePerPrestar != null) {
-            this.llibresDisponibles.remove(llibrePerPrestar);
-            this.llibresPrestats.offer(llibrePerPrestar);
+            this.llibresDisponibles.remove(llibrePerPrestar);  // treure llibre de 'llibresDisponibles'
+            this.llibresPrestats.offer(llibrePerPrestar);  // afegir llibre a 'llibresPrestats'
         }
     }
 
     public void tornaLlibre() {
-        Llibre llibreRetornat = this.llibresPrestats.poll();
+        Llibre llibreRetornat = this.llibresPrestats.poll();  // treure llibre de 'llibresPrestats'
         if (llibreRetornat != null) {
-            llibresDisponibles.add(llibreRetornat);
+            this.llibresDisponibles.add(llibreRetornat);  // afegir llibre de 'llibresDisponibles'
         }
     }
     
@@ -72,7 +72,9 @@ public class Biblioteca {
     public void mostraTitolsDisponibles() {
         System.out.println("Títols Disponibles:");
         for (Map.Entry<String, List<Llibre>> e : this.titolsDisponibles.entrySet()) {  // per a cada títol
-            System.out.println(e.getKey() + "-" +  e.getValue().toString());
+            System.out.println(e.getKey());
+            for (Llibre l : e.getValue())  // per a cada llibre
+                System.out.println("\t" + l.toString());
         }
     }
 
@@ -84,21 +86,38 @@ public class Biblioteca {
     }
     
     public void afegeixAnomalia(int idLlibre, Anomalia anomalia) {
-        boolean trobat = false;
-        for (Llibre l : this.llibresDisponibles)  // cercar en 'Set'
+        Llibre llibre = cercaLlibre(idLlibre);  // cerca en 'Set' / 'Queue'
+
+        if (llibre != null) {
+            afegeixAnomalia(llibre, anomalia);
+        }
+    }
+    
+    private Llibre cercaLlibre(int idLlibre) {  // cerca en 'Set' / 'Queue'
+        Llibre llibre = cercaLlibreDisponible(idLlibre);
+        return (llibre != null) ? llibre : cercaLlibrePrestat(idLlibre);
+    }
+    
+    private Llibre cercaLlibreDisponible(int idLlibre) {  // cercar en 'Set'
+        for (Llibre l : this.llibresDisponibles) {
             if (l.getIdLlibre() == idLlibre) {
-                trobat = true;
-                afegeixAnomalia(l, anomalia);
+                return l;
             }
-        if (!trobat)
-            for (Llibre l : this.llibresPrestats)  // cercar en 'Queue'
-                if (l.getIdLlibre() == idLlibre)
-                    afegeixAnomalia(l, anomalia);
+        }
+        return null;
+    }
+    
+    private Llibre cercaLlibrePrestat(int idLlibre) {  // cercar en 'Queue'
+        for (Llibre l : this.llibresPrestats) {
+            if (l.getIdLlibre() == idLlibre) {
+                return l;
+            }
+        }
+        return null;
     }
     
     private void afegeixAnomalia(Llibre l, Anomalia anomalia) {
-        boolean trobat = cercaAnomalia(l.getAnomalies(), anomalia);
-        if (!trobat) 
+        if (!cercaAnomalia(l.getAnomalies(), anomalia)) 
             l.getAnomalies().add(anomalia);
     }
     
@@ -108,20 +127,13 @@ public class Biblioteca {
     }
     
     public boolean eliminaAnomalia(int idLlibre, Anomalia anomalia) {
-        boolean trobat = false;
-        
-        // Llibres disponibles
-        for (Llibre l : this.llibresDisponibles)
-            trobat = l.getAnomalies().remove(anomalia);
+        Llibre llibre = cercaLlibre(idLlibre);  // cerca en 'Set' / 'Queue'
 
-        
-        if (!trobat) {
-            // Llibres prestats
-            for (Llibre l : this.llibresPrestats) 
-                trobat = l.getAnomalies().remove(anomalia);
+        if (llibre != null) {
+            return llibre.getAnomalies().remove(anomalia);
         }
-        
-        return trobat;
+
+        return false;
     }
   
 }

@@ -20,7 +20,7 @@ public class Main {
 
             biblioteca.prestaLlibre("El Quijote");
             biblioteca.afegeixAnomalia(1, Anomalia.LLOM);
-            biblioteca.afegeixAnomalia(1, Anomalia.LLOM);
+            biblioteca.afegeixAnomalia(1, Anomalia.LLOM);  // error: duplicada
 
             biblioteca.mostraLlibresDisponibles();
             biblioteca.mostraLlibresPrestats();
