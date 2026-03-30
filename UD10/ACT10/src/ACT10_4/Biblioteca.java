@@ -103,10 +103,8 @@ public class Biblioteca {
     }
     
     private boolean cercaAnomalia(List<Anomalia> anomalies, Anomalia anomalia) {
-        for (Anomalia a : anomalies)
-            if (a == anomalia) 
-                return true;
-        return false;
+        int i = anomalies.indexOf(anomalia);
+        return (i != -1);
     }
     
     public boolean eliminaAnomalia(int idLlibre, Anomalia anomalia) {
