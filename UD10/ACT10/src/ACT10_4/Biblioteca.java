@@ -102,7 +102,7 @@ public class Biblioteca {
             l.getAnomalies().add(anomalia);
     }
     
-    private boolean cercaAnomalia(List<Anomalia> anomalies, Anomalia anomalia) {
+    private boolean cercaAnomalia(List<Anomalia> anomalies, Anomalia anomalia) {  // cercar en 'List'
         int i = anomalies.indexOf(anomalia);
         return (i != -1);
     }
