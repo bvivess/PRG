@@ -37,11 +37,9 @@ public class Biblioteca {
     }
 
     public Llibre cercaLlibreDisponible(String titol) {  // cercar en 'Set'
-        for (Llibre l : this.llibresDisponibles) {
-            if (l.getTitol().equals(titol)) {
-                return l;
-            }
-        }
+        for (Llibre l : this.llibresDisponibles)
+            if (l.getTitol().equals(titol))
+                return l;        
         return null;
         
         // return this.llibresDisponibles.stream().filter(l->l.getTitol().equals(titol)).collect(Collectors.toList()).get(0);
@@ -99,20 +97,16 @@ public class Biblioteca {
     }
     
     private Llibre cercaLlibreDisponible(int idLlibre) {  // cercar en 'Set'
-        for (Llibre l : this.llibresDisponibles) {
-            if (l.getIdLlibre() == idLlibre) {
+        for (Llibre l : this.llibresDisponibles)
+            if (l.getIdLlibre() == idLlibre)
                 return l;
-            }
-        }
         return null;
     }
     
     private Llibre cercaLlibrePrestat(int idLlibre) {  // cercar en 'Queue'
-        for (Llibre l : this.llibresPrestats) {
-            if (l.getIdLlibre() == idLlibre) {
+        for (Llibre l : this.llibresPrestats)
+            if (l.getIdLlibre() == idLlibre)
                 return l;
-            }
-        }
         return null;
     }
     
@@ -129,9 +123,8 @@ public class Biblioteca {
     public boolean eliminaAnomalia(int idLlibre, Anomalia anomalia) {
         Llibre llibre = cercaLlibre(idLlibre);  // cerca en 'Set' / 'Queue'
 
-        if (llibre != null) {
+        if (llibre != null)
             return llibre.getAnomalies().remove(anomalia);
-        }
 
         return false;
     }
