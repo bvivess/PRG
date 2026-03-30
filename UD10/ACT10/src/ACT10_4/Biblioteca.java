@@ -36,7 +36,7 @@ public class Biblioteca {
         }
     }
 
-    public Llibre cercaLlibreDisponible(String titol) {
+    public Llibre cercaLlibreDisponible(String titol) {  // cercar en 'Set'
         for (Llibre l : this.llibresDisponibles) {
             if (l.getTitol().equals(titol)) {
                 return l;
@@ -85,21 +85,21 @@ public class Biblioteca {
     
     public void afegeixAnomalia(int idLlibre, Anomalia anomalia) {
         boolean trobat = false;
-        for (Llibre l : this.llibresDisponibles)
+        for (Llibre l : this.llibresDisponibles)  // cercar en 'Set'
             if (l.getIdLlibre() == idLlibre) {
                 trobat = true;
-                afegeixAnomalia(l.getAnomalies(), anomalia);
+                afegeixAnomalia(l, anomalia);
             }
         if (!trobat)
-            for (Llibre l : this.llibresPrestats) 
+            for (Llibre l : this.llibresPrestats)  // cercar en 'Queue'
                 if (l.getIdLlibre() == idLlibre)
-                    afegeixAnomalia(l.getAnomalies(), anomalia);
+                    afegeixAnomalia(l, anomalia);
     }
-
-    private void afegeixAnomalia(List<Anomalia> anomalies, Anomalia anomalia) {
-        boolean trobat = cercaAnomalia(anomalies, anomalia);
+    
+    private void afegeixAnomalia(Llibre l, Anomalia anomalia) {
+        boolean trobat = cercaAnomalia(l.getAnomalies(), anomalia);
         if (!trobat) 
-            anomalies.add(anomalia);
+            l.getAnomalies().add(anomalia);
     }
     
     private boolean cercaAnomalia(List<Anomalia> anomalies, Anomalia anomalia) {
