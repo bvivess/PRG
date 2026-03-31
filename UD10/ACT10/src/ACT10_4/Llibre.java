@@ -23,13 +23,13 @@ public class Llibre {
         this.anomalies = new ArrayList<>();
     }
     
-    public boolean afegeixAnomalia(Anomalia anomalia) {  // afegeix 'anomalia' en 'Llibre'
+    public boolean afegeixAnomalia(Anomalia anomalia) {  // afegeix 'anomalia' en List 'anomalies'
         if (!cercaAnomalia(anomalia)) 
             return this.anomalies.add(anomalia);
         return false;
     }
     
-    public boolean eliminaAnomalia(Anomalia anomalia) {
+    public boolean eliminaAnomalia(Anomalia anomalia) {  // elimina 'anomalia' en List 'anomalies'
         return this.getAnomalies().remove(anomalia);
     }
     
