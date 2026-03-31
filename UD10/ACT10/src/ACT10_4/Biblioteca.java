@@ -86,46 +86,38 @@ public class Biblioteca {
         Llibre llibre = cercaLlibre(idLlibre);  // cerca en 'Set' / 'Queue'
 
         if (llibre != null)
-            return afegeixAnomaliaEnLlibre(llibre, anomalia);
+            return llibre.afegeixAnomalia(anomalia);
         return false;
     }
-    
-    private boolean afegeixAnomaliaEnLlibre(Llibre l, Anomalia anomalia) {
-        if (!cercaAnomalia(l.getAnomalies(), anomalia)) 
-            return l.getAnomalies().add(anomalia);
-        return false;
-    }
-    
-    private boolean cercaAnomalia(List<Anomalia> anomalies, Anomalia anomalia) {  // cercar en 'List'
-        int i = anomalies.indexOf(anomalia);
-        return (i != -1);
-    }
-    
+  
     public boolean eliminaAnomalia(int idLlibre, Anomalia anomalia) {
         Llibre llibre = cercaLlibre(idLlibre);  // cerca en 'Set' / 'Queue'
 
         if (llibre != null)
-            return llibre.getAnomalies().remove(anomalia);
-
+            return llibre.eliminaAnomalia(anomalia);
         return false;
     }
 
+    /** cercaLlibre: emprat en 'afegeixAnomalia' i 'eliminaAnomalia'
+     *    ha de cercar el llibre en el 'Set' llibreDisponible' 
+     *    si no cal cercar el llibre en la 'Queue' llibrePrestat'
+     */    
     private Llibre cercaLlibre(int idLlibre) {  // cerca en 'Set' / 'Queue'
         Llibre llibre = cercaLlibreDisponible(idLlibre);
         return (llibre != null) ? llibre : cercaLlibrePrestat(idLlibre);
     }
     
     private Llibre cercaLlibreDisponible(int idLlibre) {  // cercar en 'Set'
-        for (Llibre l : this.llibresDisponibles)
-            if (l.getIdLlibre() == idLlibre)
-                return l;
+        for (Llibre llibre : this.llibresDisponibles)
+            if (llibre.getIdLlibre() == idLlibre)
+                return llibre;
         return null;
     }
     
     private Llibre cercaLlibrePrestat(int idLlibre) {  // cercar en 'Queue'
-        for (Llibre l : this.llibresPrestats)
-            if (l.getIdLlibre() == idLlibre)
-                return l;
+        for (Llibre llibre : this.llibresPrestats)
+            if (llibre.getIdLlibre() == idLlibre)
+                return llibre;
         return null;
     }
 }

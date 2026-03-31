@@ -23,6 +23,21 @@ public class Llibre {
         this.anomalies = new ArrayList<>();
     }
     
+    public boolean afegeixAnomalia(Anomalia anomalia) {  // afegeix 'anomalia' en 'Llibre'
+        if (!cercaAnomalia(anomalia)) 
+            return this.anomalies.add(anomalia);
+        return false;
+    }
+    
+    public boolean eliminaAnomalia(Anomalia anomalia) {
+        return this.getAnomalies().remove(anomalia);
+    }
+    
+    private boolean cercaAnomalia(Anomalia anomalia) {  // cercar en 'List'
+        int i = this.anomalies.indexOf(anomalia);
+        return (i != -1);
+    }
+    
     public int getIdLlibre() {
         return idLlibre;
     }
