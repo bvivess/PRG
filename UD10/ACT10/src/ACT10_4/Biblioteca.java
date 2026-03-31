@@ -34,14 +34,28 @@ public class Biblioteca {
             this.titolsDisponibles.get(titol).add(nouLlibre);  // afegeix el 'llibre' a la llista de títols
         }
     }
+    
+    /** cercaLlibre: per titol (String)
+     *    ha de cercar el llibre en el 'Set' llibresDisponible' 
+     *    si no cal cercar el llibre en la 'Queue' llibresPrestat'
+     */    
+    private Llibre cercaLlibre(String titol) {  // cerca en 'Set' / 'Queue'
+        Llibre llibre = cercaLlibreDisponible(titol);
+        return (llibre != null) ? llibre : cercaLlibrePrestat(titol);
+    }
 
-    public Llibre cercaLlibreDisponible(String titol) {  // cercar en 'Set'
-        for (Llibre l : this.llibresDisponibles)
-            if (l.getTitol().equals(titol))
-                return l;        
+    private Llibre cercaLlibreDisponible(String titol) {  // cercar en 'Set'
+        for (Llibre llibre : this.llibresDisponibles)
+            if (llibre.getTitol().equals(titol))
+                return llibre;
         return null;
-        
-        // return this.llibresDisponibles.stream().filter(l->l.getTitol().equals(titol)).collect(Collectors.toList()).get(0);
+    }
+    
+    private Llibre cercaLlibrePrestat(String titol) {  // cercar en 'Queue'
+        for (Llibre llibre : this.llibresPrestats)
+            if (llibre.getTitol().equals(titol))
+                return llibre;
+        return null;
     }
 
     public void prestaLlibre(String titol) {
@@ -98,9 +112,9 @@ public class Biblioteca {
         return false;
     }
 
-    /** cercaLlibre: emprat en 'afegeixAnomalia' i 'eliminaAnomalia'
-     *    ha de cercar el llibre en el 'Set' llibreDisponible' 
-     *    si no cal cercar el llibre en la 'Queue' llibrePrestat'
+    /** cercaLlibre: per idLlibre (int)
+     *    ha de cercar el llibre en el 'Set' llibresDisponible' 
+     *    si no cal cercar el llibre en la 'Queue' llibresPrestat'
      */    
     private Llibre cercaLlibre(int idLlibre) {  // cerca en 'Set' / 'Queue'
         Llibre llibre = cercaLlibreDisponible(idLlibre);
