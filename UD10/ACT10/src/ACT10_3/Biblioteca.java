@@ -29,57 +29,71 @@ public class Biblioteca {
         Llibre nouLlibre = new Llibre(idLlibre, titol, autor, anyPublicacio);
         
         if (this.llibresDisponibles.add(nouLlibre)) {
-            if (!titolsDisponibles.containsKey(titol)) {
+            if (!titolsDisponibles.containsKey(titol)) {  // si el llibre no es troba
                 this.titolsDisponibles.put(titol, new ArrayList<>());
             }
             this.titolsDisponibles.get(titol).add(nouLlibre);  // afegeix el 'llibre' a la llista de títols
         }
     }
+    
+    /** cercaLlibre: per titol (String)
+     *    ha de cercar el llibre en el 'Set' llibresDisponible' 
+     *    si no cal cercar el llibre en la 'Queue' llibresPrestat'
+     */    
+    private Llibre cercaLlibre(String titol) {  // cerca en 'Set' / 'Queue'
+        Llibre llibre = cercaLlibreDisponible(titol);
+        return (llibre != null) ? llibre : cercaLlibrePrestat(titol);
+    }
 
-    public Llibre cercaLlibreDisponible(String titol) {
-        for (Llibre l : this.llibresDisponibles) {
-            if (l.getTitol().equals(titol)) {
-                return l;
-            }
-        }
+    private Llibre cercaLlibreDisponible(String titol) {  // cercar en 'Set'
+        for (Llibre llibre : this.llibresDisponibles)
+            if (llibre.getTitol().equals(titol))
+                return llibre;
         return null;
-        
-        // return this.llibresDisponibles.stream().filter(l->l.getTitol().equals(titol)).collect(Collectors.toList()).get(0);
+    }
+    
+    private Llibre cercaLlibrePrestat(String titol) {  // cercar en 'Queue'
+        for (Llibre llibre : this.llibresPrestats)
+            if (llibre.getTitol().equals(titol))
+                return llibre;
+        return null;
     }
 
     public void prestaLlibre(String titol) {
         Llibre llibrePerPrestar = cercaLlibreDisponible(titol);
         if ( llibrePerPrestar != null) {
-            this.llibresDisponibles.remove(llibrePerPrestar);
-            this.llibresPrestats.offer(llibrePerPrestar);
+            this.llibresDisponibles.remove(llibrePerPrestar);  // treure llibre de 'llibresDisponibles'
+            this.llibresPrestats.offer(llibrePerPrestar);  // afegir llibre a 'llibresPrestats'
         }
     }
 
     public void tornaLlibre() {
-        Llibre llibreRetornat = this.llibresPrestats.poll();
+        Llibre llibreRetornat = this.llibresPrestats.poll();  // treure llibre de 'llibresPrestats'
         if (llibreRetornat != null) {
-            llibresDisponibles.add(llibreRetornat);
+            this.llibresDisponibles.add(llibreRetornat);  // afegir llibre de 'llibresDisponibles'
         }
     }
     
     public void mostraLlibresDisponibles() {
         System.out.println("Llibres disponibles:");
-        for (Llibre l : this.llibresDisponibles) {
-            System.out.println(l.toString());
+        for (Llibre llibre : this.llibresDisponibles) {
+            System.out.println(llibre.toString());
         }
     }
     
     public void mostraTitolsDisponibles() {
         System.out.println("Títols Disponibles:");
         for (Map.Entry<String, List<Llibre>> e : this.titolsDisponibles.entrySet()) {  // per a cada títol
-            System.out.println(e.getKey() + "-" +  e.getValue().toString());
+            System.out.println(e.getKey());
+            for (Llibre l : e.getValue())  // per a cada llibre
+                System.out.println("\t" + l.toString());
         }
     }
 
     public void mostraLlibresPrestats() {
         System.out.println("Llibres prestats:");
-        for (Llibre l : this.llibresPrestats) {
-            System.out.println(l.toString());
+        for (Llibre llibre : this.llibresPrestats) {
+            System.out.println(llibre.toString());
         }
-    }    
+    }  
 }
