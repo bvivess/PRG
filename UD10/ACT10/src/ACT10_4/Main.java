@@ -19,8 +19,8 @@ public class Main {
             System.out.println("-----------------------------------------");
 
             biblioteca.prestaLlibre("El Quijote");
-            biblioteca.afegeixAnomalia(1, Anomalia.LLOM);
-            biblioteca.afegeixAnomalia(1, Anomalia.LLOM);  // error: duplicada
+            System.out.println(biblioteca.afegeixAnomalia(1, Anomalia.LLOM) ? "Anomalía afegida" : "Anomalia no afegida");
+            System.out.println(biblioteca.afegeixAnomalia(1, Anomalia.LLOM) ? "Anomalía afegida" : "Anomalia no afegida");  // error: duplicada
 
             biblioteca.mostraLlibresDisponibles();
             biblioteca.mostraLlibresPrestats();

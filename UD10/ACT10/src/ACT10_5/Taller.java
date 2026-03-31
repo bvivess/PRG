@@ -114,7 +114,7 @@ class Taller {
     }
     
     // Cerca vehicle per matrícula en 'VehiclesHistorics'
-    public Vehicle cercaVehiclesHistorics(String matricula) {  // cerca en 'Liat'
+    public Vehicle cercaVehiclesHistorics(String matricula) {  // cerca en 'List'
         int i = this.vehiclesHistorics.indexOf(new Vehicle(matricula));
         return (i != -1 ) ? this.vehiclesHistorics.get(i) : null;
     }

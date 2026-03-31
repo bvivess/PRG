@@ -3,7 +3,6 @@ package ACT10_4;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -83,14 +82,34 @@ public class Biblioteca {
         }
     }
     
-    public void afegeixAnomalia(int idLlibre, Anomalia anomalia) {
+    public boolean afegeixAnomalia(int idLlibre, Anomalia anomalia) {
         Llibre llibre = cercaLlibre(idLlibre);  // cerca en 'Set' / 'Queue'
 
-        if (llibre != null) {
-            afegeixAnomalia(llibre, anomalia);
-        }
+        if (llibre != null)
+            return afegeixAnomaliaEnLlibre(llibre, anomalia);
+        return false;
     }
     
+    private boolean afegeixAnomaliaEnLlibre(Llibre l, Anomalia anomalia) {
+        if (!cercaAnomalia(l.getAnomalies(), anomalia)) 
+            return l.getAnomalies().add(anomalia);
+        return false;
+    }
+    
+    private boolean cercaAnomalia(List<Anomalia> anomalies, Anomalia anomalia) {  // cercar en 'List'
+        int i = anomalies.indexOf(anomalia);
+        return (i != -1);
+    }
+    
+    public boolean eliminaAnomalia(int idLlibre, Anomalia anomalia) {
+        Llibre llibre = cercaLlibre(idLlibre);  // cerca en 'Set' / 'Queue'
+
+        if (llibre != null)
+            return llibre.getAnomalies().remove(anomalia);
+
+        return false;
+    }
+
     private Llibre cercaLlibre(int idLlibre) {  // cerca en 'Set' / 'Queue'
         Llibre llibre = cercaLlibreDisponible(idLlibre);
         return (llibre != null) ? llibre : cercaLlibrePrestat(idLlibre);
@@ -109,24 +128,4 @@ public class Biblioteca {
                 return l;
         return null;
     }
-    
-    private void afegeixAnomalia(Llibre l, Anomalia anomalia) {
-        if (!cercaAnomalia(l.getAnomalies(), anomalia)) 
-            l.getAnomalies().add(anomalia);
-    }
-    
-    private boolean cercaAnomalia(List<Anomalia> anomalies, Anomalia anomalia) {  // cercar en 'List'
-        int i = anomalies.indexOf(anomalia);
-        return (i != -1);
-    }
-    
-    public boolean eliminaAnomalia(int idLlibre, Anomalia anomalia) {
-        Llibre llibre = cercaLlibre(idLlibre);  // cerca en 'Set' / 'Queue'
-
-        if (llibre != null)
-            return llibre.getAnomalies().remove(anomalia);
-
-        return false;
-    }
-  
 }
