@@ -15,7 +15,7 @@ public class Agenda {
         this.tasques = new HashMap<>();  // 'TreeMap' ordena el 'Map' per 'key'
     }
     
-    public List<Tasca> cercaDia(LocalDate data) {
+    public List<Tasca> cercaDia(LocalDate data) {  // ecrca en Map
         return this.tasques.get(data);  // 'get' és un cerca: torna la referència de la 'List<Tasca>'
                                         // get retorna 'null' en cas de no trobar la 'clau'
     }
@@ -38,19 +38,22 @@ public class Agenda {
     }
 
     public void eliminaTasca(LocalDate data, LocalTime hora) {
-        List<Tasca> tasquesDeLaDataCercada = cercaDia(data);
+        List<Tasca> tasquesDeLaDataCercada = cercaDia(data);  // cerca en Map
         
-        if (tasquesDeLaDataCercada != null) { //if (this.tasques.containsKey(data)) {
-            for (Tasca t : tasquesDeLaDataCercada) {  // cerca la 'Tasca' per 'hora'
+        tasquesDeLaDataCercada.remove(new Tasca(hora));  // elimina en List --> cal crear equals i hashCode en 'Tasca'
+        
+        if (tasquesDeLaDataCercada.isEmpty())
+            tasques.remove(data);
+        /*
+        if (tasquesDeLaDataCercada != null) { // if (this.tasques.containsKey(data)) {
+            for (Tasca t : tasquesDeLaDataCercada)  // cerca la 'Tasca' per 'hora'
                 if (t.getHora().equals(hora)) {
                     tasquesDeLaDataCercada.remove(t);
                     break;
                 }
-            }
-            if (tasquesDeLaDataCercada.isEmpty()) {
+            if (tasquesDeLaDataCercada.isEmpty())
                 tasques.remove(data);
-            }
-        }
+        }*/
     }
     
     public String obteTasca(LocalDate data, LocalTime hora) {
