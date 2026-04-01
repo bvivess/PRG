@@ -33,7 +33,7 @@ public class Main {
                                 agenda.obteTasca(LocalDate.of(2024, 1, 01), LocalTime.of(12,00)));
 
             System.out.println("Tasca per 02/01/2024-11:00 - " +
-                                agenda.obteTasca(LocalDate.of(2024, 1, 02), LocalTime.of(11,00)));
+                                agenda.obteTasca(LocalDate.of(2024, 1, 02), LocalTime.of(11,00)));  // no existeix
         } catch (Exception e) {
             System.out.println("S'ha produït un error: " + e.getMessage());
         }

@@ -21,19 +21,13 @@ public class Agenda {
     }
 
     public void afegeixTasca(LocalDate data, LocalTime hora, String titol) {
-        List<Tasca> tasquesDeLaDataCercada = cercaDia(data);
+        List<Tasca> tasquesDeLaDataCercada = cercaDia(data); // cerca en Map
         
         if (tasquesDeLaDataCercada == null) {
             tasquesDeLaDataCercada = new ArrayList<>();
             this.tasques.put(data, tasquesDeLaDataCercada);
         }
         tasquesDeLaDataCercada.add(new Tasca(hora, titol));
-        /*
-        if (!this.tasques.containsKey(data)) {
-            this.tasques.put(data, new ArrayList<>());
-        }
-        this.tasques.get(data).add(new Tasca(hora, titol));
-        */
     }
 
     public void eliminaTasca(LocalDate data, LocalTime hora) {
