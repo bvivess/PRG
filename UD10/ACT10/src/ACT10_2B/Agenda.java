@@ -25,10 +25,9 @@ public class Agenda {
         
         if (tasquesDeLaDataCercada == null) {
             tasquesDeLaDataCercada = new ArrayList<>();
-            tasquesDeLaDataCercada.add(new Tasca(hora, titol));
             this.tasques.put(data, tasquesDeLaDataCercada);
-        } else
-            tasquesDeLaDataCercada.add(new Tasca(hora, titol));
+        }
+        tasquesDeLaDataCercada.add(new Tasca(hora, titol));
         /*
         if (!this.tasques.containsKey(data)) {
             this.tasques.put(data, new ArrayList<>());
@@ -38,12 +37,12 @@ public class Agenda {
     }
 
     public void eliminaTasca(LocalDate data, LocalTime hora) {
-        List<Tasca> tasquesDeLaDataCercada = cercaDia(data);  // cerca en Map
+        List<Tasca> tasquesEnData = cercaDia(data);  // cerca en Map
         
-        tasquesDeLaDataCercada.remove(new Tasca(hora));  // elimina en List --> cal crear equals i hashCode en 'Tasca'
+        tasquesEnData.remove(new Tasca(hora));  // elimina en List --> cal crear equals i hashCode en 'Tasca'
         
-        if (tasquesDeLaDataCercada.isEmpty())
-            tasques.remove(data);
+        if (tasquesEnData.isEmpty())
+            this.tasques.remove(data);  // elimina en Map
         /*
         if (tasquesDeLaDataCercada != null) { // if (this.tasques.containsKey(data)) {
             for (Tasca t : tasquesDeLaDataCercada)  // cerca la 'Tasca' per 'hora'
@@ -56,20 +55,17 @@ public class Agenda {
         }*/
     }
     
-    public String obteTasca(LocalDate data, LocalTime hora) {
+    public Tasca obteTasca(LocalDate data, LocalTime hora) {
         List<Tasca> tasquesEnData = cercaDia(data);
-        String titol = "";
         if (tasquesEnData == null)
-            titol = null;
-        else {
-            for (Tasca t : tasquesEnData) {
-                if (t.getHora().equals(hora)) {
-                    titol = t.getTitol();
-                    break;
-                }
-            }
-        }
-        return titol;
+            return null;
+        else
+            return cercaTasca(tasquesEnData, hora);
+    }
+    
+    private Tasca cercaTasca(List<Tasca> tasquesEnData, LocalTime hora) {
+        int i = tasquesEnData.indexOf(new Tasca(hora));
+        return (i != -1 ) ? tasquesEnData.get(i) : null;
     }
 
     @Override
