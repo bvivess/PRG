@@ -35,10 +35,10 @@ public class Main {
         
         // Utilitza els 'cerca*'
         System.out.println("=== MOSTRA COMANDA ===");
-        System.out.println(r.cercaComanda(1).toString());
+        System.out.println(r.cercaComanda(2).toString());
         
         System.out.println("=== MOSTRA COMANDES PER ESTAT ===");
-        System.out.println(r.cercaComandesPerEstat(EstatComanda.PENDENT).toString());
+        System.out.println("COMANDES 'PENDENT': " + r.cercaComandesPerEstat(EstatComanda.PENDENT).toString());
         
     }
 }

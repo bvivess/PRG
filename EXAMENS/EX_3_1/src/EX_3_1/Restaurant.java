@@ -46,17 +46,10 @@ public class Restaurant {
     // Inicia preparació
     public boolean iniciaPreparacio() {
         Comanda c = cuaCuina.poll();
-
-        if (c != null) {
-            // 1. Treure de llista antiga
-            this.comandesPerEstat.get(c.getEstat()).remove(c);
-
-            // 2. Canviar estat
-            c.setEstat(EstatComanda.EN_PREPARACIO);
-
-            // 3. Afegir a nova llista
-            return this.comandesPerEstat.get(c.getEstat()).add(c);
-        } else
+        
+        if (c != null)
+            return canviaEstatComanda(c, EstatComanda.EN_PREPARACIO);
+        else
             return false;
     }
 
@@ -64,39 +57,40 @@ public class Restaurant {
     public boolean serveixComanda(int id) {
         Comanda c = cercaComanda(id);
 
-        if ( c != null && 
-             c.getEstat() == EstatComanda.EN_PREPARACIO ) {
-
-            List<Comanda> llistaAntiga = comandesPerEstat.get(c.getEstat());
-            llistaAntiga.remove(c);
-
-            c.setEstat(EstatComanda.SERVIDA);
-
-            List<Comanda> llistaNova = comandesPerEstat.get(c.getEstat());
-            return llistaNova.add(c);
-
-        } else 
+        if (c != null && 
+            c.getEstat() == EstatComanda.EN_PREPARACIO) {
+            return canviaEstatComanda(c, EstatComanda.SERVIDA);
+        } else {
             return false;
+        }
     }
 
     // Cobra comanda
     public boolean cobraComanda(int id) {
         Comanda c = cercaComanda(id);
 
-        if ( c != null && 
-             c.getEstat() == EstatComanda.SERVIDA ) {
-
-            List<Comanda> llistaAntiga = comandesPerEstat.get(c.getEstat());
-            llistaAntiga.remove(c);
-
-            c.setEstat(EstatComanda.COBRADA);
-
-            List<Comanda> llistaNova = comandesPerEstat.get(c.getEstat());
-            llistaNova.add(c);
-
-            return historics.add(c);
-        } else
+        if (c != null && c.getEstat() == EstatComanda.SERVIDA)
+            if (canviaEstatComanda(c, EstatComanda.COBRADA))
+                return historics.add(c);
+            else
+                return false;
+        else
             return false;
+    }
+    
+    private boolean canviaEstatComanda(Comanda c, EstatComanda nouEstat) {
+        // 1. Treure de la llista antiga
+        List<Comanda> llistaAntiga = this.comandesPerEstat.get(c.getEstat());
+        if (llistaAntiga != null) {
+            llistaAntiga.remove(c);
+        }
+
+        // 2. Canviar estat
+        c.setEstat(nouEstat);
+
+        // 3. Afegir a la nova llista
+        List<Comanda> llistaNova = this.comandesPerEstat.get(nouEstat);
+        return llistaNova != null && llistaNova.add(c);
     }
 
     // Cerca comanda
