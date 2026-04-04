@@ -109,7 +109,7 @@ public class Restaurant {
 
     // Mostra comandes registrades
     public void mostraComandesRegistrades() {
-        Set<Comanda> comandesRegistradesOrdenat = new TreeSet<>(comandesRegistrades);
+        Set<Comanda> comandesRegistradesOrdenat = new TreeSet<>(this.comandesRegistrades);
         for (Comanda c : comandesRegistradesOrdenat) {
             System.out.println(c);
         }
@@ -117,7 +117,7 @@ public class Restaurant {
 
     // Mostra cua (FIFO real)
     public void mostraCuaCuina() {
-        for (Comanda c : cuaCuina) {
+        for (Comanda c : this.cuaCuina) {
             System.out.println(c);
         }
     }
@@ -125,7 +125,7 @@ public class Restaurant {
     // Mostra per estat
     public void mostraComandesPerEstat() {
         List<Comanda> llistaComandesOrdenada;
-        for (Map.Entry<EstatComanda, List<Comanda>> entry : comandesPerEstat.entrySet()) {
+        for (Map.Entry<EstatComanda, List<Comanda>> entry : this.comandesPerEstat.entrySet()) {
 
             System.out.println(entry.getKey().getDescripcio() + ":");
 
