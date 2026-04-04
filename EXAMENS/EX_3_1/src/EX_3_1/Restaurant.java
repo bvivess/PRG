@@ -30,13 +30,13 @@ public class Restaurant {
 
     // Registra comanda
     public boolean registraComanda(int id, String nomClient, int taula, LocalDateTime timestamp, List<Plat> plats) {
-        Comanda c = new Comanda(id, nomClient, taula, timestamp, plats);  // estat: PENDENT
+        Comanda comanda = new Comanda(id, nomClient, taula, timestamp, plats);  // estat: PENDENT
 
-        if (this.comandesRegistrades.add(c))
+        if (this.comandesRegistrades.add(comanda))
             // Afegir a cua
-            if (this.cuaCuina.offer(c)) {
+            if (this.cuaCuina.offer(comanda)) {
                 // Afegir al Map
-                return this.comandesPerEstat.get(c.getEstat()).add(c);
+                return this.comandesPerEstat.get(comanda.getEstat()).add(comanda);
             } else 
                 return false;
         else
@@ -45,21 +45,21 @@ public class Restaurant {
 
     // Inicia preparació
     public boolean iniciaPreparacio() {  // estat: EN_PREPARACIO
-        Comanda c = cuaCuina.poll();
+        Comanda comanda = cuaCuina.poll();
         
-        if (c != null)
-            return canviaEstatComanda(c, EstatComanda.EN_PREPARACIO);
+        if (comanda != null)
+            return canviaEstatComanda(comanda, EstatComanda.EN_PREPARACIO);
         else
             return false;
     }
 
     // Serveix comanda
     public boolean serveixComanda(int id) {  // estat: SERVIDA
-        Comanda c = cercaComanda(id);
+        Comanda comanda = cercaComanda(id);
 
-        if (c != null && 
-            c.getEstat() == EstatComanda.EN_PREPARACIO) {
-            return canviaEstatComanda(c, EstatComanda.SERVIDA);
+        if (comanda != null && 
+            comanda.getEstat() == EstatComanda.EN_PREPARACIO) {
+            return canviaEstatComanda(comanda, EstatComanda.SERVIDA);
         } else {
             return false;
         }
@@ -67,11 +67,11 @@ public class Restaurant {
 
     // Cobra comanda
     public boolean cobraComanda(int id) {  // estat: COBRADA
-        Comanda c = cercaComanda(id);
+        Comanda comanda = cercaComanda(id);
 
-        if (c != null && c.getEstat() == EstatComanda.SERVIDA)
-            if (canviaEstatComanda(c, EstatComanda.COBRADA))
-                return historics.add(c);
+        if (comanda != null && comanda.getEstat() == EstatComanda.SERVIDA)
+            if (canviaEstatComanda(comanda, EstatComanda.COBRADA))
+                return historics.add(comanda);
             else
                 return false;
         else
@@ -109,8 +109,8 @@ public class Restaurant {
 
     // Mostra comandes registrades
     public void mostraComandesRegistrades() {
-        Set<Comanda> ordenat = new TreeSet<>(comandesRegistrades);
-        for (Comanda c : ordenat) {
+        Set<Comanda> comandesRegistradesOrdenat = new TreeSet<>(comandesRegistrades);
+        for (Comanda c : comandesRegistradesOrdenat) {
             System.out.println(c);
         }
     }
@@ -128,10 +128,10 @@ public class Restaurant {
 
             System.out.println(entry.getKey().getDescripcio() + ":");
 
-            List<Comanda> llistaOrdenada = new ArrayList<>(entry.getValue());  // valor del Map
-            Collections.sort(llistaOrdenada);
+            List<Comanda> llistaComandesOrdenada = new ArrayList<>(entry.getValue());  // valor del Map
+            Collections.sort(llistaComandesOrdenada);
 
-            for (Comanda c : llistaOrdenada) {
+            for (Comanda c : llistaComandesOrdenada) {
                 System.out.println("\t" + c);
             }
         }
