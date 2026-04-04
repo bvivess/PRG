@@ -141,8 +141,8 @@ public class Restaurant {
 
     // Mostra històric
     public void mostraHistorics() {
-        Collections.sort(historics);
-        for (Comanda c : historics) {
+        Collections.sort(this.historics);
+        for (Comanda c : this.historics) {
             System.out.println(c);
         }
     }
