@@ -78,19 +78,15 @@ public class Restaurant {
             return false;
     }
     
-    private boolean canviaEstatComanda(Comanda c, EstatComanda nouEstat) {
+    private boolean canviaEstatComanda(Comanda comanda, EstatComanda nouEstat) {
         // 1. Treure de la llista antiga
-        List<Comanda> llistaAntiga = this.comandesPerEstat.get(c.getEstat());
-        if (llistaAntiga != null) {
-            llistaAntiga.remove(c);
-        }
-
-        // 2. Canviar estat
-        c.setEstat(nouEstat);
-
-        // 3. Afegir a la nova llista
-        List<Comanda> llistaNova = this.comandesPerEstat.get(nouEstat);
-        return llistaNova != null && llistaNova.add(c);
+        if (this.comandesPerEstat.get(comanda.getEstat()).remove(comanda)) {
+            // 2. Canviar estat
+            comanda.setEstat(nouEstat);
+            // 3. Afegir a la nova llista
+            return this.comandesPerEstat.get(nouEstat).add(comanda);
+        } else
+            return false;
     }
 
     // Cerca comanda
