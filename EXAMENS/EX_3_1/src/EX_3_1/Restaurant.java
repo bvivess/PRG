@@ -124,17 +124,19 @@ public class Restaurant {
 
     // Mostra per estat
     public void mostraComandesPerEstat() {
+        List<Comanda> llistaComandesOrdenada;
         for (Map.Entry<EstatComanda, List<Comanda>> entry : comandesPerEstat.entrySet()) {
 
             System.out.println(entry.getKey().getDescripcio() + ":");
 
-            List<Comanda> llistaComandesOrdenada = new ArrayList<>(entry.getValue());  // valor del Map
+            llistaComandesOrdenada = new ArrayList<>(entry.getValue());  // valor del Map
             Collections.sort(llistaComandesOrdenada);
 
             for (Comanda c : llistaComandesOrdenada) {
                 System.out.println("\t" + c);
             }
         }
+        llistaComandesOrdenada = null;  // alliberar memòria
     }
 
     // Mostra històric
