@@ -115,13 +115,6 @@ public class Restaurant {
         }
     }
 
-    // Mostra cua (FIFO real)
-    public void mostraCuaCuina() {
-        for (Comanda c : this.cuaCuina) {
-            System.out.println(c);
-        }
-    }
-
     // Mostra per estat
     public void mostraComandesPerEstat() {
         List<Comanda> llistaComandesOrdenada;
@@ -143,6 +136,13 @@ public class Restaurant {
     public void mostraHistorics() {
         Collections.sort(this.historics);
         for (Comanda c : this.historics) {
+            System.out.println(c);
+        }
+    }
+    
+    // Mostra cua (FIFO)
+    public void mostraCuaCuina() {
+        for (Comanda c : this.cuaCuina) {
             System.out.println(c);
         }
     }
