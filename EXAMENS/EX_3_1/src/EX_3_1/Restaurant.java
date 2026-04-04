@@ -44,7 +44,7 @@ public class Restaurant {
     }
 
     // Inicia preparació
-    public boolean iniciaPreparacio() {
+    public boolean iniciaPreparacio() {  // estat: EN_PREPARACIO
         Comanda c = cuaCuina.poll();
         
         if (c != null)
@@ -54,7 +54,7 @@ public class Restaurant {
     }
 
     // Serveix comanda
-    public boolean serveixComanda(int id) {
+    public boolean serveixComanda(int id) {  // estat: SERVIDA
         Comanda c = cercaComanda(id);
 
         if (c != null && 
@@ -66,7 +66,7 @@ public class Restaurant {
     }
 
     // Cobra comanda
-    public boolean cobraComanda(int id) {
+    public boolean cobraComanda(int id) {  // estat: COBRADA
         Comanda c = cercaComanda(id);
 
         if (c != null && c.getEstat() == EstatComanda.SERVIDA)
