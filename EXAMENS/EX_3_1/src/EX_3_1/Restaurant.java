@@ -23,9 +23,8 @@ public class Restaurant {
         this.comandesPerEstat = new HashMap<>();
         this.historics = new ArrayList<>();
 
-        for (EstatComanda e : EstatComanda.values()) {
+        for (EstatComanda e : EstatComanda.values())
             comandesPerEstat.put(e, new ArrayList<>());
-        }
     }
 
     // Registra comanda
@@ -34,10 +33,10 @@ public class Restaurant {
 
         if (this.comandesRegistrades.add(comanda))
             // Afegir a cua
-            if (this.cuaCuina.offer(comanda)) {
+            if (this.cuaCuina.offer(comanda))
                 // Afegir al Map
                 return this.comandesPerEstat.get(comanda.getEstat()).add(comanda);
-            } else 
+            else 
                 return false;
         else
             return false;
@@ -57,12 +56,10 @@ public class Restaurant {
     public boolean serveixComanda(int id) {  // estat: SERVIDA
         Comanda comanda = cercaComanda(id);
 
-        if (comanda != null && 
-            comanda.getEstat() == EstatComanda.EN_PREPARACIO) {
+        if (comanda != null && comanda.getEstat() == EstatComanda.EN_PREPARACIO)
             return canviaEstatComanda(comanda, EstatComanda.SERVIDA);
-        } else {
+        else
             return false;
-        }
     }
 
     // Cobra comanda
@@ -91,10 +88,9 @@ public class Restaurant {
 
     // Cerca comanda
     public Comanda cercaComanda(int id) {  // cerca en 'Set'
-        for (Comanda c : this.comandesRegistrades) {
+        for (Comanda c : this.comandesRegistrades)
             if (c.getId() == id)
                 return c;
-        }
         return null;
     }
     
@@ -110,9 +106,8 @@ public class Restaurant {
     // Mostra comandes registrades
     public void mostraComandesRegistrades() {
         Set<Comanda> comandesRegistradesOrdenat = new TreeSet<>(this.comandesRegistrades);
-        for (Comanda c : comandesRegistradesOrdenat) {
+        for (Comanda c : comandesRegistradesOrdenat)
             System.out.println(c);
-        }
     }
 
     // Mostra per estat
@@ -125,9 +120,8 @@ public class Restaurant {
             llistaComandesOrdenada = new ArrayList<>(entry.getValue());  // valor del Map
             Collections.sort(llistaComandesOrdenada);
 
-            for (Comanda c : llistaComandesOrdenada) {
+            for (Comanda c : llistaComandesOrdenada)
                 System.out.println("\t" + c);
-            }
         }
         llistaComandesOrdenada = null;  // alliberar memòria
     }
@@ -135,16 +129,14 @@ public class Restaurant {
     // Mostra històric
     public void mostraHistorics() {
         Collections.sort(this.historics);
-        for (Comanda c : this.historics) {
+        for (Comanda c : this.historics)
             System.out.println(c);
-        }
     }
     
     // Mostra cua (FIFO)
     public void mostraCuaCuina() {
-        for (Comanda c : this.cuaCuina) {
+        for (Comanda c : this.cuaCuina)
             System.out.println(c);
-        }
     }
 }
 
