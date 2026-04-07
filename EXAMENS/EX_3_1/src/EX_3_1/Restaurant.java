@@ -31,8 +31,9 @@ public class Restaurant {
     public boolean registraComanda(int id, String nomClient, int taula, LocalDateTime timestamp, List<Plat> plats) {
         Comanda comanda = new Comanda(id, nomClient, taula, timestamp, plats);  // estat: PENDENT
 
+        // Afegeix al Set
         if (this.comandesRegistrades.add(comanda))
-            // Afegir a cua
+            // Afegir a la cua
             if (this.cuaCuina.offer(comanda))
                 // Afegir al Map
                 return this.comandesPerEstat.get(comanda.getEstat()).add(comanda);
