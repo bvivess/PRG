@@ -19,16 +19,14 @@ public class Main {
         List<Department> departments = new ArrayList<>();
         List<Employee> employees = new ArrayList<>();
         Map<Department, List<Employee>> depEmps = new HashMap<>();   // Relació 1:N
-        Map<Employee, Department> empDeps = new HashMap<>();   // Relació N:1
         
         try {
             // Llegir el contingut dels arxius línia a línia:
             LlegeixArxiuDepartments(arxiu1, departments);
-            LlegeixArxiuEmployees(arxiu2, employees);
+            LlegeixArxiuEmployees(arxiu2, departments, employees);
 
             // Càrrega els 'Map' 'depEmps' i 'empDeps' a partir de les 'List' 'departments' i 'employees'
             carregaDepEmps(depEmps, departments, employees);  // Relacio 1:N
-            carregaEmpDeps(empDeps, departments, employees);  // Relació N:1
 
             // Mostrar les estructures de memòria:
             System.out.println("DEPARTMENTS");
@@ -37,8 +35,6 @@ public class Main {
             mostraEmployees(employees);
             System.out.println("DEPEMPS");
             mostraDepEmps(depEmps);
-            System.out.println("EMPDEPS");
-            mostraEmpDeps(empDeps);
         } catch (Exception e) {
             System.err.println("Error GENERAL " + e.getMessage());
         }
@@ -71,10 +67,11 @@ public class Main {
         }
     }
     
-    private static void LlegeixArxiuEmployees(String arxiu, List<Employee> employees) throws IOException, NumberFormatException, IllegalArgumentException {
+    private static void LlegeixArxiuEmployees(String arxiu, List<Department> departments, List<Employee> employees) throws IOException, NumberFormatException, IllegalArgumentException {
         String linea;
         String[] parts;
         Employee employee;
+        Department department;
 
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu)) ) {   
             while ((linea = bufferedReader.readLine()) != null) {
@@ -83,11 +80,13 @@ public class Main {
                     if (!(linea.isEmpty() || linea.startsWith("#"))) {
                         parts = linea.split(";", 5);
                         
-                        employee = new Employee( Integer.parseInt(parts[0].trim()),    // employeeId
-                                                 parts[1].trim(),                      // firstName
-                                                 parts[2].trim(),                      // lasttName
-                                                 parts[3].trim(),                      // email
-                                                 Integer.parseInt(parts[4].trim()) );  // departmentId
+                        department = cercaDepartment(departments, Integer.parseInt(parts[4].trim()));  // cerca 'department' en l'arraylist 'departments'
+                        
+                        employee = new Employee( Integer.parseInt(parts[0].trim()), // employeeId
+                                                 parts[1].trim(),                   // firstName
+                                                 parts[2].trim(),                   // lasttName
+                                                 parts[3].trim(),                   // email
+                                                 department );                      // department
                         employees.add(employee);
                     }
                 } catch (NumberFormatException e) {
@@ -99,8 +98,26 @@ public class Main {
         } catch (IOException e) {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
         }
+    }   
+    
+    private static void carregaDepEmps(Map<Department, List<Employee>> depEmps, List<Department> departments, List<Employee> employees) throws Exception {
+        // Crea 'depEmps' a partir de 'departments'
+        for (Department d : departments) {  
+            depEmps.put(d, new ArrayList<>());
+        }
+        
+        // Modifica la List de 'depEmps' a partir de cada 'employee'
+        for (Employee e : employees) {  // per a cada 'employee', cerca el 'department' a la 'List' i afegeix-lo a 'depEmps'
+            depEmps.get(e.getDepartment()).add(e);  // afegeix 'e' a la List del Map
+        }
     }
-
+    
+    private static Department cercaDepartment(List<Department> departments, int departmentId) {
+        int index = departments.indexOf(new Department(departmentId));  // crea un 'department' temporal per a fer la cerca per 'Objecte'
+        
+        return (index != -1) ?  departments.get( index ) : null;
+    }
+    
     private static void mostraDepartments(List<Department> departments) {
         Collections.sort(departments); // Ordena la llista 'departments'
         
@@ -115,62 +132,12 @@ public class Main {
         for (Employee e : employees) {  
             System.out.println(e.toString());
         }
-    }    
-    
-    private static void carregaDepEmps(Map<Department, List<Employee>> depEmps, List<Department> departments, List<Employee> employees) throws Exception {
-        // Crea 'depEmps' a partir de 'departments'
-        for (Department d : departments) {  
-            depEmps.put(d, new ArrayList<>());
-        }
-        
-        // Modifica la List de 'depEmps' a partir de cada 'employee'
-        for (Employee e : employees) {  // per a cada 'employee', cerca el 'department' a la 'List' i afegeix-lo a 'depEmps'
-            Department departmentTMP = new Department(e.getDepartmentId(), ".");  // es crea un 'Department' temporal 'department_' amb les dades que cal cercar --> 'department_id'
-            
-            // OPCIO1:
-            //if (depEmps.containsKey(departmentTMP)) // si el departmentTMP es troba 
-            //    List<Employee> llistaEmployees = depEmps.get(departmentTMP);  // cerca en la List per 'departmentId'
-            //    llistaEmployees.add(e);  // afegeix 'e' a la List
-            //    depEmps.put(departmentTMP, llistaEmployees);  // cerca en el Map 'depEmps' per 'department_' i modifica la List de 'depEmps' amb 'llistaEmployees'
-            //}
-            
-            // OPCIO2:
-            if (depEmps.containsKey(departmentTMP)) // si el departmentTMP es troba            
-                depEmps.get(departmentTMP).add(e);  // afegeix 'e' a la List
-            else
-                throw new Exception("No es troba department");
-        }
-    }
-    
-    private static void carregaEmpDeps(Map<Employee, Department> empDeps, List<Department> departments, List<Employee> employees) throws Exception  {
-        int index;
-
-        // Per a cada employees
-        for (Employee e : employees) {  
-            try {
-                index = departments.indexOf(new Department(e.getDepartmentId(), "."));  // cerca la posició de 'department' a 'departments'
-                if (index != -1) {
-                    Department department = departments.get(index);  // cerca el 'department' a 'departments'
-                    empDeps.put(e, department);  // afegeix a 'empDeps'
-                } else {
-                    throw new Exception("Departament no es troba");
-                }
-            } catch (Exception err) {
-                System.err.println(err.getMessage());
-            }
-        }
-    }
+    } 
     
     private static void mostraDepEmps(Map<Department, List<Employee>> depEmps) {
-        for (Map.Entry<Department, List<Employee>> tupla : depEmps.entrySet()) {
-            if (!tupla.getValue().isEmpty())
-                System.out.println("Clau: " + tupla.getKey().toString() + ", Valor: " + tupla.getValue().toString());
-        }
-    }
-    
-    private static void mostraEmpDeps(Map<Employee, Department> empDeps) {
-        for (Map.Entry<Employee, Department> tupla : empDeps.entrySet()) {
-            System.out.println("Clau: " + tupla.getKey().toString() + ", Valor: " + tupla.getValue().toString());
+        for (Map.Entry<Department, List<Employee>> entry : depEmps.entrySet()) {
+            if (!entry.getValue().isEmpty())
+                System.out.println("Clau: " + entry.getKey().toString() + ", Valor: " + entry.getValue().toString());
         }
     }
 
