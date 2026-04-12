@@ -1,5 +1,7 @@
 package ACT11_2A;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author Administrador
@@ -9,12 +11,16 @@ public class Employee {
     private String lastName;
     private String firstName;
     private String email;
+    private double salary;
+    private LocalDate hireDate;
 
-    public Employee(int id, String last_name, String first_name, String email) throws IllegalArgumentException {
+    public Employee(int id, String last_name, String first_name, String email, double salary, LocalDate hireDate) throws IllegalArgumentException {
         setId(id);
         setLastName(last_name);
         setFirstName(first_name);
         setEmail(email);
+        setSalary(salary);
+        setHireDate(hireDate);
     }
 
     public int getId() {
@@ -55,13 +61,31 @@ public class Employee {
         if (email == null || email.isBlank() || !email.matches("^[\\w.]+@[\\w.-]+\\.[a-zA-Z]{2,6}$"))  // en comptes de: email.contains("@")
             throw new IllegalArgumentException (email + " Email incorrecte");
         else
-            this.email = email;
-                
+            this.email = email;       
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        if (salary<0)
+            throw new IllegalArgumentException (salary + " Salary incorrecte");
+        else
+            this.salary = salary;
+    }
+
+    public LocalDate getHireDate() {
+        return hireDate;
+    }
+
+    public void setHireDate(LocalDate hireDate) {
+        this.hireDate = hireDate;
     }
 
     @Override
     public String toString() {
-        return "Persona{" + "id=" + id + ", last_name=" + lastName + ", first_name=" + firstName + ", email=" + email + '}';
+        return "Employee{" + "id=" + id + ", lastName=" + lastName + ", firstName=" + firstName + ", email=" + email + ", salary=" + salary + ", hireDate=" + hireDate + '}';
     }
     
 }

@@ -3,6 +3,7 @@ package ACT11_2A;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,7 +39,12 @@ public class Main2 {
                     parts = linea.split(";");
                     if (!linea.substring(0, 1).equals("#")) {
                         clau = Integer.valueOf(parts[0].trim());
-                        employee = new Employee(Integer.parseInt(parts[0]), parts[1].trim(), parts[2].trim(), parts[3].trim());
+                        employee = new Employee( clau, 
+                                                 parts[1].trim(), 
+                                                 parts[2].trim(), 
+                                                 parts[3].trim(),
+                                                 Double.valueOf(parts[4].trim()),
+                                                 LocalDate.parse(parts[5].trim()) );
                         employees.put(clau, employee);
                     }
                 }
