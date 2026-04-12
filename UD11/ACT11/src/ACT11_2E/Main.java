@@ -49,7 +49,7 @@ public class Main {
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu)) ) {       
             while ((linea = bufferedReader.readLine()) != null) {
                 try {
-                    // format: xxx\txxx\txxx\txxx
+                    // format: xxx\Txxx\Ttxxx\Txxx
                     if (!(linea.isEmpty() || linea.startsWith("#"))) {
                         parts = linea.split("\t", 5);
                         _orderId = Integer.parseInt(parts[0].trim());
