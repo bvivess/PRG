@@ -15,7 +15,7 @@ import java.util.Set;
 public class Main {
     public static void main(String[] args) throws Exception {
         // Arxius per a la càrrega de dades:
-        String arxiu = "C:\\temp\\EXAMEN.csv";
+        String arxiu = "C:\\temp\\ACT11_2E_orders.csv";
         
         // Estructures de memòria:
         Set<Article> articles = new HashSet<>();
@@ -62,10 +62,10 @@ public class Main {
                         _articlePrice = Integer.parseInt(parts[4].trim());
                         
                         // Articles
-                        carregaArticles(_articleId, _articleName, _articlePrice, articles );
+                        carregaArticles(articles, _articleId, _articleName, _articlePrice );
                         
                         // Orders
-                        carregaOrders(_orderId, _orderDate, _articleId, articles, orders );
+                        carregaOrders(articles, orders, _orderId, _orderDate, _articleId );
                     }
                 } catch (NumberFormatException e) {
                     System.err.println("Error carregant Department: " + e.getMessage());
@@ -79,16 +79,15 @@ public class Main {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
         }
     }
-    
-    
-    private static void carregaArticles(int productId, String productName, int productPrice, Set<Article> articles) {
+
+    private static void carregaArticles(Set<Article> articles, int productId, String productName, int productPrice) {
 
         articles.add(new Article(productId, productName, productPrice));
 
     }
 
-    private static void carregaOrders(int orderId, LocalDate orderDate, int articleId, Set<Article> articles, Map<Integer, Order> orders) {
-        Article article = cercaArticle(articleId, articles);
+    private static void carregaOrders(Set<Article> articles, Map<Integer, Order> orders, int orderId, LocalDate orderDate, int articleId) {
+        Article article = cercaArticle(articles, articleId);
         
         if (article != null)
             if (orders.containsKey(orderId)) {
@@ -99,7 +98,7 @@ public class Main {
 
     }
     
-    private static Article cercaArticle(int articleId, Set<Article> articles) {
+    private static Article cercaArticle(Set<Article> articles, int articleId) {
         for (Article a : articles) 
             if (a.getProductId() == articleId)
                 return a;

@@ -1,11 +1,14 @@
 package ACT11_0B;
 
-import java.io.BufferedReader; import java.io.BufferedWriter;
+import java.io.BufferedReader; 
+import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileReader; import java.io.FileWriter;
-import java.io.FileNotFoundException; import java.io.IOException;
+import java.io.FileReader; 
+import java.io.FileWriter;
+import java.io.FileNotFoundException; 
+import java.io.IOException;
 
-public class Main {
+public class Main1 {
     public static void main(String[] args) {
         File nomArxiu = new File("c:\\temp\\arxiu.txt");  // o també 'String'
         File nomArxiu2 = new File("c:\\temp\\arxiu2.txt");  // o també 'String'
