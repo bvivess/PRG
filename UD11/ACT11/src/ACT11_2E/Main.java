@@ -53,13 +53,15 @@ public class Main {
                     if (!(linea.isEmpty() || linea.startsWith("#"))) {
                         parts = linea.split("\t", 5);
                         _orderId = Integer.parseInt(parts[0].trim());
+                        _articleId = Integer.parseInt(parts[2].trim());
+                        _articleName = parts[3].trim();
+                        _articlePrice = Integer.parseInt(parts[4].trim());
+                        // format: parts[1]: xx/xx/xxxx
+                        //                   1  4  7
                         _dia = Integer.parseInt(parts[1].substring(0, 2));
                         _mes = Integer.parseInt(parts[1].substring(3, 5));
                         _any = Integer.parseInt(parts[1].substring(6, 10));
                         _orderDate = LocalDate.of(_any, _mes, _dia);
-                        _articleId = Integer.parseInt(parts[2].trim());
-                        _articleName = parts[3].trim();
-                        _articlePrice = Integer.parseInt(parts[4].trim());
                         
                         // Articles
                         carregaArticles(articles, _articleId, _articleName, _articlePrice );
