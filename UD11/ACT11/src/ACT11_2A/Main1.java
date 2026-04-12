@@ -21,14 +21,19 @@ public class Main1 {
             Integer clau;
             Employee persona;
             while ((linea = bufferedReader.readLine()) != null) {
-                parts = linea.split(";");
-                if (!linea.substring(0, 1).equals("#")) {
-                    clau = Integer.valueOf(parts[0]);
-                    persona = new Employee(clau, parts[1], parts[2], parts[3]);
-                    
-                    persones.put(clau, persona);
+                try {
+                    parts = linea.split(";");
+                    if (!linea.substring(0, 1).equals("#")) {
+                        clau = Integer.valueOf(parts[0]);
+                        persona = new Employee(clau, parts[1], parts[2], parts[3]);
+
+                        persones.put(clau, persona);
+                    }
+                } catch (Exception e) {
+                    System.out.println("Error en línia: " + linea + " --> " + e.getMessage());
                 }
             }
+            System.out.println(persones);
         } catch (IOException e) {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
         }

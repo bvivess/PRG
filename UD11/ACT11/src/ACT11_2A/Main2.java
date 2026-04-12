@@ -11,8 +11,7 @@ public class Main2 {
         String arxiu = "C:\\temp\\ACT11_2A.cvs";
         Map<Integer, Employee> employees;
 
-        try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu));
-            ) {
+        try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu)) ) {
             
             // Llegir el contingut línia a línia
             employees = LlegeixArxiu(bufferedReader);
