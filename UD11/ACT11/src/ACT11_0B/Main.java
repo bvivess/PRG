@@ -5,10 +5,6 @@ import java.io.File;
 import java.io.FileReader; import java.io.FileWriter;
 import java.io.FileNotFoundException; import java.io.IOException;
 
-/**
- *
- * @author winadmin
- */
 public class Main {
     public static void main(String[] args) {
         File nomArxiu = new File("c:\\temp\\arxiu.txt");  // o també 'String'

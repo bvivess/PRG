@@ -27,6 +27,7 @@ public class Main1 {
                     variables.put(clau, valor);
                 }
             }
+            System.out.println(variables.toString());
         } catch (IOException e) {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
         }

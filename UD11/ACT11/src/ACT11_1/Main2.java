@@ -58,7 +58,7 @@ public class Main2 {
     }
 
     private static boolean ComprovaVariables(Map<String,String> variables) {
-        String[] valorsPossibles = {"address","netmask","dns_server","interface","gateway"};
+        String[] valorsPossibles = {"address", "netmask", "dns_server", "interface", "gateway"};
         
         for (String v:valorsPossibles) {
             if (variables.get(v) == null)
