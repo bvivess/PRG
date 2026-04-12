@@ -11,8 +11,7 @@ public class Main2 {
         String arxiu = "C:\\temp\\ACT11_1.cfg";
         Map<String, String> variables = new HashMap<>();
 
-        try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu));
-            ) {
+        try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu)) ) {
             
             // Llegir el contingut línia a línia
             variables = LlegeixArxiu(bufferedReader);
