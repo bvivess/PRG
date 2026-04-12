@@ -8,6 +8,11 @@ public class Department implements Comparable<Department> {
         setDepartmentId(department_id);
         setDepartmentName(departmentName);
     }
+
+    public Department(int department_id) throws IllegalArgumentException  {
+        setDepartmentId(department_id);
+    }    
+    
     public int getDepartmentId() {
         return departmentId;
     }

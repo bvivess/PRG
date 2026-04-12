@@ -102,12 +102,9 @@ public class Main {
     }    
 
     private static Department cercaDepartment(List<Department> departments, int departmentId) {
-        int index = departments.indexOf(new Department(departmentId, "."));  // crea un 'department' temporal per a fer la cerca per 'Objecte'
+        int index = departments.indexOf(new Department(departmentId));  // crea un 'department' temporal per a fer la cerca per 'Objecte'
         
-        if (index != -1)
-            return departments.get( index );
-        else 
-            return null;
+        return (index != -1) ?  departments.get( index ) : null;
     }
     
 }
