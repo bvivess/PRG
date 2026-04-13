@@ -16,12 +16,31 @@ public class Order implements Comparable<Order> {
         setOrderTotal(orderTotal);
         this.carrito = new ArrayList<Article>();
     }
+    
+    private void validateString(String value, String fieldName) {
+        if (value == null || value.trim().isEmpty()) {
+            throw new IllegalArgumentException(fieldName + " no pot ser null ni buit");
+        }
+    }
+
+    private void validateNonNegative(float value, String fieldName) {
+        if (value < 0) {
+            throw new IllegalArgumentException(fieldName + " no pot ser negatiu");
+        }
+    }
+    
+    private void validateNotNull(Object value, String fieldName) {
+        if (value == null) {
+            throw new IllegalArgumentException(fieldName + " no pot ser null");
+        }
+    }
 
     public int getOrderId() {
         return orderId;
     }
 
     public void setOrderId(int orderId) {
+        validateNonNegative(orderId, "orderId");
         this.orderId = orderId;
     }
 
@@ -30,6 +49,7 @@ public class Order implements Comparable<Order> {
     }
 
     public void setOrderDate(LocalDate orderDate) {
+        validateNotNull(orderDate, "orderDate");
         this.orderDate = orderDate;
     }
 
@@ -38,6 +58,7 @@ public class Order implements Comparable<Order> {
     }
 
     public void setOrderTotal(float orderTotal) {
+        validateNonNegative(orderTotal, "orderTotal");
         this.orderTotal = orderTotal;
     }
 
@@ -46,6 +67,7 @@ public class Order implements Comparable<Order> {
     }
 
     public void setCarrito(List<Article> carrito) {
+        validateNotNull(carrito, "carrito");
         this.carrito = carrito;
     }
 

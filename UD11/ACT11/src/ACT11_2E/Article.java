@@ -1,23 +1,34 @@
 package ACT11_2E;
 
-import java.util.Set;
-
 public class Article implements Comparable<Article> {
     private int productId;
     private String productName;
     private int productPrice;
 
     public Article(int productId, String productName, int productPrice) {
-        this.productId = productId;
-        this.productName = productName;
-        this.productPrice = productPrice;
+        setProductId(productId);
+        setProductName(productName);
+        setProductPrice(productPrice);
     }
 
+    private void validateString(String value, String fieldName) {
+        if (value == null || value.trim().isEmpty()) {
+            throw new IllegalArgumentException(fieldName + " no pot ser null ni buit");
+        }
+    }
+
+    private void validateNonNegative(int value, String fieldName) {
+        if (value < 0) {
+            throw new IllegalArgumentException(fieldName + " no pot ser negatiu");
+        }
+    }
+    
     public int getProductId() {
         return productId;
     }
 
     public void setProductId(int productId) {
+        validateNonNegative(productId, "productId");
         this.productId = productId;
     }
 
@@ -26,6 +37,7 @@ public class Article implements Comparable<Article> {
     }
 
     public void setProductName(String productName) {
+        validateString(productName, "productName");
         this.productName = productName;
     }
 
@@ -34,6 +46,7 @@ public class Article implements Comparable<Article> {
     }
 
     public void setProductPrice(int productPrice) {
+        validateNonNegative(productPrice, "productPrice");
         this.productPrice = productPrice;
     }
 
