@@ -102,14 +102,12 @@ public class Main {
     
     private static void carregaDepEmps(Map<Department, List<Employee>> depEmps, List<Department> departments, List<Employee> employees) throws Exception {
         // Crea 'depEmps' a partir de 'departments'
-        for (Department d : departments) {  
+        for (Department d : departments)
             depEmps.put(d, new ArrayList<>());
-        }
         
         // Modifica la List de 'depEmps' a partir de cada 'employee'
-        for (Employee e : employees) {  // per a cada 'employee', cerca el 'department' a la 'List' i afegeix-lo a 'depEmps'
+        for (Employee e : employees)  // per a cada 'employee', cerca el 'department' a la 'List' i afegeix-lo a 'depEmps'
             depEmps.get(e.getDepartment()).add(e);  // afegeix 'e' a la List del Map
-        }
     }
     
     private static Department cercaDepartment(List<Department> departments, int departmentId) {

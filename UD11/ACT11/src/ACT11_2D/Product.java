@@ -6,9 +6,9 @@ public class Product implements Comparable<Product> {
     private int numWarehouses;
 
     public Product(int productId, String productName, int numWarehouses) {
-        this.productId = productId;
-        this.productName = productName;
-        this.numWarehouses = numWarehouses;
+        setProductId(productId);
+        setProductName(productName);
+        setNumWarehouses(numWarehouses);
     }
 
     public int getProductId() {
@@ -24,7 +24,10 @@ public class Product implements Comparable<Product> {
     }
 
     public void setProductName(String productName) {
-        this.productName = productName;
+        if (productName == null || productName.trim().isEmpty())
+            throw new IllegalArgumentException("productName no pot ser null ni buit");
+        else
+            this.productName = productName;
     }
 
     public int getNumWarehouses() {
@@ -32,7 +35,10 @@ public class Product implements Comparable<Product> {
     }
 
     public void setNumWarehouses(int numWarehouses) {
-        this.numWarehouses = numWarehouses;
+        if (numWarehouses < 0)
+            throw new IllegalArgumentException("numWarehouses no pot ser negatiu");
+        else
+            this.numWarehouses = numWarehouses;
     }
 
     @Override
