@@ -1,7 +1,9 @@
 package ACT11_2E;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,6 +18,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         // Arxius per a la càrrega de dades:
         String arxiu = "C:\\temp\\ACT11_2E_orders.csv";
+        String arxiuLog = "C:\\temp\\ACT11_2E.log";
         
         // Estructures de memòria:
         Set<Article> articles = new HashSet<>();
@@ -23,7 +26,7 @@ public class Main {
         
         try {
             // Llegir el contingut dels arxius línia a línia:
-            LlegeixArxiu(arxiu, orders, articles);
+            LlegeixArxiu(arxiu, arxiuLog, orders, articles);
 
             // Mostrar les estructures de memòria:
             System.out.println("ARTICLES");
@@ -37,8 +40,9 @@ public class Main {
         }
     }
 
-    private static void LlegeixArxiu(String arxiu, Map<Integer, Order> orders, Set<Article> articles) throws IOException, NumberFormatException, IllegalArgumentException {
+    private static void LlegeixArxiu(String arxiu, String arxiuLog, Map<Integer, Order> orders, Set<Article> articles) throws IOException, NumberFormatException, IllegalArgumentException {
         String linea;
+        int numLinea = 0;
         String[] parts;
         int  _orderId, _articleId, _articlePrice;
         String _articleName;
@@ -46,9 +50,12 @@ public class Main {
         LocalDate _orderDate;
         //String[] parts;
         
-        try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu)) ) {       
+        try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu));
+              BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(arxiuLog)) ) {       
             while ((linea = bufferedReader.readLine()) != null) {
                 try {
+                    numLinea = numLinea + 1 ;
+                    
                     // format: xxx\Txxx\Ttxxx\Txxx
                     if (!(linea.isEmpty() || linea.startsWith("#"))) {
                         parts = linea.split("\t", 5);
@@ -70,11 +77,14 @@ public class Main {
                         carregaOrders(articles, orders, _orderId, _orderDate, _articleId );
                     }
                 } catch (NumberFormatException e) {
-                    System.err.println("Error carregant Department: " + e.getMessage());
+                    bufferedWriter.write("Error carregant Línia " + numLinea + ": " + e.getMessage());
+                    bufferedWriter.newLine();
                 } catch (IllegalArgumentException e) {
-                    System.err.println("Error carregant Department: " + e.getMessage());
+                    bufferedWriter.write("Error carregant Línia " + numLinea + ": " + e.getMessage());
+                    bufferedWriter.newLine();
                 } catch (Exception e) {
-                    System.err.println(e.getMessage() + "-->" + _dia + "-"+ _mes + "-"+ _any + "-");
+                    bufferedWriter.write("Error carregant Línia " + numLinea + ": " + e.getMessage());
+                    bufferedWriter.newLine();
                 }
             }
         } catch (IOException e) {
