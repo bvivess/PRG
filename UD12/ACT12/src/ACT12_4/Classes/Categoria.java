@@ -1,4 +1,4 @@
-package ACT12_3.Classes;
+package ACT12_4.Classes;
 
 public enum Categoria {
     ALIMENTACIO, 
