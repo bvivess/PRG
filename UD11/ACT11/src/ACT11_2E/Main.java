@@ -31,6 +31,7 @@ public class Main {
             // Mostrar les estructures de memòria:
             System.out.println("ARTICLES");
             mostraArticles(articles);
+            
             System.out.println("ORDERS");
             mostraOrders(orders);
 
@@ -84,7 +85,7 @@ public class Main {
                     bufferedWriter.newLine();
                 } catch (Exception e) {
                     bufferedWriter.write("Error carregant Línia " + numLinea + ": " + e.getMessage());
-                    bufferedWriter.newLine();
+                    bufferedWriter.newLine();   
                 }
             }
         } catch (IOException e) {

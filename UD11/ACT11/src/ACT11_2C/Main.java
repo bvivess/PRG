@@ -31,8 +31,10 @@ public class Main {
             // Mostrar les estructures de memòria:
             System.out.println("DEPARTMENTS");
             mostraDepartments(departments);
+            
             System.out.println("EMPLOYEES");
             mostraEmployees(employees);
+            
             System.out.println("DEPEMPS");
             mostraDepEmps(depEmps);
         } catch (Exception e) {

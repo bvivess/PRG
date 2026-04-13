@@ -26,6 +26,7 @@ public class Main {
             // Mostrar les estructures de memòria:
             System.out.println("PRODUCTS");
             mostraProducts(products);
+            
             System.out.println("WAREHOUSES");
             mostraWarehouses(warehouses);
         } catch (Exception e) {
