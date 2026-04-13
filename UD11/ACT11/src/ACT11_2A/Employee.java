@@ -84,6 +84,28 @@ public class Employee {
     }
 
     @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 29 * hash + this.id;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Employee other = (Employee) obj;
+        return this.id == other.id;
+    }
+    
+    @Override
     public String toString() {
         return "Employee{" + "id=" + id + ", lastName=" + lastName + ", firstName=" + firstName + ", email=" + email + ", salary=" + salary + ", hireDate=" + hireDate + '}';
     }
