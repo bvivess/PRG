@@ -16,50 +16,52 @@ public class Main {
         Map<Integer, Employee> employees  = new HashMap<>();;
         Map<Boolean, Set<Employee>> empAntiguitat  = new HashMap<>();;
 
-        try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu)) ) {
-            
+        try {
             // Llegir el contingut línia a línia
-            LlegeixArxiu(bufferedReader, employees, empAntiguitat);
+            LlegeixArxiu(arxiu, employees, empAntiguitat);
             
             // Mostrar el map
             MostraEmployees(employees, empAntiguitat);
-
-        } catch (IOException e) {
-            System.err.println("Error llegint l'arxiu: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Error general llegint l'arxiu: " + e.getMessage());
         }
     }
     
-    private static void LlegeixArxiu(BufferedReader bufferedReader, Map<Integer,Employee> employees, Map<Boolean, Set<Employee>> empAntiguitat) throws IOException, Exception {
+    private static void LlegeixArxiu(String arxiu, Map<Integer,Employee> employees, Map<Boolean, Set<Employee>> empAntiguitat) throws IOException, Exception {
         String linea;
         String[] parts;
         Integer clau;
         Employee employee;
         
-        while ((linea = bufferedReader.readLine()) != null) {
-            try {
-                // format: xxxx; yyyy; zzzz; ...
-                if (!(linea.isEmpty() || linea.startsWith("#"))) {
-                    parts = linea.split(";");
-                    if (!linea.substring(0, 1).equals("#")) {
-                        employee = new Employee( Integer.valueOf(parts[0].trim()), 
-                                                 parts[1].trim(), 
-                                                 parts[2].trim(), 
-                                                 parts[3].trim(),
-                                                 Double.valueOf(parts[4].trim()),
-                                                 LocalDate.parse(parts[5].trim()) );
-                        // employees: id-Employee
-                        employees.put(Integer.valueOf(parts[0].trim()), employee);
-                        
-                        // empAntiguitat: teAntiguitat-Set()
-                        boolean teAntiguitat = Period.between(employee.getHireDate(), LocalDate.now()).getYears() >= 20;
-                        if (!empAntiguitat.containsKey(teAntiguitat))
-                            empAntiguitat.put(teAntiguitat, new HashSet<>());
-                        empAntiguitat.get(teAntiguitat).add(employee);
+        try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu)) ) {
+            while ((linea = bufferedReader.readLine()) != null) {
+                try {
+                    // format: xxxx; yyyy; zzzz; ...
+                    if (!(linea.isEmpty() || linea.startsWith("#"))) {
+                        parts = linea.split(";");
+                        if (!linea.substring(0, 1).equals("#")) {
+                            employee = new Employee( Integer.valueOf(parts[0].trim()), 
+                                                     parts[1].trim(), 
+                                                     parts[2].trim(), 
+                                                     parts[3].trim(),
+                                                     Double.valueOf(parts[4].trim()),
+                                                     LocalDate.parse(parts[5].trim()) );
+                            // employees: id-Employee
+                            employees.put(Integer.valueOf(parts[0].trim()), employee);
+
+                            // empAntiguitat: teAntiguitat-Set()
+                            boolean teAntiguitat = Period.between(employee.getHireDate(), LocalDate.now()).getYears() >= 20;
+                            if (!empAntiguitat.containsKey(teAntiguitat))
+                                empAntiguitat.put(teAntiguitat, new HashSet<>());
+                            empAntiguitat.get(teAntiguitat).add(employee);
+                        }
                     }
+                } catch (Exception e) {
+                    System.err.println("Error carregant Employee: " + e.getMessage());
                 }
-            } catch (Exception e) {
-                System.err.println("Error carregant Employee: " + e.getMessage());
             }
+        } catch (IOException e) {
+            System.err.println("Error llegint l'arxiu: " + e.getMessage());
         }
     }
 

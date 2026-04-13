@@ -9,15 +9,15 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws Exception {
+        // Estructures de memòria:
+        List<Department> departments = new ArrayList<>();
+        List<Employee> employees = new ArrayList<>();
+        
         // Arxius per a la càrrega de dades:
         String arxiu1 = "C:\\temp\\ACT11_2B_departments.csv";
         String arxiu2 = "C:\\temp\\ACT11_2B_employees.csv";
         
         try {
-            // Estructures de memòria:
-            List<Department> departments = new ArrayList<>();
-            List<Employee> employees = new ArrayList<>();
-
             // Llegir el contingut dels arxius línia a línia:
             LlegeixArxiuDepartments(arxiu1, departments);
             LlegeixArxiuEmployees(arxiu2, departments, employees);
@@ -26,23 +26,21 @@ public class Main {
             mostraDepartments(departments);
             mostraEmployees(employees);
         } catch (Exception e) {
-            System.err.println("Error GENERAL " + e.getMessage());
-        }      
+            System.err.println("Error general llegint l'arxiu: " + e.getMessage());
+        }     
     }
 
     private static void LlegeixArxiuDepartments(String arxiu, List<Department> departments) throws IOException, NumberFormatException, IllegalArgumentException {
-        String linea;
-        String[] parts;
+        String linia;
         Department department;
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu)) ) {       
-            while ((linea = bufferedReader.readLine()) != null) {
+            while ((linia = bufferedReader.readLine()) != null) {
                 try {
-                    // format: xxxx; yyyy 
-                    if (!(linea.isEmpty() || linea.startsWith("#"))) {
-                        parts = linea.split(";", 2);
-
-                        department = new Department( Integer.parseInt(parts[0].trim()),  // departmentId
-                                                     parts[1].trim() );                  // departmentName
+                    // format: xxxx xxxxxxxxxxxxxxxxxxxxxxx
+                    //         1    6
+                    if (!(linia.isEmpty() || linia.startsWith("#"))) {
+                        department = new Department( Integer.parseInt(linia.substring(0,4).trim()),  // departmentId
+                                                     linia.substring(5,linia.length()).trim());      // departmentName
                         departments.add(department);
 
                     }
