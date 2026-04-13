@@ -10,12 +10,25 @@ public class Product implements Comparable<Product> {
         setProductName(productName);
         setNumWarehouses(numWarehouses);
     }
+    
+    private void validateString(String value, String fieldName) {
+        if (value == null || value.trim().isEmpty()) {
+            throw new IllegalArgumentException(fieldName + " no pot ser null ni buit");
+        }
+    }
+
+    private void validateNonNegative(int value, String fieldName) {
+        if (value < 0) {
+            throw new IllegalArgumentException(fieldName + " no pot ser negatiu");
+        }
+    }
 
     public int getProductId() {
         return productId;
     }
-
+    
     public void setProductId(int productId) {
+        validateNonNegative(productId, "producteId");
         this.productId = productId;
     }
 
@@ -35,10 +48,8 @@ public class Product implements Comparable<Product> {
     }
 
     public void setNumWarehouses(int numWarehouses) {
-        if (numWarehouses < 0)
-            throw new IllegalArgumentException("numWarehouses no pot ser negatiu");
-        else
-            this.numWarehouses = numWarehouses;
+        validateNonNegative(numWarehouses, "numWarehouses");
+        this.numWarehouses = numWarehouses;
     }
 
     @Override

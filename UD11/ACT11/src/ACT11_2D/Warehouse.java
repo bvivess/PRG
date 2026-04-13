@@ -6,9 +6,9 @@ public class Warehouse implements Comparable<Warehouse> {
     private int numProducts;
 
     public Warehouse(int warehouseId, String warehouseName, int numProducts) {
-        this.warehouseId = warehouseId;
-        this.warehouseName = warehouseName;
-        this.numProducts = numProducts;
+        setWarehouseId(warehouseId);
+        setWarehouseName(warehouseName);
+        setNumProducts(numProducts);
     }
 
     @Override
@@ -36,12 +36,25 @@ public class Warehouse implements Comparable<Warehouse> {
     public int compareTo(Warehouse o) {
         return this.warehouseName.compareTo(o.warehouseName); // Ordenar per Name
     }
+    
+    private void validateString(String value, String fieldName) {
+        if (value == null || value.trim().isEmpty()) {
+            throw new IllegalArgumentException(fieldName + " no pot ser null ni buit");
+        }
+    }
+
+    private void validateNonNegative(int value, String fieldName) {
+        if (value < 0) {
+            throw new IllegalArgumentException(fieldName + " no pot ser negatiu");
+        }
+    }
 
     public int getWarehouseId() {
         return warehouseId;
     }
 
     public void setWarehouseId(int warehouseId) {
+        validateNonNegative(warehouseId, "warehouseId");
         this.warehouseId = warehouseId;
     }
 
@@ -50,6 +63,7 @@ public class Warehouse implements Comparable<Warehouse> {
     }
 
     public void setWarehouseName(String warehouseName) {
+        validateString(warehouseName, "warehouseName");
         this.warehouseName = warehouseName;
     }
 
@@ -58,6 +72,7 @@ public class Warehouse implements Comparable<Warehouse> {
     }
 
     public void setNumProducts(int numProducts) {
+        validateNonNegative(numProducts, "numProducts");
         this.numProducts = numProducts;
     }
 
