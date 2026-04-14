@@ -40,11 +40,11 @@ public class Main {
                     if (!(linea.isEmpty() || linea.startsWith("#"))) {
                         parts = linea.split(";");
                         if (!linea.substring(0, 1).equals("#")) {
-                            employee = new Employee( Integer.valueOf(parts[0].trim()), 
+                            employee = new Employee( Integer.parseInt(parts[0].trim()),  // millor que: Integer.valueOf(parts[0].trim())
                                                      parts[1].trim(), 
                                                      parts[2].trim(), 
                                                      parts[3].trim(),
-                                                     Double.valueOf(parts[4].trim()),
+                                                     Double.parseDouble(parts[4].trim()),  // millor que: Integer.valueOf(parts[0].trim())
                                                      LocalDate.parse(parts[5].trim()) );
                             // employees: id-Employee
                             employees.put(Integer.valueOf(parts[0].trim()), employee);

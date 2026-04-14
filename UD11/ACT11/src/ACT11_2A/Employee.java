@@ -2,10 +2,6 @@ package ACT11_2A;
 
 import java.time.LocalDate;
 
-/**
- *
- * @author Administrador
- */
 public class Employee {
     private int id;
     private String lastName;

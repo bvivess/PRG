@@ -27,7 +27,7 @@ public class Department implements Comparable<Department> {
 
     public void setDepartmentName(String departmentName) throws IllegalArgumentException {
         if (departmentName == null)
-            throw new IllegalArgumentException ("Department name incorrecte");
+            throw new IllegalArgumentException ("Department incorrecte");
         else
             this.departmentName = departmentName;
     }
