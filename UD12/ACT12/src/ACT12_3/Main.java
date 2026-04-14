@@ -72,7 +72,6 @@ public class Main {
                     Meteorit m = new Meteorit(_id, _nom, _massa, _data, _latitude, _longitude);
 
                     meteorits.add(m);
-
                     meteoritsPerAny
                             .computeIfAbsent(_any, k -> new ArrayList<>())
                             .add(m);
