@@ -17,27 +17,36 @@ public class Main {
 
             // 1. > 1000g
             System.out.println("METEORITS > 1kg:");
-            meteorits.stream()
-                    .filter(m -> m.getMass() > 1000)
-                    .forEach(System.out::println);
+            for (Meteorit m : meteorits) {
+                if (m.getMass() > 1000) {
+                    System.out.println(m);
+                }
+            }
 
             // 2. per any
-            System.out.println("\nCOUNT PER YEAR:");
-            meteoritsPerAny.forEach((year, list) ->
-                    System.out.println(year + " -> " + list.size()));
+            System.out.println("\nTOTAL PER ANY:");
+            for (Map.Entry<Integer, List<Meteorit>> entry : meteoritsPerAny.entrySet()) {
+                Integer year = entry.getKey();
+                List<Meteorit> list = entry.getValue();
+                System.out.println(year + " -> " + list.size());
+            }
 
-            // 3. mÃ©s pesat
-            Meteorit max = meteorits.stream()
-                    .max(Comparator.comparingDouble(Meteorit::getMass))
-                    .orElse(null);
-
-            System.out.println("\nMÃ‰S PESAT: " + max);
+            // 3. més pesat
+            Meteorit max = null;
+            for (Meteorit m : meteorits) {
+                if (max == null || m.getMass() > max.getMass()) {
+                    max = m;
+                }
+            }
+            System.out.println("\nMÉS PESAT: " + max);
 
             // 4. ordenats per nom
             System.out.println("\nORDENATS:");
-            meteorits.stream()
-                    .sorted()
-                    .forEach(System.out::println);
+            List<Meteorit> llistaOrdenada = new ArrayList<>(meteorits);
+            Collections.sort(llistaOrdenada); // requereix Comparable
+            for (Meteorit m : llistaOrdenada) {
+                System.out.println(m);
+            }
         } catch (Exception e) {
             System.err.println("Error GENERAL " + e.getMessage());
         }
@@ -71,12 +80,12 @@ public class Main {
                     // Afegir al Set
                     meteorits.add(m);
 
-                    // Substitució de computeIfAbsent
+                    // Afegeix al Map
                     if (!meteoritsPerAny.containsKey(_any)) {
                         meteoritsPerAny.put(_any, new ArrayList<Meteorit>());
                     }
-
                     meteoritsPerAny.get(_any).add(m);
+                    
                 } catch (NumberFormatException e) {
                     bufferedWriter.write("Error carregant Línia " + numLinia + ": " + e.getMessage());
                     bufferedWriter.newLine();
