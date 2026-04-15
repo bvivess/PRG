@@ -26,7 +26,7 @@ public class Main {
             // 2. per any
             System.out.println("\nTOTAL PER ANY:");
             for (Map.Entry<Integer, List<Meteorit>> entry : meteoritsPerAny.entrySet())
-                System.out.println( entry.getKey() + " -> " + entry.getValue().size());
+                System.out.println( "Any: " + entry.getKey() + " -> Total: " + entry.getValue().size());
 
             // 3. més pesat
             Meteorit max = null;
@@ -41,9 +41,11 @@ public class Main {
             System.out.println("\nORDENATS:");
             List<Meteorit> llistaOrdenada = new ArrayList<>(meteorits);
             Collections.sort(llistaOrdenada); // requereix Comparable
+            System.out.println(llistaOrdenada);
+            /*
             for (Meteorit m : llistaOrdenada) {
                 System.out.println(m);
-            }
+            }*/
         } catch (Exception e) {
             System.err.println("Error GENERAL " + e.getMessage());
         }
