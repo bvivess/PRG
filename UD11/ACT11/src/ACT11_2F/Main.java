@@ -40,12 +40,13 @@ public class Main {
             // 4. ordenats per nom
             System.out.println("\nORDENATS:");
             List<Meteorit> llistaOrdenada = new ArrayList<>(meteorits);
-            Collections.sort(llistaOrdenada); // requereix Comparable
+            Collections.sort(llistaOrdenada); 
             System.out.println(llistaOrdenada);
             /*
             for (Meteorit m : llistaOrdenada) {
                 System.out.println(m);
             }*/
+            llistaOrdenada = null;
         } catch (Exception e) {
             System.err.println("Error GENERAL " + e.getMessage());
         }
