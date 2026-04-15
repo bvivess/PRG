@@ -28,23 +28,26 @@ public class Main {
     }
     
     private static void LlegeixArxiu(String arxiu, Map<Integer,Employee> employees, Map<Boolean, Set<Employee>> empAntiguitat) throws IOException, Exception {
-        String linea;
+        String linia;
+        int numLinia = 0;
         String[] parts;
         Integer clau;
         Employee employee;
         
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu)) ) {
-            while ((linea = bufferedReader.readLine()) != null) {
+            while ((linia = bufferedReader.readLine()) != null) {
                 try {
                     // format: xxxx; yyyy; zzzz; ...
-                    if (!(linea.isEmpty() || linea.startsWith("#"))) {
-                        parts = linea.split(";");
-                        if (!linea.substring(0, 1).equals("#")) {
-                            employee = new Employee( Integer.parseInt(parts[0].trim()),  // millor que: Integer.valueOf(parts[0].trim())
+                    numLinia++;
+                    
+                    if (!(linia.isEmpty() || linia.startsWith("#"))) {
+                        parts = linia.split(";");
+                        if (!linia.substring(0, 1).equals("#")) {
+                            employee = new Employee( Integer.parseInt(parts[0].trim()),  // millor que: "Integer.valueOf(parts[0].trim())"
                                                      parts[1].trim(), 
                                                      parts[2].trim(), 
                                                      parts[3].trim(),
-                                                     Double.parseDouble(parts[4].trim()),  // millor que: Integer.valueOf(parts[0].trim())
+                                                     Double.parseDouble(parts[4].trim()),  // millor que: "Integer.valueOf(parts[0].trim())"
                                                      LocalDate.parse(parts[5].trim()) );
                             // employees: id-Employee
                             employees.put(Integer.valueOf(parts[0].trim()), employee);
@@ -56,8 +59,12 @@ public class Main {
                             empAntiguitat.get(teAntiguitat).add(employee);
                         }
                     }
+                } catch (NumberFormatException e) {
+                    System.err.println("Error carregant Employee: " + numLinia + ": " + e.getMessage());
+                } catch (IllegalArgumentException e) {
+                    System.err.println("Error carregant Employee: " + numLinia + ": " + e.getMessage());
                 } catch (Exception e) {
-                    System.err.println("Error carregant Employee: " + e.getMessage());
+                    System.err.println("Error carregant Employee: " + numLinia + ": " + e.getMessage());
                 }
             }
         } catch (IOException e) {

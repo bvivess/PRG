@@ -21,7 +21,7 @@ public class Main {
         
         try {
             // Llegir el contingut dels arxius línia a línia:
-            CarregaArxiu(arxiu, arxiuLog, products, warehouses);
+            llegeixArxiu(arxiu, arxiuLog, products, warehouses);
 
             // Mostrar les estructures de memòria:
             System.out.println("PRODUCTS");
@@ -34,27 +34,27 @@ public class Main {
         }
     }
 
-    private static void CarregaArxiu(String arxiu, String arxiuLog,  List<Product> products, List<Warehouse> warehouses) throws IOException, NumberFormatException, IllegalArgumentException {
-        String linea;
-        int numLinea = 0;
+    private static void llegeixArxiu(String arxiu, String arxiuLog,  List<Product> products, List<Warehouse> warehouses) throws IOException, NumberFormatException, IllegalArgumentException {
+        String linia;
+        int numLinia = 0;
         int _productId, _warehouseId, _quantity;
         String _productName, _warehouseName;
         //String[] parts;
         
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu));
               BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(arxiuLog)) ) {       
-            while ((linea = bufferedReader.readLine()) != null) {
+            while ((linia = bufferedReader.readLine()) != null) {
                 try {
                     // format: XXXXXXX XXXXXXXXXXXXXXXXXXXXXXX XXXX XXXXXXXXXXXXXXXXXXXXXXX XXXXXXX
                     //         1       9                       33   38                      62
-                    numLinea = numLinea + 1 ;
+                    numLinia++;
                     
-                    if (!(linea.isEmpty() || linea.startsWith("#"))) {
-                        _productId = Integer.parseInt(linea.substring(0, 8).trim());
-                        _productName = linea.substring(8,32).trim();
-                        _warehouseId = Integer.parseInt(linea.substring(32, 37).trim());
-                        _warehouseName = linea.substring(37, 61).trim();
-                        _quantity = Integer.parseInt(linea.substring(61, linea.length()).trim());
+                    if (!(linia.isEmpty() || linia.startsWith("#"))) {
+                        _productId = Integer.parseInt(linia.substring(0, 8).trim());
+                        _productName = linia.substring(8,32).trim();
+                        _warehouseId = Integer.parseInt(linia.substring(32, 37).trim());
+                        _warehouseName = linia.substring(37, 61).trim();
+                        _quantity = Integer.parseInt(linia.substring(61, linia.length()).trim());
                         
                         // Products
                         carregaProducts(_productId, _productName, products );
@@ -64,10 +64,13 @@ public class Main {
                         
                     }
                 } catch (NumberFormatException e) {
-                    bufferedWriter.write("Error carregant Línia " + numLinea + ": " + e.getMessage());
+                    bufferedWriter.write("Error carregant Línia" + numLinia + ": " + e.getMessage());
                     bufferedWriter.newLine();
                 } catch (IllegalArgumentException e) {
-                    bufferedWriter.write("Error carregant Línia " + numLinea + ": " + e.getMessage());
+                    bufferedWriter.write("Error carregant Línia" + numLinia + ": " + e.getMessage());
+                    bufferedWriter.newLine();
+                } catch (Exception e) {
+                    bufferedWriter.write("Error carregant Línia" + numLinia + ": " + e.getMessage());
                     bufferedWriter.newLine();
                 }
             }

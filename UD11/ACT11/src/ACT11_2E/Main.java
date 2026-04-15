@@ -26,7 +26,7 @@ public class Main {
         
         try {
             // Llegir el contingut dels arxius línia a línia:
-            LlegeixArxiu(arxiu, arxiuLog, orders, articles);
+            llegeixArxiu(arxiu, arxiuLog, orders, articles);
 
             // Mostrar les estructures de memòria:
             System.out.println("ARTICLES");
@@ -41,9 +41,9 @@ public class Main {
         }
     }
 
-    private static void LlegeixArxiu(String arxiu, String arxiuLog, Map<Integer, Order> orders, Set<Article> articles) throws IOException, NumberFormatException, IllegalArgumentException {
-        String linea;
-        int numLinea = 0;
+    private static void llegeixArxiu(String arxiu, String arxiuLog, Map<Integer, Order> orders, Set<Article> articles) throws IOException, NumberFormatException, IllegalArgumentException {
+        String linia;
+        int numLinia = 0;
         String[] parts;
         int  _orderId, _articleId, _articlePrice;
         String _articleName;
@@ -53,13 +53,13 @@ public class Main {
         
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu));
               BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(arxiuLog)) ) {       
-            while ((linea = bufferedReader.readLine()) != null) {
+            while ((linia = bufferedReader.readLine()) != null) {
                 try {
-                    numLinea = numLinea + 1 ;
-                    
                     // format: xxx\Txxx\Ttxxx\Txxx
-                    if (!(linea.isEmpty() || linea.startsWith("#"))) {
-                        parts = linea.split("\t", 5);
+                    numLinia = numLinia + 1 ;
+                    
+                    if (!(linia.isEmpty() || linia.startsWith("#"))) {
+                        parts = linia.split("\t", 5);
                         _orderId = Integer.parseInt(parts[0].trim());
                         _articleId = Integer.parseInt(parts[2].trim());
                         _articleName = parts[3].trim();
@@ -78,13 +78,13 @@ public class Main {
                         carregaOrders(articles, orders, _orderId, _orderDate, _articleId );
                     }
                 } catch (NumberFormatException e) {
-                    bufferedWriter.write("Error carregant Línia " + numLinea + ": " + e.getMessage());
+                    bufferedWriter.write("Error carregant Línia" + numLinia + ": " + e.getMessage());
                     bufferedWriter.newLine();
                 } catch (IllegalArgumentException e) {
-                    bufferedWriter.write("Error carregant Línia " + numLinea + ": " + e.getMessage());
+                    bufferedWriter.write("Error carregant Línia" + numLinia + ": " + e.getMessage());
                     bufferedWriter.newLine();
                 } catch (Exception e) {
-                    bufferedWriter.write("Error carregant Línia " + numLinea + ": " + e.getMessage());
+                    bufferedWriter.write("Error carregant Línia" + numLinia + ": " + e.getMessage());
                     bufferedWriter.newLine();   
                 }
             }
@@ -111,7 +111,7 @@ public class Main {
 
     }
     
-    private static Article cercaArticle(Set<Article> articles, int articleId) {
+    private static Article cercaArticle(Set<Article> articles, int articleId) {  // en Set
         for (Article a : articles) 
             if (a.getProductId() == articleId)
                 return a;

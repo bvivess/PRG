@@ -46,6 +46,10 @@ public class Main {
                     }
                 } catch (NumberFormatException e) {
                     System.err.println("Error carregant Department: " + e.getMessage());
+                } catch (IllegalArgumentException e) {
+                    System.err.println("Error carregant Department: " + e.getMessage());
+                } catch (Exception e) {
+                    System.err.println("Error carregant Department: " + e.getMessage());
                 }
             }
         } catch (IOException e) {
@@ -54,17 +58,18 @@ public class Main {
     }
     
     private static void LlegeixArxiuEmployees(String arxiu, List<Department> departments, List<Employee> employees) throws IOException, NumberFormatException, IllegalArgumentException {
-        String linea;
+        String linia;
+        int numLinia = 0;
         String[] parts;
         Department department;
         Employee employee;
 
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu)) ) {   
-            while ((linea = bufferedReader.readLine()) != null) {
+            while ((linia = bufferedReader.readLine()) != null) {
                 try {
                     // format: wwww; xxxx; yyyy; zzzz
-                    if (!(linea.isEmpty() || linea.startsWith("#"))) {
-                        parts = linea.split(";", 5);
+                    if (!(linia.isEmpty() || linia.startsWith("#"))) {
+                        parts = linia.split(";", 5);
                         department = cercaDepartment(departments, Integer.parseInt(parts[4].trim()));  // cerca 'department' en l'arraylist 'departments'
                         
                         employee = new Employee( Integer.parseInt(parts[0].trim()),    // employeeId
@@ -75,7 +80,11 @@ public class Main {
                         employees.add(employee);
                     }
                 } catch (NumberFormatException e) {
-                    System.err.println("Error carregant Employee: " + e.getMessage());
+                    System.err.println("Error carregant Employee: " + numLinia + ": " + e.getMessage());
+                } catch (IllegalArgumentException e) {
+                    System.err.println("Error carregant Employee: " + numLinia + ": " + e.getMessage());
+                } catch (Exception e) {
+                    System.err.println("Error carregant Employee: " + numLinia + ": " + e.getMessage());
                 }
             }
         } catch (IOException e) {
