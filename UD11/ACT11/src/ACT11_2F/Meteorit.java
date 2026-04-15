@@ -62,7 +62,7 @@ public class Meteorit implements Comparable<Meteorit> {
         if (type.equals("Valid") || type.equals("Relict")) 
             this.type = type;
         else
-         throw new IllegalArgumentException("Type fora de rang");
+            throw new IllegalArgumentException("Type fora de rang");
     }
 
     public void setMass(double mass) {
@@ -75,7 +75,7 @@ public class Meteorit implements Comparable<Meteorit> {
         if (fall.equals("Fell") || fall.equals("Found")) 
             this.fall = fall;
         else
-         throw new IllegalArgumentException("Fall fora de rang");
+            throw new IllegalArgumentException("Fall fora de rang");
     }
 
     public void setYear(LocalDate year) {
@@ -97,6 +97,7 @@ public class Meteorit implements Comparable<Meteorit> {
     public String getName() { return name; }
     public String getType() { return type; }
     public double getMass() { return mass; }
+    public String getFall() { return fall; }
     public LocalDate getYear() { return year; }
     public double getLatitude() { return latitude; }
     public double getLongitude() { return longitude; }
