@@ -56,9 +56,7 @@ public class Main {
         }
     }
 
-    public static void llegeixArxiu(String arxiu, String arxiuLog,
-        Set<Meteorit> meteorits,
-        Map<Integer, List<Meteorit>> meteoritsPerAny) throws IOException {
+    public static void llegeixArxiu(String arxiu, String arxiuLog, Set<Meteorit> meteorits, Map<Integer, List<Meteorit>> meteoritsPerAny) throws IOException {
 
         String linia;
         int numLinia = 0;
@@ -73,13 +71,15 @@ public class Main {
 
                     int _id = Integer.parseInt(parts[1].trim());
                     String _nom = parts[0].trim();
+                    String _type = parts[2].trim();
                     double _massa = parts[4].isEmpty() ? 0 : Double.parseDouble(parts[4].trim());
+                    String _fell = parts[5].trim();
                     int _any = parts[6].isEmpty() ? 0 : Integer.parseInt(parts[6].trim());
                     LocalDate _data = (_any == 0) ? null : LocalDate.of(_any, 1, 1);
                     double _latitude = parts[7].isEmpty() ? 0 : Double.parseDouble(parts[7].trim());
                     double _longitude = parts[8].isEmpty() ? 0 : Double.parseDouble(parts[8].trim());
 
-                    Meteorit m = new Meteorit(_id, _nom, _massa, _data, _latitude, _longitude);
+                    Meteorit m = new Meteorit(_id, _nom, _type, _massa, _fell, _data, _latitude, _longitude);
 
                     // Afegir al Set
                     meteorits.add(m);
