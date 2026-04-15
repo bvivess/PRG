@@ -25,11 +25,8 @@ public class Main {
 
             // 2. per any
             System.out.println("\nTOTAL PER ANY:");
-            for (Map.Entry<Integer, List<Meteorit>> entry : meteoritsPerAny.entrySet()) {
-                Integer year = entry.getKey();
-                List<Meteorit> list = entry.getValue();
-                System.out.println(year + " -> " + list.size());
-            }
+            for (Map.Entry<Integer, List<Meteorit>> entry : meteoritsPerAny.entrySet())
+                System.out.println( entry.getKey() + " -> " + entry.getValue().size());
 
             // 3. més pesat
             Meteorit max = null;
