@@ -93,14 +93,14 @@ public class Meteorit implements Comparable<Meteorit> {
         this.longitude = lon;
     }
 
-    public int getId() { return id; }
-    public String getName() { return name; }
-    public String getType() { return type; }
-    public double getMass() { return mass; }
-    public String getFall() { return fall; }
-    public LocalDate getYear() { return year; }
-    public double getLatitude() { return latitude; }
-    public double getLongitude() { return longitude; }
+    public int getId() { return this.id; }
+    public String getName() { return this.name; }
+    public String getType() { return this.type; }
+    public double getMass() { return this.mass; }
+    public String getFall() { return this.fall; }
+    public LocalDate getYear() { return this.year; }
+    public double getLatitude() { return this.latitude; }
+    public double getLongitude() { return this.longitude; }
 
     @Override
     public int compareTo(Meteorit o) {
