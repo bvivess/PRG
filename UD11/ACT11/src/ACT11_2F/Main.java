@@ -43,25 +43,19 @@ public class Main {
         }
     }
 
-    public static void llegeixArxiu(String arxiu,
-                                    String arxiuLog,
-                                    Set<Meteorit> meteorits,
-                                    Map<Integer, List<Meteorit>> meteoritsPerAny)
-            throws IOException {
+    public static void llegeixArxiu(String arxiu, String arxiuLog,
+        Set<Meteorit> meteorits,
+        Map<Integer, List<Meteorit>> meteoritsPerAny) throws IOException {
+
+        String linia;
+        int numLinia = 0;
 
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu));
-              BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(arxiuLog)) ) { 
-
-            String linia;
-            int numLinia = 0;
-            bufferedReader.readLine(); // header
-
+              BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(arxiuLog)) ) {   
             while ((linia = bufferedReader.readLine()) != null) {
-
                 try {
-                    // Format: xxx,xxx,xxx ...
-                    numLinia = numLinia + 1 ;
-                    
+                    numLinia++;
+
                     String[] parts = linia.split(",");
 
                     int _id = Integer.parseInt(parts[1].trim());
@@ -74,22 +68,27 @@ public class Main {
 
                     Meteorit m = new Meteorit(_id, _nom, _massa, _data, _latitude, _longitude);
 
+                    // Afegir al Set
                     meteorits.add(m);
-                    meteoritsPerAny
-                            .computeIfAbsent(_any, k -> new ArrayList<>())
-                            .add(m);
 
+                    // Substitució de computeIfAbsent
+                    if (!meteoritsPerAny.containsKey(_any)) {
+                        meteoritsPerAny.put(_any, new ArrayList<Meteorit>());
+                    }
+
+                    meteoritsPerAny.get(_any).add(m);
                 } catch (NumberFormatException e) {
-                    bufferedWriter.write("Error carregant Línia" + numLinia + ": " + e.getMessage());
+                    bufferedWriter.write("Error carregant Línia " + numLinia + ": " + e.getMessage());
                     bufferedWriter.newLine();
                 } catch (IllegalArgumentException e) {
-                    bufferedWriter.write("Error carregant Línia" + numLinia + ": " + e.getMessage());
+                    bufferedWriter.write("Error carregant Línia " + numLinia + ": " + e.getMessage());
                     bufferedWriter.newLine();
                 } catch (Exception e) {
-                    bufferedWriter.write("Error carregant Línia" + numLinia + ": " + e.getMessage());
-                    bufferedWriter.newLine();   
+                    bufferedWriter.write("Error carregant Línia " + numLinia + ": " + e.getMessage());
+                    bufferedWriter.newLine();
                 }
             }
+
         }
     }
 }
