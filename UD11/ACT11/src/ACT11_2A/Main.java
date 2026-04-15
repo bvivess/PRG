@@ -18,7 +18,7 @@ public class Main {
 
         try {
             // Llegir el contingut línia a línia
-            LlegeixArxiu(arxiu, employees, empAntiguitat);
+            llegeixArxiu(arxiu, employees, empAntiguitat);
             
             // Mostrar el map
             MostraEmployees(employees, empAntiguitat);
@@ -27,7 +27,7 @@ public class Main {
         }
     }
     
-    private static void LlegeixArxiu(String arxiu, Map<Integer,Employee> employees, Map<Boolean, Set<Employee>> empAntiguitat) throws IOException, Exception {
+    private static void llegeixArxiu(String arxiu, Map<Integer,Employee> employees, Map<Boolean, Set<Employee>> empAntiguitat) throws IOException, Exception {
         String linia;
         int numLinia = 0;
         String[] parts;
