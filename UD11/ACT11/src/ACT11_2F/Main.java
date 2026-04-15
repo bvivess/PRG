@@ -23,19 +23,23 @@ public class Main {
                 }
             }
 
-            // 2. per any
+            // 2. per any, ordenat
             System.out.println("\nTOTAL PER ANY:");
-            for (Map.Entry<Integer, List<Meteorit>> entry : meteoritsPerAny.entrySet())
-                System.out.println( "Any: " + entry.getKey() + " -> Total: " + entry.getValue().size());
+            List<Integer> anys = new ArrayList<>(meteoritsPerAny.keySet());
+            Collections.sort(anys);
+            for (Integer any : anys) {
+                List<Meteorit> llista = meteoritsPerAny.get(any);
+                System.out.println("Any: " + any + " -> Total: " + llista.size());
+            }
 
             // 3. més pesat
-            Meteorit max = null;
+            Meteorit mMax = null;
             for (Meteorit m : meteorits) {
-                if (max == null || m.getMass() > max.getMass()) {
-                    max = m;
+                if (mMax == null || m.getMass() > mMax.getMass()) {
+                    mMax = m;
                 }
             }
-            System.out.println("\nMÉS PESAT: " + max);
+            System.out.println("\nMÉS PESAT: " + mMax);
 
             // 4. ordenats per nom
             System.out.println("\nORDENATS:");
