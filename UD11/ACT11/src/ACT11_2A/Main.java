@@ -12,16 +12,16 @@ import java.util.Set;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        String arxiu = "C:\\temp\\ACT11_2A.cvs";
-        Map<Integer, Employee> employees  = new HashMap<>();;
-        Map<Boolean, Set<Employee>> empAntiguitat  = new HashMap<>();;
+        String arxiu = "C:\\temp\\ACT11_2A.csv";
+        Map<Integer, Employee> employees  = new HashMap<>();
+        Map<Boolean, Set<Employee>> empAntiguitat  = new HashMap<>();
 
         try {
             // Llegir el contingut línia a línia
             llegeixArxiu(arxiu, employees, empAntiguitat);
             
             // Mostrar el map
-            MostraEmployees(employees, empAntiguitat);
+            mostraEmployees(employees, empAntiguitat);
         } catch (Exception e) {
             System.err.println("Error general llegint l'arxiu: " + e.getMessage());
         }
@@ -72,7 +72,7 @@ public class Main {
         }
     }
 
-    private static void MostraEmployees(Map<Integer,Employee> employees, Map<Boolean, Set<Employee>> empAntiguitat) {
+    private static void mostraEmployees(Map<Integer,Employee> employees, Map<Boolean, Set<Employee>> empAntiguitat) {
         // employees: id-Employee
         for (Map.Entry<Integer,Employee> entry : employees.entrySet()) {
             System.out.println(entry.getKey() + " = " + entry.getValue());
