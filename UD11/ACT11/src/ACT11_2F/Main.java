@@ -18,8 +18,7 @@ public class Main {
             // 1. > 1000g
             System.out.println("METEORITS > 1kg:");
             for (Meteorit m : meteorits) {
-                if (//m.getType().equals("Valid") && 
-                        m.getMass() > 1000) {
+                if (m.getType().equals("Valid") && m.getMass() > 1000) {
                     System.out.println(m);
                 }
             }

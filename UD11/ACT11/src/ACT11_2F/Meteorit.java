@@ -15,7 +15,7 @@ public class Meteorit implements Comparable<Meteorit> {
     public Meteorit(int id, String name, String type, double mass, String fall, LocalDate year, double latitude, double longitude) {
         setId(id);
         setName(name);
-        setName(type);
+        setType(type);
         setMass(mass);
         setFall(fall);
         setYear(year);
