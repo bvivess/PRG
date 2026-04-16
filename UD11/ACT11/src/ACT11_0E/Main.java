@@ -16,9 +16,9 @@ public class Main {
         String sql = "SELECT employee_id, last_name, first_name FROM employees";
 
         // Establir la connexió
-        try ( Connection connexio = DriverManager.getConnection(servidor+bdades, usuari, passwd);
-              Statement statement = connexio.createStatement();
-              ResultSet resultSet = statement.executeQuery(sql) ) {
+        try ( Connection connexio = DriverManager.getConnection(servidor+bdades, usuari, passwd);  // Estableix la connexió amb la base de dades
+              Statement statement = connexio.createStatement();  // Crea un objecte per executar una instrucció SQL
+              ResultSet resultSet = statement.executeQuery(sql) ) {  // Executa una consulta (SELECT) i retorna els resultats
 
             System.out.println("Connexió amb la base de dades MySQL exitosa.");
             
