@@ -13,8 +13,8 @@ public class Main2 {
         String bdades = "gbd";
         String usuari = "root";
         String passwd = "";
-        int departmentId = 80;
-        String sql = "SELECT employee_id, last_name, first_name FROM employees WHERE department_id=" + departmentId;
+        String lastName = "King";
+        String sql = "SELECT employee_id, last_name, first_name FROM employees WHERE last_name LIKE '%" + lastName + "%'";
 
         // Establir la connexió
         try ( Connection connexio = DriverManager.getConnection(servidor+bdades, usuari, passwd);

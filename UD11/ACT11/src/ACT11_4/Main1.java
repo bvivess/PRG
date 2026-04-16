@@ -16,7 +16,9 @@ public class Main1 {
         String usuari = "root";
         String passwd = "";
         String sql = """
-                     SELECT department_id, department_name FROM departments WHERE department_id = ?
+                     SELECT department_id, department_name 
+                     FROM departments 
+                     WHERE department_id = ?
                      """;
       
         // Establir la connexió

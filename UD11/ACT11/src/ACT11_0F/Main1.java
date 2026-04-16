@@ -13,14 +13,14 @@ public class Main1 {
         String bdades = "gbd";
         String usuari = "root";
         String passwd = "";
-        String sql = "SELECT employee_id, last_name, first_name FROM employees WHERE department_id = ?";
+        String sql = "SELECT employee_id, last_name, first_name FROM employees WHERE last_name = ?";
 
         try ( Connection connexio = DriverManager.getConnection(servidor+bdades, usuari, passwd);
               PreparedStatement stmt = connexio.prepareStatement(sql) ) {
 
             // Assignem un valor al paràmetre de la sentència SQL
-            int departmentId = 80; // Exemple: departament amb ID 10
-            stmt.setInt(1, departmentId);
+            String lastName = "King";  // Exemple
+            stmt.setString(1, lastName);
 
             // Executem la consulta parametritzada
             try (ResultSet resultSet = stmt.executeQuery()) {
