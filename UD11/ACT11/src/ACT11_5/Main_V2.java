@@ -75,7 +75,7 @@ public class Main_V2 {
                 String departmentName = parts[1];
                 int managerId = Integer.parseInt(parts[2]);
                 int locationId = Integer.parseInt(parts[3]);
-                Employee employee = new Employee(managerId, "S/D", "S/D", "IT_PROG");
+                Employee employee = new Employee(managerId, "S/D", "S/D", "IT_PROG");  // "S/D"-> "Sense Descripció"
                 Location location = new Location(locationId, "S/D");
                 Department department = new Department(departmentId, departmentName, managerId, locationId);
 
