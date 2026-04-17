@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Main1 {
+public class Main_V1 {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         // Establir la connexió
         try ( Connection connexio = getConnectionFromFile("c:\\temp\\mysql.con")  ) {  // Establir connexió

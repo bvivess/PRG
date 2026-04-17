@@ -1,5 +1,6 @@
 package ACT11_5;
 
+import ACT11_5.Classes.*;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -12,7 +13,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Main2 {
+public class Main_V2 {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         // Establir la connexió
         try ( Connection connexio = getConnectionFromFile("c:\\temp\\mysql.con")  ) {
@@ -80,11 +81,11 @@ public class Main2 {
 
                 try {
                     // Comprovar integritat referencial amb 'employees'
-                    if (!SQLCheckPK(connexio, "employees", managerId))
+                    if (!SQLCheckPK(connexio, "employees", department.getManagerId()))
                         SQLInsert(connexio, "employees", employee);
                     
                     // Comprovar integritat referencial amb 'locations'
-                    if (!SQLCheckPK(connexio, "locations", locationId))
+                    if (!SQLCheckPK(connexio, "locations", department.getLocationId()))
                         SQLInsert(connexio, "locations", location);
                     
                     // Insertar la fila a 'departments'
