@@ -13,11 +13,11 @@ import java.sql.SQLException;
 public class Main1 {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         // Establir la connexió
-        try ( Connection connexio = getConnectionFromFile("c:\\temp\\mysql.con")  ) {
+        try ( Connection connexio = getConnectionFromFile("c:\\temp\\mysql.con")  ) {  // Establir connexió
             System.out.println("Connexió establerta.");
             
             connexio.setAutoCommit(false);
-            llegeixArxiuABBDD(connexio, "c:\\temp\\ACT11_5.csv");
+            llegeixArxiuABBDD(connexio, "c:\\temp\\ACT11_5.csv");  // llegir l'arxiu i insertar a BBDD
             
             System.out.println("Connexió tancada.");
         } catch (Exception e) {
