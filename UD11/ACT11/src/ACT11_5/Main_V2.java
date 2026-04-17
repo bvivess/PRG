@@ -11,18 +11,25 @@ import java.sql.ResultSet;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class Main_V2 {
     public static void main(String[] args) throws FileNotFoundException, IOException {
+        Set<Employee> employees = new HashSet<>();
+        Set<Location> locations = new HashSet<>();
+        Set<Department> departments = new HashSet<>();
         // Establir la connexió
         try ( Connection connexio = getConnectionFromFile("c:\\temp\\mysql.con")  ) {
             System.out.println("Connexió establerta.");
  
             connexio.setAutoCommit(false);
-            llegeixArxiuABBDD(connexio, "c:\\temp\\ACT11_5.txt");
+            llegeixArxiuABBDD(connexio, "c:\\temp\\ACT11_5.txt", employees, locations, departments);
             
-            System.out.println("Connexió tancada.");
+            System.out.println(employees);
+            System.out.println(locations);
+            System.out.println(departments);
         } catch (Exception e) {
             System.err.println("S'ha produït l'error general: " + e.getMessage());
         }
@@ -66,7 +73,10 @@ public class Main_V2 {
                                             valorsConnexio.get(ValorsConnexio.PASSWD));
     }
     
-    private static void llegeixArxiuABBDD(Connection connexio, String filename) throws SQLException, IOException {
+    private static void llegeixArxiuABBDD(Connection connexio, String filename,
+                                          Set<Employee> employees,
+                                          Set<Location> locations,
+                                          Set<Department> departments) throws SQLException, IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line = reader.readLine(); // Es descarta la primera línia
             while ((line = reader.readLine()) != null) {
@@ -75,10 +85,14 @@ public class Main_V2 {
                 String departmentName = parts[1];
                 int managerId = Integer.parseInt(parts[2]);
                 int locationId = Integer.parseInt(parts[3]);
+                // Objectes
                 Employee employee = new Employee(managerId, "S/D", "S/D", "IT_PROG");  // "S/D"-> "Sense Descripció"
                 Location location = new Location(locationId, "S/D");
                 Department department = new Department(departmentId, departmentName, managerId, locationId);
-
+                employees.add(employee);
+                locations.add(location);
+                departments.add(department);
+                
                 try {
                     // Comprovar integritat referencial amb 'employees'
                     if (!SQLCheckPK(connexio, "employees", department.getManagerId()))
