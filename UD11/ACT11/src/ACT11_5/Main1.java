@@ -61,16 +61,19 @@ public class Main1 {
     }
     
     private static void llegeixArxiuABBDD(Connection connexio, String filename) throws SQLException, IOException {
+        int numLinia = 0;
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line = reader.readLine();  // Es descarta la primera línia
             while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(";");
-                String _departmentId = parts[0];
-                String _departmentName = parts[1];
-                String _managerId = parts[2];
-                String _locationId = parts[3];
-
                 try {
+                    numLinia = numLinia + 1 ;
+                    
+                    String[] parts = line.split(";");
+                    String _departmentId = parts[0];
+                    String _departmentName = parts[1];
+                    String _managerId = parts[2];
+                    String _locationId = parts[3];
+                    
                     String sql="";
                     PreparedStatement statement;
                     ResultSet resultSet;
@@ -134,7 +137,11 @@ public class Main1 {
                     connexio.commit();
                 } catch (SQLException e) {
                     connexio.rollback();
-                    System.err.println("Error executant la instrucció SQL: " + e.getMessage());
+                    System.err.println("Error carregant Línia" + numLinia + ": " + e.getMessage());;
+                } catch (IllegalArgumentException e) {
+                    System.err.println("Error carregant Línia" + numLinia + ": " + e.getMessage());
+                } catch (Exception e) {
+                    System.err.println("Error carregant Línia" + numLinia + ": " + e.getMessage());   
                 }
             }
         } catch (IOException e) {
