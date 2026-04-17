@@ -122,9 +122,11 @@ public class Main2 {
 
         try {
             if (table.equals("employees")) {
-                sql = "INSERT INTO employees (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID) VALUES (?, ?, ?, ?)";
+                sql = """
+                      INSERT INTO employees (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID)
+                      VALUES (?, ?, ?, ?)
+                      """;
                 Employee e = (Employee) o;
-                
                 statement = connexio.prepareStatement(sql);
                 statement.setInt(1, e.getEmployeeId());
                 statement.setString(2, e.getFirstName());
@@ -132,17 +134,21 @@ public class Main2 {
                 statement.setString(4, e.getJobId());
                 statement.executeUpdate();
             } else if (table.equals("locations")) {
-                sql = "INSERT INTO locations (LOCATION_ID, CITY) VALUES (?,?)";
+                sql = """
+                      INSERT INTO locations (LOCATION_ID, CITY)
+                      VALUES (?,?)
+                      """;
                 Location l = (Location) o;
-                
                 statement = connexio.prepareStatement(sql);
                 statement.setInt(1, l.getLocationId());
                 statement.setString(2, l.getCity());
                 statement.executeUpdate();
             } else if (table.equals("departments")) {
-                sql = "INSERT INTO departments (DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID) VALUES (?, ?, ?, ?)";
+                sql = """
+                      INSERT INTO departments (DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID)
+                      VALUES (?, ?, ?, ?)
+                      """;
                 Department d = (Department) o;
-                
                 statement = connexio.prepareStatement(sql);
                 statement.setInt(1, d.getDepartmentId());
                 statement.setString(2, d.getDepartmentName());

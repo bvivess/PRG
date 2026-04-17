@@ -15,9 +15,9 @@ public class Main1 {
         // Establir la connexió
         try ( Connection connexio = getConnectionFromFile("c:\\temp\\mysql.con")  ) {
             System.out.println("Connexió establerta.");
- 
+            
             connexio.setAutoCommit(false);
-            llegeixArxiuABBDD(connexio, "c:\\temp\\ACT11_5.txt");
+            llegeixArxiuABBDD(connexio, "c:\\temp\\ACT11_5.csv");
             
             System.out.println("Connexió tancada.");
         } catch (Exception e) {
@@ -47,7 +47,7 @@ public class Main1 {
                         default -> System.err.println("Clau no vàlida: " + clau);
                     }
                 } catch (IndexOutOfBoundsException e) {
-                    // En cas de '#', l'split no fnciona
+                    // En cas de '#', l'split no funciona
                     // No fer res
                 }
             }
@@ -62,27 +62,75 @@ public class Main1 {
     
     private static void llegeixArxiuABBDD(Connection connexio, String filename) throws SQLException, IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
-            String line = reader.readLine(); // Es descarta la primera línia
+            String line = reader.readLine();  // Es descarta la primera línia
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(";");
-                String departmentId = parts[0];
-                String departmentName = parts[1];
-                String managerId = parts[2];
-                String locationId = parts[3];
+                String _departmentId = parts[0];
+                String _departmentName = parts[1];
+                String _managerId = parts[2];
+                String _locationId = parts[3];
 
                 try {
+                    String sql="";
+                    PreparedStatement statement;
+                    ResultSet resultSet;
+                    
                     // Comprovar integritat referencial amb 'employees'
-                    if (!SQLCheckPK(connexio, "employees", Integer.parseInt(managerId)))
-                        SQLInsert(connexio, "employees", parts[2], "S/D","S/D", "IT_PROG");
+                    sql = """
+                          SELECT '1' FROM employees
+                          WHERE employee_id = ?
+                          """;
+                    statement = connexio.prepareStatement(sql);
+                    statement.setInt(1, Integer.parseInt(_managerId));
+                    resultSet = statement.executeQuery();
+                    
+                    if (!resultSet.next())
+                        throw new SQLException("Error, empleat no existeix " + _managerId);
                     
                     // Comprovar integritat referencial amb 'locations'
-                    if (!SQLCheckPK(connexio, "locations", Integer.parseInt(locationId)))
-                        SQLInsert(connexio, "locations", parts[3], "S/D");
+                    sql = """
+                          SELECT '1'
+                          FROM locations
+                          WHERE location_id = ?
+                          """;
+                    statement = connexio.prepareStatement(sql);
+                    statement.setInt(1, Integer.parseInt(_locationId));
+                    resultSet = statement.executeQuery();
+                    
+                    if (!resultSet.next())
+                        throw new SQLException("Error, location no existeix " + _locationId);
                     
                     // Insertar la fila a 'departments'
-                    SQLInsert(connexio, "departments", departmentId, departmentName, managerId, locationId );
-                    System.out.println("Insertant departament: " + parts[0]);
-
+                    try {
+                        sql = """
+                              INSERT INTO departments (department_id, department_name, manager_id, location_id)
+                              VALUES (?, ?, ?, ?)
+                              """;
+                        statement = connexio.prepareStatement(sql);
+                        statement.setInt(1, Integer.parseInt(_departmentId));
+                        statement.setString(2, _departmentName);
+                        statement.setInt(3, Integer.parseInt(_managerId));
+                        statement.setInt(4, Integer.parseInt(_locationId));
+                        statement.executeUpdate();
+                    } catch (SQLException e) {  // per a qualsevol error ...
+                        if (e.getErrorCode() == 1062) {  // ... excepte l'error per PK
+                            // Modificar
+                            sql = """
+                                  UPDATE departments 
+                                  SET department_name = ?,
+                                      manager_id = ?,
+                                      location_id = ?
+                                  WHERE department_id = ?
+                                  """;
+                            statement = connexio.prepareStatement(sql);
+                            statement.setString(1, _departmentName);
+                            statement.setInt(2, Integer.parseInt(_managerId));
+                            statement.setInt(3, Integer.parseInt(_locationId));
+                            statement.setInt(4, Integer.parseInt(_departmentId));
+                            statement.executeUpdate();
+                        } else  
+                            throw e;
+                    }   
                     connexio.commit();
                 } catch (SQLException e) {
                     connexio.rollback();
@@ -93,73 +141,5 @@ public class Main1 {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
             throw e; // Es propaga l'excepció al mètode anterior
         }
-    }
-    
-    private static void SQLInsert(Connection connexio, String table, String... valors) throws SQLException  {
-        String sql="";
-        PreparedStatement statement;
-        
-        // Cal millorar aquest mètode accedint al diccionari MySQL:
-        //    - information_schema.tables:
-        //    SELECT TABLE_NAME 
-        //    FROM information_schema.TABLES 
-        //    WHERE TABLE_SCHEMA = &&esquema
-        //    AND   TABLE_NAME = &&tabla;
-        //
-        //    - information_schema.columns:
-        //    SELECT COLUMN_NAME, DATA_TYPE, IS_NULLABLE, COLUMN_KEY, COLUMN_DEFAULT
-        //    FROM information_schema.COLUMNS
-        //    WHERE TABLE_SCHEMA = &&esquema
-        //    AND   TABLE_NAME = &&tabla;
-
-        try {
-            if (table.equals("employees")) {
-                sql = "INSERT INTO employees (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID) VALUES (?, ?, ?, ?)";
-                statement = connexio.prepareStatement(sql);
-                statement.setInt(1, Integer.parseInt(valors[0]));
-                statement.setString(2, valors[1]);
-                statement.setString(3, valors[2]);
-                statement.setString(4, valors[3]);
-                statement.executeUpdate();
-            } else if (table.equals("locations")) {
-                sql = "INSERT INTO locations (LOCATION_ID, CITY) VALUES (?,?)";
-                statement = connexio.prepareStatement(sql);
-                statement.setInt(1, Integer.parseInt(valors[0]));
-                statement.setString(2, valors[1]);
-                statement.executeUpdate();
-            } else if (table.equals("departments")) {
-                sql = "INSERT INTO departments (DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID) VALUES (?, ?, ?, ?)";
-                statement = connexio.prepareStatement(sql);
-                statement.setInt(1, Integer.parseInt(valors[0]));
-                statement.setString(2, valors[1]);
-                statement.setInt(3, Integer.parseInt(valors[2]));
-                statement.setInt(4, Integer.parseInt(valors[3]));
-                statement.executeUpdate();
-            }
-        } catch (SQLException e) {
-            throw e;
-        } 
-
-    }
-    
-    private static boolean SQLCheckPK(Connection connexio, String taula, int primaryKey) throws SQLException  {
-        String sql="";
-        
-        // Cal millorar aquest mètode accedint al diccionari MySQL
-        try {
-            if (taula.equals("employees"))
-                sql = "SELECT '1' FROM employees WHERE employee_id = ?";
-            else if (taula.equals("locations"))
-                sql = "SELECT '1' FROM locations WHERE location_id = ?";
-            
-            PreparedStatement statement = connexio.prepareStatement(sql);
-            statement.setInt(1, primaryKey);
-
-            ResultSet resultSet = statement.executeQuery();
-            
-            return resultSet.next(); // si existeix al manco 1 fila ?
-        } catch (SQLException e) {
-            throw new SQLException (e.getMessage() );
-        } 
     }
 }

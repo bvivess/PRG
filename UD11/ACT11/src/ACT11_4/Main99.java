@@ -29,8 +29,8 @@ public class Main99 {
             System.out.println("Connexió amb la base de dades MySQL exitosa.");
             
             sql += departmentId;  // concatenació de la instrucció SQL
+            
             try (ResultSet resultSet = statement.executeQuery(sql)) {
-
                 // Processar els resultats de la Query
                 while (resultSet.next()) {
                     System.out.println( resultSet.getInt("department_id") + " " +

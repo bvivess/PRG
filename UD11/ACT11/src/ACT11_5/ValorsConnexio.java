@@ -5,5 +5,4 @@ public enum ValorsConnexio {
     DBASE,
     USER,
     PASSWD;
-
 }
