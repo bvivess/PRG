@@ -66,7 +66,10 @@ public class Employee {
         final Employee other = (Employee) obj;
         return this.employeeId == other.employeeId;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Employee{" + "employeeId=" + employeeId + ", firstName=" + firstName + ", lastName=" + lastName + ", jobId=" + jobId + '}';
+    }
     
 }

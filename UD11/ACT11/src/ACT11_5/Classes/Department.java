@@ -66,7 +66,10 @@ public class Department {
         final Department other = (Department) obj;
         return this.departmentId == other.departmentId;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "Department{" + "departmentId=" + departmentId + ", departmentName=" + departmentName + ", managerId=" + managerId + ", locationId=" + locationId + '}';
+    }
 
 }

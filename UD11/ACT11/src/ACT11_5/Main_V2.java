@@ -17,16 +17,17 @@ import java.util.Set;
 
 public class Main_V2 {
     public static void main(String[] args) throws FileNotFoundException, IOException {
-        Set<Employee> employees = new HashSet<>();
-        Set<Location> locations = new HashSet<>();
-        Set<Department> departments = new HashSet<>();
+        Set<Employee> employees = new HashSet<Employee>();
+        Set<Location> locations = new HashSet<Location>();
+        Set<Department> departments = new HashSet<Department>();
         // Establir la connexió
         try ( Connection connexio = getConnectionFromFile("c:\\temp\\mysql.con")  ) {
             System.out.println("Connexió establerta.");
  
             connexio.setAutoCommit(false);
-            llegeixArxiuABBDD(connexio, "c:\\temp\\ACT11_5.txt", employees, locations, departments);
+            llegeixArxiuABBDD(connexio, "c:\\temp\\ACT11_5.csv", employees, locations, departments);
             
+            // Mostra les estructures
             System.out.println(employees);
             System.out.println(locations);
             System.out.println(departments);
@@ -45,7 +46,7 @@ public class Main_V2 {
                     if (!linia.substring(0, 1).equals("#")) {
                         String[] parts = linia.split("=");
                         String clau = parts[0].trim();
-                        String valor = parts[1].trim();
+                        String valor = (parts[1]==null ? "" : parts[1].trim());  // cas de 'PASSWD = '
                     
                         switch (clau) {
                             case "SERVER" -> valorsConnexio.put( ValorsConnexio.SERVER, valor);
@@ -60,8 +61,11 @@ public class Main_V2 {
                     // No fer res
                 }
             }
-            if (valorsConnexio.size() != 4)
-                throw new SQLException("L'arxiu no contemple totes les dades de connexió");
+            if (!valorsConnexio.containsKey(ValorsConnexio.SERVER) ||
+                !valorsConnexio.containsKey(ValorsConnexio.DBASE) ||
+                !valorsConnexio.containsKey(ValorsConnexio.USER) ||
+                !valorsConnexio.containsKey(ValorsConnexio.PASSWD))
+                    throw new SQLException("L'arxiu no contempla totes les dades de connexió");
         } catch (IOException e) {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
             throw e;  // Es propaga l'excepció al mètode anterior
@@ -89,6 +93,7 @@ public class Main_V2 {
                 Employee employee = new Employee(managerId, "S/D", "S/D", "IT_PROG");  // "S/D"-> "Sense Descripció"
                 Location location = new Location(locationId, "S/D");
                 Department department = new Department(departmentId, departmentName, managerId, locationId);
+                // Afegeix al 'Set'
                 employees.add(employee);
                 locations.add(location);
                 departments.add(department);

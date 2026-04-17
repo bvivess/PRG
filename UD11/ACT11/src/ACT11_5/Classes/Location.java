@@ -46,5 +46,10 @@ public class Location {
         final Location other = (Location) obj;
         return this.locationId == other.locationId;
     }
+
+    @Override
+    public String toString() {
+        return "Location{" + "locationId=" + locationId + ", city=" + city + '}';
+    }
     
 }
