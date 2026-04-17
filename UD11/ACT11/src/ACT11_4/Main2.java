@@ -3,10 +3,10 @@ package ACT11_4;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class Main2 {
     public static void main(String[] args) throws FileNotFoundException, IOException {
@@ -16,28 +16,25 @@ public class Main2 {
         String usuari = "root";
         String passwd = "";
         String sql = """
-                     SELECT department_id, department_name FROM departments WHERE department_id = 
+                     UPDATE departments
+                     SET department_name = ?
+                     WHERE department_id = ?
                      """;
       
         // Establir la connexió
         try ( Connection connexio = DriverManager.getConnection(servidor+bdades, usuari, passwd);
-              Statement statement = connexio.createStatement() ) {
-            int departmentId = 10;  // simulant un Scanner
+              PreparedStatement stmt = connexio.prepareStatement(sql) ) {
+            int departmentId = 1000;  // simulant un Scanner
+            String departmentName = "Prova update";
             
             System.out.println("Connexió amb la base de dades MySQL exitosa.");
+            stmt.setString(1, departmentName);
+            stmt.setInt(2, departmentId);
             
-            sql += departmentId;  // concatenació de la instrucció SQL
-            try (ResultSet resultSet = statement.executeQuery(sql)) {
-
-                // Processar els resultats de la Query
-                while (resultSet.next()) {
-                    System.out.println( resultSet.getInt("department_id") + " " +
-                                        resultSet.getString("department_name")
-                                      );
-                }
-            } catch (SQLException e) {
-                System.err.println("Error al executar la instrucció SQL: " + e.getMessage());
-            }
+            if (stmt.executeUpdate()>=0)
+                System.out.println("Modificació exitosa");
+            else
+                System.out.println("Inserció no exitosa");
             System.out.println("Connexió tancada.");
         } catch (SQLException e) {
             System.err.println("Error al conectarse a la base de dades: " + e.getMessage());
