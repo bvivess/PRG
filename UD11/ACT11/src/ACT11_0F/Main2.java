@@ -14,7 +14,10 @@ public class Main2 {
         String usuari = "root";
         String passwd = "";
         String lastName = "King";
-        String sql = "SELECT employee_id, last_name, first_name FROM employees WHERE last_name LIKE '%" + lastName + "%'";
+        String sql = """
+                        SELECT employee_id, last_name, first_name
+                        FROM employees
+                        WHERE last_name LIKE '%""" + lastName + "%'";
 
         // Establir la connexió
         try ( Connection connexio = DriverManager.getConnection(servidor+bdades, usuari, passwd);
