@@ -149,7 +149,11 @@ public class GestorTaller {
     }
     
     private void carregaReparacionsBBDD(Map<Integer, Reparacio> reparacions) throws SQLException, IOException {
-        String sql = "SELECT r.id id, dataEntrada, matricula, cost, descripcio, estat FROM reparacions r, tasques t where r.id = t.reparacio_id";
+        String sql = """
+                     SELECT r.id id, dataEntrada, matricula, cost, descripcio, estat 
+                     FROM reparacions r, tasques t 
+                     WHERE r.id = t.reparacio_id
+                     """;
         
         try ( Connection conn = gestorBBDD.getConnectionFromFile();
               ResultSet resultSet = gestorBBDD.executaQuerySQL(conn, sql) ) { 
@@ -300,7 +304,6 @@ public class GestorTaller {
             System.err.println("Error descarregant clients CSV: " + e.getMessage());
         }
     }  
-
     
     // --- DESCÀRREGA VEHICLES
     public void desaReparacions(String path) throws SQLException, IOException {
@@ -314,7 +317,7 @@ public class GestorTaller {
             
             for (Reparacio r : reparacions.values()) {
                 try {
-                    gestorBBDD.executaSQL( conn, "INSERT INTO reparacions (id, dataEntrada, matricula, cost) VALUES (?, ?, ?, ?)",  
+                    gestorBBDD.executaSQL( conn, "INSERT INTO reparacions (id, dataEntrada, matricula, cost) VALUES (?, ?, ?, ?)",
                                            (Integer) r.getId(), java.sql.Date.valueOf(r.getDataEntrada()), r.getVehicle().getMatricula(), (Double) r.getCost() );
                 } catch (SQLException e) {
                     if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)

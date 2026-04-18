@@ -61,12 +61,12 @@ public class GestorBBDD {
         }
     }
     
-    public void executaSQL(Connection conn, String sql, Object... arguments) throws SQLException {
+    public int executaSQL(Connection conn, String sql, Object... arguments) throws SQLException {
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
             assignaArguments(stmt, arguments);
             
-            stmt.executeUpdate();
+            return stmt.executeUpdate();
         } catch (SQLException e) {
             throw e;  // Es propaga l'excepció al mètode anterior
         }
