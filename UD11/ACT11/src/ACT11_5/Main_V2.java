@@ -37,7 +37,7 @@ public class Main_V2 {
     }
     
     private static Connection getConnectionFromFile(String filename) throws SQLException, IOException {
-        Map<ValorsConnexio, String> valorsConnexio = new HashMap<>();
+        Map<String, String> valorsConnexio = new HashMap<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String linia;
@@ -49,11 +49,8 @@ public class Main_V2 {
                         String valor = (parts[1]==null ? "" : parts[1].trim());  // cas de 'PASSWD = '
                     
                         switch (clau) {
-                            case "SERVER" -> valorsConnexio.put( ValorsConnexio.SERVER, valor);
-                            case "DBASE" -> valorsConnexio.put( ValorsConnexio.DBASE, valor);
-                            case "USER" -> valorsConnexio.put( ValorsConnexio.USER, valor);
-                            case "PASSWD" -> valorsConnexio.put( ValorsConnexio.PASSWD, valor);
-                            default -> System.err.println("Clau no vàlida: " + clau);
+                            case "SERVER", "DBASE", "USER", "PASSWD" -> valorsConnexio.put(clau, valor);
+                            default -> throw new SQLException("Entrada no vàlida en arxiu de connexió: " + clau);
                         }
                     }
                 } catch (IndexOutOfBoundsException e) {
@@ -61,10 +58,10 @@ public class Main_V2 {
                     // No fer res
                 }
             }
-            if (!valorsConnexio.containsKey(ValorsConnexio.SERVER) ||
-                !valorsConnexio.containsKey(ValorsConnexio.DBASE) ||
-                !valorsConnexio.containsKey(ValorsConnexio.USER) ||
-                !valorsConnexio.containsKey(ValorsConnexio.PASSWD))
+            if (!valorsConnexio.containsKey("SERVER") ||
+                !valorsConnexio.containsKey("DBASE") ||
+                !valorsConnexio.containsKey("USER") ||
+                !valorsConnexio.containsKey("PASSWD"))
                     throw new SQLException("L'arxiu no contempla totes les dades de connexió");
         } catch (IOException e) {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
@@ -72,9 +69,9 @@ public class Main_V2 {
         }
 
         // Estableix la connexió a la BD Mysql
-        return DriverManager.getConnection( valorsConnexio.get(ValorsConnexio.SERVER) + valorsConnexio.get(ValorsConnexio.DBASE), 
-                                            valorsConnexio.get(ValorsConnexio.USER), 
-                                            valorsConnexio.get(ValorsConnexio.PASSWD));
+        return DriverManager.getConnection( valorsConnexio.get("SERVER") + valorsConnexio.get("DBASE"), 
+                                            valorsConnexio.get("USER"), 
+                                            valorsConnexio.get("PASSWD"));
     }
     
     private static void llegeixArxiuABBDD(Connection connexio, String filename,
