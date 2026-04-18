@@ -1,4 +1,4 @@
-package ACT11_5.Classes;
+package ACT11_4.Classes;
 
 public class Location {
     private int locationId;

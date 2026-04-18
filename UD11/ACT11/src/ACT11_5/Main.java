@@ -1,6 +1,6 @@
-package ACT11_6A;
+package ACT11_5;
 
-import ACT11_6A.Utils.GestorVendes;
+import ACT11_5.Utils.GestorVendes;
 
 public class Main {
     public static void main(String[] args) {

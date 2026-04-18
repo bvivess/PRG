@@ -1,6 +1,6 @@
-package ACT11_6B;
+package ACT11_6;
 
-import ACT11_6B.Utils.*;
+import ACT11_6.Utils.*;
 
 public class Main {
     public static void main(String[] args) {

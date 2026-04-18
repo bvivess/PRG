@@ -1,4 +1,4 @@
-package ACT11_4;
+package ACT11_0E;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Main1 {
+public class Main2 {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         // Dades de la connexió:
         String servidor = "jdbc:mysql://localhost:3306/";
@@ -30,13 +30,11 @@ public class Main1 {
             stmt.setInt(1, departmentId);
             stmt.setString(2, departmentName);
             
-            if (stmt.executeUpdate()>=0)
+            if (stmt.executeUpdate()>0)
                 System.out.println("Inserció exitosa");
-            else
-                System.out.println("Inserció no exitosa");
             System.out.println("Connexió tancada.");
         } catch (SQLException e) {
-            System.err.println("Error al conectarse a la base de dades: " + e.getMessage());
+            System.err.println("Error en Base de dades: " + e.getMessage());
         }
     }
 }

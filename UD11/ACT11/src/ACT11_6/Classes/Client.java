@@ -1,6 +1,6 @@
-package ACT11_6A.Classes;
+package ACT11_6.Classes;
 
-public class Client implements Comparable<Client>{
+public class Client implements Comparable<Client> {
     int id;
     String nom;
     String email;

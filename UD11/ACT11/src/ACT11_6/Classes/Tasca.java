@@ -1,4 +1,4 @@
-package ACT11_6B.Classes;
+package ACT11_6.Classes;
 
 public class Tasca {
     private String descripcio;

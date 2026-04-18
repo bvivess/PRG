@@ -1,4 +1,4 @@
-package ACT11_6B.Classes;
+package ACT11_6.Classes;
 
 import java.time.LocalDate;
 import java.util.List;

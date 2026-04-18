@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Main {
+public class Main1 {
     public static void main(String[] args) {
         // Dades de la connexió:
         String servidor = "jdbc:mysql://localhost:3306/";
@@ -33,7 +33,7 @@ public class Main {
 
             System.out.println("Connexió tancada.");
         } catch (SQLException e) {
-            System.err.println("Error al conectarse a la base de dades: " + e.getMessage());
+            System.err.println("Error en Base de dades: " + e.getMessage());
         }
     }
 }

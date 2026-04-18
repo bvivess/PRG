@@ -1,6 +1,6 @@
-package ACT11_6B.Utils;
+package ACT11_6.Utils;
 
-import ACT11_6B.Classes.*;
+import ACT11_6.Classes.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;

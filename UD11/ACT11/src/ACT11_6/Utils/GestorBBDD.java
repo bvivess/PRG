@@ -1,4 +1,4 @@
-package ACT11_6A.Utils;
+package ACT11_6.Utils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -7,6 +7,7 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class GestorBBDD {
     private final String MYSQL_CON;
@@ -29,7 +30,7 @@ public class GestorBBDD {
                     
                         switch (clau) {
                             case "SERVER", "DBASE", "USER", "PASSWD" -> valorsConnexio.put(clau, valor);
-                            default -> System.err.println("Clau no vàlida en arxiu de connexió: " + clau);
+                            default -> throw new SQLException("Entrada no vàlida en arxiu de connexió: " + clau);
                         }
                     }
                 } catch (IndexOutOfBoundsException e) {
@@ -37,8 +38,8 @@ public class GestorBBDD {
                     // No fer res
                 }
             }
-            if (valorsConnexio.size() != 4)
-                throw new SQLException("L'arxiu no contemple totes les dades de connexió");
+            if (!valorsConnexio.keySet().containsAll(Set.of("SERVER", "DBASE", "USER", "PASSWD")))
+                    throw new SQLException("L'arxiu no contempla totes les dades de connexió");
         } catch (IOException e) {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
             throw e;  // Es propaga l'excepció al mètode anterior
@@ -50,6 +51,7 @@ public class GestorBBDD {
                                             valorsConnexio.get("PASSWD"));
     }
     
+    // Executa una SELECT
     public ResultSet executaQuerySQL(Connection conn, String sql, Object... arguments) throws SQLException {
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -61,6 +63,7 @@ public class GestorBBDD {
         }
     }
     
+    // Executa un INSERT, DELETE, UPDATE
     public void executaSQL(Connection conn, String sql, Object... arguments) throws SQLException {
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
