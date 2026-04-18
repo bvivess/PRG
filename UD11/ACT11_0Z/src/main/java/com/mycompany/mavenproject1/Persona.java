@@ -46,10 +46,10 @@ public class Persona {
     @Override
     public String toString() {
         String texte;
-        texte = "Persona{" + "idPersona=" + idPersona + ", nom=" + nom + ", llinatge=" + llinatge + ", edat=" + edat + ", aficions={";
+        texte = "Persona{" + "idPersona=" + idPersona + ", nom=" + nom + ", llinatge=" + llinatge + ", edat=" + edat + ",\n aficions={";
         for (String a:this.aficions) 
             texte += a + " ";
-        texte += "}";
+        texte += "}\n";
         return texte;
         
         
