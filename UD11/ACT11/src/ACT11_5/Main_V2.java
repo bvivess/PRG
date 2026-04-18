@@ -93,23 +93,24 @@ public class Main_V2 {
                 Employee employee = new Employee(managerId, "S/D", "S/D", "IT_PROG");  // "S/D"-> "Sense Descripció"
                 Location location = new Location(locationId, "S/D");
                 Department department = new Department(departmentId, departmentName, managerId, locationId);
-                // Afegeix al 'Set'
-                employees.add(employee);
-                locations.add(location);
-                departments.add(department);
                 
                 try {
                     // Comprovar integritat referencial amb 'employees'
-                    if (!SQLCheckPK(connexio, "employees", department.getManagerId()))
+                    if (!SQLCheckPK(connexio, "employees", department.getManagerId())) {
                         SQLInsert(connexio, "employees", employee);
+                        employees.add(employee);
+                    }
                     
                     // Comprovar integritat referencial amb 'locations'
-                    if (!SQLCheckPK(connexio, "locations", department.getLocationId()))
+                    if (!SQLCheckPK(connexio, "locations", department.getLocationId())) {
                         SQLInsert(connexio, "locations", location);
+                        locations.add(location);
+                    }
                     
                     // Insertar la fila a 'departments'
                     SQLInsert(connexio, "departments", department);
                     System.out.println("Insertant departament: " + parts[0]);
+                    departments.add(department);
 
                     connexio.commit();
                 } catch (SQLException e) {
@@ -119,7 +120,7 @@ public class Main_V2 {
             }
         } catch (IOException e) {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
-            throw e; // Es propaga l'excepció al mètode anterior
+            throw e; // Es propaga l'excepció al mètode següent
         }
     }
     

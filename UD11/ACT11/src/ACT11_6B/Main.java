@@ -4,14 +4,16 @@ import ACT11_6B.Utils.*;
 
 public class Main {
     public static void main(String[] args) {
-        GestorTaller gestorTaller = new GestorTaller();
+        GestorTaller gestorTaller = new GestorTaller();  // conté les estructures de memòria i mètodes que es demanen
 
         try {
             // CÀRREGA CLIENTS, VEHICLES i REPARACIONS
             System.out.println("CLIENTS");
             gestorTaller.carregaClients("c:\\temp\\clients.csv");
+            
             System.out.println("VEHICLES");
             gestorTaller.carregaVehicles("c:\\temp\\vehicles.csv");
+            
             System.out.println("REPARACIONS");
             gestorTaller.carregaReparacions("c:\\temp\\reparacions.csv");
             
