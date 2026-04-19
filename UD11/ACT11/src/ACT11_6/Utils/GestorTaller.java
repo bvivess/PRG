@@ -170,7 +170,8 @@ public class GestorTaller {
                 reparacio.getTasques().add( new Tasca( resultSet.getString("descripcio"), 
                                                        EstatReparacio.valueOf(resultSet.getString("estat").toUpperCase()) )  );
                 afegeixReparacio( reparacions, reparacio );
-            }               
+            }
+            
         } catch (SQLException e) {
             System.err.println("Error carregant clients BBDD: " + e.getMessage());
         }        
