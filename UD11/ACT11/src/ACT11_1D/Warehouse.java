@@ -1,4 +1,4 @@
-package ACT11_2D;
+package ACT11_1D;
 
 public class Warehouse implements Comparable<Warehouse> {
     private int warehouseId;

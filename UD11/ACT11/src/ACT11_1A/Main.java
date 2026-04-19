@@ -1,4 +1,4 @@
-package ACT11_2A;
+package ACT11_1A;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

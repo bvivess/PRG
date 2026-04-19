@@ -1,4 +1,4 @@
-package ACT11_2E;
+package ACT11_1E;
 
 public class Article implements Comparable<Article> {
     private int productId;

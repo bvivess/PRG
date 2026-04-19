@@ -1,4 +1,4 @@
-package ACT11_2B;
+package ACT11_1B;
 
 public class Department implements Comparable<Department> {
     private int departmentId;

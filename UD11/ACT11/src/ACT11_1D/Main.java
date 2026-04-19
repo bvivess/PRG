@@ -1,4 +1,4 @@
-package ACT11_2D;
+package ACT11_1D;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
