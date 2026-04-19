@@ -37,7 +37,7 @@ public class GestorTaller {
         String sql = "SELECT id, nom, email FROM clients";
         
         try ( Connection conn = gestorBBDD.getConnectionFromFile();
-              ResultSet resultSet = gestorBBDD.executaQuerySQL(conn, sql) ) {   
+              ResultSet resultSet = (ResultSet) gestorBBDD.executaSQL(conn, sql) ) {   
             
             while (resultSet.next())
                 afegeixClient( clients, new Client( resultSet.getInt("id"),
@@ -94,7 +94,7 @@ public class GestorTaller {
         String sql = "SELECT matricula, marca, model, client_id FROM vehicles";
         
         try ( Connection conn = gestorBBDD.getConnectionFromFile();
-              ResultSet resultSet = gestorBBDD.executaQuerySQL(conn, sql) ) { 
+              ResultSet resultSet = (ResultSet) gestorBBDD.executaSQL(conn, sql) ) { 
             
             while (resultSet.next())
                 afegeixVehicle( vehicles, new Vehicle( resultSet.getString("matricula"),
@@ -156,7 +156,7 @@ public class GestorTaller {
                      """;
         
         try ( Connection conn = gestorBBDD.getConnectionFromFile();
-              ResultSet resultSet = gestorBBDD.executaQuerySQL(conn, sql) ) { 
+              ResultSet resultSet = (ResultSet) gestorBBDD.executaSQL(conn, sql) ) { 
             
             Reparacio reparacio = null;
             while (resultSet.next()) {
@@ -170,9 +170,7 @@ public class GestorTaller {
                 reparacio.getTasques().add( new Tasca( resultSet.getString("descripcio"), 
                                                        EstatReparacio.valueOf(resultSet.getString("estat").toUpperCase()) )  );
                 afegeixReparacio( reparacions, reparacio );
-            }
-            
-                                                  
+            }               
         } catch (SQLException e) {
             System.err.println("Error carregant clients BBDD: " + e.getMessage());
         }        

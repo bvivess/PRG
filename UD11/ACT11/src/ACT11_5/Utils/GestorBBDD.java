@@ -7,6 +7,7 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class GestorBBDD {
     private final String MYSQL_CON;
@@ -37,8 +38,8 @@ public class GestorBBDD {
                     // No fer res
                 }
             }
-            if (valorsConnexio.size() != 4)
-                throw new SQLException("L'arxiu no contemple totes les dades de connexió");
+            if (!valorsConnexio.keySet().containsAll(Set.of("SERVER", "DBASE", "USER", "PASSWD")))
+                    throw new SQLException("L'arxiu no contempla totes les dades de connexió");
         } catch (IOException e) {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
             throw e;  // Es propaga l'excepció al mètode anterior
@@ -49,7 +50,7 @@ public class GestorBBDD {
                                             valorsConnexio.get("USER"), 
                                             valorsConnexio.get("PASSWD"));
     }
-    
+/*    
     public ResultSet executaQuerySQL(Connection conn, String sql, Object... arguments) throws SQLException {
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -60,13 +61,16 @@ public class GestorBBDD {
             throw e;  // Es propaga l'excepció al mètode anterior
         }
     }
-    
-    public int executaSQL(Connection conn, String sql, Object... arguments) throws SQLException {
+*/   
+    public Object executaSQL(Connection conn, String sql, Object... arguments) throws SQLException {
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
             assignaArguments(stmt, arguments);
             
-            return stmt.executeUpdate();
+            if (sql.contains("SELECT"))
+                return stmt.executeQuery();
+            else // INSERT, DELETE, UPDATE
+                return stmt.executeUpdate();
         } catch (SQLException e) {
             throw e;  // Es propaga l'excepció al mètode anterior
         }

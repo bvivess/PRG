@@ -51,25 +51,16 @@ public class GestorBBDD {
                                             valorsConnexio.get("PASSWD"));
     }
     
-    // Executa una SELECT
-    public ResultSet executaQuerySQL(Connection conn, String sql, Object... arguments) throws SQLException {
+    // Executa SELECT, INSERT, DELETE, UPDATE
+    public Object executaSQL(Connection conn, String sql, Object... arguments) throws SQLException {
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
             assignaArguments(stmt, arguments);
             
-            return stmt.executeQuery();
-        } catch (SQLException e) {
-            throw e;  // Es propaga l'excepció al mètode anterior
-        }
-    }
-    
-    // Executa un INSERT, DELETE, UPDATE
-    public int executaSQL(Connection conn, String sql, Object... arguments) throws SQLException {
-        try {
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            assignaArguments(stmt, arguments);
-            
-            return stmt.executeUpdate();
+            if (sql.contains("SELECT"))
+                return stmt.executeQuery();
+            else // INSERT, DELETE, UPDATE
+                return stmt.executeUpdate();
         } catch (SQLException e) {
             throw e;  // Es propaga l'excepció al mètode anterior
         }

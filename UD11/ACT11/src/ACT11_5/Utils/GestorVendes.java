@@ -37,7 +37,7 @@ public class GestorVendes {
         String sql = "SELECT id, nom, email FROM clients WHERE id = ? and xxx = ?";
         
         try ( Connection conn = gestorBBDD.getConnectionFromFile();
-              ResultSet resultSet = gestorBBDD.executaQuerySQL(conn, sql, "a", (Integer) 1) ) {   
+              ResultSet resultSet = (ResultSet) gestorBBDD.executaSQL(conn, sql, "a", (Integer) 1) ) {   
             
             while (resultSet.next())
                 afegeixClient( clients, new Client( resultSet.getInt("id"),
@@ -93,7 +93,7 @@ public class GestorVendes {
         String sql = "SELECT id, nom, preu, categoria FROM productes";
         
         try ( Connection conn = gestorBBDD.getConnectionFromFile();
-              ResultSet resultSet = gestorBBDD.executaQuerySQL(conn, sql) ) { 
+              ResultSet resultSet = (ResultSet) gestorBBDD.executaSQL(conn, sql) ) { 
             
             while (resultSet.next())
                 afegeixProducte( productes, new Producte( resultSet.getInt("id"),
@@ -153,7 +153,7 @@ public class GestorVendes {
         String sql = "SELECT id, client_id, data, producte_id FROM vendes, venda_producte where id = venda_id";
         
         try ( Connection conn = gestorBBDD.getConnectionFromFile();
-              ResultSet resultSet = gestorBBDD.executaQuerySQL(conn, sql) ) { 
+              ResultSet resultSet = (ResultSet) gestorBBDD.executaSQL(conn, sql) ) { 
             
             Venda venda = null;
             while (resultSet.next()) {
