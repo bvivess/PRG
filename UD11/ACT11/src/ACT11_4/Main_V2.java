@@ -46,7 +46,7 @@ public class Main_V2 {
                     if (!linia.substring(0, 1).equals("#")) {
                         String[] parts = linia.split("=");
                         String clau = parts[0].trim();
-                        String valor = (parts[1]==null ? "" : parts[1].trim());  // cas de 'PASSWD = '
+                        String valor = (parts[1] == null ? "" : parts[1].trim());  // cas de 'PASSWD = '
                     
                         switch (clau) {
                             case "SERVER", "DBASE", "USER", "PASSWD" -> valorsConnexio.put(clau, valor);

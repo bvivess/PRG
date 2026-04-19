@@ -26,7 +26,7 @@ public class GestorBBDD {
                     if (!linia.substring(0, 1).equals("#")) {
                         String[] parts = linia.split("=");
                         String clau = parts[0].trim();
-                        String valor = parts[1].trim();
+                        String valor = (parts[1] == null ? "" : parts[1].trim());  // cas de 'PASSWD = '
                     
                         switch (clau) {
                             case "SERVER", "DBASE", "USER", "PASSWD" -> valorsConnexio.put(clau, valor);
@@ -39,7 +39,7 @@ public class GestorBBDD {
                 }
             }
             if (!valorsConnexio.keySet().containsAll(Set.of("SERVER", "DBASE", "USER", "PASSWD")))
-                    throw new SQLException("L'arxiu no contempla totes les dades de connexió");
+                throw new SQLException("L'arxiu no contempla totes les dades de connexió");
         } catch (IOException e) {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
             throw e;  // Es propaga l'excepció al mètode anterior
@@ -50,18 +50,8 @@ public class GestorBBDD {
                                             valorsConnexio.get("USER"), 
                                             valorsConnexio.get("PASSWD"));
     }
-/*    
-    public ResultSet executaQuerySQL(Connection conn, String sql, Object... arguments) throws SQLException {
-        try {
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            assignaArguments(stmt, arguments);
-            
-            return stmt.executeQuery();
-        } catch (SQLException e) {
-            throw e;  // Es propaga l'excepció al mètode anterior
-        }
-    }
-*/   
+  
+    // Executa SELECT, INSERT, DELETE, UPDATE
     public Object executaSQL(Connection conn, String sql, Object... arguments) throws SQLException {
         try {
             PreparedStatement stmt = conn.prepareStatement(sql);
