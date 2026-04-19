@@ -10,8 +10,10 @@ public class Main {
             // CÀRREGA CLIENTS, PRODUCTES i VENDES
             System.out.println("CLIENTS");
             gestorVendes.carregaClients("c:\\temp\\clients.csv");
+            
             System.out.println("PRODUCTES");
             gestorVendes.carregaProductes("c:\\temp\\productes.csv");
+            
             System.out.println("VENDES");
             gestorVendes.carregaVendes("c:\\temp\\vendes.csv");
             

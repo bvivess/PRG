@@ -37,7 +37,7 @@ public class Main_V1 {
                 try {
                     String[] parts = line.split("=");
                     String clau = parts[0].trim();
-                    String valor = parts[1].trim();
+                    String valor = (parts[1] == null ? "" : parts[1].trim());  // cas de 'PASSWD = '
                     
                     switch (clau) {
                         case "SERVER" -> servidor = valor;
