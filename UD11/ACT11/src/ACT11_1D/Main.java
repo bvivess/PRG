@@ -12,8 +12,8 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws Exception {
         // Arxius per a la càrrega de dades:
-        String arxiu = "C:\\temp\\ACT11_2D_products_per_warehouses.csv";
-        String arxiuLog = "C:\\temp\\ACT11_2D.log";
+        String arxiu = "C:\\temp\\ACT11_1D_products_per_warehouses.csv";
+        String arxiuLog = "C:\\temp\\ACT11_1D.log";
         
         // Estructures de memòria:
         List<Warehouse> warehouses = new ArrayList<>();

@@ -14,8 +14,8 @@ public class Main {
         List<Employee> employees = new ArrayList<>();
         
         // Arxius per a la càrrega de dades:
-        String arxiu1 = "C:\\temp\\ACT11_2B_departments.csv";
-        String arxiu2 = "C:\\temp\\ACT11_2B_employees.csv";
+        String arxiu1 = "C:\\temp\\ACT11_1B_departments.csv";
+        String arxiu2 = "C:\\temp\\ACT11_1B_employees.csv";
         
         try {
             // Llegir el contingut dels arxius línia a línia:

@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class Main1 {
     public static void main(String[] args) {
-        String rutaArchivo = "C:\\temp\\ACT11_1.cfg";
+        String rutaArchivo = "C:\\temp\\ACT11_2.cfg";
         Map<String, String> variables = new HashMap<>();
 
         try ( FileReader fileReader = new FileReader(rutaArchivo);

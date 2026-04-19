@@ -12,7 +12,7 @@ import java.util.Set;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        String arxiu = "C:\\temp\\ACT11_2A.csv";
+        String arxiu = "C:\\temp\\ACT11_1A.csv";
         Map<Integer, Employee> employees  = new HashMap<>();
         Map<Boolean, Set<Employee>> empAntiguitat  = new HashMap<>();
 

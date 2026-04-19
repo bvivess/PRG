@@ -14,7 +14,7 @@ public class GestorBBDD {
 
     public GestorBBDD(String MYSQL_CON) {
         this.MYSQL_CON = MYSQL_CON;
-    }    
+    }
     
     public Connection getConnectionFromFile() throws SQLException, IOException {
         Map<String, String> valorsConnexio = new HashMap<>();

@@ -6,10 +6,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -25,7 +28,7 @@ public class Main_V2 {
             System.out.println("Connexió establerta.");
  
             connexio.setAutoCommit(false);
-            llegeixArxiuABBDD(connexio, "c:\\temp\\ACT11_5.csv", employees, locations, departments);
+            llegeixArxiuABBDD(connexio, "c:\\temp\\ACT11_4.csv", employees, locations, departments);
             
             // Mostra les estructures
             System.out.println(employees);
@@ -74,12 +77,12 @@ public class Main_V2 {
                                             valorsConnexio.get("PASSWD"));
     }
     
-    private static void llegeixArxiuABBDD(Connection connexio, String filename,
+    private void llegeixArxiuABBDD(Connection connexio, String filename,
                                           Set<Employee> employees,
                                           Set<Location> locations,
                                           Set<Department> departments) throws SQLException, IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
-            String line = reader.readLine(); // Es descarta la primera línia
+             String line = reader.readLine(); // Es descarta la primera línia
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(";");
                 int departmentId = Integer.parseInt(parts[0]);
@@ -93,22 +96,49 @@ public class Main_V2 {
                 
                 try {
                     // Comprovar integritat referencial amb 'employees'
-                    if (!SQLCheckPK(connexio, "employees", department.getManagerId())) {
-                        SQLInsert(connexio, "employees", employee);
-                        employees.add(employee);
-                    }
+                    ResultSet rs = (ResultSet) executaSQL(connexio, 
+                                                          "SELECT '1' FROM departments WHERE department_id=?",
+                                                          department.getManagerId());
+                    if (!rs.next())
+                        if ((Integer) executaSQL(connexio, 
+                                                 """
+                                                    INSERT INTO employees(employee_id, first_name, last_name, job_id)
+                                                    VALUES(?,?,?,?)
+                                                 """,
+                                                 employee.getEmployeeId(),
+                                                 employee.getFirstName(),
+                                                 employee.getLastName(),
+                                                 employee.getJobId()) > 0)
+                            employees.add(employee);
                     
                     // Comprovar integritat referencial amb 'locations'
-                    if (!SQLCheckPK(connexio, "locations", department.getLocationId())) {
-                        SQLInsert(connexio, "locations", location);
+                    rs = (ResultSet) executaSQL(connexio, 
+                                                "SELECT '1' FROM locations WHERE location_id=?",
+                                                department.getLocationId());
+                    if (!rs.next())
+                        if ((Integer) executaSQL(connexio, 
+                                                 """
+                                                    INSERT INTO locations (LOCATION_ID, CITY)
+                                                    VALUES (?,?)
+                                                 """,
+                                                 location.getLocationId(),
+                                                 location.getCity()) > 0)
+                                        
                         locations.add(location);
-                    }
                     
                     // Insertar la fila a 'departments'
-                    SQLInsert(connexio, "departments", department);
-                    System.out.println("Insertant departament: " + parts[0]);
-                    departments.add(department);
-
+                    if ((Integer) executaSQL(connexio,
+                                             """
+                                                INSERT INTO departments(department_id, department_name, manager_id, location_id)
+                                                VALUES (?, ?, ?, ?),
+                                             """,
+                                             department.getDepartmentId(),
+                                             department.getDepartmentName(),
+                                             department.getManagerId(),
+                                             department.getLocationId()) > 0) {
+                        System.out.println("Insertant departament: " + parts[0]);
+                        departments.add(department);
+                    }
                     connexio.commit();
                 } catch (SQLException e) {
                     connexio.rollback();
@@ -121,83 +151,47 @@ public class Main_V2 {
         }
     }
     
-    private static void SQLInsert(Connection connexio, String table, Object o) throws SQLException  {
-        String sql="";
-        PreparedStatement statement;
-        
-        // Cal millorar aquest mètode accedint al diccionari MySQL:
-        //    - information_schema.tables:
-        //    SELECT TABLE_NAME 
-        //    FROM information_schema.TABLES 
-        //    WHERE TABLE_SCHEMA = &&esquema
-        //    AND   TABLE_NAME = &&tabla;
-        //
-        //    - information_schema.columns:
-        //    SELECT COLUMN_NAME, DATA_TYPE, IS_NULLABLE, COLUMN_KEY, COLUMN_DEFAULT
-        //    FROM information_schema.COLUMNS
-        //    WHERE TABLE_SCHEMA = &&esquema
-        //    AND   TABLE_NAME = &&tabla;
-
+    // Executa SELECT, INSERT, DELETE, UPDATE
+    public Object executaSQL(Connection conn, String sql, Object... arguments) throws SQLException {
         try {
-            if (table.equals("employees")) {
-                sql = """
-                      INSERT INTO employees (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, JOB_ID)
-                      VALUES (?, ?, ?, ?)
-                      """;
-                Employee e = (Employee) o;
-                statement = connexio.prepareStatement(sql);
-                statement.setInt(1, e.getEmployeeId());
-                statement.setString(2, e.getFirstName());
-                statement.setString(3, e.getLastName());
-                statement.setString(4, e.getJobId());
-                statement.executeUpdate();
-            } else if (table.equals("locations")) {
-                sql = """
-                      INSERT INTO locations (LOCATION_ID, CITY)
-                      VALUES (?,?)
-                      """;
-                Location l = (Location) o;
-                statement = connexio.prepareStatement(sql);
-                statement.setInt(1, l.getLocationId());
-                statement.setString(2, l.getCity());
-                statement.executeUpdate();
-            } else if (table.equals("departments")) {
-                sql = """
-                      INSERT INTO departments (DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID)
-                      VALUES (?, ?, ?, ?)
-                      """;
-                Department d = (Department) o;
-                statement = connexio.prepareStatement(sql);
-                statement.setInt(1, d.getDepartmentId());
-                statement.setString(2, d.getDepartmentName());
-                statement.setInt(3, d.getManagerId());
-                statement.setInt(4, d.getLocationId());
-                statement.executeUpdate();
-            }
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            assignaArguments(stmt, arguments);
+            
+            if (sql.contains("SELECT"))
+                return stmt.executeQuery();
+            else // INSERT, DELETE, UPDATE
+                return stmt.executeUpdate();
         } catch (SQLException e) {
-            throw e;
-        } 
-
+            throw e;  // Es propaga l'excepció al mètode anterior
+        }
     }
     
-    private static boolean SQLCheckPK(Connection connexio, String taula, int primaryKey) throws SQLException  {
-        String sql="";
-        
-        // Cal millorar aquest mètode accedint al diccionari MySQL
-        try {
-            if (taula.equals("employees"))
-                sql = "SELECT '1' FROM employees WHERE employee_id = ?";
-            else if (taula.equals("locations"))
-                sql = "SELECT '1' FROM locations WHERE location_id = ?";
-            
-            PreparedStatement statement = connexio.prepareStatement(sql);
-            statement.setInt(1, primaryKey);
+    private void assignaArguments(PreparedStatement stmt, Object... arguments) throws SQLException {
+        for (int i = 0; i < arguments.length; i++) {
+            Object arg = arguments[i];
 
-            ResultSet resultSet = statement.executeQuery();
-            
-            return resultSet.next(); // si existeix al manco 1 fila ?
-        } catch (SQLException e) {
-            throw new SQLException (e.getMessage() );
-        } 
+            if (arg == null) {
+                stmt.setObject(i + 1, null);
+            } else if (arg instanceof Integer) {
+                stmt.setInt(i + 1, (Integer) arg);
+            } else if (arg instanceof Long) {
+                stmt.setLong(i + 1, (Long) arg);
+            } else if (arg instanceof Double) {
+                stmt.setDouble(i + 1, (Double) arg);
+            } else if (arg instanceof Float) {
+                stmt.setFloat(i + 1, (Float) arg);
+            } else if (arg instanceof Boolean) {
+                stmt.setBoolean(i + 1, (Boolean) arg);
+            } else if (arg instanceof LocalDate) {
+                stmt.setDate(i + 1, Date.valueOf((LocalDate) arg));
+            } else if (arg instanceof java.sql.Date) {
+                stmt.setDate(i + 1, (java.sql.Date) arg);
+            } else if (arg instanceof Timestamp) {
+                stmt.setTimestamp(i + 1, (Timestamp) arg);
+            } else {
+                stmt.setObject(i + 1, arg);
+            }
+        }
     }
+    
 }

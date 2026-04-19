@@ -17,8 +17,8 @@ import java.util.Set;
 public class Main {
     public static void main(String[] args) throws Exception {
         // Arxius per a la càrrega de dades:
-        String arxiu = "C:\\temp\\ACT11_2E_orders.csv";
-        String arxiuLog = "C:\\temp\\ACT11_2E.log";
+        String arxiu = "C:\\temp\\ACT11_1E_orders.csv";
+        String arxiuLog = "C:\\temp\\ACT11_1E.log";
         
         // Estructures de memòria:
         Set<Article> articles = new HashSet<>();
