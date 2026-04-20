@@ -1,4 +1,4 @@
-package ACT11_0E;
+package ACT11_0F;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Main2 {
+public class Main3 {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         // Dades de la connexió:
         String servidor = "jdbc:mysql://localhost:3306/";
@@ -16,22 +16,24 @@ public class Main2 {
         String usuari = "root";
         String passwd = "";
         String sql = """
-                     INSERT INTO departments(department_id, department_name)
-                     VALUES(?, ?)
+                     UPDATE departments
+                     SET department_name = ?
+                     WHERE department_id = ?
                      """;
       
         // Establir la connexió
         try ( Connection connexio = DriverManager.getConnection(servidor+bdades, usuari, passwd);
               PreparedStatement stmt = connexio.prepareStatement(sql) ) {
-            int departmentId = 1000;  // simulant un Scanner
-            String departmentName = "Prova insert";
+            int departmentId = 80;  // simulant un Scanner
+            String departmentName = "Prova update";
             
             System.out.println("Connexió amb la base de dades MySQL exitosa.");
-            stmt.setInt(1, departmentId);
-            stmt.setString(2, departmentName);
+            stmt.setString(1, departmentName);
+            stmt.setInt(2, departmentId);
             
             if (stmt.executeUpdate()>0)
-                System.out.println("Inserció exitosa");
+                System.out.println("Modificació exitosa");
+
             System.out.println("Connexió tancada.");
         } catch (SQLException e) {
             System.err.println("Error en Base de dades: " + e.getMessage());
