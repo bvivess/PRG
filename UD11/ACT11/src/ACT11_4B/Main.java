@@ -58,46 +58,45 @@ public class Main {
                     ResultSet rs = (ResultSet) gestorBBDD.executaSQL(conn, 
                                                           "SELECT '1' FROM employees WHERE employee_id = ?",
                                                           department.getManagerId());
-                    if (!rs.next())
-                        if ((Integer) gestorBBDD.executaSQL(conn, 
-                                                 """
-                                                    INSERT INTO employees(employee_id, first_name, last_name, job_id)
-                                                    VALUES(?,?,?,?)
-                                                 """,
-                                                 employee.getEmployeeId(),
-                                                 employee.getFirstName(),
-                                                 employee.getLastName(),
-                                                 employee.getJobId()) > 0)
-                            employees.add(employee);
-                    
+                    if (!rs.next()) {
+                        gestorBBDD.executaSQL(conn, 
+                                              """
+                                                 INSERT INTO employees(employee_id, first_name, last_name, job_id)
+                                                 VALUES(?,?,?,?)
+                                              """,
+                                              employee.getEmployeeId(),
+                                              employee.getFirstName(),
+                                              employee.getLastName(),
+                                              employee.getJobId());
+                        employees.add(employee);
+                    }
                     // Comprovar integritat referencial amb 'locations'
                     rs = (ResultSet) gestorBBDD.executaSQL(conn, 
                                                 "SELECT '1' FROM locations WHERE location_id = ?",
                                                 department.getLocationId());
-                    if (!rs.next())
-                        if ((Integer) gestorBBDD.executaSQL(conn, 
-                                                 """
-                                                    INSERT INTO locations (LOCATION_ID, CITY)
-                                                    VALUES (?, ?)
-                                                 """,
-                                                 location.getLocationId(),
-                                                 location.getCity()) > 0)
-                            locations.add(location);
-                    
+                    if (!rs.next()) {
+                        gestorBBDD.executaSQL(conn, 
+                                              """
+                                                INSERT INTO locations (LOCATION_ID, CITY)
+                                                VALUES (?, ?)
+                                              """,
+                                              location.getLocationId(),
+                                              location.getCity());
+                        locations.add(location);
+                    }
                     // Insertar la fila a 'departments'
                     try {
-                        if ((Integer) gestorBBDD.executaSQL(conn,
-                                                 """
-                                                    INSERT INTO departments(department_id, department_name, manager_id, location_id)
-                                                    VALUES (?, ?, ?, ?)
-                                                 """,
-                                                 department.getDepartmentId(),
-                                                 department.getDepartmentName(),
-                                                 department.getManagerId(),
-                                                 department.getLocationId()) > 0) {
-                            System.out.println("Insertant departament: " + parts[0]);
-                            departments.add(department);
-                        }
+                        gestorBBDD.executaSQL(conn,
+                                              """
+                                                 INSERT INTO departments(department_id, department_name, manager_id, location_id)
+                                                 VALUES (?, ?, ?, ?)
+                                              """,
+                                              department.getDepartmentId(),
+                                              department.getDepartmentName(),
+                                              department.getManagerId(),
+                                              department.getLocationId());
+                        System.out.println("Insertant departament: " + parts[0]);
+                        departments.add(department);
                     } catch (SQLException e) {
                         if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)
                             // Error per PK, modificar
@@ -116,7 +115,6 @@ public class Main {
                         else
                             throw e; // Re-llança si no és error de PK
                     }
-                    
                     conn.commit();
                 } catch (SQLException e) {
                     conn.rollback();
