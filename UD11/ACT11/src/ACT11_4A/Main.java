@@ -116,7 +116,7 @@ public class Main {
                         statement.setInt(4, Integer.parseInt(_locationId));
                         statement.executeUpdate();
                     } catch (SQLException e) {  // per a qualsevol error ...
-                        if (e.getErrorCode() == 1062) {  // ... excepte l'error per PK
+                        if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062) { // ... excepte l'error per PK
                             // Modificar
                             sql = """
                                   UPDATE departments 
