@@ -17,7 +17,7 @@ public class Main_V1 {
             System.out.println("Connexió establerta.");
             
             connexio.setAutoCommit(false);
-            llegeixArxiuABBDD(connexio, "c:\\temp\\ACT11_5.csv");  // llegir l'arxiu i insertar a BBDD
+            arxiuABBDD(connexio, "c:\\temp\\ACT11_4.csv");  // llegir l'arxiu i insertar a BBDD
             
             System.out.println("Connexió tancada.");
         } catch (Exception e) {
@@ -25,7 +25,7 @@ public class Main_V1 {
         }
     }
     
-    private static Connection getConnectionFromFile(String filename) throws SQLException, IOException {
+    public static Connection getConnectionFromFile(String filename) throws SQLException, IOException {
         String servidor = "";
         String bdades = "";
         String usuari = "";
@@ -60,7 +60,7 @@ public class Main_V1 {
         return DriverManager.getConnection(servidor + bdades, usuari, passwd);
     }
     
-    private static void llegeixArxiuABBDD(Connection connexio, String filename) throws SQLException, IOException {
+    public static void arxiuABBDD(Connection connexio, String filename) throws SQLException, IOException {
         int numLinia = 0;
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line = reader.readLine();  // Es descarta la primera línia

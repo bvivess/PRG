@@ -22,7 +22,7 @@ public class Main_V2 {
         Set<Department> departments = new HashSet<Department>();
         // Establir la connexió
         try {
-            llegeixArxiuABBDD(gestorBBDD, "c:\\temp\\ACT11_4.csv", employees, locations, departments);
+            arxiuABBDD(gestorBBDD, "c:\\temp\\ACT11_4.csv", employees, locations, departments);
             
             // Mostra les estructures
             System.out.println(employees);
@@ -33,7 +33,7 @@ public class Main_V2 {
         }
     }
     
-    private static void llegeixArxiuABBDD(GestorBBDD gestorBBDD, String filename,
+    private static void arxiuABBDD(GestorBBDD gestorBBDD, String filename,
                                           Set<Employee> employees,
                                           Set<Location> locations,
                                           Set<Department> departments) throws SQLException, IOException {
@@ -98,7 +98,7 @@ public class Main_V2 {
                         System.out.println("Insertant departament: " + parts[0]);
                         departments.add(department);
                     }
-                    
+
                     conn.commit();
                 } catch (SQLException e) {
                     conn.rollback();
