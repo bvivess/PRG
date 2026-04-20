@@ -78,7 +78,7 @@ public class Main {
                         if ((Integer) gestorBBDD.executaSQL(conn, 
                                                  """
                                                     INSERT INTO locations (LOCATION_ID, CITY)
-                                                    VALUES (?,?)
+                                                    VALUES (?, ?)
                                                  """,
                                                  location.getLocationId(),
                                                  location.getCity()) > 0)
@@ -88,7 +88,7 @@ public class Main {
                     if ((Integer) gestorBBDD.executaSQL(conn,
                                              """
                                                 INSERT INTO departments(department_id, department_name, manager_id, location_id)
-                                                VALUES (?,?,?,?)
+                                                VALUES (?, ?, ?, ?)
                                              """,
                                              department.getDepartmentId(),
                                              department.getDepartmentName(),
