@@ -68,10 +68,7 @@ public class Main {
                                                  INSERT INTO employees(employee_id, first_name, last_name, job_id)
                                                  VALUES(?, ?, ?, ?)
                                               """,
-                                              employee.getEmployeeId(),
-                                              employee.getFirstName(),
-                                              employee.getLastName(),
-                                              employee.getJobId());
+                                              employee.getEmployeeId(),employee.getFirstName(),employee.getLastName(),employee.getJobId());
                         employees.add(employee);
                     }
                     // Comprovar integritat referencial amb 'locations'

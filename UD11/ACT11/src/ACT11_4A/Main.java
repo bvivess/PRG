@@ -32,10 +32,10 @@ public class Main {
         String passwd = "";
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
+            String linia;
+            while ((linia = reader.readLine()) != null) {
                 try {
-                    String[] parts = line.split("=");
+                    String[] parts = linia.split("=");
                     String clau = parts[0].trim();
                     String valor = (parts[1] == null ? "" : parts[1].trim());  // cas de 'PASSWD = '
                     
@@ -80,7 +80,7 @@ public class Main {
                     
                     // Comprovar integritat referencial amb 'employees'
                     sql = """
-                          SELECT '1' FROM employees
+                          SELECT 'dummy' FROM employees
                           WHERE employee_id = ?
                           """;
                     statement = connexio.prepareStatement(sql);
