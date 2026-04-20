@@ -22,15 +22,16 @@ public class Main99 {
                      """;
       
         // Establir la connexió
-        try ( Connection connexio = DriverManager.getConnection(servidor+bdades, usuari, passwd);
-              Statement statement = connexio.createStatement() ) {
+        try ( Connection connexio = DriverManager.getConnection(servidor+bdades, usuari, passwd);  // Establir connexió
+              Statement statement = connexio.createStatement() ) {  // Prepara la instrucció
+
             int departmentId = 10;  // simulant un Scanner
             
             System.out.println("Connexió amb la base de dades MySQL exitosa.");
             
             sql += departmentId;  // concatenació de la instrucció SQL
             
-            try (ResultSet resultSet = statement.executeQuery(sql)) {
+            try (ResultSet resultSet = statement.executeQuery(sql)) {  // Executa SQL
                 // Processar els resultats de la Query
                 while (resultSet.next()) {
                     System.out.println( resultSet.getInt("department_id") + " " +

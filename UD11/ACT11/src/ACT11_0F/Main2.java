@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Main2 {
@@ -21,8 +20,8 @@ public class Main2 {
                      """;
       
         // Establir la connexió
-        try ( Connection connexio = DriverManager.getConnection(servidor+bdades, usuari, passwd);
-              PreparedStatement stmt = connexio.prepareStatement(sql) ) {
+        try ( Connection connexio = DriverManager.getConnection(servidor+bdades, usuari, passwd);  // Establir connexió
+              PreparedStatement stmt = connexio.prepareStatement(sql) ) {  // Prepara la instrucció
             int departmentId = 1000;  // simulant un Scanner
             String departmentName = "Prova insert";
             
@@ -30,7 +29,7 @@ public class Main2 {
             stmt.setInt(1, departmentId);
             stmt.setString(2, departmentName);
             
-            if (stmt.executeUpdate()>0)
+            if (stmt.executeUpdate()>0)  // Executa SQL
                 System.out.println("Inserció exitosa");
             System.out.println("Connexió tancada.");
         } catch (SQLException e) {

@@ -15,15 +15,15 @@ public class Main1 {
         String passwd = "";
         String sql = "SELECT employee_id, last_name, first_name FROM employees WHERE last_name = ?";
 
-        try ( Connection connexio = DriverManager.getConnection(servidor+bdades, usuari, passwd);
-              PreparedStatement stmt = connexio.prepareStatement(sql) ) {
+        try ( Connection connexio = DriverManager.getConnection(servidor+bdades, usuari, passwd);  // Establir connexió
+              PreparedStatement stmt = connexio.prepareStatement(sql) ) {  // Prepara la instrucció
 
             // Assignem un valor al paràmetre de la sentència SQL
             String lastName = "King";  // Exemple
             stmt.setString(1, lastName);
 
             // Executem la consulta parametritzada
-            try (ResultSet resultSet = stmt.executeQuery()) {
+            try (ResultSet resultSet = stmt.executeQuery()) {  // Executa SQL
                 // Processar els resultats de la Query
                 System.out.println("ID\tLlinatge, nom");
                 while (resultSet.next()) {

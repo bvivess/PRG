@@ -20,9 +20,9 @@ public class Main98 {
                         WHERE last_name LIKE '%""" + lastName + "%'";
 
         // Establir la connexió
-        try ( Connection connexio = DriverManager.getConnection(servidor+bdades, usuari, passwd);
-              Statement statement = connexio.createStatement();
-              ResultSet resultSet = statement.executeQuery(sql)) {
+        try ( Connection connexio = DriverManager.getConnection(servidor+bdades, usuari, passwd);  // Establir connexió
+              Statement statement = connexio.createStatement();  // Prepara la instrucció
+              ResultSet resultSet = statement.executeQuery(sql)) {  // Executa SQL
 
             System.out.println("Connexió amb la base de dades MySQL exitosa.");
             
