@@ -54,42 +54,41 @@ public class GestorBBDD {
     // Executa SELECT, INSERT, DELETE, UPDATE
     public Object executaSQL(Connection conn, String sql, Object... arguments) throws SQLException {
         try {
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            assignaArguments(stmt, arguments);
+            PreparedStatement statement = conn.prepareStatement(sql);
+            assignaArguments(statement, arguments);
             
             if (sql.contains("SELECT"))
-                return stmt.executeQuery();
+                return statement.executeQuery();
             else // INSERT, DELETE, UPDATE
-                return stmt.executeUpdate();
+                return statement.executeUpdate();
         } catch (SQLException e) {
             throw e;  // Es propaga l'excepció al mètode anterior
         }
     }
     
-    private void assignaArguments(PreparedStatement stmt, Object... arguments) throws SQLException {
-        for (int i = 0; i < arguments.length; i++) {
-            Object arg = arguments[i];
-
-            if (arg == null) {
-                stmt.setObject(i + 1, null);
-            } else if (arg instanceof Integer) {
-                stmt.setInt(i + 1, (Integer) arg);
-            } else if (arg instanceof Long) {
-                stmt.setLong(i + 1, (Long) arg);
-            } else if (arg instanceof Double) {
-                stmt.setDouble(i + 1, (Double) arg);
-            } else if (arg instanceof Float) {
-                stmt.setFloat(i + 1, (Float) arg);
-            } else if (arg instanceof Boolean) {
-                stmt.setBoolean(i + 1, (Boolean) arg);
-            } else if (arg instanceof LocalDate) {
-                stmt.setDate(i + 1, Date.valueOf((LocalDate) arg));
-            } else if (arg instanceof java.sql.Date) {
-                stmt.setDate(i + 1, (java.sql.Date) arg);
-            } else if (arg instanceof Timestamp) {
-                stmt.setTimestamp(i + 1, (Timestamp) arg);
+    private void assignaArguments(PreparedStatement statement, Object... arguments) throws SQLException {
+        int i = 0;
+        for (Object a : arguments) {
+            if (a == null) {
+                statement.setObject(i + 1, null);
+            } else if (a instanceof Integer) {
+                statement.setInt(i + 1, (Integer) a);
+            } else if (a instanceof Long) {
+                statement.setLong(i + 1, (Long) a);
+            } else if (a instanceof Double) {
+                statement.setDouble(i + 1, (Double) a);
+            } else if (a instanceof Float) {
+                statement.setFloat(i + 1, (Float) a);
+            } else if (a instanceof Boolean) {
+                statement.setBoolean(i + 1, (Boolean) a);
+            } else if (a instanceof LocalDate) {
+                statement.setDate(i + 1, Date.valueOf((LocalDate) a));
+            } else if (a instanceof java.sql.Date) {
+                statement.setDate(i + 1, (java.sql.Date) a);
+            } else if (a instanceof Timestamp) {
+                statement.setTimestamp(i + 1, (Timestamp) a);
             } else {
-                stmt.setObject(i + 1, arg);
+                statement.setObject(i + 1, a);
             }
         }
     }
