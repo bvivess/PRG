@@ -56,7 +56,11 @@ public class Main {
                 try {
                     // Comprovar integritat referencial amb 'employees'
                     ResultSet rs = (ResultSet) gestorBBDD.executaSQL(conn, 
-                                                          "SELECT '1' FROM employees WHERE employee_id = ?",
+                                                                     """
+                                                                     SELECT '1' 
+                                                                     FROM employees 
+                                                                     WHERE employee_id = ?
+                                                                     """,
                                                           department.getManagerId());
                     if (!rs.next()) {  // no hi ha files a la 'SELECT'
                         gestorBBDD.executaSQL(conn, 
@@ -72,7 +76,11 @@ public class Main {
                     }
                     // Comprovar integritat referencial amb 'locations'
                     rs = (ResultSet) gestorBBDD.executaSQL(conn, 
-                                                "SELECT '1' FROM locations WHERE location_id = ?",
+                                                           """
+                                                           SELECT '1' 
+                                                           FROM locations 
+                                                           WHERE location_id = ?
+                                                           """,
                                                 department.getLocationId());
                     if (!rs.next()) {  // no hi ha files a la 'SELECT'
                         gestorBBDD.executaSQL(conn, 
@@ -107,10 +115,10 @@ public class Main {
                                                         location_id = ?
                                                     WHERE department_id = ?
                                                  """,
-                                                 department.getDepartmentId(),
                                                  department.getDepartmentName(),
                                                  department.getManagerId(),
-                                                 department.getLocationId());
+                                                 department.getLocationId(),
+                                                 department.getDepartmentId());
                         else
                             throw e; // Re-llança si no és error de PK
                     }
