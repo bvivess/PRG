@@ -150,7 +150,11 @@ public class GestorVendes {
     }
   
     public void carregaVendesBBDD(Map<Integer,Venda> vendes) throws SQLException, IOException{ 
-        String sql = "SELECT id, client_id, data, producte_id FROM vendes, venda_producte where id = venda_id";
+        String sql = """
+                     SELECT id, client_id, data, producte_id
+                     FROM vendes, venda_producte 
+                     WHERE id = venda_id
+                     """;
         
         try ( Connection conn = gestorBBDD.getConnectionFromFile();
               ResultSet resultSet = (ResultSet) gestorBBDD.executaSQL(conn, sql) ) { 

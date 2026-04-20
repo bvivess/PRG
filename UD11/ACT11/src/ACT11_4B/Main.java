@@ -85,19 +85,38 @@ public class Main {
                             locations.add(location);
                     
                     // Insertar la fila a 'departments'
-                    if ((Integer) gestorBBDD.executaSQL(conn,
-                                             """
-                                                INSERT INTO departments(department_id, department_name, manager_id, location_id)
-                                                VALUES (?, ?, ?, ?)
-                                             """,
-                                             department.getDepartmentId(),
-                                             department.getDepartmentName(),
-                                             department.getManagerId(),
-                                             department.getLocationId()) > 0) {
-                        System.out.println("Insertant departament: " + parts[0]);
-                        departments.add(department);
+                    try {
+                        if ((Integer) gestorBBDD.executaSQL(conn,
+                                                 """
+                                                    INSERT INTO departments(department_id, department_name, manager_id, location_id)
+                                                    VALUES (?, ?, ?, ?)
+                                                 """,
+                                                 department.getDepartmentId(),
+                                                 department.getDepartmentName(),
+                                                 department.getManagerId(),
+                                                 department.getLocationId()) > 0) {
+                            System.out.println("Insertant departament: " + parts[0]);
+                            departments.add(department);
+                        }
+                    } catch (SQLException e) {
+                        if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)
+                            // Error per PK, modificar
+                            gestorBBDD.executaSQL(conn,
+                                                 """
+                                                    UPDATE departments
+                                                    SET department_name = ?, 
+                                                        manager_id = ?,
+                                                        location_id = ?
+                                                    WHERE department_id = ?
+                                                 """,
+                                                 department.getDepartmentId(),
+                                                 department.getDepartmentName(),
+                                                 department.getManagerId(),
+                                                 department.getLocationId());
+                        else
+                            throw e; // Re-llança si no és error de PK
                     }
-
+                    
                     conn.commit();
                 } catch (SQLException e) {
                     conn.rollback();
