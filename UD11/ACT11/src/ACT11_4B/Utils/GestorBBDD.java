@@ -55,41 +55,42 @@ public class GestorBBDD {
     // Executa SELECT, INSERT, DELETE, UPDATE
     public Object executaSQL(Connection conn, String sql, Object... arguments) throws SQLException {
         try {
-            PreparedStatement statement = conn.prepareStatement(sql);
-            assignaArguments(statement, arguments);
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            assignaArguments(stmt, arguments);
             
             if (sql.contains("SELECT"))
-                return statement.executeQuery();
+                return stmt.executeQuery();
             else // INSERT, DELETE, UPDATE
-                return statement.executeUpdate();
+                return stmt.executeUpdate();
         } catch (SQLException e) {
             throw e;  // Es propaga l'excepció al mètode anterior
         }
     }
     
-    private void assignaArguments(PreparedStatement statement, Object... arguments) throws SQLException {
-        int i = 0;
-        for (Object a : arguments) {
+    private void assignaArguments(PreparedStatement stmt, Object... arguments) throws SQLException {
+        for (int i = 0; i < arguments.length; i++) {
+            Object a = arguments[i];
+
             if (a == null) {
-                statement.setObject(i + 1, null);
+                stmt.setObject(i + 1, null);
             } else if (a instanceof Integer) {
-                statement.setInt(i + 1, (Integer) a);
+                stmt.setInt(i + 1, (Integer) a);
             } else if (a instanceof Long) {
-                statement.setLong(i + 1, (Long) a);
+                stmt.setLong(i + 1, (Long) a);
             } else if (a instanceof Double) {
-                statement.setDouble(i + 1, (Double) a);
+                stmt.setDouble(i + 1, (Double) a);
             } else if (a instanceof Float) {
-                statement.setFloat(i + 1, (Float) a);
+                stmt.setFloat(i + 1, (Float) a);
             } else if (a instanceof Boolean) {
-                statement.setBoolean(i + 1, (Boolean) a);
+                stmt.setBoolean(i + 1, (Boolean) a);
             } else if (a instanceof LocalDate) {
-                statement.setDate(i + 1, Date.valueOf((LocalDate) a));
+                stmt.setDate(i + 1, Date.valueOf((LocalDate) a));
             } else if (a instanceof java.sql.Date) {
-                statement.setDate(i + 1, (java.sql.Date) a);
+                stmt.setDate(i + 1, (java.sql.Date) a);
             } else if (a instanceof Timestamp) {
-                statement.setTimestamp(i + 1, (Timestamp) a);
+                stmt.setTimestamp(i + 1, (Timestamp) a);
             } else {
-                statement.setObject(i + 1, a);
+                stmt.setObject(i + 1, a);
             }
         }
     }

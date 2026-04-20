@@ -56,13 +56,14 @@ public class Main {
                 try {
                     // Comprovar integritat referencial amb 'employees'
                     ResultSet rs = (ResultSet) gestorBBDD.executaSQL(conn, 
-                                                          "SELECT '1' FROM departments WHERE department_id=?",
+                                                          "SELECT '1' FROM departments WHERE department_id = ?",
                                                           department.getManagerId());
                     if (!rs.next())
+                        System.out.println(employee);
                         if ((Integer) gestorBBDD.executaSQL(conn, 
                                                  """
                                                     INSERT INTO employees(employee_id, first_name, last_name, job_id)
-                                                    VALUES(?,?,?,?)
+                                                    VALUES(?, ?, ?, ?)
                                                  """,
                                                  employee.getEmployeeId(),
                                                  employee.getFirstName(),
@@ -72,13 +73,13 @@ public class Main {
                     
                     // Comprovar integritat referencial amb 'locations'
                     rs = (ResultSet) gestorBBDD.executaSQL(conn, 
-                                                "SELECT '1' FROM locations WHERE location_id=?",
+                                                "SELECT '1' FROM locations WHERE location_id = ?",
                                                 department.getLocationId());
                     if (!rs.next())
                         if ((Integer) gestorBBDD.executaSQL(conn, 
                                                  """
                                                     INSERT INTO locations (LOCATION_ID, CITY)
-                                                    VALUES (?,?)
+                                                    VALUES (?, ?)
                                                  """,
                                                  location.getLocationId(),
                                                  location.getCity()) > 0)
