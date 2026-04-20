@@ -59,7 +59,6 @@ public class Main {
                                                           "SELECT '1' FROM departments WHERE department_id = ?",
                                                           department.getManagerId());
                     if (!rs.next())
-                        System.out.println(employee);
                         if ((Integer) gestorBBDD.executaSQL(conn, 
                                                  """
                                                     INSERT INTO employees(employee_id, first_name, last_name, job_id)
