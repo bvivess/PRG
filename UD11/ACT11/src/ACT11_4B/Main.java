@@ -85,7 +85,7 @@ public class Main {
                     if (!rs.next()) {  // no hi ha files a la 'SELECT'
                         gestorBBDD.executaSQL(conn, 
                                               """
-                                                INSERT INTO locations (LOCATION_ID, CITY)
+                                                INSERT INTO locations (location_id, city)
                                                 VALUES (?, ?)
                                               """,
                                               location.getLocationId(),
