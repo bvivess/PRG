@@ -1,7 +1,7 @@
-package ACT11_4;
+package ACT11_4B;
 
-import ACT11_4.Classes.*;
-import ACT11_4.Utils.*;
+import ACT11_4B.Classes.*;
+import ACT11_4B.Utils.*;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Main_V2 {
+public class Main {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         final String MYSQL_CON = "c:\\temp\\mysql.con";
         GestorBBDD gestorBBDD = new GestorBBDD(MYSQL_CON);

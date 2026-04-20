@@ -1,4 +1,4 @@
-package ACT11_4;
+package ACT11_4A;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Main_V1 {
+public class Main {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         // Establir la connexió
         try ( Connection connexio = getConnectionFromFile("c:\\temp\\mysql.con")  ) {  // Establir connexió

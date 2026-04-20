@@ -1,4 +1,4 @@
-package ACT11_4.Classes;
+package ACT11_4B.Classes;
 
 public class Employee {
     private int employeeId;
