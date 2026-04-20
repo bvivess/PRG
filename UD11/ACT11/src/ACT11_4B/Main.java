@@ -58,7 +58,7 @@ public class Main {
                     ResultSet rs = (ResultSet) gestorBBDD.executaSQL(conn, 
                                                           "SELECT '1' FROM employees WHERE employee_id = ?",
                                                           department.getManagerId());
-                    if (!rs.next()) {
+                    if (!rs.next()) {  // no hi ha files a la 'SELECT'
                         gestorBBDD.executaSQL(conn, 
                                               """
                                                  INSERT INTO employees(employee_id, first_name, last_name, job_id)
@@ -74,7 +74,7 @@ public class Main {
                     rs = (ResultSet) gestorBBDD.executaSQL(conn, 
                                                 "SELECT '1' FROM locations WHERE location_id = ?",
                                                 department.getLocationId());
-                    if (!rs.next()) {
+                    if (!rs.next()) {  // no hi ha files a la 'SELECT'
                         gestorBBDD.executaSQL(conn, 
                                               """
                                                 INSERT INTO locations (LOCATION_ID, CITY)
@@ -98,8 +98,7 @@ public class Main {
                         System.out.println("Insertant departament: " + parts[0]);
                         departments.add(department);
                     } catch (SQLException e) {
-                        if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)
-                            // Error per PK, modificar
+                        if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)  // Error per PK, modificar
                             gestorBBDD.executaSQL(conn,
                                                  """
                                                     UPDATE departments
