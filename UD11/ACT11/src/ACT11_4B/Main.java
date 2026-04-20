@@ -66,7 +66,7 @@ public class Main {
                         gestorBBDD.executaSQL(conn, 
                                               """
                                                  INSERT INTO employees(employee_id, first_name, last_name, job_id)
-                                                 VALUES(?,?,?,?)
+                                                 VALUES(?, ?, ?, ?)
                                               """,
                                               employee.getEmployeeId(),
                                               employee.getFirstName(),
