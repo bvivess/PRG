@@ -41,9 +41,9 @@ public class Main {
               BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             conn.setAutoCommit(false);
             
-            String line = reader.readLine(); // Es descarta la primera línia
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split(";");
+            String linia = reader.readLine(); // Es descarta la primera línia
+            while ((linia = reader.readLine()) != null) {
+                String[] parts = linia.split(";");
                 int departmentId = Integer.parseInt(parts[0]);
                 String departmentName = parts[1];
                 int managerId = Integer.parseInt(parts[2]);
@@ -68,7 +68,10 @@ public class Main {
                                                  INSERT INTO employees(employee_id, first_name, last_name, job_id)
                                                  VALUES(?, ?, ?, ?)
                                               """,
-                                              employee.getEmployeeId(),employee.getFirstName(),employee.getLastName(),employee.getJobId());
+                                              employee.getEmployeeId(),
+                                              employee.getFirstName(),
+                                              employee.getLastName(),
+                                              employee.getJobId());
                         employees.add(employee);
                     }
                     // Comprovar integritat referencial amb 'locations'
