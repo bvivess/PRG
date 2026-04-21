@@ -55,18 +55,19 @@ public class Main {
                 
                 try {
                     // Comprovar integritat referencial amb 'employees'
-                    ResultSet rs = (ResultSet) gestorBBDD.executaSQL(conn, 
-                                                                     """
-                                                                     SELECT '1' 
-                                                                     FROM employees 
-                                                                     WHERE employee_id = ?
-                                                                     """,
-                                                          department.getManagerId());
+                    ResultSet rs = (ResultSet) gestorBBDD.executaSQL( conn, 
+                                                                      """
+                                                                      SELECT '1' 
+                                                                      FROM employees 
+                                                                      WHERE employee_id = ?
+                                                                      """,
+                                                                      department.getManagerId()
+                                                                     );
                     if (!rs.next()) {  // no hi ha files a la 'SELECT'
                         gestorBBDD.executaSQL(conn, 
                                               """
-                                                 INSERT INTO employees(employee_id, first_name, last_name, job_id)
-                                                 VALUES(?, ?, ?, ?)
+                                              INSERT INTO employees(employee_id, first_name, last_name, job_id)
+                                              VALUES(?, ?, ?, ?)
                                               """,
                                               employee.getEmployeeId(),
                                               employee.getFirstName(),
@@ -85,8 +86,8 @@ public class Main {
                     if (!rs.next()) {  // no hi ha files a la 'SELECT'
                         gestorBBDD.executaSQL(conn, 
                                               """
-                                                INSERT INTO locations (location_id, city)
-                                                VALUES (?, ?)
+                                              INSERT INTO locations (location_id, city)
+                                              VALUES (?, ?)
                                               """,
                                               location.getLocationId(),
                                               location.getCity());
@@ -96,8 +97,8 @@ public class Main {
                     try {
                         gestorBBDD.executaSQL(conn,
                                               """
-                                                 INSERT INTO departments(department_id, department_name, manager_id, location_id)
-                                                 VALUES (?, ?, ?, ?)
+                                              INSERT INTO departments(department_id, department_name, manager_id, location_id)
+                                              VALUES (?, ?, ?, ?)
                                               """,
                                               department.getDepartmentId(),
                                               department.getDepartmentName(),
@@ -107,18 +108,19 @@ public class Main {
                         departments.add(department);
                     } catch (SQLException e) {
                         if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)  // Error per PK, modificar
-                            gestorBBDD.executaSQL(conn,
-                                                 """
-                                                    UPDATE departments
-                                                    SET department_name = ?, 
-                                                        manager_id = ?,
-                                                        location_id = ?
-                                                    WHERE department_id = ?
-                                                 """,
-                                                 department.getDepartmentName(),
-                                                 department.getManagerId(),
-                                                 department.getLocationId(),
-                                                 department.getDepartmentId());
+                            gestorBBDD.executaSQL( conn,
+                                                   """
+                                                   UPDATE departments
+                                                   SET department_name = ?, 
+                                                       manager_id = ?,
+                                                       location_id = ?
+                                                   WHERE department_id = ?
+                                                   """,
+                                                   department.getDepartmentName(),
+                                                   department.getManagerId(),
+                                                   department.getLocationId(),
+                                                   department.getDepartmentId()
+                                                  );
                         else
                             throw e; // Re-llança si no és error de PK
                     }
