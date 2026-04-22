@@ -1,80 +1,79 @@
 package ACT11_8;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Map;
-import java.util.TreeMap;
+import java.io.ObjectOutputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
-        String arxiu = "C:\\temp\\ACT11_3A.log";
-        Map<LocalDateTime, MissatgeError> variables = new TreeMap<>();
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+        // Dades de la connexió:
+        String servidor = "jdbc:mysql://localhost:3306/";
+        String bdades = "gbd";
+        String usuari = "root";
+        String passwd = "";
+        String sql = """
+                     SELECT employee_id, first_name,last_name,email,phone_number,
+                     hire_date, job_title, salary, commission_pct, department_name
+                     FROM departments d, jobs j, employees e
+                     WHERE d.department_id = e.department_id
+                     AND   j.job_id = e.job_id""";
+        
+        List<Employee> employees = new ArrayList<>();
 
-        try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu));
-            ) {
+        // Establir la connexió
+        try ( Connection connexio = DriverManager.getConnection(servidor+bdades, usuari, passwd);
+              Statement statement = connexio.createStatement();
+              ResultSet resultSet = statement.executeQuery(sql)) {
+
+            System.out.println("Connexió amb la base de dades MySQL exitosa.");
             
-            // Llegir el contingut línia a línia
-            variables = LlegeixArxiu(bufferedReader);
-            LlegeixVariables(variables);
-            if (ComprovaVariables(variables))
-                System.out.println("OK");
-            else
-                System.out.println("KO");
-        } catch (IOException e) {
-            System.err.println("Error llegint l'arxiu: " + e.getMessage());
-        }
-    }
-    
-    private static Map<LocalDateTime,MissatgeError> LlegeixArxiu(BufferedReader bufferedReader) throws IOException {
-        Map<LocalDateTime, MissatgeError> variables = new TreeMap<>();
-        String linea;
-        String[] parts;
-        while ((linea = bufferedReader.readLine()) != null) {
-            try {
-                // format: YYYY-MM-DD hh:mi:ss [tipus:9999] xxxxxxxxxxxxxxxxxxxxxxxxxxx
-                // Descomposició de l'string
-                parts = linea.split("\\s+(?=\\[)|(?<=\\])\\s+|\\s+(?=:)|(?<=\\[\\w+:)|(?<=:\\d{4})\\s+");
-                
-                //System.out.println(parts[0] +"-"+parts[1]+"-"+parts[2] + "-" +parts[3]);
-                
-                LocalDateTime diaHora = LocalDateTime.parse( parts[0], 
-                                                     DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss") );
-
-                // Obtener el tipo de error
-                String tipoError = parts[1].substring(1,parts[1].length());
-
-                // Obtener el código de error
-                String codigoError = parts[2].substring(0,parts[2].length());
-
-                // Obtener la descripción
-                String descripcion = parts[3];
-                MissatgeError missatgeError = new MissatgeError(TipusError.valueOf(tipoError),codigoError,descripcion);
-                variables.put(diaHora, missatgeError);
-
-            } catch(Exception e) {
-                System.out.println(e.getMessage());
+            // Processar els resultats de la Query
+            while (resultSet.next()) {
+                Employee employee = new Employee( resultSet.getInt("employee_id"),
+                                                   resultSet.getString("first_name"),
+                                                    resultSet.getString("last_name"), 
+                                                      resultSet.getString("email"),
+                                    resultSet.getString("phone_number"),
+                                    resultSet.getString("hire_date"),
+                                    resultSet.getString("job_title"),
+                                    resultSet.getDouble("salary"),
+                                    resultSet.getDouble("commission_pct"),
+                                    resultSet.getString("department_name")
+                                  );
+                employees.add(employee);
             }
-        }
-        return variables;
-    }
 
-    private static void LlegeixVariables(Map<LocalDateTime,MissatgeError> variables) {
-        for (LocalDateTime k : variables.keySet()) {
-            MissatgeError v = variables.get(k);
-            System.out.println(k + " = " + v.toString());
-        }
-    }
+            // Serialització
+            try ( FileOutputStream fos = new FileOutputStream("C:\\temp\\ACT11_4.ser");
+                  ObjectOutputStream out = new ObjectOutputStream(fos)
+                ) {
+                // Iterar cada 'employee'
+                for (Employee e : employees) {
+                    System.out.println(e.toString());
+                    out.writeObject(e);
+                }
+                
+            } catch (IOException i) {
+                System.out.println("Exception writing 'Empleats': " + i);
+            }
 
-    private static boolean ComprovaVariables(Map<LocalDateTime,MissatgeError> variables) {
-        TipusError[] valorsPossibles = {TipusError.ERROR, TipusError.WARNING};
-        //for (TipusError v:valorsPossibles) {
-        //    if (variables.get(v) == null)
-        //        return false;
-        //}
-        return true;
+            
+            // Deserialització
+            // ...
+            // ...
+            // ...
+            
+            System.out.println("Connexió tancada.");
+        } catch (SQLException e) {
+            System.err.println("Error al conectarse a la base de dades: " + e.getMessage());
+        }
     }
 }
-
