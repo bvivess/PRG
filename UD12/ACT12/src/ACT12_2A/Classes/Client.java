@@ -1,23 +1,19 @@
-package ACT12_2C;
+package ACT12_2A.Classes;
 
-public class Client implements Comparable<Client>{
+public class Client implements Comparable<Client> {
     int id;
     String nom;
     String email;
-    String department_id;
 
-    public Client(int id, String nom, String email, String department_id) {
+    public Client(int id, String nom, String email) {
         setId(id);
         setNom(nom);
         setEmail(email);
-        setDepartment_id(department_id);
     }
 
     @Override
     public int compareTo(Client c) {
-        if (this.id > c.id) return 1;
-        else if (this.id < c.id) return -1;
-        else return 0;
+        return this.compareTo(c);
     }
 
     public int getId() {
@@ -45,14 +41,6 @@ public class Client implements Comparable<Client>{
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getDepartment_id() {
-        return department_id;
-    }
-
-    public void setDepartment_id(String department_id) {
-        this.department_id = department_id;
     }
 
     @Override

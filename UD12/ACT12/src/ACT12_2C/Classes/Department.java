@@ -1,4 +1,4 @@
-package ACT12_2C;
+package ACT12_2C.Classes;
 
 import ACT12_2A.*;
 import java.util.Objects;

@@ -1,5 +1,6 @@
 package ACT12_2B;
 
+import ACT12_2B.Utils.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -17,14 +18,22 @@ public class Main {
         // Connexió a la base de dades
         try ( Connection conn = gestorBBDD.getConnectionFromFile() ) {
             names.entrySet().stream()
-                 .forEach( tupla -> { 
-                                     try {
-                                            gestorBBDD.executaSQL(conn, "INSERT INTO usuaris (id, nom) VALUES (?, ?)",
+                 .forEach( tupla -> { try {
+                                            gestorBBDD.executaSQL(conn, 
+                                                                  """
+                                                                  INSERT INTO usuaris (id, nom) 
+                                                                  VALUES (?, ?)
+                                                                  """,
                                                                   tupla.getKey(), tupla.getValue());
                                          } catch (SQLException e) {
                                              try {
                                                 if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062)
-                                                    gestorBBDD.executaSQL( conn, "UPDATE usuaris SET nom = ? WHERE id = ?",
+                                                    gestorBBDD.executaSQL( conn, 
+                                                                           """
+                                                                           UPDATE usuaris 
+                                                                           SET nom = ? 
+                                                                           WHERE id = ?
+                                                                           """,
                                                                            tupla.getValue(), tupla.getKey() );
                                                 else 
                                                     throw new RuntimeException (e);  // en un 'forEach' cal disparar aquesta exception
@@ -32,7 +41,7 @@ public class Main {
                                                  throw new RuntimeException (e2);  // en un 'forEach' cal disparar aquesta exception
                                              }
                                          }
-                                    }
+                                     }
                          );
 
         } catch (Exception e) {

@@ -18,7 +18,7 @@ import java.time.LocalDate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class GestorVendes {
+public class Gestor {
     final String MYSQL_CON = "c:\\temp\\mysql.con";
     GestorBBDD gestorBBDD = new GestorBBDD(MYSQL_CON);
     

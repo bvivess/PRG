@@ -1,27 +1,27 @@
 package ACT12_4;
 
-import ACT12_4.Utils.GestorVendes;
+import ACT12_4.Utils.Gestor;
 
 public class Main {
     public static void main(String[] args) {
-        GestorVendes gestorVendes = new GestorVendes();
+        Gestor gestor = new Gestor();
         
         try {
             // CÀRREGA CLIENTS, PRODUCTES i VENDES
             System.out.println("CLIENTS");
-            gestorVendes.carregaClients("c:\\temp\\clients.csv");
+            gestor.carregaClients("c:\\temp\\clients.csv");
             System.out.println("PRODUCTES");
-            gestorVendes.carregaProductes("c:\\temp\\productes.csv");
+            gestor.carregaProductes("c:\\temp\\productes.csv");
             System.out.println("VENDES");
-            gestorVendes.carregaVendes("c:\\temp\\vendes.csv");
+            gestor.carregaVendes("c:\\temp\\vendes.csv");
             
             // MODIFICA DADES
-            gestorVendes.modifica();
+            gestor.modifica();
             
             // DESA CLIENTS, PRODUCTES i VENDES
-            gestorVendes.desaClients("c:\\temp\\clients_out.csv");
-            gestorVendes.desaProductes("c:\\temp\\productes_out.csv");
-            gestorVendes.desaVendes("c:\\temp\\vendes_out.csv");
+            gestor.desaClients("c:\\temp\\clients_out.csv");
+            gestor.desaProductes("c:\\temp\\productes_out.csv");
+            gestor.desaVendes("c:\\temp\\vendes_out.csv");
 
         } catch (Exception e) {
             System.out.println("Error GENERAL: " + e.getMessage());

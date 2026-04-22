@@ -1,4 +1,4 @@
-package ACT12_2C;
+package ACT12_2C.Utils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
