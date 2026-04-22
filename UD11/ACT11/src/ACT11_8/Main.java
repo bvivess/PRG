@@ -24,7 +24,8 @@ public class Main {
                      hire_date, job_title, salary, commission_pct, department_name
                      FROM departments d, jobs j, employees e
                      WHERE d.department_id = e.department_id
-                     AND   j.job_id = e.job_id""";
+                     AND   j.job_id = e.job_id
+                     """;
         
         List<Employee> employees = new ArrayList<>();
 
