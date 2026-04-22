@@ -20,6 +20,7 @@ public class Main {
         System.out.println("Departaments");
         departments.stream().forEach(System.out::println);  // Ordenat per Id
         System.out.println("");
+        
         System.out.println("Clients");
         clients.stream().forEach(System.out::println);  // Ordenat per nom
         
