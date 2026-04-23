@@ -96,9 +96,7 @@ public class Main {
     
     private static Meteorit parseMeteorit(String linia, int numLinia, BufferedWriter bufferedWriter) {
         try {
-            // Elimina el camp GeoLocation "(lat, lon)" del final, que conté comes internes
-            String netejada = linia.replaceAll(",\"\\(.*?\\)\"$", "");
-            String[] parts = netejada.split(",");
+            String[] parts = linia.split(",");
 
             int    _id        = Integer.parseInt(parts[1].trim());
             String _nom       = parts[0].trim();
