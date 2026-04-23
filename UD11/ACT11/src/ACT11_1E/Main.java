@@ -91,13 +91,12 @@ public class Main {
                     
                     // Articles
                     Article article = new Article(_articleId, _articleName, _articlePrice );
-                    carregaArticles(articles, article);
+                    afegeixArticle(articles, article);
 
                     // Orders
                     Order order = new Order(_orderId, _orderDate, article.getProductPrice());
-                    carregaOrders(articles, orders, order, article );
+                    afegeixOrder(articles, orders, order, article );
                 }
-
             }
         } catch (NumberFormatException e) {
             logError(bufferedWriter, numLinia, e);
@@ -117,13 +116,11 @@ public class Main {
         }
     }
 
-    private static void carregaArticles(Set<Article> articles, Article article) {
-
+    private static void afegeixArticle(Set<Article> articles, Article article) {
         articles.add(article);
-
     }
 
-    private static void carregaOrders(Set<Article> articles, Map<Integer, Order> orders, Order o, Article a) {
+    private static void afegeixOrder(Set<Article> articles, Map<Integer, Order> orders, Order o, Article a) {
         Article article = cercaArticle(articles, a.getProductId()); 
         
         if (article != null)
@@ -153,13 +150,12 @@ public class Main {
     }
     
     private static void mostraOrders(Map<Integer, Order> orders) {
-      List<Order> orders_ = new ArrayList<>(orders.values()); // Llista dels valors (Order)
+        List<Order> orders_ = new ArrayList<>(orders.values()); // Llista dels valors (Order)
 
-    Collections.sort(orders_); 
-
-    for (Order o : orders_) {
-        System.out.println(o);
-    }
+        Collections.sort(orders_); 
+        for (Order o : orders_) {
+            System.out.println(o);
+        }
 }
 
 }
