@@ -5,15 +5,19 @@ import java.time.LocalDate;
 public class Meteorit implements Comparable<Meteorit> {
     private int id;
     private String name;
+    private String type;
     private double mass;
+    private String fall;
     private LocalDate year;
     private double latitude;
     private double longitude;
 
-    public Meteorit(int id, String name, double mass, LocalDate year, double latitude, double longitude) {
+    public Meteorit(int id, String name, String type, double mass, String fall, LocalDate year, double latitude, double longitude) {
         setId(id);
         setName(name);
+        setType(type);
         setMass(mass);
+        setFall(fall);
         setYear(year);
         setLatitude(latitude);
         setLongitude(longitude);
@@ -52,10 +56,26 @@ public class Meteorit implements Comparable<Meteorit> {
         validateString(name, "name");
         this.name = name;
     }
+    
+    public void setType(String type) {
+        validateString(type, "type");
+        if (type.equals("Valid") || type.equals("Relict")) 
+            this.type = type;
+        else
+            throw new IllegalArgumentException("Type fora de rang");
+    }
 
     public void setMass(double mass) {
         validateNonNegative(mass, "mass");
         this.mass = mass;
+    }
+    
+    public void setFall(String fall) {
+        validateString(fall, "fall");
+        if (fall.equals("Fell") || fall.equals("Found")) 
+            this.fall = fall;
+        else
+            throw new IllegalArgumentException("Fall fora de rang");
     }
 
     public void setYear(LocalDate year) {
@@ -73,12 +93,14 @@ public class Meteorit implements Comparable<Meteorit> {
         this.longitude = lon;
     }
 
-    public int getId() { return id; }
-    public String getName() { return name; }
-    public double getMass() { return mass; }
-    public LocalDate getYear() { return year; }
-    public double getLatitude() { return latitude; }
-    public double getLongitude() { return longitude; }
+    public int getId() { return this.id; }
+    public String getName() { return this.name; }
+    public String getType() { return this.type; }
+    public double getMass() { return this.mass; }
+    public String getFall() { return this.fall; }
+    public LocalDate getYear() { return this.year; }
+    public double getLatitude() { return this.latitude; }
+    public double getLongitude() { return this.longitude; }
 
     @Override
     public int compareTo(Meteorit o) {
