@@ -67,24 +67,13 @@ public class Main {
                 try {
                     numLinia++;
 
-                    String[] parts = linia.split(",");
-
-                    int _id = Integer.parseInt(parts[1].trim());
-                    String _nom = parts[0].trim();
-                    String _type = parts[2].trim();
-                    double _massa = parts[4].isEmpty() ? 0 : Double.parseDouble(parts[4].trim());
-                    String _fell = parts[5].trim();
-                    int _any = parts[6].isEmpty() ? 0 : Integer.parseInt(parts[6].trim());
-                    LocalDate _data = (_any == 0) ? null : LocalDate.of(_any, 1, 1);
-                    double _latitude = parts[7].isEmpty() ? 0 : Double.parseDouble(parts[7].trim());
-                    double _longitude = parts[8].isEmpty() ? 0 : Double.parseDouble(parts[8].trim());
-
-                    Meteorit m = new Meteorit(_id, _nom, _type, _massa, _fell, _data, _latitude, _longitude);
-
+                    Meteorit m = parseMeteorit(linia,numLinia++,bufferedWriter);
+                    
                     // Afegir al Set
                     meteorits.add(m);
 
                     // Afegeix al Map
+                    int _any = m.getYear().getYear();
                     if (!meteoritsPerAny.containsKey(_any)) {
                         meteoritsPerAny.put(_any, new ArrayList<Meteorit>());
                     }
@@ -102,6 +91,43 @@ public class Main {
                 }
             }
 
+        }
+    }
+    
+    private static Meteorit parseMeteorit(String linia, int numLinia, BufferedWriter bufferedWriter) {
+        try {
+            // Elimina el camp GeoLocation "(lat, lon)" del final, que conté comes internes
+            String netejada = linia.replaceAll(",\"\\(.*?\\)\"$", "");
+            String[] parts = netejada.split(",");
+
+            int    _id        = Integer.parseInt(parts[1].trim());
+            String _nom       = parts[0].trim();
+            String _type      = parts[2].trim();
+            double _massa     = parts[4].isEmpty() ? 0 : Double.parseDouble(parts[4].trim());
+            String _fell      = parts[5].trim();
+            int    _any       = parts[6].isEmpty() ? 0 : Integer.parseInt(parts[6].trim());
+            LocalDate _data   = (_any == 0) ? null : LocalDate.of(_any, 1, 1);
+            double _latitude  = parts[7].isEmpty() ? 0 : Double.parseDouble(parts[7].trim());
+            double _longitude = parts[8].isEmpty() ? 0 : Double.parseDouble(parts[8].trim());
+
+            return new Meteorit(_id, _nom, _type, _massa, _fell, _data, _latitude, _longitude);
+
+        } catch (NumberFormatException e) {
+            logError(bufferedWriter, numLinia, e);
+        } catch (IllegalArgumentException e) {
+            logError(bufferedWriter, numLinia, e);
+        } catch (Exception e) {
+            logError(bufferedWriter, numLinia, e);
+        }
+        return null;
+    }
+
+    private static void logError(BufferedWriter bw, int numLinia, Exception e) {
+        try {
+            bw.write("Error carregant Línia " + numLinia + ": " + e.getMessage());
+            bw.newLine();
+        } catch (IOException ex) {
+            System.err.println("Error escrivint al log: " + ex.getMessage());
         }
     }
 }
