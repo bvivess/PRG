@@ -1,6 +1,6 @@
 package ACT12_3.Utils;
 
-import ACT12_3.Meteorit;
+import ACT12_3.Classes.Meteorit;
 import java.io.*;
 import java.nio.file.*;
 import java.time.LocalDate;
