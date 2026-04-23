@@ -44,39 +44,14 @@ public class Main {
     private static void llegeixArxiu(String arxiu, String arxiuLog, Map<Integer, Order> orders, Set<Article> articles) throws IOException, NumberFormatException, IllegalArgumentException {
         String linia;
         int numLinia = 0;
-        String[] parts;
-        int  _orderId, _articleId, _articlePrice;
-        String _articleName;
-        int _dia=0, _mes=0, _any=0;
-        LocalDate _orderDate;
-        //String[] parts;
         
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu));
               BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(arxiuLog)) ) {       
             while ((linia = bufferedReader.readLine()) != null) {
                 try {
                     // format: xxx\Txxx\Ttxxx\Txxx
-                    numLinia = numLinia + 1 ;
+                    parseLiniaOrder(linia, numLinia++, bufferedWriter, articles, orders);
                     
-                    if (!(linia.isEmpty() || linia.startsWith("#"))) {
-                        parts = linia.split("\t", 5);
-                        _orderId = Integer.parseInt(parts[0].trim());
-                        _articleId = Integer.parseInt(parts[2].trim());
-                        _articleName = parts[3].trim();
-                        _articlePrice = Integer.parseInt(parts[4].trim());
-                        // format: parts[1]: xx/xx/xxxx
-                        //                   1  4  7
-                        _dia = Integer.parseInt(parts[1].substring(0, 2));
-                        _mes = Integer.parseInt(parts[1].substring(3, 5));
-                        _any = Integer.parseInt(parts[1].substring(6, 10));
-                        _orderDate = LocalDate.of(_any, _mes, _dia);
-                        
-                        // Articles
-                        carregaArticles(articles, _articleId, _articleName, _articlePrice );
-                        
-                        // Orders
-                        carregaOrders(articles, orders, _orderId, _orderDate, _articleId );
-                    }
                 } catch (NumberFormatException e) {
                     bufferedWriter.write("Error carregant Línia" + numLinia + ": " + e.getMessage());
                     bufferedWriter.newLine();
@@ -92,22 +67,71 @@ public class Main {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
         }
     }
+    
+    private static void parseLiniaOrder( String linia, int numLinia, BufferedWriter bufferedWriter, 
+                                         Set<Article> articles, 
+                                         Map<Integer, Order> orders ) {
 
-    private static void carregaArticles(Set<Article> articles, int productId, String productName, int productPrice) {
+        try {
+            if (!(linia.isEmpty() || linia.startsWith("#"))) {
+                String[] parts;
+                
+                if (!(linia.isEmpty() || linia.startsWith("#"))) {
+                    parts = linia.split("\t", 5);
+                    int _orderId = Integer.parseInt(parts[0].trim());
+                    int _articleId = Integer.parseInt(parts[2].trim());
+                    String _articleName = parts[3].trim();
+                    int _articlePrice = Integer.parseInt(parts[4].trim());
+                    // format: parts[1]: xx/xx/xxxx
+                    //                   1  4  7
+                    int _dia = Integer.parseInt(parts[1].substring(0, 2));
+                    int _mes = Integer.parseInt(parts[1].substring(3, 5));
+                    int _any = Integer.parseInt(parts[1].substring(6, 10));
+                    LocalDate _orderDate = LocalDate.of(_any, _mes, _dia);
+                    
+                    // Articles
+                    Article article = new Article(_articleId, _articleName, _articlePrice );
+                    carregaArticles(articles, article);
 
-        articles.add(new Article(productId, productName, productPrice));
+                    // Orders
+                    Order order = new Order(_orderId, _orderDate, article.getProductPrice());
+                    carregaOrders(articles, orders, order, article );
+                }
+
+            }
+        } catch (NumberFormatException e) {
+            logError(bufferedWriter, numLinia, e);
+        } catch (IllegalArgumentException e) {
+            logError(bufferedWriter, numLinia, e);
+        } catch (Exception e) {
+            logError(bufferedWriter, numLinia, e);
+        }
+    }
+    
+    private static void logError(BufferedWriter bufferedWriter, int numLinia, Exception e) {
+        try {
+            bufferedWriter.write("Error carregant línia " + numLinia + ": " + e.getMessage());
+            bufferedWriter.newLine();
+        } catch (IOException ex) {
+            System.err.println("Error escrivint al log: " + ex.getMessage());
+        }
+    }
+
+    private static void carregaArticles(Set<Article> articles, Article article) {
+
+        articles.add(article);
 
     }
 
-    private static void carregaOrders(Set<Article> articles, Map<Integer, Order> orders, int orderId, LocalDate orderDate, int articleId) {
-        Article article = cercaArticle(articles, articleId);
+    private static void carregaOrders(Set<Article> articles, Map<Integer, Order> orders, Order o, Article a) {
+        Article article = cercaArticle(articles, a.getProductId()); 
         
         if (article != null)
-            if (orders.containsKey(orderId)) {
-                orders.get(orderId).setOrderTotal(article.getProductPrice() + orders.get(orderId).getOrderTotal() );
-                orders.get(orderId).getCarrito().add(article);
+            if (orders.containsKey(o.getOrderId())) {
+                orders.get(o.getOrderId()).setOrderTotal(article.getProductPrice() + orders.get(o.getOrderId()).getOrderTotal() );
+                orders.get(o.getOrderId()).getCarrito().add(article);
             } else
-                orders.put(orderId, new Order(orderId, orderDate, article.getProductPrice()));
+                orders.put(o.getOrderId(), o);
 
     }
     
@@ -115,6 +139,7 @@ public class Main {
         for (Article a : articles) 
             if (a.getProductId() == articleId)
                 return a;
+        
         return null;
     }
     
