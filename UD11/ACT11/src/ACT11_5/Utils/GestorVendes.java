@@ -159,6 +159,7 @@ public class GestorVendes {
               ResultSet resultSet = (ResultSet) gestorBBDD.executaSQL(conn, 
                                                                       """
                                                                       SELECT id, client_id, data, producte_id
+                                                                      FROM vendes, venda_producte
                                                                       WHERE id = venda_id
                                                                       """) ) { 
             
