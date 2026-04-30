@@ -58,7 +58,7 @@ public class GestorBBDD {
             PreparedStatement stmt = conn.prepareStatement(sql);
             assignaArguments(stmt, arguments);
             
-            if (sql.contains("SELECT"))
+            if (sql.trim().toUpperCase().startsWith("SELECT"))
                 return stmt.executeQuery();
             else // INSERT, DELETE, UPDATE
                 return stmt.executeUpdate();
