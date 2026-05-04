@@ -14,19 +14,19 @@ public class Main {
         );
 
         // EMPRANT 'Collections.sort' 
-        Collections.sort(persones);  // ordenat per l''ordre natural'
-        System.out.println(persones);  // [Persona{nom=Anna, edat=30}, Persona{nom=Joan, edat=25}, Persona{nom=Marc, edat=35}]
+        //Collections.sort(persones);  // ordenat per l''ordre natural' (per nom)
+        //System.out.println(persones);  // [Persona{nom=Anna, edat=30}, Persona{nom=Joan, edat=25}, Persona{nom=Marc, edat=35}]
         
         // EMPRANT 'Collections.sort'
         // Collections.sort(persones, new ComparadorPersonaPerEdat());
         
         // EMPRANT 'list.sort' 
-        persones.sort(null);  // ordenat per l''ordre natural'
+        persones.sort(null);  // 'null' indica ordenat per l''ordre natural'
         System.out.println(persones);  // [Persona{nom=Anna, edat=30}, Persona{nom=Joan, edat=25}, Persona{nom=Marc, edat=35}]
-        // EMPRANT la classe explÃ­cita
+        // EMPRANT la classe explícita
         // persones.sort( new ComparadorPersonaPerEdat() );  
         
-        // EMPRANT una classe (interfÃ­cia) anÃ²nima 
+        // EMPRANT una classe (interfícia) anónima 
         persones.sort( new Comparator<Persona>() {
                                                     @Override
                                                     public int compare(Persona p1, Persona p2) {

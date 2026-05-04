@@ -3,14 +3,14 @@ package ACT12_0C;
 public class Main {
 
     public static void main(String[] args) {
-        // Classe anÃ²nima a partir d'InterfÃ­cie
+        // Classe anónima a partir d'Interfície
         new Persona() {
             private final String nom = "Bernat";
             private final int edat = 23;
             
             @Override
             public void saluda(){ 
-                System.out.println("Hola, sÃ³c " + this.nom + ", una persona anÃ²nima");
+                System.out.println("Hola, sóc " + this.nom + ", una persona anónima");
             }
             
         }.saluda();
