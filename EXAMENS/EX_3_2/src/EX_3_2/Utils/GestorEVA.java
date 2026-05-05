@@ -65,13 +65,14 @@ public class GestorEVA {
                                                            Integer.parseInt(partsDate[0]),   // MM 
                                                            Integer.parseInt(partsDate[1]));  // DD
                         //LocalTime _duration = LocalTime.parse(parts[5], DateTimeFormatter.ofPattern("H:mm"));
+                        /*
                         String[] partsDuration = parts[5].split(":"); 
                         LocalTime _duration = (parts[5] == null || parts[5].isBlank())
                                               ? null
                                               :  LocalTime.of(Integer.parseInt(partsDuration[0]),   // HH
                                                               Integer.parseInt(partsDuration[1]));  // MM
-
-
+                        */
+                        LocalTime _duration = LocalTime.parse(parts[5].trim()); 
                         evas.put(_evaId, new EVA(_evaId, _countryId, _vehicleId, _date, _duration, _purpose, _crew));
                     }
                 } catch (NumberFormatException e) {
