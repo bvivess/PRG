@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.Set;
 
 
-public class Gestor {
+public class GestorEVA {
     // =========================================================================
     //  LLEGEIX CSV ? Map<Integer,EVA>  +  Set<Astronaut>
     // =========================================================================
