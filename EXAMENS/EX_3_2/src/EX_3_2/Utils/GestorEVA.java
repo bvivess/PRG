@@ -18,17 +18,8 @@ import java.util.Set;
 
 
 public class GestorEVA {
-    // =========================================================================
-    //  LLEGEIX CSV ? Map<Integer,EVA>  +  Set<Astronaut>
-    // =========================================================================
-
     /**
-     * Format del CSV (sense capçalera):
-     *   eva_id , country , astronaut(s) , vehicle , date , duration , purpose
-     *
-     * Astronauts múltiples al camp 3 separats per '/':  "Thuot/Hieb/Akers"
-     * Data pot estar buida; durada pot ser "0:00".
-     * @param arxiu
+    * @param arxiu
      * @param arxiuLog
      * @param evas
      * @param astronauts
