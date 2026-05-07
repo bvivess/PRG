@@ -9,7 +9,7 @@ public class ACT12_1AA {
         
         
 
-        List<Integer> resultat = numeros.stream()
+        List<Integer> resultat = numeros.stream()  // /4, 5, 3, 9, 2, 5, 6, 1, 8, 7/
                                         .filter(n -> n % 2 != 0) // Filtrar nombres imparells /5, 3, 9, 5, 1, 7/
                                         .map(n -> n * 2) // Multiplicar per 2   /10, 6, 18, 10, 2, 14/
                                         .distinct() // Eliminar duplicats  /10, 6, 18,  2, 14/

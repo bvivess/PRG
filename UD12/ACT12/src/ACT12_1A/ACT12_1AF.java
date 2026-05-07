@@ -16,7 +16,7 @@ public class ACT12_1AF {
                                     .collect(Collectors.toList()); // Recollir els majors en una llista
 
         boolean totsMajors = edats.stream()
-            .allMatch(edat -> edat >= 18); // Comprovar si tots els estudiants són majors d'edat
+                                  .allMatch(edat -> edat >= 18); // Comprovar si tots els estudiants són majors d'edat
 
         System.out.println("Llista: " + edats);
         System.out.println("Nombre d'estudiants majors d'edat: " + nombreMajors);

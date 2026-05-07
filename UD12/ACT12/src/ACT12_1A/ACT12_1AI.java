@@ -8,10 +8,10 @@ public class ACT12_1AI {
         List<Integer> numeros = Arrays.asList(1,2,3,4,5,6,7,8,9);
 
         boolean capNegatiu = numeros.stream()
-                                    .noneMatch(n -> n < 0); // Comprovar si cap nÃºmero Ã©s negatiu
+                                    .noneMatch(n -> n < 0); // Comprovar si cap número és negatiu
 
         List<Integer> resultats = numeros.stream()
-                                         .filter(n -> n > 0) // Filtrar nomÃ©s els nÃºmeros positius
+                                         .filter(n -> n > 0) // Filtrar només els números positius
                                          .map(n -> n * 10) // Multiplicar per 10
                                          .collect(Collectors.toList()); // Recollir en una llista
 
@@ -21,9 +21,9 @@ public class ACT12_1AI {
         double avg = numeros.stream().mapToInt(n->n).average().orElse(0);
 
         System.out.println("Llista: " + numeros);
-        System.out.println("Cap numero Ã©s negatiu?: " + capNegatiu);
+        System.out.println("Cap numero és negatiu?: " + capNegatiu);
         System.out.println("Resultat multiplicat per 10: " + resultats);
-        System.out.println("Suma/ MÃ xim / MÃ­nim / Mitjana: " + suma + " / " + max + " / " + min + " / " + avg);
+        System.out.println("Suma/ M?xim / Mínim / Mitjana: " + suma + " / " + max + " / " + min + " / " + avg);
     }
 }
 

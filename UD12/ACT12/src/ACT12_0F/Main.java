@@ -25,9 +25,6 @@ public class Main {
         // names.forEach( name -> System.out.println(name) );  // Consumer
         // 'forEach' admet un 'Consumer'
         names.forEach( imprimir );  // Consumer
-        
-        
-        Stream.g
     }
 }
 
