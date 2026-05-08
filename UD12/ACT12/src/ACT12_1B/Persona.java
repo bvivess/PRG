@@ -2,7 +2,7 @@ package ACT12_1B;
 
 import java.util.Objects;
 
-public class Persona {
+public class Persona implements Comparable<Persona>{
     private String nom;
     private int edat;
 
@@ -30,6 +30,11 @@ public class Persona {
     @Override
     public int hashCode() {
         return Objects.hash(nom, edat);
+    }
+
+    @Override
+    public int compareTo(Persona o) {
+        return this.getNom().compareTo(o.getNom());
     }
 
     public String getNom() {
