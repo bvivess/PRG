@@ -13,13 +13,12 @@ import java.util.stream.Stream;
 public class Gestor {
     public List<Department> carregaDepartments(String f) {
         try (Stream<String> linies = Files.lines(Paths.get(f))) {
-            List<Department> departments = 
-                   linies.filter(linia -> !linia.isBlank() && !linia.startsWith("#"))
-                  .map(linia -> linia.split(","))
-                  .map(parts -> parts[3].trim())
-                  .distinct()
-                  .map(d -> new Department(d))
-                  .collect(Collectors.toList());  
+            List<Department> departments = linies.filter(linia -> !linia.isBlank() && !linia.startsWith("#"))
+                                                 .map(linia -> linia.split(","))
+                                                 .map(parts -> parts[3].trim())
+                                                 .distinct()
+                                                 .map(d -> new Department(d))
+                                                 .collect(Collectors.toList());  
             return departments;
         } catch (IOException e) {
             System.err.println(e.getMessage());
@@ -29,15 +28,12 @@ public class Gestor {
     
     public List<Client> carregaClients(String f) {
         try (Stream<String> linies = Files.lines(Paths.get(f))) {
-            List<Client> clients = 
-                   linies.filter(linia -> !linia.isBlank() && !linia.startsWith("#"))
-                  .map(linia -> linia.split(","))
-                  .map(parts -> new Client( Integer.parseInt(parts[0].trim()),
-                                            parts[1].trim(),
-                                            parts[2].trim()
-                                          )
-                      )
-                  .collect(Collectors.toList()); 
+            List<Client> clients = linies.filter(linia -> !linia.isBlank() && !linia.startsWith("#"))
+                                         .map(linia -> linia.split(","))
+                                         .map(parts -> new Client( Integer.parseInt(parts[0].trim()),
+                                                                   parts[1].trim(),
+                                                                   parts[2].trim() ) )
+                                         .collect(Collectors.toList()); 
             return clients;
         } catch (IOException e) {
             System.err.println(e.getMessage());

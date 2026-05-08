@@ -14,7 +14,9 @@ public class Main {
         
         // Imprimeix les llistes
         System.out.println("Departments");
-        departments.stream().sorted((d1, d2) -> d1.getId().compareTo(d2.getId())).forEach(System.out::println);  // Ordenat per Id
+        departments.stream()
+                   .sorted((d1, d2) -> d1.getId().compareTo(d2.getId()))
+                   .forEach(System.out::println);  // Ordenat per Id
         
         System.out.println("");
         
