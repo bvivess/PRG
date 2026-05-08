@@ -26,7 +26,7 @@ public class Gestor {
         return new HashSet<>();
     }
 
-    private Meteorit parseMeteorit(String linia, int numLinia, BufferedWriter bufferedWriter) throws IOException {
+    private Meteorit parseMeteorit(String linia, int numLinia, BufferedWriter bufferedWriter) {
         try {
             // name,id,nametype,recclass,mass (g),fall,year,reclat,reclong,GeoLocation
             String[] parts = linia.split(",",10);
@@ -43,16 +43,21 @@ public class Gestor {
 
             return new Meteorit(_id, _nom, _type, _massa, _fell, _data, _latitude, _longitude);
         } catch (NumberFormatException e) {
-            bufferedWriter.write("Error carregant Línia " + numLinia + ": " + e.getMessage());
-            bufferedWriter.newLine();
+            logError(bufferedWriter, numLinia, e);
         } catch (IllegalArgumentException e) {
-            bufferedWriter.write("Error carregant Línia " + numLinia + ": " + e.getMessage());
-            bufferedWriter.newLine();
+            logError(bufferedWriter, numLinia, e);
         } catch (Exception e) {
-            bufferedWriter.write("Error General carregant Línia " + numLinia + ": " + e.getMessage());
-            bufferedWriter.newLine();
+            logError(bufferedWriter, numLinia, e);
         }
         return null;
     }
-    
+
+    private void logError(BufferedWriter bufferedWriter, int numLinia, Exception e) {
+        try {
+            bufferedWriter.write("Error carregant Línia " + numLinia + ": " + e.getMessage());
+            bufferedWriter.newLine();
+        } catch (IOException ex) {
+            System.err.println("Error escrivint al log: " + ex.getMessage());
+        }
+    }
 }
