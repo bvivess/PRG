@@ -18,6 +18,7 @@ public class ACT12_1BI {
 
         List<Persona> resultats = persones.stream()
                                           .filter(p -> p.getEdat() < 18) // Filtrar només els números positius
+                                          .sorted((p1,p2) -> Integer.compare( p1.getEdat(),p2.getEdat()))
                                           .collect(Collectors.toList()); // Recollir en una llista
 
         double suma = persones.stream().map(p->p.getEdat()).mapToDouble(e->e).sum();
