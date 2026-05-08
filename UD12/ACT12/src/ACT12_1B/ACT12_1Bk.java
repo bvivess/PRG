@@ -1,8 +1,9 @@
 package ACT12_1B;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
-public class ACT12_1BJ {
+public class ACT12_1BK {
     public static void main(String[] args) {
         List<Persona> persones = Arrays.asList( new Persona("Juan", 1),
                                                 new Persona("Jordi",2),
@@ -20,11 +21,10 @@ public class ACT12_1BJ {
         System.out.println(cercaPersona(persones, "Joan")); // Mostrar el resultat
     }
     
-    private static Persona cercaPersona(List<Persona> persones, String nom) {
+    private static List<Persona> cercaPersona(List<Persona> persones, String nom) {
         return persones.stream()
                        .filter(p -> p.getNom().equals(nom)) // Filtrar per nom
-                       .findFirst()  // també '.findAny()'
-                       .orElse(null); // Recollir el valor 'null'
+                       .collect(Collectors.toList());  // passar a llista
         
     }
 }
