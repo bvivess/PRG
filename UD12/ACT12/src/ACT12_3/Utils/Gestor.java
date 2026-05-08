@@ -11,15 +11,14 @@ import java.util.stream.*;
 public class Gestor {
 
     public Set<Meteorit> llegeixArxiu(String fitxerCSV, String arxiuLog) {
-        try ( BufferedReader br = new BufferedReader(new FileReader(fitxerCSV));
-              BufferedWriter bw = new BufferedWriter(new FileWriter(arxiuLog)) ) {
-            AtomicInteger numLinia = new AtomicInteger(0);
+        try (Stream<String> linies = Files.lines(Paths.get(fitxerCSV));
+              BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(arxiuLog)) ) {
+            int[] numLinia = {0};  // objecte en comptes de tipus primitiu perqu? pugui variar en les cridada a 'parseMeteorit'
 
-            return br.lines()
-                     .filter(linia -> !linia.isBlank() && !linia.startsWith("#") && !linia.startsWith("name"))
-                     .map(linia -> parseMeteorit(linia, numLinia.incrementAndGet(), bw))
-                     .filter(Objects::nonNull)
-                     .collect(Collectors.toCollection(HashSet::new));
+            return linies .filter(linia -> !(linia.isBlank() || linia.startsWith("#") && !linia.startsWith("name")))
+                          .map(linia -> parseMeteorit(linia, ++numLinia[0], bufferedWriter))  // rep 'String' torna 'Meteorit'
+                          //.filter(Objects::nonNull)
+                          .collect(Collectors.toCollection(HashSet::new));
             
         } catch (IOException e) {
             System.err.println("Error llegint el fitxer o creant el log: " + e.getMessage());
@@ -27,11 +26,10 @@ public class Gestor {
         return new HashSet<>();
     }
 
-    private Meteorit parseMeteorit(String linia, int numLinia, BufferedWriter bufferedWriter) {
+    private Meteorit parseMeteorit(String linia, int numLinia, BufferedWriter bufferedWriter) throws IOException {
         try {
-            // Elimina el camp GeoLocation "(lat, lon)" del final, que cont√© comes internes
-            String netejada = linia.replaceAll(",\"\\(.*?\\)\"$", "");
-            String[] parts = netejada.split(",");
+            // name,id,nametype,recclass,mass (g),fall,year,reclat,reclong,GeoLocation
+            String[] parts = linia.split(",",10);
 
             int    _id        = Integer.parseInt(parts[1].trim());
             String _nom       = parts[0].trim();
@@ -44,23 +42,17 @@ public class Gestor {
             double _longitude = parts[8].isEmpty() ? 0 : Double.parseDouble(parts[8].trim());
 
             return new Meteorit(_id, _nom, _type, _massa, _fell, _data, _latitude, _longitude);
-
         } catch (NumberFormatException e) {
-            logError(bufferedWriter, numLinia, e);
+            bufferedWriter.write("Error carregant LÌnia " + numLinia + ": " + e.getMessage());
+            bufferedWriter.newLine();
         } catch (IllegalArgumentException e) {
-            logError(bufferedWriter, numLinia, e);
+            bufferedWriter.write("Error carregant LÌnia " + numLinia + ": " + e.getMessage());
+            bufferedWriter.newLine();
         } catch (Exception e) {
-            logError(bufferedWriter, numLinia, e);
+            bufferedWriter.write("Error General carregant LÌnia " + numLinia + ": " + e.getMessage());
+            bufferedWriter.newLine();
         }
         return null;
     }
-
-    private void logError(BufferedWriter bw, int numLinia, Exception e) {
-        try {
-            bw.write("Error carregant L√≠nia " + numLinia + ": " + e.getMessage());
-            bw.newLine();
-        } catch (IOException ex) {
-            System.err.println("Error escrivint al log: " + ex.getMessage());
-        }
-    }
+    
 }
