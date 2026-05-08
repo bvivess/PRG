@@ -3,7 +3,7 @@ package ACT12_1B;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class ACT12_1BK {
+public class ACT12_1BKK {
     public static void main(String[] args) {
         List<Persona> persones = Arrays.asList( new Persona("Juan Martinez", 30),
                                                 new Persona("Jordi Fajula", 31),
