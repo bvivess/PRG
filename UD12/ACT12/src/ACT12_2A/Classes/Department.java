@@ -11,7 +11,7 @@ public class Department  implements Comparable<Department> {
     
     @Override
     public int compareTo(Department d) {
-        return this.compareTo(d);
+        return this.getId().compareTo(d.getId());
     }
 
     @Override

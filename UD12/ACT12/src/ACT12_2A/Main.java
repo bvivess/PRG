@@ -6,17 +6,18 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        final String arxiuCSV = "C:\\temp\\clients.csv";
         Gestor gestor = new Gestor();
         
         // Carrega les llistes
-        List<Department> departments = gestor.carregaDepartments("c:\\temp\\clients.csv");
-        List<Client> clients = gestor.carregaClients("c:\\temp\\clients.csv");
+        List<Department> departments = gestor.carregaDepartments(arxiuCSV);
+        List<Client> clients = gestor.carregaClients(arxiuCSV);
         
         // Imprimeix les llistes
         System.out.println("Departments");
         departments.stream()
-                   .sorted((d1, d2) -> d1.getId().compareTo(d2.getId()))
-                   .forEach(System.out::println);  // Ordenat per Id
+                   .sorted()  // Ordenat per ID (defecte)
+                   .forEach(System.out::println);
         
         System.out.println("");
         

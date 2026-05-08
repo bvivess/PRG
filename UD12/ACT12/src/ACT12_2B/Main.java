@@ -17,7 +17,8 @@ public class Main {
 
         // Connexió a la base de dades
         try ( Connection conn = gestorBBDD.getConnectionFromFile() ) {
-            names.entrySet().stream()
+            names.entrySet()
+                 .stream()
                  .forEach( tupla -> { try {
                                             gestorBBDD.executaSQL(conn, 
                                                                   """
