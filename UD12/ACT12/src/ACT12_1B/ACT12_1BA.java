@@ -12,7 +12,8 @@ public class ACT12_1BA {
                                                 new Persona("Maria", 5),
                                                 new Persona("Joaquim", 6),
                                                 new Persona("Jaume", 7),
-                                                new Persona("Judith", 8) );
+                                                new Persona("Judith", 8),
+                                                new Persona("Joan", 9) );
 
         List<Persona> resultat = persones.stream()
                                         .filter(p -> p.getEdat() % 2 != 0) // Filtrar nombres imparells

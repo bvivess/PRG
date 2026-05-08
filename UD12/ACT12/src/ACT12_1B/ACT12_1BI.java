@@ -26,7 +26,7 @@ public class ACT12_1BI {
         double avg = persones.stream().map(p->p.getEdat()).mapToInt(e->e).average().orElse(0);
 
         System.out.println("Menors d'edat: " + resultats);
-        System.out.println("Suma / Màxim / Mínim / Mitjana: " + suma + " / " + max + " / " + min + " / " + avg);
+        System.out.println("Suma / M?xim / M�nim / Mitjana: " + suma + " / " + max + " / " + min + " / " + avg);
     }
 }
 
