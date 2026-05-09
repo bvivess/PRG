@@ -23,7 +23,6 @@ public class Main2 {
                 // D. Guardar els objectes en una estructura
                 if (producte != null)
                     productes.add(producte);
-
             }
             System.out.println(productes);
         } catch (FileNotFoundException f) {

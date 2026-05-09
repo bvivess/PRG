@@ -32,64 +32,79 @@ public class Main {
 
     private static void LlegeixArxiuDepartments(String arxiu, List<Department> departments) throws IOException, NumberFormatException, IllegalArgumentException {
         String linia;
+        int numLinia = 0;
         Department department;
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu)) ) {       
             while ((linia = bufferedReader.readLine()) != null) {
-                try {
-                    // format: xxxx xxxxxxxxxxxxxxxxxxxxxxx
-                    //         1    6
-                    if (!(linia.isEmpty() || linia.startsWith("#"))) {
-                        department = new Department( Integer.parseInt(linia.substring(0,4).trim()),  // departmentId
-                                                     linia.substring(5,linia.length()).trim());      // departmentName
-                        departments.add(department);
-
-                    }
-                } catch (NumberFormatException e) {
-                    System.err.println("Error carregant Department: " + e.getMessage());
-                } catch (IllegalArgumentException e) {
-                    System.err.println("Error carregant Department: " + e.getMessage());
-                } catch (Exception e) {
-                    System.err.println("Error carregant Department: " + e.getMessage());
-                }
+                department = parseDepartment(linia, ++numLinia);
+                
+                if (department != null)
+                    departments.add(department);
             }
         } catch (IOException e) {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
         }
     }
     
+    private static Department parseDepartment(String linia, int numLinia) {
+        try {
+            // format: xxxx xxxxxxxxxxxxxxxxxxxxxxx
+            //         1    6
+            if (!(linia.isEmpty() || linia.startsWith("#")))
+                return new Department( Integer.parseInt(linia.substring(0,4).trim()),  // departmentId
+                                       linia.substring(5,linia.length()).trim() );     // departmentName
+        } catch (NumberFormatException e) {
+            System.err.println("Error carregant Department: " + numLinia + ": " + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.err.println("Error carregant Department: " + numLinia + ": " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Error carregant Department: " + numLinia + ": " + e.getMessage());
+        }
+        
+        return null;
+    }
+    
     private static void LlegeixArxiuEmployees(String arxiu, List<Department> departments, List<Employee> employees) throws IOException, NumberFormatException, IllegalArgumentException {
         String linia;
         int numLinia = 0;
-        String[] parts;
-        Department department;
         Employee employee;
 
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu)) ) {   
             while ((linia = bufferedReader.readLine()) != null) {
-                try {
-                    // format: wwww; xxxx; yyyy; zzzz
-                    if (!(linia.isEmpty() || linia.startsWith("#"))) {
-                        parts = linia.split(";", 5);
-                        department = cercaDepartment(departments, Integer.parseInt(parts[4].trim()));  // cerca 'department' en l'arraylist 'departments'
-                        
-                        employee = new Employee( Integer.parseInt(parts[0].trim()),    // employeeId
-                                                 parts[1].trim(),                      // firstName
-                                                 parts[2].trim(),                      // lastName
-                                                 parts[3].trim(),                      // email
-                                                 department );                         // department
-                        employees.add(employee);
-                    }
-                } catch (NumberFormatException e) {
-                    System.err.println("Error carregant Employee: " + numLinia + ": " + e.getMessage());
-                } catch (IllegalArgumentException e) {
-                    System.err.println("Error carregant Employee: " + numLinia + ": " + e.getMessage());
-                } catch (Exception e) {
-                    System.err.println("Error carregant Employee: " + numLinia + ": " + e.getMessage());
-                }
+                employee = parseEmployee(linia, ++numLinia, departments);
+                
+                if (employee != null)
+                    employees.add(employee);
             }
         } catch (IOException e) {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
         }
+    }
+    
+    private static Employee parseEmployee(String linia, int numLinia, List<Department> departments) {
+        String[] parts;
+        Department department;
+        try {
+            // format: wwww; xxxx; yyyy; zzzz
+            if (!(linia.isEmpty() || linia.startsWith("#"))) {
+                parts = linia.split(";", 5);
+                department = cercaDepartment(departments, Integer.parseInt(parts[4].trim()));  // cerca 'department' en l'arraylist 'departments'
+
+                return new Employee( Integer.parseInt(parts[0].trim()),    // employeeId
+                                     parts[1].trim(),                      // firstName
+                                     parts[2].trim(),                      // lastName
+                                     parts[3].trim(),                      // email
+                                     department );                         // department
+            }
+        } catch (NumberFormatException e) {
+            System.err.println("Error carregant Employee: " + numLinia + ": " + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.err.println("Error carregant Employee: " + numLinia + ": " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Error carregant Employee: " + numLinia + ": " + e.getMessage());
+        }
+        
+        return null;
     }
 
     private static void mostraDepartments(List<Department> departments) {
