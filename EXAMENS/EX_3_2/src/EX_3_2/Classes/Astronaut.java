@@ -6,7 +6,7 @@ import java.util.Objects;
  * Representa un astronauta identificat pel seu nom
  */
 public class Astronaut {
-    private String id;   // nom complet p.ex. "Ed White"
+    private String id;
 
     public Astronaut(String astronautId) {
         this.id = astronautId;
@@ -14,8 +14,6 @@ public class Astronaut {
 
     public String getId()             { return id; }
     public void setId(String id)      { this.id = id; }
-
-    // ?? equals / hashCode basat en id ???????????????????????????????
 
     @Override
     public int hashCode() { return Objects.hash(id); }
