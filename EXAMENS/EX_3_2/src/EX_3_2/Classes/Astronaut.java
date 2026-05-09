@@ -3,7 +3,7 @@ package EX_3_2.Classes;
 import java.util.Objects;
 
 /**
- * Representa un astronauta identificat pel seu nom complet (astronaut_id).
+ * Representa un astronauta identificat pel seu nom
  */
 public class Astronaut {
     private String id;   // nom complet p.ex. "Ed White"
