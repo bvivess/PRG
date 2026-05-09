@@ -12,7 +12,7 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) throws Exception {
         // Arxius per a la càrrega de dades:
-        String arxiu1 = "C:\\temp\\ACT11_1C_departments.txt";
+        String arxiu1 = "C:\\temp\\ACT11_1C_departments.csv";
         String arxiu2 = "C:\\temp\\ACT11_1C_employees.csv";
         
         // Estructures de memòria:
@@ -80,25 +80,23 @@ public class Main {
     private static void llegeixArxiuEmployees(String arxiu, List<Department> departments, List<Employee> employees) throws IOException, NumberFormatException, IllegalArgumentException {
         String linia;
         int numLinia = 0;
-        String[] parts;
         Employee employee;
         Department department;
 
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu)) ) {   
             while ((linia = bufferedReader.readLine()) != null) {
                 try {
-                    // format: xxxx; yyyy; zzzz; ...
+                    // format: xxxx xxxxxxxxxxxxx xxxxxxxxxxxx xxxxxxxxxxxxxxxxxxxxx xx
+                    //         1    6             20           33                    55
                     numLinia++;
                     
                     if (!(linia.isEmpty() || linia.startsWith("#"))) {
-                        parts = linia.split(";", 5);
+                        department = cercaDepartment(departments, Integer.parseInt(linia.substring(54,linia.length()).trim()));  // cerca 'department' en l'arraylist 'departments'
                         
-                        department = cercaDepartment(departments, Integer.parseInt(parts[4].trim()));  // cerca 'department' en l'arraylist 'departments'
-                        
-                        employee = new Employee( Integer.parseInt(parts[0].trim()), // employeeId
-                                                 parts[1].trim(),                   // firstName
-                                                 parts[2].trim(),                   // lasttName
-                                                 parts[3].trim(),                   // email
+                        employee = new Employee( Integer.parseInt(linia.substring(0,4).trim()),  // employeeId
+                                                 linia.substring(5,18).trim(),                   // firstName
+                                                 linia.substring(19,31).trim(),                  // lasttName
+                                                 linia.substring(32,53).trim(),                 // email
                                                  department );                      // department
                         employees.add(employee);
                     }
