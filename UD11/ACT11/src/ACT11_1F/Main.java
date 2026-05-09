@@ -92,7 +92,6 @@ public class Main {
         Meteorit m;
         if (!(linia.isEmpty() || linia.startsWith("#"))) {
             try {
-
                 // #name,id,nametype,recclass,mass (g),fall,year,reclat,reclong,GeoLocation
                 String[] parts = linia.split(",");
 

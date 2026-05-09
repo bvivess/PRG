@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Main3 {
     public static void main(String[] args) {
-        File nomArxiu = new File("c:\\temp\\arxiu.cvs");  // o també 'String'
+        File nomArxiu = new File("c:\\temp\\arxiu.csv");  // o també 'String'
         List<Producte> productes = new ArrayList<>();
         
         try (BufferedReader lector = new BufferedReader(new FileReader(nomArxiu))) {
@@ -37,7 +37,6 @@ public class Main3 {
     private static Producte parseLinia(String linia, int numLinia) {
         // A. Dividir la linia en parts
         String[] parts = linia.split(";");
-        
         try {
             // B. Convertir cada part al tipus correcte
             int _producteId = Integer.parseInt(parts[0].trim());
@@ -45,7 +44,7 @@ public class Main3 {
             double _preu = Double.parseDouble(parts[2].trim());
             
             // C. Crear objectes a partir de les dades
-            Producte producte = new Producte(_producteId, _descripcio, _preu);
+            return new Producte(_producteId, _descripcio, _preu);
         } catch (Exception e) {
             System.err.println("Error en parseig: " + linia);
         }
