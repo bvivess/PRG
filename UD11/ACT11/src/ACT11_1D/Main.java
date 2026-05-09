@@ -34,48 +34,53 @@ public class Main {
         }
     }
 
-    private static void llegeixArxiu(String arxiu, String arxiuLog,  List<Product> products, List<Warehouse> warehouses) throws IOException, NumberFormatException, IllegalArgumentException {
+    private static void llegeixArxiu(String arxiu, String arxiuLog,
+                                     List<Product> products, List<Warehouse> warehouses) throws IOException, NumberFormatException, IllegalArgumentException {
         String linia;
         int numLinia = 0;
-        int _productId, _warehouseId, _quantity;
-        String _productName, _warehouseName;
+
         //String[] parts;
         
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu));
               BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(arxiuLog)) ) {       
-            while ((linia = bufferedReader.readLine()) != null) {
-                try {
-                    // format: XXXXXXX XXXXXXXXXXXXXXXXXXXXXXX XXXX XXXXXXXXXXXXXXXXXXXXXXX XXXXXXX
-                    //         1       9                       33   38                      62
-                    numLinia++;
-                    
-                    if (!(linia.isEmpty() || linia.startsWith("#"))) {
-                        _productId = Integer.parseInt(linia.substring(0, 8).trim());
-                        _productName = linia.substring(8,32).trim();
-                        _warehouseId = Integer.parseInt(linia.substring(32, 37).trim());
-                        _warehouseName = linia.substring(37, 61).trim();
-                        _quantity = Integer.parseInt(linia.substring(61, linia.length()).trim());
-                        
-                        // Products
-                        carregaProducts(_productId, _productName, products );
-                        
-                        // Warehouses
-                        carregaWarehouses(_warehouseId, _warehouseName, _quantity, warehouses );
-                        
-                    }
-                } catch (NumberFormatException e) {
-                    bufferedWriter.write("Error carregant Línia" + numLinia + ": " + e.getMessage());
-                    bufferedWriter.newLine();
-                } catch (IllegalArgumentException e) {
-                    bufferedWriter.write("Error carregant Línia" + numLinia + ": " + e.getMessage());
-                    bufferedWriter.newLine();
-                } catch (Exception e) {
-                    bufferedWriter.write("Error carregant Línia" + numLinia + ": " + e.getMessage());
-                    bufferedWriter.newLine();
-                }
-            }
+            while ((linia = bufferedReader.readLine()) != null) 
+                parseLinia(linia, ++numLinia, bufferedWriter, products, warehouses);
+            
         } catch (IOException e) {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
+        }
+    }
+    
+    private static void parseLinia(String linia, int numLinia, BufferedWriter bufferedWriter,
+                                   List<Product> products, List<Warehouse> warehouses) throws IOException {
+        int _productId, _warehouseId, _quantity;
+        String _productName, _warehouseName;
+        try {
+            // format: XXXXXXX XXXXXXXXXXXXXXXXXXXXXXX XXXX XXXXXXXXXXXXXXXXXXXXXXX XXXXXXX
+            //         1       9                       33   38                      62
+            if (!(linia.isEmpty() || linia.startsWith("#"))) {
+                _productId = Integer.parseInt(linia.substring(0, 8).trim());
+                _productName = linia.substring(8,32).trim();
+                _warehouseId = Integer.parseInt(linia.substring(32, 37).trim());
+                _warehouseName = linia.substring(37, 61).trim();
+                _quantity = Integer.parseInt(linia.substring(61, linia.length()).trim());
+
+                // Products
+                carregaProducts(_productId, _productName, products );
+
+                // Warehouses
+                carregaWarehouses(_warehouseId, _warehouseName, _quantity, warehouses );
+
+            }
+        } catch (NumberFormatException e) {
+            bufferedWriter.write("Error carregant Línia" + numLinia + ": " + e.getMessage());
+            bufferedWriter.newLine();
+        } catch (IllegalArgumentException e) {
+            bufferedWriter.write("Error carregant Línia" + numLinia + ": " + e.getMessage());
+            bufferedWriter.newLine();
+        } catch (Exception e) {
+            bufferedWriter.write("Error carregant Línia" + numLinia + ": " + e.getMessage());
+            bufferedWriter.newLine();
         }
     }
     

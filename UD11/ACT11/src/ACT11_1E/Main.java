@@ -47,22 +47,9 @@ public class Main {
         
         try ( BufferedReader bufferedReader = new BufferedReader(new FileReader(arxiu));
               BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(arxiuLog)) ) {       
-            while ((linia = bufferedReader.readLine()) != null) {
-                try {
-                    // format: xxx\Txxx\Ttxxx\Txxx
-                    parseLiniaOrder(linia, numLinia++, bufferedWriter, articles, orders);
-                    
-                } catch (NumberFormatException e) {
-                    bufferedWriter.write("Error carregant Línia" + numLinia + ": " + e.getMessage());
-                    bufferedWriter.newLine();
-                } catch (IllegalArgumentException e) {
-                    bufferedWriter.write("Error carregant Línia" + numLinia + ": " + e.getMessage());
-                    bufferedWriter.newLine();
-                } catch (Exception e) {
-                    bufferedWriter.write("Error carregant Línia" + numLinia + ": " + e.getMessage());
-                    bufferedWriter.newLine();   
-                }
-            }
+            while ((linia = bufferedReader.readLine()) != null)
+                parseLiniaOrder(linia, ++numLinia, bufferedWriter, articles, orders); 
+            
         } catch (IOException e) {
             System.err.println("Error llegint l'arxiu: " + e.getMessage());
         }
@@ -71,8 +58,8 @@ public class Main {
     private static void parseLiniaOrder( String linia, int numLinia, BufferedWriter bufferedWriter, 
                                          Set<Article> articles, 
                                          Map<Integer, Order> orders ) {
-
         try {
+            // format: xxx\Txxx\Ttxxx\Txxx
             if (!(linia.isEmpty() || linia.startsWith("#"))) {
                 String[] parts;
                 
