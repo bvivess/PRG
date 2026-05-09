@@ -18,7 +18,7 @@ public class Main3 {
             Producte producte;
             while ((linia = lector.readLine()) != null) {
                 // A. B. C.
-                producte = parseProducte(linia, numLinia);
+                producte = parseProducte(linia, ++numLinia);
                 
                 // D. Guardar els objectes en una estructura
                 if (producte != null)
