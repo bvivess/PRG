@@ -18,7 +18,7 @@ public class Main3 {
             Producte producte;
             while ((linia = lector.readLine()) != null) {
                 // A. B. C.
-                producte = parseProducte(linia, ++numLinia);
+                producte = parseLinia(linia, ++numLinia);
                 
                 // D. Guardar els objectes en una estructura
                 if (producte != null)
@@ -34,7 +34,7 @@ public class Main3 {
         }
     }
     
-    private static Producte parseProducte(String linia, int numLinia) {
+    private static Producte parseLinia(String linia, int numLinia) {
         // A. Dividir la linia en parts
         String[] parts = linia.split(";");
         
