@@ -5,19 +5,18 @@ import java.io.*;
 import java.nio.file.*;
 import java.time.LocalDate;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.*;
 
-public class Gestor {
+public class GestorMeteorits {
 
     public Set<Meteorit> llegeixArxiu(String fitxerCSV, String arxiuLog) {
         try (Stream<String> linies = Files.lines(Paths.get(fitxerCSV));
               BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(arxiuLog)) ) {
             int[] numLinia = {0};  // objecte en comptes de tipus primitiu perqu? pugui variar en les cridada a 'parseMeteorit'
 
-            return linies .filter(linia -> !(linia.isBlank() || linia.startsWith("#") && !linia.startsWith("name")))
-                          .map(linia -> parseMeteorit(linia, ++numLinia[0], bufferedWriter))  // rep 'String' torna 'Meteorit'
-                          //.filter(Objects::nonNull)
+            return linies .filter(linia -> !linia.startsWith("name"))
+                          .map(linia -> parseMeteorit(linia, numLinia[0]++, bufferedWriter))  // rep 'String' torna 'Meteorit'
+                          .filter(x -> x != null)  // s'eliminen els errors del 'parseMeteorit()'
                           .collect(Collectors.toCollection(HashSet::new));
             
         } catch (IOException e) {
@@ -34,14 +33,13 @@ public class Gestor {
             int    _id        = Integer.parseInt(parts[1].trim());
             String _nom       = parts[0].trim();
             String _type      = parts[2].trim();
-            double _massa     = parts[4].isEmpty() ? 0 : Double.parseDouble(parts[4].trim());
+            double _massa     = parts[4].isBlank() ? 0 : Double.parseDouble(parts[4].trim());
             String _fell      = parts[5].trim();
-            int    _any       = parts[6].isEmpty() ? 0 : Integer.parseInt(parts[6].trim());
-            LocalDate _data   = (_any == 0) ? null : LocalDate.of(_any, 1, 1);
-            double _latitude  = parts[7].isEmpty() ? 0 : Double.parseDouble(parts[7].trim());
-            double _longitude = parts[8].isEmpty() ? 0 : Double.parseDouble(parts[8].trim());
+            int    _any       = parts[6].isBlank() ? 0 : Integer.parseInt(parts[6].trim());
+            double _latitude  = parts[7].isBlank() ? 0 : Double.parseDouble(parts[7].trim());
+            double _longitude = parts[8].isBlank() ? 0 : Double.parseDouble(parts[8].trim());
 
-            return new Meteorit(_id, _nom, _type, _massa, _fell, _data, _latitude, _longitude);
+            return new Meteorit(_id, _nom, _type, _massa, _fell, _any, _latitude, _longitude);
         } catch (NumberFormatException e) {
             logError(bufferedWriter, numLinia, e);
         } catch (IllegalArgumentException e) {

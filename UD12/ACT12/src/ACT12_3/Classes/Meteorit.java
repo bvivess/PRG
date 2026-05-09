@@ -8,11 +8,11 @@ public class Meteorit implements Comparable<Meteorit> {
     private String type;
     private double mass;
     private String fall;
-    private LocalDate year;
+    private int year;
     private double latitude;
     private double longitude;
 
-    public Meteorit(int id, String name, String type, double mass, String fall, LocalDate year, double latitude, double longitude) {
+    public Meteorit(int id, String name, String type, double mass, String fall, int year, double latitude, double longitude) {
         setId(id);
         setName(name);
         setType(type);
@@ -78,8 +78,7 @@ public class Meteorit implements Comparable<Meteorit> {
             throw new IllegalArgumentException("Fall fora de rang");
     }
 
-    public void setYear(LocalDate year) {
-        if (year == null) throw new IllegalArgumentException("year no pot ser null");
+    public void setYear(int year) {
         this.year = year;
     }
 
@@ -98,7 +97,7 @@ public class Meteorit implements Comparable<Meteorit> {
     public String getType() { return this.type; }
     public double getMass() { return this.mass; }
     public String getFall() { return this.fall; }
-    public LocalDate getYear() { return this.year; }
+    public int getYear() { return this.year; }
     public double getLatitude() { return this.latitude; }
     public double getLongitude() { return this.longitude; }
 
