@@ -81,7 +81,7 @@ public class Main {
     
     private static void carregaProducts(int productId, String productName, List<Product> products) {
         Product product;
-        int indexProducts = products.indexOf(new Product(productId,".",0));
+        int indexProducts = products.indexOf(new Product(productId));
         
         if (indexProducts == -1) {
             product = new Product( productId, productName, 1 );
@@ -93,7 +93,7 @@ public class Main {
     
     private static void carregaWarehouses(int warehouseId, String warehouseName, int quantity, List<Warehouse> warehouses) {
         Warehouse warehouse;
-        int indexWarehouses = warehouses.indexOf(new Warehouse(warehouseId,".",0));
+        int indexWarehouses = warehouses.indexOf(new Warehouse(warehouseId));
         
         if (indexWarehouses == -1) {
             warehouse = new Warehouse( warehouseId, warehouseName, quantity );

@@ -11,6 +11,10 @@ public class Product implements Comparable<Product> {
         setNumWarehouses(numWarehouses);
     }
     
+    public Product(int productId) {
+        setProductId(productId);
+    }
+    
     private void validateString(String value, String fieldName) {
         if (value == null || value.trim().isEmpty()) {
             throw new IllegalArgumentException(fieldName + " no pot ser null ni buit");

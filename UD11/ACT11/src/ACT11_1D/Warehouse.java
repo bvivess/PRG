@@ -10,6 +10,10 @@ public class Warehouse implements Comparable<Warehouse> {
         setWarehouseName(warehouseName);
         setNumProducts(numProducts);
     }
+    
+    public Warehouse(int warehouseId) {
+        setWarehouseId(warehouseId);
+    }
 
     @Override
     public int hashCode() {
