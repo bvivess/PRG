@@ -66,14 +66,12 @@ public class GestorEVA {
                 String[] partsCrew = parts[2].trim().split(" ");
                 Set<Astronaut> _crew = new HashSet<>();
                 for (String c : partsCrew) {
-                    if (!(c.trim().isBlank())) {
-                        Astronaut astronaut = new Astronaut(c.trim()); 
-                        _crew.add(astronaut);
-                    }
+                    if (!(c.trim().isBlank()))
+                        _crew.add(new Astronaut(c.trim()));
                 }
                 //LocalDate _date = (parts[4] == null ? LocalDate.now() : LocalDate.parse( parts[4],DateTimeFormatter.ofPattern("MM/dd/yyyy")));
                 String[] partsDate = parts[4].split("/"); 
-                LocalDate _date = (parts[4] == null || parts[4].isBlank())
+                LocalDate _date = (parts[4].isBlank())
                                     ? null
                                     : LocalDate.of(Integer.parseInt(partsDate[2]),   // YYYY
                                                    Integer.parseInt(partsDate[0]),   // MM 
@@ -82,9 +80,9 @@ public class GestorEVA {
                 // LocalTime _duration = LocalTime.parse(parts[5].trim());
                 String[] partsDuration = parts[5].split(":"); 
                 LocalTime _duration = (parts[5] == null || parts[5].isBlank())
-                                      ? null
-                                      :  LocalTime.of(Integer.parseInt(partsDuration[0]),   // HH
-                                                      Integer.parseInt(partsDuration[1]));  // MM
+                                        ? null
+                                        :  LocalTime.of(Integer.parseInt(partsDuration[0]),   // HH
+                                                        Integer.parseInt(partsDuration[1]));  // MM
                 
                 return new EVA(_evaId, _countryId, _vehicleId, _date, _duration, _purpose, _crew);   
             }
