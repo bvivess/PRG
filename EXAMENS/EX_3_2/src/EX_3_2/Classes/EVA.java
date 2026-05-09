@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- * Representa una Activitat Extra-Vehicular (EVA / spacewalk).
+ * Representa una Activitat Extra-Vehicular
  */
 public class EVA implements Comparable<EVA> {
     private int id;
