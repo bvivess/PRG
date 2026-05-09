@@ -16,11 +16,11 @@ public class Main1 {
         try ( BufferedReader bufInput = new BufferedReader(new FileReader(nomArxiu));
               BufferedWriter bufOutput = new BufferedWriter(new FileWriter(nomArxiu2))
             ) {
-            String line;
-            while ((line = bufInput.readLine()) != null) {
-                System.out.println(line);
+            String linia;
+            while ((linia = bufInput.readLine()) != null) {
+                System.out.println(linia);
                 
-                bufOutput.write(line);
+                bufOutput.write(linia);
                 bufOutput.newLine();
             }
         } catch (FileNotFoundException f) {
