@@ -10,8 +10,7 @@ import java.util.Set;
  * Representa una Activitat Extra-Vehicular (EVA / spacewalk).
  */
 public class EVA implements Comparable<EVA> {
-
-    private int evaId;
+    private int id;
     private String countryId;
     private String vehicleId;
     private LocalDate date;
@@ -19,25 +18,25 @@ public class EVA implements Comparable<EVA> {
     private String purpose;
     private Set<Astronaut> crew = new HashSet<>();
 
-    public EVA(int eva_id, String country_id, String vehicle_id, LocalDate date, LocalTime duration, String purpose, Set<Astronaut> crew) {
-        this.evaId = eva_id;
-        this.countryId = country_id;
-        this.vehicleId = vehicle_id;
+    public EVA(int id, String countryId, String vehicleId, LocalDate date, LocalTime duration, String purpose, Set<Astronaut> crew) {
+        this.id = id;
+        this.countryId = countryId;
+        this.vehicleId = vehicleId;
         this.date = date;
         this.duration = duration;
         this.purpose = purpose;
         this.crew = crew;
     }
-    public EVA(int evaId, String countryId, String vehicleId, LocalDate date, LocalTime duration, String purpose) {
-        this.evaId     = evaId;
+    public EVA(int id, String countryId, String vehicleId, LocalDate date, LocalTime duration, String purpose) {
+        this.id = id;
         this.countryId = countryId;
         this.vehicleId = vehicleId;
-        this.date      = date;
-        this.duration  = duration;
-        this.purpose   = purpose;
+        this.date = date;
+        this.duration = duration;
+        this.purpose = purpose;
     }
 
-    public int getEvaId()              { return evaId; }
+    public int getId()                 { return id; }
     public String getCountryId()       { return countryId; }
     public String getVehicleId()       { return vehicleId; }
     public LocalDate getDate()         { return date; }
@@ -45,7 +44,7 @@ public class EVA implements Comparable<EVA> {
     public String getPurpose()         { return purpose; }
     public Set<Astronaut> getCrew()    { return crew; }
 
-    public void setEvaId(int evaId)              { this.evaId = evaId; }
+    public void setEvaId(int id)                 { this.id = id; }
     public void setCountryId(String countryId)   { this.countryId = countryId; }
     public void setVehicleId(String vehicleId)   { this.vehicleId = vehicleId; }
     public void setDate(LocalDate date)          { this.date = date; }
@@ -65,18 +64,18 @@ public class EVA implements Comparable<EVA> {
     }
 
     @Override
-    public int hashCode() { return Objects.hash(evaId); }
+    public int hashCode() { return Objects.hash(id); }
 
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (!(obj instanceof EVA)) return false;
-        return this.evaId == ((EVA) obj).evaId;
+        return this.id == ((EVA) obj).id;
     }
 
     @Override
     public String toString() {
-        return "EVA{evaId=" + evaId
+        return "EVA{evaId=" + id
              + ", country=" + countryId
              + ", vehicle=" + vehicleId
              + ", date=" + date

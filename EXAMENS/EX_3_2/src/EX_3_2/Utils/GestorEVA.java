@@ -41,7 +41,9 @@ public class GestorEVA {
 
                 eva = parseEVA(linia, ++numLinia, bw);
                 if (eva != null) {
-                    evas.put(eva.getEvaId(), eva);
+                    // afegeix a 'evas'
+                    evas.put(eva.getId(), eva);
+                    // afegeix a 'astronauts'
                     for (Astronaut a : eva.getCrew())
                         astronauts.add(a);
                 }
@@ -83,6 +85,7 @@ public class GestorEVA {
                                       ? null
                                       :  LocalTime.of(Integer.parseInt(partsDuration[0]),   // HH
                                                       Integer.parseInt(partsDuration[1]));  // MM
+                
                 return new EVA(_evaId, _countryId, _vehicleId, _date, _duration, _purpose, _crew);   
             }
         } catch (NumberFormatException e) {
@@ -140,7 +143,7 @@ public class GestorEVA {
                                            INSERT INTO evas (eva_id, country_id, vehicle_id, date, duration, purpose)
                                            VALUES (?, ?, ?, ?, ?, ?)
                                            """,
-                                           eva.getEvaId(),
+                                           eva.getId(),
                                            eva.getCountryId(),
                                            eva.getVehicleId(),
                                            eva.getDate(),
@@ -155,7 +158,7 @@ public class GestorEVA {
                                                INSERT INTO crew (eva_id, astronaut_id)
                                                VALUES (?, ?)
                                                """,
-                                               eva.getEvaId(),
+                                               eva.getId(),
                                                a.getId()
                                               );
                     conn.commit();                    
@@ -176,7 +179,7 @@ public class GestorEVA {
                                                eva.getDate(),
                                                eva.getDuration(),
                                                eva.getPurpose(),
-                                               eva.getEvaId() 
+                                               eva.getId() 
                                               );
                     else {
                         System.out.println(e.getMessage());

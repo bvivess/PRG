@@ -6,7 +6,6 @@ import java.util.Objects;
  * Representa un astronauta identificat pel seu nom complet (astronaut_id).
  */
 public class Astronaut {
-
     private String id;   // nom complet p.ex. "Ed White"
 
     public Astronaut(String astronautId) {
