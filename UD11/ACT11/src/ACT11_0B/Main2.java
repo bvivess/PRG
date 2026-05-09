@@ -10,12 +10,12 @@ import java.util.List;
 public class Main2 {
     public static void main(String[] args) {
         File nomArxiu = new File("c:\\temp\\arxiu.txt");  // o també 'String'
-        Producte producte;
         List<Producte> productes = new ArrayList<>();
         
         try (BufferedReader lector = new BufferedReader(new FileReader(nomArxiu))) {
             String linia;
             int numLinia = 0;
+            Producte producte;
             while ((linia = lector.readLine()) != null) {
                 // B. C.
                 producte = parseProducte(linia, ++numLinia);
