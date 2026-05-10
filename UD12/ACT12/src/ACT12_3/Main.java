@@ -11,11 +11,11 @@ public class Main {
         GestorMeteorits gestor = new GestorMeteorits();
         String arxiu = "C:\\temp\\Meteorite_Landings.csv";
         String arxiuLog = "C:\\temp\\Meteorite_Landings.log";
-        Set<Meteorit> meteorits = new HashSet<>();
-        Map<Integer, List<Meteorit>> meteoritsPerAny = new HashMap<>();
+        
 
         try {
-            meteorits = gestor.llegeixArxiu(arxiu, arxiuLog);
+            Set<Meteorit> meteorits = new HashSet<>();
+            meteorits = gestor.llegeixArxiuCSV(arxiu, arxiuLog);
             
             // 1. > 1000g
             System.out.println("METEORITS > 1kg (v?lids):");
@@ -25,6 +25,7 @@ public class Main {
 
             // 2. per any
             System.out.println("\nCOUNT PER YEAR:");
+            Map<Integer, List<Meteorit>> meteoritsPerAny = new HashMap<>();
             meteoritsPerAny = meteorits.stream()
                                        .collect( Collectors.groupingBy(m -> m.getYear()) );
             

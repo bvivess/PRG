@@ -3,14 +3,13 @@ package ACT12_3.Utils;
 import ACT12_3.Classes.Meteorit;
 import java.io.*;
 import java.nio.file.*;
-import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.*;
 
 public class GestorMeteorits {
 
-    public Set<Meteorit> llegeixArxiu(String fitxerCSV, String arxiuLog) {
-        try (Stream<String> linies = Files.lines(Paths.get(fitxerCSV));
+    public Set<Meteorit> llegeixArxiuCSV(String fitxerCSV, String arxiuLog) {
+        try ( Stream<String> linies = Files.lines(Paths.get(fitxerCSV));
               BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(arxiuLog)) ) {
             int[] numLinia = {0};  // objecte en comptes de tipus primitiu perqu? pugui variar en les cridada a 'parseMeteorit'
 
@@ -22,7 +21,7 @@ public class GestorMeteorits {
         } catch (IOException e) {
             System.err.println("Error llegint el fitxer o creant el log: " + e.getMessage());
         }
-        return new HashSet<>();
+        return null;
     }
 
     private Meteorit parseMeteorit(String linia, int numLinia, BufferedWriter bufferedWriter) {
