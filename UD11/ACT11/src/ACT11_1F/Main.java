@@ -50,7 +50,6 @@ public class Main {
             for (Meteorit m : llistaOrdenada) {
                 System.out.println(m);
             }*/
-            llistaOrdenada = null;
         } catch (Exception e) {
             System.err.println("Error GENERAL " + e.getMessage());
         }

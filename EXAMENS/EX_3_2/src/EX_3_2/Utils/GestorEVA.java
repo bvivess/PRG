@@ -34,11 +34,6 @@ public class GestorEVA {
         try ( BufferedReader br = new BufferedReader(new FileReader(arxiu));
               BufferedWriter bw = new BufferedWriter(new FileWriter(arxiuLog)) ) {   
             while ((linia = br.readLine()) != null) {
-                // Format: EVAId,Country,Crew,Vehicle,Date,Duration,Purpose 
-                //         Crew: Astronaut1 Astronaut2 ...
-                //         Date ::= MM/dd/yyyy
-                //         Duration ::= HH:mm
-
                 eva = parseEVA(linia, ++numLinia, bw);
                 if (eva != null) {
                     // afegeix a 'evas'
@@ -56,6 +51,10 @@ public class GestorEVA {
     
     private EVA parseEVA(String linia, int numLinia, BufferedWriter bw) throws IOException {
         try {
+            // Format: EVAId,Country,Crew,Vehicle,Date,Duration,Purpose 
+            //         Crew: Astronaut1 Astronaut2 ...
+            //         Date ::= MM/dd/yyyy
+            //         Duration ::= HH:mm
             if (!(linia.isEmpty() || linia.startsWith("EVA #"))) {
                 String[] parts = linia.split(",", 7);
                 int _evaId = Integer.parseInt(parts[0].trim());
