@@ -30,7 +30,7 @@ public class Gestor {
         return linies.stream()
                 .map(parts -> parts[3].trim())
                 .distinct()
-                .map(Department::new)
+                .map(id -> new Department(id))  // .map(Department::new)
                 .sorted((d1, d2) -> d1.getId().compareTo(d2.getId()))
                 .collect(Collectors.toList());
     }
