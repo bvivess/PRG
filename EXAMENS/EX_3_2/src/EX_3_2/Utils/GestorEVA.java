@@ -38,6 +38,7 @@ public class GestorEVA {
                 if (eva != null) {
                     // afegeix a 'evas'
                     evas.put(eva.getId(), eva);
+                    
                     // afegeix a 'astronauts'
                     for (Astronaut a : eva.getCrew())
                         astronauts.add(a);
