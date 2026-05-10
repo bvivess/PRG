@@ -36,7 +36,7 @@ public class Main {
 
             // 2. Mostrar estructures
             List<EVA> ordenades = new ArrayList<>(evas.values());
-            Collections.sort(ordenades);   // usa el compareTo de EVA
+            Collections.sort(ordenades);   // empra el 'compareTo()' d'EVA
             System.out.println(ordenades);
 
             // 3. Estructures a BD
