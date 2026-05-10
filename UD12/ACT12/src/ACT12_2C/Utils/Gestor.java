@@ -30,18 +30,17 @@ public class Gestor {
         return linies.stream()
                 .map(parts -> parts[3].trim())
                 .distinct()
-                .map(id -> new Department(id))  // .map(Department::new)
+                .map(id -> new Department( id ))  // .map(Department::new)
                 .sorted((d1, d2) -> d1.getId().compareTo(d2.getId()))
                 .collect(Collectors.toList());
     }
 
     public List<Client> carregaClients(List<String[]> linies) {
         return linies.stream()
-                .map(parts -> new Client(
-                        Integer.parseInt(parts[0].trim()),
-                        parts[1].trim(),
-                        parts[2].trim(),
-                        parts[3].trim()))
+                .map(parts -> new Client( Integer.parseInt(parts[0].trim()),
+                                          parts[1].trim(),
+                                          parts[2].trim(),
+                                          parts[3].trim()) )
                 .sorted((c1, c2) -> c1.getNom().compareTo(c2.getNom()))
                 .collect(Collectors.toList());
     }
