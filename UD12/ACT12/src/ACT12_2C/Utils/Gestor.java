@@ -23,7 +23,7 @@ public class Gestor {
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
-        return List.of();  // retorna llista buida en cas d’error
+        return List.of();  // retorna llista buida en cas d'error
     }
 
     public List<Department> carregaDepartments(List<String[]> linies) {
