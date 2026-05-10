@@ -77,7 +77,7 @@ public class Gestor {
                       } catch (SQLException e) {
                           try {
                               if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062) {
-                                  // Clau primària duplicada → fem UPDATE
+                                  // Clau prim?ria duplicada, fem UPDATE
                                   gestorBBDD.executaSQL(conn,
                                           "UPDATE clients SET nom = ?, email = ?, department_id = ? WHERE id = ?",
                                           c.getNom(), c.getEmail(), c.getDepartment_id(), c.getId());
