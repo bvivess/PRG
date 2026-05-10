@@ -19,7 +19,7 @@ public class EVA implements Comparable<EVA> {
     private Set<Astronaut> crew = new HashSet<>();
 
     public EVA(int id, String countryId, String vehicleId, LocalDate date, LocalTime duration, String purpose, Set<Astronaut> crew) {
-        this.id = id;
+        setId(id);
         this.countryId = countryId;
         this.vehicleId = vehicleId;
         this.date = date;
@@ -28,7 +28,7 @@ public class EVA implements Comparable<EVA> {
         this.crew = crew;
     }
     public EVA(int id, String countryId, String vehicleId, LocalDate date, LocalTime duration, String purpose) {
-        this.id = id;
+        setId(id);
         this.countryId = countryId;
         this.vehicleId = vehicleId;
         this.date = date;
@@ -44,7 +44,12 @@ public class EVA implements Comparable<EVA> {
     public String getPurpose()         { return purpose; }
     public Set<Astronaut> getCrew()    { return crew; }
 
-    public void setEvaId(int id)                 { this.id = id; }
+    public void setId(Integer id) {
+        if (id == null)
+            throw new IllegalArgumentException("Id no pot ser null");
+        else
+            this.id = id;
+    }
     public void setCountryId(String countryId)   { this.countryId = countryId; }
     public void setVehicleId(String vehicleId)   { this.vehicleId = vehicleId; }
     public void setDate(LocalDate date)          { this.date = date; }

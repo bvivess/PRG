@@ -58,7 +58,9 @@ public class GestorEVA {
             //         Duration ::= HH:mm
             if (!(linia.isEmpty() || linia.startsWith("EVA #"))) {
                 String[] parts = linia.split(",", 7);
-                int _evaId = Integer.parseInt(parts[0].trim());
+                int _evaId = (parts[0] == null || parts[0].isBlank()) 
+                               ? null
+                               : Integer.parseInt(parts[0].trim());
                 String _countryId = parts[1].trim();
                 String _vehicleId = parts[3].trim();
                 String _purpose = parts[6].trim();
@@ -71,7 +73,7 @@ public class GestorEVA {
                 }
                 //LocalDate _date = (parts[4] == null ? LocalDate.now() : LocalDate.parse( parts[4],DateTimeFormatter.ofPattern("MM/dd/yyyy")));
                 String[] partsDate = parts[4].split("/"); 
-                LocalDate _date = (parts[4].isBlank())
+                LocalDate _date = (parts[4] == null || parts[4].isBlank())
                                     ? null
                                     : LocalDate.of(Integer.parseInt(partsDate[2]),   // YYYY
                                                    Integer.parseInt(partsDate[0]),   // MM 
@@ -81,8 +83,8 @@ public class GestorEVA {
                 String[] partsDuration = parts[5].split(":"); 
                 LocalTime _duration = (parts[5] == null || parts[5].isBlank())
                                         ? null
-                                        :  LocalTime.of(Integer.parseInt(partsDuration[0]),   // HH
-                                                        Integer.parseInt(partsDuration[1]));  // MM
+                                        : LocalTime.of(Integer.parseInt(partsDuration[0]),   // HH
+                                                       Integer.parseInt(partsDuration[1]));  // MM
                 
                 return new EVA(_evaId, _countryId, _vehicleId, _date, _duration, _purpose, _crew);   
             }
