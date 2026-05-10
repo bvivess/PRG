@@ -15,8 +15,8 @@ public class Gestor {
     public List<Department> carregaDepartments(String f) {
         try (Stream<String> linies = Files.lines(Paths.get(f))) {
             return linies
-                    .map(linia -> parseDepartments(linia))
-                    .filter(obj -> obj != null)
+                    .map(linia -> parseDepartment(linia))
+                    .filter(obj -> obj != null)  // s'eliminen els possibles errors del 'parseDepartment'
                     .distinct()
                     .collect(Collectors.toList());
         } catch (IOException e) {
@@ -26,7 +26,7 @@ public class Gestor {
         return null;
     }
 
-    private Department parseDepartments(String linia) {
+    private Department parseDepartment(String linia) {
         if (linia.isBlank() || linia.startsWith("#")) {
             return null;
         } else {
@@ -38,8 +38,8 @@ public class Gestor {
     public List<Client> carregaClients(String f) {
         try (Stream<String> linies = Files.lines(Paths.get(f))) {
             return linies
-                    .map(linia -> parseClients(linia))
-                    .filter(obj -> obj != null)
+                    .map(linia -> parseClient(linia))
+                    .filter(Objects::nonNull)  // s'eliminen els possibles errors de 'parseClient'
                     .collect(Collectors.toList());
 
         } catch (IOException e) {
@@ -48,7 +48,7 @@ public class Gestor {
 
         return null;
     }    
-    private Client parseClients(String linia) {
+    private Client parseClient(String linia) {
         if (linia.isBlank() || linia.startsWith("#")) {
             return null;
         } else {
