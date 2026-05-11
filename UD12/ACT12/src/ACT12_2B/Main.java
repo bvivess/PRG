@@ -1,9 +1,8 @@
 package ACT12_2B;
 
 import ACT12_2B.Utils.*;
-import java.sql.Connection;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.HashMap;
 
 public class Main {
 
@@ -16,7 +15,7 @@ public class Main {
         usuaris.put(1, "Anna"); usuaris.put(2,"Pere"); usuaris.put(3,"Joan");
 
         // Connexió a la base de dades
-        try ( Connection conn = gestorBBDD.getConnectionFromFile() ) {
+        try {
             gestor.desaUsuaris(gestorBBDD, usuaris);
 
         } catch (Exception e) {
