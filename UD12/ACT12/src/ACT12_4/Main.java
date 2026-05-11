@@ -18,6 +18,7 @@ public class Main {
             
             System.out.println("VENDES");
             gestor.carregaVendes("c:\\temp\\vendes.csv");
+            gestor.mostraVendes();
             
             // MODIFICA DADES
             //gestor.modifica();

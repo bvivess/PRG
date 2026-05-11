@@ -185,20 +185,22 @@ public class Gestor {
     
     // cerca la refer?ncia del producte en 'productes'
     private Producte cercaProducte (Producte p) throws NoSuchElementException {
+        return this.productes.stream()
+                           .filter(c1 -> c1.equals(p)).findFirst()
+                           .orElseThrow(() -> new NoSuchElementException("Producte no trobat a la llista."));
+        /*
         for (Producte producte : this.productes) 
             if (p.equals(producte))
                 return producte;
         
         throw new NoSuchElementException("Producte no trobat a la llista.");
+        */
     }
     
     // --- CÀRREGA VENDES 
     public void carregaVendes(String path) throws SQLException, IOException {
-        carregaVendesCSV(this.vendes, path);
         carregaVendesBBDD(this.vendes);
-        
-        
-        System.out.println(mostraVendes(this.vendes));
+        carregaVendesCSV(this.vendes, path);
     }
   
     public void carregaVendesBBDD(Map<Integer,Venda> vendes) throws SQLException, IOException{ 
@@ -217,7 +219,7 @@ public class Gestor {
                                         new HashSet<>() ); 
                 // crear el producte sobre l'arraylist creat o trobat
                 venda.getProductes().add( cercaProducte( new Producte(resultSet.getInt("producte_id"), ".", 0.0, null) ) );
-                afegeixVenda(vendes, venda);  // afegeix l'objecte al 'map' vendes
+                vendes.put(venda.getId(), venda);  // afegeix l'objecte al 'map' vendes
             }
                                                           
         } catch (SQLException e) {
@@ -246,25 +248,13 @@ public class Gestor {
                             if (!pId.trim().isEmpty()) 
                                 venda.getProductes().add( cercaProducte( new Producte(Integer.parseInt(pId.trim()), null, 0.0, null) ) );
                         
-                        afegeixVenda(this.vendes, venda );  // afegeix l'objecte al 'map' vendes
+                        vendes.put(venda.getId(), venda);  // afegeix l'objecte al 'map' vendes
                     }
                 }
             }
         } catch (IOException | NumberFormatException e) {
             System.err.println("Error carregant vendes CSV: " + e.getMessage());
         }
-    }
-  
-    public void afegeixVenda(Map<Integer,Venda> vendes, Venda venda) {
-        vendes.put(venda.getId(), venda);
-    }
-    
-    public String mostraVendes(Map<Integer,Venda> vendes) {
-        String text="Vendes: \n";
-        for (Venda v : vendes.values())
-            text += "\t" + v.toString() + "\n";
-        
-        return text;
     }
     
     // --- DESCÀRREGA CLIENTS
@@ -334,7 +324,7 @@ public class Gestor {
         }
     }
     
-    // --- DESCÀRREGA PRODUCTES
+    // --- DESC?RREGA PRODUCTES
     public void desaProductes(String path) throws SQLException, IOException {
         desaProductesBBDD(this.productes);
         desaProductesCSV(this.productes, path);
@@ -427,17 +417,6 @@ public class Gestor {
         }
     }
     
-    // MOSTRA
-    public void mostraClients() {
-        clients.stream()
-               .forEach(System.out::println);
-    }
-    
-    public void mostraProductes() {
-        productes.stream()
-                 .forEach(System.out::println);
-    }
-    
     // MODIFICACIONS
     public void modifica() {
         modificaClients();
@@ -446,25 +425,37 @@ public class Gestor {
     }
     
     public void modificaClients() {
-        for (Client client : this.clients) {
-            client.setNom(client.getNom().toUpperCase());
-            client.setEmail(client.getEmail().toLowerCase());
-        }
+        this.clients.forEach(client -> { client.setNom(client.getNom().toUpperCase());
+                                         client.setEmail(client.getEmail().toLowerCase() );
+                                       });
     }
     
     public void modificaProductes() {
-        for (Producte producte: this.productes) {
-            producte.setNom(producte.getNom().toUpperCase());
-            producte.setPreu(producte.getPreu()*10);
-        }
+        this.productes.forEach(producte -> { producte.setNom(producte.getNom().toUpperCase());
+                                             producte.setPreu(producte.getPreu() * 10); 
+                                           });
     }
 
     public void modificaVendes() {
-        for (Venda venda: this.vendes.values()) {
-            venda.setDataVenda(venda.getDataVenda().plusYears(1));
-
-            vendes.put(venda.getId(), venda);  // modifica el map
-        }
+        this.vendes.values().forEach(venda -> { venda.setDataVenda(venda.getDataVenda().plusYears(1));
+                                                vendes.put(venda.getId(), venda);
+                                              });
+    }
+    
+    // MOSTRA
+    public void mostraClients() {
+        this.clients.stream()
+                    .forEach(System.out::println);
+    }
+    
+    public void mostraProductes() {
+        this.productes.stream()
+                      .forEach(System.out::println);
+    }
+    
+    public void mostraVendes() {
+        this.vendes.entrySet().stream()
+                              .forEach(System.out::println);
     }
     
     private void logError(BufferedWriter bufferedWriter, int numLinia, Exception e) {
