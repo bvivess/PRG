@@ -38,7 +38,7 @@ public class Client implements Comparable<Client>{
         //if (nom == null || nom.isBlank())
         //    throw new IllegalArgumentException ("Client.Nom incorrecte");
         //else
-            this.nom = nom;
+        this.nom = nom;
     }
 
     public String getEmail() {

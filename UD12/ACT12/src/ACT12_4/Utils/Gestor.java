@@ -28,51 +28,33 @@ public class Gestor {
     Set<Producte> productes = new HashSet<>();
     Map<Integer,Venda> vendes = new HashMap<>();
     
-    // --- CÀRREGA CLIENTS 
+    // --- C?RREGA CLIENTS 
     public void carregaClients(String path, String log) throws SQLException, IOException {
-        this.clients = carregaClientsBBDD();
-        this.clients = carregaClientsCSV(path, log);
-
-        System.out.println(this.clients);
+        Set<Client> clientsCSV = new HashSet<>();
+        carregaClientsBBDD(this.clients);
+        clientsCSV = carregaClientsCSV(path, log);
+        this.clients.addAll(clientsCSV);
     }
     
-    public void carregaClientsBBDD(Set<Client> clients) throws SQLException, IOException{ 
+    public void carregaClientsBBDD(Set<Client> clients) {
         String sql = "SELECT id, nom, email FROM clients";
-        
+
         try ( Connection conn = gestorBBDD.getConnectionFromFile();
-              ResultSet resultSet = gestorBBDD.executaQuerySQL(conn, sql) ) {   
-            
-            while (resultSet.next())
-                clients.add( new Client( resultSet.getInt("id"),
-                                         resultSet.getString("nom"), 
-                                         resultSet.getString("email") ) );
-            
+              ResultSet resultSet = gestorBBDD.executaQuerySQL(conn, sql) ) {
+
+            while (resultSet.next()) {
+                System.out.println(resultSet.getInt("id"));
+                Client client = new Client( resultSet.getInt("id"),
+                                         resultSet.getString("nom"),
+                                         resultSet.getString("email") );
+                System.out.println(client);
+                clients.add( client );
+            }
+
         } catch (SQLException e) {
-            System.err.println("Error carregant clients BBDD: " + e.getMessage());
-        }
-    }
-    
-    public Set<Client> carregaClientsBBDD() throws SQLException, IOException {
-        try ( Connection conn = gestorBBDD.getConnectionFromFile();
-              ResultSet rs = gestorBBDD.executaQuerySQL(conn, "SELECT id, nom, email FROM clients") ) {
-
-            return Stream.generate(() -> { try {
-                                                return rs.next()
-                                                ? new Client(
-                                                        rs.getInt("id"),
-                                                        rs.getString("nom"),
-                                                        rs.getString("email"))
-                                                : null;
-
-                                         } catch (SQLException e) {
-                                             throw new RuntimeException(e);
-                                         }})
-                         .takeWhile(Objects::nonNull)
-                         .collect(Collectors.toSet());
-
-        } catch (Exception e) {
-            System.err.println("Error carregant clients BBDD: " + e.getMessage());
-            return new HashSet<>();
+            System.out.println("Error SQL carregant clients: " + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("Error llegint fitxer de configuraci� BBDD: " + e.getMessage());
         }
     }
     
@@ -130,7 +112,7 @@ public class Gestor {
     }*/
 
     
-    // cerca la referència del client en 'clients'
+    // cerca la refer?ncia del client en 'clients'
     private Client cercaClient (Client c) throws NoSuchElementException {
         return this.clients.stream()
                            .filter(c1 -> c1.equals(c)).findFirst()
@@ -180,7 +162,7 @@ public class Gestor {
             return linies.filter(linia -> !linia.isBlank() && !linia.startsWith("#"))
                          .map(linia -> parseProducte(linia, numLinia[0]++, bufferedWriter))
                          .filter(x -> x != null)
-                         .collect(Collectors.toCollection(HashSet::new));
+                         .collect(Collectors.toSet());
         } catch (IOException e) {
             System.err.println("Error llegint el fitxer de productes: " + e.getMessage());
         }
@@ -235,7 +217,7 @@ public class Gestor {
                 if ( venda == null)  // si no existeix, crear nova venda
                     venda = new Venda(  resultSet.getInt("id"),
                                         resultSet.getDate("data").toLocalDate(),
-                                        cercaClient( new Client(resultSet.getInt("client_id"), ".", ".") ),
+                                        cercaClient( new Client(resultSet.getInt("client_id")) ),
                                         new HashSet<>() ); 
                 // crear el producte sobre l'arraylist creat o trobat
                 venda.getProductes().add( cercaProducte( new Producte(resultSet.getInt("producte_id"), ".", 0.0, null) ) );
@@ -447,6 +429,17 @@ public class Gestor {
         } catch (IOException | NumberFormatException e) {
             System.err.println("Error descarregant vendes CSV: " + e.getMessage());
         }
+    }
+    
+    // MOSTRA
+    public void mostraClients() {
+        clients.stream()
+               .forEach(System.out::println);
+    }
+    
+    public void mostraProductes() {
+        productes.stream()
+                 .forEach(System.out::println);
     }
     
     // MODIFICACIONS
