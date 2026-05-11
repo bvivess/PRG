@@ -69,7 +69,7 @@ public class Main {
                     // Afegeix al Map
                     int _any = m.getYear().getYear();
                     if (!meteoritsPerAny.containsKey(_any))
-                        meteoritsPerAny.put(_any, new ArrayList<Meteorit>());
+                        meteoritsPerAny.put(_any, new ArrayList<>());
                     meteoritsPerAny.get(_any).add(m);
                     
                 } catch (NumberFormatException e) {
@@ -83,7 +83,6 @@ public class Main {
                     bufferedWriter.newLine();
                 }
             }
-
         }
     }
     
