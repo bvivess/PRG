@@ -42,14 +42,11 @@ public class Gestor {
         try ( Connection conn = gestorBBDD.getConnectionFromFile();
               ResultSet resultSet = gestorBBDD.executaQuerySQL(conn, sql) ) {
 
-            while (resultSet.next()) {
-                System.out.println(resultSet.getInt("id"));
-                Client client = new Client( resultSet.getInt("id"),
+            while (resultSet.next()) 
+                clients.add( new Client( resultSet.getInt("id"),
                                          resultSet.getString("nom"),
-                                         resultSet.getString("email") );
-                System.out.println(client);
-                clients.add( client );
-            }
+                                         resultSet.getString("email") ));
+
 
         } catch (SQLException e) {
             System.out.println("Error SQL carregant clients: " + e.getMessage());
@@ -129,11 +126,10 @@ public class Gestor {
     
     // --- CÀRREGA PRODUCTES
     public void carregaProductes(String path, String log) throws SQLException, IOException {
+        Set<Producte> productesCSV = new HashSet<>();
         carregaProductesBBDD(this.productes);
-        this.productes = carregaProductesCSV(path, log);
-        
-        System.out.println(this.productes);
-        
+        productesCSV = carregaProductesCSV(path, log); 
+        this.productes.addAll(productesCSV);
     }
         
     public void carregaProductesBBDD(Set<Producte> productes) throws SQLException, IOException{ 
