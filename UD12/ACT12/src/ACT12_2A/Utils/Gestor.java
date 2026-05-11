@@ -12,8 +12,8 @@ import java.util.stream.Stream;
 
 
 public class Gestor {
-    public List<Department> carregaDepartments(String f) {
-        try (Stream<String> linies = Files.lines(Paths.get(f))) {
+    public List<Department> carregaDepartments(String arxiu) {
+        try (Stream<String> linies = Files.lines(Paths.get(arxiu))) {
             return linies
                     .map(linia -> parseDepartment(linia))
                     .filter(obj -> obj != null)  // s'eliminen els possibles errors del 'parseDepartment'
@@ -35,8 +35,8 @@ public class Gestor {
         }
     }    
     
-    public List<Client> carregaClients(String f) {
-        try (Stream<String> linies = Files.lines(Paths.get(f))) {
+    public List<Client> carregaClients(String arxiu) {
+        try (Stream<String> linies = Files.lines(Paths.get(arxiu))) {
             return linies
                     .map(linia -> parseClient(linia))
                     .filter(Objects::nonNull)  // s'eliminen els possibles errors de 'parseClient'

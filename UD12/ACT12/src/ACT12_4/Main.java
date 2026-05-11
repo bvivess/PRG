@@ -9,7 +9,7 @@ public class Main {
         try {
             // CÀRREGA CLIENTS, PRODUCTES i VENDES
             System.out.println("CLIENTS");
-            gestor.carregaClients("c:\\temp\\clients.csv");
+            gestor.carregaClients("c:\\temp\\clients.csv", "c:\\temp\\clients.log");
             System.out.println("PRODUCTES");
             gestor.carregaProductes("c:\\temp\\productes.csv");
             System.out.println("VENDES");

@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.NoSuchElementException;
 import java.nio.file.Files;
@@ -27,9 +28,9 @@ public class Gestor {
     Map<Integer,Venda> vendes = new HashMap<>();
     
     // --- CÃ€RREGA CLIENTS 
-    public void carregaClients(String path) throws SQLException, IOException {
+    public void carregaClients(String path, String log) throws SQLException, IOException {
         carregaClientsBBDD(this.clients);
-        carregaClientsCSV(this.clients, path);
+        this.clients = carregaClientsCSV(path, log);
 
         System.out.println(this.clients);
     }
@@ -50,9 +51,54 @@ public class Gestor {
             System.err.println("Error carregant clients BBDD: " + e.getMessage());
         }
     }
+    
+    public Set<Client> carregaClientsCSV(String fitxerCSV, String arxiuLog) {
+        try ( Stream<String> linies = Files.lines(Paths.get(fitxerCSV));
+              BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(arxiuLog)) ) {
+            int[] numLinia = {0};  // objecte en comptes de tipus primitiu perqu? pugui variar en les cridada a 'parseMeteorit'
 
-    public void carregaClientsCSV(Set<Client> clients, String path) throws IOException {
-        try (Stream<String> linies = Files.lines(Paths.get(path))) {
+            return linies .filter(linia -> !linia.isBlank() && !linia.startsWith("#"))
+                          .map(linia -> parseClient(linia, numLinia[0]++, bufferedWriter))  // rep 'String' torna 'Meteorit'
+                          .filter(x -> x != null)  // s'eliminen els errors del 'parseMeteorit()'
+                          .collect(Collectors.toCollection(HashSet::new));
+            
+        } catch (IOException e) {
+            System.err.println("Error llegint el fitxer o creant el log: " + e.getMessage());
+        }
+        return null;
+    }
+        
+    private Client parseClient(String linia, int numLinia, BufferedWriter bufferedWriter) {
+        try {
+            // name,id,nametype,recclass,mass (g),fall,year,reclat,reclong,GeoLocation
+            String[] parts = linia.split(",");
+            return new Client( Integer.parseInt(parts[0].trim()),
+                               parts[1].trim(),
+                               parts[2].trim());
+ 
+        } catch (NumberFormatException e) {
+            logError(bufferedWriter, numLinia, e);
+        } catch (IllegalArgumentException e) {
+            logError(bufferedWriter, numLinia, e);
+        } catch (Exception e) {
+            logError(bufferedWriter, numLinia, e);
+        }
+        return null;
+    }
+    
+    private void logError(BufferedWriter bufferedWriter, int numLinia, Exception e) {
+        try {
+            bufferedWriter.write("Error carregant Línia " + numLinia + ": " + e.getMessage());
+            bufferedWriter.newLine();
+        } catch (IOException ex) {
+            System.err.println("Error escrivint al log: " + ex.getMessage());
+        }
+    }
+
+    /*
+    public void carregaClientsCSV(Set<Client> clients, String arxiu, String arxiuLog) throws IOException {
+        try (Stream<String> linies = Files.lines(Paths.get(arxiu));
+              BufferedWriter bw = new BufferedWriter(new FileWriter(arxiuLog))) {
             Set<Client> nouClients = 
                    linies.filter(linia -> !linia.isBlank() && !linia.startsWith("#"))
                   .map(linia -> linia.split(","))
@@ -66,23 +112,9 @@ public class Gestor {
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
-    }        
-        /*
-        try (BufferedReader br = Files.newBufferedReader(Paths.get(path))) {
-            String linia;
-            while ((linia = br.readLine()) != null) {
-                if (!(linia.isEmpty() || linia.startsWith("#"))) {
-                    String[] parts = linia.split(",");
-                    if (parts.length == 3) 
-                        afegeixClient(clients, new Client( Integer.parseInt(parts[0].trim()),
-                                                           parts[1].trim(),
-                                                           parts[2].trim()) );
-                }
-            }
-        } catch (IOException | NumberFormatException e) {
-            System.err.println("Error carregant clients CSV: " + e.getMessage());
-        }
     }*/
+    
+
 
     public void afegeixClient(Set<Client> clients, Client client) {
         clients.add(client);
