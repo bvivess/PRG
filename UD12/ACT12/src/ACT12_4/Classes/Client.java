@@ -10,6 +10,10 @@ public class Client implements Comparable<Client>{
         setNom(nom);
         setEmail(email);
     }
+    
+    public Client(int id) {
+        setId(id);
+    }
 
     @Override
     public int compareTo(Client c) {

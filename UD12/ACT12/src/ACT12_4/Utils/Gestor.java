@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.HashSet;
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -29,7 +30,7 @@ public class Gestor {
     
     // --- CÀRREGA CLIENTS 
     public void carregaClients(String path, String log) throws SQLException, IOException {
-        carregaClientsBBDD(this.clients);
+        this.clients = carregaClientsBBDD();
         this.clients = carregaClientsCSV(path, log);
 
         System.out.println(this.clients);
@@ -42,23 +43,46 @@ public class Gestor {
               ResultSet resultSet = gestorBBDD.executaQuerySQL(conn, sql) ) {   
             
             while (resultSet.next())
-                afegeixClient( clients, new Client( resultSet.getInt("id"),
-                                                    resultSet.getString("nom"), 
-                                                    resultSet.getString("email") )
-                             );
+                clients.add( new Client( resultSet.getInt("id"),
+                                         resultSet.getString("nom"), 
+                                         resultSet.getString("email") ) );
             
         } catch (SQLException e) {
             System.err.println("Error carregant clients BBDD: " + e.getMessage());
         }
     }
     
+    public Set<Client> carregaClientsBBDD() throws SQLException, IOException {
+        try ( Connection conn = gestorBBDD.getConnectionFromFile();
+              ResultSet rs = gestorBBDD.executaQuerySQL(conn, "SELECT id, nom, email FROM clients") ) {
+
+            return Stream.generate(() -> { try {
+                                                return rs.next()
+                                                ? new Client(
+                                                        rs.getInt("id"),
+                                                        rs.getString("nom"),
+                                                        rs.getString("email"))
+                                                : null;
+
+                                         } catch (SQLException e) {
+                                             throw new RuntimeException(e);
+                                         }})
+                         .takeWhile(Objects::nonNull)
+                         .collect(Collectors.toSet());
+
+        } catch (Exception e) {
+            System.err.println("Error carregant clients BBDD: " + e.getMessage());
+            return new HashSet<>();
+        }
+    }
+    
     public Set<Client> carregaClientsCSV(String fitxerCSV, String arxiuLog) {
         try ( Stream<String> linies = Files.lines(Paths.get(fitxerCSV));
               BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(arxiuLog)) ) {
-            int[] numLinia = {0};  // objecte en comptes de tipus primitiu perqu? pugui variar en les cridada a 'parseMeteorit'
+            int[] numLinia = {0};  // objecte en comptes de tipus primitiu perqu? pugui variar en les cridada a 'parse'
 
             return linies .filter(linia -> !linia.isBlank() && !linia.startsWith("#"))
-                          .map(linia -> parseClient(linia, numLinia[0]++, bufferedWriter))  // rep 'String' torna 'Meteorit'
+                          .map(linia -> parseClient(linia, numLinia[0]++, bufferedWriter))  // rep 'String' torna 'Client'
                           .filter(x -> x != null)  // s'eliminen els errors del 'parseMeteorit()'
                           .collect(Collectors.toCollection(HashSet::new));
             
@@ -85,15 +109,6 @@ public class Gestor {
         }
         return null;
     }
-    
-    private void logError(BufferedWriter bufferedWriter, int numLinia, Exception e) {
-        try {
-            bufferedWriter.write("Error carregant L�nia " + numLinia + ": " + e.getMessage());
-            bufferedWriter.newLine();
-        } catch (IOException ex) {
-            System.err.println("Error escrivint al log: " + ex.getMessage());
-        }
-    }
 
     /*
     public void carregaClientsCSV(Set<Client> clients, String arxiu, String arxiuLog) throws IOException {
@@ -113,21 +128,13 @@ public class Gestor {
             System.err.println(e.getMessage());
         }
     }*/
-    
 
-
-    public void afegeixClient(Set<Client> clients, Client client) {
-        clients.add(client);
-    }
     
     // cerca la referència del client en 'clients'
     private Client cercaClient (Client c) throws NoSuchElementException {
-        Client client = this.clients.stream().filter(c1 -> c1.equals(c)).findFirst().orElse(null);
-        
-        if (client != null)
-            return client;
-        else
-            throw new NoSuchElementException("Client no trobat a la llista.");
+        return this.clients.stream()
+                           .filter(c1 -> c1.equals(c)).findFirst()
+                           .orElseThrow(() -> new NoSuchElementException("Client no trobat a la llista."));
         
         /*
         for (Client client : this.clients) 
@@ -139,9 +146,9 @@ public class Gestor {
     }
     
     // --- CÀRREGA PRODUCTES
-    public void carregaProductes(String path) throws SQLException, IOException {
+    public void carregaProductes(String path, String log) throws SQLException, IOException {
         carregaProductesBBDD(this.productes);
-        carregaProductesCSV(this.productes, path);
+        this.productes = carregaProductesCSV(path, log);
         
         System.out.println(this.productes);
         
@@ -154,10 +161,10 @@ public class Gestor {
               ResultSet resultSet = gestorBBDD.executaQuerySQL(conn, sql) ) { 
             
             while (resultSet.next())
-                afegeixProducte( productes, new Producte( resultSet.getInt("id"),
-                                                          resultSet.getString("nom"), 
-                                                          resultSet.getDouble("preu"),
-                                                          Categoria.valueOf(resultSet.getString("categoria").toUpperCase()) )
+                productes.add( new Producte( resultSet.getInt("id"),
+                                             resultSet.getString("nom"), 
+                                             resultSet.getDouble("preu"),
+                                             Categoria.valueOf(resultSet.getString("categoria").toUpperCase()) )
                              );
             
         } catch (SQLException e) {
@@ -165,31 +172,40 @@ public class Gestor {
         }
     }
     
-    public void carregaProductesCSV(Set<Producte> productes, String path) {
-        try (BufferedReader br = Files.newBufferedReader(Paths.get(path))) {
-            String linia;
-            while ((linia = br.readLine()) != null) {
-                if (!(linia.isEmpty() || linia.startsWith("#"))) {
-                    String[] parts = linia.split(",");
-                    if (parts.length == 4)
-                        afegeixProducte(productes, new Producte( Integer.parseInt(parts[0].trim()),
-                                                                 parts[1].trim(),
-                                                                 Double.parseDouble(parts[2].trim()),
-                                                                 Categoria.valueOf(parts[3].trim())) );
-                }
-            }
-        } catch (IOException | NumberFormatException e) {
-            System.err.println("Error carregant productes CSV: " + e.getMessage());
-        } catch (Exception e) {
-            System.err.println("Error general carregant productes CSV: " + e.getMessage());
+    public Set<Producte> carregaProductesCSV(String fitxerCSV, String arxiuLog) {
+        try ( Stream<String> linies = Files.lines(Paths.get(fitxerCSV));
+              BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(arxiuLog)) ) {
+            int[] numLinia = {0};  // objecte en comptes de tipus primitiu perqu? pugui variar en les cridada a 'parse'
+            
+            return linies.filter(linia -> !linia.isBlank() && !linia.startsWith("#"))
+                         .map(linia -> parseProducte(linia, numLinia[0]++, bufferedWriter))
+                         .filter(x -> x != null)
+                         .collect(Collectors.toCollection(HashSet::new));
+        } catch (IOException e) {
+            System.err.println("Error llegint el fitxer de productes: " + e.getMessage());
         }
+        return null;
     }
 
-    public void afegeixProducte(Set<Producte> productes, Producte producte) {
-        productes.add(producte);
+    private Producte parseProducte(String linia, int numLinia, BufferedWriter bufferedWriter) {
+        try {
+            String[] parts = linia.split(",");
+            if (parts.length == 4)
+                return new Producte( Integer.parseInt(parts[0].trim()),
+                                     parts[1].trim(),
+                                     Double.parseDouble(parts[2].trim()),
+                                     Categoria.valueOf(parts[3].trim()) );
+        } catch (NumberFormatException e) {
+            logError(bufferedWriter, numLinia, e);
+        } catch (IllegalArgumentException e) {
+            logError(bufferedWriter, numLinia, e);
+        } catch (Exception e) {
+            logError(bufferedWriter, numLinia, e);
+        }
+        return null;
     }
     
-    // cerca la referència del producte en 'productes'
+    // cerca la refer?ncia del producte en 'productes'
     private Producte cercaProducte (Producte p) throws NoSuchElementException {
         for (Producte producte : this.productes) 
             if (p.equals(producte))
@@ -243,7 +259,7 @@ public class Gestor {
                         if ( venda == null)  // si no existeix, crear nova venda 
                             venda = new Venda( Integer.parseInt(parts[0].trim()),
                                                      LocalDate.parse(parts[1].trim()),
-                                                     cercaClient( new Client(Integer.parseInt(parts[2].trim()), null, null) ), // 'client' temporal
+                                                     cercaClient( new Client(Integer.parseInt(parts[2].trim())) ), // 'client' temporal
                                                      new HashSet<>() );
                         
                         // crear els productes sobre l'arraylist creat o trobat
@@ -461,4 +477,14 @@ public class Gestor {
             vendes.put(venda.getId(), venda);  // modifica el map
         }
     }
+    
+    private void logError(BufferedWriter bufferedWriter, int numLinia, Exception e) {
+        try {
+            bufferedWriter.write("Error carregant L�nia " + numLinia + ": " + e.getMessage());
+            bufferedWriter.newLine();
+        } catch (IOException ex) {
+            System.err.println("Error escrivint al log: " + ex.getMessage());
+        }
+    }
+    
 }

@@ -11,17 +11,17 @@ public class Main {
             System.out.println("CLIENTS");
             gestor.carregaClients("c:\\temp\\clients.csv", "c:\\temp\\clients.log");
             System.out.println("PRODUCTES");
-            gestor.carregaProductes("c:\\temp\\productes.csv");
+            gestor.carregaProductes("c:\\temp\\productes.csv","c:\\temp\\productes.log");
             System.out.println("VENDES");
             gestor.carregaVendes("c:\\temp\\vendes.csv");
             
             // MODIFICA DADES
-            gestor.modifica();
+            //gestor.modifica();
             
             // DESA CLIENTS, PRODUCTES i VENDES
-            gestor.desaClients("c:\\temp\\clients_out.csv");
-            gestor.desaProductes("c:\\temp\\productes_out.csv");
-            gestor.desaVendes("c:\\temp\\vendes_out.csv");
+            //gestor.desaClients("c:\\temp\\clients_out.csv");
+            //gestor.desaProductes("c:\\temp\\productes_out.csv");
+            //gestor.desaVendes("c:\\temp\\vendes_out.csv");
 
         } catch (Exception e) {
             System.out.println("Error GENERAL: " + e.getMessage());
