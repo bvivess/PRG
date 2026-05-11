@@ -13,7 +13,7 @@ public class GestorMeteorits {
               BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(arxiuLog)) ) {
             int[] numLinia = {0};  // objecte en comptes de tipus primitiu perqu? pugui variar en les cridada a 'parseMeteorit'
 
-            return linies .filter(linia -> !linia.startsWith("name"))
+            return linies.filter(linia -> !linia.startsWith("name"))
                           .map(linia -> parseMeteorit(linia, numLinia[0]++, bufferedWriter))  // rep 'String' torna 'Meteorit'
                           .filter(x -> x != null)  // s'eliminen els errors del 'parseMeteorit()'
                           .collect(Collectors.toCollection(HashSet::new));

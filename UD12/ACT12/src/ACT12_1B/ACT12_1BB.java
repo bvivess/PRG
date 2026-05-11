@@ -16,6 +16,7 @@ public class ACT12_1BB {
         System.out.println("Llista: " + persones);
         persones.stream()
             .filter(p -> p.getNom().startsWith("J")) // Filtrar noms que comencen amb "J"
+            .sorted()  // ??
             .skip(2) // Saltar els primers 2 noms
             .limit(3) // Mostrar només els primers 3 noms
             .forEach(System.out::println); // Mostrar el resultat
