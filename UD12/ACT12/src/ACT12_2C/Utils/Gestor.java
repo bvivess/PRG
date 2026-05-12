@@ -14,35 +14,41 @@ import java.util.stream.Stream;
 
 public class Gestor {
     
-    public List<String[]> llegeixLiniesCSV(String f) {
+    public List<Department> carregaDepartamentsCSV(String f) {
         try (Stream<String> linies = Files.lines(Paths.get(f))) {
             return linies
+                    // PARSE
                     .filter(linia -> !linia.isBlank() && !linia.startsWith("#"))
                     .map(linia -> linia.split(","))
+                    .map(parts -> parts[3].trim())
+                    .distinct()
+                    .map(id -> new Department( id ))  // .map(Department::new)
+                    // FI PARSE
+                    .sorted((d1, d2) -> d1.getId().compareTo(d2.getId()))
                     .collect(Collectors.toList());
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
-        return List.of();  // retorna llista buida en cas d'error
+        return null;  // retorna llista buida en cas d'error
     }
 
-    public List<Department> carregaDepartments(List<String[]> linies) {
-        return linies.stream()
-                .map(parts -> parts[3].trim())
-                .distinct()
-                .map(id -> new Department( id ))  // .map(Department::new)
-                .sorted((d1, d2) -> d1.getId().compareTo(d2.getId()))
-                .collect(Collectors.toList());
-    }
-
-    public List<Client> carregaClients(List<String[]> linies) {
-        return linies.stream()
-                .map(parts -> new Client( Integer.parseInt(parts[0].trim()),
-                                          parts[1].trim(),
-                                          parts[2].trim(),
-                                          parts[3].trim()) )
-                .sorted((c1, c2) -> c1.getNom().compareTo(c2.getNom()))
-                .collect(Collectors.toList());
+    public List<Client> carregaClientsCSV(String f) {
+        try (Stream<String> linies = Files.lines(Paths.get(f))) {
+            return linies
+                    // PARSE
+                    .filter(linia -> !linia.isBlank() && !linia.startsWith("#"))
+                    .map(linia -> linia.split(","))
+                    .map(parts -> new Client( Integer.parseInt(parts[0].trim()),
+                                              parts[1].trim(),
+                                              parts[2].trim(),
+                                              parts[3].trim()) )
+                    // FI PARSE
+                    .sorted((c1, c2) -> c1.getNom().compareTo(c2.getNom()))
+                    .collect(Collectors.toList());
+        } catch (IOException e) {
+            System.err.println(e.getMessage());
+        }
+        return null;  // retorna llista buida en cas d'error
     }
     
     public void desaDepartments(GestorBBDD gestorBBDD, List<Department> departments) {
@@ -71,7 +77,7 @@ public class Gestor {
                    .forEach(c -> {
                       try {
                           gestorBBDD.executaSQL(conn,
-                                  "INSERT INTO clients (id, nom, email, department_id) VALUES (?, ?, ?, ?)",
+                                  "INSERT INTO clients (id, nom, email, departament_id) VALUES (?, ?, ?, ?)",
                                   c.getId(), c.getNom(), c.getEmail(), c.getDepartment_id());
 
                       } catch (SQLException e) {
@@ -79,7 +85,7 @@ public class Gestor {
                               if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062) {
                                   // Clau prim?ria duplicada, fem UPDATE
                                   gestorBBDD.executaSQL(conn,
-                                          "UPDATE clients SET nom = ?, email = ?, department_id = ? WHERE id = ?",
+                                          "UPDATE clients SET nom = ?, email = ?, departament_id = ? WHERE id = ?",
                                           c.getNom(), c.getEmail(), c.getDepartment_id(), c.getId());
                               } else {
                                   throw new RuntimeException(e);
