@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -16,38 +17,54 @@ public class Gestor {
     public List<Department> carregaDepartamentsCSV(String f) {
         try (Stream<String> linies = Files.lines(Paths.get(f))) {
             return linies
-                    // PARSE
-                    .filter(linia -> !linia.isBlank() && !linia.startsWith("#"))
-                    .map(linia -> linia.split(","))
-                    .map(parts -> parts[3].trim())
+                    .map(linia -> parseDepartament(linia))
+                    .filter(Objects::nonNull)
                     .distinct()
-                    .map(id -> new Department( id ))  // .map(Department::new)
-                    // FI PARSE
                     .sorted((d1, d2) -> d1.getId().compareTo(d2.getId()))
                     .collect(Collectors.toList());
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
-        return null;  // retorna llista buida en cas d'error
+        return null;
+    }
+
+    private Department parseDepartament(String linia) {
+        if (linia.isBlank() || linia.startsWith("#"))
+            return null;
+        else {
+            String[] parts = linia.split(",");
+            return new Department(parts[3].trim());
+        }
     }
 
     public List<Client> carregaClientsCSV(String f) {
         try (Stream<String> linies = Files.lines(Paths.get(f))) {
             return linies
-                    // PARSE
-                    .filter(linia -> !linia.isBlank() && !linia.startsWith("#"))
-                    .map(linia -> linia.split(","))
-                    .map(parts -> new Client( Integer.parseInt(parts[0].trim()),
-                                              parts[1].trim(),
-                                              parts[2].trim(),
-                                              parts[3].trim()) )
-                    // FI PARSE
+                    .map(linia -> parseClient(linia))
+                    .filter(Objects::nonNull)
                     .sorted((c1, c2) -> c1.getNom().compareTo(c2.getNom()))
                     .collect(Collectors.toList());
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
-        return null;  // retorna llista buida en cas d'error
+        return null;
+    }
+
+    private Client parseClient(String linia) {
+        if (linia.isBlank() || linia.startsWith("#"))
+            return null;
+        else {
+            String[] parts = linia.split(",");
+            try {
+                return new Client( Integer.parseInt(parts[0].trim()),
+                                   parts[1].trim(),
+                                   parts[2].trim(),
+                                   parts[3].trim() );
+            } catch (NumberFormatException e) {
+                System.err.println("Error en línia: " + linia);
+                return null;
+            }
+        }
     }
     
     public void desaDepartments(GestorBBDD gestorBBDD, List<Department> departments) {

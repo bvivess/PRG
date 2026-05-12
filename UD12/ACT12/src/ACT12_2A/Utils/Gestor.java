@@ -16,7 +16,7 @@ public class Gestor {
         try (Stream<String> linies = Files.lines(Paths.get(arxiu))) {
             return linies
                     .map(linia -> parseDepartment(linia))
-                    .filter(obj -> obj != null)  // s'eliminen els possibles errors del 'parseDepartment'
+                    .filter(d -> d != null)  // s'eliminen els possibles errors del 'parseDepartment'
                     .distinct()
                     .collect(Collectors.toList());
         } catch (IOException e) {
