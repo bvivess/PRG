@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-
 public class Gestor {
     
     public List<Department> carregaDepartamentsCSV(String f) {
@@ -56,10 +55,9 @@ public class Gestor {
             departments.stream()                       
                        .forEach(d -> {
                             try {
-                                gestorBBDD.executaSQL(conn,
-                                        "INSERT INTO departaments (id) VALUES (?)",
-                                        d.getId() );
-
+                                gestorBBDD.executaSQL( conn,
+                                                       "INSERT INTO departaments (id) VALUES (?)",
+                                                       d.getId() );
                             } catch (SQLException e) {
                                   if (!((e.getSQLState().equals("23000") && e.getErrorCode() == 1062)))
                                       throw new RuntimeException(e);
@@ -76,17 +74,16 @@ public class Gestor {
             clients.stream()
                    .forEach(c -> {
                       try {
-                          gestorBBDD.executaSQL(conn,
-                                  "INSERT INTO clients (id, nom, email, departament_id) VALUES (?, ?, ?, ?)",
-                                  c.getId(), c.getNom(), c.getEmail(), c.getDepartment_id());
-
+                          gestorBBDD.executaSQL( conn,
+                                                 "INSERT INTO clients (id, nom, email, departament_id) VALUES (?, ?, ?, ?)",
+                                                 c.getId(), c.getNom(), c.getEmail(), c.getDepartment_id() );
                       } catch (SQLException e) {
                           try {
                               if (e.getSQLState().equals("23000") && e.getErrorCode() == 1062) {
                                   // Clau prim?ria duplicada, fem UPDATE
-                                  gestorBBDD.executaSQL(conn,
-                                          "UPDATE clients SET nom = ?, email = ?, departament_id = ? WHERE id = ?",
-                                          c.getNom(), c.getEmail(), c.getDepartment_id(), c.getId());
+                                  gestorBBDD.executaSQL( conn,
+                                                         "UPDATE clients SET nom = ?, email = ?, departament_id = ? WHERE id = ?",
+                                                         c.getNom(), c.getEmail(), c.getDepartment_id(), c.getId() );
                               } else {
                                   throw new RuntimeException(e);
                               }

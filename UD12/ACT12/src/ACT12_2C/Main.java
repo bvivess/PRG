@@ -12,13 +12,13 @@ public class Main {
         GestorBBDD gestorBBDD = new GestorBBDD(MYSQL_CON);
         
         // Carrega les llistes
-        //List<String[]> liniesCSV = 
         List<Department> departments = gestor.carregaDepartamentsCSV("c:\\temp\\clients.csv"); 
         List<Client> clients = gestor.carregaClientsCSV("c:\\temp\\clients.csv");
         
         // Imprimeix les llistes
         System.out.println("Departaments");
         departments.stream().forEach(System.out::println);  // Ordenat per Id
+        
         System.out.println("");
         
         System.out.println("Clients");
