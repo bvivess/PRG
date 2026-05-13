@@ -86,7 +86,6 @@ public class GestorEVA {
                                                        Integer.parseInt(partsDuration[1]));  // MM
 
                 String _purpose = parts[6].trim();
-
                 
                 return new EVA(_evaId, _countryId, _vehicleId, _date, _duration, _purpose, _crew);   
             }
