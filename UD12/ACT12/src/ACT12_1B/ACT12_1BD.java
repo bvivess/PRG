@@ -21,10 +21,20 @@ public class ACT12_1BD {
                                           .sorted((p1,p2) -> Integer.compare( p1.getEdat(),p2.getEdat()))
                                           .collect(Collectors.toList()); // Recollir en una llista
 
-        double suma = persones.stream().map(p->p.getEdat()).mapToDouble(e->e).sum();
-        int max = persones.stream().map(p->p.getEdat()).mapToInt(e->e).max().orElse(0);
-        int min = persones.stream().map(p->p.getEdat()).mapToInt(e->e).min().orElse(0);
-        double avg = persones.stream().map(p->p.getEdat()).mapToInt(e->e).average().orElse(0);
+        double suma = persones.stream()
+                              .map(p->p.getEdat())
+                              .mapToDouble(e->e)
+                              .sum();
+        int max = persones.stream()
+                          .map(p->p.getEdat())
+                          .mapToInt(e->e)
+                          .max().orElse(0);
+        int min = persones.stream()
+                          .map(p->p.getEdat())
+                          .mapToInt(e->e).min().orElse(0);
+        double avg = persones.stream()
+                             .map(p->p.getEdat())
+                             .mapToInt(e->e).average().orElse(0);
 
         System.out.println("Menors d'edat: " + menorsEdat);
         System.out.println("Suma / M?xim / Mínim / Mitjana: " + suma + " / " + max + " / " + min + " / " + avg);
