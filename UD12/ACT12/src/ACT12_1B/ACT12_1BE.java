@@ -2,7 +2,7 @@ package ACT12_1B;
 
 import java.util.*;
 
-public class ACT12_1BJ {
+public class ACT12_1BE {
     public static void main(String[] args) {
         List<Persona> persones = Arrays.asList( new Persona("Juan Martinez", 30),
                                                 new Persona("Jordi Fajula", 31),

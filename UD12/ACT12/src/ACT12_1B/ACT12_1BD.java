@@ -3,7 +3,7 @@ package ACT12_1B;
 import java.util.*;
 import java.util.stream.*;
 
-public class ACT12_1BI {
+public class ACT12_1BD {
     public static void main(String[] args) {
         List<Persona> persones = Arrays.asList( new Persona("Juan", 30),
                                                 new Persona("Jordi",31),
