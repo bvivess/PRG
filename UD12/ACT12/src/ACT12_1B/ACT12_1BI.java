@@ -16,7 +16,7 @@ public class ACT12_1BI {
 
 
 
-        List<Persona> resultats = persones.stream()
+        List<Persona> menorsEdat = persones.stream()
                                           .filter(p -> p.getEdat() < 18) // Filtrar només els números positius
                                           .sorted((p1,p2) -> Integer.compare( p1.getEdat(),p2.getEdat()))
                                           .collect(Collectors.toList()); // Recollir en una llista
@@ -26,7 +26,7 @@ public class ACT12_1BI {
         int min = persones.stream().map(p->p.getEdat()).mapToInt(e->e).min().orElse(0);
         double avg = persones.stream().map(p->p.getEdat()).mapToInt(e->e).average().orElse(0);
 
-        System.out.println("Menors d'edat: " + resultats);
+        System.out.println("Menors d'edat: " + menorsEdat);
         System.out.println("Suma / M?xim / M�nim / Mitjana: " + suma + " / " + max + " / " + min + " / " + avg);
     }
 }
