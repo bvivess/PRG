@@ -36,7 +36,11 @@ public class Gestor {
                 String[] parts = linia.split(",");
                 return new Department(parts[3].trim());
             }
-        } catch( Exception e) {
+        } catch (NumberFormatException e) {
+            System.out.println("Error en linia: " + linia + ": " + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error en linia: " + linia + ": " + e.getMessage());
+        } catch (Exception e) {
             System.out.println("Error en linia: " + linia + ": " + e.getMessage());
         }
         return null;
@@ -71,7 +75,11 @@ public class Gestor {
                     return null;
                 }
             }
-        } catch( Exception e) {
+        } catch (NumberFormatException e) {
+            System.out.println("Error en linia: " + linia + ": " + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error en linia: " + linia + ": " + e.getMessage());
+        } catch (Exception e) {
             System.out.println("Error en linia: " + linia + ": " + e.getMessage());
         }
         return null;
