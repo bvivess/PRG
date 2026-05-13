@@ -29,7 +29,7 @@ public class Gestor {
     private Department parseDepartment(String linia) {
         try {
             if (!(linia.isBlank() || linia.startsWith("#"))) {
-                String[] parts = linia.split(",");
+                String[] parts = linia.split(",",1);
                 return new Department( parts[3].trim() );
             }
         } catch (NumberFormatException e) {
@@ -57,7 +57,7 @@ public class Gestor {
     private Client parseClient(String linia) {
         try {
             if (!(linia.isBlank() || linia.startsWith("#"))) {
-                String[] parts = linia.split(",");
+                String[] parts = linia.split(",",3);
                 return new Client( Integer.parseInt(parts[0].trim()),
                                    parts[1].trim(),
                                    parts[2].trim() );

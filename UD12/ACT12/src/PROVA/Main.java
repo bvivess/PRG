@@ -16,18 +16,12 @@ public class Main {
                                                 new Persona("Jaume Ros", 26),
                                                 new Persona("Judith Valera", 10),
                                                 new Persona("Joan Mas", 9) );
-
-        List<Persona> p = cercaPersona(persones,"JOAN");
-        
-        System.out.println(p);
-        
-        
+        System.out.println(
+        persones.stream()
+                .filter(p->p.getEdat()>8)
+                .map(p->p.getEdat())
+                    .mapToInt(i->i)
+                .average()
+        );
     }
-    
-    private static List<Persona> cercaPersona(List<Persona> persones, String nom) {
-        return persones.stream()
-                       .filter(p->p.getNom().toUpperCase().contains(nom))
-                       .collect(Collectors.toList());
-    }
-    
 }
