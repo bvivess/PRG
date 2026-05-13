@@ -29,12 +29,17 @@ public class Gestor {
     }
 
     private Department parseDepartament(String linia) {
-        if (linia.isBlank() || linia.startsWith("#"))
-            return null;
-        else {
-            String[] parts = linia.split(",");
-            return new Department(parts[3].trim());
+        try {
+            if (linia.isBlank() || linia.startsWith("#"))
+                return null;
+            else {
+                String[] parts = linia.split(",");
+                return new Department(parts[3].trim());
+            }
+        } catch( Exception e) {
+            System.out.println("Error en linia: " + linia + ": " + e.getMessage());
         }
+        return null;
     }
 
     public List<Client> carregaClientsCSV(String f) {
@@ -51,20 +56,25 @@ public class Gestor {
     }
 
     private Client parseClient(String linia) {
-        if (linia.isBlank() || linia.startsWith("#"))
-            return null;
-        else {
-            String[] parts = linia.split(",");
-            try {
-                return new Client( Integer.parseInt(parts[0].trim()),
-                                   parts[1].trim(),
-                                   parts[2].trim(),
-                                   parts[3].trim() );
-            } catch (NumberFormatException e) {
-                System.err.println("Error en línia: " + linia);
+        try {
+            if (linia.isBlank() || linia.startsWith("#"))
                 return null;
+            else {
+                String[] parts = linia.split(",");
+                try {
+                    return new Client( Integer.parseInt(parts[0].trim()),
+                                       parts[1].trim(),
+                                       parts[2].trim(),
+                                       parts[3].trim() );
+                } catch (NumberFormatException e) {
+                    System.err.println("Error en línia: " + linia);
+                    return null;
+                }
             }
+        } catch( Exception e) {
+            System.out.println("Error en linia: " + linia + ": " + e.getMessage());
         }
+        return null;
     }
     
     public void desaDepartments(GestorBBDD gestorBBDD, List<Department> departments) {

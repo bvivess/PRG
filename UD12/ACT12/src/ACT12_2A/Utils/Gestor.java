@@ -27,13 +27,16 @@ public class Gestor {
     }
 
     private Department parseDepartment(String linia) {
-        if (linia.isBlank() || linia.startsWith("#")) {
-            return null;
-        } else {
-            String[] parts = linia.split(",");
-            return new Department(parts[3].trim());
+        try {
+            if (!(linia.isBlank() || linia.startsWith("#"))) {
+                String[] parts = linia.split(",");
+                return new Department( parts[3].trim() );
+            }
+        } catch(Exception e) {
+            System.out.println("Error en línia: " + linia + ": " + e.getMessage());
         }
-    }    
+        return null;
+    }
     
     public List<Client> carregaClients(String arxiu) {
         try (Stream<String> linies = Files.lines(Paths.get(arxiu))) {
@@ -45,19 +48,19 @@ public class Gestor {
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
-
         return null;
     }    
     private Client parseClient(String linia) {
-        if (linia.isBlank() || linia.startsWith("#")) {
-            return null;
-        } else {
-            String[] parts = linia.split(",");
-            return new Client(
-                    Integer.parseInt(parts[0].trim()),
-                    parts[1].trim(),
-                    parts[2].trim()
-            );
+        try {
+            if (!(linia.isBlank() || linia.startsWith("#"))) {
+                String[] parts = linia.split(",");
+                return new Client( Integer.parseInt(parts[0].trim()),
+                                   parts[1].trim(),
+                                   parts[2].trim() );
+            }
+        } catch(Exception e) {
+            System.out.println("Error en línia: " + linia + ": " + e.getMessage());
         }
+        return null;
     }
 }
