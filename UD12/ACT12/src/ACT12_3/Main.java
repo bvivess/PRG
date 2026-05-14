@@ -16,8 +16,7 @@ public class Main {
         
 
         try {
-            // 'llegeixArxiuCSV' ja torna el Set 
-            meteorits = gestor.llegeixArxiuCSV(arxiu, arxiuLog);
+            meteorits = gestor.llegeixArxiuCSV(arxiu, arxiuLog);  // 'llegeixArxiuCSV' ja torna el Set 
             // Per a cada meteorit, es carrega la seva posició a 'geoPositions'
             for (Meteorit m : meteorits) {
                 geoPositions.add(m.getGeoPosition());
