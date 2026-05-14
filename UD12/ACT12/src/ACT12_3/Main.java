@@ -6,16 +6,16 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Main {
-
+   
     public static void main(String[] args) throws Exception {
         GestorMeteorits gestor = new GestorMeteorits();
+        Set<Meteorit> meteorits = new HashSet<>();
+        Set<GeoPosition> geoPositions = new HashSet<>();
         String arxiu = "C:\\temp\\Meteorite_Landings.csv";
         String arxiuLog = "C:\\temp\\Meteorite_Landings.log";
         
 
         try {
-            Set<Meteorit> meteorits = new HashSet<>();
-            Set<GeoPosition> geoPositions = new HashSet<>();
             meteorits = gestor.llegeixArxiuCSV(arxiu, arxiuLog);
             for (Meteorit m : meteorits) {
                 geoPositions.add(m.getGeoPosition());
