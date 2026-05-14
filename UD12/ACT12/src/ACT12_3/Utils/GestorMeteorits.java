@@ -7,8 +7,9 @@ import java.util.*;
 import java.util.stream.*;
 
 public class GestorMeteorits {
-    Set<Meteorit> meteorits = new HashSet<>();
-    Set<GeoPosition> geoPositions = new HashSet<>();
+    public Set<Meteorit> meteorits = new HashSet<>();
+    public Set<GeoPosition> geoPositions = new HashSet<>();
+    public Map<Integer, List<Meteorit>> meteoritsPerAny = new HashMap<>();
     
     public Set<Meteorit> llegeixArxiuCSV(String fitxerCSV, String arxiuLog) {
         try ( Stream<String> linies = Files.lines(Paths.get(fitxerCSV));
