@@ -48,8 +48,8 @@ public class Main {
             // 4. caiguts en Europa
             System.out.println("\nCAIGUTS EN EUROPA: ");
             List<Meteorit> europeus = meteorits.stream()
-                                               .filter(m -> m.getGeoPosition().getLatitude() >= 35 && m.getGeoPosition().getLatitude() <= 71 && 
-                                                            m.getGeoPosition().getLongitude() >= -25 && m.getGeoPosition().getLongitude() <= 40)
+                                               .filter(m -> (m.getGeoPosition().getLatitude() >=  35  && m.getGeoPosition().getLatitude() <= 71) && 
+                                                            (m.getGeoPosition().getLongitude() >= -25 && m.getGeoPosition().getLongitude() <= 40))
                                                .toList();
             
             europeus.stream().forEach(System.out::println);
@@ -57,8 +57,8 @@ public class Main {
             // 4. caiguts en Espanya
             System.out.println("\nCAIGUTS EN ESPANYA: ");
             List<Meteorit> mallorquins = meteorits.stream()
-                                                   .filter(m -> m.getGeoPosition().getLatitude() >= 36 && m.getGeoPosition().getLatitude() <= 4 &&
-                                                                m.getGeoPosition().getLongitude() >= -9 && m.getGeoPosition().getLongitude() <= 3)
+                                                   .filter(m -> (m.getGeoPosition().getLatitude()  >= 36 && m.getGeoPosition().getLatitude() <= 4) &&
+                                                                (m.getGeoPosition().getLongitude() >= -9 && m.getGeoPosition().getLongitude() <= 3))
                                                    .toList();
             
             mallorquins.stream().forEach(System.out::println);
