@@ -22,7 +22,6 @@ public class Gestor {
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
-
         return null;
     }
 
