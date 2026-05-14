@@ -26,7 +26,7 @@ public class GestorMeteorits {
     private Meteorit parseMeteorit(String linia, int numLinia, BufferedWriter bufferedWriter) {
         try {
             if (!linia.startsWith("name")) {
-                // format: name,id,nametype,recclass,mass (g),fall,year,reclat,reclong,GeoLocation
+                // format: name,id,nametype,recclass,mass (g),fall,year,reclat,reclong,GeoLocation (posició 9 no es té en compte)
                 String[] parts = linia.split(",",10);
 
                 int    _id        = Integer.parseInt(parts[1].trim());
