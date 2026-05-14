@@ -35,6 +35,7 @@ public class GestorEVA {
               BufferedWriter bw = new BufferedWriter(new FileWriter(arxiuLog)) ) {   
             while ((linia = br.readLine()) != null) {
                 eva = parseEVA(linia, ++numLinia, bw);
+                
                 if (eva != null) {
                     // afegeix a 'evas'
                     evas.put(eva.getId(), eva);

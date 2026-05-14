@@ -9,18 +9,16 @@ public class Meteorit implements Comparable<Meteorit> {
     private double mass;
     private String fall;
     private int year;
-    private double latitude;
-    private double longitude;
+    private GeoPosition geoPosition;
 
-    public Meteorit(int id, String name, String type, double mass, String fall, int year, double latitude, double longitude) {
+    public Meteorit(int id, String name, String type, double mass, String fall, int year, GeoPosition geoPosition) {
         setId(id);
         setName(name);
         setType(type);
         setMass(mass);
         setFall(fall);
         setYear(year);
-        setLatitude(latitude);
-        setLongitude(longitude);
+        setGeoPosition(geoPosition);
     }
 
     private void validateString(String value, String field) {
@@ -82,14 +80,8 @@ public class Meteorit implements Comparable<Meteorit> {
         this.year = year;
     }
 
-    public void setLatitude(double lat) {
-        validateLatitude(lat);
-        this.latitude = lat;
-    }
-
-    public void setLongitude(double lon) {
-        validateLongitude(lon);
-        this.longitude = lon;
+    public void setGeoPosition(GeoPosition geoPosition) {
+        this.geoPosition = geoPosition;
     }
 
     public int getId() { return this.id; }
@@ -98,8 +90,7 @@ public class Meteorit implements Comparable<Meteorit> {
     public double getMass() { return this.mass; }
     public String getFall() { return this.fall; }
     public int getYear() { return this.year; }
-    public double getLatitude() { return this.latitude; }
-    public double getLongitude() { return this.longitude; }
+    public GeoPosition getGeoPosition() { return this.geoPosition; }
 
     @Override
     public int compareTo(Meteorit o) {

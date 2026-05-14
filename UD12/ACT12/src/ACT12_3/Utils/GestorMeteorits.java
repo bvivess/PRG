@@ -1,6 +1,6 @@
 package ACT12_3.Utils;
 
-import ACT12_3.Classes.Meteorit;
+import ACT12_3.Classes.*;
 import java.io.*;
 import java.nio.file.*;
 import java.util.*;
@@ -15,7 +15,7 @@ public class GestorMeteorits {
 
             return linies.filter(linia -> !linia.startsWith("name"))
                           .map(linia -> parseMeteorit(linia, numLinia[0]++, bufferedWriter))  // rep 'String' torna 'Meteorit'
-                          .filter(x -> x != null)  // s'eliminen els errors del 'parseMeteorit()'
+                          .filter(Objects::nonNull)  // s'eliminen els errors del 'parseMeteorit()'
                           .collect(Collectors.toCollection(HashSet::new));
             
         } catch (IOException e) {
@@ -37,8 +37,9 @@ public class GestorMeteorits {
             int    _any       = parts[6].isBlank() ? 0 : Integer.parseInt(parts[6].trim());
             double _latitude  = parts[7].isBlank() ? 0 : Double.parseDouble(parts[7].trim());
             double _longitude = parts[8].isBlank() ? 0 : Double.parseDouble(parts[8].trim());
+            GeoPosition _geoPos = new GeoPosition(_latitude, _longitude);
 
-            return new Meteorit(_id, _nom, _type, _massa, _fell, _any, _latitude, _longitude);
+            return new Meteorit(_id, _nom, _type, _massa, _fell, _any, _geoPos);
         } catch (NumberFormatException e) {
             logError(bufferedWriter, numLinia, e);
         } catch (IllegalArgumentException e) {
