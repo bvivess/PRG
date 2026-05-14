@@ -9,8 +9,7 @@ public class Main {
    
     public static void main(String[] args) throws Exception {
         GestorMeteorits gestor = new GestorMeteorits();
-        Set<Meteorit> meteorits = new HashSet<>();
-        Set<GeoPosition> geoPositions = new HashSet<>();
+
         String arxiu = "C:\\temp\\Meteorite_Landings.csv";
         String arxiuLog = "C:\\temp\\Meteorite_Landings.log";
         

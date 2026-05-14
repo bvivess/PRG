@@ -7,7 +7,9 @@ import java.util.*;
 import java.util.stream.*;
 
 public class GestorMeteorits {
-
+    Set<Meteorit> meteorits = new HashSet<>();
+    Set<GeoPosition> geoPositions = new HashSet<>();
+    
     public Set<Meteorit> llegeixArxiuCSV(String fitxerCSV, String arxiuLog) {
         try ( Stream<String> linies = Files.lines(Paths.get(fitxerCSV));
               BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(arxiuLog)) ) {
@@ -26,7 +28,7 @@ public class GestorMeteorits {
     private Meteorit parseMeteorit(String linia, int numLinia, BufferedWriter bufferedWriter) {
         try {
             if (!linia.startsWith("name")) {
-                // format: name,id,nametype,recclass,mass (g),fall,year,reclat,reclong,GeoLocation (posició 9 no es té en compte)
+                // format: name,id,nametype,recclass,mass (g),fall,year,reclat,reclong,GeoLocation (posicions 3 i 9 no es tenen en compte)
                 String[] parts = linia.split(",",10);
 
                 int    _id        = Integer.parseInt(parts[1].trim());
@@ -37,9 +39,12 @@ public class GestorMeteorits {
                 int    _any       = parts[6].isBlank() ? 0 : Integer.parseInt(parts[6].trim());
                 double _latitude  = parts[7].isBlank() ? 0 : Double.parseDouble(parts[7].trim());
                 double _longitude = parts[8].isBlank() ? 0 : Double.parseDouble(parts[8].trim());
-                GeoPosition _geoPos = new GeoPosition(_latitude, _longitude);
+                GeoPosition _geoPosition = new GeoPosition(_latitude, _longitude);
+                GeoPosition _geoPositionFinal = cercaGeoPosition(_geoPosition);
+                if (_geoPositionFinal == null)
+                    _geoPositionFinal = _geoPosition;
 
-                return new Meteorit(_id, _nom, _type, _massa, _fell, _any, _geoPos);
+                return new Meteorit(_id, _nom, _type, _massa, _fell, _any, _geoPositionFinal);
             }
         } catch (NumberFormatException e) {
             logError(bufferedWriter, numLinia, e);
@@ -48,6 +53,13 @@ public class GestorMeteorits {
         } catch (Exception e) {
             logError(bufferedWriter, numLinia, e);
         }
+        return null;
+    }
+    
+    private GeoPosition cercaGeoPosition(GeoPosition geoPos) {  // cerca en un 'Set'
+        for (GeoPosition g : this.geoPositions)
+            if (geoPos.equals(g))
+                return g;
         return null;
     }
 
