@@ -48,8 +48,8 @@ public class Main {
             // 4. caiguts en Europa
             System.out.println("\nCAIGUTS EN EUROPA: ");
             List<Meteorit> europeus = meteorits.stream()
-                                               .filter(m -> m.getGeoPosition().getLatitude() >= 35 && m.getGeoPosition().getLatitude() <= 71)
-                                               .filter(m -> m.getGeoPosition().getLongitude() >= -25 && m.getGeoPosition().getLongitude() <= 40)
+                                               .filter(m -> m.getGeoPosition().getLatitude() >= 35 && m.getGeoPosition().getLatitude() <= 71 && 
+                                                            m.getGeoPosition().getLongitude() >= -25 && m.getGeoPosition().getLongitude() <= 40)
                                                .toList();
             
             europeus.stream().forEach(System.out::println);
