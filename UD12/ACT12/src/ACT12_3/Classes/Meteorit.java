@@ -99,6 +99,6 @@ public class Meteorit implements Comparable<Meteorit> {
 
     @Override
     public String toString() {
-        return name + " (" + mass + "g)";
+        return "Meteorit{" + "id=" + id + ", name=" + name + ", type=" + type + ", mass=" + mass + ", fall=" + fall + ", year=" + year + ", geoPosition=" + geoPosition + '}';
     }
 }

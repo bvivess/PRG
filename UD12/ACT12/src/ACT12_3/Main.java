@@ -15,7 +15,11 @@ public class Main {
 
         try {
             Set<Meteorit> meteorits = new HashSet<>();
+            Set<GeoPosition> geoPositions = new HashSet<>();
             meteorits = gestor.llegeixArxiuCSV(arxiu, arxiuLog);
+            for (Meteorit m : meteorits) {
+                geoPositions.add(m.getGeoPosition());
+            }
             
             // 1. > 1000g
             System.out.println("METEORITS > 1kg (v?lids):");
