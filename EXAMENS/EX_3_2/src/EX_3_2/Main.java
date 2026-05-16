@@ -5,11 +5,7 @@ import EX_3_2.Utils.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 public class Main {
     private static final String MYSQL_CON  = "c:\\temp\\mysql.con";
@@ -22,25 +18,24 @@ public class Main {
         GestorEVA gestorEVA = new GestorEVA();
 
         // Estructures de memòria
-        Map<Integer, EVA> evas      = new HashMap<>();
-        Set<Astronaut>    astronauts = new HashSet<>();
+
         try {
             // 1. CSV a estructures
-            numLinies = gestorEVA.llegeixCSV(CSV_PATH, LOG_PATH, evas, astronauts);
+            numLinies = gestorEVA.llegeixCSV(CSV_PATH, LOG_PATH);
 
             System.out.println("Resum de la lectura del CSV");
             System.out.println("Total línies carregades: " + numLinies);
-            System.out.println("EVAs carregades  : " + evas.size());
-            System.out.println("Astronautes carregats: " + astronauts.size());
+            System.out.println("EVAs carregades  : " + gestorEVA.getEvas().size());
+            System.out.println("Astronautes carregats: " + gestorEVA.getAstronauts().size());
             System.out.println();
 
             // 2. Mostrar estructures
-            List<EVA> ordenades = new ArrayList<>(evas.values());
+            List<EVA> ordenades = new ArrayList<>(gestorEVA.getEvas().values());
             Collections.sort(ordenades);   // empra el 'compareTo()' d'EVA
             System.out.println(ordenades);
 
             // 3. Estructures a BD
-            gestorEVA.estructuresABBDD(gestorBBDD, evas, astronauts);
+            gestorEVA.estructuresABBDD(gestorBBDD);
 
         } catch (Exception e) {
             System.err.println("Error general: " + e.getMessage());

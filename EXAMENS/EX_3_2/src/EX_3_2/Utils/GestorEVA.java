@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -25,9 +26,10 @@ public class GestorEVA {
      * @param astronauts
      * @throws java.io.IOException
      */
-    public int llegeixCSV( String arxiu, String arxiuLog,
-                            Map<Integer, EVA> evas,
-                            Set<Astronaut>    astronauts) throws IOException {
+    static Map<Integer, EVA> evas = new HashMap<>();
+    static Set<Astronaut> astronauts = new HashSet<>();
+
+    public int llegeixCSV( String arxiu, String arxiuLog) throws IOException {
         int numLinia = 0;
         String linia;
         EVA eva;
@@ -67,8 +69,14 @@ public class GestorEVA {
                 String[] partsCrew = parts[2].trim().split(" ");
                 Set<Astronaut> _crew = new HashSet<>();
                 for (String c : partsCrew) {
-                    if (!(c.trim().isBlank()))
-                        _crew.add(new Astronaut(c.trim()));
+                    if (!(c.trim().isBlank())) {
+
+                        Astronaut _astronaut = new Astronaut(c.trim());
+                        Astronaut _astronautFinal = cercaAstronaut(_astronaut);
+                        if (_astronautFinal == null)
+                            _astronautFinal = _astronaut;
+                        _crew.add(_astronaut);
+                    }
                 }
                 String _vehicleId = parts[3].trim();
                 //LocalDate _date = (parts[4] == null ? LocalDate.now() : LocalDate.parse( parts[4],DateTimeFormatter.ofPattern("MM/dd/yyyy")));
@@ -102,6 +110,13 @@ public class GestorEVA {
         }
         return null;        
     }
+    
+    private Astronaut cercaAstronaut(Astronaut astronaut) {  // cerca en un 'Set'
+        for (Astronaut a : astronauts)
+            if (astronaut.equals(a))
+                return a;
+        return null;
+    }
 
     /**
      *
@@ -111,7 +126,7 @@ public class GestorEVA {
      * @throws SQLException
      * @throws IOException
      */
-    public void estructuresABBDD( GestorBBDD gestorBBDD, Map<Integer, EVA> evas, Set<Astronaut> astronauts) throws SQLException, IOException {
+    public void estructuresABBDD( GestorBBDD gestorBBDD) throws SQLException, IOException {
         try (Connection conn = gestorBBDD.getConnectionFromFile()) {
             conn.setAutoCommit(false);
 
@@ -194,4 +209,20 @@ public class GestorEVA {
         }
     }
 
+    public static Map<Integer, EVA> getEvas() {
+        return evas;
+    }
+
+    public static void setEvas(Map<Integer, EVA> evas) {
+        GestorEVA.evas = evas;
+    }
+
+    public static Set<Astronaut> getAstronauts() {
+        return astronauts;
+    }
+
+    public static void setAstronauts(Set<Astronaut> astronauts) {
+        GestorEVA.astronauts = astronauts;
+    }
+    
 }
