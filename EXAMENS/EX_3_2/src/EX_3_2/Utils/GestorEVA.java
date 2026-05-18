@@ -70,7 +70,6 @@ public class GestorEVA {
                 Set<Astronaut> _crew = new HashSet<>();
                 for (String c : partsCrew) {
                     if (!(c.trim().isBlank())) {
-
                         Astronaut _astronaut = new Astronaut(c.trim());
                         Astronaut _astronautFinal = cercaAstronaut(_astronaut);
                         if (_astronautFinal == null)
