@@ -84,7 +84,7 @@ public class GestorTitanic {
             bw.write("Error carregant Línia " + numLinia + ": " + e.getMessage());
             bw.newLine();
         } catch (Exception e) {
-            bw.write("Error carregant Línia " + numLinia + ": " + e.getMessage());
+            bw.write("Error general carregant Línia " + numLinia + ": " + e.getMessage());
             bw.newLine();
         }
         return null;
