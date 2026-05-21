@@ -45,7 +45,7 @@ public class GestorTitanic {
                 // format: #PassengerID,Survived,"Name",Gender,Birthdate (DD-MM-YYYY),SibSp,Parch,"TicketID",Fare,"CabinID",ClassID,EmbarkationPort
                 //         0            1        2      3      4                      5     6     7          8    9         10      11 
                 // Passenger:
-                String[] parts = linea.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");;
+                String[] parts = linea.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
                 int     _passengerId = Integer.parseInt(parts[0]);
                 boolean _survived    = parts[1].equals("1");
                 String  _name        = parts[2].replace("\"", "");

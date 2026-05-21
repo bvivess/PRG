@@ -12,7 +12,6 @@ public class Main {
 
         String arxiu = "C:\\temp\\Meteorite_Landings.csv";
         String arxiuLog = "C:\\temp\\Meteorite_Landings.log";
-        
 
         try {
             gestor.meteorits = gestor.llegeixArxiuCSV(arxiu, arxiuLog);  // 'llegeixArxiuCSV' ja torna el Set 
