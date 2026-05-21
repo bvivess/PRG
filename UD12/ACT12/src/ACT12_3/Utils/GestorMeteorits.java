@@ -40,10 +40,13 @@ public class GestorMeteorits {
                 int    _any       = parts[6].isBlank() ? 0 : Integer.parseInt(parts[6].trim());
                 double _latitude  = parts[7].isBlank() ? 0 : Double.parseDouble(parts[7].trim());
                 double _longitude = parts[8].isBlank() ? 0 : Double.parseDouble(parts[8].trim());
+                
                 GeoPosition _geoPosition = new GeoPosition(_latitude, _longitude);
-                GeoPosition _geoPositionFinal = cercaGeoPosition(_geoPosition);
-                if (_geoPositionFinal == null)
-                    _geoPositionFinal = _geoPosition;
+                GeoPosition _geoPositionFinal = geoPositions.stream()
+                                                            .filter(_geoPosition::equals)  // cerca
+                                                            .findFirst()
+                                                            .orElse(_geoPosition);  // si no es troba, crea
+                                                            // no cal 'orElseGet' ja que l'objecte ja est? creat
 
                 return new Meteorit(_id, _nom, _type, _massa, _fell, _any, _geoPositionFinal);
             }
@@ -54,13 +57,6 @@ public class GestorMeteorits {
         } catch (Exception e) {
             logError(bufferedWriter, numLinia, e);
         }
-        return null;
-    }
-    
-    private GeoPosition cercaGeoPosition(GeoPosition geoPos) {  // cerca en un 'Set'
-        for (GeoPosition g : this.geoPositions)
-            if (geoPos.equals(g))
-                return g;
         return null;
     }
 
