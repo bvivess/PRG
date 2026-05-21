@@ -89,11 +89,11 @@ public class GestorTitanic {
         return null;
     }
     
-    private Ticket cercaTicket(Ticket ticket) {  // cerca en un 'Set'
-        for (Ticket t :tickets)
-            if (ticket.equals(t))
-                return t;
-        return null;
+    private Ticket cercaTicket(Ticket ticket) {
+        return this.tickets.stream()
+                           .filter(ticket::equals)
+                           .findFirst()
+                           .orElse(null);
     }
 
     public Set<Ticket> getTickets() {
