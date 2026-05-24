@@ -2,7 +2,6 @@ package ex_3_3;
 
 import ex_3_3.Classes.*;
 import ex_3_3.Utils.GestorTitanic;
-import java.io.IOException;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -72,8 +71,6 @@ public class Main {
                                                                      .filter(p -> p.getTicket().getClassId() == classId)
                                                                      .count() / (double) passengers.size();
                                             System.out.println("\tCLASSE " + classId + ": " + ratio); });
-        } catch (IOException e) {
-            System.out.println("Error I/O general: " + e.getMessage());
         } catch (Exception e) {
             System.out.println("Error general: " + e.getMessage());
         }

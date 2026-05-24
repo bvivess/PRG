@@ -46,11 +46,11 @@ public class GestorTitanic {
                 // format: #PassengerID,Survived,"Name",Gender,Birthdate (DD-MM-YYYY),SibSp,Parch,"TicketID",Fare,"CabinID",ClassID,EmbarkationPort
                 //         0            1        2      3      4                      5     6     7          8    9         10      11 
                 // Passenger:
-                String[] parts = linia.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");;
-                int     _passengerId = Integer.parseInt(parts[0]);
-                boolean _survived    = parts[1].equals("1");
-                String  _name        = parts[2].replace("\"", "");
-                Gender  _gender      = Gender.valueOf(parts[3].toUpperCase());
+                String[] parts = linia.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+                int     _passengerId = Integer.parseInt(parts[0].trim());
+                boolean _survived    = parts[1].trim().equals("1");
+                String  _name        = parts[2].replace("\"", "").trim();
+                Gender  _gender      = Gender.valueOf(parts[3].toUpperCase().trim());
                 //LocalDate _bithdate = (parts[4].isBlank() ? null : LocalDate.parse(parts[4], DateTimeFormatter.ofPattern("dd-MM-yyyy")));
                 LocalDate _bithdate = null;
                 if (!parts[4].isBlank()) {
@@ -59,12 +59,12 @@ public class GestorTitanic {
                                              Integer.parseInt(dateParts[1]),   // MM
                                              Integer.parseInt(dateParts[0]));  // DD
                 }
-                EmbarkationPort _embarkationPort = EmbarkationPort.valueOf(parts[11].replace("\"", ""));
+                EmbarkationPort _embarkationPort = EmbarkationPort.valueOf(parts[11].replace("\"", "").trim());
                 // Ticket:
-                String _ticketId = parts[7].replace("\"", "");
-                double _fare     = Double.parseDouble(parts[8]);
-                String _cabinId  = parts[9].replace("\"", "");
-                int    _classId  = Integer.parseInt(parts[10]);
+                String _ticketId = parts[7].replace("\"", "").trim();
+                double _fare     = Double.parseDouble(parts[8].trim());
+                String _cabinId  = parts[9].replace("\"", "").trim();
+                int    _classId  = Integer.parseInt(parts[10].trim());
                 Ticket _ticket   = tickets.stream()
                                           .filter(new Ticket(_ticketId)::equals)
                                           .findFirst()
@@ -84,6 +84,7 @@ public class GestorTitanic {
             logError(bufferedWriter, numLinia, e);
         } catch (Exception e) {
             logError(bufferedWriter, numLinia, e);
+
         }
         return null;
     }
