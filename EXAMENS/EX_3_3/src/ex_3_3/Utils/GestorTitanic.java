@@ -10,42 +10,43 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 public class GestorTitanic {
     Set<Ticket> tickets = new HashSet<>();
     Set<Passenger> passengers = new HashSet<>();
     
-    public void llegeixCSV( String arxiu, String arxiuLog) throws FileNotFoundException, IOException {
-        String linea="";
-        int numLinia = 0;
-        Passenger _passenger;
-        try ( BufferedReader br = new BufferedReader(new FileReader(arxiu));
-              BufferedWriter bw = new BufferedWriter(new FileWriter(arxiuLog)) ) { 
-            while ((linea = br.readLine()) != null) {                
-                _passenger = parsePassenger(linea, ++numLinia, bw);
-                
-                if (_passenger != null) {
-                    passengers.add(_passenger);
-                    tickets.add(_passenger.getTicket());
-                }
-            }
+    public Set<Passenger> llegeixCSV( String arxiu, String arxiuLog) throws FileNotFoundException, IOException {
+        try ( Stream<String> linies = Files.lines(Paths.get(arxiu));
+              BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(arxiuLog)) ) {
+            int[] numLinia = {0};  // objecte en comptes de tipus primitiu perqu? pugui variar en les cridada a 'parseMeteorit'
+
+            return linies.map(linia -> parsePassenger(linia, ++numLinia[0], bufferedWriter))  // rep 'String' torna 'Meteorit'
+                         .filter(Objects::nonNull)  // s'eliminen els errors del 'parseMeteorit()'
+                         .collect(Collectors.toSet());
+            
         } catch (IOException e) {
-            System.err.println("Error carregant CSV: " + e.getMessage());
+            System.err.println("Error llegint el fitxer o creant el log: " + e.getMessage());
         }
+        return null;
     }
 
-    private Passenger parsePassenger(String linea, int numLinia, BufferedWriter bw) throws IOException {
+    private Passenger parsePassenger(String linia, int numLinia, BufferedWriter bufferedWriter) {
         try {
-            if (!(linea.isEmpty() || linea.startsWith("#"))) {
+            if (!(linia.isEmpty() || linia.startsWith("#"))) {
                 // format: #PassengerID,Survived,"Name",Gender,Birthdate (DD-MM-YYYY),SibSp,Parch,"TicketID",Fare,"CabinID",ClassID,EmbarkationPort
                 //         0            1        2      3      4                      5     6     7          8    9         10      11 
                 // Passenger:
-                String[] parts = linea.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");;
+                String[] parts = linia.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");;
                 int     _passengerId = Integer.parseInt(parts[0]);
                 boolean _survived    = parts[1].equals("1");
                 String  _name        = parts[2].replace("\"", "");
@@ -78,14 +79,11 @@ public class GestorTitanic {
                                       _embarkationPort );
             }
         } catch (NumberFormatException e) {
-            bw.write("Error carregant Línia " + numLinia + ": " + e.getMessage());
-            bw.newLine();
+            logError(bufferedWriter, numLinia, e);
         } catch (IllegalArgumentException e) {
-            bw.write("Error carregant Línia " + numLinia + ": " + e.getMessage());
-            bw.newLine();
+            logError(bufferedWriter, numLinia, e);
         } catch (Exception e) {
-            bw.write("Error carregant Línia " + numLinia + ": " + e.getMessage());
-            bw.newLine();
+            logError(bufferedWriter, numLinia, e);
         }
         return null;
     }
@@ -105,5 +103,13 @@ public class GestorTitanic {
         return passengers;
     }
     
+    private void logError(BufferedWriter bufferedWriter, int numLinia, Exception e) {
+        try {
+            bufferedWriter.write("Error carregant Línia " + numLinia + ": " + e.getMessage());
+            bufferedWriter.newLine();
+        } catch (IOException ex) {
+            System.err.println("Error escrivint al log: " + ex.getMessage());
+        }
+    }
     
 }
