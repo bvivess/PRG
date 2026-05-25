@@ -66,9 +66,9 @@ public class GestorTitanic {
                 String _cabinId  = parts[9].replace("\"", "").trim();
                 int    _classId  = Integer.parseInt(parts[10].trim());
                 Ticket _ticket   = tickets.stream()
-                                          .filter(new Ticket(_ticketId)::equals)
+                                          .filter(new Ticket(_ticketId)::equals)  // 'cercaTicket'
                                           .findFirst()
-                                          .orElse(new Ticket(_ticketId, _fare, _cabinId, _classId));  // millor '.orElseGet(() -> new Ticket(_ticketId, _fare, _cabinId, _classId));'
+                                          .orElseGet(()->new Ticket(_ticketId, _fare, _cabinId, _classId));  // millor que '.orElse(new Ticket(_ticketId, _fare, _cabinId, _classId));'
 
                 return new Passenger( _passengerId,
                                       _survived,
