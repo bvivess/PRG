@@ -1,20 +1,22 @@
 package ex_extraordinario;
 
 public class Vehiculo {
-    private int idVehiculo;
+
+    private String matricula;
     private String modelo;
-    private int anio;
+    private int anyo;
     private String color;
+    private Combustible combustible;
     private Marca marca;
 
-    public Vehiculo(int idVehiculo, String modelo, int anio,
-                    String color, Marca marca) {
-        this.idVehiculo = idVehiculo;
+    public Vehiculo(String matricula, String modelo, int anyo, String color, Combustible combustible, Marca marca) {
+        this.matricula = matricula;
         this.modelo = modelo;
-        this.anio = anio;
+        this.anyo = anyo;
         this.color = color;
+        this.combustible = combustible;
         this.marca = marca;
     }
-
-    // getters, setters, equals y hashCode
+    
+    // getters, setters 
 }

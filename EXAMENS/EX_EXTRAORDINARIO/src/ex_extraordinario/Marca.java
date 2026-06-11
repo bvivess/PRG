@@ -1,7 +1,6 @@
 package ex_extraordinario;
 
 public class Marca {
-
     private int idMarca;
     private String nombreMarca;
     private String paisOrigen;
@@ -12,5 +11,5 @@ public class Marca {
         this.paisOrigen = paisOrigen;
     }
 
-    // getters, setters, equals y hashCode
+    // getters, setters 
 }
