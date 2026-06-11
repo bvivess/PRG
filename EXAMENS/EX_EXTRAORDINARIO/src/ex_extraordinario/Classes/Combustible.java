@@ -1,4 +1,4 @@
-package ex_extraordinario;
+package ex_extraordinario.Classes;
 
 public enum Combustible {
     GASOLINA,

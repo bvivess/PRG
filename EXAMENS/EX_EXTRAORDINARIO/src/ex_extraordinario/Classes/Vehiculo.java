@@ -1,4 +1,4 @@
-package ex_extraordinario;
+package ex_extraordinario.Classes;
 
 public class Vehiculo {
     private String matricula;
