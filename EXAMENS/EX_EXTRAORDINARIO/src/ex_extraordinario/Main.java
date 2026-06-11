@@ -16,14 +16,14 @@ public class Main {
         
         try {            
             Set<Marca> marques = gestor.getMarcas();
-            Set<Vehiculo> vehiculos = gestor.getVehiculos();
+            Set<Vehiculo> vehicles = gestor.getVehiculos();
             
             gestor.llegeixCSV(arxiu, arxiuLog);
 
             
             System.out.println("RESUM DE LA CÀRREGA:");
-            System.out.println("\tMarcas: " + gestor.getMarcas().size());
-            System.out.println("\tVehiculos: " + gestor.getVehiculos().size());
+            System.out.println("\tMarcas: " + marques.size());
+            System.out.println("\tVehiculos: " + vehicles.size());
 
             // 1
             
