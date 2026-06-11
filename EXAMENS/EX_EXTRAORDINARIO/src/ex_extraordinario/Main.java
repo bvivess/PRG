@@ -8,20 +8,22 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Main {
-    static String arxiu = "c:\\temp\\vehicles.csv";
-    static String arxiuLog = "c:\\temp\\vehicles.log";
+    static String arxiu = "c:\\temp\\vehiculos.csv";
+    static String arxiuLog = "c:\\temp\\vehiculos.log";
     
     public static void main(String[] args) {
         Gestor gestor = new Gestor();
         
-        try {
-            gestor.llegeixCSV(arxiu, arxiuLog);
+        try {            
             Set<Marca> marques = gestor.getMarcas();
             Set<Vehiculo> vehiculos = gestor.getVehiculos();
             
+            gestor.llegeixCSV(arxiu, arxiuLog);
+
+            
             System.out.println("RESUM DE LA CÀRREGA:");
-            System.out.println("\tTickets: " + gestor.getMarcas().size());
-            System.out.println("\tPassatgers: " + gestor.getVehiculos().size());
+            System.out.println("\tMarcas: " + gestor.getMarcas().size());
+            System.out.println("\tVehiculos: " + gestor.getVehiculos().size());
 
             // 1
             

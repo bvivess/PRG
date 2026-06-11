@@ -17,22 +17,22 @@ import java.util.stream.Stream;
 
 
 public class Gestor {
-    Set<Marca> marcas = new HashSet<>();
-    Set<Vehiculo> vehiculos = new HashSet<>();
+    private Set<Marca> marcas = new HashSet<>();
+    private Set<Vehiculo> vehiculos = new HashSet<>();
     
-    public Set<Vehiculo> llegeixCSV( String arxiu, String arxiuLog) throws FileNotFoundException, IOException {
+    public void llegeixCSV( String arxiu, String arxiuLog) throws FileNotFoundException, IOException {
         try ( Stream<String> linies = Files.lines(Paths.get(arxiu));
               BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(arxiuLog)) ) {
             int[] numLinia = {0};  // objecte en comptes de tipus primitiu perqu? pugui variar en les cridada a 'parseMeteorit'
 
-            return linies.map(linia -> parseVehicle(linia, ++numLinia[0], bufferedWriter))  // rep 'String' torna 'Meteorit'
-                         .filter(Objects::nonNull)  // s'eliminen els errors del 'parseMeteorit()'
+            vehiculos = linies.map(linia -> parseVehicle(linia, ++numLinia[0], bufferedWriter))  // rep 'String' torna 'Meteorit'
+                         //.filter(Objects::nonNull)  // s'eliminen els errors del 'parseVehicle()'
                          .collect(Collectors.toSet());
             
         } catch (IOException e) {
             System.err.println("Error llegint el fitxer o creant el log: " + e.getMessage());
         }
-        return null;
+
     }
 
     private Vehiculo parseVehicle(String linia, int numLinia, BufferedWriter bufferedWriter) {
@@ -41,7 +41,7 @@ public class Gestor {
                 // format: #idMarca,nombreMarca,paisOrigen,matricula,modelo,anyo,color,combustible
                 //         0        1           2          3         4      5    6     7
                 // Marca:
-                String[] parts = linia.split(",",7);
+                String[] parts = linia.split(",");
                 int     _idMarca    = Integer.parseInt(parts[0].trim());
                 String _nombreMarca = parts[1].trim();
                 String  _paisOrigen = parts[2].trim();
@@ -57,12 +57,17 @@ public class Gestor {
                                        .findFirst()
                                        .orElseGet(()->new Marca(_idMarca, _nombreMarca, _paisOrigen));  // millor que '.orElse(new Ticket(_ticketId, _fare, _cabinId, _classId));'
 
-                return new Vehiculo( _matricula,
+                marcas.add(_marca);
+                
+                Vehiculo v = new Vehiculo( _matricula,
                                     _modelo,
                                     _anyo,
                                     _color,
                                     _combustible,
                                     _marca );
+                System.out.println(v);
+                return v;
+                
             }
         } catch (NumberFormatException e) {
             logError(bufferedWriter, numLinia, e);
