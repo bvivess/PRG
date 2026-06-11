@@ -1,7 +1,6 @@
 package ex_extraordinario;
 
 public class Vehiculo {
-
     private String matricula;
     private String modelo;
     private int anyo;
