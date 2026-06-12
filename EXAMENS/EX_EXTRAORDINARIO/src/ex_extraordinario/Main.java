@@ -15,18 +15,18 @@ public class Main {
         Gestor gestor = new Gestor();
         
         try {            
-            Set<Marca> marques = gestor.getMarcas();
-            Set<Vehiculo> vehicles = gestor.getVehiculos();
-            
-            gestor.llegeixCSV(arxiu, arxiuLog);
-
+            Set<Vehiculo> vehicles = gestor.llegeixCSV(arxiu, arxiuLog);
+            Set<Marca> marques = vehicles.stream()
+                                         .map(v->v.getMarca())
+                                         .collect(Collectors.toSet());
+                                         
             
             System.out.println("RESUM DE LA CÀRREGA:");
             System.out.println("\tMarcas: " + marques.size());
             System.out.println("\tVehiculos: " + vehicles.size());
 
-            // 1
-            
+            gestor.mostraDades(marques, vehicles);
+           
         } catch (Exception e) {
             System.out.println("Error general: " + e.getMessage());
         }

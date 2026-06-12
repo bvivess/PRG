@@ -1,6 +1,6 @@
 package ex_extraordinario.Classes;
 
-public class Marca {
+public class Marca implements Comparable<Marca>{
     private int idMarca;
     private String nombreMarca;
     private String paisOrigen;
@@ -13,6 +13,11 @@ public class Marca {
 
     public Marca(int idMarca) {
         this.idMarca = idMarca;
+    }
+    
+    @Override
+    public int compareTo(Marca o) {
+        return this.paisOrigen.compareTo(o.paisOrigen);
     }
 
     // getters, setters 

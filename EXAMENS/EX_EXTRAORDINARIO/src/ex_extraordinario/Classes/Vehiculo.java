@@ -1,5 +1,7 @@
 package ex_extraordinario.Classes;
 
+import java.util.Objects;
+
 public class Vehiculo {
     private String matricula;
     private String modelo;
@@ -15,6 +17,28 @@ public class Vehiculo {
         this.color = color;
         this.combustible = combustible;
         this.marca = marca;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 23 * hash + Objects.hashCode(this.matricula);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Vehiculo other = (Vehiculo) obj;
+        return Objects.equals(this.matricula, other.matricula);
     }
     
     // getters, setters 
