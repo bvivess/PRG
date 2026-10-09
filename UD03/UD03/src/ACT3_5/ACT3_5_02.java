@@ -15,8 +15,8 @@ public class ACT3_5_02 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int total, columna, fila;
-		int[][] matriu;
-		double mitjana;
+        int[][] matriu;
+        double mitjana;
 
         System.out.print("Introduexi el núm elements: ");
         total = scanner.nextInt();
@@ -24,10 +24,10 @@ public class ACT3_5_02 {
 
         // Llegim la matriu per teclat
         for (int i = 0; i < matriu.length; i++)
-			for (int j = 0; j < matriu[0].length; j++) {
-				System.out.print("matriu[" + i + "][" + j + "]: ");
-				matriu[i][j] = scanner.nextInt();
-			}
+            for (int j = 0; j < matriu[0].length; j++) {
+                System.out.print("matriu[" + i + "][" + j + "]: ");
+                matriu[i][j] = scanner.nextInt();
+            }
 
         // Mostrar la matriu
         for (int[] array : matriu) {

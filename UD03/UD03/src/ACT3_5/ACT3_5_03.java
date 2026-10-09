@@ -25,7 +25,7 @@ public class ACT3_5_03 {
             }
             System.out.println("]"); 
         }
-		System.out.println("]");
+        System.out.println("]");
 
         // Imprimir el contingut de la diagonal principal
         System.out.println();
@@ -50,8 +50,8 @@ public class ACT3_5_03 {
         // Imprimir 2 columnes aleat?ries, p.e. 1 i 3
         int[] COL = {0,3};
         for (int c=0; c < COL.length; c++)
-                for (int i = 0; i < matriu.length; i++) 
-                        System.out.print(matriu[i][COL[c]] + " ");
+            for (int i = 0; i < matriu.length; i++) 
+                    System.out.print(matriu[i][COL[c]] + " ");
         
     }
 }
