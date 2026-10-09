@@ -19,6 +19,6 @@ public class ACT3_3_06 {
                 menor = a;
         }
         
-        System.out.println("La nombre menor és: : " + menor );
+        System.out.println("La nombre menor és: " + menor );
     }
 }

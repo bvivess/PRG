@@ -21,6 +21,6 @@ public class ACT3_3_02 {
             }
         }
         
-        System.out.println(existeixSenar);
+        System.out.println("Existeix senae?: " + existeixSenar);
     }
 }

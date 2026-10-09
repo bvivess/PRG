@@ -19,6 +19,6 @@ public class ACT3_3_05 {
                 major = a;
         }
         
-        System.out.println("La nombre major és: : " + major );
+        System.out.println("La nombre major és: " + major );
     }
 }

@@ -21,6 +21,6 @@ public class ACT3_3_07 {
             }
         }
         
-        System.out.println("La posició és: : " + posicio );
+        System.out.println("La posició és: " + posicio );
     }
 }

@@ -21,6 +21,6 @@ public class ACT3_3_09 {
             }
         }
         
-        System.out.println("El mitjana >= 5 és: : " + ((float) suma/total) );
+        System.out.println("El mitjana >= 5 és: " + ((float) suma/total) );
     }
 }

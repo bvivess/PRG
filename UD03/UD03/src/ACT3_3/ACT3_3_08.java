@@ -19,6 +19,6 @@ public class ACT3_3_08 {
                 total++;
         }
         
-        System.out.println("El total >10 és: : " + total );
+        System.out.println("El total >10 és: " + total );
     }
 }
