@@ -1,8 +1,9 @@
 package ACT3_3;
 
 /**
- * 1. Escriu un programa que declari un array d 'int' de 10 posicions amb els
- * següents valors: int [] array = {1, 3, 5, 7, 8, 9, 6};
+ * Escriu un programa que declari un array d 'int' de 10 posicions amb els següents valors: 
+ * 
+ * int [] array = {1, 3, 5, 7, 8, 9, 6};
  *
  * El nombre més gran de l'array.
  *
