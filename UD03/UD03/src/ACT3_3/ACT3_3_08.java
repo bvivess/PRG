@@ -14,8 +14,8 @@ public class ACT3_3_08 {
         int [] array = {1, 3, 5, 7, 8, 9, 6};
         int total = 0;
         
-        for (int i=0; i< array.length; i++) {
-            if (array[i] > 10) 
+        for (int a : array) {
+            if (a > 10) 
                 total++;
         }
         
