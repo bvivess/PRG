@@ -9,16 +9,16 @@ package ACT3_4;
 public class ACT3_4_01 {
 
     public static void main(String[] args) {
-        //Una forma de fer-ho
-        // int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        //Una altra forma de fer-ho
+        // Una forma de fer-ho
+        //     int[] array = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        // Una altra forma de fer-ho
         int[] array = new int[10];
         for (int i = 0; i < array.length; i++) {
             array[i] = i + 1;
         }
 
         //Mostrar-los per pantalla
-		System.out.print("[ ");
+        System.out.print("[ ");
         for (int a : array) {
             System.out.print(a + " ");
         }

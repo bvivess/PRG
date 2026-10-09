@@ -10,8 +10,8 @@ public class ACT3_5_01 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int numElements, min, max, total, suma;
-		int[][] matriu;
-		float mitjana;
+        int[][] matriu;
+        float mitjana;
 
 		// Llegeix mida de la matriu
         System.out.print("Introduexi el núm elements de la matriu: ");
@@ -20,10 +20,10 @@ public class ACT3_5_01 {
 
         // Llegeix les dades de la matriu per teclat
         for (int i = 0; i < matriu.length; i++)
-			for (int j = 0; j < matriu[0].length; j++) {
-				System.out.print("matriu[" + i + "][" + j + "]: ");
-				matriu[i][j] = scanner.nextInt();
-			}
+            for (int j = 0; j < matriu[0].length; j++) {
+                    System.out.print("matriu[" + i + "][" + j + "]: ");
+                    matriu[i][j] = scanner.nextInt();
+            }
 
         // Mostra la matriu 
         System.out.println("La matriu és:");
@@ -36,31 +36,31 @@ public class ACT3_5_01 {
 		// Calcula el min
         min = matriu[0][0];
         for (int[] array : matriu)
-			for (int valor : array)
-				if (valor < min )
-					min = valor;
+            for (int valor : array)
+                if (valor < min )
+                        min = valor;
 
 				
 		// Calcula el max
         max = matriu[0][0];
         for (int[] array : matriu)
-			for (int valor : array)
-				if (valor > max)
-					max = valor;
+            for (int valor : array)
+                if (valor > max)
+                        max = valor;
 				
         // Calcula la mitjana
         total = 0; suma = 0;
         for (int[] array : matriu)
-			for (int valor : array) {
-				suma += valor;
-				total++;
-			}
+            for (int valor : array) {
+                suma += valor;
+                total++;
+            }
         mitjana = (float) suma / total;
 
 		
-		// Mostra resultats
-		System.out.println("Els resultats són:");
-		System.out.println("\tMàxim: " + max);
+        // Mostra resultats
+        System.out.println("Els resultats són:");
+        System.out.println("\tMàxim: " + max);
         System.out.println("\tMínim: " + min);
         System.out.println("\tMitjana: " + mitjana);
 

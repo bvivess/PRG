@@ -11,7 +11,7 @@ public class ACT3_4_02 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-		final int MIN = 100, MAX = 200;
+        final int MIN = 100, MAX = 200;
         int[] array = new int[10];
 		
         for (int index = 0; index < array.length; index++) {
@@ -19,7 +19,7 @@ public class ACT3_4_02 {
         }
 
         //Mostrar-los per pantalla
-		System.out.print("[ ");
+        System.out.print("[ ");
         for (int a : array) {
             System.out.print(a + " ");
         }

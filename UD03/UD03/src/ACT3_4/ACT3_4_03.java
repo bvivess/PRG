@@ -14,7 +14,6 @@ import java.util.Arrays;
 public class ACT3_4_03 {
 
     public static void main(String[] args) {
-
         boolean iguals = true;
         int[] array1 = new int[10];
         int[] array2 = new int[array1.length];
@@ -25,12 +24,12 @@ public class ACT3_4_03 {
 
         if (array1 == array2) {
             System.out.println("Els arrays s贸n iguals");
-		} else {
-			System.out.println("Els arrays s贸n diferents");
+        } else {
+            System.out.println("Els arrays s贸n diferents");
         }
-		System.out.println("'array1==array2' compara les refer猫ncies de cada array, no els contingut, per aix貌 sempre seran diferents.");
+        System.out.println("'array1==array2' compara les refer猫ncies de cada array, no els contingut, per aix貌 sempre seran diferents.");
         
-		// Comparam la longitud
+        // Comparam la longitud
         if (array1.length == array2.length) {
             // Comparam el contingut posici贸 a posici贸
             for (int i = 0; i < array1.length; i++) {
@@ -43,17 +42,16 @@ public class ACT3_4_03 {
         }
 		
         if (iguals) {
-            System.out.println("Els continguts s贸n iguals");
+            System.out.println("Els continguts s髇 iguals");
         } else {
-            System.out.println("Els continguts s贸n diferents");
+            System.out.println("Els continguts s髇 diferents");
         }
 		
-		if (Arrays.equals(array1,array2))
-			{
-			System.out.println("Els continguts s贸n iguals, ara amb Arrays.equals");
-		} else {
-			System.out.println("Els continguts s贸n diferents, ara amb Arrays.equals");
-		}
+        if (Arrays.equals(array1,array2)) {
+            System.out.println("Els continguts s髇 iguals, ara amb Arrays.equals");
+        } else {
+            System.out.println("Els continguts s髇 diferents, ara amb Arrays.equals");
+        }
     }
 }
 
