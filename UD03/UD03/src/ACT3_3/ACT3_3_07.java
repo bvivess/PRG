@@ -8,7 +8,7 @@ package ACT3_3;
  *
  * @author Tomeu Vives
  */
-public class ACT3_3_7 {
+public class ACT3_3_07 {
 
     public static void main(String[] args) {
         int [] array = {1, 3, 5, 7, 8, 9, 6};
