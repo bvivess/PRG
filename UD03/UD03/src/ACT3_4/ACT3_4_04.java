@@ -31,6 +31,6 @@ public class ACT3_4_04 {
         }
         System.out.print("]");
         System.out.println();
-        System.out.println("La suma Ã©s: " + suma);
+        System.out.println("La suma és: " + suma);
     }
 }

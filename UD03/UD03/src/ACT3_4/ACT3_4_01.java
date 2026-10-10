@@ -1,8 +1,8 @@
 package ACT3_4;
 
 /**
- * 1. Escriu una classe que crei un vector de 10 sencers, els inicialitzi de 1
- * a 10 i els mostri per pantalla.
+ * 1. Escriu una classe que crei un vector de 10 sencers, els inicialitzi 
+ * de 1 a 10 i els mostri per pantalla.
  *
  * @author Joan Pons i Tugores
  */
