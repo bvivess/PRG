@@ -59,9 +59,9 @@ public class ACT3_5_01 {
 
 		
         // Mostra resultats
-        System.out.println("Els resultats s√≥n:");
-        System.out.println("\tM√†xim: " + max);
-        System.out.println("\tM√≠nim: " + min);
+        System.out.println("Els resultats sÛn:");
+        System.out.println("\tM?xim: " + max);
+        System.out.println("\tM√Ìnim: " + min);
         System.out.println("\tMitjana: " + mitjana);
 
         scanner.close();

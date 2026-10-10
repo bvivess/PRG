@@ -31,27 +31,27 @@ public class ACT3_5_02 {
 
         // Mostrar la matriu
         for (int[] array : matriu) {
-			for (int valor : array)
-				System.out.print(valor + " ");
-			System.out.println();
+            for (int valor : array)
+                System.out.print(valor + " ");
+            System.out.println();
         }
 		
-		// Mostrar una FILA
+        // Mostrar una FILA
         System.out.print("Introduexi la FILA a mostrar: ");
         fila = scanner.nextInt();
         // Mostra la columna i la fila esmentada
         for (int j = 0; j < matriu[0].length; j++)
-			System.out.print( matriu[fila][j] + " " );
+            System.out.print( matriu[fila][j] + " " );
 
-		System.out.println();
+        System.out.println();
 
-		// Mostrar una COLUMNA
+        // Mostrar una COLUMNA
         System.out.print("Introduexi la COLUMNA a mostrar: ");
         columna = scanner.nextInt();
 		
         // Mostra la columna i la fila esmentada
         for (int i = 0; i < matriu.length; i++)
-			System.out.println( matriu[i][columna] + " " );
+            System.out.println( matriu[i][columna] + " " );
 		
         scanner.close();
     }

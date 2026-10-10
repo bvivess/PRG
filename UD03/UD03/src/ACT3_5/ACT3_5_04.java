@@ -18,23 +18,21 @@ public class ACT3_5_04 {
 
         // Llegir no alumnes
         for (int i=0; i<alumnes.length; i++) {
-                System.out.print("Nom alumne [" + (i+1) + "]: ");
-                alumnes[i] = scanner.nextLine();
+            System.out.print("Nom alumne [" + (i+1) + "]: ");
+            alumnes[i] = scanner.nextLine();
         }
 		
         // Emplenar aleat?riament les notes de cada alumne
-        for (int i=0; i<notes.length; i++) {
-                for (int j=0; j<notes[i].length; j++)
-                    notes[i][j] = MIN + (int) (Math.random() * ((MAX - MIN) + 1));
-        }
+        for (int i=0; i<notes.length; i++)
+            for (int j=0; j<notes[i].length; j++)
+                notes[i][j] = MIN + (int) (Math.random() * ((MAX - MIN) + 1));
 
         // Mostrar les notes per cada alumne
         System.out.println("Les notes dels alumnes són: ");
         for (int i=0; i<notes.length; i++) {
             System.out.print(alumnes[i] + ": ");
-            for (int j=0; j<notes[i].length; j++) {
+            for (int j=0; j<notes[i].length; j++)
                 System.out.print(notes[i][j] + " ");
-            }
             System.out.println();
         }
 
