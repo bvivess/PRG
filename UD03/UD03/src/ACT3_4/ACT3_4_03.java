@@ -4,8 +4,8 @@ import java.util.Arrays;
 
 /**
  * 3. Escriviu una classe que generi dos arrays de sencers de la mateixa
- * longitud i els inicialitzi. 1. Comparau-los amb una igualtat v1==v2.
- * Funciona? Escriviu l'explicaci√≥ per pantalla utilitzant un println. 2.
+ * longitud i els inicialitzi. 
+ *   1. Comparau-los amb una igualtat v1==v2. Funciona? Escriviu l'explicaci√≥ per pantalla utilitzant un println. 2.
  * Comparau-los correctament. Utilitzau una variable booleana per a guardar el
  * resultat. Imprimiu un println que ens informi del resultat de la comparaci√≥.
  *
@@ -23,15 +23,15 @@ public class ACT3_4_03 {
         }
 
         if (array1 == array2) {
-            System.out.println("Els arrays s√≥n iguals");
+            System.out.println("Els arrays sÛn iguals");
         } else {
-            System.out.println("Els arrays s√≥n diferents");
+            System.out.println("Els arrays sÛn diferents");
         }
-        System.out.println("'array1==array2' compara les refer√®ncies de cada array, no els contingut, per aix√≤ sempre seran diferents.");
+        System.out.println("'array1==array2' compara les refer?ncies de cada array, no els contingut, per aix?≤ sempre seran diferents.");
         
         // Comparam la longitud
         if (array1.length == array2.length) {
-            // Comparam el contingut posici√≥ a posici√≥
+            // Comparam el contingut posiciÛ a posiciÛ
             for (int i = 0; i < array1.length; i++) {
                 if (array1[i] != array2[i]) {
                     iguals = false;
