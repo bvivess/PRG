@@ -1,57 +1,52 @@
 package ACT3_4;
 
-import java.util.Arrays;
-
-/**
- * 3. Escriviu una classe que generi dos arrays de sencers de la mateixa
- * longitud i els inicialitzi. 
- *   1. Comparau-los amb una igualtat v1==v2. Funciona? Escriviu l'explicaci√≥ per pantalla utilitzant un println. 2.
- * Comparau-los correctament. Utilitzau una variable booleana per a guardar el
- * resultat. Imprimiu un println que ens informi del resultat de la comparaci√≥.
- *
- * @author joan
- */
 public class ACT3_4_03 {
-
+/**
+ * Crear un array de 4x4
+ *
+ * @author Tomeu Vives
+ */
     public static void main(String[] args) {
-        boolean iguals = true;
-        int[] array1 = new int[10];
-        int[] array2 = new int[array1.length];
-        for (int i = 0; i < array1.length; i++) {
-            array1[i] = i;
-            array2[i] = i;
-        }
+        final int LONGITUD = 4;
+        int[][] matriu = new int[LONGITUD][LONGITUD];
 
-        if (array1 == array2) {
-            System.out.println("Els arrays sÛn iguals");
-        } else {
-            System.out.println("Els arrays sÛn diferents");
+        for (int i = 0; i < matriu.length; i++)
+            for (int j = 0; j < matriu[i].length; j++)
+                matriu[i][j] = i+j;
+
+        // Imprimir el contingut de la matriu
+        System.out.println("[");
+        for (int[] array : matriu) {
+            System.out.print("[ ");
+            for (int a: array) 
+                System.out.print(a + " ");
+            System.out.println("]"); 
         }
-        System.out.println("'array1==array2' compara les refer?ncies de cada array, no els contingut, per aix?≤ sempre seran diferents.");
+        System.out.println("]");
+
+        // Imprimir el contingut de la diagonal principal
+        System.out.println();
+        System.out.print("[ ");
+        for (int i = 0; i < matriu.length; i++)
+            System.out.print(matriu[i][i] + " ");
+        System.out.println("]");
+		
+        // Imprimir el contingut de la diagonal secund?ria 
+        System.out.println();
+        System.out.print("[ ");
+        for (int i = 0, j=matriu.length-1; i < matriu.length; i++, j--)
+            System.out.print(matriu[i][j] + " ");
         
-        // Comparam la longitud
-        if (array1.length == array2.length) {
-            // Comparam el contingut posiciÛ a posiciÛ
-            for (int i = 0; i < array1.length; i++) {
-                if (array1[i] != array2[i]) {
-                    iguals = false;
-                }
-            }
-        } else {
-            iguals = false;
-        }
-		
-        if (iguals) {
-            System.out.println("Els continguts sÛn iguals");
-        } else {
-            System.out.println("Els continguts sÛn diferents");
-        }
-		
-        if (Arrays.equals(array1,array2)) {
-            System.out.println("Els continguts sÛn iguals, ara amb Arrays.equals");
-        } else {
-            System.out.println("Els continguts sÛn diferents, ara amb Arrays.equals");
-        }
+        // o tambÈ:
+        for (int i = 0; i < matriu.length; i++)
+            System.out.println(matriu[i][(matriu.length-1) - i] + " ");
+        System.out.print("]");
+        
+        // Imprimir 2 columnes aleat?ries, p.e. 1 i 3
+        int[] COL = {0,3};
+        for (int c=0; c < COL.length; c++)
+            for (int i = 0; i < matriu.length; i++) 
+                System.out.print(matriu[i][COL[c]] + " ");
+        
     }
 }
-

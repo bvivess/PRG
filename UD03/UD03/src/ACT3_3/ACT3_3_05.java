@@ -13,11 +13,14 @@ public class ACT3_3_05 {
 
     public static void main(String[] args) {
         int [] array = {1, 3, 5, 7, 8, 9, 6};
-        int major = array[0];
+        int major = -1;
         
-        for (int a : array) {
-            if (a > major)
-                major = a;
+        if (array.length > 0) {
+            major = array[0];
+            for (int a : array) {
+                if (a > major)
+                    major = a;
+            }
         }
         
         System.out.println("La nombre major és: " + major );

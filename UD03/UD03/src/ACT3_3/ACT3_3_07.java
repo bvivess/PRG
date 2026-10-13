@@ -15,7 +15,7 @@ public class ACT3_3_07 {
         int [] array = {1, 3, 5, 7, 8, 9, 6};
         int posicio = -1;
         
-        for (int i=0; i< array.length; i++) {
+        for (int i=0; i < array.length; i++) {
             if (array[i] == 7) {
                 posicio = i;
                 break;
