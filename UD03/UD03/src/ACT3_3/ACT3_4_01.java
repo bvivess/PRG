@@ -14,7 +14,7 @@ public class ACT3_4_01 {
         // Una altra forma de fer-ho
         int[] array = new int[10];
         for (int i = 0; i < array.length; i++) {
-            array[i] = i + 1;
+            array[i] = i++;
         }
 
         //Mostrar-los per pantalla
