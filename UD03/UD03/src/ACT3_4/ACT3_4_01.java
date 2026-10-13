@@ -26,7 +26,7 @@ public class ACT3_4_01 {
             }
 
         // Mostra la matriu 
-        System.out.println("La matriu Ã©s:");
+        System.out.println("La matriu és:");
         for (int[] array : matriu) {
             for (int valor : array) 
                 System.out.print( valor + " " );
