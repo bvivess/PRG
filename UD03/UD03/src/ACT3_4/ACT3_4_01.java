@@ -21,8 +21,8 @@ public class ACT3_4_01 {
         // Llegeix les dades de la matriu per teclat
         for (int i = 0; i < matriu.length; i++)
             for (int j = 0; j < matriu[0].length; j++) {
-                    System.out.print("matriu[" + i + "][" + j + "]: ");
-                    matriu[i][j] = scanner.nextInt();
+                System.out.print("matriu[" + i + "][" + j + "]: ");
+                matriu[i][j] = scanner.nextInt();
             }
 
         // Mostra la matriu 
@@ -38,7 +38,7 @@ public class ACT3_4_01 {
         for (int[] array : matriu)
             for (int valor : array)
                 if (valor < min )
-                        min = valor;
+                    min = valor;
 
 				
         // Calcula el max
