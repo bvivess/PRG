@@ -46,7 +46,7 @@ public class ACT3_4_01 {
         for (int[] array : matriu)
             for (int valor : array)
                 if (valor > max)
-                        max = valor;
+                    max = valor;
 				
         // Calcula la mitjana
         total = 0; suma = 0;
