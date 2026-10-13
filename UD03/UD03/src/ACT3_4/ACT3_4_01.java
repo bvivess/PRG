@@ -13,7 +13,7 @@ public class ACT3_4_01 {
         int[][] matriu;
         float mitjana;
 
-		// Llegeix mida de la matriu
+        // Llegeix mida de la matriu
         System.out.print("Introduexi el n√∫m elements de la matriu: ");
         numElements = scanner.nextInt();
         matriu = new int[numElements][numElements];
@@ -33,7 +33,7 @@ public class ACT3_4_01 {
             System.out.println();
         }
 			
-		// Calcula el min
+        // Calcula el min
         min = matriu[0][0];
         for (int[] array : matriu)
             for (int valor : array)
@@ -41,7 +41,7 @@ public class ACT3_4_01 {
                         min = valor;
 
 				
-		// Calcula el max
+        // Calcula el max
         max = matriu[0][0];
         for (int[] array : matriu)
             for (int valor : array)
@@ -56,12 +56,11 @@ public class ACT3_4_01 {
                 total++;
             }
         mitjana = (float) suma / total;
-
 		
         // Mostra resultats
         System.out.println("Els resultats sÛn:");
         System.out.println("\tM?xim: " + max);
-        System.out.println("\tM√Ìnim: " + min);
+        System.out.println("\tMÌnim: " + min);
         System.out.println("\tMitjana: " + mitjana);
 
         scanner.close();
