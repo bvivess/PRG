@@ -14,7 +14,7 @@ public class ACT3_4_01 {
         float mitjana;
 
         // Llegeix mida de la matriu
-        System.out.print("Introduexi el nÃºm elements de la matriu: ");
+        System.out.print("Introduexi el núm elements de la matriu: ");
         numElements = scanner.nextInt();
         matriu = new int[numElements][numElements];
 
