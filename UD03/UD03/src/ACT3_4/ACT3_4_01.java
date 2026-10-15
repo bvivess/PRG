@@ -71,8 +71,8 @@ public class ACT3_4_01 {
         // Mostra tots els elements de les files que comencin pel valor = 0
         for (int i = 0; i < matriu.length; i++) 
             if (matriu[i][0] == 0) {
-                for (int valor : matriu[i])       
-                    System.out.print(valor + " ");
+                for (int j = 1; j < matriu[0].length; j++) {       
+                    System.out.print(matriu[i][j] + " ");
                 System.out.println();
             }
         
