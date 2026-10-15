@@ -23,12 +23,14 @@ public class ACT3_4_03 {
         }
         
         for (int a : array1)
-            System.out.print(a);
+            System.out.print(a + " ");
         
         System.out.println();
         
         for (int a : array2)
-            System.out.print(a);
+            System.out.print(a + " ");
+        
+        System.out.println();
         
         if (array1 == array2) {
             System.out.println("Els arrays són iguals");
