@@ -37,7 +37,7 @@ public class ACT3_4_03 {
         } else {
             System.out.println("Els arrays són diferents");
         }
-        System.out.println("'array1==array2' compara les refer?ncies de cada array, no els contingut, per aix?² sempre seran diferents.");
+        System.out.println("'array1==array2' compara les refer?ncies de cada array, no els contingut, per aixó² sempre seran diferents.");
         
         // Comparam la longitud
         if (array1.length == array2.length) {
