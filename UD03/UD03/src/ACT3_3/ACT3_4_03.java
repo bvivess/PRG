@@ -17,6 +17,7 @@ public class ACT3_4_03 {
         boolean iguals = true;
         int[] array1 = new int[10];
         int[] array2 = new int[array1.length];
+        
         for (int i = 0; i < array1.length; i++) {
             array1[i] = i+1;
             array2[i] = i+1;
