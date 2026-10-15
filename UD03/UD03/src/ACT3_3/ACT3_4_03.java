@@ -14,7 +14,6 @@ import java.util.Arrays;
 public class ACT3_4_03 {
 
     public static void main(String[] args) {
-        boolean iguals = true;
         int[] array1 = new int[10];
         int[] array2 = new int[array1.length];
         
@@ -26,43 +25,39 @@ public class ACT3_4_03 {
         for (int a : array1)
             System.out.print(a + " ");
         
-        System.out.println();
+        System.out.println(array1);
         
         for (int a : array2)
             System.out.print(a + " ");
         
-        System.out.println();
+        System.out.println(array2);
         
-        if (array1 == array2) {
+        if (array1 == array2)
             System.out.println("Els arrays són iguals");
-        } else {
+        else
             System.out.println("Els arrays són diferents");
-        }
         System.out.println("'array1==array2' compara les referencies de cada array, no els contingut, per aixó sempre seran diferents.");
         
         // Comparam la longitud
-        if (array1.length == array2.length) {
+        boolean iguals = true;
+        if (array1.length == array2.length)
             // Comparam el contingut posició a posició
-            for (int i = 0; i < array1.length; i++) {
-                if (array1[i] != array2[i]) {
+            for (int i = 0; i < array1.length; i++) 
+                if (array1[i] != array2[i])
                     iguals = false;
-                }
-            }
-        } else {
+
+        else
             iguals = false;
-        }
 		
-        if (iguals) {
+        if (iguals)
             System.out.println("Els continguts són iguals");
-        } else {
+        else 
             System.out.println("Els continguts són diferents");
-        }
 		
-        if (Arrays.equals(array1,array2)) {
+        if (Arrays.equals(array1,array2))
             System.out.println("Els continguts són iguals, ara amb Arrays.equals");
-        } else {
+        else
             System.out.println("Els continguts són diferents, ara amb Arrays.equals");
-        }
     }
 }
 
