@@ -18,10 +18,18 @@ public class ACT3_4_03 {
         int[] array1 = new int[10];
         int[] array2 = new int[array1.length];
         for (int i = 0; i < array1.length; i++) {
-            array1[i] = i;
-            array2[i] = i;
+            array1[i] = i+1;
+            array2[i] = i+1;
         }
-
+        
+        for (int a : array1)
+            System.out.print(a);
+        
+        System.out.println();
+        
+        for (int a : array2)
+            System.out.print(a);
+        
         if (array1 == array2) {
             System.out.println("Els arrays són iguals");
         } else {

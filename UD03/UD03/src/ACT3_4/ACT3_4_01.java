@@ -69,13 +69,12 @@ public class ACT3_4_01 {
                 System.out.println(valor);
         
         // Mostra tots els elements de les files que comencin pel valor = 0
-        for (int i = 0; i < matriu.length; i++) 
+        for (int i = 0; i < matriu.length; i++)
             if (matriu[i][0] == 0) {
-                for (int j = 1; j < matriu[0].length; j++) {       
+                for (int j = 1; j < matriu[0].length; j++)  
                     System.out.print(matriu[i][j] + " ");
                 System.out.println();
             }
-        
         scanner.close();
     }
 }
