@@ -18,7 +18,7 @@ public class ACT3_4_02 {
         int[][] matriu;
         double mitjana;
 
-        System.out.print("Introduexi el núm elements: ");
+        System.out.print("Introduexi el num files/columnes: ");
         total = scanner.nextInt();
         matriu = new int[total][total];
 
@@ -52,7 +52,14 @@ public class ACT3_4_02 {
         // Mostra la columna i la fila esmentada
         for (int i = 0; i < matriu.length; i++)
             System.out.println( matriu[i][columna] + " " );
-		
+       
+        // Mostra 2 files: 1 i 5
+        int[] filesMostrar = {1,4};
+        for (int i = 0; i < filesMostrar.length; i++) {
+            for (int a : matriu[filesMostrar[i]]){ 
+                System.out.println( a + " " );
+        }System.out.println();
+        }
         scanner.close();
     }
 }
