@@ -48,8 +48,8 @@ public class ACT3_4_04 {
             for (int i = 0; i < matriu.length; i++) 
                 System.out.print(matriu[i][COL[c]] + " ");
         
-        // Mostra 2 files: 1 i 5
-        int[] filesMostrar = {1,4};
+        // Mostra 2 files: 1 i 3
+        int[] filesMostrar = {1,3};
         for (int i = 0; i < filesMostrar.length; i++) {  // filesMostrar = {1, 4};
             for (int a : matriu[filesMostrar[i]])   //  filesMostrar[0] --> 1; matriu[1]
                 System.out.println( a + " " );      //  filesMostrar[1] --> 4; matriu[4]

@@ -40,7 +40,7 @@ public class ACT3_4_03 {
         System.out.print("Introduexi la FILA a mostrar: ");
         fila = scanner.nextInt();
         // Mostra la columna i la fila esmentada
-        for (int j = 0; j < matriu[0].length; j++)
+        for (int j = 0; j < matriu[fila].length; j++)  // en una matriu quadrada també: matriu[0].length
             System.out.print( matriu[fila][j] + " " );
 
         System.out.println();
@@ -53,13 +53,7 @@ public class ACT3_4_03 {
         for (int i = 0; i < matriu.length; i++)
             System.out.println( matriu[i][columna] + " " );
        
-        // Mostra 2 files: 1 i 5
-        int[] filesMostrar = {1,4};
-        for (int i = 0; i < filesMostrar.length; i++) {
-            for (int a : matriu[filesMostrar[i]])
-                System.out.println( a + " " );
-            System.out.println();
-        }
+
         scanner.close();
     }
 }
