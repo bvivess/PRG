@@ -16,7 +16,13 @@ public class ACT3_4_01 {
             for (int j = 0; j < matriu[0].length; j++) 
                 matriu[i][j] = i+j;
                 
-            
+        for (int i = 0; i < matriu.length; i++)
+            for (int j = 0; j < matriu[0].length; j++)
+                System.out.print(matriu[i][j]);
+        
+        for (int[] array : matriu)
+            for (int a : array)
+                System.out.print(a);
 
     }
 }
