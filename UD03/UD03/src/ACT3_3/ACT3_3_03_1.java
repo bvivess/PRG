@@ -5,20 +5,21 @@ package ACT3_3;
  * 
  * int [] array = {1, 3, 5, 7, 8, 9, 6};
  *
- * La mitjana dels elements de l'array
+ * La suma dels elements de l'array
  *
  * @author Tomeu Vives
  */
-public class ACT3_3_04 {
+public class ACT3_3_03_1 {
 
     public static void main(String[] args) {
         int [] array = {1, 3, 5, 7, 8, 9, 6};
-        int suma = 0;
         
         for (int a : array) {
-            suma += a;
+            if (a%2 == 0)
+                System.out.println(a + " és parell");
+            else
+                System.out.println(a + " és senar");
         }
-        
-        System.out.println("La mitjana és: " + ((float) suma / array.length));
+
     }
 }

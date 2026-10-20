@@ -5,21 +5,23 @@ package ACT3_3;
  * 
  * int [] array = {1, 3, 5, 7, 8, 9, 6};
  *
- * El nombre més gran de l'array.
+ * La mitjana dels nombres >= 5.
  *
  * @author Tomeu Vives
  */
-public class ACT3_3_06 {
+public class ACT3_3_03_9 {
 
     public static void main(String[] args) {
         int [] array = {1, 3, 5, 7, 8, 9, 6};
-        int menor = array[0];
+        int total = 0, suma = 0;
         
         for (int a : array) {
-            if (a < menor)
-                menor = a;
+            if (a >= 5) {
+                total++;
+                suma += a;
+            }
         }
         
-        System.out.println("La nombre menor és: " + menor );
+        System.out.println("El mitjana >= 5 és: " + ((float) suma/total) );
     }
 }

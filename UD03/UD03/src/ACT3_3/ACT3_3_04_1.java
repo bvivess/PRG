@@ -6,7 +6,7 @@ package ACT3_3;
  *
  * @author Joan Pons i Tugores
  */
-public class ACT3_4_01 {
+public class ACT3_3_04_1 {
 
     public static void main(String[] args) {
         // Una forma de fer-ho

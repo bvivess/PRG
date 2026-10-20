@@ -1,6 +1,6 @@
 package ACT3_3;
 
-public class ACT3_4_04 {
+public class ACT3_3_04_4 {
 /**
  * Crear un array de 4x4
  *

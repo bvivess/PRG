@@ -5,23 +5,24 @@ package ACT3_3;
  * 
  * int [] array = {1, 3, 5, 7, 8, 9, 6};
  *
- * La posició del primer element que sigui igual a 7, si existeix. Sino, mostra -1.
+ * El nombre més gran de l'array.
  *
  * @author Tomeu Vives
  */
-public class ACT3_3_07 {
+public class ACT3_3_03_6 {
 
     public static void main(String[] args) {
         int [] array = {1, 3, 5, 7, 8, 9, 6};
-        int posicio = -1;
+        int major = -1;
         
-        for (int i=0; i < array.length; i++) {
-            if (array[i] == 7) {
-                posicio = i;
-                break;
+        if (array.length > 0) {
+            major = array[0];
+            for (int a : array) {
+                if (a > major)
+                    major = a;
             }
         }
         
-        System.out.println("La posició és: " + posicio );
+        System.out.println("La nombre major és: " + major );
     }
 }

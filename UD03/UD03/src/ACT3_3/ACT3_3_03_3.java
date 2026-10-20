@@ -9,20 +9,16 @@ package ACT3_3;
  *
  * @author Tomeu Vives
  */
-public class ACT3_3_05 {
+public class ACT3_3_03_3 {
 
     public static void main(String[] args) {
         int [] array = {1, 3, 5, 7, 8, 9, 6};
-        int major = -1;
+        int suma = 0;
         
-        if (array.length > 0) {
-            major = array[0];
-            for (int a : array) {
-                if (a > major)
-                    major = a;
-            }
+        for (int a : array) {
+            suma += a;
         }
         
-        System.out.println("La nombre major és: " + major );
+        System.out.println("La suma és: " + suma);
     }
 }

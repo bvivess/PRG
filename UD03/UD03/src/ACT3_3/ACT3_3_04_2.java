@@ -5,7 +5,7 @@ package ACT3_3;
  * 
  * @author joan
  */
-public class ACT3_4_02 {
+public class ACT3_3_04_2 {
 
     /**
      * @param args the command line arguments

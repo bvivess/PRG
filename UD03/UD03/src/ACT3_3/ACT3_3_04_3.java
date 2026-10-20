@@ -11,7 +11,7 @@ import java.util.Arrays;
  *
  * @author joan
  */
-public class ACT3_4_03 {
+public class ACT3_3_04_3 {
 
     public static void main(String[] args) {
         int[] array1 = new int[10];

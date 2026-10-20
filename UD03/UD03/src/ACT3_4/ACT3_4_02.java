@@ -4,62 +4,77 @@ import java.util.Scanner;
 
 public class ACT3_4_02 {
 /**
- * Crea una matriu d''int' 
- * Demana a l'usuari els valors i guarda'ls a la matriu
- * Finalment:
- * demana a l'usuari el valor d'una FILA  i mostra els valors de tota aquesta fila
- * demana a l'usuari el valor d'una COLUMNA  i mostra els valors de tota aquesta columna
  *
  * @author Tomeu Vives
  */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int total, columna, fila;
+        int numElements, min, max, total, suma;
         int[][] matriu;
-        double mitjana;
+        float mitjana;
 
-        System.out.print("Introduexi el num files/columnes: ");
-        total = scanner.nextInt();
-        matriu = new int[total][total];
+        // Llegeix mida de la matriu
+        System.out.print("Introduexi el núm elements de la matriu: ");
+        numElements = scanner.nextInt();
+        matriu = new int[numElements][numElements];
 
-        // Llegim la matriu per teclat
+        // Llegeix les dades de la matriu per teclat
         for (int i = 0; i < matriu.length; i++)
             for (int j = 0; j < matriu[0].length; j++) {
                 System.out.print("matriu[" + i + "][" + j + "]: ");
                 matriu[i][j] = scanner.nextInt();
             }
 
-        // Mostrar la matriu
+        // Mostra la matriu 
+        System.out.println("La matriu és:");
         for (int[] array : matriu) {
-            for (int valor : array)
-                System.out.print(valor + " ");
+            for (int valor : array) 
+                System.out.print( valor + " " );
             System.out.println();
         }
-		
-        // Mostrar una FILA
-        System.out.print("Introduexi la FILA a mostrar: ");
-        fila = scanner.nextInt();
-        // Mostra la columna i la fila esmentada
-        for (int j = 0; j < matriu[0].length; j++)
-            System.out.print( matriu[fila][j] + " " );
+			
+        // Calcula el min
+        min = matriu[0][0];
+        for (int[] array : matriu)
+            for (int valor : array)
+                if (valor < min )
+                    min = valor;
 
-        System.out.println();
-
-        // Mostrar una COLUMNA
-        System.out.print("Introduexi la COLUMNA a mostrar: ");
-        columna = scanner.nextInt();
+				
+        // Calcula el max
+        max = matriu[0][0];
+        for (int[] array : matriu)
+            for (int valor : array)
+                if (valor > max)
+                    max = valor;
+				
+        // Calcula la mitjana
+        total = 0; suma = 0;
+        for (int[] array : matriu)
+            for (int valor : array) {
+                suma += valor;
+                total++;
+            }
+        mitjana = (float) suma / total;
 		
-        // Mostra la columna i la fila esmentada
+        // Mostra resultats
+        System.out.println("Els resultats són:");
+        System.out.println("\tM?xim: " + max);
+        System.out.println("\tMínim: " + min);
+        System.out.println("\tMitjana: " + mitjana);
+        
+        // Mostra tots els elements de les files parelles
+        for (int i = 0; i < matriu.length; i = i + 2)
+            for (int valor : matriu[i])
+                System.out.println(valor);
+        
+        // Mostra tots els elements de les files que comencin pel valor = 0
         for (int i = 0; i < matriu.length; i++)
-            System.out.println( matriu[i][columna] + " " );
-       
-        // Mostra 2 files: 1 i 5
-        int[] filesMostrar = {1,4};
-        for (int i = 0; i < filesMostrar.length; i++) {
-            for (int a : matriu[filesMostrar[i]]){ 
-                System.out.println( a + " " );
-        }System.out.println();
-        }
+            if (matriu[i][0] == 0) {
+                for (int j = 1; j < matriu[0].length; j++)  
+                    System.out.print(matriu[i][j] + " ");
+                System.out.println();
+            }
         scanner.close();
     }
 }

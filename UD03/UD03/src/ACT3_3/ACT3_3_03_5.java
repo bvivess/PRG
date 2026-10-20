@@ -5,20 +5,21 @@ package ACT3_3;
  * 
  * int [] array = {1, 3, 5, 7, 8, 9, 6};
  *
- * La suma dels elements de l'array
+ * El nombre més gran de l'array.
  *
  * @author Tomeu Vives
  */
-public class ACT3_3_03 {
+public class ACT3_3_03_5 {
 
     public static void main(String[] args) {
         int [] array = {1, 3, 5, 7, 8, 9, 6};
-        int suma = 0;
+        int menor = array[0];
         
         for (int a : array) {
-            suma += a;
+            if (a < menor)
+                menor = a;
         }
         
-        System.out.println("La suma és: " + suma);
+        System.out.println("La nombre menor és: " + menor );
     }
 }
