@@ -26,5 +26,5 @@ public class ACT3_4_01 {
             for (int a : array)
                 System.out.print(a);
 
-    }
+    }   
 }
