@@ -8,11 +8,11 @@ public class ACT4_0_1 {
  */
     public static void main(String[] args) {
         int numElements, min, max, total, suma;
-        int[][] matriu;
+        int[][] matriu;  
         float mitjana;
 
         // Llegeix mida de la matriu
-        numElements = LlegeixElements("Introduexi el núm elements de la matriu: ");
+        numElements = llegeixElements("Introduexi el núm elements de la matriu: ");
 
         matriu = new int [numElements] [numElements];
 
@@ -36,7 +36,7 @@ public class ACT4_0_1 {
     }
 		
     // Mètodes del programa:		
-    public static int LlegeixElements(String text) {
+    public static int llegeixElements(String text) {
         Scanner scanner = new Scanner(System.in);
         int mida;
         System.out.print(text);
@@ -55,7 +55,6 @@ public class ACT4_0_1 {
             }
 
         //scanner.close();
-
     }
 
     public static void MostraMatriu(int[][] matriu) {
@@ -68,25 +67,25 @@ public class ACT4_0_1 {
     }
 
     public static int CalculaMin(int[][] matriu) {
-            int min = matriu[0][0];
+        int min = matriu[0][0];
 
-            for (int[] array : matriu)
-                    for (int valor : array)
-                            if (valor < min )
-                                    min = valor;
+        for (int[] array : matriu)
+            for (int valor : array)
+                if (valor < min )
+                    min = valor;
 
-            return min;
+        return min;
     }
 
     public static int CalculaMax(int[][] matriu) {
-            int max = matriu[0][0];
+        int max = matriu[0][0];
 
-            for (int[] array : matriu)
-                    for (int valor : array)
-                            if (valor > max)
-                                    max = valor;
+        for (int[] array : matriu)
+            for (int valor : array)
+                if (valor > max)
+                    max = valor;
 
-            return max;
+        return max;
     }
 
     public static float CalculaMitjana(int[][] matriu) {
