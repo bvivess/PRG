@@ -2,7 +2,6 @@ package ACT4_6;
 
 import java.util.ArrayList;
 import ACT4_1.UtilitatsArrays;
-import ACT4_2.UtilitatsMatrius;
 import ACT4_3.UtilitatsConsola;
 
  /**
@@ -58,7 +57,7 @@ public class ACT4_6_B1_FINAL {
         int[] pos;  // posició genèrica (x,y)
         
         // Genera posició Inicial cuc
-        pos = UtilitatsArrays.generaArray(2,0, tauler.length-1);
+        pos = UtilitatsArrays.generaArray(2, 0, tauler.length-1);
         cuc.add(pos);
       
         // Situam les fulles:
@@ -71,7 +70,7 @@ public class ACT4_6_B1_FINAL {
               nfulles++;
             }
         }
-
+        
     }
     
     /**

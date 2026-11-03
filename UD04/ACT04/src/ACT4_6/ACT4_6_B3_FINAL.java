@@ -1,6 +1,5 @@
 package ACT4_6;
 import ACT4_1.UtilitatsArrays;
-import ACT4_2.UtilitatsMatrius;
 import ACT4_3.UtilitatsConsola;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -163,5 +162,6 @@ public class ACT4_6_B3_FINAL {
         for (int[] posFulla : fulles) {
             tauler[posFulla[0]][posFulla[1]] = SIMBOL_FULLA;
         }
-    }   
+    }  
+    
 }
