@@ -1,18 +1,22 @@
 package ACT4_5;
 
-import ACT4_3.UtilitatsConsola;
+import java.util.ArrayList;
+import ACT4_1.UtilitatsArrays;
 
 /**
- * Crea un mètode anomenat 'calculaFactorial'  dins la classe 'UtilitatsRecOrdCerca'.
- * Ha de rebre una número i l'ha de calcular el factorial d'aquest mitjançant una tècnica recursiva.
- * 
+ *
  * @author T.Vives
-*/
-
+ */
 public class ACT4_5_02 {
-    public static void main(String[] args) {
-        int base = UtilitatsConsola.llegirSencer("Introdueixi la base factorial: ");
 
-        System.out.println(UtilitatsRecOrdCerca.calculaFactorial(base));
+    public static void main(String[] args) {
+        int[] array = UtilitatsArrays.generaArray(10, 0, 9);
+        ArrayList<Integer> resultat;
+        
+        UtilitatsArrays.mostraArray(array);
+        
+        resultat = UtilitatsClasses.ordenaArray(array);
+        
+        UtilitatsClasses.mostraArrayListInt(resultat);
     }
 }

@@ -1,4 +1,4 @@
-package ACT4_5;
+package ACT4_7;
 
 import ACT4_1.UtilitatsArrays;
 import ACT4_3.UtilitatsConsola;
@@ -11,7 +11,7 @@ import java.util.Arrays;
  * @author T.Vives
  */
 
-public class ACT4_5_11 {
+public class ACT4_7_11 {
     public static void main(String[] args) {
         // array aleatori ordenat
         int[] array = UtilitatsArrays.generaArray(10,1,100);

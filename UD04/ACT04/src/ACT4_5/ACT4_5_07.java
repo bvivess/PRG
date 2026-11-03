@@ -1,13 +1,24 @@
 package ACT4_5;
 
-import ACT4_3.UtilitatsConsola;
+import java.util.ArrayList;
+import ACT4_1.UtilitatsArrays;
 
+/**
+ *
+ * @author T.Vives
+ */
 public class ACT4_5_07 {
-    public static void main(String[] args) {
-        String cadena = UtilitatsConsola.llegirCadena("Introdueix una cadena: ");
-        char lletra = UtilitatsConsola.llegirCar("Introdueix el caràcter a contar: ");
 
-        int total = UtilitatsRecOrdCerca.comptaLletraEnCadena(cadena, lletra);
-        System.out.println("El caràcter '" + lletra + "' apareix " + total + " vegades en '" + cadena + "'");
+    public static void main(String[] args) {
+        int[] array1 = UtilitatsArrays.generaArray(10, 0, 2);
+        int[] array2 = UtilitatsArrays.generaArray(10, 2, 9);
+        ArrayList<Integer> resultat;
+        
+        UtilitatsArrays.mostraArray(array1);
+        UtilitatsArrays.mostraArray(array2);
+        
+        resultat = UtilitatsClasses.ordenaArraySenseRepeticions(UtilitatsClasses.ArrayListToArray(UtilitatsClasses.obteRepetits(array1, array2)));
+        
+        UtilitatsClasses.mostraArrayListInt(resultat);
     }
 }

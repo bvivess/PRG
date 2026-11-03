@@ -1,15 +1,22 @@
 package ACT4_5;
 
-import ACT4_3.UtilitatsConsola;
+import java.util.ArrayList;
+import ACT4_1.UtilitatsArrays;
 
+/**
+ *
+ * @author T.Vives
+ */
 public class ACT4_5_06 {
+
     public static void main(String[] args) {
-        int mida = UtilitatsConsola.llegirSencer("Introduexi la mida del patrò: ");
-
-        System.out.println("Patró generat:");
-        UtilitatsRecOrdCerca.imprimeixPatro(mida);
-        System.out.println();
+        int[] array = UtilitatsArrays.generaArray(10, 0, 9);
+        ArrayList<Integer> resultat;
+        
+        UtilitatsArrays.mostraArray(array);
+        
+        resultat = UtilitatsClasses.obteParellsOrdenatSenseRepeticions(array);
+        
+        UtilitatsClasses.mostraArrayListInt(resultat);
     }
-
-
 }

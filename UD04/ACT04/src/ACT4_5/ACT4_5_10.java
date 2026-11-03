@@ -1,30 +1,69 @@
 package ACT4_5;
 
+import java.util.ArrayList;
 import ACT4_1.UtilitatsArrays;
 import ACT4_3.UtilitatsConsola;
 
 /**
- * Crea un mètode anomenat 'CercaArray' dins la classe 'UtilitatsRecOrdCerca'.
- * Ha de rebre 1 array d''int' amb 10 elements ordenats. Empra l'algoritme de la cerca dicotòmica o cerca binària.
- * https://es.khanacademy.org/computing/computer-science/algorithms/binary-search/a/implementing-binary-search-of-an-array
- * 
+ *
  * @author T.Vives
  */
-
 public class ACT4_5_10 {
+    static ArrayList<String> alumnes = new ArrayList<>();
+    static ArrayList<ArrayList<Integer>> notes = new ArrayList<>();
+    
     public static void main(String[] args) {
-        // array aleatori ordenat
-        int[] array = UtilitatsRecOrdCerca.ordenaArrayBimbolla(UtilitatsArrays.generaArray(10,1,100));
-        int num, posicio;
+        llegirAlumnes(alumnes);
         
-        UtilitatsArrays.mostraArray(array);
-        num = UtilitatsConsola.llegirSencer("Introdueixi un númnero a cercar: ");
-        posicio = UtilitatsRecOrdCerca.cercaArray( array, num);
+        MostrarNotes(alumnes, notes);
+    }
+    
+    public static void llegirAlumnes(ArrayList<String> alumnes) {
+        String text;
         
-        if (posicio != -1 ) {
-            System.out.println("S'ha trobat el número en la posició " + posicio);
-        } else {
-            System.out.println("No s'ha trobat el número " + num);    
+        do {
+            text = UtilitatsConsola.llegirCadena("Nom alumne ('sortir' per acabar): ");
+            if (!text.equalsIgnoreCase("sortir")) {
+                alumnes.add(text);
+                llegirNotes(notes);
+            }
+        } while (!text.equalsIgnoreCase("sortir"));
+    }
+    
+    public static void llegirNotes(ArrayList<ArrayList<Integer>> notes) {
+        ArrayList<Integer> notesAlumne = new ArrayList<Integer>();
+        int nota;
+        
+        // Notes de l'alumne
+        do {
+            nota = UtilitatsConsola.llegirSencer("Introduexi notes ('-1' per acabar): ");
+            if (nota == -1)
+                break;
+            else
+                notesAlumne.add(nota);
+        } while (true);
+        // Afegir la fila
+        notes.add(notesAlumne);
+    }
+    
+    public static void MostrarNotes( ArrayList<String> alumnes, ArrayList<ArrayList<Integer>> notes) {
+        ArrayList<Integer> notesAlumne;
+        
+        for (int i=0; i<alumnes.size(); i++) {
+            System.out.print(alumnes.get(i) + ": ");
+            notesAlumne = notes.get(i);
+            for (Integer n : notesAlumne) {
+                System.out.print(n + " ");
+            }
+            // ArrayList<Integer> --> int[] per emprar 'UtilitatsArrays.mitjanaArray'
+            int[] notesArray = new int[notesAlumne.size()];
+            float mitjana;
+            for (int j=0;j<notesAlumne.size();j++) {
+                notesArray[j] = notesAlumne.get(j);
+            }
+            mitjana = UtilitatsArrays.mitjanaArray(notesArray);
+            System.out.println("Mitjana: " + mitjana);
+            System.out.println("----------");
         }
     }
 }
