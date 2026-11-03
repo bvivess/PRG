@@ -76,23 +76,7 @@ public class ACT4_6_A2_FINAL {
     }
     
     public static void mostraTauler(int[][] tauler) {
-        String car = "   ";
-        for (int i = 0; i < NTAULER; i++) {
-            System.out.print('|');
-            for (int j = 0; j < NTAULER; j++) {
-                if (tauler[i][j] == SIMBOL_BUIT) {
-                    car = "   ";
-                } else if (tauler[i][j] == SIMBOL_CUC) {
-                    car = " O ";
-                } else if (tauler[i][j] == SIMBOL_FULLA) {
-                    car = " * ";
-                } else if (tauler[i][j] > SIMBOL_BUIT && tauler[i][j] < SIMBOL_CUC) {
-                    car = " . ";
-                }
-                System.out.print(car);
-            }
-            System.out.println("|");
-        }
+
     }
     
 }

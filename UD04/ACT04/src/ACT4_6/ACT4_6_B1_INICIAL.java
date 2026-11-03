@@ -13,7 +13,7 @@ import ACT4_3.UtilitatsConsola;
   *     des de 1 fins a (FULLA-1) --> part del cuc
   */
 
-public class ACT4_6_B1 { 
+public class ACT4_6_B1_INICIAL { 
     static int NTAULER = UtilitatsConsola.llegirSencer("Mida del tauler: ");
     static int NFULLES = UtilitatsConsola.llegirSencer("Nombre de fulles: ");
     static final int SIMBOL_BUIT = 0;
@@ -58,19 +58,9 @@ public class ACT4_6_B1 {
         int[] pos;  // posició genèrica (x,y)
         
         // Genera posició Inicial cuc
-        pos = UtilitatsArrays.generaArray(2,0, tauler.length-1);
-        cuc.add(pos);
+
       
         // Situam les fulles:
-        int nfulles = 0;
-        while (nfulles < NFULLES) {
-            // Generam una posició aleatòria per a una fulla
-            pos = UtilitatsArrays.generaArray(2, 0, NTAULER-1);
-            if (tauler[pos[0]][pos[1]] == SIMBOL_BUIT) {
-              fulles.add(pos);
-              nfulles++;
-            }
-        }
 
     }
     
@@ -110,21 +100,14 @@ public class ACT4_6_B1 {
     * 
      */
     public static boolean cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles, int accio) {  // torna 'true' si el 'cuc' es tropitja, 'false' en cas contrari
+        // per moure el cuc, cal tenir present on és el cap --> és la darrera posició de l'arraylist
         int[] posCucCap = { cuc.get(cuc.size() - 1)[0], 
                             cuc.get(cuc.size() - 1)[1] }; // posició actual del cap és la darrera posició de l'arraylist
         
-        switch (accio) {
-            case 4 -> // ESQ
-                posCucCap[1] = (posCucCap[1] == 0 ? NTAULER-1 : --posCucCap[1]); 
-            case 6  -> // DRETA
-                posCucCap[1] = (posCucCap[1] == NTAULER-1 ? 0 : ++posCucCap[1]); 
-            case 8  -> // ALT
-                posCucCap[0] = (posCucCap[0] == 0 ? NTAULER-1 : --posCucCap[0]); 
-            case 2 -> //BAIX
-                posCucCap[0] = (posCucCap[0] == NTAULER-1 ? 0 : ++posCucCap[0]); 
-        }
+        // moure el cuc com abans tenint el compte simplement el cap
+
         
-        // Moure el cuc: 
+        // segons el moviment del cuc, cal tornar:
         //    'cuc' menja 'fulla' ? --> return true;
         //    'cuc' es tropitja ? --> return false;
         //    'cuc' es mou --> return true;
