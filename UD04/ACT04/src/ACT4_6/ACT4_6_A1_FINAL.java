@@ -8,10 +8,10 @@ import ACT4_3.UtilitatsConsola;
   * Crea una classe que inicialitzi una matriu quadrada, pe 5x5:
   *      Mostra-la per pantalla, cada fila a una línia.
   */
-public class ACT4_6_A1 {
+public class ACT4_6_A1_FINAL {
     static final int NTAULER = UtilitatsConsola.llegirSencer("Mida del tauler: ");
-    static int SIMBOL_BUIT = 0;
-    static int SIMBOL_CUC = 1;
+    static final int SIMBOL_BUIT = 0;
+    static final int SIMBOL_CUC = 1;
  
     public static void main(String[] args) {
         int[][] tauler = new int[NTAULER][NTAULER];  // tauler del joc
@@ -44,9 +44,18 @@ public class ACT4_6_A1 {
     }
     
     public static void cambiaPosicio(int[][] tauler, int[] cuc, int accio) {
-
-        
-        
+        tauler[cuc[0]][cuc[1]] = SIMBOL_BUIT;
+        switch (accio) {
+            case 4 -> // ESQ
+                cuc[1] = --cuc[1]; 
+            case 6  -> // DRETA
+                cuc[1] = ++cuc[1]; 
+            case 8  -> // ALT
+                cuc[0] = --cuc[0]; 
+            case 2 -> //BAIX
+                cuc[0] = ++cuc[0]; 
+        }
+        tauler[cuc[0]][cuc[1]] = SIMBOL_CUC;
     }
     
 }

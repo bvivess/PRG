@@ -1,4 +1,4 @@
-package ACT4_6;
+package ACT4_7;
 
 import ACT4_1.UtilitatsArrays;
 import ACT4_2.UtilitatsMatrius;
