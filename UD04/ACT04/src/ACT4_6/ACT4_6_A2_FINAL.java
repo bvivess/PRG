@@ -58,6 +58,20 @@ public class ACT4_6_A2_FINAL {
               nfulles++;
             }
         }
+        /*
+        for (int i=0;i<=NFULLES;i++) {
+            // Colocar fulles
+            boolean posFullaOK = false;
+        
+            do {
+                pos = UtilitatsArrays.generaArray(2, 0, NTAULER-1);  // {2,4}
+                if (tauler [ pos[0] ] [pos[1]] == SIMBOL_BUIT) {
+                    posFullaOK = true;
+                    tauler [ pos[0] ] [pos[1]] = SIMBOL_FULLA;
+                }
+            } while (!posFullaOK);
+        }
+        */
     }
     
     public static void cambiaPosicio(int[][] tauler, int[] cuc, int accio) {

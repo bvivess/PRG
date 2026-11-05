@@ -1,6 +1,6 @@
-package ACT4;
+package CUC;
 
-import ACT4.UtilitatsArrays;
+import CUC.UtilitatsArrays;
 
 /**
  *

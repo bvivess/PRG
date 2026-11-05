@@ -10,8 +10,10 @@ import ACT4_3.UtilitatsConsola;
   */
 public class ACT4_6_A1_FINAL {
     static final int NTAULER = UtilitatsConsola.llegirSencer("Mida del tauler: ");
+    static final int NFULLES = UtilitatsConsola.llegirSencer("Num fulles: ");
     static final int SIMBOL_BUIT = 0;
     static final int SIMBOL_CUC = 1;
+    static final int SIMBOL_FULLA = 9;
  
     public static void main(String[] args) {
         int[][] tauler = new int[NTAULER][NTAULER];  // tauler del joc
@@ -25,6 +27,7 @@ public class ACT4_6_A1_FINAL {
             // Mostra el tauler
             UtilitatsArrays.mostraArray(cuc);
             UtilitatsMatrius.mostraMatriu(tauler);
+            mostraTauler(tauler);
             
             // Cambia la posició del cuc
             accio=UtilitatsConsola.llegirSencer("ACCIONS: 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");     
@@ -56,6 +59,10 @@ public class ACT4_6_A1_FINAL {
                 cuc[0] = ++cuc[0]; 
         }
         tauler[cuc[0]][cuc[1]] = SIMBOL_CUC;
+    }
+    
+    public static void mostraTauler(int[][] tauler){
+        
     }
     
 }

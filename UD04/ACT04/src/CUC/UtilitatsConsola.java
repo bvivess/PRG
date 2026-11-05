@@ -1,4 +1,4 @@
-package ACT4;
+package CUC;
 
 import java.util.Scanner;
 
