@@ -77,30 +77,11 @@ public class ACT4_6_A2_FINAL {
     public static void cambiaPosicio(int[][] tauler, int[] cuc, int accio) {
         tauler[cuc[0]][cuc[1]] = SIMBOL_BUIT;
         
-        if (accio == 4) {        // ESQ
-            if (cuc[1] == 0) {
-                cuc[1] = NTAULER - 1;
-            } else {
-                cuc[1]--;
-            }
-        } else if (accio == 6) { // DRETA
-            if (cuc[1] == NTAULER - 1) {
-                cuc[1] = 0;
-            } else {
-                cuc[1]++;
-            }
-        } else if (accio == 8) { // ALT
-            if (cuc[0] == 0) {
-                cuc[0] = NTAULER - 1;
-            } else {
-                cuc[0]--;
-            }
-        } else if (accio == 2) { // BAIX
-            if (cuc[0] == NTAULER - 1) {
-                cuc[0] = 0;
-            } else {
-                cuc[0]++;
-            }
+        switch (accio) {
+            case 4 -> cuc[1] = (cuc[1]==0 ? NTAULER-1 : --cuc[1]); // ESQ
+            case 6 -> cuc[1] = (cuc[1]==NTAULER-1 ? 0 : ++cuc[1]); // DRETA
+            case 8 -> cuc[0] = (cuc[0]==0 ? NTAULER-1 : --cuc[0]); // ALT
+            case 2 -> cuc[0] = (cuc[0]==NTAULER-1 ? 0 : ++cuc[0]); //BAIX
         }
         tauler[cuc[0]][cuc[1]] = SIMBOL_CUC;
     }

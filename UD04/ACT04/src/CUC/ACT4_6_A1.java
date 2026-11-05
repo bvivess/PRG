@@ -21,8 +21,9 @@ public class ACT4_6_A1 {
         
         do {
             // Mostra el tauler
-            UtilitatsArrays.mostraArray(cuc);
-            UtilitatsMatrius.mostrarMatriu(tauler);
+            //UtilitatsArrays.mostraArray(cuc);
+            //UtilitatsMatrius.mostrarMatriu(tauler);
+            mostrarTauler(tauler);
             
             // Cambia la posició del cuc
             accio=UtilitatsConsola.llegirSencer("ACCIONS: 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");     
@@ -58,18 +59,48 @@ public class ACT4_6_A1 {
     public static void cambiaPosicio(int[][] tauler, int[] cuc, int accio) {
         tauler[ cuc[0] ] [ cuc[1] ] = SIMBOL_BUIT;
         
-        switch (accio) {
-            case 4 -> // ESQ
-                cuc[1] = (cuc[1]==0 ? NTAULER-1 : --cuc[1]); 
-            case 6  -> // DRETA
-                cuc[1] = (cuc[1]==NTAULER-1 ? 0 : ++cuc[1]); 
-            case 8  -> // ALT
-                cuc[0] = (cuc[0]==0 ? NTAULER-1 : --cuc[0]); 
-            case 2 -> //BAIX
-                cuc[0] = (cuc[0]==NTAULER-1 ? 0 : ++cuc[0]); 
-        }
-        
+        if (accio == 4)        // ESQ
+            if (cuc[1] == 0)
+                cuc[1] = NTAULER - 1;
+            else
+                cuc[1]--;
+        else if (accio == 6) // DRETA
+            if (cuc[1] == NTAULER - 1)
+                cuc[1] = 0;
+           else
+                cuc[1]++;
+        else if (accio == 8) // ALT
+            if (cuc[0] == 0)
+                cuc[0] = NTAULER - 1;
+            else
+                cuc[0]--;
+        else if (accio == 2) // BAIX
+            if (cuc[0] == NTAULER - 1)
+                cuc[0] = 0;
+            else
+                cuc[0]++;
+
         tauler[ cuc[0] ] [ cuc[1] ] = SIMBOL_CUC;
+    }
+    
+    public static void mostrarTauler(int[][] tauler) {
+        String car = "   ";
+        for (int i = 0; i < NTAULER; i++) {
+            System.out.print('|');
+            for (int j = 0; j < NTAULER; j++) {
+                if (tauler[i][j] == SIMBOL_BUIT) {
+                    car = "   ";
+                } else if (tauler[i][j] == SIMBOL_CUC) {
+                    car = " O ";
+                } else if (tauler[i][j] == SIMBOL_FULLA) {
+                    car = " * ";
+                } else if (tauler[i][j] > SIMBOL_BUIT && tauler[i][j] < SIMBOL_CUC) {
+                    car = " . ";
+                }
+                System.out.print(car);
+            }
+            System.out.println("|");
+        }
     }
     
 }
