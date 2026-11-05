@@ -94,8 +94,6 @@ public class ACT4_6_A1 {
                     car = " O ";
                 } else if (tauler[i][j] == SIMBOL_FULLA) {
                     car = " * ";
-                } else if (tauler[i][j] > SIMBOL_BUIT && tauler[i][j] < SIMBOL_CUC) {
-                    car = " . ";
                 }
                 System.out.print(car);
             }
