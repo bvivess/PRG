@@ -79,14 +79,10 @@ public class ACT4_6_A3_FINAL {
         for (int i = 0; i < NTAULER; i++) {
             System.out.print('|');
             for (int j = 0; j < NTAULER; j++) {
-                if (tauler[i][j] == SIMBOL_BUIT) {
-                    car = "   ";
-                } else if (tauler[i][j] == SIMBOL_CUC) {
-                    car = " O ";
-                } else if (tauler[i][j] == SIMBOL_FULLA) {
-                    car = " * ";
-                } else if (tauler[i][j] > SIMBOL_BUIT && tauler[i][j] < SIMBOL_CUC) {
-                    car = " . ";
+                switch (tauler[i][j]) {
+                    case SIMBOL_BUIT -> car = "   ";
+                    case SIMBOL_CUC -> car = " O ";
+                    case SIMBOL_FULLA -> car = " * ";
                 }
                 System.out.print(car);
             }
