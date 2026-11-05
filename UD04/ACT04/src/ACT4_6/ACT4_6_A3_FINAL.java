@@ -65,9 +65,9 @@ public class ACT4_6_A3_FINAL {
         
         // Calcula nova posició
         switch (accio) {
-            case 4 -> cuc[1] = (cuc[1] == 0         ? NTAULER-1 : --cuc[1]); // ESQ
+            case 4 -> cuc[1] = (cuc[1] == 0 ? NTAULER-1 : --cuc[1]); // ESQ
             case 6 -> cuc[1] = (cuc[1] == NTAULER-1 ? 0 : ++cuc[1]); // DRETA
-            case 8 -> cuc[0] = (cuc[0] == 0         ? NTAULER-1 : --cuc[0]); // ALT
+            case 8 -> cuc[0] = (cuc[0] == 0 ? NTAULER-1 : --cuc[0]); // ALT
             case 2 -> cuc[0] = (cuc[0] == NTAULER-1 ? 0 : ++cuc[0]); //BAIX
         }
         
