@@ -15,9 +15,9 @@ import ACT4_3.UtilitatsConsola;
 public class ACT4_6_A2_FINAL {
     static final int NTAULER = UtilitatsConsola.llegirSencer("Mida del tauler: ");
     static final int NFULLES = UtilitatsConsola.llegirSencer("Numero de fulles: ");
-    static final int SIMBOL_BUIT = 0;
-    static final int SIMBOL_CUC = 1;
-    static final int SIMBOL_FULLA = 9;
+    static int SIMBOL_BUIT = 0;
+    static int SIMBOL_CUC = 1;
+    static int SIMBOL_FULLA = 9;
     
     public static void main(String[] args) {
         int[][] tauler = new int[NTAULER][NTAULER];  // tauler del joc
@@ -49,29 +49,16 @@ public class ACT4_6_A2_FINAL {
         tauler[ cuc[0] ] [ cuc[1] ] = SIMBOL_CUC;
         
         // Situam les fulles:
-        int nfulles = 0;
-        while (nfulles < NFULLES) {
-            // Generam una posició aleatòria per a una fulla
-            pos = UtilitatsArrays.generaArray(2, 0, NTAULER-1);
-            if (tauler[pos[0]][pos[1]] == SIMBOL_BUIT) {
-              tauler[pos[0]][pos[1]] = SIMBOL_FULLA;
-              nfulles++;
-            }
-        }
-        /*
+        // Col·loca NFULLES
         for (int i=0;i<=NFULLES;i++) {
-            // Colocar fulles
-            boolean posFullaOK = false;
-        
+            // Col·loca fulla        
             do {
                 pos = UtilitatsArrays.generaArray(2, 0, NTAULER-1);  // {2,4}
-                if (tauler [ pos[0] ] [pos[1]] == SIMBOL_BUIT) {
-                    posFullaOK = true;
-                    tauler [ pos[0] ] [pos[1]] = SIMBOL_FULLA;
-                }
-            } while (!posFullaOK);
+            } while (!(tauler [ pos[0] ] [pos[1]] == SIMBOL_BUIT));
+            
+            // Situa fulla en el tauler
+            tauler [ pos[0] ] [pos[1]] = SIMBOL_FULLA;
         }
-        */
     }
     
     public static void cambiaPosicio(int[][] tauler, int[] cuc, int accio) {

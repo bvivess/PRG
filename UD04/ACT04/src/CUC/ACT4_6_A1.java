@@ -7,9 +7,9 @@ package CUC;
 public class ACT4_6_A1 {
     static final int NTAULER = UtilitatsConsola.llegirSencer("Mida del tauler: ");
     static final int NFULLES = UtilitatsConsola.llegirSencer("Número fulles: ");
-    static int SIMBOL_BUIT = 0;
-    static int SIMBOL_CUC = 1;
-    static int SIMBOL_FULLA = 9;
+    static final int SIMBOL_BUIT = 0;
+    static final int SIMBOL_CUC = 1;
+    static final int SIMBOL_FULLA = 9;
  
     public static void main(String[] args) {
         int[][] tauler = new int[NTAULER][NTAULER];  // tauler del joc
@@ -41,18 +41,13 @@ public class ACT4_6_A1 {
         // Situa cuc en el tauler
         tauler[ cuc[0] ] [ cuc[1] ] = SIMBOL_CUC;
         
-        // Situa fulles
+        // Col·loca NFULLES
         for (int i=0;i<=NFULLES;i++) {
-            // Colocar fulles
-            boolean posFullaOK = false;
-        
+            // Col·loca fulla        
             do {
                 pos = UtilitatsArrays.generaArray(2, 0, NTAULER-1);  // {2,4}
-                if (tauler [ pos[0] ] [pos[1]] == SIMBOL_BUIT) {
-                    posFullaOK = true;
-                    tauler [ pos[0] ] [pos[1]] = SIMBOL_FULLA;
-                }
-            } while (!posFullaOK);
+            } while (!(tauler [ pos[0] ] [pos[1]] == SIMBOL_BUIT));
+            tauler [ pos[0] ] [pos[1]] = SIMBOL_FULLA;
         }
     }
     
@@ -88,12 +83,11 @@ public class ACT4_6_A1 {
         for (int i = 0; i < NTAULER; i++) {
             System.out.print('|');
             for (int j = 0; j < NTAULER; j++) {
-                if (tauler[i][j] == SIMBOL_BUIT)
-                    car = "   ";
-                else if (tauler[i][j] == SIMBOL_CUC)
-                    car = " O ";
-                else if (tauler[i][j] == SIMBOL_FULLA)
-                    car = " * ";
+                switch (tauler [i][j]){
+                    case SIMBOL_BUIT -> car = "   ";
+                    case SIMBOL_CUC -> car = " O ";
+                    case SIMBOL_FULLA -> car = " * ";
+                }
 
                 System.out.print(car);
             }
