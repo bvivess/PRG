@@ -50,7 +50,7 @@ public class ACT4_6_A2_FINAL {
         
         // Situam les fulles:
         // Col·loca NFULLES
-        for (int i=0;i<=NFULLES;i++) {
+        for (int i=0; i<=NFULLES; i++) {
             // Col·loca fulla        
             do {
                 pos = UtilitatsArrays.generaArray(2, 0, NTAULER-1);  // {2,4}
