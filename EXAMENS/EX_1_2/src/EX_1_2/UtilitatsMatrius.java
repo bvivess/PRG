@@ -1,4 +1,4 @@
-package EXAMEN;
+package EX_1_2;
 
 /**
  *
