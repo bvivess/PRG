@@ -1,8 +1,5 @@
 package EX_1_2;
 
-import EX_1_2.UtilitatsArrays;
-import EX_1_2.UtilitatsConsola;
-
 /**
  * Avaluació Arrays i Matrius: Mini Pac-Man (versió simplificada).
  * SIMBOL_BUIT     --> 0 ("   ")
@@ -21,6 +18,7 @@ public class Main {
     static final int SIMBOL_PACMAN = 1;
     static final int SIMBOL_MUR = 3;
     static final int SIMBOL_FANTASME = 5;
+    static final int SIMBOL_CRASH = 7;
     static final int SIMBOL_COCO = 9;
 
     public static void main(String[] args) {
@@ -121,19 +119,27 @@ public class Main {
             case 2 -> novaPos[0] = (novaPos[0] == NTAULER - 1 ? 0 : novaPos[0] + 1); // BAIX
         }
         
-        // Si hi ha un mur, no fem res
-        boolean gameOver = false;
-        if (tauler[novaPos[0]][novaPos[1]] != SIMBOL_MUR) {
-            gameOver = (tauler[novaPos[0]][novaPos[1]] == SIMBOL_FANTASME);
-            if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_COCO)
-                NCOCOS--;
-            // Esborram posició anterior i actualitzam la nova
-            tauler[pacman[0]][pacman[1]] = SIMBOL_BUIT;
-            pacman[0] = novaPos[0];
-            pacman[1] = novaPos[1];
-            tauler[pacman[0]][pacman[1]] = SIMBOL_PACMAN;
+        // Si la nova posició és un mur, no ens movem
+        if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_MUR)
+            return false;
+
+        // Comprovam si hem trobat un fantasma
+        if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_FANTASME) {
+            tauler[novaPos[0]][novaPos[1]] = SIMBOL_CRASH;
+            return true;
         }
-        return gameOver;
+
+        // Si hem trobat un coco, el descomptam
+        if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_COCO)
+            NCOCOS--;
+
+        // Actualitzam el moviment del pacman
+        tauler[pacman[0]][pacman[1]] = SIMBOL_BUIT;
+        pacman[0] = novaPos[0];
+        pacman[1] = novaPos[1];
+        tauler[pacman[0]][pacman[1]] = SIMBOL_PACMAN;
+
+        return false;
     }
 
     public static void mostraTauler(int[][] tauler) {
@@ -153,6 +159,7 @@ public class Main {
                     case SIMBOL_PACMAN -> car = " C ";
                     case SIMBOL_MUR -> car = " # ";
                     case SIMBOL_FANTASME -> car = " F ";
+                    case SIMBOL_CRASH -> car = " X ";
                     case SIMBOL_COCO -> car = " * ";
                 }
                 System.out.print(car);
