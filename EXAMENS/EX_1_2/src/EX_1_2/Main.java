@@ -18,7 +18,6 @@ public class Main {
     static final int SIMBOL_PACMAN = 1;
     static final int SIMBOL_MUR = 3;
     static final int SIMBOL_FANTASME = 5;
-    static final int SIMBOL_CRASH = 7;
     static final int SIMBOL_COCO = 9;
 
     public static void main(String[] args) {
@@ -124,10 +123,8 @@ public class Main {
             return false;
 
         // Comprovam si hem trobat un fantasma
-        if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_FANTASME) {
-            tauler[novaPos[0]][novaPos[1]] = SIMBOL_CRASH;
+        if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_FANTASME)
             return true;
-        }
 
         // Si hem trobat un coco, el descomptam
         if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_COCO)
