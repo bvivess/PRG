@@ -156,7 +156,6 @@ public class Main {
                     case SIMBOL_PACMAN -> car = " C ";
                     case SIMBOL_MUR -> car = " # ";
                     case SIMBOL_FANTASME -> car = " F ";
-                    case SIMBOL_CRASH -> car = " X ";
                     case SIMBOL_COCO -> car = " * ";
                 }
                 System.out.print(car);
