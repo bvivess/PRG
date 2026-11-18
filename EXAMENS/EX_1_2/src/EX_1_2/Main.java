@@ -97,8 +97,7 @@ public class Main {
     }
 
     /**
-     * Mou el Pac-Man amb efecte túnel si no hi ha un mur i retorna
-     * què hi havia a la casella destí abans d'ocupar-la.
+     * Mou el Pac-Man; descompta NCOCOS si es menja un d'ells; retorna true si es tropitja un fantasme.
      */
     public static boolean cambiaPosicio(int[][] tauler, int[] pacman, int accio) {
         /** Calcula la nova posició de pacman i situa'l sobre el tauler
