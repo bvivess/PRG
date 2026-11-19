@@ -107,7 +107,7 @@ public class Main {
          *   - coco: es dscompta NCOCOS
         */
         
-        // Calcula la nova posició de pacman
+        // 1. CALCULA LA NOVA POSICIÓ DE PACMAN
         int[] novaPos = {pacman[0], pacman[1]};
         
         switch (accio) {
@@ -129,7 +129,7 @@ public class Main {
         if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_COCO)
             NCOCOS--;
 
-        // Actualitzam el moviment del pacman
+        // 2. ACTUALITZAM EL MOVIMENT DEL PACMAN
         tauler[pacman[0]][pacman[1]] = SIMBOL_BUIT;
         pacman[0] = novaPos[0];
         pacman[1] = novaPos[1];
