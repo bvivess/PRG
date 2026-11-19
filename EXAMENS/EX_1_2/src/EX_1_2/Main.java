@@ -107,7 +107,7 @@ public class Main {
          *   - coco: es dscompta NCOCOS
         */
         
-        // 1. CALCULA LA NOVA POSICIÓ DE PACMAN
+        // 1. CALCULA LA NOVA POSICIÓ DE PACMAN EN UN ARRAY TEMPORAL, SENSE FER EL MOVIMENT
         int[] novaPos = {pacman[0], pacman[1]};
         
         switch (accio) {
@@ -116,6 +116,8 @@ public class Main {
             case 8 -> novaPos[0] = (novaPos[0] == 0 ? NTAULER - 1 : novaPos[0] - 1); // ALT
             case 2 -> novaPos[0] = (novaPos[0] == NTAULER - 1 ? 0 : novaPos[0] + 1); // BAIX
         }
+
+        // 2. REVISA ALLÒ QUE HI HA A LA NOVA POSICIÓ
         
         // Si la nova posició és un mur, no ens movem
         if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_MUR)
@@ -129,7 +131,7 @@ public class Main {
         if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_COCO)
             NCOCOS--;
 
-        // 2. ACTUALITZAM EL MOVIMENT DEL PACMAN
+        // 3. ACTUALITZAM EL MOVIMENT DEL PACMAN
         tauler[pacman[0]][pacman[1]] = SIMBOL_BUIT;
         pacman[0] = novaPos[0];
         pacman[1] = novaPos[1];
