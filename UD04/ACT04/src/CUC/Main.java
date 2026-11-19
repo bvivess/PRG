@@ -1,4 +1,4 @@
-package ACT4_6;
+package CUC;
 
 import ACT4_1.UtilitatsArrays;
 import ACT4_2.UtilitatsMatrius;
