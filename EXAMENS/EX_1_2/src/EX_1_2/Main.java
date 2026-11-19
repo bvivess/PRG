@@ -120,24 +120,29 @@ public class Main {
         // 2. REVISA ALLÒ QUE HI HA A LA NOVA POSICIÓ
         
         // Si la nova posició és un mur, no ens movem
+        boolean gameOver = false;
         if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_MUR)
-            return false;
+            gameOver = false;
 
         // Comprovam si hem trobat un fantasma
-        if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_FANTASME)
-            return true;
+        else if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_FANTASME)
+            gameOver = true;
 
         // Si hem trobat un coco, el descomptam
-        if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_COCO)
-            NCOCOS--;
+        else {
+            if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_COCO)
+                NCOCOS--;
 
-        // 3. ACTUALITZAM EL MOVIMENT DEL PACMAN
-        tauler[pacman[0]][pacman[1]] = SIMBOL_BUIT;
-        pacman[0] = novaPos[0];
-        pacman[1] = novaPos[1];
-        tauler[pacman[0]][pacman[1]] = SIMBOL_PACMAN;
-
-        return false;
+            // 3. ACTUALITZAM EL MOVIMENT DEL PACMAN
+            tauler[pacman[0]][pacman[1]] = SIMBOL_BUIT;
+            pacman[0] = novaPos[0];
+            pacman[1] = novaPos[1];
+            tauler[pacman[0]][pacman[1]] = SIMBOL_PACMAN;
+            
+            gameOver = false;
+        }
+        
+        return gameOver;
     }
 
     public static void mostraTauler(int[][] tauler) {
