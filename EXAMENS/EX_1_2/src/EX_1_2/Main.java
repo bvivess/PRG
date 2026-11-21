@@ -68,34 +68,25 @@ public class Main {
         tauler[pacman[0]][pacman[1]] = SIMBOL_PACMAN;
       
         // Situam els cocos en una casella buida
-        for (int i = 0; i < NCOCOS; i++) {
-            do {
-                pos = UtilitatsArrays.generaArray(2, 0, NTAULER - 1);
-            } while (tauler[pos[0]][pos[1]] != SIMBOL_BUIT);
-
-            tauler[pos[0]][pos[1]] = SIMBOL_COCO;
-        }
+        situaElements(tauler, NCOCOS, SIMBOL_COCO );
 
         // Situam els murs en una casella buida
-        for (int i = 0; i < NMURS; i++) {
-            do {
-                pos = UtilitatsArrays.generaArray(2, 0, NTAULER - 1);
-            } while (tauler[pos[0]][pos[1]] != SIMBOL_BUIT);
-
-            tauler[pos[0]][pos[1]] = SIMBOL_MUR;
-        }
+        situaElements(tauler, NMURS, SIMBOL_MUR);
         
         // Situam els Fantasmes en una casella buida
-        for (int i = 0; i < NFANTASMES; i++) {
+        situaElements(tauler, NFANTASMES, SIMBOL_FANTASME);
+    }
+    
+    private static void situaElements(int[][] tauler, int NSIMBOLS, int SIMBOL ) {
+        int[] pos;
+        for (int i = 0; i < NSIMBOLS; i++) {
             do {
                 pos = UtilitatsArrays.generaArray(2, 0, NTAULER - 1);
             } while (tauler[pos[0]][pos[1]] != SIMBOL_BUIT);
 
-            tauler[pos[0]][pos[1]] = SIMBOL_FANTASME;
-        }
-        
+            tauler[pos[0]][pos[1]] = SIMBOL;
+        }        
     }
-
     /**
      * Mou el Pac-Man; descompta NCOCOS si es menja un d'ells; retorna true si es tropitja un fantasme.
      */
@@ -125,24 +116,28 @@ public class Main {
             gameOver = false;
 
         // Comprovam si hem trobat un fantasma
-        else if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_FANTASME)
+        else if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_FANTASME) {
+            // 3. ACTUALITZAM EL MOVIMENT DEL PACMAN
+            actualitzaMoviment(tauler, pacman, novaPos);
             gameOver = true;
-
-        // Si hem trobat un coco, el descomptam
-        else {
+        } else {
+            // Si hem trobat un coco, el descomptam
             if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_COCO)
                 NCOCOS--;
 
             // 3. ACTUALITZAM EL MOVIMENT DEL PACMAN
-            tauler[pacman[0]][pacman[1]] = SIMBOL_BUIT;
-            pacman[0] = novaPos[0];
-            pacman[1] = novaPos[1];
-            tauler[pacman[0]][pacman[1]] = SIMBOL_PACMAN;
-            
+            actualitzaMoviment(tauler, pacman, novaPos);
             gameOver = false;
         }
         
         return gameOver;
+    }
+    
+    private static void actualitzaMoviment(int[][] tauler, int[] pacman, int[] novaPos) {
+        tauler[pacman[0]][pacman[1]] = SIMBOL_BUIT;
+        pacman[0] = novaPos[0];
+        pacman[1] = novaPos[1];
+        tauler[pacman[0]][pacman[1]] = SIMBOL_PACMAN;
     }
 
     public static void mostraTauler(int[][] tauler) {
