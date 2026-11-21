@@ -111,7 +111,7 @@ public class Main {
         // 2. REVISA ALLÒ QUE HI HA A LA NOVA POSICIÓ
         
         // Si la nova posició és un mur, no ens movem
-        boolean gameOver = false;
+        boolean gameOver;
         if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_MUR)
             gameOver = false;
 
