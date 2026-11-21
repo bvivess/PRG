@@ -110,24 +110,25 @@ public class Main {
 
         // 2. REVISA ALLÒ QUE HI HA A LA NOVA POSICIÓ
         
+        // 3. ACTUALITZAM EL MOVIMENT DEL PACMAN
         // Si la nova posició és un mur, no ens movem
+        // Si és un coco, descomptam
+        // Si es fantasme, tornam 'true', 'false' en cas contrari 
         boolean gameOver;
-        if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_MUR)
-            gameOver = false;
-
-        // Comprovam si hem trobat un fantasma
-        else if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_FANTASME) {
-            // 3. ACTUALITZAM EL MOVIMENT DEL PACMAN
-            actualitzaMoviment(tauler, pacman, novaPos);
-            gameOver = true;
-        } else {
-            // Si hem trobat un coco, el descomptam
-            if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_COCO)
-                NCOCOS--;
-
-            // 3. ACTUALITZAM EL MOVIMENT DEL PACMAN
-            actualitzaMoviment(tauler, pacman, novaPos);
-            gameOver = false;
+        switch (tauler[novaPos[0]][novaPos[1]]) {
+            case SIMBOL_MUR -> 
+                gameOver = false;
+            case SIMBOL_FANTASME -> {
+                actualitzaMoviment(tauler, pacman, novaPos);
+                gameOver = true;
+            }
+            default -> {
+                if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_COCO)
+                    NCOCOS--;
+                
+                actualitzaMoviment(tauler, pacman, novaPos);
+                gameOver = false;
+            }
         }
         
         return gameOver;
