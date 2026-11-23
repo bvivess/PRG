@@ -35,7 +35,7 @@ public class Main {
             accio = UtilitatsConsola.llegirSencer("Cocos restants: " + NCOCOS + " - ACCIONS: 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
 
             // Cambiar la posició de Pacman 
-            pacmanAtrapat = (cambiaPosicio(tauler, pacman, accio));
+            pacmanAtrapat = cambiaPosicio(tauler, pacman, accio);
         } while (accio != 0 && !pacmanAtrapat && NCOCOS > 0);
 
         /** Mostrar el resultat final:
@@ -104,17 +104,19 @@ public class Main {
        
         // 2. ACTUALITZAM EL MOVIMENT DEL PACMAN
         boolean gameOver;
-        if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_MUR) {
-            gameOver = false;
-        } else if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_FANTASME) {
-            actualitzaMoviment(tauler, pacman, novaPos);
-            gameOver = true;
-        } else {
-            if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_COCO)
-                NCOCOS--;
-
-            actualitzaMoviment(tauler, pacman, novaPos);
-            gameOver = false;
+        switch (tauler[novaPos[0]][novaPos[1]]) {
+            case SIMBOL_MUR -> 
+                gameOver = false;
+            case SIMBOL_FANTASME -> {
+                actualitzaMoviment(tauler, pacman, novaPos);
+                gameOver = true;
+            }
+            default -> {
+                if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_COCO)
+                    NCOCOS--;
+                actualitzaMoviment(tauler, pacman, novaPos);
+                gameOver = false;
+            }
         }
         
         return gameOver;

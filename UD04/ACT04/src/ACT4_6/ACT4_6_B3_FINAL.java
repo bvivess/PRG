@@ -82,26 +82,26 @@ public class ACT4_6_B3_FINAL {
     }
     
     public static boolean cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles, int accio) {  // torna 'true' si el 'cuc' es tropitja, 'false' en cas contrari
-        int[] posFulla, posCuc;
-        int[] posCucCap = { cuc.get(cuc.size() - 1)[0], 
+        int[] pos;
+        int[] novaPos = { cuc.get(cuc.size() - 1)[0], 
                             cuc.get(cuc.size() - 1)[1] }; // posició actual del cap és la darrera posició de l'arraylist
         
         switch (accio) {
             case 4 -> // ESQ
-                posCucCap[1] = (posCucCap[1] == 0 ? NTAULER-1 : --posCucCap[1]); 
+                novaPos[1] = (novaPos[1] == 0 ? NTAULER-1 : --novaPos[1]); 
             case 6  -> // DRETA
-                posCucCap[1] = (posCucCap[1] == NTAULER-1 ? 0 : ++posCucCap[1]); 
+                novaPos[1] = (novaPos[1] == NTAULER-1 ? 0 : ++novaPos[1]); 
             case 8  -> // ALT
-                posCucCap[0] = (posCucCap[0] == 0 ? NTAULER-1 : --posCucCap[0]); 
+                novaPos[0] = (novaPos[0] == 0 ? NTAULER-1 : --novaPos[0]); 
             case 2 -> //BAIX
-                posCucCap[0] = (posCucCap[0] == NTAULER-1 ? 0 : ++posCucCap[0]); 
+                novaPos[0] = (novaPos[0] == NTAULER-1 ? 0 : ++novaPos[0]); 
         }
         
         // Cuc menja fulla ?: el cac està on hi ha alguna fulla 
         for (int i=0; i < fulles.size(); i++) {
-            posFulla = fulles.get(i);
-            if (Arrays.equals(posFulla,posCucCap)) {
-                cuc.add(posCucCap);
+            pos = fulles.get(i);
+            if (Arrays.equals(pos,novaPos)) {
+                cuc.add(novaPos);
                 fulles.remove(i);
                 return true;
             }
@@ -109,14 +109,14 @@ public class ACT4_6_B3_FINAL {
         
         // Cuc es tropitja ?: el cap està on hi ha alguna part del cuc
         for (int i=0; i < cuc.size(); i++) {
-            posCuc = cuc.get(i);
-            if (Arrays.equals(posCuc,posCucCap)) {
+            pos = cuc.get(i);
+            if (Arrays.equals(pos,novaPos)) {
                 return false;
             }
         }
         
         // Cuc es mou: si no menja fulla ni es tropitja, simplement cal moure el cap
-        cuc.add(posCucCap); // afegim posCuc a cuc
+        cuc.add(novaPos); // afegim posCuc a cuc
         cuc.remove(0);  // eliminam cua a cuc
 
         return true;       
