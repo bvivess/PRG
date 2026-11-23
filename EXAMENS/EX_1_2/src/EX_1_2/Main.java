@@ -107,13 +107,8 @@ public class Main {
             case 8 -> novaPos[0] = (novaPos[0] == 0 ? NTAULER - 1 : novaPos[0] - 1); // ALT
             case 2 -> novaPos[0] = (novaPos[0] == NTAULER - 1 ? 0 : novaPos[0] + 1); // BAIX
         }
-
-        // 2. REVISA ALLÒ QUE HI HA A LA NOVA POSICIÓ
-        
-        // 3. ACTUALITZAM EL MOVIMENT DEL PACMAN
-        // Si la nova posició és un mur, no ens movem
-        // Si és un coco, descomptam
-        // Si es fantasme, tornam 'true', 'false' en cas contrari 
+       
+        // 2. ACTUALITZAM EL MOVIMENT DEL PACMAN
         boolean gameOver;
         switch (tauler[novaPos[0]][novaPos[1]]) {
             case SIMBOL_MUR -> 
