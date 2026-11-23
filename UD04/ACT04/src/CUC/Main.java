@@ -61,15 +61,13 @@ public class Main {
         cuc.add(pos);
       
         // Situam les fulles:
-        int nfulles = 0;
-        while (nfulles < NFULLES) {
-            // Generam una posició aleatòria per a una fulla
-            pos = UtilitatsArrays.generaArray(2, 0, NTAULER-1);
-            if (tauler[pos[0]][pos[1]] == SIMBOL_BUIT) {
-              fulles.add(pos);
-              nfulles++;
-            }
-        }
+        for (int i = 0; i < NFULLES; i++) {
+            do {
+                pos = UtilitatsArrays.generaArray(2, 0, NTAULER - 1);
+            } while (tauler[pos[0]][pos[1]] != SIMBOL_BUIT);
+
+            tauler[pos[0]][pos[1]] = SIMBOL_FULLA;
+        } 
         
     }
     

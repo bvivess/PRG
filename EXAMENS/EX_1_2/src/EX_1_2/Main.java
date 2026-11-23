@@ -87,6 +87,7 @@ public class Main {
             tauler[pos[0]][pos[1]] = SIMBOL;
         }        
     }
+    
     /**
      * Mou el Pac-Man; descompta NCOCOS si es menja un d'ells; retorna true si es tropitja un fantasme.
      */
@@ -99,14 +100,7 @@ public class Main {
         */
         
         // 1. CALCULA LA NOVA POSICIÓ DE PACMAN EN UN ARRAY TEMPORAL, SENSE FER EL MOVIMENT
-        int[] novaPos = {pacman[0], pacman[1]};
-        
-        switch (accio) {
-            case 4 -> novaPos[1] = (novaPos[1] == 0 ? NTAULER - 1 : novaPos[1] - 1); // ESQUERRA
-            case 6 -> novaPos[1] = (novaPos[1] == NTAULER - 1 ? 0 : novaPos[1] + 1); // DRETA
-            case 8 -> novaPos[0] = (novaPos[0] == 0 ? NTAULER - 1 : novaPos[0] - 1); // ALT
-            case 2 -> novaPos[0] = (novaPos[0] == NTAULER - 1 ? 0 : novaPos[0] + 1); // BAIX
-        }
+        int[] novaPos = actualitzaElement(pacman, accio);
        
         // 2. ACTUALITZAM EL MOVIMENT DEL PACMAN
         boolean gameOver;
@@ -124,6 +118,19 @@ public class Main {
         }
         
         return gameOver;
+    }
+    
+    private static int[] actualitzaElement(int[] element, int accio) {
+        int[] novaPos = {element[0], element[1]};
+        
+        switch (accio) {
+            case 4 -> novaPos[1] = (novaPos[1] == 0 ? NTAULER - 1 : novaPos[1] - 1); // ESQUERRA
+            case 6 -> novaPos[1] = (novaPos[1] == NTAULER - 1 ? 0 : novaPos[1] + 1); // DRETA
+            case 8 -> novaPos[0] = (novaPos[0] == 0 ? NTAULER - 1 : novaPos[0] - 1); // ALT
+            case 2 -> novaPos[0] = (novaPos[0] == NTAULER - 1 ? 0 : novaPos[0] + 1); // BAIX
+        }
+        
+        return novaPos;
     }
     
     private static void actualitzaMoviment(int[][] tauler, int[] pacman, int[] novaPos) {
