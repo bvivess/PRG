@@ -109,18 +109,18 @@ public class ACT4_6_B2_FINAL {
     * 
      */
     public static boolean cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles, int accio) {  // torna 'true' si el 'cuc' es tropitja, 'false' en cas contrari
-        int[] posCucCap = { cuc.get(cuc.size() - 1)[0], 
-                            cuc.get(cuc.size() - 1)[1] }; // posició actual del cap és la darrera posició de l'arraylist
+        int[] novaPos = { cuc.get(cuc.size() - 1)[0], 
+                          cuc.get(cuc.size() - 1)[1] }; // posició actual del cap és la darrera posició de l'arraylist
         
         switch (accio) {
             case 4 -> // ESQ
-                posCucCap[1] = (posCucCap[1] == 0 ? NTAULER-1 : --posCucCap[1]); 
+                novaPos[1] = (novaPos[1] == 0 ? NTAULER-1 : --novaPos[1]); 
             case 6  -> // DRETA
-                posCucCap[1] = (posCucCap[1] == NTAULER-1 ? 0 : ++posCucCap[1]); 
+                novaPos[1] = (novaPos[1] == NTAULER-1 ? 0 : ++novaPos[1]); 
             case 8  -> // ALT
-                posCucCap[0] = (posCucCap[0] == 0 ? NTAULER-1 : --posCucCap[0]); 
+                novaPos[0] = (novaPos[0] == 0 ? NTAULER-1 : --novaPos[0]); 
             case 2 -> //BAIX
-                posCucCap[0] = (posCucCap[0] == NTAULER-1 ? 0 : ++posCucCap[0]); 
+                novaPos[0] = (novaPos[0] == NTAULER-1 ? 0 : ++novaPos[0]); 
         }
         
         // Moure el cuc: 
