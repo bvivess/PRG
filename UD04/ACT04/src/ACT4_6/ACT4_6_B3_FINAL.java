@@ -26,23 +26,24 @@ public class ACT4_6_B3_FINAL {
         ArrayList<int[]> cuc = new ArrayList<>();  // [[m,n][k,l]...[a,b]] --> [a,b] és el cap del cuc, [m,n] és la cua 
         ArrayList<int[]> fulles = new ArrayList<>();  // [[m,n][k,l]...[a,b]] --> posició de les fulles
         int accio;
+        boolean cucEsTropitja=false;
         
         inicialitzaJoc(tauler, cuc, fulles);
         
         do {
             mostrarTauler(tauler, cuc, fulles);
             accio = UtilitatsConsola.llegirSencer("Puntuació: " + cuc.size() +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
+            
+            cucEsTropitja = cambiaPosicio(tauler, cuc, fulles, accio);
 
-            if (cambiaPosicio(tauler, cuc, fulles, accio)) {
-                if (fulles.isEmpty()) {
-                    System.out.println("YOU WIN !!");
-                    break;
-                }
-            } else {
-                System.out.println("YOU LOSE !!");
-                break;
-            }
-        } while (accio != 0);
+        } while (accio != 0 && !cucEsTropitja && !fulles.isEmpty());
+        
+        if (cucEsTropitja)
+             System.out.println("GAME OVER: El cuc s'ha tropitjat!!!");
+         else if (fulles.isEmpty())
+             System.out.println("GAME OVER: T'has menjat totes les fulles!!!");
+         else
+             System.out.println("GAME OVER: Partida finalitzada per l'usuari.");
     }
     
     public static void inicialitzaJoc(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
@@ -103,7 +104,7 @@ public class ACT4_6_B3_FINAL {
             if (Arrays.equals(pos,novaPos)) {
                 cuc.add(novaPos);
                 fulles.remove(i);
-                return true;
+                return false;
             }
         }
         
@@ -111,7 +112,7 @@ public class ACT4_6_B3_FINAL {
         for (int i=0; i < cuc.size(); i++) {
             pos = cuc.get(i);
             if (Arrays.equals(pos,novaPos)) {
-                return false;
+                return true;
             }
         }
         
@@ -119,7 +120,7 @@ public class ACT4_6_B3_FINAL {
         cuc.add(novaPos); // afegim posCuc a cuc
         cuc.remove(0);  // eliminam cua a cuc
 
-        return true;       
+        return false;       
     }
  
     public static void mostrarTauler(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
