@@ -110,20 +110,17 @@ public class Main {
        
         // 2. ACTUALITZAM EL MOVIMENT DEL PACMAN
         boolean gameOver;
-        switch (tauler[novaPos[0]][novaPos[1]]) {
-            case SIMBOL_MUR -> 
-                gameOver = false;
-            case SIMBOL_FANTASME -> {
-                actualitzaMoviment(tauler, pacman, novaPos);
-                gameOver = true;
-            }
-            default -> {
-                if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_COCO)
-                    NCOCOS--;
-                
-                actualitzaMoviment(tauler, pacman, novaPos);
-                gameOver = false;
-            }
+        if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_MUR) {
+            gameOver = false;
+        } else if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_FANTASME) {
+            actualitzaMoviment(tauler, pacman, novaPos);
+            gameOver = true;
+        } else {
+            if (tauler[novaPos[0]][novaPos[1]] == SIMBOL_COCO)
+                NCOCOS--;
+
+            actualitzaMoviment(tauler, pacman, novaPos);
+            gameOver = false;
         }
         
         return gameOver;
