@@ -36,11 +36,11 @@ public class ACT4_6_B3_FINAL {
             if (cambiaPosicio(tauler, cuc, fulles, accio)) {
                 if (fulles.isEmpty()) {
                     System.out.println("YOU WIN !!");
-                    accio = 0;
+                    break;
                 }
             } else {
                 System.out.println("YOU LOSE !!");
-                accio = 0;
+                break;
             }
         } while (accio != 0);
     }
