@@ -84,7 +84,7 @@ public class ACT4_6_B3_FINAL {
     public static boolean cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles, int accio) {  // torna 'true' si el 'cuc' es tropitja, 'false' en cas contrari
         int[] pos;
         int[] novaPos = { cuc.get(cuc.size() - 1)[0], 
-                            cuc.get(cuc.size() - 1)[1] }; // posició actual del cap és la darrera posició de l'arraylist
+                          cuc.get(cuc.size() - 1)[1] }; // posició actual del cap és la darrera posició de l'arraylist
         
         switch (accio) {
             case 4 -> // ESQ
