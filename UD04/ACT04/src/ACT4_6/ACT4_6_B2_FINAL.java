@@ -32,6 +32,7 @@ public class ACT4_6_B2_FINAL {
         do {
             mostrarTauler(tauler, cuc, fulles);
             accio = UtilitatsConsola.llegirSencer("Puntuació: " + cuc.size() +  " | 8:ALT, 4:ESQUERRA, 6:DRETA, 2:BAIX; 0:SORTIR: ");
+            
             cucEsTropitja = cambiaPosicio(tauler, cuc, fulles, accio);
 
         } while (accio != 0 && !cucEsTropitja && !fulles.isEmpty());
@@ -124,9 +125,9 @@ public class ACT4_6_B2_FINAL {
         }
         
         // Moure el cuc: 
-        //    'cuc' menja 'fulla' ? --> return true;
-        //    'cuc' es tropitja ? --> return false;
-        //    'cuc' es mou --> return true;
+        //    'cuc' menja 'fulla' ? --> return false;
+        //    'cuc' es tropitja ? --> return true;
+        //    'cuc' es mou --> return false;
         
         return true || false;
     }

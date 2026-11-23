@@ -125,9 +125,9 @@ public class ACT4_6_B1_FINAL {
         }
         
         // Moure el cuc: 
-        //    'cuc' menja 'fulla' ? --> return true;
-        //    'cuc' es tropitja ? --> return false;
-        //    'cuc' es mou --> return true;
+        //    'cuc' menja 'fulla' ? --> return false;
+        //    'cuc' es tropitja ? --> return true;
+        //    'cuc' es mou --> return false;
         
         return true || false;
     }
