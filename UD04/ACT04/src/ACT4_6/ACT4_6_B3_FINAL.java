@@ -16,13 +16,13 @@ import java.util.Arrays;
 public class ACT4_6_B3_FINAL { 
     static int NTAULER = UtilitatsConsola.llegirSencer("Mida del tauler: ");
     static int NFULLES = UtilitatsConsola.llegirSencer("Nombre de fulles: ");
-    static final int SIMBOL_BUIT = 0;
-    static final int SIMBOL_FULLA = 9;
-    static final int SIMBOL_CUC = 1;
-    static final int SIMBOL_CAPCUC = 2;
+    static final char SIMBOL_BUIT = ' ';
+    static final char SIMBOL_FULLA = '*';
+    static final char SIMBOL_CUC = '.';
+    static final char SIMBOL_CAPCUC = 'O';
 
     public static void main(String[] args) {
-        int[][] tauler = new int[NTAULER][NTAULER];  // matriu NTAULERxNTAULER
+        char[][] tauler = new char[NTAULER][NTAULER];  // matriu NTAULERxNTAULER
         ArrayList<int[]> cuc = new ArrayList<>();  // [[m,n][k,l]...[a,b]] --> [a,b] és el cap del cuc, [m,n] és la cua 
         ArrayList<int[]> fulles = new ArrayList<>();  // [[m,n][k,l]...[a,b]] --> posició de les fulles
         int accio;
@@ -38,15 +38,16 @@ public class ACT4_6_B3_FINAL {
 
         } while (accio != 0 && !cucEsTropitja && !fulles.isEmpty());
         
+        // Final del joc
         if (cucEsTropitja)
-             System.out.println("GAME OVER: El cuc s'ha tropitjat!!!");
-         else if (fulles.isEmpty())
-             System.out.println("GAME OVER: T'has menjat totes les fulles!!!");
-         else
-             System.out.println("GAME OVER: Partida finalitzada per l'usuari.");
+            System.out.println("GAME OVER: El cuc s'ha tropitjat!!!");
+        else if (fulles.isEmpty())
+            System.out.println("GAME OVER: T'has menjat totes les fulles!!!");
+        else
+            System.out.println("GAME OVER: Partida finalitzada per l'usuari.");
     }
     
-    public static void inicialitzaJoc(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
+    public static void inicialitzaJoc(char[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
         // Genera posició Inicial cuc
         int[] pos = UtilitatsArrays.generaArray(2,0, NTAULER-1);
         cuc.add(pos);
@@ -56,7 +57,7 @@ public class ACT4_6_B3_FINAL {
             afegeixUnaFulla(tauler, cuc, fulles);
     }
     
-    public static void afegeixUnaFulla(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
+    public static void afegeixUnaFulla(char[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
         ArrayList<int[]> cucIfulles = new ArrayList<>();
         int[] pos;  // posicio nova fulla
         boolean okFulla;
@@ -82,7 +83,7 @@ public class ACT4_6_B3_FINAL {
         fulles.add(pos);
     }
     
-    public static boolean cambiaPosicio(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles, int accio) {  // torna 'true' si el 'cuc' es tropitja, 'false' en cas contrari
+    public static boolean cambiaPosicio(char[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles, int accio) {  // torna 'true' si el 'cuc' es tropitja, 'false' en cas contrari
         int[] pos;
         int[] novaPos = { cuc.get(cuc.size() - 1)[0], 
                           cuc.get(cuc.size() - 1)[1] }; // posició actual del cap és la darrera posició de l'arraylist
@@ -98,7 +99,7 @@ public class ACT4_6_B3_FINAL {
                 novaPos[0] = (novaPos[0] == NTAULER-1 ? 0 : ++novaPos[0]); 
         }
         
-        // Cuc menja fulla ?: el cac està on hi ha alguna fulla 
+        // Cuc menja fulla ?: el cuc està on hi ha alguna fulla 
         for (int i=0; i < fulles.size(); i++) {
             pos = fulles.get(i);
             if (Arrays.equals(pos,novaPos)) {
@@ -123,7 +124,7 @@ public class ACT4_6_B3_FINAL {
         return false;       
     }
  
-    public static void mostrarTauler(int[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
+    public static void mostrarTauler(char[][] tauler, ArrayList<int[]> cuc, ArrayList<int[]> fulles) {
         String car="";
         
         netejaTauler(tauler);
@@ -132,26 +133,19 @@ public class ACT4_6_B3_FINAL {
               
         for (int i = 0; i < NTAULER ; i++) {
             System.out.print('|');
-            for (int j = 0; j < NTAULER; j++) {
-                switch (tauler[i][j]) {
-                    case SIMBOL_BUIT -> car = "   ";
-                    case SIMBOL_FULLA -> car = " * ";
-                    case SIMBOL_CAPCUC -> car = " O ";
-                    case SIMBOL_CUC -> car = " . ";
-                }
-                System.out.print(car);
-            }
+            for (int j = 0; j < NTAULER; j++) 
+                System.out.print(" " + tauler[i][j] + " ");
             System.out.println("|");
         }
     }
     
-     public static void netejaTauler(int[][] tauler){
+     public static void netejaTauler(char[][] tauler){
         for (int i = 0; i < tauler.length; i++) 
             for (int j = 0; j < tauler[i].length; j++)
                 tauler[i][j] = SIMBOL_BUIT;
     }    
 
-    public static void situaCuc(int[][] tauler, ArrayList<int[]> cuc){
+    public static void situaCuc(char[][] tauler, ArrayList<int[]> cuc){
         int i=0;
         for (int[] posCuc : cuc) {
             tauler[posCuc[0]][posCuc[1]] = (i==cuc.size()-1 ? SIMBOL_CAPCUC: SIMBOL_CUC);
@@ -159,7 +153,7 @@ public class ACT4_6_B3_FINAL {
         }
     }
     
-    public static void situaFulles(int[][] tauler, ArrayList<int[]> fulles){
+    public static void situaFulles(char[][] tauler, ArrayList<int[]> fulles){
         for (int[] posFulla : fulles) {
             tauler[posFulla[0]][posFulla[1]] = SIMBOL_FULLA;
         }

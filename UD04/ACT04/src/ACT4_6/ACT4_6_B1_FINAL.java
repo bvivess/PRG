@@ -37,12 +37,13 @@ public class ACT4_6_B1_FINAL {
 
         } while (accio != 0 && !cucEsTropitja && !fulles.isEmpty());
         
+        // Final del joc
         if (cucEsTropitja)
-             System.out.println("GAME OVER: El cuc s'ha tropitjat!!!");
-         else if (fulles.isEmpty())
-             System.out.println("GAME OVER: T'has menjat totes les fulles!!!");
-         else
-             System.out.println("GAME OVER: Partida finalitzada per l'usuari.");
+            System.out.println("GAME OVER: El cuc s'ha tropitjat!!!");
+        else if (fulles.isEmpty())
+            System.out.println("GAME OVER: T'has menjat totes les fulles!!!");
+        else
+            System.out.println("GAME OVER: Partida finalitzada per l'usuari.");
     }
     
     /**
