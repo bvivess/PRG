@@ -26,7 +26,7 @@ public class ACT4_6_B3_FINAL {
         ArrayList<int[]> cuc = new ArrayList<>();  // [[m,n][k,l]...[a,b]] --> [a,b] és el cap del cuc, [m,n] és la cua 
         ArrayList<int[]> fulles = new ArrayList<>();  // [[m,n][k,l]...[a,b]] --> posició de les fulles
         int accio;
-        boolean cucEsTropitja=false;
+        boolean cucEsTropitja = false;
         
         inicialitzaJoc(tauler, cuc, fulles);
         
